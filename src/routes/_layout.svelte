@@ -1,22 +1,8 @@
-<style>
-main {
-  position: relative;
-  max-width: 56em;
-  background-color: white;
-  padding: 2em;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-</style>
+<Navbar segment={segment} />
 
-<Nav segment={segment} />
-
-<main>
-  <slot />
-</main>
+<slot />
 
 <script>
-import Nav from "../components/Nav.svelte"
-
+import Navbar from "../components/Navbar.svelte"
 export let segment
 </script>
