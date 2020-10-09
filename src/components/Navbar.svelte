@@ -3,6 +3,7 @@
   height: 4rem;
   border-bottom: 0.125rem #eaeaea solid;
   position: fixed;
+  z-index: 20;
   left: 0;
   right: 0;
   background-color: #ffffff;
