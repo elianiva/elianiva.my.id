@@ -7,6 +7,7 @@ main {
 
 main div {
   flex: 1;
+  margin-top: 4rem;
 }
 </style>
 

@@ -2,6 +2,10 @@
 .navbar {
   height: 4rem;
   border-bottom: 0.125rem #eaeaea solid;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
 
   .active {
     a {
