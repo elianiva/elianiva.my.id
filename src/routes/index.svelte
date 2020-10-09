@@ -12,8 +12,39 @@
 
 <main class="main">
   <Hero />
+  <Section title="Recent Posts" data={data} btnText="More Posts" url="/posts" />
+  <Section
+    title="Projects"
+    data={data}
+    btnText="More Projects"
+    url="/projects"
+  />
 </main>
 
 <script>
 import Hero from "../parts/Hero/index.svelte"
+import Section from "../parts/Sections/index.svelte"
+
+const data = [
+  {
+    title: "My Experience Trying Out With Svelte",
+    desc: "Phew lads, I finally tried svelte after a while",
+    cover: "/posts/svelte.png",
+    url: "/post/svelte",
+  },
+  {
+    title: "How I Remember Japanese Weekdays",
+    desc:
+      "This will be a short post. I just want to share how I memorise Japanese weekdays (平日) or heijitsu.",
+    cover: "/posts/heijitsu.png",
+    url: "/post/heijitsu",
+  },
+  {
+    title: "Making You Own Custom Startpage For Chrome",
+    desc:
+      "Well, I've been wanting to make my own homepage or newtab page. I thought this kind of thing is only possible in firefox.",
+    cover: "/posts/chrome.png",
+    url: "/post/chrome",
+  },
+]
 </script>
