@@ -1,6 +1,6 @@
 <style lang="scss">
 footer {
-  margin-top: 1rem;
+  margin-top: 3rem;
   border-top: 0.125rem #eaeaea solid;
   font-family: "Roboto Condensed", sans-serif;
   text-align: center;

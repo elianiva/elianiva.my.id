@@ -27,10 +27,12 @@ import Section from "../parts/Sections/index.svelte"
 
 const data = [
   {
-    title: "My Experience Trying Out With Svelte",
-    desc: "Phew lads, I finally tried svelte after a while",
+    title: "My Experience Trying Out Svelte For The First Time",
+    desc:
+      "Phew lads, I finally tried svelte after a while and boi oh boi do I love it.",
     cover: "/posts/svelte.png",
     url: "/post/svelte",
+    date: "2020-10-10",
   },
   {
     title: "How I Remember Japanese Weekdays",
@@ -38,6 +40,7 @@ const data = [
       "This will be a short post. I just want to share how I memorise Japanese weekdays (平日) or heijitsu.",
     cover: "/posts/heijitsu.png",
     url: "/post/heijitsu",
+    date: "2020-10-10",
   },
   {
     title: "Making You Own Custom Startpage For Chrome",
@@ -45,6 +48,7 @@ const data = [
       "Well, I've been wanting to make my own homepage or newtab page. I thought this kind of thing is only possible in firefox.",
     cover: "/posts/chrome.png",
     url: "/post/chrome",
+    date: "2020-10-10",
   },
 ]
 </script>

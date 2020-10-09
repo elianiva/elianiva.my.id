@@ -83,6 +83,7 @@
         src={item.cover}
         desc={item.desc}
         href={item.url}
+        date={item.date}
       />
     {/each}
   </div>

@@ -141,7 +141,6 @@
     z-index: -1;
     color: rgba($color: #ff4851, $alpha: 0.075);
   }
-
 }
 </style>
 
