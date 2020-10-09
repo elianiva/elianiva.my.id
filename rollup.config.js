@@ -6,8 +6,8 @@ import babel from "@rollup/plugin-babel"
 import {terser} from "rollup-plugin-terser"
 import config from "sapper/config/rollup.js"
 import pkg from "./package.json"
-import sveltePreprocess from "svelte-preprocess"
 import svelteSVG from "rollup-plugin-svelte-svg"
+import svelteImage from "svelte-image"
 
 const mode = process.env.NODE_ENV
 const dev = mode === "development"
@@ -19,14 +19,22 @@ const onwarn = (warning, onwarn) =>
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning)
 
-const preprocess = sveltePreprocess({
+const sveltePreprocess = require("svelte-preprocess")({
   scss: {
     includePaths: ["src"],
   },
   postcss: {
-    plugins: [!dev && require("autoprefixer")],
+    plugins: [
+      require("autoprefixer")({overrideBrowserslist: "last 2 versions"}),
+    ],
   },
 })
+
+const svelteOptions = {
+  dev,
+  hydratable: true,
+  preprocess: [sveltePreprocess, svelteImage({placeholder: "blur"})],
+}
 
 export default {
   client: {
@@ -38,10 +46,8 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode),
       }),
       svelte({
-        dev,
-        hydratable: true,
         emitCss: true,
-        preprocess,
+        ...svelteOptions,
       }),
       resolve({
         browser: true,
@@ -94,9 +100,7 @@ export default {
       }),
       svelte({
         generate: "ssr",
-        hydratable: true,
-        dev,
-        preprocess,
+        ...svelteOptions,
       }),
       resolve({
         dedupe: ["svelte"],
