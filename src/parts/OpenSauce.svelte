@@ -64,7 +64,7 @@
 </section>
 
 <script>
-import SauceCard from "../../components/SauceCard/index.svelte"
+import SauceCard from "../components/SauceCard.svelte"
 
 const data = [
   {

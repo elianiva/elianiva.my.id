@@ -104,8 +104,8 @@
 </section>
 
 <script>
-import Pattern from "../../icons/pattern.svg"
-import PostCard from "../../components/PostCard/index.svelte"
-import ProjectCard from "../../components/ProjectCard/index.svelte"
+import Pattern from "../icons/pattern.svg"
+import PostCard from "../components/PostCard.svelte"
+import ProjectCard from "../components/ProjectCard.svelte"
 export let title, data, btnText, url, type
 </script>

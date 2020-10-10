@@ -30,9 +30,9 @@
 </main>
 
 <script>
-import Hero from "../parts/Hero/index.svelte"
-import Section from "../parts/Sections/index.svelte"
-import OpenSauce from "../parts/OpenSauce/index.svelte"
+import Hero from "../parts/Hero.svelte"
+import Section from "../parts/Sections.svelte"
+import OpenSauce from "../parts/OpenSauce.svelte"
 
 const posts = [
   {

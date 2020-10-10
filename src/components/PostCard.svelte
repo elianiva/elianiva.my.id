@@ -60,7 +60,7 @@
 </div>
 
 <script>
-import Calendar from "../../icons/calendar.svg"
+import Calendar from "../icons/calendar.svg"
 import Image from "svelte-image"
 import dayjs from "dayjs"
 export let title, src, desc, href, date

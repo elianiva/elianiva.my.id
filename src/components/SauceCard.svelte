@@ -170,9 +170,9 @@
 
 <script>
 import {onMount} from "svelte"
-import User from "../../icons/user.svg"
-import Star from "../../icons/star.svg"
-import Github from "../../icons/github.svg"
+import User from "../icons/user.svg"
+import Star from "../icons/star.svg"
+import Github from "../icons/github.svg"
 import Image from "svelte-image"
 export let name, author, url, repo, img, website, desc
 
