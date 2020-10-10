@@ -3,22 +3,21 @@
   overflow: hidden;
   box-shadow: 0 0.25rem 0.75rem rgba($color: #000000, $alpha: 0.1);
   border-radius: 0.25rem;
-  color: #121212;
-  text-decoration: none;
   text-align: left;
   background-color: #ffffff;
-  transition: all ease-out 0.2s;
-
-  &:hover {
-    transform: translateY(-0.25rem);
-    color: #ff4851;
-  }
 
   &__details {
+    color: #121212;
+    text-decoration: none;
     padding: 1rem;
     display: grid;
     grid-template-rows: 2rem 3.5rem 1fr;
     border-top: 0.125rem rgba($color: #ff4851, $alpha: 0.1) solid;
+    transition: all ease-out 0.2s;
+
+    &:hover {
+      color: #ff4851;
+    }
   }
 
   &__title {
@@ -48,21 +47,21 @@
 }
 </style>
 
-<a href={href} class="card">
+<div class="card">
   <Image class="card__image" src={src} ratio="50%" />
-  <div class="card__details">
+  <a href={href} class="card__details">
     <span class="card__date">
       <Calendar class="card__icon" />
       {dayjs(date).format('DD MMMM YYYY')}
     </span>
     <span class="card__title">{title}</span>
     <p class="card__desc">{desc}</p>
-  </div>
-</a>
+  </a>
+</div>
 
 <script>
+import Calendar from "./calendar.svg"
 import Image from "svelte-image"
 import dayjs from "dayjs"
-import Calendar from "./calendar.svg"
 export let title, src, desc, href, date
 </script>
