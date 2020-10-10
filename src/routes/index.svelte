@@ -39,7 +39,7 @@ const posts = [
     title: "My Experience Trying Out Svelte For The First Time",
     desc:
       "Phew lads, I finally tried svelte after a while and boi oh boi do I love it.",
-    cover: "/posts/svelte.png",
+    cover: "posts/svelte.png",
     url: "/post/svelte",
     date: "2020-10-10",
   },
@@ -47,7 +47,7 @@ const posts = [
     title: "How I Remember Japanese Weekdays",
     desc:
       "This will be a short post. I just want to share how I memorise Japanese weekdays (平日) or heijitsu.",
-    cover: "/posts/heijitsu.png",
+    cover: "posts/heijitsu.png",
     url: "/post/heijitsu",
     date: "2020-10-10",
   },
@@ -55,7 +55,7 @@ const posts = [
     title: "Making You Own Custom Startpage For Chrome",
     desc:
       "Well, I've been wanting to make my own homepage or newtab page. I thought this kind of thing is only possible in firefox.",
-    cover: "/posts/chrome.png",
+    cover: "posts/chrome.png",
     url: "/post/chrome",
     date: "2020-10-10",
   },
@@ -65,7 +65,7 @@ const projects = [
   {
     title: "Kanaizu",
     desc: "A japanese kana quiz app built using Routify and TailwindCSS",
-    cover: "/projects/kanaizu.png",
+    cover: "projects/kanaizu.png",
     url: "/projects/kanaizu",
     date: "2020-10-01",
     demo: "https://kanaizu.vercel.app",
@@ -74,7 +74,7 @@ const projects = [
   {
     title: "Skaga",
     desc: "SMKN 3 Jember's site remake using NextJS and TailwindCSS",
-    cover: "/projects/skaga.png",
+    cover: "projects/skaga.png",
     url: "/projects/skaga",
     date: "2020-10-10",
     demo: "https://skaga.vercel.app",
@@ -84,7 +84,7 @@ const projects = [
     title: "Three of Something",
     desc:
       "A website to put all of the result of a challenge that I did every week",
-    cover: "/projects/tos.png",
+    cover: "projects/tos.png",
     url: "/projects/tos",
     date: "2020-10-10",
     demo: "https://three-of-something.vercel.app",

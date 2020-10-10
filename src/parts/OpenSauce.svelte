@@ -34,6 +34,10 @@
     font-size: 1.25rem;
     line-height: 2rem;
     color: #696969;
+    margin-top: 1rem;
+  }
+
+  hr {
     margin-top: -2rem;
   }
 }
@@ -54,8 +58,10 @@
       img={item.img}
       website={item.website}
       desc={item.desc}
+      stars={item.stars}
     />
   {/each}
+  <hr>
   <p class="sauce__desc">
     Of course, there are
     <i>a lot</i>
@@ -72,8 +78,9 @@ const data = [
     author: "v1rtl",
     author_url: "https://github.com/talentlessguy",
     repo_url: "https://github.com/talentlessguy/tinyhttp",
-    img: "/opensauce/tinyhttp.png",
+    img: "opensauce/tinyhttp.png",
     website: "https://tinyhttp.v1rtl.site/",
+    stars: 444,
     desc:
       "Tinyhttp is a modern, lightweight and modular Express-like web framework for NodeJS. I've contributed several times to this project.",
   },
@@ -82,8 +89,9 @@ const data = [
     author: "Neovim",
     author_url: "https://github.com/neovim",
     repo_url: "https://github.com/neovim/neovim",
-    img: "/opensauce/neovim.png",
+    img: "opensauce/neovim.png",
     website: "https://neovim.io",
+    stars: 38990,
     desc:
       "Neovim is basically Vim with steroid. It's my favourite text editor, I love this text editor so much that I spent many hours configuring it.",
   },
@@ -92,8 +100,9 @@ const data = [
     author: "Astrit",
     author_url: "https://github.com/astrit",
     repo_url: "https://github.com/astrit/css.gg",
-    img: "/opensauce/css.png",
+    img: "opensauce/css.png",
     website: "https://css.gg",
+    stars: 6420,
     desc:
       "Icons made using CSS. I mean, how cool is that? There are 700+ icons in multiple formats for free. You should definitely check this one out!",
   },

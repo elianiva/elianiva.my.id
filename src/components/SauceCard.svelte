@@ -148,7 +148,7 @@
       rel="norel noreferrer"
     >{name}
       <span class="card__stars">
-        <Star color="#ff4851" />{stars}
+        <Star color="#ff4851" />{format(stars)}
       </span></a>
     <div class="card__source">
       <a
@@ -174,17 +174,7 @@ import User from "../icons/user.svg"
 import Star from "../icons/star.svg"
 import Github from "../icons/github.svg"
 import Image from "svelte-image"
-export let name, author, url, repo, img, website, desc
-
-let stars = ""
+export let name, author, url, repo, img, website, desc, stars
 
 const format = num => (num > 1000 ? `${(num / 1000).toFixed(1)}k` : num)
-
-onMount(async () => {
-  const data = await fetch(
-    `https://api.github.com/repos/${url.split("/").pop()}/${name.toLowerCase()}`
-  )
-  const parsed = await data.json()
-  stars = format(parsed.stargazers_count)
-})
 </script>
