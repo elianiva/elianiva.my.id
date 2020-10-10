@@ -3,3 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* fix svelte-image */
+div.wrapper {
+  display: block !important;
+}
