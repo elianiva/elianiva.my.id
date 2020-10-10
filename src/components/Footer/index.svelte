@@ -42,6 +42,11 @@ a {
     }
   }
 }
+
+.last-commit {
+  font-size: 0.75rem;
+  color: #b0b0b0;
+}
 </style>
 
 <footer>
@@ -71,11 +76,23 @@ a {
     Copyright &copy; 2020
     <a class="elianiva" href="https://github.com/elianiva">Elianiva</a>
   </p>
+  <span class="last-commit">{lastCommit}</span>
 </footer>
 
 <script>
+import {onMount} from "svelte"
 import Email from "../../icons/email.svg"
 import Github from "../../icons/github.svg"
 import Twitter from "../../icons/twitter.svg"
 import RSS from "../../icons/rss.svg"
+
+let lastCommit = ""
+
+onMount(async () => {
+  const data = await fetch(
+    "https://api.github.com/repos/elianiva/elianiva.me/commits"
+  )
+  const parsed = await data.json()
+  lastCommit = parsed[0].sha
+})
 </script>
