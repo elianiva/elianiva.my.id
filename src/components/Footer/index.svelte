@@ -74,8 +74,8 @@ a {
 </footer>
 
 <script>
-import Email from "./icons/email.svg"
-import Github from "./icons/github.svg"
-import Twitter from "./icons/twitter.svg"
-import RSS from "./icons/rss.svg"
+import Email from "../../icons/email.svg"
+import Github from "../../icons/github.svg"
+import Twitter from "../../icons/twitter.svg"
+import RSS from "../../icons/rss.svg"
 </script>

@@ -171,5 +171,5 @@
 </section>
 
 <script>
-import Circle from "./circle.svg"
+import Circle from "../../icons/circle.svg"
 </script>

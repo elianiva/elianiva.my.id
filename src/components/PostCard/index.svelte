@@ -48,7 +48,7 @@
 </style>
 
 <div class="card">
-  <Image class="card__image" src={src} ratio="50%" />
+  <Image src={src} ratio="50%" />
   <a href={href} class="card__details">
     <span class="card__date">
       <Calendar class="card__icon" />
@@ -60,7 +60,7 @@
 </div>
 
 <script>
-import Calendar from "./calendar.svg"
+import Calendar from "../../icons/calendar.svg"
 import Image from "svelte-image"
 import dayjs from "dayjs"
 export let title, src, desc, href, date

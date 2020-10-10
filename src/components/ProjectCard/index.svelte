@@ -94,8 +94,8 @@
 </div>
 
 <script>
-import Code from "./code.svg"
-import Chrome from "./chrome.svg"
+import Code from "../../icons/code.svg"
+import Chrome from "../../icons/chrome.svg"
 import Image from "svelte-image"
 import dayjs from "dayjs"
 export let title, src, desc, href, demo, source
