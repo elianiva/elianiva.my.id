@@ -30,10 +30,11 @@
   }
 
   &__desc {
-    font-family: "PT Sans", sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
     font-size: 1.25rem;
     line-height: 2rem;
     color: #696969;
+    margin-top: -2rem;
   }
 }
 </style>
@@ -78,23 +79,23 @@ const data = [
   },
   {
     name: "Neovim",
-    author: "neovim",
+    author: "Neovim",
     author_url: "https://github.com/neovim",
     repo_url: "https://github.com/neovim/neovim",
     img: "/opensauce/neovim.png",
     website: "https://neovim.io",
     desc:
-      "Neovim is basically Vim with steroid. It's my favourite text editor, I love it so much hence why I put it here.",
+      "Neovim is basically Vim with steroid. It's my favourite text editor, I love this text editor so much that I spent many hours configuring it.",
   },
   {
     name: "css.gg",
-    author: "astrit",
+    author: "Astrit",
     author_url: "https://github.com/astrit",
     repo_url: "https://github.com/astrit/css.gg",
     img: "/opensauce/css.png",
     website: "https://css.gg",
     desc:
-      "Icons written in CSS. How cool is that? There are more than 700 icons in multiple formats for free. You should definitely check this one out!",
+      "Icons made using CSS. I mean, how cool is that? There are 700+ icons in multiple formats for free. You should definitely check this one out!",
   },
 ]
 </script>

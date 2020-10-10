@@ -32,6 +32,7 @@
     transition: color ease-out 0.2s;
     display: flex;
     align-items: center;
+    gap: 1rem;
 
     &:hover {
       color: #ff4851;
@@ -64,9 +65,10 @@
   }
 
   &__desc {
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "PT Sans", sans-serif;
     font-size: 1.25rem;
-    color: #121212;
+    line-height: 1.75rem;
+    color: #696969;
     text-decoration: none;
   }
 
@@ -84,6 +86,11 @@
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+    transition: filter ease-out 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
   }
 
   &:nth-child(even) {
@@ -111,7 +118,7 @@
     }
     &__content {
       grid-column: 1/2;
-      margin-top: 1rem;;
+      margin-top: 1rem;
     }
 
     &:nth-child(even) {
@@ -126,9 +133,6 @@
       }
     }
   }
-}
-
-.thing {
 }
 </style>
 
