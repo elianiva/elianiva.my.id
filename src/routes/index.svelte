@@ -12,12 +12,19 @@
 
 <main class="main">
   <Hero />
-  <Section title="Recent Posts" data={data} btnText="More Posts" url="/posts" />
+  <Section
+    title="Recent Posts"
+    data={posts}
+    btnText="More Posts"
+    url="/posts"
+    type="posts"
+  />
   <Section
     title="Projects"
-    data={data}
+    data={projects}
     btnText="More Projects"
     url="/projects"
+    type="projects"
   />
 </main>
 
@@ -25,7 +32,7 @@
 import Hero from "../parts/Hero/index.svelte"
 import Section from "../parts/Sections/index.svelte"
 
-const data = [
+const posts = [
   {
     title: "My Experience Trying Out Svelte For The First Time",
     desc:
@@ -49,6 +56,37 @@ const data = [
     cover: "/posts/chrome.png",
     url: "/post/chrome",
     date: "2020-10-10",
+  },
+]
+
+const projects = [
+  {
+    title: "Kanaizu",
+    desc: "A japanese kana quiz app built using Routify and TailwindCSS",
+    cover: "/projects/kanaizu.png",
+    url: "/projects/kanaizu",
+    date: "2020-10-01",
+    demo: "https://kanaizu.vercel.app",
+    source: "https://github.com/elianiva/kanaizu",
+  },
+  {
+    title: "Skaga",
+    desc: "SMKN 3 Jember's site remake using NextJS and TailwindCSS",
+    cover: "/projects/skaga.png",
+    url: "/projects/skaga",
+    date: "2020-10-10",
+    demo: "https://skaga.vercel.app",
+    source: "https://github.com/elianiva/skaga",
+  },
+  {
+    title: "Three of Something",
+    desc:
+      "A website to put all of the result of a challenge that I did every week",
+    cover: "/projects/tos.png",
+    url: "/projects/tos",
+    date: "2020-10-10",
+    demo: "https://three-of-something.vercel.app",
+    source: "https://github.com/elianiva/three-of-something",
   },
 ]
 </script>

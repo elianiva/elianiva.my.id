@@ -77,21 +77,35 @@
   <Pattern class="section__pattern" />
   <h1 class="section__title">{title}</h1>
   <div class="section__cards">
-    {#each data as item}
-      <Card
-        title={item.title}
-        src={item.cover}
-        desc={item.desc}
-        href={item.url}
-        date={item.date}
-      />
-    {/each}
+    {#if type === 'posts'}
+      {#each data as item}
+        <PostCard
+          title={item.title}
+          src={item.cover}
+          href={item.url}
+          desc={item.desc}
+          date={item.date}
+        />
+      {/each}
+    {:else}
+      {#each data as item}
+        <ProjectCard
+          title={item.title}
+          src={item.cover}
+          href={item.url}
+          desc={item.desc}
+          demo={item.demo}
+          source={item.source}
+        />
+      {/each}
+    {/if}
   </div>
   <a href={url} class="section__button">{btnText}</a>
 </section>
 
 <script>
 import Pattern from "./pattern.svg"
-import Card from "../../components/Card/index.svelte"
-export let title, data, btnText, url
+import PostCard from "../../components/PostCard/index.svelte"
+import ProjectCard from "../../components/ProjectCard/index.svelte"
+export let title, data, btnText, url, type
 </script>
