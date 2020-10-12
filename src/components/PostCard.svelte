@@ -1,46 +1,40 @@
-<style lang="scss">
+<style>
 .card {
   overflow: hidden;
-  box-shadow: 0 0.25rem 0.75rem rgba($color: #000000, $alpha: 0.1);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
   border-radius: 0.25rem;
   text-align: left;
   background-color: #ffffff;
-
-  &__details {
-    color: #121212;
-    text-decoration: none;
-    padding: 1rem;
-    display: grid;
-    grid-template-rows: 2rem 3.5rem 1fr;
-    border-top: 0.125rem rgba($color: #ff4851, $alpha: 0.1) solid;
-    transition: all ease-out 0.2s;
-
-    &:hover {
-      color: #ff4851;
-    }
-  }
-
-  &__title {
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.75rem;
-  }
-
-  &__desc {
-    line-height: 1.5rem;
-    color: #696969;
-  }
-
-  &__date {
-    font-family: "Roboto Condensed", sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: #696969;
-  }
 }
-
+.card__details {
+  color: #121212;
+  text-decoration: none;
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: 2rem 3.5rem 1fr;
+  border-top: 0.125rem rgba(255, 72, 81, 0.1) solid;
+  transition: all ease-out 0.2s;
+}
+.card__details:hover {
+  color: #ff4851;
+}
+.card__title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+.card__desc {
+  line-height: 1.5rem;
+  color: #696969;
+}
+.card__date {
+  font-family: "Roboto Condensed", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #696969;
+}
 :global(.card__icon) {
   width: 1.125rem;
   height: 1.125rem;

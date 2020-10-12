@@ -20,9 +20,6 @@ const onwarn = (warning, onwarn) =>
   onwarn(warning)
 
 const sveltePreprocess = require("svelte-preprocess")({
-  scss: {
-    includePaths: ["src"],
-  },
   postcss: {
     plugins: [
       require("autoprefixer")({overrideBrowserslist: "last 2 versions"}),

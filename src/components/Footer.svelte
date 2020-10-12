@@ -1,4 +1,4 @@
-<style lang="scss">
+<style>
 footer {
   margin-top: 3rem;
   border-top: 0.125rem #eaeaea solid;
@@ -32,15 +32,14 @@ a {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   max-width: 220px;
+}
 
-  a {
-    color: #121212;
-    transition: color ease-out 0.2s;
-
-    &:hover {
-      color: #ff4851;
-    }
-  }
+.icons a {
+  color: #121212;
+  transition: color ease-out 0.2s;
+}
+.icons a:hover {
+  color: #ff4851;
 }
 
 .last-commit {
@@ -80,19 +79,10 @@ a {
 </footer>
 
 <script>
-import {onMount} from "svelte"
 import Email from "../icons/email.svg"
 import Github from "../icons/github.svg"
 import Twitter from "../icons/twitter.svg"
 import RSS from "../icons/rss.svg"
 
-let lastCommit = ""
-
-onMount(async () => {
-  const data = await fetch(
-    "https://api.github.com/repos/elianiva/elianiva.me/commits"
-  )
-  const parsed = await data.json()
-  lastCommit = parsed[0].sha
-})
+const lastCommit = "2d82f7703009bedccc18dafb0fee7d7a92bcc778"
 </script>

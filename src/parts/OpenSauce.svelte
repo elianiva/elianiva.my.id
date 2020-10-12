@@ -1,54 +1,40 @@
-<style lang="scss">
+<style>
 .sauce {
   padding: 0 1rem;
   margin: 4rem 0;
   text-align: center;
-
-  &__title {
-    position: relative;
-    display: inline-block;
-    font-family: "PT Sans", sans-serif;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-
-    &::before {
-      content: "";
-      position: absolute;
-      bottom: -0.25rem;
-      height: 0.25rem;
-      left: 4rem;
-      right: 4rem;
-      border-radius: 0.25rem;
-      background-color: #ff4851;
-    }
-
-    s {
-      color: #cecece;
-      font-style: italic;
-      font-size: 1rem;
-    }
-  }
-
-  &__desc {
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 1.25rem;
-    line-height: 2rem;
-    color: #696969;
-    margin-top: 1rem;
-  }
-
-  hr {
-    margin-top: -2rem;
-  }
+}
+.sauce__title {
+  position: relative;
+  display: inline-block;
+  font-family: "PT Sans", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.sauce__title::before {
+  content: "";
+  position: absolute;
+  bottom: -0.25rem;
+  height: 0.25rem;
+  left: 4rem;
+  right: 4rem;
+  border-radius: 0.25rem;
+  background-color: #ff4851;
+}
+.sauce__desc {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  color: #696969;
+  margin-top: 1rem;
+}
+.sauce hr {
+  margin-top: -2rem;
 }
 </style>
 
 <section class="sauce">
-  <h1 class="sauce__title">
-    Cool Open
-    <s>Sauce</s>
-    Source Projects You Should Check
-  </h1>
+  <h1 class="sauce__title">Cool Open Source Projects You Should Check</h1>
   {#each data as item}
     <SauceCard
       name={item.name}
@@ -61,7 +47,7 @@
       stars={item.stars}
     />
   {/each}
-  <hr>
+  <hr />
   <p class="sauce__desc">
     Of course, there are
     <i>a lot</i>
