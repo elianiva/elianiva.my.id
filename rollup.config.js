@@ -3,11 +3,13 @@ import replace from "@rollup/plugin-replace"
 import commonjs from "@rollup/plugin-commonjs"
 import svelte from "rollup-plugin-svelte"
 import babel from "@rollup/plugin-babel"
-import {terser} from "rollup-plugin-terser"
+import { terser } from "rollup-plugin-terser"
+import { mdsvex } from "mdsvex"
 import config from "sapper/config/rollup.js"
 import pkg from "./package.json"
 import svelteSVG from "rollup-plugin-svelte-svg"
 import svelteImage from "svelte-image"
+import posts from "./src/utils/fetch-all-posts"
 
 const mode = process.env.NODE_ENV
 const dev = mode === "development"
@@ -22,7 +24,7 @@ const onwarn = (warning, onwarn) =>
 const sveltePreprocess = require("svelte-preprocess")({
   postcss: {
     plugins: [
-      require("autoprefixer")({overrideBrowserslist: "last 2 versions"}),
+      require("autoprefixer")({ overrideBrowserslist: "last 2 versions" }),
     ],
   },
 })
@@ -30,7 +32,12 @@ const sveltePreprocess = require("svelte-preprocess")({
 const svelteOptions = {
   dev,
   hydratable: true,
-  preprocess: [sveltePreprocess, svelteImage({placeholder: "blur"})],
+  extensions: [".svelte", ".svx"],
+  preprocess: [
+    sveltePreprocess,
+    mdsvex(),
+    svelteImage({ placeholder: "blur" }),
+  ],
 }
 
 export default {
@@ -41,6 +48,7 @@ export default {
       replace({
         "process.browser": true,
         "process.env.NODE_ENV": JSON.stringify(mode),
+        __POSTS__: JSON.stringify(posts),
       }),
       svelte({
         emitCss: true,
@@ -51,7 +59,7 @@ export default {
         dedupe: ["svelte"],
       }),
       commonjs(),
-      svelteSVG({dev}),
+      svelteSVG({ dev }),
 
       legacy &&
         babel({
@@ -94,6 +102,7 @@ export default {
       replace({
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode),
+        __POSTS__: JSON.stringify(posts),
       }),
       svelte({
         generate: "ssr",
@@ -103,7 +112,7 @@ export default {
         dedupe: ["svelte"],
       }),
       commonjs(),
-      svelteSVG({generate: "ssr", dev}),
+      svelteSVG({ generate: "ssr", dev }),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require("module").builtinModules

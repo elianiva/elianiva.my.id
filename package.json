@@ -3,9 +3,9 @@
   "description": "Elianiva's personal site ツ",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
-    "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
+    "dev": "sapper dev --routes src/pages --ext '.svelte .svx' ",
+    "build": "sapper build --routes src/pages --ext '.svelte .svx' --legacy",
+    "export": "sapper export --routes src/pages --ext '.svelte .svx'   --legacy",
     "start": "node __sapper__/build",
     "prettier": "prettier --write --plugin-search-dir=. ./**/*.svelte"
   },
@@ -26,6 +26,8 @@
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-replace": "^2.2.0",
     "autoprefixer": "^10.0.1",
+    "front-matter": "^4.0.2",
+    "mdsvex": "^0.8.8",
     "postcss": "^8.1.1",
     "prettier": "^2.1.2",
     "prettier-plugin-svelte": "^1.4.0",

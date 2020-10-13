@@ -141,8 +141,8 @@
     <div class="navbar__title"><a href="/">Elianiva</a></div>
     <ul class="navbar__items">
       <li class="navbar__item"><a href="/">Home</a></li>
-      <li class="navbar__item" class:active={segment === 'posts'}>
-        <a href="/posts">Posts</a>
+      <li class="navbar__item" class:active={segment === 'post'}>
+        <a href="/post">Posts</a>
       </li>
       <li class="navbar__item" class:active={segment === 'projects'}>
         <a href="/projects">Projects</a>
@@ -159,7 +159,7 @@
     </div>
   </div>
   {#if isVisible}
-    <div class="navbar__mobile" transition:fly={{duration: 200, y: -100}}>
+    <div class="navbar__mobile" transition:fly={{ duration: 200, y: -100 }}>
       <ul class="navbar__mobile_items">
         <li class="navbar__mobile_item"><a href="/">Home</a></li>
         <li class="navbar__mobile_item" class:active={segment === 'posts'}>
@@ -177,7 +177,7 @@
 </nav>
 
 <script>
-import {fly} from "svelte/transition"
+import { fly } from "svelte/transition"
 export let segment
 let isVisible = false
 </script>
