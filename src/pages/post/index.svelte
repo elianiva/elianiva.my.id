@@ -39,7 +39,7 @@
         title={post.title}
         src={`/post/${post.slug}/cover.png`}
         href={`/post/${post.slug}`}
-        desc="aaaaaaaaaaaaaaaaaaa"
+        desc={post.desc}
         date={post.date}
       />
     {/each}
