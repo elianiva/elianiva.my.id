@@ -7,22 +7,33 @@
 
     %sapper.base%
 
-    <link rel="stylesheet" href="global.css" />
+    <link
+      href="global.css"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
     <link rel="icon" type="image/png" href="favicon.png" />
 
     <!-- external resources (fonts) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
     />
 
     <!-- Sapper creates a <script> tag containing `src/client.js`
