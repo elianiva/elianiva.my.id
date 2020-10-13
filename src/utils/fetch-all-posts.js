@@ -1,7 +1,7 @@
 import fs from "fs"
 import frontmatter from "front-matter"
 
-const postsPath = "./src/routes/post/"
+const postsPath = "./src/pages/post/"
 const hasExtention = /\.[^/.]+$/
 
 const posts = fs
