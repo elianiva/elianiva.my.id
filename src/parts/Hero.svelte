@@ -43,7 +43,10 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 .hero__buttons {
+  position: relative;
+  z-index: 5;
   display: flex;
+  justify-content: center;
 }
 .hero__button {
   padding: 0.75rem 2rem;
@@ -97,18 +100,22 @@
 }
 .hero__right::after {
   position: absolute;
-  content: "";
-  bottom: 0;
-  right: 10rem;
-  width: 8rem;
+  content: "</>";
+  bottom: -2rem;
+  left: -2rem;
+  width: 3rem;
   height: 4rem;
-  background-color: rgba(255, 72, 81, 0.075);
+  font-size: 4rem;
+  font-family: monospace;
+  font-weight: 900;
+  color: rgba(255, 72, 81, 0.1);
 }
 @media only screen and (max-width: 1080px) {
   .hero {
     gap: 2rem;
     grid-template-columns: 1fr;
     grid-template-rows: 14rem 1fr;
+    text-align: center;
   }
   .hero__right::after {
     display: none;
