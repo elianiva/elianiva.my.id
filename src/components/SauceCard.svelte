@@ -151,7 +151,7 @@
 </div>
 
 <script>
-import {onMount} from "svelte"
+import { onMount } from "svelte"
 import User from "../icons/user.svg"
 import Star from "../icons/star.svg"
 import Github from "../icons/github.svg"

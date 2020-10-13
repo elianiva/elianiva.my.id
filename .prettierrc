@@ -2,9 +2,9 @@
   "semi": false,
   "arrowParens": "avoid",
   "trailingComma": "es5",
-  "bracketSpacing": false,
+  "bracketSpacing": true,
   "svelteSortOrder": "styles-markup-scripts",
   "svelteAllowShorthand": false,
   "svelteBracketNewLine": true,
-  "svelteIndentScriptAndStyle": false
+  "svelteIndentScriptAndStyle": false,
 }
