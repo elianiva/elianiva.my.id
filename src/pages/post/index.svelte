@@ -27,22 +27,22 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1.25rem;
+  padding: 0 1rem;
 }
 </style>
-
 
 <div class="posts">
   <h1 class="posts__title">All Posts</h1>
   <div class="posts__cards">
-  {#each posts as post}
-    <PostCard
-      title={post.title}
-      src={`/post/${post.slug}/cover.png`}
-      href={`/post/${post.slug}`}
-      desc="aaaaaaaaaaaaaaaaaaa"
-      date={post.date}
-    />
-  {/each}
+    {#each posts as post}
+      <PostCard
+        title={post.title}
+        src={`/post/${post.slug}/cover.png`}
+        href={`/post/${post.slug}`}
+        desc="aaaaaaaaaaaaaaaaaaa"
+        date={post.date}
+      />
+    {/each}
   </div>
 </div>
 
