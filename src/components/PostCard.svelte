@@ -43,7 +43,7 @@
 
 <div class="card">
   <Image src={src} ratio="50%" />
-  <a href={href} class="card__details">
+  <a href="/post/{href}" class="card__details">
     <span class="card__date">
       <Calendar class="card__icon" />
       {dayjs(date).format('DD MMMM YYYY')}

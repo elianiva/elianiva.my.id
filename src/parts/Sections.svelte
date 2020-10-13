@@ -74,8 +74,8 @@
       {#each data as item}
         <PostCard
           title={item.title}
-          src={item.cover}
-          href={item.url}
+          src={`/post/${item.slug}/cover.png`}
+          href={item.slug}
           desc={item.desc}
           date={item.date}
         />
