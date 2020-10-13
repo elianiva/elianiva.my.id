@@ -1,7 +1,8 @@
 <style>
 .card {
   overflow: hidden;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); */
+  border: 1px #f4f4f4 solid;
   border-radius: 0.25rem;
   text-align: left;
   background-color: #ffffff;
@@ -27,6 +28,7 @@
 .card__desc {
   line-height: 1.5rem;
   color: #696969;
+  font-family: "PT Sans", sans-serif;
 }
 .card__date {
   font-family: "Roboto Condensed", sans-serif;
@@ -43,7 +45,7 @@
 
 <div class="card">
   <Image src={src} ratio="50%" />
-  <a href="/post/{href}" class="card__details">
+  <a href={href} class="card__details">
     <span class="card__date">
       <Calendar class="card__icon" />
       {dayjs(date).format('DD MMMM YYYY')}

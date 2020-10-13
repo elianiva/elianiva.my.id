@@ -162,8 +162,8 @@
     <div class="navbar__mobile" transition:fly={{ duration: 200, y: -100 }}>
       <ul class="navbar__mobile_items">
         <li class="navbar__mobile_item"><a href="/">Home</a></li>
-        <li class="navbar__mobile_item" class:active={segment === 'posts'}>
-          <a href="/posts">Posts</a>
+        <li class="navbar__mobile_item" class:active={segment === 'post'}>
+          <a href="/post">Posts</a>
         </li>
         <li class="navbar__mobile_item" class:active={segment === 'projects'}>
           <a href="/projects">Projects</a>
