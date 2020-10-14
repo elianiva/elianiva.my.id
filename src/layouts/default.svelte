@@ -55,7 +55,7 @@
 :global(.post__content h2) {
   font-size: 1.85rem;
   line-height: 3rem;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   margin-bottom: 0.25rem;
 }
 
@@ -69,8 +69,52 @@
 }
 
 :global(.post__content pre) {
-  border-radius: 0.5rem;;
+  border-radius: 0.5rem;
 }
+
+:global(.post__content a) {
+  position: relative;
+  color: #ff4851;
+  text-decoration: none;
+  transition: all ease-out 0.2s;
+}
+
+:global(.post__content a:hover) {
+  color: #3a181a;
+}
+
+:global(.post__content a::before) {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transform: scaleY(.2);
+  background-color: rgba(255, 72, 81, 0.5);
+  z-index: -1;
+  transition: all ease-out 0.2s;
+  transform-origin: bottom;
+}
+
+:global(.post__content a:hover::before) {
+  transform: scaleY(1);
+}
+
+:global(.post__content code) {
+  background-color: #e4e4e4;
+  padding: 0.125rem 0.25rem;
+  border-radius: .25rem;
+}
+
+:global(.post__content pre code) {
+  background-color: #1d2021;
+  padding: 0;
+  border-radius: 0;
+  font-size: 1rem;
+}
+
+a {}
 </style>
 
 <svelte:head>
