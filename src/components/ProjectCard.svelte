@@ -1,7 +1,7 @@
 <style>
 .card {
   overflow: hidden;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  border: 1px #e4e4e4 solid;
   border-radius: 0.25rem;
   text-align: left;
   background-color: #ffffff;

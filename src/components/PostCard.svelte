@@ -1,8 +1,7 @@
 <style>
 .card {
   overflow: hidden;
-  /* box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); */
-  border: 1px #f4f4f4 solid;
+  border: 1px #e4e4e4 solid;
   border-radius: 0.25rem;
   text-align: left;
   background-color: #ffffff;
@@ -13,7 +12,7 @@
   padding: 1rem;
   display: grid;
   grid-template-rows: 2rem 3.5rem 1fr;
-  border-top: 0.125rem rgba(255, 72, 81, 0.1) solid;
+  border-top: 0.125rem #e4e4e4 solid;
   transition: all ease-out 0.2s;
 }
 .card__details:hover {
