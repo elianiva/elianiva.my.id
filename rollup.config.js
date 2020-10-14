@@ -35,8 +35,10 @@ const svelteOptions = {
   extensions: [".svelte", ".svx"],
   preprocess: [
     sveltePreprocess,
-    mdsvex(),
-    svelteImage({ placeholder: "blur" }),
+    mdsvex({
+      layout: "./src/layouts/default.svelte",
+    }),
+    svelteImage({ placeholder: "blur", outputDir: "g/" }),
   ],
 }
 

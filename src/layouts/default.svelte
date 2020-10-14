@@ -3,7 +3,7 @@
   max-width: 1080px;
   padding: 2rem;
   margin: 0 auto;
-  color: #3A181A;
+  color: #3a181a;
 }
 
 .post__title {
@@ -41,7 +41,7 @@
   font-size: 1.25rem;
 }
 
-:global(.post__content  p) {
+:global(.post__content p) {
   margin-bottom: 2rem;
 }
 
@@ -67,7 +67,20 @@
 :global(.post__content img) {
   width: 100%;
 }
+
+:global(.post__content pre) {
+  border-radius: 0.5rem;;
+}
 </style>
+
+<svelte:head>
+  <link
+    rel="preload"
+    href="/prism.css"
+    as="style"
+    onload="this.rel='stylesheet'"
+  />
+</svelte:head>
 
 <section class="post">
   <h1 class="post__title">{title}</h1>
@@ -76,7 +89,7 @@
     {dayjs(date).format('dddd')},
     {dayjs(date).format('DD MMMM YYYY')}
   </span>
-  <hr class="post__divider">
+  <hr class="post__divider" />
   <div class="post__content">
     <slot />
   </div>
