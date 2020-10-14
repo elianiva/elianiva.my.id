@@ -113,8 +113,6 @@
   border-radius: 0;
   font-size: 1rem;
 }
-
-a {}
 </style>
 
 <svelte:head>

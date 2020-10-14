@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "sapper dev --routes src/pages --ext '.svelte .svx' ",
     "build": "sapper build --routes src/pages --ext '.svelte .svx' --legacy",
-    "export": "sapper export --routes src/pages --ext '.svelte .svx'   --legacy",
+    "export": "sapper export --routes src/pages --ext '.svelte .svx' --legacy",
     "start": "node __sapper__/build",
     "prettier": "prettier --write --plugin-search-dir=. ./**/*.svelte"
   },

@@ -75,7 +75,7 @@
         <PostCard
           title={item.title}
           src={`/post/${item.slug}/cover.png`}
-          href={item.slug}
+          href={`/post/${item.slug}`}
           desc={item.desc}
           date={item.date}
         />
