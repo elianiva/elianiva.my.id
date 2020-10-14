@@ -46,7 +46,7 @@
   position: relative;
   z-index: 5;
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 .hero__button {
   padding: 0.75rem 2rem;
@@ -117,8 +117,8 @@
     grid-template-rows: 14rem 1fr;
     text-align: center;
   }
-  .hero__right::after {
-    display: none;
+  .hero__buttons {
+    justify-content: center;
   }
   .hero__button {
     display: block;
