@@ -31,6 +31,8 @@
 }
 </style>
 
+<SEO title="Posts" />
+
 <div class="posts">
   <h1 class="posts__title">All Posts</h1>
   <div class="posts__cards">
@@ -47,6 +49,7 @@
 </div>
 
 <script>
+import SEO from "../../components/SEO.svelte"
 import Image from "svelte-image"
 import PostCard from "../../components/PostCard.svelte"
 const posts = __POSTS__

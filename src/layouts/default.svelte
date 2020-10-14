@@ -124,6 +124,8 @@
   />
 </svelte:head>
 
+<SEO title={title} thumbnail={`${data.siteUrl}/post/${currentPost.slug}/cover.png`} />
+
 <section class="post">
   <h1 class="post__title">{title}</h1>
   <span class="post__date">
@@ -138,8 +140,13 @@
 </section>
 
 <script>
+import SEO from "../components/SEO.svelte"
 import Navbar from "../components/Navbar.svelte"
 import Footer from "../components/Footer.svelte"
 import dayjs from "dayjs"
+import data from "../site-data"
 export let title, date
+
+const posts = __POSTS__
+const currentPost = posts.filter(post => post.title === title)[0]
 </script>

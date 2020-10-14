@@ -6,9 +6,7 @@
 }
 </style>
 
-<svelte:head>
-  <title>Home | Elianiva</title>
-</svelte:head>
+<SEO title="Home"/>
 
 <main class="main">
   <Hero />
@@ -29,6 +27,7 @@
 </main>
 
 <script>
+import SEO from "../components/SEO.svelte"
 import Hero from "../parts/Hero.svelte"
 import Section from "../parts/Sections.svelte"
 import OpenSauce from "../parts/OpenSauce.svelte"
