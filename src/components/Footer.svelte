@@ -41,11 +41,6 @@ a {
 .icons a:hover {
   color: #ff4851;
 }
-
-.last-commit {
-  font-size: 0.75rem;
-  color: #b0b0b0;
-}
 </style>
 
 <footer>
@@ -65,7 +60,7 @@ a {
   </div>
   <p>
     Powered by
-    <a class="sapper" href="https://sapper.dev">Sapper</a>
+    <a class="sapper" href="https://sapper.svelte.dev">Sapper</a>
     and
     <a class="vercel" href="https://vercel.app">Vercel</a>
     • Source code is available on
@@ -75,7 +70,6 @@ a {
     Copyright &copy; 2020
     <a class="elianiva" href="https://github.com/elianiva">Elianiva</a>
   </p>
-  <span class="last-commit">{lastCommit}</span>
 </footer>
 
 <script>
