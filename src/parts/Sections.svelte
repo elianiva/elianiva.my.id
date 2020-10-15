@@ -84,8 +84,8 @@
       {#each data as item}
         <ProjectCard
           title={item.title}
-          src={item.cover}
-          href={item.url}
+          src={`/project/${item.slug}/cover.png`}
+          href={`/project/${item.slug}`}
           desc={item.desc}
           demo={item.demo}
           source={item.source}
