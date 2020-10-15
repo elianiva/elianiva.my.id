@@ -42,21 +42,19 @@
 }
 
 :global(.post__content p) {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 :global(.post__content h1) {
   font-size: 2rem;
   line-height: 3.5rem;
   border-bottom: 0.125rem #ff4851 solid;
-  margin-bottom: 0.25rem;
 }
 
 :global(.post__content h2) {
   font-size: 1.85rem;
   line-height: 3rem;
   font-size: 1.625rem;
-  margin-bottom: 0.25rem;
 }
 
 :global(.post__content h2::before) {
@@ -154,9 +152,7 @@ a {}
 </section>
 
 <script context="module">
-import PostImage from "../components/PostImage.svelte"
-
-export { PostImage as img }
+import Code from "../components/Code.svelte"
 </script>
 
 <script>

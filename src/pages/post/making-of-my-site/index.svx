@@ -30,21 +30,24 @@ I do the dark theme first because I'm a huge fan of dark themed website (or anyt
 
 After making the dark one for the mobile, I made the light one. Again, I took the colour scheme from Material Themes and changed it a bit. Here's the screenshot that I took after finishing the mobile layout.
 
-![Finished Mobile Layout](https://res.cloudinary.com/irrellia/image/upload/v1581635408/making-of-my-site/mobile-finished_ejr67k.png)
+<script>
+import Image from "svelte-image"
+</script>
+
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1581635408/making-of-my-site/mobile-finished_ejr67k.png" alt="finished mobile layout" />
 
 ## Responsive design
 I've finished the mobile layout (YAY!), now it is time to make the desktop one. Again, I started out by making the dark themed first then convert it to light theme. Since I've created the mobile version, it is easier to make the desktop one. After done by that, I quite happy with the result
 
-![Finished Desktop Layout](https://res.cloudinary.com/irrellia/image/upload/v1581635408/making-of-my-site/finished-partial_v6b9fw.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1581635408/making-of-my-site/finished-partial_v6b9fw.png" alt="finished desktop layout" />
 
 Eventhough I liked the result, there's one thing that seems wrong. The light theme doesn't look really 'Light'. It still has those dark parts for the code blocks. I think asking for people's opinion is a good idea because several minds is better than one, so I asked my friends on Facebook and they said it's better to make the light theme pure white. So I changed the code blocks to white.
 
-
 The next day, I checked my design again and I think there's a few parts that doesn't seem right. They are the READ MORE button and the date on the post page so I changed them. Here's the difference between them.
 
-![No Button Card](https://res.cloudinary.com/irrellia/image/upload/v1581635407/making-of-my-site/no-button_s2l33e.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1581635407/making-of-my-site/no-button_s2l33e.png" alt="no button card" />
 
-![Button Card](https://res.cloudinary.com/irrellia/image/upload/v1581635407/making-of-my-site/button_fmlvll.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1581635407/making-of-my-site/button_fmlvll.png" alt="button card" />
 
 After making 2 version of my website (mobile and desktop), I think the design process is finished and the fun and challenging part begins!
 

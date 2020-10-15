@@ -68,15 +68,19 @@ After installing it, it will be available to Fcitx as an input method.
 ## Configuration
 Now what we need to do is set Mozc as Fcitx input method. To do that, open up the `fcitx-configtool`. It will roughly look like this, it may look different because of you theme.
 
-![Fcitx Config Tool](https://res.cloudinary.com/irrellia/image/upload/v1591335802/fcitx-mozc/Shot-2020-06-05_12-35-2_xvkba4.png)
+<script>
+import Image from "svelte-image"
+</script>
+
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1591335802/fcitx-mozc/Shot-2020-06-05_12-35-2_xvkba4.png" alt="fcitx configtool" />
 
 Press the **`+`** sign on the bottom left corner. A pop-up will appear and make sure you uncheck the **Only Show Current Language**, otherwise the **Mozc** input method won't show up.
 
-![Fcitx Config Tool](https://res.cloudinary.com/irrellia/image/upload/v1591335801/fcitx-mozc/Shot-2020-06-05_12-36_huwcvb.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1591335801/fcitx-mozc/Shot-2020-06-05_12-36_huwcvb.png" alt="fcitx configtool" />
 
 After you uncheck the box, search for **Mozc** then press OK. Here's the end result.
 
-![Fcitx Config Tool](https://res.cloudinary.com/irrellia/image/upload/v1591335937/fcitx-mozc/Shot-2020-06-05_12-45_auchdu.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1591335937/fcitx-mozc/Shot-2020-06-05_12-45_auchdu.png" alt="fcitx configtool" />
 
 After setting it all up, execute `fcitx` on startup depending on your DE/WM. In my case, I use DWM so I put it in `~/.xprofile` like so.
 
@@ -89,14 +93,14 @@ It's also applicable to any other DE/WM since `~/.xprofile` gets executed after 
 
 Fcitx is toggleable using a keybind that you can change from the `fcitx-confgitool` which looks like this.
 
-![Fcitx Config Tool](https://res.cloudinary.com/irrellia/image/upload/v1591336309/fcitx-mozc/Shot-2020-06-05_12-51_npqsaz.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1591336309/fcitx-mozc/Shot-2020-06-05_12-51_npqsaz.png" alt="fcitx configtool" />
 
 You can change the **Trigger Input Method** to whatever key you like. I personally use `alt+space`
 
 ## Usage
 If you've done configuring it, try to activate it by pressing the keybind that you've defined before then try to type on something. It will look like this.
 
-![Fcitx Completion Preview](https://res.cloudinary.com/irrellia/image/upload/v1591336894/fcitx-mozc/Shot-2020-06-05_13-01_utguxb.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1591336894/fcitx-mozc/Shot-2020-06-05_13-01_utguxb.png" alt="fcitx completion preview" />
 
 It looks like an autocomplete from a text editor. The way it works is if you write **romaji**, it auto converts it to **hiragana** which you can then press `TAB` to scroll the options.
 

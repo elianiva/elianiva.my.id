@@ -199,9 +199,12 @@ call defx#custom#option('_', {
 
 There we have it, people. We just transformed Defx to look like most IDE/Text Editor file explorer. Let's compare it side by side.
 
-![Before](https://res.cloudinary.com/irrellia/image/upload/v1582269729/defx/Shot_02-20_14-19-15_xb8etl.png)
+<script>
+import Image from "svelte-image"
+</script>
 
-![After](https://res.cloudinary.com/irrellia/image/upload/v1582269726/defx/Shot_02-20_13-20-33_scxlzh.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1582269729/defx/Shot_02-20_14-19-15_xb8etl.png" alt="before" />
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1582269726/defx/Shot_02-20_13-20-33_scxlzh.png" alt="after" />
 
 # Conclusion
 I think Defx is a good alternative to NERDTree and is worth to try. Some people said that it's faster and lighter than NERDTree, but it's not that significant in my experience. Anyway, let's end this post here. If you get confused, feel free to hit me up! That's it, see ya next time :)

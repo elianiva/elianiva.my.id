@@ -19,7 +19,7 @@ Spotifyd provides a service that can be used to play spotify. It's more lightwei
 ## Installation
 I'm using Arch so I will use the almighty AUR to make my life easier. If you're on any other distro, you can either take the binary or build it yourself. To install it on Arch (or any Arch based distro), you can use any AUR helper or download the `PKGBUILD` and run `makepkg -si`.
 
-``` bash
+```bash
 # yay
 $ yay -S spotifyd-full
 

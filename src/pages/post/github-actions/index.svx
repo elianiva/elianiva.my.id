@@ -98,20 +98,23 @@ Those are my brief explanation and how I understand each fields. If you want mor
 ## See it in action
 We've set up the config file, time to see it in action. Push the config file to the remote repo and go to github action tab.
 
-![Action Tab](https://res.cloudinary.com/irrellia/image/upload/v1596266204/github-actions/1_wkiyzx.png)
+<script>
+import Image from "svelte-image"
+</script>
+
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1596266204/github-actions/1_wkiyzx.png" alt="action tab" />
 
 If we click one of the action from the list, it will go to its own page which will look like this.
 
-![Action Page](https://res.cloudinary.com/irrellia/image/upload/v1596266204/github-actions/3_oebudj.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1596266204/github-actions/3_oebudj.png" alt="action page" />
 
 Our action name will show up here. Try to click on that.
 
-![Action Name](https://res.cloudinary.com/irrellia/image/upload/v1596266203/github-actions/4_r255ko.png)
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1596266203/github-actions/4_r255ko.png" alt="action name" />
 
 It will show this. The log of our action's jobs.
 
-![Action Jobs](https://res.cloudinary.com/irrellia/image/upload/v1596266499/github-actions/5_nmjzki.png)
-
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1596266499/github-actions/5_nmjzki.png" alt="action jobs" />
 
 # Conclusion
 The reason why I moved from Travis CI is not because Travis CI is bad or anything. It's just I want to try a new thing, plus it's available on the same site that my repo is hosted. I can just visit one site to check on my repo or my build status.
