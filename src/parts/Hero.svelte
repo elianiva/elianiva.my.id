@@ -139,7 +139,7 @@
     <a href="https://github.com/elianiva">
       <img
         class="hero__pict"
-        src="https://avatars3.githubusercontent.com/u/51877647?s=180&v=4"
+        src="https://avatars3.githubusercontent.com/u/51877647?s=240&v=4"
         alt="github profile"
       />
     </a>

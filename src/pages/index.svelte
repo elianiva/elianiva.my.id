@@ -14,6 +14,7 @@
     title="Recent Posts"
     data={posts.splice(0, 3)}
     btnText="More Posts"
+    url="/posts"
     type="posts"
   />
   <Section
