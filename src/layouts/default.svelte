@@ -49,12 +49,21 @@
   font-size: 2rem;
   line-height: 3.5rem;
   border-bottom: 0.125rem #ff4851 solid;
+  margin: 0.25rem 0;
 }
 
 :global(.post__content h2) {
-  font-size: 1.85rem;
   line-height: 3rem;
   font-size: 1.625rem;
+  margin: 0.25rem 0;
+}
+
+:global(.post__content h3) {
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  border-left: 0.25rem #ff4851 solid;
+  padding-left: 0.5rem;
+  margin: 0.25rem 0;
 }
 
 :global(.post__content h2::before) {
@@ -68,6 +77,7 @@
 
 :global(.post__content pre) {
   border-radius: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 :global(.post__content a) {
@@ -90,7 +100,7 @@
   left: -0.25rem;
   right: -0.25rem;
   top: 0;
-  transform: scaleY(.1);
+  transform: scaleY(0.1);
   background-color: rgba(255, 72, 81, 0.5);
   z-index: -1;
   transition: all ease-out 0.2s;
@@ -104,7 +114,7 @@
 :global(.post__content code) {
   background-color: #e4e4e4;
   padding: 0.125rem 0.25rem;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 :global(.post__content pre code) {
@@ -124,7 +134,8 @@
   line-height: 2rem;
 }
 
-a {}
+a {
+}
 </style>
 
 <svelte:head>
@@ -136,7 +147,10 @@ a {}
   />
 </svelte:head>
 
-<SEO title={title} thumbnail={`${data.siteUrl}/post/${currentPost.slug}/cover.png`} />
+<SEO
+  title={title}
+  thumbnail={`${data.siteUrl}/post/${currentPost.slug}/cover.png`}
+/>
 
 <section class="post">
   <h1 class="post__title">{title}</h1>
