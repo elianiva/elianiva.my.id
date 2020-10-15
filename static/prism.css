@@ -72,7 +72,6 @@ pre[class*="language-"] {
 
 .token.punctuation {
   color: #928374;
-  font-style: italic;
 }
 
 .token.constant {

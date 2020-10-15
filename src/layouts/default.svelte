@@ -42,7 +42,7 @@
 }
 
 :global(.post__content p) {
-  margin-bottom: 2rem;
+  margin: 1rem 0;
 }
 
 :global(.post__content h1) {
@@ -74,8 +74,10 @@
 
 :global(.post__content a) {
   position: relative;
+  display: inline-block;
   color: #ff4851;
   text-decoration: none;
+  margin: 0 0.125rem;
   transition: all ease-out 0.2s;
 }
 
@@ -87,10 +89,10 @@
   position: absolute;
   content: "";
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: -0.25rem;
+  right: -0.25rem;
   top: 0;
-  transform: scaleY(.2);
+  transform: scaleY(.1);
   background-color: rgba(255, 72, 81, 0.5);
   z-index: -1;
   transition: all ease-out 0.2s;
@@ -113,6 +115,18 @@
   border-radius: 0;
   font-size: 1rem;
 }
+
+:global(.post__content ul) {
+  margin: 1rem 0;
+  list-style-position: inside;
+}
+
+:global(.post__content ul li) {
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+a {}
 </style>
 
 <svelte:head>
@@ -138,6 +152,12 @@
     <slot />
   </div>
 </section>
+
+<script context="module">
+import PostImage from "../components/PostImage.svelte"
+
+export { PostImage as img }
+</script>
 
 <script>
 import SEO from "../components/SEO.svelte"
