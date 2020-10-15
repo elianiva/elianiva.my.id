@@ -152,7 +152,11 @@
       </li>
     </ul>
     <div class="navbar__hamburger">
-      <input on:click={() => (isVisible = !isVisible)} type="checkbox" />
+      <input
+        bind:this={checkbox}
+        on:click={() => (isVisible = !isVisible)}
+        type="checkbox"
+      />
       <span class="navbar__hamburger_item" />
       <span class="navbar__hamburger_item" />
       <span class="navbar__hamburger_item" />
@@ -161,15 +165,17 @@
   {#if isVisible}
     <div class="navbar__mobile" transition:fly={{ duration: 200, y: -100 }}>
       <ul class="navbar__mobile_items">
-        <li class="navbar__mobile_item"><a href="/">Home</a></li>
+        <li class="navbar__mobile_item" on:click={toggleNav}>
+          <a href="/">Home</a>
+        </li>
         <li class="navbar__mobile_item" class:active={segment === 'post'}>
-          <a href="/post" on:click={(isVisible = !isVisible)}>Posts</a>
+          <a href="/post" on:click={toggleNav}>Posts</a>
         </li>
         <li class="navbar__mobile_item" class:active={segment === 'project'}>
-          <a href="/project" on:click={(isVisible = !isVisible)}>Projects</a>
+          <a href="/project" on:click={toggleNav}>Projects</a>
         </li>
         <li class="navbar__mobile_item" class:active={segment === 'about'}>
-          <a href="/about" on:click={(isVisible = !isVisible)}>About</a>
+          <a href="/about" on:click={toggleNav}>About</a>
         </li>
       </ul>
     </div>
@@ -179,5 +185,10 @@
 <script>
 import { fly } from "svelte/transition"
 export let segment
+let checkbox
+const toggleNav = () => {
+  checkbox.checked = !checkbox.checked
+  isVisible = !isVisible
+}
 let isVisible = false
 </script>
