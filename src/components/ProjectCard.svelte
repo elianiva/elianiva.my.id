@@ -10,7 +10,7 @@
   padding: 1rem;
   display: grid;
   grid-template-rows: 2rem 3.5rem 1fr;
-  border-top: 0.125rem rgba(255, 72, 81, 0.1) solid;
+  border-top: 0.125rem #e4e4e4 solid;
 }
 .card__title {
   text-decoration: none;
@@ -70,12 +70,14 @@
     <a href={href} class="card__title">{title}</a>
     <p class="card__desc">{desc}</p>
     <div class="card__links">
-      <a
-        class="card__demo"
-        href={demo}
-        target="_blank"
-        rel="norel noreferrer"
-      ><Chrome class="card__icon" />Demo</a>
+      {#if demo}
+        <a
+          class="card__demo"
+          href={demo ? demo : '#'}
+          target="_blank"
+          rel="norel noreferrer"
+        ><Chrome class="card__icon" />Demo</a>
+      {/if}
       <a
         class="card__source"
         href={source}
