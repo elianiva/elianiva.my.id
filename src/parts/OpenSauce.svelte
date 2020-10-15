@@ -1,7 +1,7 @@
 <style>
 .sauce {
   padding: 0 1rem;
-  margin: 4rem 0;
+  margin: 4rem 0 0;
   text-align: center;
 }
 .sauce__title {
@@ -9,7 +9,7 @@
   display: inline-block;
   font-family: "PT Sans", sans-serif;
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 .sauce__title::before {
   content: "";
@@ -53,6 +53,11 @@
     <i>a lot</i>
     more cool open source projects than this but I chose them because why not ツ
   </p>
+  <p class="sauce__desc">
+    To be fair, I chose them because they has less than 1k stars and in my
+    opinion they deserve more than that. Do yourself a favor and give them star
+    on Github :D
+  </p>
 </section>
 
 <script>
@@ -60,37 +65,34 @@ import SauceCard from "../components/SauceCard.svelte"
 
 const data = [
   {
-    name: "Tinyhttp",
+    name: "tinyhttp",
     author: "v1rtl",
     author_url: "https://github.com/talentlessguy",
     repo_url: "https://github.com/talentlessguy/tinyhttp",
     img: "opensauce/tinyhttp.png",
     website: "https://tinyhttp.v1rtl.site/",
-    stars: 444,
     desc:
-      "Tinyhttp is a modern, lightweight and modular Express-like web framework for NodeJS. I've contributed several times to this project.",
+      "Tinyhttp is a modern, lightweight and modular Express-like web framework for NodeJS. I've also contributed several times to this project.",
   },
   {
-    name: "Neovim",
-    author: "Neovim",
-    author_url: "https://github.com/neovim",
-    repo_url: "https://github.com/neovim/neovim",
-    img: "opensauce/neovim.png",
-    website: "https://neovim.io",
-    stars: 38990,
+    name: "MDsveX",
+    author: "pngwn",
+    author_url: "https://github.com/pngwn",
+    repo_url: "https://github.com/pngwn/MDsveX",
+    img: "opensauce/mdsvex.png",
+    website: "https://mdsvex.com",
     desc:
-      "Neovim is basically Vim with steroid. It's my favourite text editor, I love this text editor so much that I spent many hours configuring it.",
+      "Just like MDX, but for Svelte. Simplicity of markdown combined with the power of Svelte. Without this tech, my website wouldn't be possible.",
   },
   {
-    name: "css.gg",
-    author: "Astrit",
-    author_url: "https://github.com/astrit",
-    repo_url: "https://github.com/astrit/css.gg",
-    img: "opensauce/css.png",
-    website: "https://css.gg",
-    stars: 6420,
+    name: "yrv",
+    author: "pateketrueke",
+    author_url: "https://github.com/pateketrueke",
+    repo_url: "https://github.com/pateketrueke/yrv",
+    img: "opensauce/yrv.png",
+    website: "https://github.com/pateketrueke/yrv",
     desc:
-      "Icons made using CSS. I mean, how cool is that? There are 700+ icons in multiple formats for free. You should definitely check this one out!",
+      "Routing library for Svelte. It looks quite similar to react-router. If you're coming from React to Svelte like I do, try this one out!",
   },
 ]
 </script>
