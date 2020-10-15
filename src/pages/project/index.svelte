@@ -54,5 +54,4 @@ import SEO from "../../components/SEO.svelte"
 import Image from "svelte-image"
 import ProjectCard from "../../components/ProjectCard.svelte"
 const projects = __PROJECTS__
-$: console.log(projects)
 </script>

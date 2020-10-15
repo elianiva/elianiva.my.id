@@ -44,7 +44,6 @@
       img={item.img}
       website={item.website}
       desc={item.desc}
-      stars={item.stars}
     />
   {/each}
   <hr />

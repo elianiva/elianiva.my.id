@@ -143,7 +143,11 @@ Let me quickly explain to you what does what.
 
 All right, let's see what we've got so far.
 
-![Preview](https://res.cloudinary.com/irrellia/image/upload/v1582268284/defx/Shot_02-20_13-48-50_t9ejq9.png)
+<script>
+import Image from "svelte-image"
+</script>
+
+<Image src="https://res.cloudinary.com/irrellia/image/upload/v1582268284/defx/Shot_02-20_13-48-50_t9ejq9.png" alt="preview" />
 
 It looks ok to me, but not quite yet. Let's take it even further by adding some icons to make it eye candy. This next step is optional. If you don't want any icon, you can skip it.
 
@@ -198,10 +202,6 @@ call defx#custom#option('_', {
 ```
 
 There we have it, people. We just transformed Defx to look like most IDE/Text Editor file explorer. Let's compare it side by side.
-
-<script>
-import Image from "svelte-image"
-</script>
 
 <Image src="https://res.cloudinary.com/irrellia/image/upload/v1582269729/defx/Shot_02-20_14-19-15_xb8etl.png" alt="before" />
 <Image src="https://res.cloudinary.com/irrellia/image/upload/v1582269726/defx/Shot_02-20_13-20-33_scxlzh.png" alt="after" />
