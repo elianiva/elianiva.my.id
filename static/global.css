@@ -14,7 +14,6 @@ html {
 }
 
 html::-webkit-scrollbar-thumb {
-  /* background-color: #b0b0b0; */
   background-color: #ff4851;
 }
 

@@ -25,6 +25,7 @@
   color: #ff4851;
 }
 .card__desc {
+  font-family: "PT Sans", sans-serif;
   line-height: 1.5rem;
   color: #696969;
 }
@@ -35,6 +36,7 @@
 }
 .card__demo,
 .card__source {
+  font-family: "PT Sans", sans-serif;
   text-decoration: none;
   display: flex;
   align-items: center;

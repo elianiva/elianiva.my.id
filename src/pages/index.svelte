@@ -14,14 +14,14 @@
     title="Recent Posts"
     data={posts.splice(0, 3)}
     btnText="More Posts"
-    url="/posts"
+    url="/post"
     type="posts"
   />
   <Section
     title="Projects"
-    data={projects}
+    data={projects.splice(0, 3)}
     btnText="More Projects"
-    url="/projects"
+    url="/project"
     type="projects"
   />
   <OpenSauce />
@@ -35,34 +35,36 @@ import OpenSauce from "../parts/OpenSauce.svelte"
 
 const posts = __POSTS__
 
-const projects = [
-  {
-    title: "Kanaizu",
-    desc: "A japanese kana quiz app built using Routify and TailwindCSS",
-    cover: "projects/kanaizu.png",
-    url: "/projects/kanaizu",
-    date: "2020-10-01",
-    demo: "https://kanaizu.vercel.app",
-    source: "https://github.com/elianiva/kanaizu",
-  },
-  {
-    title: "Skaga",
-    desc: "SMKN 3 Jember's site remake using NextJS and TailwindCSS",
-    cover: "projects/skaga.png",
-    url: "/projects/skaga",
-    date: "2020-10-10",
-    demo: "https://skaga.vercel.app",
-    source: "https://github.com/elianiva/skaga",
-  },
-  {
-    title: "Three of Something",
-    desc:
-      "A website to put all of the result of a challenge that I did every week",
-    cover: "projects/tos.png",
-    url: "/projects/tos",
-    date: "2020-10-10",
-    demo: "https://three-of-something.vercel.app",
-    source: "https://github.com/elianiva/three-of-something",
-  },
-]
+const projects = __PROJECTS__
+
+/* const projects = [ */
+/*   { */
+/*     title: "Kanaizu", */
+/*     desc: "A japanese kana quiz app built using Routify and TailwindCSS", */
+/*     cover: "projects/kanaizu.png", */
+/*     url: "/projects/kanaizu", */
+/*     date: "2020-10-01", */
+/*     demo: "https://kanaizu.vercel.app", */
+/*     source: "https://github.com/elianiva/kanaizu", */
+/*   }, */
+/*   { */
+/*     title: "Skaga", */
+/*     desc: "SMKN 3 Jember's site remake using NextJS and TailwindCSS", */
+/*     cover: "projects/skaga.png", */
+/*     url: "/projects/skaga", */
+/*     date: "2020-10-10", */
+/*     demo: "https://skaga.vercel.app", */
+/*     source: "https://github.com/elianiva/skaga", */
+/*   }, */
+/*   { */
+/*     title: "Three of Something", */
+/*     desc: */
+/*       "A website to put all of the result of a challenge that I did every week", */
+/*     cover: "projects/tos.png", */
+/*     url: "/projects/tos", */
+/*     date: "2020-10-10", */
+/*     demo: "https://three-of-something.vercel.app", */
+/*     source: "https://github.com/elianiva/three-of-something", */
+/*   }, */
+/* ] */
 </script>

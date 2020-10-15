@@ -10,6 +10,7 @@ import pkg from "./package.json"
 import svelteSVG from "rollup-plugin-svelte-svg"
 import svelteImage from "svelte-image"
 import posts from "./src/utils/fetch-all-posts"
+import projects from "./src/utils/fetch-all-projects"
 
 const mode = process.env.NODE_ENV
 const dev = mode === "development"
@@ -36,7 +37,10 @@ const svelteOptions = {
   preprocess: [
     sveltePreprocess,
     mdsvex({
-      layout: "./src/layouts/default.svelte",
+      layout: {
+        _: "./src/layouts/post.svelte",
+        project: "./src/layouts/project.svelte",
+      },
     }),
     svelteImage({ placeholder: "blur", outputDir: "g/" }),
   ],
@@ -51,6 +55,7 @@ export default {
         "process.browser": true,
         "process.env.NODE_ENV": JSON.stringify(mode),
         __POSTS__: JSON.stringify(posts),
+        __PROJECTS__: JSON.stringify(projects),
       }),
       svelte({
         emitCss: true,
@@ -105,6 +110,7 @@ export default {
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode),
         __POSTS__: JSON.stringify(posts),
+        __PROJECTS__: JSON.stringify(projects),
       }),
       svelte({
         generate: "ssr",

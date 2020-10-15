@@ -1,7 +1,7 @@
 <style>
 .post {
   max-width: 1080px;
-  padding: 2rem;
+  padding: 1rem;
   margin: 0 auto;
   color: #3a181a;
 }
@@ -78,6 +78,16 @@
 :global(.post__content pre) {
   border-radius: 0.5rem;
   margin: 0.5rem 0;
+  scrollbar-color: #b0b0b0 #efefef;
+}
+
+:global(.post__content pre::-webkit-scrollbar-thumb) {
+  background-color: #b0b0b0;
+}
+
+:global(.post__content pre::-webkit-scrollbar) {
+  background-color: #efefef;
+  height: 0.5rem;
 }
 
 :global(.post__content a) {
@@ -129,12 +139,22 @@
   list-style-position: inside;
 }
 
-:global(.post__content ul li) {
+:global(.post__content ul > li) {
   font-size: 1.25rem;
   line-height: 2rem;
 }
 
-a {
+:global(.post__content ul li > ul *) {
+  font-size: 1.125rem;
+}
+
+@media only screen and (max-width: 480px) {
+  :global(.post__content pre) {
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
+    border-radius: 0;
+    /* margin: 0 -2rem; */
+  }
 }
 </style>
 
@@ -164,10 +184,6 @@ a {
     <slot />
   </div>
 </section>
-
-<script context="module">
-import Code from "../components/Code.svelte"
-</script>
 
 <script>
 import SEO from "../components/SEO.svelte"

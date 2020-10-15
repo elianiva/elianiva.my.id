@@ -144,8 +144,8 @@
       <li class="navbar__item" class:active={segment === 'post'}>
         <a href="/post">Posts</a>
       </li>
-      <li class="navbar__item" class:active={segment === 'projects'}>
-        <a href="/projects">Projects</a>
+      <li class="navbar__item" class:active={segment === 'project'}>
+        <a href="/project">Projects</a>
       </li>
       <li class="navbar__item" class:active={segment === 'about'}>
         <a href="/about">About</a>
@@ -163,13 +163,13 @@
       <ul class="navbar__mobile_items">
         <li class="navbar__mobile_item"><a href="/">Home</a></li>
         <li class="navbar__mobile_item" class:active={segment === 'post'}>
-          <a href="/post">Posts</a>
+          <a href="/post" on:click={(isVisible = !isVisible)}>Posts</a>
         </li>
-        <li class="navbar__mobile_item" class:active={segment === 'projects'}>
-          <a href="/projects">Projects</a>
+        <li class="navbar__mobile_item" class:active={segment === 'project'}>
+          <a href="/project" on:click={(isVisible = !isVisible)}>Projects</a>
         </li>
         <li class="navbar__mobile_item" class:active={segment === 'about'}>
-          <a href="/about">About</a>
+          <a href="/about" on:click={(isVisible = !isVisible)}>About</a>
         </li>
       </ul>
     </div>
