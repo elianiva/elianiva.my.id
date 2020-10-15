@@ -1,0 +1,10 @@
+---
+title: Covid Info
+date: 2020-04-22
+desc: A simple app to get current covid data. Made using React.
+demo: https://covid-info.now.sh
+source: https://github.com/elianiva/covid-info
+layout: project
+---
+
+# Hello World

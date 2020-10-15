@@ -4,6 +4,7 @@ date: 2020-07-23
 desc: SMKN 3 Jember's site remake using NextJS and TailwindCSS
 demo: https://skaga.vercel.app
 source: https://github.com/elianiva/skaga
+layout: project
 ---
 
 # Hello World!

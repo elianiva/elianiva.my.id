@@ -1,0 +1,10 @@
+---
+title: School Log
+date: 2020-07-19
+desc: A website where I put some of my school assignment cuz why not. Made using Next.js
+demo: https://school-log.vercel.app
+source: https://github.com/elianiva/school-log
+layout: project
+---
+
+# Hello World
