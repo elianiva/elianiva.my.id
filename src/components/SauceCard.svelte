@@ -1,5 +1,6 @@
 <style>
 .card {
+  position: relative;
   display: grid;
   grid-template-columns: 2fr 3fr;
   grid-column-gap: 1rem;
@@ -13,7 +14,26 @@
   overflow: hidden;
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.05);
 }
+:global(.card:nth-child(even) .card__pattern) {
+  position: absolute;
+  color: #ff4851;
+  z-index: -1;
+  top: -2rem;
+  right: -4rem;
+  transform: rotateZ(90deg);
+  width: 10rem;
+}
+:global(.card:nth-child(odd) .card__pattern) {
+  position: absolute;
+  color: #ff4851;
+  z-index: -1;
+  top: -2rem;
+  left: -4rem;
+  transform: rotateZ(-90deg);
+  width: 10rem;
+}
 .card__content {
+  position: relative;
   grid-column: 2/3;
   display: flex;
   flex-direction: column;
@@ -43,13 +63,6 @@
   width: 2rem;
   height: 0.25rem;
   background-color: #ff4851;
-}
-.card__stars {
-  font-size: 1.125rem;
-  color: #121212;
-  display: inline-flex;
-  gap: 0.25rem;
-  align-items: center;
 }
 .card__source {
   font-family: "Roboto Condensed", sans-serif;
@@ -119,6 +132,7 @@
 </style>
 
 <div class="card">
+  <Pattern class="card__pattern" />
   <div class="card__img">
     <Image ratio="50%" src={img} />
   </div>
@@ -129,9 +143,8 @@
       target="_blank"
       rel="norel noreferrer"
     >{name}
-      <span class="card__stars">
-        <Star color="#ff4851" />{format(stars)}
-      </span></a>
+      <Star color="#ff4851" />
+    </a>
     <div class="card__source">
       <a
         class="card__author"
@@ -151,12 +164,10 @@
 </div>
 
 <script>
-import { onMount } from "svelte"
+import Pattern from "../icons/pattern.svg"
 import User from "../icons/user.svg"
 import Star from "../icons/star.svg"
 import Github from "../icons/github.svg"
 import Image from "svelte-image"
-export let name, author, url, repo, img, website, desc, stars
-
-const format = num => (num > 1000 ? `${(num / 1000).toFixed(1)}k` : num)
+export let name, author, url, repo, img, website, desc
 </script>
