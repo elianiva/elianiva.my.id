@@ -6,7 +6,7 @@
 }
 </style>
 
-<SEO title="Home"/>
+<SEO title="Home" />
 
 <main class="main">
   <Hero />
