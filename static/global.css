@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow-x: hidden;
+  width: 100vw;
+}
+
 /* fix svelte-image */
 div.wrapper {
   display: block !important;
