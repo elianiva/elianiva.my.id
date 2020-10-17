@@ -122,7 +122,7 @@
 }
 
 :global(.post__content code) {
-  background-color: #e4e4e4;
+  background-color: #f4f4f4;
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
 }
@@ -187,8 +187,6 @@
 
 <script>
 import SEO from "../components/SEO.svelte"
-import Navbar from "../components/Navbar.svelte"
-import Footer from "../components/Footer.svelte"
 import dayjs from "dayjs"
 import data from "../site-data"
 export let title, date
