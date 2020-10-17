@@ -42,7 +42,11 @@ const svelteOptions = {
         project: "./src/layouts/project.svelte",
       },
     }),
-    svelteImage({ placeholder: "blur", outputDir: "g/" }),
+    svelteImage({
+      placeholder: "blur",
+      outputDir: "g/",
+      sizes: [800, 1200],
+    }),
   ],
 }
 
