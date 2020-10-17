@@ -29,22 +29,22 @@ Previously, I have this one big section that fills the entire screen with a logo
 import Image from "svelte-image"
 </script>
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1588407518/site-redesign/Shot-2020-05-02_15-13_2_zgbgy4.png" alt="old" />
+<Image src="/post/site-redesign/old.png" alt="old" />
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1588407526/site-redesign/Shot-2020-05-02_14-39_quswht.png" alt="new" />
+<Image src="/post/site-redesign/new.png" alt="new" />
 
 I also don't have a new logo for my username yet. So it is what it is. I'll make that in the future.
 
-(06092020) UPDATE: I decided to use my github profile picture instead.
+(06-09-2020) UPDATE: I decided to use my github profile picture instead.
 
 ## Tags page
 I decided to remove the category. I think tags will be enough because I have another plan for the "category" thingy. I'll talk about that later on. If you've seen my archives page before, it kinda look like a mess, like seriously. I mean just look at this.
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1588407521/site-redesign/Shot-2020-05-02_15-13_1_ujxkpf.png" alt="old" />
+<Image src="/post/site-redesign/old-tag.png" alt="old" />
 
 and compare that to this.
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1588407524/site-redesign/Shot-2020-05-02_15-13_gk8orx.png" alt="new" />
+<Image src="/post/site-redesign/new-tag.png" alt="new" />
 
 The new page looks _way_ better than the old one. At least in my opinion.
 
@@ -66,6 +66,7 @@ I am planning on making this page to be a place where I put some sort of series.
 
 So currently, it is a work in progress. "coming soon", that's all you got for now.
 
+(17-10-2020) UPDATE: I changed my mind. I won't make this section. I never have the time to do it unfortunately.
 
 ## Other stuff
 I fixed some little bugs that's previously happened and what not. Just some tiny little improvements.

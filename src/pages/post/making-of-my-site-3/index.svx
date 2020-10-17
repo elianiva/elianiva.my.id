@@ -15,13 +15,17 @@ Hi everyone. Welcome to the last part of the 3 part series. This time, I will ta
 # Deployment
 ## Manually using gh-pages
 First of all, I installed `gh-page` package from npm by executing
-``` bash
+
+```bash
 $ npm install gh-pages
 ```
+
 and creating a custom script to my `package.json` like so:
-``` json
+
+```json
 "deploy": "gatsby build && gh-pages -d public -b master",
 ```
+
 and to deploy my site, I would simply run `npm run deploy`. It will automatically deploy my site to github pages.
 
 
@@ -54,7 +58,7 @@ Before I end this blog, I have quite a list of people that I want to say thank y
 
 - [epsi-rns.github.io](https://epsi-rns.github.io)
 
-    I just want to say thank you to him. His site is filled with quality content that makes me want to make it as well. He's using Jekyll for his site.
+    His site is filled with quality content that makes me want to make it as well. He's using Jekyll for his site.
 
 - You
 

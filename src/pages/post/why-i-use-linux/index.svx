@@ -7,7 +7,7 @@ tags:
 ---
 
 # Introduction
-Hello internet people of the internet! In this post, I will tell you people the reason why I use Linux and how I know Linux. Well, the correct term here should be GNU/Linux but it's _way_ too long let's be honest. So, whenever I say Linux, what I mean is GNU/Linux. Let's start with how I know Linux.
+Hello internet people of the internet! In this post, I will explain the reason why I use Linux and how I know Linux. Well, the correct term here should be GNU/Linux but it's _way_ too long let's be honest. So, whenever I say Linux, what I mean is GNU/Linux. Let's start with how I know Linux.
 
 # Origin
 ## My first laptop
@@ -34,7 +34,7 @@ Finally, I installed it. I took a quick screenshot after installing it because I
 import Image from "svelte-image"
 </script>
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1582769372/why-i-use-linux/Shot-2019-08-05-16_39_ilfjfy.png" alt="manjaro" />
+<Image src="/post/why-i-use-linux/manjaro.png" alt="manjaro" />
 
 Manjaro is based on Arch. Some people say that it's Arch without all of its fuss. I mean, it's true. At the time I'm writing this, I use Arch. For beginners that want to try Archlinux, it's a good starting point. I ended up using it for nearly 8 months. It was a great experience. That came from the same person that also makes fun of its name. I know, I'm such a hypocrite lmao.
 

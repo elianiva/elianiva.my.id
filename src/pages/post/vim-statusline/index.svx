@@ -30,7 +30,7 @@ First thing first, I removed my old statusline. You don't need to do it if you d
 import Image from "svelte-image"
 </script>
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1581729583/vim%20statusline/2020-02-15_08-19_xqa7uk.png" alt="statusline" />
+<Image src="/post/vim-statusline/old.png" alt="old statusline" />
 
 As you can see, it looks like a capsule for each module. I took the design from a reddit post that I've found the other day. [Here it is](https://www.reddit.com/r/vimporn/comments/efjcv0/gruvboxxx/?utm_source=share&utm_medium=web2x). It looks sick when I saw it for the first time. But, as time passes I started to think that it wasted quite a lot of space. So I decided to change it
 
@@ -419,7 +419,7 @@ to your .vimrc or init.vim
 
 Here's what it looks like when it's finished
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1581737314/vim%20statusline/2020-02-15_10-28_aql4fr.png" alt="statusline" />
+<Image src="/post/vim-statusline/new.png" alt="new statusline" />
 
 It doesn't look like an eye candy, but it doesn't take a whole lotta space.
 If you want the old one, [Here it is](https://github.com/irrellia/dotfiles/blob/0c1ca17af07d7fdf72577a44d2a1e8bbab855d93/.config/nvim/modules/statusline.vim). Just take what you need from that file, it's not that hard to understand ;)

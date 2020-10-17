@@ -5,6 +5,10 @@ desc: A japanese kana quiz app built using Routify and TailwindCSS
 demo: https://kanaizu.vercel.app
 source: https://github.com/elianiva/kanaizu
 layout: project
+stack:
+  - ['Routify', 'https://routify.dev']
+  - ['TailwindCSS', 'https://tailwindcss.com']
+  - ['Vercel', 'https://vercel.app']
 ---
 
-# Hello World!
+**Kanaizu** is an app that I made when I was starting to learn Svelte. I made this app because I want to try

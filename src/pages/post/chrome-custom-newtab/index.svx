@@ -41,9 +41,15 @@ Honestly, nothing much to tell here. You can go as overkill as you want for a st
 import Image from "svelte-image"
 </script>
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1600237999/chrome%20page/image_degmyl.png" alt="startpage"/>
+<Image src="/post/chrome-custom-newtab/old.png" alt="startpage"/>
 
-It's super simple, I just set some vim-like shortcut (prefixed with colon) like `:o` to open a new website, `:s` to do google search, `:gh` to open github, etc. If you want mine, you can get it [here](http://github.com/elianiva/dotfiles/blob/master/codes/chrome-page).
+It's super simple, I just set some vim-like shortcut (prefixed with colon) like `:o` to open a new website, `:s` to do google search, `:gh` to open github, etc. If you want mine, you can get it [here](https://github.com/elianiva/dotfiles/blob/master/codes/chrome-page).
+
+(17-10-2020) UPDATE: I made a new once since the old one is too minimal. Here's the new one.
+
+<Image src="/post/chrome-custom-newtab/new.png" alt="new startpage"/>
+
+And you can get it [here](https://github.com/elianiva/dotfiles/blob/master/codes/startpage)
 
 ## Applying the homepage
 To apply the homepage that you've made, go ahead to `chrome://extensions` and activate **Developer Mode** at the top right corner. A new menu should appeared. Click on the button that says **Load Unpacked**. A file manager will appear, go ahead and navigate to your project directory and click **OK** or **Choose** or whatever your file manager gives you. New extension should appear with the name that you choose earlier on `manifest.json`. Activate it and that's it, your custom startpage should appear whenever you open a new tab.

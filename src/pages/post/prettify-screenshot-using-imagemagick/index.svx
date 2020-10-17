@@ -170,11 +170,11 @@ I added the last line to copy the result into my clipboard so I can easily paste
 import Image from "svelte-image"
 </script>
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1597111206/imagemagick/demo_v7n6wd.png" alt="rounded" />
+<Image src="/post/prettify-screenshot-using-imagemagick/rounded.png" alt="rounded" />
 
 It's not obvious because my website background is white. But you can still see the shadow. Here's another variation.
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1597111205/imagemagick/demo2_escdkn.png" alt="square" />
+<Image src="/post/prettify-screenshot-using-imagemagick/square.png" alt="square" />
 
 This one is more obvious because there's a small white border there.
 

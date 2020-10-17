@@ -49,7 +49,7 @@ I also added the table of contents to make it easier for the user when navigatin
 import Image from "svelte-image"
 </script>
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1581670699/making-of-my-site/2020-02-14_15-57_at5xk8.png" alt="table of content" />
+<Image src="/post/making-of-my-site-2/toc.png" alt="table of content" />
 
 After making the TOC, I added the `<pre>` tag which I really like from a blog using a plugin called `gatsby-remark-prismjs`. As the name says, it utilize [Prism JS](https://prismjs.com) to highlight my code. When I designing the page, I didn't think that I could make this feature. But it is so simple, like stupid simple. You just add the plugin and the theme, that's it. I made the theme on [this site](http://k88hudson.github.io/syntax-highlighting-theme-generator/www/). It was _very_ helpful. Here's an example of prismjs in action.
 
@@ -74,9 +74,14 @@ My blogs have tags and category for each of them. So, making a page that index a
 As for the pagination, it was a bit tricky. I found a good tutorial that helped me made the pagination. [Here it is.](https://nickymeuleman.netlify.com/blog/gatsby-pagination/)
 
 ## Making the desktop site
-The mobile version is finished. (Yay!) I can finally make the desktop version. First thing first, I changed to navbar to make it more suitable for the desktop. I removed the hamburger and changed it to text menu that has a hover effect. ![Navbar](https://res.cloudinary.com/irrellia/image/upload/v1581671239/making-of-my-site/2020-02-14_16-07_xcgeky.png)
+The mobile version is finished. (Yay!) I can finally make the desktop version. First thing first, I changed to navbar to make it more suitable for the desktop. I removed the hamburger and changed it to text menu that has a hover effect.
 
-After doing that, I made the card component to be side by side. Here's what I mean. ![Card](https://res.cloudinary.com/irrellia/image/upload/v1581671318/making-of-my-site/2020-02-14_16-08_neyksa.png)
+
+<Image src="/post/making-of-my-site-2/navbar.png" alt="navbar" />
+
+After doing that, I made the card component to be side by side. Here's what I mean.
+
+<Image src="/post/making-of-my-site-2/card.png" alt="card" />
 
 ## Themes
 Now this is what I liked the most. Creating another theme brings you to another perspective of your website. Of course I make the light theme that is switchable automatically by default according to the time of the day and manually. Since I didn't use CSS variables from the start, I have to replace all of the colours in css manually to variables to be able to make the switch for the theme. (Duh, silly me.)

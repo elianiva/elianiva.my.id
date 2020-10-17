@@ -102,19 +102,19 @@ We've set up the config file, time to see it in action. Push the config file to 
 import Image from "svelte-image"
 </script>
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1596266204/github-actions/1_wkiyzx.png" alt="action tab" />
+<Image src="/post/github-actions/1.png" alt="action tab" />
 
 If we click one of the action from the list, it will go to its own page which will look like this.
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1596266204/github-actions/3_oebudj.png" alt="action page" />
+<Image src="/post/github-actions/3.png" alt="action page" />
 
 Our action name will show up here. Try to click on that.
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1596266203/github-actions/4_r255ko.png" alt="action name" />
+<Image src="/post/github-actions/4.png" alt="action name" />
 
 It will show this. The log of our action's jobs.
 
-<Image src="https://res.cloudinary.com/irrellia/image/upload/v1596266499/github-actions/5_nmjzki.png" alt="action jobs" />
+<Image src="/post/github-actions/5.png" alt="action jobs" />
 
 # Conclusion
 The reason why I moved from Travis CI is not because Travis CI is bad or anything. It's just I want to try a new thing, plus it's available on the same site that my repo is hosted. I can just visit one site to check on my repo or my build status.
