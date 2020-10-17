@@ -1,198 +1,153 @@
 <style>
-.post {
+.project {
   max-width: 1080px;
-  padding: 1rem;
-  margin: 0 auto;
-  color: #3a181a;
+  display: flex;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  gap: 1rem;
 }
 
-.post__title {
-  font-family: "PT Sans", sans-serif;
-  font-size: 2rem;
-  text-align: center;
+.project__left {
+  width: 70%;
 }
 
-.post__date {
-  font-family: "Roboto Condensed", sans-serif;
-  text-align: center;
-  display: block;
-  font-size: 1.125rem;
-  line-height: 2rem;
-  color: #696969;
+.project__wrapper {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 0.125rem #efefef solid;
+  height: 26rem;
+  margin-bottom: 2rem;
 }
 
-.post__divider {
-  max-width: 10rem;
-  height: 0.125rem;
-  border: 0.25rem;
-  margin: 1rem auto 2rem;
-  background-color: #ff4851;
-}
-
-.post__content {
-  max-width: 80ch;
-  margin: 0 auto;
-  font-size: 1.125rem;
-  font-family: "PT Sans", sans-serif;
-}
-
-:global(.post__content p) {
-  line-height: 2rem;
-  font-size: 1.25rem;
-}
-
-:global(.post__content p) {
-  margin: 0.5rem 0;
-}
-
-:global(.post__content h1) {
-  font-size: 2rem;
-  line-height: 3.5rem;
-  border-bottom: 0.125rem #ff4851 solid;
-  margin: 0.25rem 0;
-}
-
-:global(.post__content h2) {
-  line-height: 3rem;
-  font-size: 1.625rem;
-  margin: 0.25rem 0;
-}
-
-:global(.post__content h3) {
-  font-size: 1.5rem;
-  line-height: 2.25rem;
-  border-left: 0.25rem #ff4851 solid;
-  padding-left: 0.5rem;
-  margin: 0.25rem 0;
-}
-
-:global(.post__content h2::before) {
-  content: "# ";
-  color: #ff4851;
-}
-
-:global(.post__content img) {
+:global(.project__img) {
   width: 100%;
 }
 
-:global(.post__content pre) {
-  border-radius: 0.5rem;
-  margin: 0.5rem 0;
-  scrollbar-color: #b0b0b0 #efefef;
+.project__title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 2rem;
 }
 
-:global(.post__content pre::-webkit-scrollbar-thumb) {
-  background-color: #b0b0b0;
-}
-
-:global(.post__content pre::-webkit-scrollbar) {
+.project__divider {
+  border: none;
+  height: 0.125rem;
+  margin: 0.5rem 0 1rem;
   background-color: #efefef;
-  height: 0.5rem;
 }
 
-:global(.post__content a) {
-  position: relative;
-  display: inline-block;
-  color: #ff4851;
+.project__content {
+  font-family: "PT Sans", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+.project__stack {
+  width: 30%;
+  height: 100%;
+  padding: 1rem;
+  border: 0.125rem #efefef solid;
+  border-radius: 0.5rem;
+}
+
+.stack__title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.stack__divider {
+  height: 0.125rem;
+  border: none;
+  background-color: #efefef;
+  margin: 0.5rem 0;
+}
+
+.stack__item {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px #efefef solid;
+}
+
+.stack__item:last-child {
+  border: none;
+}
+
+.stack__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #fafafa;
+}
+
+.stack__logo img {
+  width: 100%;
+}
+
+.stack__name {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.25rem;
   text-decoration: none;
-  margin: 0 0.125rem;
-  transition: all ease-out 0.2s;
-}
-
-:global(.post__content a:hover) {
   color: #3a181a;
 }
 
-:global(.post__content a::before) {
-  position: absolute;
-  content: "";
-  bottom: 0;
-  left: -0.25rem;
-  right: -0.25rem;
-  top: 0;
-  transform: scaleY(0.1);
-  background-color: rgba(255, 72, 81, 0.5);
-  z-index: -1;
-  transition: all ease-out 0.2s;
-  transform-origin: bottom;
+.stack__name:hover {
+  color: #ff4851
 }
 
-:global(.post__content a:hover::before) {
-  transform: scaleY(1);
-}
-
-:global(.post__content code) {
-  background-color: #e4e4e4;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
-}
-
-:global(.post__content pre code) {
-  background-color: #1d2021;
-  padding: 0;
-  border-radius: 0;
+.stack__name::after {
+  content: "↗";
   font-size: 1rem;
+  vertical-align: top;
 }
 
-:global(.post__content ul) {
-  margin: 1rem 0;
-  list-style-position: inside;
-}
-
-:global(.post__content ul > li) {
-  font-size: 1.25rem;
-  line-height: 2rem;
-}
-
-:global(.post__content ul li > ul *) {
-  font-size: 1.125rem;
-}
-
-@media only screen and (max-width: 480px) {
-  :global(.post__content pre) {
-    margin-left: -1rem !important;
-    margin-right: -1rem !important;
-    border-radius: 0;
-    /* margin: 0 -2rem; */
-  }
-}
 </style>
-
-<svelte:head>
-  <link
-    rel="preload"
-    href="/prism.css"
-    as="style"
-    onload="this.rel='stylesheet'"
-  />
-</svelte:head>
 
 <SEO
   title={title}
-  thumbnail={`${data.siteUrl}/post/${currentPost.slug}/cover.png`}
+  thumbnail={`${data.siteUrl}/project/${currentProject.slug}/cover.png`}
 />
 
-<section class="post">
-  <h1 class="post__title">{title}</h1>
-  <span class="post__date">
-    Posted on
-    {dayjs(date).format('dddd')},
-    {dayjs(date).format('DD MMMM YYYY')}
-  </span>
-  <hr class="post__divider" />
-  <div class="post__content">
-    <slot />
+<section class="project">
+  <main class="project__left">
+    <div class="project__wrapper">
+      <Image
+        src={`/project/${currentProject.slug}/cover.png`}
+        ratio="55%"
+        alt={title}
+        class="project__img"
+      />
+    </div>
+    <div class="project__content">
+      <h1 class="project__title">{title}</h1>
+      <hr class="project__divider" />
+      <slot />
+    </div>
+  </main>
+  <div class="project__stack">
+    <span class="stack__title">Tech Stack</span>
+    <hr class="stack__divider" />
+    {#each currentProject.stack as stack}
+      <div class="stack__item">
+        <div class="stack__logo">
+          <img src="/logo/{stack[0].toLowerCase()}.png" alt={stack} />
+        </div>
+        <a href={stack[1]} class="stack__name">{stack[0]}</a>
+      </div>
+    {/each}
   </div>
 </section>
 
 <script>
 import SEO from "../components/SEO.svelte"
-import Navbar from "../components/Navbar.svelte"
-import Footer from "../components/Footer.svelte"
-import dayjs from "dayjs"
+import Image from "svelte-image"
 import data from "../site-data"
-export let title, date
+export let title
 
-const posts = __POSTS__
-const currentPost = posts.filter(post => post.title === title)[0]
+const projects = __PROJECTS__
+const currentProject = projects.filter(project => project.title === title)[0]
 </script>
