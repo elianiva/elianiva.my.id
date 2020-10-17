@@ -185,10 +185,13 @@
 <script>
 import { fly } from "svelte/transition"
 export let segment
+
 let checkbox
+
 const toggleNav = () => {
   checkbox.checked = !checkbox.checked
   isVisible = !isVisible
 }
+
 let isVisible = false
 </script>

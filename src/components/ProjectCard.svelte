@@ -9,7 +9,7 @@
 .card__details {
   padding: 1rem;
   display: grid;
-  grid-template-rows: 2rem 3.5rem 1fr;
+  grid-template-rows: 2rem 4.5rem 1fr;
   border-top: 0.125rem #e4e4e4 solid;
 }
 .card__title {
@@ -92,6 +92,5 @@
 import Code from "../icons/code.svg"
 import Chrome from "../icons/chrome.svg"
 import Image from "svelte-image"
-import dayjs from "dayjs"
 export let title, src, desc, href, demo, source
 </script>
