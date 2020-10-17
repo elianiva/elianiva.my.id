@@ -38,7 +38,7 @@
 .project__content {
   font-family: "PT Sans", sans-serif;
   font-size: 1.125rem;
-  line-height: 1.5rem;
+  line-height: 1.75rem;
 }
 
 .project__stack {
@@ -93,10 +93,11 @@
   font-size: 1.25rem;
   text-decoration: none;
   color: #3a181a;
+  transition: color ease-out 0.2s;
 }
 
 .stack__name:hover {
-  color: #ff4851
+  color: #ff4851;
 }
 
 .stack__name::after {
@@ -104,7 +105,6 @@
   font-size: 1rem;
   vertical-align: top;
 }
-
 </style>
 
 <SEO

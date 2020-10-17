@@ -8,7 +8,7 @@
 
 .post__title {
   font-family: "PT Sans", sans-serif;
-  font-size: 2rem;
+  font-size: 2.25rem;
   text-align: center;
 }
 
@@ -37,11 +37,8 @@
 }
 
 :global(.post__content p) {
-  line-height: 2rem;
-  font-size: 1.25rem;
-}
-
-:global(.post__content p) {
+  line-height: 1.75rem;
+  font-size: 1.125rem;
   margin: 0.5rem 0;
 }
 
@@ -49,11 +46,11 @@
   font-size: 2rem;
   line-height: 3.5rem;
   border-bottom: 0.125rem #ff4851 solid;
-  margin: 0.25rem 0;
+  margin: 0.25rem 0 0.75rem;
 }
 
 :global(.post__content h2) {
-  line-height: 3rem;
+  line-height: 1.75rem;
   font-size: 1.625rem;
   margin: 0.25rem 0;
 }
