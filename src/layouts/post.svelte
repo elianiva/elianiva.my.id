@@ -7,7 +7,7 @@
 }
 
 .post__title {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 2.25rem;
   text-align: center;
 }
@@ -33,7 +33,7 @@
   max-width: 80ch;
   margin: 0 auto;
   font-size: 1.125rem;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 :global(.post__content p) {
@@ -150,7 +150,6 @@
     margin-left: -1rem !important;
     margin-right: -1rem !important;
     border-radius: 0;
-    /* margin: 0 -2rem; */
   }
 }
 </style>

@@ -10,7 +10,7 @@
 }
 .hero__name {
   position: relative;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   display: block;
   font-size: clamp(1.25rem, calc(5vw + 1rem), 3rem);
   font-weight: 600;

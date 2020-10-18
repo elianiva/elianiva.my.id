@@ -6,7 +6,7 @@
   text-align: center;
 }
 .posts__title {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   position: relative;
   display: inline-block;
   font-size: 2rem;

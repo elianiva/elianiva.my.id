@@ -7,7 +7,7 @@
 .sauce__title {
   position: relative;
   display: inline-block;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   margin-bottom: 4rem;
 }
@@ -71,7 +71,7 @@ const data = [
     img: "opensauce/tinyhttp.png",
     website: "https://tinyhttp.v1rtl.site/",
     desc:
-      "Tinyhttp is a modern, lightweight and modular Express-like web framework for NodeJS. I've also contributed several times to this project.",
+      "Tinyhttp is a modern, lightweight and modular Express-like web framework for NodeJS. I've contributed several times to this project.",
   },
   {
     name: "MDsveX",
@@ -91,7 +91,7 @@ const data = [
     img: "opensauce/yrv.png",
     website: "https://github.com/pateketrueke/yrv",
     desc:
-      "Routing library for Svelte. It looks quite similar to react-router. If you're coming from React to Svelte like I do, try this one out!",
+      "yrv is one of routing library for Svelte. It looks quite similar to react-router. If you're coming from React to Svelte like I do, try this one out!",
   },
 ]
 </script>
