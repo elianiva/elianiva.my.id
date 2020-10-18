@@ -1,7 +1,6 @@
 <style>
 .section {
   position: relative;
-  padding: 0 1rem;
   margin-top: 4rem;
   font-family: "Roboto", sans-serif;
   color: #121212;

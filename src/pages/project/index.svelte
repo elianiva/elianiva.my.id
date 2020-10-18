@@ -27,7 +27,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1.25rem;
-  padding: 0 1rem;
 }
 </style>
 
