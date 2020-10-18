@@ -15,7 +15,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
   border: 0.125rem #efefef solid;
-  height: 26rem;
+  height: 24.5rem;
   margin-bottom: 2rem;
 }
 
@@ -23,11 +23,47 @@
   width: 100%;
 }
 
+.project__header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .project__title {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 2rem;
 }
 
+.project__demo,
+.project__source {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: filter ease-out 0.2s;
+}
+
+.project__demo:hover,
+.project__source:hover {
+  filter: brightness(0.95);
+}
+.project__demo {
+  background-color: #ff4851;
+  color: #ffffff;
+  box-shadow: 0 0.25rem 0.5rem rgba(255, 72, 81, 0.4);
+}
+.project__source {
+  background-color: #efefef;
+  color: #696969;
+}
+:global(.project__icon) {
+  width: 1.125rem;
+  height: 1.125rem;
+}
 .project__divider {
   border: none;
   height: 0.125rem;
@@ -36,7 +72,7 @@
 }
 
 .project__content {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
@@ -105,25 +141,117 @@
   font-size: 1rem;
   vertical-align: top;
 }
+
+:global(.project__content p) {
+  margin-bottom: 1rem;
+}
+
+:global(.project__content p a) {
+  position: relative;
+  display: inline-block;
+  color: #ff4851;
+  text-decoration: none;
+  margin: 0 0.125rem;
+  transition: all ease-out 0.2s;
+}
+
+:global(.project__content p a:hover) {
+  color: #3a181a;
+}
+
+:global(.project__content p a::before) {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: -0.25rem;
+  right: -0.25rem;
+  top: 0;
+  transform: scaleY(0.1);
+  background-color: rgba(255, 72, 81, 0.5);
+  z-index: -1;
+  transition: all ease-out 0.2s;
+  transform-origin: bottom;
+}
+
+:global(.project__content a:hover::before) {
+  transform: scaleY(1);
+}
+
+:global(.project__content code) {
+  background-color: #f4f4f4;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+:global(.project__content pre) {
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  scrollbar-color: #b0b0b0 #efefef;
+}
+
+:global(.project__content pre::-webkit-scrollbar-thumb) {
+  background-color: #b0b0b0;
+}
+
+:global(.project__content pre::-webkit-scrollbar) {
+  background-color: #efefef;
+  height: 0.5rem;
+}
+
+:global(.project__content pre code) {
+  background-color: #1d2021;
+  padding: 0;
+  border-radius: 0;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 480px) {
+  :global(.project__content pre) {
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
+    border-radius: 0;
+  }
+}
 </style>
 
-<SEO
-  title={title}
-  thumbnail={`${data.siteUrl}/project/${currentProject.slug}/cover.png`}
-/>
+<svelte:head>
+  <link
+    rel="preload"
+    href="/prism.css"
+    as="style"
+    onload="this.rel='stylesheet'"
+  />
+</svelte:head>
+
+<SEO title={title} thumbnail={`${data.siteUrl}/project/${slug}/cover.png`} />
 
 <section class="project">
   <main class="project__left">
     <div class="project__wrapper">
       <Image
-        src={`/project/${currentProject.slug}/cover.png`}
+        src={`/project/${slug}/cover.png`}
         ratio="55%"
         alt={title}
         class="project__img"
+        lazy={false}
       />
     </div>
     <div class="project__content">
-      <h1 class="project__title">{title}</h1>
+      <div class="project__header">
+        <h1 class="project__title">{title}</h1>
+        <a
+          class="project__demo"
+          href={demo ? demo : '#'}
+          target="_blank"
+          rel="norel noreferrer"
+        ><Chrome class="project__icon" />Demo</a>
+        <a
+          class="project__source"
+          href={source}
+          target="_blank"
+          rel="norel noreferrer"
+        ><Code class="card__icon" />Source</a>
+      </div>
       <hr class="project__divider" />
       <slot />
     </div>
@@ -131,12 +259,17 @@
   <div class="project__stack">
     <span class="stack__title">Tech Stack</span>
     <hr class="stack__divider" />
-    {#each currentProject.stack as stack}
+    {#each stack as item}
       <div class="stack__item">
         <div class="stack__logo">
-          <img src="/logo/{stack[0].toLowerCase()}.png" alt={stack} />
+          <img src="/logo/{item[0].toLowerCase()}.png" alt={item} />
         </div>
-        <a href={stack[1]} class="stack__name">{stack[0]}</a>
+        <a
+          href={item[1]}
+          class="stack__name"
+          target="_blank"
+          rel="norel noreferrer"
+        >{item[0]}</a>
       </div>
     {/each}
   </div>
@@ -144,10 +277,14 @@
 
 <script>
 import SEO from "../components/SEO.svelte"
+import Chrome from "../icons/chrome.svg"
+import Code from "../icons/code.svg"
 import Image from "svelte-image"
 import data from "../site-data"
 export let title
 
 const projects = __PROJECTS__
 const currentProject = projects.filter(project => project.title === title)[0]
+
+const { slug, stack, demo, source } = currentProject
 </script>
