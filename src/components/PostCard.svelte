@@ -6,6 +6,12 @@
   text-align: left;
   background-color: #ffffff;
 }
+.card__img {
+  position: relative;
+  display: block;
+  width: 100%;
+  z-index: 2;
+}
 .card__details {
   color: #121212;
   text-decoration: none;
@@ -27,7 +33,7 @@
 .card__desc {
   line-height: 1.5rem;
   color: #696969;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .card__date {
   font-family: "Roboto Condensed", sans-serif;
@@ -45,7 +51,7 @@
 .card__tag {
   background-color: #ff4851;
   color: #ffffff;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-decoration: none;
   gap: 0.5rem;
   padding: 0.25rem 0.5rem;
@@ -59,7 +65,7 @@
 }
 
 .card__tag::before {
-  content: "#";
+  content: "# ";
   font-weight: 600;
 }
 
@@ -70,7 +76,7 @@
 </style>
 
 <div class="card">
-  <Image src={src} ratio="50%" offset="320" />
+  <Waypoint throttle="500" offset="320"><img class="card__img" src={src} alt={title} /></Waypoint>
   <a href={href} class="card__details">
     <span class="card__date">
       <Calendar class="card__icon" />
@@ -93,7 +99,7 @@
 
 <script>
 import Calendar from "../icons/calendar.svg"
-import Image from "svelte-image"
+import Waypoint from "svelte-waypoint"
 import dayjs from "dayjs"
 export let title, src, desc, href, date, tags
 </script>

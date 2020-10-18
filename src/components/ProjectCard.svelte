@@ -6,6 +6,12 @@
   text-align: left;
   background-color: #ffffff;
 }
+.card__img {
+  position: relative;
+  display: block;
+  width: 100%;
+  z-index: 2;
+}
 .card__details {
   padding: 1rem;
   display: grid;
@@ -25,7 +31,7 @@
   color: #ff4851;
 }
 .card__desc {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 1.5rem;
   color: #696969;
 }
@@ -36,7 +42,7 @@
 }
 .card__demo,
 .card__source {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -65,7 +71,7 @@
 </style>
 
 <div class="card">
-  <Image src={src} ratio="50%" offset="320" />
+  <Waypoint throttle="500" offset="320"><img class="card__img" src={src} alt={title} /></Waypoint>
   <div class="card__details">
     <a href={href} class="card__title">{title}</a>
     <p class="card__desc">{desc}</p>
@@ -91,6 +97,6 @@
 <script>
 import Code from "../icons/code.svg"
 import Chrome from "../icons/chrome.svg"
-import Image from "svelte-image"
+import Waypoint from "svelte-waypoint"
 export let title, src, desc, href, demo, source
 </script>

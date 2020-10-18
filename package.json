@@ -3,7 +3,7 @@
   "description": "Elianiva's personal site ツ",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev --routes src/pages --ext '.svelte .svx' ",
+    "dev": "sapper dev --routes src/pages --ext '.svelte .svx' --port 5000",
     "build": "sapper build --routes src/pages --ext '.svelte .svx' --legacy",
     "export": "sapper export --routes src/pages --ext '.svelte .svx' --legacy",
     "start": "node __sapper__/build",
@@ -38,6 +38,7 @@
     "sapper": "^0.28.0",
     "svelte": "^3.17.3",
     "svelte-image": "^0.2.7",
-    "svelte-preprocess": "^4.5.1"
+    "svelte-preprocess": "^4.5.1",
+    "svelte-waypoint": "^0.1.4"
   }
 }

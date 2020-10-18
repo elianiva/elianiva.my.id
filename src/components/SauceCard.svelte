@@ -2,8 +2,8 @@
 .card {
   position: relative;
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  grid-column-gap: 1rem;
+  grid-template-columns: 2fr 2.5fr;
+  gap: 2rem;
   grid-auto-flow: dense;
   text-align: left;
   margin: 0 0 4rem;
@@ -13,6 +13,10 @@
   border-radius: 0.25rem;
   overflow: hidden;
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+.card__img img {
+  display: block;
+  width: 100%;
 }
 :global(.card:nth-child(even) .card__pattern) {
   position: absolute;
@@ -71,8 +75,8 @@
   text-decoration: none;
 }
 .card__desc {
-  font-family: "PT Sans", sans-serif;
-  font-size: 1.25rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.125rem;
   line-height: 1.75rem;
   color: #696969;
   text-decoration: none;
@@ -97,7 +101,7 @@
   filter: brightness(0.95);
 }
 .card:nth-child(even) {
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 2.5fr 2fr;
 }
 .card:nth-child(even) .card__img {
   grid-column: 2/3;
@@ -134,7 +138,9 @@
 <div class="card">
   <Pattern class="card__pattern" />
   <div class="card__img">
-    <Image src={img} ratio="50%" offset="320" />
+    <Waypoint throttle="500" offset="320">
+      <img src={img} alt={name} />
+    </Waypoint>
   </div>
   <div class="card__content">
     <a
@@ -168,6 +174,6 @@ import Pattern from "../icons/pattern.svg"
 import User from "../icons/user.svg"
 import Star from "../icons/star.svg"
 import Github from "../icons/github.svg"
-import Image from "svelte-image"
+import Waypoint from "svelte-waypoint"
 export let name, author, url, repo, img, website, desc
 </script>
