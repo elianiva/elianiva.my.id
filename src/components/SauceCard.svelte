@@ -12,7 +12,7 @@
   grid-column: 1/2;
   border-radius: 0.25rem;
   overflow: hidden;
-  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.075);
 }
 .card__img img {
   display: block;
@@ -115,13 +115,14 @@
 @media only screen and (max-width: 960px) {
   .card {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 0 0 2rem;
   }
   .card__img {
     grid-column: 1/2;
   }
   .card__content {
     grid-column: 1/2;
-    margin-top: 1rem;
   }
   .card:nth-child(even) {
     grid-template-columns: 1fr;
@@ -131,6 +132,10 @@
   }
   .card:nth-child(even) .card__content {
     grid-column: 1/2;
+  }
+  :global(.card:nth-child(even) .card__pattern),
+  :global(.card:nth-child(odd) .card__pattern) {
+    display: none;
   }
 }
 </style>

@@ -39,10 +39,11 @@
 :global(.post__content p) {
   line-height: 1.75rem;
   font-size: 1.125rem;
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
 }
 
 :global(.post__content h1) {
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 2rem;
   line-height: 3.5rem;
   border-bottom: 0.125rem #ff4851 solid;
@@ -50,12 +51,14 @@
 }
 
 :global(.post__content h2) {
+  font-family: 'Roboto Condensed', sans-serif;
   line-height: 1.75rem;
   font-size: 1.625rem;
   margin: 0.25rem 0;
 }
 
 :global(.post__content h3) {
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.5rem;
   line-height: 2.25rem;
   border-left: 0.25rem #ff4851 solid;

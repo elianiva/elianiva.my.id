@@ -1,6 +1,5 @@
 <style>
 .sauce {
-  padding: 0 1rem;
   margin: 4rem 0 0;
   text-align: center;
 }
