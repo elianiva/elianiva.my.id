@@ -5,6 +5,12 @@ desc: A simple app to get current covid data. Made using React.
 demo: https://covid-info.now.sh
 source: https://github.com/elianiva/covid-info
 layout: project
+stack:
+  - ['ReactJS', 'https://reactjs.org']
+  - ['ChartJS', 'https://chartjs.org']
+  - ['Vercel', 'https://vercel.app']
 ---
 
-# Hello World
+**Covid Info** is the first React app I made that uses a third party API as its data source. This app is also kinda buggy because when I made it, I don't really care about any other feature except the homepage that shows current covid data.
+
+I'm planning on remaking this if I got time for it using Svelte.
