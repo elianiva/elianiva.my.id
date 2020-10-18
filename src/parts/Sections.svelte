@@ -78,6 +78,7 @@
           href={`/post/${item.slug}`}
           desc={item.desc}
           date={item.date}
+          tags={item.tags}
         />
       {/each}
     {:else}

@@ -43,6 +43,7 @@
         href={`/post/${post.slug}`}
         desc={post.desc}
         date={post.date}
+        tags={post.tags}
       />
     {/each}
   </div>

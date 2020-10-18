@@ -11,7 +11,7 @@
   text-decoration: none;
   padding: 1rem;
   display: grid;
-  grid-template-rows: 2rem 3.5rem 1fr;
+  grid-template-rows: 2rem 3.5rem 5rem 1fr;
   border-top: 0.125rem #e4e4e4 solid;
   transition: all ease-out 0.2s;
 }
@@ -36,6 +36,33 @@
   gap: 0.25rem;
   color: #696969;
 }
+
+.card__tags {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.card__tag {
+  background-color: #ff4851;
+  color: #ffffff;
+  font-family: "PT Sans", sans-serif;
+  text-decoration: none;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: filter ease-out 0.2s;
+  text-transform: capitalize;
+}
+
+.card__tag:hover {
+  filter: brightness(0.95);
+}
+
+.card__tag::before {
+  content: "#";
+  font-weight: 600;
+}
+
 :global(.card__icon) {
   width: 1.125rem;
   height: 1.125rem;
@@ -43,7 +70,7 @@
 </style>
 
 <div class="card">
-  <Image src={src} ratio="50%" />
+  <Image src={src} ratio="50%" offset="320" />
   <a href={href} class="card__details">
     <span class="card__date">
       <Calendar class="card__icon" />
@@ -51,6 +78,16 @@
     </span>
     <span class="card__title">{title}</span>
     <p class="card__desc">{desc}</p>
+    <div class="card__tags">
+      {#each tags as tag}
+        <a
+          class="card__tag"
+          target="_blank"
+          rel="norel noreferrer"
+          href="#"
+        >{tag}</a>
+      {/each}
+    </div>
   </a>
 </div>
 
@@ -58,5 +95,5 @@
 import Calendar from "../icons/calendar.svg"
 import Image from "svelte-image"
 import dayjs from "dayjs"
-export let title, src, desc, href, date
+export let title, src, desc, href, date, tags
 </script>
