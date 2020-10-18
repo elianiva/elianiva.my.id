@@ -45,7 +45,7 @@ const svelteOptions = {
     svelteImage({
       placeholder: "blur",
       outputDir: "g/",
-      sizes: [800, 1200],
+      sizes: [800],
     }),
   ],
 }
