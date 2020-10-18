@@ -3,8 +3,6 @@ title: Making Of My Website (Part 3)
 date: 2020-02-14
 desc: Last post where I talk about my experience about how I made my website using Gatsby
 tags:
-  - figma
-  - gatsby
   - react
   - website
 ---

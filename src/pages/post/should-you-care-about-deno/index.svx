@@ -1,9 +1,8 @@
 ---
 title: Should You Care About Deno?
 date: 2020-05-17
-desc: Have you ever heard of NodeJS? Who am I kidding, I bet you have. Now how about Deno?
+desc: Have you ever heard of NodeJS? Who am I kidding, I bet you have. Now, how about Deno?
 tags:
-  - website
   - javascript
   - typescript
 ---

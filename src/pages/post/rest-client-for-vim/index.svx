@@ -4,7 +4,6 @@ date: 2020-07-16
 desc: A post where I try to find a TUI alternative to Postman. In other word, REST client but in TUI
 tags:
   - neovim
-  - vim
 ---
 
 # Introduction
