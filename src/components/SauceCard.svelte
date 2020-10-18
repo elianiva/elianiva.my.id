@@ -134,7 +134,7 @@
 <div class="card">
   <Pattern class="card__pattern" />
   <div class="card__img">
-    <Image ratio="50%" src={img} />
+    <Image src={img} ratio="50%" offset="320" />
   </div>
   <div class="card__content">
     <a

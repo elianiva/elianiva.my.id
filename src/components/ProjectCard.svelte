@@ -65,7 +65,7 @@
 </style>
 
 <div class="card">
-  <Image src={src} ratio="50%" />
+  <Image src={src} ratio="50%" offset="320" />
   <div class="card__details">
     <a href={href} class="card__title">{title}</a>
     <p class="card__desc">{desc}</p>
