@@ -12,9 +12,7 @@ If you don't know already, Deno v1.0 has been released lately. It brings quite a
 
 # Deno
 ## What is Deno?
-I'm pretty sure if you're asking whether you should care or not about Deno, you probably know what Deno is. If you don't know already, Deno is a Javascript / Typescript runtime made by the same guy who made Node JS, Ryan Dahl. It was announced on JSConf 2018 during his talk "10 Things I regret about Node JS".
-
-These are some of them.
+I'm pretty sure if you're asking whether you should care or not about Deno, you probably know what Deno is. If you don't know already, Deno is a Javascript / Typescript runtime made by the same guy who made Node JS, Ryan Dahl. It was announced on JSConf 2018 during his talk "10 Things I regret about Node JS". These are some of them.
 
 - Not sticking with promises
 - Security
@@ -29,17 +27,17 @@ These are some of them.
 To get started with Deno, it would be better for you to just refer to their website over [here](https://deno.land/).
 
 ## Is it the same as Node?
-Even though it has a similar name (basically it's just an acronym of Node), it has some differences with Node. They both built using [V8 Javascript Engine](https://v8.dev) developed by The Chromium Project. V8 is Google's open-source high-performance JavaScript and WebAssembly engine, written in C++. More of that on their website.
+Even though it has a similar name (basically it's just an acronym of Node), it has some differences with Node. They both built using [V8 Javascript Engine](https://v8.dev) developed by The Chromium Project. V8 is Google's open-source high-performance JavaScript and WebAssembly engine, written in C++. More of that on [their website](https://v8.dev/).
 
 Here's a table to better visualize differences between them.
 
-| Node                               | Deno                            |
-| ---                                | ---                             |
-| Using [Libuv](https://libuv.org)   | Using [Tokio](https://tokio.rs) |
-| Written in C++ (and some other)    | Written in Rust (and some other)|
-| Uses node_modules for each project | Using URL to get modules from   |
-| Not secure by default              | Secure by default               |
-| Doesn't support TS out of the box  | Supports TS out of the box      |
+| Node                               | Deno                             |
+| ---                                | ---                              |
+| Using [Libuv](https://libuv.org)   | Using [Tokio](https://tokio.rs)  |
+| Written in C++ (and some other)    | Written in Rust (and some other) |
+| Uses node_modules for each project | Using CDN as its source of module|
+| Not secure by default              | Secure by default                |
+| Doesn't support TS out of the box  | Supports TS out of the box       |
 
 Those are some differences between them. Now let's talk about some of them.
 

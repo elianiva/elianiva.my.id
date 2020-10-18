@@ -140,12 +140,40 @@
 }
 
 :global(.post__content ul > li) {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 2rem;
 }
 
 :global(.post__content ul li > ul *) {
   font-size: 1.125rem;
+}
+
+:global(.post__content table) {
+  width: 100%;
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+:global(.post__content table a) {
+  transition: all ease-out 0.2s;
+  font-weight: 600;
+  line-height: 1.25rem;
+  font-style: italic;
+}
+
+:global(.post__content table tr:nth-child(odd)) {
+  background-color: #f4f4f4;
+}
+
+:global(.post__content table th) {
+  background-color: #ff4851;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+:global(.post__content table th),
+:global(.post__content table td) {
+  padding: 0.75rem 1rem;
 }
 
 @media only screen and (max-width: 480px) {

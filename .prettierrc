@@ -7,4 +7,5 @@
   "svelteAllowShorthand": false,
   "svelteBracketNewLine": true,
   "svelteIndentScriptAndStyle": false,
+  "printWidth": 80
 }
