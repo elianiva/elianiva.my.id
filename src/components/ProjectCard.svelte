@@ -73,7 +73,7 @@
 <div class="card">
   <Waypoint throttle="500" offset="320"><img class="card__img" src={src} alt={title} /></Waypoint>
   <div class="card__details">
-    <a href={href} class="card__title">{title}</a>
+    <a rel="prefetch" href={href} class="card__title">{title}</a>
     <p class="card__desc">{desc}</p>
     <div class="card__links">
       {#if demo}

@@ -77,7 +77,7 @@
 
 <div class="card">
   <Waypoint throttle="500" offset="320"><img class="card__img" src={src} alt={title} /></Waypoint>
-  <a href={href} class="card__details">
+  <a rel="prefetch" href={href} class="card__details">
     <span class="card__date">
       <Calendar class="card__icon" />
       {dayjs(date).format('DD MMMM YYYY')}
