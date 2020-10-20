@@ -7,7 +7,7 @@
 }
 
 .post__title {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 2.25rem;
   text-align: center;
 }
@@ -231,6 +231,9 @@
     margin-left: -1rem !important;
     margin-right: -1rem !important;
     border-radius: 0;
+  }
+  :global(.post__content ul *) {
+    font-size: 0.95rem !important;
   }
 }
 </style>
