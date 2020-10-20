@@ -25,7 +25,7 @@
   max-width: 10rem;
   height: 0.125rem;
   border: 0.25rem;
-  margin: 1rem auto 2rem;
+  margin: 1rem auto;
   background-color: #ff4851;
 }
 
@@ -37,37 +37,52 @@
 }
 
 :global(.post__content p) {
-  line-height: 1.75rem;
+  line-height: 2rem;
   font-size: 1.125rem;
-  margin: 0.75rem 0;
+  /* margin: 1rem 0; */
+}
+
+:global(.post__content > * + *) {
+  margin-top: 1rem;
 }
 
 :global(.post__content h1) {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 2rem;
   line-height: 3.5rem;
   border-bottom: 0.125rem #ff4851 solid;
-  margin: 0.25rem 0 0.75rem;
+  /* margin: 0.25rem 0 0.75rem; */
 }
 
 :global(.post__content h2) {
-  font-family: 'Roboto Condensed', sans-serif;
+  position: relative;
+  font-family: "Roboto Condensed", sans-serif;
   line-height: 1.75rem;
   font-size: 1.625rem;
-  margin: 0.25rem 0;
+  /* margin: 0.25rem 0; */
+  padding-left: 1.5rem;
 }
 
 :global(.post__content h3) {
-  font-family: 'Roboto Condensed', sans-serif;
+  position: relative;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 1.5rem;
   line-height: 2.25rem;
-  border-left: 0.25rem #ff4851 solid;
   padding-left: 0.5rem;
-  margin: 0.25rem 0;
+  padding-left: 1.5rem;
 }
 
-:global(.post__content h2::before) {
+:global(.post__content h3::after) {
+  content: "◉ ";
+  position: absolute;
+  left: 0;
+  color: #ff4851;
+}
+
+:global(.post__content h2::after) {
   content: "# ";
+  position: absolute;
+  left: 0;
   color: #ff4851;
 }
 
@@ -77,7 +92,6 @@
 
 :global(.post__content pre) {
   border-radius: 0.5rem;
-  margin: 0.5rem 0;
   scrollbar-color: #b0b0b0 #efefef;
 }
 
@@ -95,7 +109,6 @@
   display: inline-block;
   color: #ff4851;
   text-decoration: none;
-  margin: 0 0.125rem;
   transition: all ease-out 0.2s;
 }
 
@@ -106,10 +119,10 @@
 :global(.post__content a::before) {
   position: absolute;
   content: "";
-  bottom: 0;
+  bottom: 0.25rem;
   left: -0.25rem;
   right: -0.25rem;
-  top: 0;
+  top: 0.25rem;
   transform: scaleY(0.1);
   background-color: rgba(255, 72, 81, 0.5);
   z-index: -1;
@@ -135,13 +148,27 @@
 }
 
 :global(.post__content ul) {
-  margin: 1rem 0;
   list-style-position: inside;
 }
 
 :global(.post__content ul > li) {
   font-size: 1.125rem;
   line-height: 2rem;
+  padding-left: 1rem;
+}
+
+:global(.post__content ul > li p) {
+  display: inline-block;
+  margin: 0;
+}
+
+:global(.post__content ul > li a::before) {
+  opacity: 0;
+  transition: all ease-out 0.2s;
+}
+
+:global(.post__content ul > li a:hover::before) {
+  opacity: 1;
 }
 
 :global(.post__content ul li > ul *) {
@@ -176,6 +203,29 @@
   padding: 0.75rem 1rem;
 }
 
+:global(.post__content blockquote p) {
+  font-size: 1.5rem;
+  color: #b0b0b0;
+  font-style: italic;
+  font-family: serif;
+  margin: 1rem 0;
+}
+
+:global(.post__content blockquote p::before) {
+  content: "“	";
+}
+
+:global(.post__content blockquote p::after) {
+  content: " ”";
+}
+
+:global(:target:before) {
+  content: "";
+  display: block;
+  height: 4.5rem;
+  margin-top: -4.5rem;
+}
+
 @media only screen and (max-width: 480px) {
   :global(.post__content pre) {
     margin-left: -1rem !important;
@@ -207,12 +257,13 @@
     {dayjs(date).format('DD MMMM YYYY')}
   </span>
   <hr class="post__divider" />
-  <div class="post__content">
+  <main class="post__content">
     <slot />
-  </div>
+  </main>
 </section>
 
 <script>
+import { onMount } from "svelte"
 import SEO from "../components/SEO.svelte"
 import dayjs from "dayjs"
 import data from "../site-data"
@@ -220,4 +271,14 @@ export let title, date
 
 const posts = __POSTS__
 const currentPost = posts.filter(post => post.title === title)[0]
+
+onMount(() => {
+  document.querySelectorAll("a").forEach(a => {
+    if (!a.hash || !document.querySelectorAll(a.hash).length) return
+    a.addEventListener("click", event => {
+      event.preventDefault()
+      window.location.hash = event.target.getAttribute("href")
+    })
+  })
+})
 </script>
