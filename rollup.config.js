@@ -11,6 +11,8 @@ import svelteSVG from "rollup-plugin-svelte-svg"
 import svelteImage from "svelte-image"
 import posts from "./src/utils/fetch-all-posts"
 import projects from "./src/utils/fetch-all-projects"
+import remarkSlug from "remark-slug"
+import remarkToc from "remark-toc"
 
 const mode = process.env.NODE_ENV
 const dev = mode === "development"
@@ -41,6 +43,10 @@ const svelteOptions = {
         _: "./src/layouts/post.svelte",
         project: "./src/layouts/project.svelte",
       },
+      remarkPlugins: [
+        remarkSlug,
+        remarkToc,
+      ],
     }),
     svelteImage({
       placeholder: "blur",

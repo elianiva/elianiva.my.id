@@ -6,6 +6,8 @@ tags:
   - linux
 ---
 
+# Table of Content
+
 # Introduction
 Hi! This time I will explain about how I setup my spotifyd + spotify-tui to enjoy music from spotify without their resource heavy app. It's not Spotify's fault, it's Electron. Not that I hate it, I think it's awesome. It just feels heavy on my machine. I still have 4GB of RAMs lol, so that's reasonable.
 

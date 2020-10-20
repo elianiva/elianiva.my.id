@@ -6,6 +6,8 @@ tags:
   - linux
 ---
 
+# Table of Content
+
 # Introduction
 Let's make our screenshot prettier by using a software called [Imagemagick](https://imagemagick.org). In this post, we will add some fancy effects like backdrop, shadow, border, and rounded corner with a simple script.
 

@@ -8,6 +8,8 @@ tags:
   - website
 ---
 
+# Table of Content
+
 # Introduction
 Hi! So I made this blog about 2 months ago and I think now it doesn't have a decent UI/UX at least in my opinion. Now, because I have plenty of free time because of the current pandemic that's been going on for a couple of months. I decided to redesign it and I'll explain why.
 

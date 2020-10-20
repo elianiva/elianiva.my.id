@@ -7,6 +7,7 @@ tags:
   - window manager
 ---
 
+# Table of Content
 
 # Introduction
 Hi! In this post, I'll go through about my current setup using suckless programs. Some people like suckless software (including me) and some of them hate it, whether if it's because they don't like patching stuff, or they don't like suckless philosophy which they don't want to exceed a certain number of lines.

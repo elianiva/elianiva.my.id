@@ -3,8 +3,11 @@ title: My Experience Trying Out Svelte For The First Time
 date: 2020-09-27
 desc: Phew lads, I finally tried svelte after a while and boi oh boi do I love it
 tags:
-  - random
+  - svelte
+  - website
 ---
+
+# Table of Content
 
 # Introduction
 Phew lads, I finally tried using Svelte and boi oh boi was it an awesome experience. I've been holding my self to try svelte because the editor that I'm using which is **Neovim** doesn't support svelte really well back then. I decided to try it again this time and it works great now.
@@ -73,7 +76,7 @@ Again, go visit the website if you're interested ツ
 To be fair, I made those using [Routify](https://routify.dev/). Basically, **Routify handles the routing**. I didn't use [Sapper](https://sapper.dev) because it's too much for what I need. I just need a basic routing and Routify is perfect.
 
 ## What I've learned so far
-After making those 2 sites, I ofcourse learned something new and I'm so happy that I finally decided to try Svelte.
+After making those 2 sites, I of course learned some new stuff and I'm so happy that I finally decided to try Svelte.
 
 ### Components
 On React, a component is a function that returns a JSX. It looks something like this.
@@ -87,7 +90,7 @@ On Svelte, the whole file is a component. It uses `.svelte` extension and the sy
   /* some stylings */
 </style>
 
-<!-- some epic html stuff -->
+<div>I'm an HTML</div>
 
 <script>
   // some logic goes here

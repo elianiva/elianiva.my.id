@@ -7,6 +7,8 @@ tags:
   - website
 ---
 
+# Table of Content
+
 # Introduction
 Hello everyone, I hope you all doing great! Welcome to my second part of my process of creating this blog using Gatsby SSG. Last time, I tell you about the design process in Figma which you can read over [Here](https://irrellia.github.io/blog/making-of-my-site). In this part, I will talk about my 'coding' process.
 

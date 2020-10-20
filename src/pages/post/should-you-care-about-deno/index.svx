@@ -7,6 +7,8 @@ tags:
   - typescript
 ---
 
+# Table of Content
+
 # Introduction
 If you don't know already, Deno v1.0 has been released lately. It brings quite a hype for a lot of web developers especially one who has worked with Node. The question is, should you care about this release?
 
