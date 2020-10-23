@@ -79,6 +79,12 @@
   width: 1.125rem;
   height: 1.125rem;
 }
+
+@media only screen and (min-width: 480px) {
+  .card__details:hover {
+    color: #ff4851;
+  }
+}
 </style>
 
 <div class="card">

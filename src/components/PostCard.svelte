@@ -28,10 +28,6 @@
   line-height: 1.5rem;
 }
 
-.card__details:hover {
-  color: #ff4851;
-}
-
 .card__title {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.25rem;
@@ -82,6 +78,12 @@
 :global(.card__icon) {
   width: 1.125rem;
   height: 1.125rem;
+}
+
+@media only screen and (min-width: 480px) {
+  .card__details:hover {
+    color: #ff4851;
+  }
 }
 </style>
 
