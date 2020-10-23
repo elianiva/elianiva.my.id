@@ -1,4 +1,8 @@
 <style>
+:global(html) {
+  scroll-behavior: smooth
+}
+
 .post {
   max-width: 1080px;
   padding: 1rem;
@@ -77,7 +81,7 @@
 }
 
 :global(.post__content h3::after) {
-  content: "◉ ";
+  content: "• ";
   position: absolute;
   left: 0;
   color: #ff4851;
@@ -142,6 +146,11 @@
   background-color: #f4f4f4;
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
+}
+
+:global(.post__content p > code::before),
+:global(.post__content p > code::after) {
+  content: "`"
 }
 
 :global(.post__content pre code) {
@@ -268,10 +277,12 @@
     <slot />
   </main>
 </section>
+<ProgressButton />
 
 <script>
 import { onMount } from "svelte"
 import SEO from "../components/SEO.svelte"
+import ProgressButton from "../components/ProgressButton.svelte"
 import dayjs from "dayjs"
 import data from "../site-data"
 export let title, date
