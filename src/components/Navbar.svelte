@@ -1,7 +1,7 @@
 <style>
 .navbar {
   height: 3.5rem;
-  border-bottom: 0.125rem #eaeaea solid;
+  border-bottom: 0.0625rem #eaeaea solid;
   position: fixed;
   z-index: 20;
   left: 0;

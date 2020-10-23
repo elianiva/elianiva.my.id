@@ -4,9 +4,9 @@
   text-align: center;
 }
 .sauce__title {
+  font-family: "Roboto Condensed", sans-serif;
   position: relative;
   display: inline-block;
-  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   margin-bottom: 4rem;
 }
@@ -80,7 +80,7 @@ const data = [
     img: "opensauce/mdsvex.png",
     website: "https://mdsvex.com",
     desc:
-      "Just like MDX, but for Svelte. Simplicity of markdown combined with the power of Svelte. Without this tech, my website wouldn't be possible.",
+      "Just like MDX, but for Svelte. Simplicity of markdown combined with the power of Svelte. My website is built with Sapper + MDsveX.",
   },
   {
     name: "yrv",

@@ -1,40 +1,50 @@
 <style>
 .card {
   overflow: hidden;
-  border: 1px #e4e4e4 solid;
+  border: 0.0625rem #e4e4e4 solid;
   border-radius: 0.25rem;
   text-align: left;
   background-color: #ffffff;
 }
+
 .card__img {
   position: relative;
   display: block;
   width: 100%;
   z-index: 2;
 }
+
 .card__details {
   color: #121212;
   text-decoration: none;
   padding: 1rem;
   display: grid;
   grid-template-rows: 2rem 3.5rem 5rem 1fr;
-  border-top: 0.125rem #e4e4e4 solid;
+  border-top: 0.0625rem #e4e4e4 solid;
   transition: all ease-out 0.2s;
 }
+
+.card__details span {
+  line-height: 1.5rem;
+}
+
 .card__details:hover {
   color: #ff4851;
 }
+
 .card__title {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.75rem;
 }
+
 .card__desc {
   line-height: 1.5rem;
   color: #696969;
   font-family: "Roboto", sans-serif;
 }
+
 .card__date {
   font-family: "Roboto Condensed", sans-serif;
   display: flex;
@@ -78,10 +88,10 @@
 <div class="card">
   <Waypoint throttle="500" offset="320"><img class="card__img" src={src} alt={title} /></Waypoint>
   <a rel="prefetch" href={href} class="card__details">
-    <span class="card__date">
+    <div class="card__date">
       <Calendar class="card__icon" />
-      {dayjs(date).format('DD MMMM YYYY')}
-    </span>
+      <span>{dayjs(date).format('DD MMMM YYYY')}</span>
+    </div>
     <span class="card__title">{title}</span>
     <p class="card__desc">{desc}</p>
     <div class="card__tags">
@@ -90,7 +100,7 @@
           class="card__tag"
           target="_blank"
           rel="norel noreferrer"
-          href="#"
+          href="/"
         >{tag}</a>
       {/each}
     </div>

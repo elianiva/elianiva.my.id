@@ -3,12 +3,16 @@
   max-width: 1080px;
   padding: 1rem;
   margin: 0 auto;
-  color: #3a181a;
+  color: #292021;
 }
 
 .post__title {
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 2.25rem;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  max-width: 30ch;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -25,15 +29,15 @@
   max-width: 10rem;
   height: 0.125rem;
   border: 0.25rem;
-  margin: 1rem auto;
+  margin: 0.5rem auto 1rem;
   background-color: #ff4851;
 }
 
 .post__content {
-  max-width: 80ch;
+  font-family: "Roboto", sans-serif;
+  max-width: 70ch;
   margin: 0 auto;
   font-size: 1.125rem;
-  font-family: "Roboto", sans-serif;
 }
 
 :global(.post__content p) {
@@ -113,7 +117,7 @@
 }
 
 :global(.post__content a:hover) {
-  color: #3a181a;
+  color: #292021;
 }
 
 :global(.post__content a::before) {

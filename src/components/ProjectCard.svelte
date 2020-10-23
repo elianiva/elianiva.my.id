@@ -1,23 +1,26 @@
 <style>
 .card {
   overflow: hidden;
-  border: 1px #e4e4e4 solid;
+  border: 0.0625rem #e4e4e4 solid;
   border-radius: 0.25rem;
   text-align: left;
   background-color: #ffffff;
 }
+
 .card__img {
   position: relative;
   display: block;
   width: 100%;
   z-index: 2;
 }
+
 .card__details {
   padding: 1rem;
   display: grid;
   grid-template-rows: 2rem 4.5rem 1fr;
-  border-top: 0.125rem #e4e4e4 solid;
+  border-top: 0.0625rem #e4e4e4 solid;
 }
+
 .card__title {
   text-decoration: none;
   color: #121212;
@@ -27,19 +30,23 @@
   line-height: 1.75rem;
   transition: all ease-out 0.2s;
 }
+
 .card__title:hover {
   color: #ff4851;
 }
+
 .card__desc {
   font-family: "Roboto", sans-serif;
   line-height: 1.5rem;
   color: #696969;
 }
+
 .card__links {
   display: flex;
   gap: 0.75rem;
   margin-top: 0.5rem;
 }
+
 .card__demo,
 .card__source {
   font-family: "Roboto", sans-serif;
@@ -51,19 +58,23 @@
   border-radius: 0.25rem;
   transition: filter ease-out 0.2s;
 }
+
 .card__demo:hover,
 .card__source:hover {
   filter: brightness(0.95);
 }
+
 .card__demo {
   background-color: #ff4851;
   color: #ffffff;
-  box-shadow: 0 0.25rem 0.5rem rgba(255, 72, 81, 0.4);
+  box-shadow: 0 0.25rem 0.5rem rgba(255, 72, 81, 0.25);
 }
+
 .card__source {
   background-color: #efefef;
   color: #696969;
 }
+
 :global(.card__icon) {
   width: 1.125rem;
   height: 1.125rem;

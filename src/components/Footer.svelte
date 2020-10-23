@@ -1,10 +1,10 @@
 <style>
 footer {
   margin-top: 3rem;
-  border-top: 0.125rem #eaeaea solid;
+  border-top: 0.0625rem #eaeaea solid;
   font-family: "Roboto Condensed", sans-serif;
   text-align: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 p {
@@ -45,16 +45,18 @@ a {
 
 <footer>
   <div class="icons">
-    <a href="mailto:dicha.arkana03@gmail.com">
+    <!-- prettier-ignore -->
+    <a href="mailto:dicha.arkana03@gmail.com" target="_blank" rel="norel noreferrer">
       <Email height="1.5rem" width="1.5rem" />
     </a>
-    <a href="https://github.com/elianiva">
+    <!-- prettier-ignore -->
+    <a href="https://github.com/elianiva" target="_blank" rel="norel noreferrer">
       <Github height="1.5rem" width="1.5rem" />
     </a>
-    <a href="https://twitter/elianiva_">
+    <a href="https://twitter/elianiva_" target="_blank" rel="norel noreferrer">
       <Twitter height="1.5rem" width="1.5rem" />
     </a>
-    <a href="https://elianiva.github.io">
+    <a href="https://elianiva.github.io" target="_blank" rel="norel noreferrer">
       <RSS height="1.5rem" width="1.5rem" />
     </a>
   </div>
@@ -77,6 +79,4 @@ import Email from "../icons/email.svg"
 import Github from "../icons/github.svg"
 import Twitter from "../icons/twitter.svg"
 import RSS from "../icons/rss.svg"
-
-const lastCommit = "2d82f7703009bedccc18dafb0fee7d7a92bcc778"
 </script>

@@ -10,13 +10,14 @@
   position: absolute;
   content: "";
   bottom: 3rem;
-  right: 0;
+  right: -2rem;
   width: 4rem;
   height: 4rem;
   background-color: rgba(255, 72, 81, 0.075);
   z-index: -1;
 }
 .section__title {
+  font-family: "Roboto Condensed", sans-serif;
   position: relative;
   display: inline-block;
   font-size: 2rem;
@@ -35,7 +36,7 @@
 }
 .section__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 1.25rem;
 }
 .section__button {
@@ -62,6 +63,12 @@
   left: -2rem;
   width: 14rem;
   height: 10rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .section::after {
+    right: 0;
+  }
 }
 </style>
 

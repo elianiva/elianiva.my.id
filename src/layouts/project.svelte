@@ -128,7 +128,7 @@
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.25rem;
   text-decoration: none;
-  color: #3a181a;
+  color: #292021;
   transition: color ease-out 0.2s;
 }
 
@@ -156,7 +156,7 @@
 }
 
 :global(.project__content p a:hover) {
-  color: #3a181a;
+  color: #292021;
 }
 
 :global(.project__content p a::before) {
