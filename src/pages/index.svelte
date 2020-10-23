@@ -26,12 +26,14 @@
   />
   <OpenSauce />
 </main>
+<ProgressButton showBar={false}/>
 
 <script>
 import SEO from "../components/SEO.svelte"
 import Hero from "../parts/Hero.svelte"
 import Section from "../parts/Sections.svelte"
 import OpenSauce from "../parts/OpenSauce.svelte"
+import ProgressButton from "../components/ProgressButton.svelte"
 
 const posts = __POSTS__
 const projects = __PROJECTS__

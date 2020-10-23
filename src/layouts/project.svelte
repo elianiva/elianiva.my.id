@@ -14,12 +14,12 @@
 .project__wrapper {
   border-radius: 0.5rem;
   overflow: hidden;
-  border: 0.125rem #efefef solid;
+  border: 0.0625rem #efefef solid;
   height: 24.5rem;
   margin-bottom: 2rem;
 }
 
-:global(.project__img) {
+.project__img {
   width: 100%;
 }
 
@@ -81,7 +81,7 @@
   width: 30%;
   height: 100%;
   padding: 1rem;
-  border: 0.125rem #efefef solid;
+  border: 0.0625rem #efefef solid;
   border-radius: 0.5rem;
 }
 
@@ -104,7 +104,7 @@
   gap: 1rem;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 1px #efefef solid;
+  border-bottom: 0.0625rem #efefef solid;
 }
 
 .stack__item:last-child {
@@ -228,13 +228,13 @@
 <section class="project">
   <main class="project__left">
     <div class="project__wrapper">
-      <Image
-        src={`/project/${slug}/cover.png`}
-        ratio="55%"
-        alt={title}
-        class="project__img"
-        lazy={false}
-      />
+      <Waypoint throttle="500" offset="320">
+        <img
+          src={`/project/${slug}/cover.png`}
+          alt={title}
+          class="project__img"
+        />
+      </Waypoint>
     </div>
     <div class="project__content">
       <div class="project__header">
@@ -274,12 +274,14 @@
     {/each}
   </div>
 </section>
+<ProgressButton />
 
 <script>
 import SEO from "../components/SEO.svelte"
 import Chrome from "../icons/chrome.svg"
 import Code from "../icons/code.svg"
-import Image from "svelte-image"
+import Waypoint from "svelte-waypoint"
+import ProgressButton from "../components/ProgressButton.svelte"
 import data from "../site-data"
 export let title
 
