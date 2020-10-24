@@ -22,6 +22,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.75rem;
+  text-transform: capitalize;
 }
 
 .card__desc {
@@ -46,7 +47,7 @@
 
 .card__tags {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.75rem;
 }
 
 .card__tag {
