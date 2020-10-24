@@ -23,6 +23,19 @@
   border-radius: 0.25rem;
   background-color: #ff4851;
 }
+
+.posts__input {
+  display: block;
+  margin: 0 auto 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.125rem;
+  border: none;
+  background-color: #efefef;
+  border-radius: 2rem;
+  outline: none;
+}
+
 .posts__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
@@ -34,6 +47,14 @@
 
 <div class="posts">
   <h1 class="posts__title">All Posts</h1>
+  <label for="posts__input">
+    <input
+      class="posts__input"
+      id="posts__input"
+      type="text"
+      placeholder="Search for post..."
+    />
+  </label>
   <div class="posts__cards">
     {#each posts as post}
       <PostCard
@@ -50,7 +71,7 @@
 
 <script>
 import SEO from "../../components/SEO.svelte"
-import Image from "svelte-image"
 import PostCard from "../../components/PostCard.svelte"
+
 const posts = __POSTS__
 </script>

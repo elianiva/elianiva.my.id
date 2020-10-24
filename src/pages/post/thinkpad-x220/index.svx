@@ -1,7 +1,7 @@
 ---
-title: Thinkpad X220
+title: My impression of Lenovo Thinkpad X220
 date: 2020-03-19
-desc: I finally became one of those Linux users, the one who has Thinkpad with them. Let's see what this badboi has to offer.
+desc: I finally became one of those Linux users, the one who has old Thinkpad with them.
 tags:
   - other
 ---

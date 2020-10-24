@@ -1,5 +1,5 @@
 ---
-title: Making Your Own VIM Statusline
+title: Making your own statusline in (Neo)vim
 date: 2020-02-15
 desc: A post where I made my own lightsaber. I mean, my own vim's statusline to make my vim looks even more personalised
 tags:
@@ -15,7 +15,7 @@ The reason why I made this post is also because I want to change my statusline. 
 
 # Prerequisite
 First of all, we need to prepare a few things :
-- Vim Text Editor (Duh, isn't that obvious?). Better yet, use Neovim.
+- (Neo)Vim Text Editor (Duh, isn't that obvious?).
 - Terminal that is capable of true colours
 - Patience
 - Googling skills incase something doesn't work correctly

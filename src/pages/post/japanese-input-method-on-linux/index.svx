@@ -1,5 +1,5 @@
 ---
-title: Japanese Input Method on Linux
+title: How to get Japanese input method on Linux working
 date: 2020-06-05
 desc: Installing fcitx and mozc for Japanese input method so you can type 日本語 on Linux
 tags:

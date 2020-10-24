@@ -1,5 +1,5 @@
 ---
-title: Why I Use Linux
+title: Why I use Linux instead of other OS
 date: 2020-02-27
 desc: A post where I try to explain why I use this beautiful and awesome operating system called Linux
 tags:

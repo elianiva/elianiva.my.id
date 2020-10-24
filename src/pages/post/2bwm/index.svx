@@ -1,5 +1,5 @@
 ---
-title: Two Borders Window Manager
+title: What I think about two border window manager
 date: 2020-04-01
 desc: My impression of a keyboard oriented stacking window manager called Two Border Window Manager or 2BWM
 tags:

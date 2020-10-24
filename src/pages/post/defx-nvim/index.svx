@@ -1,7 +1,7 @@
 ---
 title: Defx, A Dark Powered File Explorer
 date: 2020-02-22
-desc: Trying out yet another file tree plugin for neovim called defx.nvim, it's dark powered! At least that's what it says on the readme
+desc: Trying out yet another plugin for neovim called defx.nvim, it's dark powered! At least that's what it says on the readme
 tags:
   - neovim
 ---

@@ -1,5 +1,5 @@
 ---
-title: Site Redesign
+title: I redesigned my website because why not
 date: 2020-05-02
 desc: A post where I explain about my site redesign to give it a bit more fresher look
 tags:
