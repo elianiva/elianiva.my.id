@@ -88,7 +88,9 @@
 </style>
 
 <div class="card">
-  <Waypoint throttle="500" offset="320"><img class="card__img" src={src} alt={title} /></Waypoint>
+  <Waypoint throttle="500" offset="320">
+    <img class="card__img" src={src} alt={title} />
+  </Waypoint>
   <a rel="prefetch" href={href} class="card__details">
     <div class="card__date">
       <Calendar class="card__icon" />

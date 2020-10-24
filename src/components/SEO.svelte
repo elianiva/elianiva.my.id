@@ -13,7 +13,10 @@
   {/if}
 
   <!-- Twitter -->
-  <meta property="twitter:card" content={thumbnail ? 'summary_large_image' : 'summary'} />
+  <meta
+    property="twitter:card"
+    content={thumbnail ? 'summary_large_image' : 'summary'}
+  />
   <meta property="twitter:url" content="{siteUrl}{$page.path}" />
   <meta property="twitter:title" content={title | siteName} />
   <meta property="twitter:description" content={desc} />

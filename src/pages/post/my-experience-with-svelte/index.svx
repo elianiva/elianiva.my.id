@@ -53,7 +53,7 @@ It looks very similar to pure html isn't it? I also prefer Svelte syntax over Vu
 <Counter {count}/>
 
 <!-- Vue -->
-<Counter v-bind:count={count}/>
+<Counter v-bind:count="count"/>
 ```
 
 ## What I've made using Svelte

@@ -26,7 +26,7 @@
   />
   <OpenSauce />
 </main>
-<ProgressButton showBar={false}/>
+<ProgressButton showBar={false} />
 
 <script>
 import SEO from "../components/SEO.svelte"

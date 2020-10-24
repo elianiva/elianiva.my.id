@@ -30,7 +30,6 @@ a {
   margin: 0 auto 0.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
   max-width: 220px;
 }
 
