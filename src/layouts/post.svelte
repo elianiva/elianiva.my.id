@@ -1,6 +1,6 @@
 <style>
 :global(html) {
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
 }
 
 .post {
@@ -8,6 +8,7 @@
   padding: 1rem;
   margin: 0 auto;
   color: #292021;
+  text-align: center;
 }
 
 .post__title {
@@ -17,24 +18,48 @@
   text-transform: uppercase;
   max-width: 30ch;
   margin: 0 auto;
-  text-align: center;
 }
 
 .post__date {
   font-family: "Roboto Condensed", sans-serif;
-  text-align: center;
   display: block;
+  text-align: center;
   font-size: 1.125rem;
   line-height: 2rem;
   color: #696969;
 }
 
-.post__divider {
-  max-width: 10rem;
-  height: 0.125rem;
-  border: 0.25rem;
-  margin: 0.5rem auto 1rem;
-  background-color: #ff4851;
+.post__edit {
+  position: relative;
+  font-family: "Roboto Condensed", sans-serif;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  color: #ff4851;
+  transition: color ease-out 0.2s;
+  text-decoration: none;
+}
+
+.post__edit:hover {
+  color: #292021;
+}
+
+.post__edit::before {
+  position: absolute;
+  content: "";
+  bottom: -0.25rem;
+  left: -0.25rem;
+  right: -0.25rem;
+  top: 0;
+  transform: scaleY(0.1);
+  background-color: rgba(255, 72, 81, 0.5);
+  z-index: -1;
+  transition: all ease-out 0.2s;
+  transform-origin: bottom;
+}
+
+.post__edit:hover::before {
+  transform: scaleY(1);
 }
 
 .post__content {
@@ -42,6 +67,7 @@
   max-width: 70ch;
   margin: 0 auto;
   font-size: 1.125rem;
+  text-align: left;
 }
 
 :global(.post__content p) {
@@ -150,7 +176,7 @@
 
 :global(.post__content p > code::before),
 :global(.post__content p > code::after) {
-  content: "`"
+  content: "`";
 }
 
 :global(.post__content pre code) {
@@ -239,6 +265,26 @@
   margin-top: -4.5rem;
 }
 
+.post__tags {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.post__tag {
+  padding: 0.25rem 0.5rem;
+  background-color: #f4f4f4;
+  color: #292021;
+  border-radius: 0.25rem;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 500;
+}
+
+.post__tag::before {
+  content: "# ";
+}
+
 @media only screen and (max-width: 480px) {
   :global(.post__content pre) {
     margin-left: -1rem !important;
@@ -272,7 +318,17 @@
     {dayjs(date).format('dddd')},
     {dayjs(date).format('DD MMMM YYYY')}
   </span>
-  <hr class="post__divider" />
+  <a
+    class="post__edit"
+    href="https://github.com/elianiva/elianiva.me/blob/master/src/pages/post/{currentPost.slug}/index.svx"
+    target="_blank"
+    rel="norel noreferrer"
+  >Suggest An Edit</a>
+  <div class="post__tags">
+    {#each currentPost.tags as tag}
+      <div class="post__tag">{tag}</div>
+    {/each}
+  </div>
   <main class="post__content">
     <slot />
   </main>
