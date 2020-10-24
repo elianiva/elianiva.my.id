@@ -6,6 +6,7 @@
   color: #121212;
   text-align: center;
 }
+
 .section::after {
   position: absolute;
   content: "";
@@ -16,6 +17,7 @@
   background-color: rgba(255, 72, 81, 0.075);
   z-index: -1;
 }
+
 .section__title {
   font-family: "Roboto Condensed", sans-serif;
   position: relative;
@@ -24,6 +26,7 @@
   font-weight: 600;
   margin-bottom: 2rem;
 }
+
 .section__title::before {
   content: "";
   position: absolute;
@@ -34,11 +37,13 @@
   border-radius: 0.25rem;
   background-color: #ff4851;
 }
+
 .section__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 1.25rem;
 }
+
 .section__button {
   display: inline-block;
   margin-top: 2rem;
@@ -52,10 +57,12 @@
   box-shadow: 0 0.25rem 1rem rgba(255, 72, 81, 0.25);
   transition: all ease-out 0.2s;
 }
+
 .section__button:hover {
   transform: translateY(-0.25rem);
   filter: brightness(0.95);
 }
+
 :global(.section__pattern) {
   color: #ff4851;
   position: absolute;
@@ -80,7 +87,6 @@
       {#each data as item}
         <PostCard
           title={item.title}
-          src={`/post/${item.slug}/cover.png`}
           href={`/post/${item.slug}`}
           desc={item.desc}
           date={item.date}

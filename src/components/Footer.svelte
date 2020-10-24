@@ -5,6 +5,7 @@ footer {
   font-family: "Roboto Condensed", sans-serif;
   text-align: center;
   padding: 2rem 1rem;
+  background-color: #ffffff;
 }
 
 p {
