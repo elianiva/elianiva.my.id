@@ -329,7 +329,7 @@
       <div class="post__tag">{tag}</div>
     {/each}
   </div>
-  <main class="post__content">
+  <main class="post__content" bind:this={content}>
     <slot />
   </main>
 </section>
@@ -343,12 +343,13 @@ import dayjs from "dayjs"
 import data from "../site-data"
 export let title, date
 
+let content
 const posts = __POSTS__
 const currentPost = posts.filter(post => post.title === title)[0]
 
 onMount(() => {
-  document.querySelectorAll("a").forEach(a => {
-    if (!a.hash || !document.querySelectorAll(a.hash).length) return
+  content.querySelectorAll("a").forEach(a => {
+    if (!a.hash || !content.querySelectorAll(a.hash).length) return
     a.addEventListener("click", event => {
       event.preventDefault()
       window.location.hash = event.target.getAttribute("href")
