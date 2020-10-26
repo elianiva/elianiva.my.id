@@ -12,6 +12,7 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 2rem;
+  color: var(--color-main-text);
 }
 .posts__title::before {
   content: "";
@@ -21,7 +22,7 @@
   left: 2rem;
   right: 2rem;
   border-radius: 0.25rem;
-  background-color: #ff4851;
+  background-color: var(--color-main-accent);
 }
 .posts__cards {
   display: grid;

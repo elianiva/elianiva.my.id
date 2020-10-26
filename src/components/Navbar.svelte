@@ -187,7 +187,7 @@
       </li>
     </ul>
     <div class="navbar__hamburger">
-      <input bind:this={checkbox} on:click={toggleDarkMode} type="checkbox" />
+      <input bind:this={checkbox} on:click={toggleNav} type="checkbox" />
       <span class="navbar__hamburger_item" />
       <span class="navbar__hamburger_item" />
       <span class="navbar__hamburger_item" />
@@ -211,7 +211,7 @@
         <li class="navbar__mobile_item">
           <button
             class="navbar__button"
-            on:click={() => darkTheme.update(current => !current)}
+            on:click={toggleDarkMode}
           >
             <Moon class="navbar__darkmode" width="1.5rem" height="1.5rem" />
           </button>
@@ -224,7 +224,7 @@
 <script>
 import { fly } from "svelte/transition"
 import Moon from "@/icons/moon.svg"
-import { darkTheme } from "@/utils/theme"
+import { theme } from "@/utils/theme"
 export let segment, position
 
 let screenHeight, scrollPos, navPosition, checkbox
@@ -251,7 +251,7 @@ const getNavbarPosition = scrollPos => {
 }
 
 const toggleDarkMode = () => {
-  darkTheme.update(current => {
+  theme.update(current => {
     return current === "light" ? "dark" : "light"
   })
 }

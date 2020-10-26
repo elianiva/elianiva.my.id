@@ -41,7 +41,7 @@
   font-family: "Roboto Condensed", sans-serif;
   border: none;
   background-color: var(--color-main-accent);
-  color: var(--color-alt-bg);
+  color: #f4f4f4;
   margin-right: 1rem;
   border-radius: 0.25rem;
   text-decoration: none;
@@ -101,7 +101,7 @@
     </div>
   </div>
 </div>
-<Navbar position="home" />
+<Navbar position="home" segment={null} />
 <main class="main">
   <Section
     title="Recent Posts"

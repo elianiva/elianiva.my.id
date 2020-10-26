@@ -24,7 +24,7 @@
 .card__title {
   text-decoration: none;
   color: var(--color-main-text);
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.75rem;
@@ -36,7 +36,7 @@
 }
 
 .card__desc {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5rem;
   color: var(--color-alt-text);
 }
@@ -49,7 +49,7 @@
 
 .card__demo,
 .card__source {
-  font-family: "Roboto", sans-serif;
+  font-family: "Overpass", sans-serif;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -66,7 +66,7 @@
 
 .card__demo {
   background-color: var(--color-main-accent);
-  color: var(--color-alt-bg);
+  color: #f4f4f4;
 }
 
 .card__source {

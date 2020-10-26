@@ -12,11 +12,11 @@
   content: "";
   bottom: 3rem;
   right: -2rem;
-  width: 4rem;
+  width: 10rem;
   height: 4rem;
   background-color: var(--color-main-accent);
   opacity: 0.1;
-  z-index: -1;
+  z-index: 2;
 }
 
 .section__title {
@@ -49,7 +49,7 @@
   display: inline-block;
   margin-top: 2rem;
   padding: 0.75rem 1.5rem;
-  color: var(--color-alt-bg);
+  color: #f4f4f4;
   background-color: var(--color-main-accent);
   text-decoration: none;
   font-family: "Roboto Condensed", sans-serif;

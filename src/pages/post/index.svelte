@@ -5,6 +5,7 @@
   padding: 2rem 1rem 0;
   text-align: center;
 }
+
 .posts__title {
   font-family: "Roboto Condensed", sans-serif;
   position: relative;
@@ -12,7 +13,9 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 2rem;
+  color: var(--color-main-text);
 }
+
 .posts__title::before {
   content: "";
   position: absolute;
@@ -21,7 +24,7 @@
   left: 2rem;
   right: 2rem;
   border-radius: 0.25rem;
-  background-color: #ff4851;
+  background-color: var(--color-main-accent);
 }
 
 .posts__input {
@@ -31,9 +34,14 @@
   padding: 0.75rem;
   font-size: 1.125rem;
   border: none;
-  background-color: #efefef;
-  border-radius: 2rem;
+  background-color: var(--color-special-bg);
+  border-radius: 0.25rem;
   outline: none;
+  color: var(--color-main-text);
+}
+
+.posts__input::placeholder {
+  color: var(--color-alt-text);
 }
 
 .posts__cards {

@@ -7,7 +7,7 @@
   max-width: 1080px;
   padding: 1rem;
   margin: 0 auto;
-  color: #292021;
+  color: var(--color-main-text);
   text-align: center;
 }
 
@@ -26,7 +26,7 @@
   text-align: center;
   font-size: 1.125rem;
   line-height: 2rem;
-  color: #696969;
+  color: var(--color-alt-text);
 }
 
 .post__edit {
@@ -35,13 +35,13 @@
   text-align: center;
   font-size: 1.125rem;
   line-height: 2rem;
-  color: #dc240f;
+  color: var(--color-main-accent);
   transition: color ease-out 0.2s;
   text-decoration: none;
 }
 
 .post__edit:hover {
-  color: #292021;
+  color: var(--color-main-text);
 }
 
 .post__edit::before {
@@ -52,7 +52,8 @@
   right: -0.25rem;
   top: 0;
   transform: scaleY(0.1);
-  background-color: rgba(255, 72, 81, 0.5);
+  background-color: var(--color-main-accent);
+  opacity: 0.5;
   z-index: -1;
   transition: all ease-out 0.2s;
   transform-origin: bottom;
@@ -83,7 +84,7 @@
   font-family: "Roboto Condensed", sans-serif;
   font-size: 2rem;
   line-height: 3.5rem;
-  border-bottom: 0.125rem #dc240f solid;
+  border-bottom: 0.125rem var(--color-main-accent) solid;
   /* margin: 0.25rem 0 0.75rem; */
 }
 
@@ -92,7 +93,6 @@
   font-family: "Roboto Condensed", sans-serif;
   line-height: 1.75rem;
   font-size: 1.625rem;
-  /* margin: 0.25rem 0; */
   padding-left: 1.5rem;
 }
 
@@ -109,14 +109,14 @@
   content: "• ";
   position: absolute;
   left: 0;
-  color: #dc240f;
+  color: var(--color-main-accent);
 }
 
 :global(.post__content h2::after) {
   content: "# ";
   position: absolute;
   left: 0;
-  color: #dc240f;
+  color: var(--color-main-accent);
 }
 
 :global(.post__content img) {
@@ -125,28 +125,28 @@
 
 :global(.post__content pre) {
   border-radius: 0.5rem;
-  scrollbar-color: #b0b0b0 #efefef;
+  scrollbar-color: var(--color-thin) var(--color-special-bg);
 }
 
 :global(.post__content pre::-webkit-scrollbar-thumb) {
-  background-color: #b0b0b0;
+  background-color: var(--color-thin);
 }
 
 :global(.post__content pre::-webkit-scrollbar) {
-  background-color: #efefef;
+  background-color: var(--color-special-bg);
   height: 0.5rem;
 }
 
 :global(.post__content a) {
   position: relative;
   display: inline-block;
-  color: #dc240f;
+  color: var(--color-main-accent);
   text-decoration: none;
   transition: all ease-out 0.2s;
 }
 
 :global(.post__content a:hover) {
-  color: #292021;
+  color: var(--color-main-text);
 }
 
 :global(.post__content a::before) {
@@ -157,7 +157,8 @@
   right: -0.25rem;
   top: 0.25rem;
   transform: scaleY(0.1);
-  background-color: rgba(255, 72, 81, 0.5);
+  background-color: var(--color-main-accent);
+  opacity: 0.5;
   z-index: -1;
   transition: all ease-out 0.2s;
   transform-origin: bottom;
@@ -168,7 +169,7 @@
 }
 
 :global(.post__content code) {
-  background-color: #f4f4f4;
+  color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
 }
@@ -179,7 +180,6 @@
 }
 
 :global(.post__content pre code) {
-  background-color: #1d2021;
   padding: 0;
   border-radius: 0;
   font-size: 1rem;
@@ -227,12 +227,12 @@
 }
 
 :global(.post__content table tr:nth-child(odd)) {
-  background-color: #f4f4f4;
+  background-color: var(--color-special-bg);
 }
 
 :global(.post__content table th) {
-  background-color: #dc240f;
-  color: #ffffff;
+  background-color: var(--color-main-accent);
+  color: var(--color-alt-bg);
   font-size: 1.25rem;
 }
 
@@ -243,7 +243,7 @@
 
 :global(.post__content blockquote p) {
   font-size: 1.5rem;
-  color: #b0b0b0;
+  color: var(--color-thin);
   font-style: italic;
   font-family: serif;
   margin: 1rem 0;
@@ -273,8 +273,8 @@
 
 .post__tag {
   padding: 0.25rem 0.5rem;
-  background-color: #f4f4f4;
-  color: #292021;
+  background-color: var(--color-special-bg);
+  color: var(--color-main-text);
   border-radius: 0.25rem;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 500;
@@ -297,12 +297,21 @@
 </style>
 
 <svelte:head>
-  <link
-    rel="preload"
-    href="/prism.css"
-    as="style"
-    onload="this.rel='stylesheet'"
-  />
+  {#if $theme === 'light'}
+    <link
+      rel="preload"
+      href="/prism-gruvbox-hard.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+  {:else}
+    <link
+      rel="preload"
+      href="/prism-night-owl.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+  {/if}
 </svelte:head>
 
 <SEO
@@ -340,6 +349,7 @@ import SEO from "@/components/SEO.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import dayjs from "dayjs"
 import data from "@/site-data"
+import { theme } from "@/utils/theme"
 export let title, date
 
 let content
