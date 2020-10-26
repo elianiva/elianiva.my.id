@@ -79,7 +79,7 @@
   cursor: pointer;
 }
 
-.navbar__hamburger input {
+.navbar__checkbox {
   opacity: 0;
 }
 
@@ -108,26 +108,26 @@
     height: 0.85rem;
   }
 
-  .navbar__hamburger input {
+  .navbar__checkbox {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 2;
   }
 
-  .navbar__hamburger input:checked ~ span:nth-child(3) {
-    transform: scale(0);
-  }
-
-  .navbar__hamburger input:checked ~ span:nth-child(2) {
+  .navbar__checkbox:checked ~ .navbar__hamburger_item--1 {
     transform: rotate(45deg) translateY(0.5rem);
   }
 
-  .navbar__hamburger input:checked ~ span:nth-child(4) {
+  .navbar__checkbox:checked ~ .navbar__hamburger_item--2 {
+    transform: scale(0);
+  }
+
+  .navbar__checkbox:checked ~ .navbar__hamburger_item--3 {
     transform: rotate(-45deg) translateY(-0.5rem);
   }
 
-  .navbar__hamburger_item {
+  [class^=navbar__hamburger_item] {
     position: relative;
     display: block;
     background-color: var(--color-main-text);
@@ -187,10 +187,10 @@
       </li>
     </ul>
     <div class="navbar__hamburger">
-      <input bind:this={checkbox} on:click={toggleNav} type="checkbox" />
-      <span class="navbar__hamburger_item" />
-      <span class="navbar__hamburger_item" />
-      <span class="navbar__hamburger_item" />
+      <input class="navbar__checkbox" bind:this={checkbox} on:click={toggleNav} type="checkbox" />
+      <span class="navbar__hamburger_item--1" />
+      <span class="navbar__hamburger_item--2" />
+      <span class="navbar__hamburger_item--3" />
     </div>
   </div>
   {#if isVisible}
