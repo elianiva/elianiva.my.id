@@ -11,13 +11,17 @@ main div {
 }
 </style>
 
-<Navbar segment={segment} />
-<main>
-  <div>
-    <slot />
-  </div>
-  <Footer />
-</main>
+{#if segment !== undefined}
+  <Navbar segment={segment} />
+  <main>
+    <div>
+      <slot />
+    </div>
+    <Footer />
+  </main>
+{:else}
+  <slot />
+{/if}
 
 <script>
 import Navbar from "../components/Navbar.svelte"

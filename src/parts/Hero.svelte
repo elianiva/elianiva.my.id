@@ -7,15 +7,29 @@
   align-items: center;
   justify-items: center;
   color: #292021;
-  margin-top: 3rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.hero__greet {
+  font-size: 1.25rem;
+  font-family: "Overpass", sans-serif;
+  font-weight: 600;
+  color: #ff4851;
 }
 
 .hero__name {
   position: relative;
+  display: block;
   font-family: "Overpass", sans-serif;
   font-size: clamp(1.25rem, calc(5vw + 1.25rem), 3.5rem);
-  display: block;
   font-weight: 600;
+}
+
+.hero__role {
+  font-family: "Overpass", sans-serif;
+  font-size: clamp(1rem, calc(5vw + 1rem), 1.5rem);
+  display: block;
 }
 
 .hero__desc {
@@ -23,57 +37,17 @@
   display: block;
   color: #696969;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.125rem;
+  font-size: clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem);
   line-height: 2rem;
   margin: 0 0 1rem;
 }
 
 .hero__pict {
-  width: clamp(14rem, calc(20vw + 4rem), 16rem);
-  height: clamp(14rem, calc(20vw + 4rem), 16rem);
+  width: clamp(12rem, calc(20vw + 4rem), 16rem);
+  height: clamp(12rem, calc(20vw + 4rem), 16rem);
   border-radius: 10rem;
   border: 0.5rem #ffffff solid;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-
-.hero__buttons {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  justify-content: start;
-}
-
-.hero__button {
-  padding: 0.75rem 2rem;
-  font-size: 1.125rem;
-  font-family: "Roboto Condensed", sans-serif;
-  border: none;
-  background-color: #ff4851;
-  color: #ffffff;
-  margin-right: 1rem;
-  /* border-radius: 0.25rem; */
-  border-radius: 2rem;
-  box-shadow: 0 0.25rem 1rem rgba(255, 72, 81, 0.25);
-  text-decoration: none;
-  transition: all ease-out 0.2s;
-}
-
-.hero__button--inactive {
-  padding: 0.75rem 2rem;
-  background-color: #f4f4f4;
-  color: #696969;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 1.125rem;
-  border: none;
-  border-radius: 2rem;
-  text-decoration: none;
-  transition: all ease-out 0.2s;
-}
-
-.hero__button:hover,
-.hero__button--inactive:hover {
-  transform: translateY(-0.25rem);
-  filter: brightness(0.95);
 }
 
 :global(.hero__pattern) {
@@ -90,16 +64,6 @@
   position: relative;
 }
 
-.hero__right::before {
-  position: absolute;
-  content: "";
-  top: -2rem;
-  left: 1rem;
-  width: clamp(1rem, calc(4vw + 1rem), 4rem);
-  height: clamp(1rem, calc(4vw + 1rem), 4rem);
-  background-color: rgba(255, 72, 81, 0.075);
-}
-
 .hero__right::after {
   position: absolute;
   content: "</>";
@@ -112,27 +76,14 @@
   font-weight: 900;
   color: rgba(255, 72, 81, 0.1);
 }
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 960px) {
   .hero {
     gap: 2rem;
     grid-template-columns: 1fr;
     grid-template-rows: 14rem 1fr;
     text-align: center;
     margin-top: 0;
-  }
-  .hero__buttons {
-    justify-content: center;
-  }
-  .hero__button {
-    display: block;
-  }
-  :global(.hero__pattern) {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 6rem;
-    z-index: -1;
-    color: rgba(255, 72, 81, 0.075);
+    gap: 1rem;
   }
 }
 </style>
@@ -148,17 +99,15 @@
     </a>
   </div>
   <div class="hero__right">
-    <span class="hero__name">Hi there! I'm Elianiva.</span>
+    <span class="hero__greet">Hi there!</span>
+    <span class="hero__name"> I'm Elianiva. </span>
+    <span class="hero__role">A Frontend Developer and Open Source Enthusiast</span>
     <p class="hero__desc">
       I'm a 16 y/o boi from Indonesia. I love making random websites and
       contribute to any open source projects that I found interesting. I also
       love Anime and Linux related stuff, what a perfect combination to lose
       your life ツ
     </p>
-    <div class="hero__buttons">
-      <a class="hero__button" href="/projects">Projects</a>
-      <a class="hero__button--inactive" href="/about">About</a>
-    </div>
     <Circle class="hero__pattern" />
   </div>
 </section>
