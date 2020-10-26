@@ -11,9 +11,8 @@
   display: flex;
   align-items: center;
   height: 100vh;
-  width: 100%;
   margin: 0 auto;
-  padding: 2rem 1rem 0;
+  padding: 1rem 0;
 }
 
 .hero__bar {
@@ -26,7 +25,7 @@
   height: 4rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 1rem;
 }
 
@@ -34,7 +33,6 @@
   position: relative;
   z-index: 5;
   display: flex;
-  justify-content: start;
 }
 
 .hero__button {
@@ -71,7 +69,7 @@
 @media only screen and (max-width: 960px) {
   .hero {
     align-items: start;
-    padding-top: 3rem;
+    padding: 1rem 1rem 0;
   }
 
   .hero__buttons {
@@ -121,6 +119,7 @@
   />
   <OpenSauce />
 </main>
+<Footer />
 <ProgressButton showBar={false} />
 
 <script>

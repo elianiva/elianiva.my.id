@@ -1,6 +1,6 @@
 <style>
 .navbar {
-  height: 3.5rem;
+  height: 4rem;
   border-bottom: 0.0625rem #eaeaea solid;
   z-index: 20;
   background-color: #ffffff;
@@ -212,7 +212,6 @@ let screenHeight, scrollPos, navPosition
 $: navPosition = getNavbarPosition(scrollPos)
 
 const getNavbarPosition = scrollPos => {
-  console.log("invoked")
   if (position === "home") {
     return `
     position: ${scrollPos >= screenHeight ? "fixed" : "absolute"};

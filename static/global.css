@@ -4,8 +4,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  widht: 100%;
+}
+
 body {
-  width: 100vw;
   overflow-x: hidden;
   background-color: #FCFCFC;
 }
