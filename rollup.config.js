@@ -30,7 +30,8 @@ const sveltePreprocess = require("svelte-preprocess")({
   postcss: {
     plugins: [
       require("autoprefixer")({ overrideBrowserslist: "last 2 versions" }),
-    ],
+      !dev && require("cssnano")({ preset: "default" })
+    ].filter(Boolean),
   },
 })
 
