@@ -117,7 +117,6 @@
     url="/project"
     type="projects"
   />
-  <OpenSauce />
 </main>
 <Footer />
 <ProgressButton showBar={false} />
@@ -128,7 +127,6 @@ import Hero from "../parts/Hero.svelte"
 import Navbar from "../components/Navbar.svelte"
 import Footer from "../components/Footer.svelte"
 import Section from "../parts/Sections.svelte"
-import OpenSauce from "../parts/OpenSauce.svelte"
 import ProgressButton from "../components/ProgressButton.svelte"
 
 const posts = __POSTS__
