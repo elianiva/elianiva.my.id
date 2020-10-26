@@ -1,8 +1,10 @@
+import path from "path"
 import resolve from "@rollup/plugin-node-resolve"
 import replace from "@rollup/plugin-replace"
 import commonjs from "@rollup/plugin-commonjs"
 import svelte from "rollup-plugin-svelte"
 import babel from "@rollup/plugin-babel"
+import alias from "@rollup/plugin-alias"
 import { terser } from "rollup-plugin-terser"
 import { mdsvex } from "mdsvex"
 import config from "sapper/config/rollup.js"
@@ -43,10 +45,7 @@ const svelteOptions = {
         _: "./src/layouts/post.svelte",
         project: "./src/layouts/project.svelte",
       },
-      remarkPlugins: [
-        remarkSlug,
-        remarkToc,
-      ],
+      remarkPlugins: [remarkSlug, remarkToc],
     }),
     svelteImage({
       placeholder: "blur",
@@ -61,6 +60,11 @@ export default {
     input: config.client.input(),
     output: config.client.output(),
     plugins: [
+      alias({
+        entries: [
+          { find: "@", replacement: path.resolve(__dirname, "src/") },
+        ],
+      }),
       replace({
         "process.browser": true,
         "process.env.NODE_ENV": JSON.stringify(mode),
@@ -116,6 +120,11 @@ export default {
     input: config.server.input(),
     output: config.server.output(),
     plugins: [
+      alias({
+        entries: [
+          { find: "@", replacement: path.resolve(__dirname, "src/") },
+        ],
+      }),
       replace({
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode),
