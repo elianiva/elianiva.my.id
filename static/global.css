@@ -1,17 +1,40 @@
+:root {
+  --color-main-accent: #e62c17;
+  --color-main-bg: #FBFAFF;
+  --color-alt-bg: #ffffff;
+  --color-special-bg: #f4f4f4;
+  --color-main-text: #1d1b2e;
+  --color-alt-text: #696969;
+  --color-borders: #e4e4e4;
+  --color-thin: #b0b0b0;
+}
+
+[data-theme="dark"] {
+  --color-main-accent: #513DCC;
+  --color-main-bg: #20263A;
+  --color-alt-bg: #171C26;
+  --color-special-bg: #2C3445;
+  --color-main-text: #F3F2F7;
+  --color-alt-text: #5B6C8C;
+  --color-borders: #0B0B0D;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: color ease-out 0.1s, background-color ease-out 0.1s;
 }
 
-html, body {
+html,
+body {
   height: 100%;
-  widht: 100%;
+  width: 100%;
 }
 
 body {
   overflow-x: hidden;
-  background-color: #FCFCFC;
+  background-color: var(--color-main-bg);
 }
 
 /* fix svelte-image */
@@ -20,14 +43,14 @@ div.wrapper {
 }
 
 html {
-  scrollbar-color: #b0b0b0 #efefef;
+  scrollbar-color: var(--color-thin) var(--color-special-bg);
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #ff4851;
+  background-color: var(--color-main-accent)
 }
 
 html::-webkit-scrollbar {
-  background-color: #efefef;
+  background-color: var(--color-special-bg);
   width: 0.5rem;
 }

@@ -27,7 +27,7 @@
 
 <script>
 import { stores } from "@sapper/app"
-import data from "../site-data"
+import data from "@/site-data"
 
 const { page } = stores()
 

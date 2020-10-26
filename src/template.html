@@ -4,6 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="theme-color" content="#efefef" />
+    <meta name="color-scheme" content="light dark" />
+
+    <script>
+      // set dark mode correctly before everythings get rendered
+      // thanks https://github.com/pveyes
+      try {
+        const preference = localStorage.getItem("darkmode") || "light"
+        if (preference) {
+          document.documentElement.setAttribute("data-theme", preference)
+        }
+      } catch (err) {
+        // do nothing
+      }
+    </script>
 
     %sapper.base%
 
@@ -58,8 +72,6 @@
     %sapper.head%
   </head>
   <body>
-    <!-- The application will be rendered inside this element,
-	     because `src/client.js` references it -->
     <div id="sapper">%sapper.html%</div>
   </body>
 </html>

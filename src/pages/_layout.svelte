@@ -24,7 +24,19 @@ main div {
 {/if}
 
 <script>
-import Navbar from "../components/Navbar.svelte"
-import Footer from "../components/Footer.svelte"
+import { onMount } from "svelte"
+import Navbar from "@/components/Navbar.svelte"
+import Footer from "@/components/Footer.svelte"
+import { darkTheme } from "@/utils/theme"
 export let segment
+
+onMount(() => {
+  const preference = localStorage.getItem("darkmode") || 'light'
+  darkTheme.set(preference)
+
+  darkTheme.subscribe(current => {
+    localStorage.setItem("darkmode", current)
+    document.documentElement.setAttribute("data-theme", current)
+  })
+})
 </script>

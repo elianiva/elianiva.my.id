@@ -1,15 +1,15 @@
 <style>
 .card {
   overflow: hidden;
-  border: 0.0625rem #e4e4e4 solid;
+  border: 0.0625rem var(--color-borders) solid;
   border-radius: 0.25rem;
   text-align: left;
-  background-color: #ffffff;
+  background-color: var(--color-alt-bg);
   z-index: 2;
 }
 
 .card__details {
-  color: #292021;
+  color: var(--color-main-text);
   text-decoration: none;
   padding: 1rem;
   display: grid;
@@ -26,10 +26,10 @@
 }
 
 .card__desc {
-  border-top: 0.0625rem #e4e4e4 solid;
+  border-top: 0.0625rem var(--color-borders) solid;
   font-family: "Open Sans", sans-serif;
   line-height: 1.5rem;
-  color: #696969;
+  color: var(--color-alt-text);
   margin-top: 0.25rem;
   padding-top: 0.5rem;
 }
@@ -41,7 +41,7 @@
   justify-self: start;
   font-size: 0.8rem;
   gap: 0.25rem;
-  color: #696969;
+  color: var(--color-alt-text);
   border-radius: 0.25rem;
 }
 
@@ -54,7 +54,7 @@
   /* background-color: #ff4851; */
   font-family: "Overpass", sans-serif;
   font-weight: 600;
-  color: #292021;
+  color: var(--color-main-text);
   font-size: 0.8rem;
   text-decoration: none;
   gap: 0.5rem;
@@ -80,7 +80,7 @@
 
 @media only screen and (min-width: 480px) {
   .card__details:hover {
-    color: #ff4851;
+    color: var(--color-main-accent);
   }
 }
 </style>
@@ -100,7 +100,7 @@
 </div>
 
 <script>
-import Calendar from "../icons/calendar.svg"
+import Calendar from "@/icons/calendar.svg"
 import dayjs from "dayjs"
 export let title, desc, href, date, tags
 </script>

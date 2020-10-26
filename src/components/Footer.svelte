@@ -1,15 +1,16 @@
 <style>
 footer {
   margin-top: 3rem;
-  border-top: 0.0625rem #eaeaea solid;
+  border-top: 0.0625rem var(--color-borders) solid;
   font-family: "Roboto Condensed", sans-serif;
   text-align: center;
   padding: 2rem 1rem;
-  background-color: #ffffff;
+  background-color: var(--color-alt-bg);
 }
 
 p {
   line-height: 1.5rem;
+  color: var(--color-main-text);
 }
 a {
   text-decoration: none;
@@ -35,11 +36,11 @@ a {
 }
 
 .icons a {
-  color: #121212;
+  color: var(--color-main-text);
   transition: color ease-out 0.2s;
 }
 .icons a:hover {
-  color: #ff4851;
+  color: var(--color-main-accent);
 }
 </style>
 
@@ -53,7 +54,7 @@ a {
     <a href="{github}" target="_blank" rel="norel noreferrer">
       <Github height="1.5rem" width="1.5rem" />
     </a>
-    <a href="{twitter}" target="_blank" rel="norel noreferrer">
+    <a href={twitter} target="_blank" rel="norel noreferrer">
       <Twitter height="1.5rem" width="1.5rem" />
     </a>
     <a href="https://elianiva.github.io" target="_blank" rel="norel noreferrer">
@@ -68,18 +69,15 @@ a {
     • Source code is available on
     <a class="github" href="{github}/elianiva.me">Github</a>
   </p>
-  <p>
-    Copyright &copy; 2020
-    <a class="elianiva" href="{github}">Elianiva</a>
-  </p>
+  <p>Copyright &copy; 2020 <a class="elianiva" href={github}>Elianiva</a></p>
 </footer>
 
 <script>
-import data from "../site-data.js"
-import Email from "../icons/email.svg"
-import Github from "../icons/github.svg"
-import Twitter from "../icons/twitter.svg"
-import RSS from "../icons/rss.svg"
+import data from "@/site-data.js"
+import Email from "@/icons/email.svg"
+import Github from "@/icons/github.svg"
+import Twitter from "@/icons/twitter.svg"
+import RSS from "@/icons/rss.svg"
 
 const { github, twitter, email } = data
 </script>

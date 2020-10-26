@@ -14,7 +14,7 @@
 .project__wrapper {
   border-radius: 0.5rem;
   overflow: hidden;
-  border: 0.0625rem #efefef solid;
+  border: 0.0625rem var(--color-special-bg) solid;
   height: 24.5rem;
   margin-bottom: 2rem;
 }
@@ -52,13 +52,12 @@
   filter: brightness(0.95);
 }
 .project__demo {
-  background-color: #ff4851;
-  color: #ffffff;
-  box-shadow: 0 0.25rem 0.5rem rgba(255, 72, 81, 0.4);
+  background-color: var(--color-main-accent);
+  color: var(--color-alt-bg);
 }
 .project__source {
-  background-color: #efefef;
-  color: #696969;
+  background-color: var(--color-special-bg);
+  color: var(--color-alt-text);
 }
 :global(.project__icon) {
   width: 1.125rem;
@@ -68,7 +67,7 @@
   border: none;
   height: 0.125rem;
   margin: 0.5rem 0 1rem;
-  background-color: #efefef;
+  background-color: var(--color-special-bg);
 }
 
 .project__content {
@@ -81,7 +80,7 @@
   width: 30%;
   height: 100%;
   padding: 1rem;
-  border: 0.0625rem #efefef solid;
+  border: 0.0625rem var(--color-borders) solid;
   border-radius: 0.5rem;
 }
 
@@ -94,7 +93,7 @@
 .stack__divider {
   height: 0.125rem;
   border: none;
-  background-color: #efefef;
+  background-color: var(--color-border);
   margin: 0.5rem 0;
 }
 
@@ -104,7 +103,7 @@
   gap: 1rem;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 0.0625rem #efefef solid;
+  border-bottom: 0.0625rem var(--color-border) solid;
 }
 
 .stack__item:last-child {
@@ -117,7 +116,7 @@
   justify-content: center;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background-color: #fafafa;
+  background-color: var(--color-special-bg);
 }
 
 .stack__logo img {
@@ -133,7 +132,7 @@
 }
 
 .stack__name:hover {
-  color: #ff4851;
+  color: var(--color-main-accent);
 }
 
 .stack__name::after {
@@ -149,14 +148,14 @@
 :global(.project__content p a) {
   position: relative;
   display: inline-block;
-  color: #ff4851;
+  color: var(--color-main-accent);
   text-decoration: none;
   margin: 0 0.125rem;
   transition: all ease-out 0.2s;
 }
 
 :global(.project__content p a:hover) {
-  color: #292021;
+  color: var(--color-main-text);
 }
 
 :global(.project__content p a::before) {
@@ -178,7 +177,7 @@
 }
 
 :global(.project__content code) {
-  background-color: #f4f4f4;
+  background-color: var(--color-special-bg);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
 }
@@ -186,15 +185,15 @@
 :global(.project__content pre) {
   border-radius: 0.5rem;
   margin: 0.5rem 0;
-  scrollbar-color: #b0b0b0 #efefef;
+  scrollbar-color: var(--color-thin) var(--color-special-bg);
 }
 
 :global(.project__content pre::-webkit-scrollbar-thumb) {
-  background-color: #b0b0b0;
+  background-color: var(--color-thin);
 }
 
 :global(.project__content pre::-webkit-scrollbar) {
-  background-color: #efefef;
+  background-color: var(--color-special-bg);
   height: 0.5rem;
 }
 
@@ -233,6 +232,7 @@
           src={`/project/${slug}/cover.png`}
           alt={title}
           class="project__img"
+          loading="lazy"
         />
       </Waypoint>
     </div>
@@ -277,12 +277,12 @@
 <ProgressButton />
 
 <script>
-import SEO from "../components/SEO.svelte"
-import Chrome from "../icons/chrome.svg"
-import Code from "../icons/code.svg"
+import SEO from "@/components/SEO.svelte"
+import Chrome from "@/icons/chrome.svg"
+import Code from "@/icons/code.svg"
 import Waypoint from "svelte-waypoint"
-import ProgressButton from "../components/ProgressButton.svelte"
-import data from "../site-data"
+import ProgressButton from "@/components/ProgressButton.svelte"
+import data from "@/site-data"
 export let title
 
 const projects = __PROJECTS__

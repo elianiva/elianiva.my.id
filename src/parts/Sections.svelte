@@ -3,7 +3,7 @@
   position: relative;
   margin-top: 4rem;
   font-family: "Roboto", sans-serif;
-  color: #121212;
+  color: var(--color-main-text);
   text-align: center;
 }
 
@@ -14,7 +14,8 @@
   right: -2rem;
   width: 4rem;
   height: 4rem;
-  background-color: rgba(255, 72, 81, 0.075);
+  background-color: var(--color-main-accent);
+  opacity: 0.1;
   z-index: -1;
 }
 
@@ -35,7 +36,7 @@
   left: 2rem;
   right: 2rem;
   border-radius: 0.25rem;
-  background-color: #ff4851;
+  background-color: var(--color-main-accent);
 }
 
 .section__cards {
@@ -48,13 +49,12 @@
   display: inline-block;
   margin-top: 2rem;
   padding: 0.75rem 1.5rem;
-  color: #ffffff;
-  background-color: #ff4851;
+  color: var(--color-alt-bg);
+  background-color: var(--color-main-accent);
   text-decoration: none;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.25rem;
   border-radius: 0.25rem;
-  box-shadow: 0 0.25rem 1rem rgba(255, 72, 81, 0.25);
   transition: all ease-out 0.2s;
 }
 
@@ -64,7 +64,7 @@
 }
 
 :global(.section__pattern) {
-  color: #ff4851;
+  color: var(--color-main-accent);
   position: absolute;
   top: 0;
   left: -2rem;

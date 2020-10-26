@@ -6,7 +6,7 @@
   gap: 2rem;
   align-items: center;
   justify-items: center;
-  color: #292021;
+  color: var(--color-main-text);
   max-width: 1080px;
   margin: 0 auto;
 }
@@ -15,7 +15,7 @@
   font-size: 1.25rem;
   font-family: "Overpass", sans-serif;
   font-weight: 600;
-  color: #ff4851;
+  color: var(--color-main-accent);
 }
 
 .hero__name {
@@ -35,7 +35,7 @@
 .hero__desc {
   position: relative;
   display: block;
-  color: #696969;
+  color: var(--color-alt-text);
   font-family: "Open Sans", sans-serif;
   font-size: clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem);
   line-height: 2rem;
@@ -46,7 +46,7 @@
   width: clamp(12rem, calc(20vw + 4rem), 16rem);
   height: clamp(12rem, calc(20vw + 4rem), 16rem);
   border-radius: 10rem;
-  border: 0.5rem #ffffff solid;
+  border: 0.5rem var(--color-alt-bg) solid;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
@@ -57,7 +57,8 @@
   width: clamp(6rem, calc(10vw + 4rem), 12rem);
   height: 12rem;
   z-index: -1;
-  color: rgba(255, 72, 81, 0.05);
+  color: var(--color-main-accent);
+  opacity: 0.1;
 }
 
 .hero__right {
@@ -74,7 +75,8 @@
   font-size: 4rem;
   font-family: monospace;
   font-weight: 900;
-  color: rgba(255, 72, 81, 0.1);
+  color: var(--color-main-accent);
+  opacity: 0.1;
 }
 @media only screen and (max-width: 960px) {
   .hero {

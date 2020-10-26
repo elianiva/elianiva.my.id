@@ -1,10 +1,10 @@
 <style>
 .card {
   overflow: hidden;
-  border: 0.0625rem #e4e4e4 solid;
+  border: 0.0625rem var(--color-borders) solid;
   border-radius: 0.25rem;
   text-align: left;
-  background-color: #ffffff;
+  background-color: var(--color-alt-bg);
 }
 
 .card__img {
@@ -18,12 +18,12 @@
   padding: 1rem;
   display: grid;
   grid-template-rows: 2rem 4.5rem 1fr;
-  border-top: 0.0625rem #e4e4e4 solid;
+  border-top: 0.0625rem var(--color-borders) solid;
 }
 
 .card__title {
   text-decoration: none;
-  color: #121212;
+  color: var(--color-main-text);
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
@@ -32,13 +32,13 @@
 }
 
 .card__title:hover {
-  color: #ff4851;
+  color: var(--color-main-accent);
 }
 
 .card__desc {
   font-family: "Roboto", sans-serif;
   line-height: 1.5rem;
-  color: #696969;
+  color: var(--color-alt-text);
 }
 
 .card__links {
@@ -65,14 +65,13 @@
 }
 
 .card__demo {
-  background-color: #ff4851;
-  color: #ffffff;
-  box-shadow: 0 0.25rem 0.5rem rgba(255, 72, 81, 0.25);
+  background-color: var(--color-main-accent);
+  color: var(--color-alt-bg);
 }
 
 .card__source {
-  background-color: #efefef;
-  color: #696969;
+  background-color: var(--color-special-bg);
+  color: var(--color-alt-text);
 }
 
 :global(.card__icon) {
@@ -82,14 +81,14 @@
 
 @media only screen and (min-width: 480px) {
   .card__details:hover {
-    color: #ff4851;
+    color: var(--color-main-accent);
   }
 }
 </style>
 
 <div class="card">
   <Waypoint throttle="500" offset="320">
-    <img class="card__img" src={src} alt={title} />
+    <img class="card__img" src={src} alt={title} loading="lazy" />
   </Waypoint>
   <div class="card__details">
     <a rel="prefetch" href={href} class="card__title">{title}</a>
@@ -114,8 +113,8 @@
 </div>
 
 <script>
-import Code from "../icons/code.svg"
-import Chrome from "../icons/chrome.svg"
+import Code from "@/icons/code.svg"
+import Chrome from "@/icons/chrome.svg"
 import Waypoint from "svelte-waypoint"
 export let title, src, desc, href, demo, source
 </script>

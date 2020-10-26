@@ -3,7 +3,7 @@
   max-width: 1080px;
   margin: 0 auto;
   padding: 2rem 1rem 0;
-  background-color: #fcfcfc;
+  background-color: var(--color-main-bg);
   z-index: 2;
 }
 
@@ -20,8 +20,8 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: #ffffff;
-  border-top: 0.0625rem #e4e4e4 solid;
+  background-color: var(--color-alt-bg);
+  border-top: 0.0625rem var(--color-borders) solid;
   height: 4rem;
   display: flex;
   align-items: center;
@@ -40,8 +40,8 @@
   font-size: 1.125rem;
   font-family: "Roboto Condensed", sans-serif;
   border: none;
-  background-color: #ff4851;
-  color: #ffffff;
+  background-color: var(--color-main-accent);
+  color: var(--color-alt-bg);
   margin-right: 1rem;
   border-radius: 0.25rem;
   text-decoration: none;
@@ -50,8 +50,8 @@
 
 .hero__button--inactive {
   padding: 0.75rem 2rem;
-  background-color: #f4f4f4;
-  color: #696969;
+  background-color: var(--color-main-bg);
+  color: var(--color-alt-text);
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.125rem;
   border: none;
@@ -122,12 +122,12 @@
 <ProgressButton showBar={false} />
 
 <script>
-import SEO from "../components/SEO.svelte"
-import Hero from "../parts/Hero.svelte"
-import Navbar from "../components/Navbar.svelte"
-import Footer from "../components/Footer.svelte"
-import Section from "../parts/Sections.svelte"
-import ProgressButton from "../components/ProgressButton.svelte"
+import SEO from "@/components/SEO.svelte"
+import Hero from "@/parts/Hero.svelte"
+import Navbar from "@/components/Navbar.svelte"
+import Footer from "@/components/Footer.svelte"
+import Section from "@/parts/Sections.svelte"
+import ProgressButton from "@/components/ProgressButton.svelte"
 
 const posts = __POSTS__
 const projects = __PROJECTS__

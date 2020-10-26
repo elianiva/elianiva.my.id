@@ -35,7 +35,7 @@
   text-align: center;
   font-size: 1.125rem;
   line-height: 2rem;
-  color: #ff4851;
+  color: #dc240f;
   transition: color ease-out 0.2s;
   text-decoration: none;
 }
@@ -73,7 +73,6 @@
 :global(.post__content p) {
   line-height: 2rem;
   font-size: 1.125rem;
-  /* margin: 1rem 0; */
 }
 
 :global(.post__content > * + *) {
@@ -84,7 +83,7 @@
   font-family: "Roboto Condensed", sans-serif;
   font-size: 2rem;
   line-height: 3.5rem;
-  border-bottom: 0.125rem #ff4851 solid;
+  border-bottom: 0.125rem #dc240f solid;
   /* margin: 0.25rem 0 0.75rem; */
 }
 
@@ -110,14 +109,14 @@
   content: "• ";
   position: absolute;
   left: 0;
-  color: #ff4851;
+  color: #dc240f;
 }
 
 :global(.post__content h2::after) {
   content: "# ";
   position: absolute;
   left: 0;
-  color: #ff4851;
+  color: #dc240f;
 }
 
 :global(.post__content img) {
@@ -141,7 +140,7 @@
 :global(.post__content a) {
   position: relative;
   display: inline-block;
-  color: #ff4851;
+  color: #dc240f;
   text-decoration: none;
   transition: all ease-out 0.2s;
 }
@@ -232,7 +231,7 @@
 }
 
 :global(.post__content table th) {
-  background-color: #ff4851;
+  background-color: #dc240f;
   color: #ffffff;
   font-size: 1.25rem;
 }
@@ -337,10 +336,10 @@
 
 <script>
 import { onMount } from "svelte"
-import SEO from "../components/SEO.svelte"
-import ProgressButton from "../components/ProgressButton.svelte"
+import SEO from "@/components/SEO.svelte"
+import ProgressButton from "@/components/ProgressButton.svelte"
 import dayjs from "dayjs"
-import data from "../site-data"
+import data from "@/site-data"
 export let title, date
 
 let content
