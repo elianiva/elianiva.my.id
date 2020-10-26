@@ -65,7 +65,7 @@
 }
 
 .card__tag:hover {
-  filter: brightness(0.95);
+  filter: brightness(1.2);
 }
 
 .card__tag::before {

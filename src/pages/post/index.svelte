@@ -67,7 +67,6 @@
     {#each posts as post}
       <PostCard
         title={post.title}
-        src={`/post/${post.slug}/cover.png`}
         href={`/post/${post.slug}`}
         desc={post.desc}
         date={post.date}

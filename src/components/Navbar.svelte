@@ -116,7 +116,7 @@
   }
 
   .navbar__checkbox:checked ~ .navbar__hamburger_item--1 {
-    transform: rotate(45deg) translateY(0.5rem);
+    transform: rotate(45deg) translate3d(0, 0.5rem, 0);
   }
 
   .navbar__checkbox:checked ~ .navbar__hamburger_item--2 {
@@ -124,10 +124,10 @@
   }
 
   .navbar__checkbox:checked ~ .navbar__hamburger_item--3 {
-    transform: rotate(-45deg) translateY(-0.5rem);
+    transform: rotate(-45deg) translate3d(0, -0.5rem, 0);
   }
 
-  [class^=navbar__hamburger_item] {
+  [class^="navbar__hamburger_item"] {
     position: relative;
     display: block;
     background-color: var(--color-main-text);
@@ -186,51 +186,57 @@
         </button>
       </li>
     </ul>
-    <div class="navbar__hamburger">
-      <input class="navbar__checkbox" bind:this={checkbox} on:click={toggleNav} type="checkbox" />
+    <div class="navbar__hamburger" style="display: {isHamburgerVisible}">
+      <input
+        class="navbar__checkbox"
+        on:input={toggleNav}
+        type="checkbox"
+        checked={checked}
+      />
       <span class="navbar__hamburger_item--1" />
       <span class="navbar__hamburger_item--2" />
       <span class="navbar__hamburger_item--3" />
     </div>
   </div>
-  {#if isVisible}
-    <div class="navbar__mobile" transition:fly={{ duration: 200, y: -100 }}>
-      <ul class="navbar__mobile_items">
-        <li class="navbar__mobile_item" on:click={toggleNav}>
-          <a href="/">Home</a>
-        </li>
-        <li class="navbar__mobile_item" class:active={segment === 'post'}>
-          <a href="/post" on:click={toggleNav}>Posts</a>
-        </li>
-        <li class="navbar__mobile_item" class:active={segment === 'project'}>
-          <a href="/project" on:click={toggleNav}>Projects</a>
-        </li>
-        <li class="navbar__mobile_item" class:active={segment === 'about'}>
-          <a href="/about" on:click={toggleNav}>About</a>
-        </li>
-        <li class="navbar__mobile_item">
-          <button
-            class="navbar__button"
-            on:click={toggleDarkMode}
-          >
-            <Moon class="navbar__darkmode" width="1.5rem" height="1.5rem" />
-          </button>
-        </li>
-      </ul>
-    </div>
-  {/if}
 </nav>
+{#if isVisible}
+  <div class="navbar__mobile" transition:fly={{ duration: 200, y: -100 }}>
+    <ul class="navbar__mobile_items">
+      <li class="navbar__mobile_item" on:click={toggleNav}>
+        <a href="/">Home</a>
+      </li>
+      <li class="navbar__mobile_item" class:active={segment === 'post'}>
+        <a href="/post" on:click={toggleNav}>Posts</a>
+      </li>
+      <li class="navbar__mobile_item" class:active={segment === 'project'}>
+        <a href="/project" on:click={toggleNav}>Projects</a>
+      </li>
+      <li class="navbar__mobile_item" class:active={segment === 'about'}>
+        <a href="/about" on:click={toggleNav}>About</a>
+      </li>
+      <li class="navbar__mobile_item">
+        <button class="navbar__button" on:click={toggleDarkMode}>
+          <Moon class="navbar__darkmode" width="1.5rem" height="1.5rem" />
+        </button>
+      </li>
+    </ul>
+  </div>
+{/if}
 
 <script>
 import { fly } from "svelte/transition"
 import Moon from "@/icons/moon.svg"
 import { theme } from "@/utils/theme"
-export let segment, position
+export let segment
+export let position = null
 
-let screenHeight, scrollPos, navPosition, checkbox
+let screenHeight, scrollPos, navPosition
 let isVisible = false
+let checked = false
 
 $: navPosition = getNavbarPosition(scrollPos)
+$: isHamburgerVisible = scrollPos >= screenHeight ? "block" : "none"
+$: console.log(isHamburgerVisible)
 
 const getNavbarPosition = scrollPos => {
   if (position === "home") {
@@ -251,13 +257,15 @@ const getNavbarPosition = scrollPos => {
 }
 
 const toggleDarkMode = () => {
-  theme.update(current => {
-    return current === "light" ? "dark" : "light"
-  })
+  theme.update(current => (current === "light" ? "dark" : "light"))
 }
 
 const toggleNav = () => {
-  checkbox.checked = !checkbox.checked
+  checked = !checked
   isVisible = !isVisible
+
+  // turn off scrolling when mobile nav is visible
+  if (checked) document.body.style.overflow = "hidden"
+  else document.body.style.overflow = "auto"
 }
 </script>

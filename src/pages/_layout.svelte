@@ -31,7 +31,7 @@ import { theme } from "@/utils/theme"
 export let segment
 
 onMount(() => {
-  const preference = localStorage.getItem("theme") || 'dark'
+  const preference = localStorage.getItem("theme") || "dark"
   theme.set(preference)
 
   theme.subscribe(current => {

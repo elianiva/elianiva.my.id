@@ -49,7 +49,7 @@
 
 .project__demo:hover,
 .project__source:hover {
-  filter: brightness(0.95);
+  filter: brightness(1.2);
 }
 .project__demo {
   background-color: var(--color-main-accent);
@@ -165,7 +165,7 @@
   left: -0.25rem;
   right: -0.25rem;
   top: 0;
-  transform: scaleY(0.1);
+  transform: scale3d(0, 0.1, 0);
   background-color: rgba(255, 72, 81, 0.5);
   z-index: -1;
   transition: all ease-out 0.2s;
@@ -173,7 +173,7 @@
 }
 
 :global(.project__content a:hover::before) {
-  transform: scaleY(1);
+  transform: scale3d(0, 1, 0);
 }
 
 :global(.project__content code) {

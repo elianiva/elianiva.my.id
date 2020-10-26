@@ -51,7 +51,7 @@
   left: -0.25rem;
   right: -0.25rem;
   top: 0;
-  transform: scaleY(0.1);
+  transform: scale3d(0, 0.1, 0);
   background-color: var(--color-main-accent);
   opacity: 0.5;
   z-index: -1;
@@ -60,7 +60,7 @@
 }
 
 .post__edit:hover::before {
-  transform: scaleY(1);
+  transform: scale3d(0, 1, 0);
 }
 
 .post__content {
@@ -156,7 +156,7 @@
   left: -0.25rem;
   right: -0.25rem;
   top: 0.25rem;
-  transform: scaleY(0.1);
+  transform: scale3d(0, 0.1, 0);
   background-color: var(--color-main-accent);
   opacity: 0.5;
   z-index: -1;
@@ -165,7 +165,7 @@
 }
 
 :global(.post__content a:hover::before) {
-  transform: scaleY(1);
+  transform: scale3d(0, 1, 0);
 }
 
 :global(.post__content code) {

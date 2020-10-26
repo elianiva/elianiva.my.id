@@ -5,6 +5,7 @@
   font-family: "Roboto", sans-serif;
   color: var(--color-main-text);
   text-align: center;
+  z-index: 2;
 }
 
 .section::after {
@@ -15,8 +16,8 @@
   width: 10rem;
   height: 4rem;
   background-color: var(--color-main-accent);
-  opacity: 0.1;
-  z-index: 2;
+  opacity: 0.05;
+  z-index: -1;
 }
 
 .section__title {
@@ -59,8 +60,8 @@
 }
 
 .section__button:hover {
-  transform: translateY(-0.25rem);
-  filter: brightness(0.95);
+  transform: translate3d(0, -0.25rem, 0);
+  filter: brightness(1.2);
 }
 
 :global(.section__pattern) {

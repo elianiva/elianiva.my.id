@@ -10,7 +10,7 @@
 .hero {
   display: flex;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 1rem 0;
 }
@@ -62,8 +62,7 @@
 
 .hero__button:hover,
 .hero__button--inactive:hover {
-  transform: translateY(-0.25rem);
-  filter: brightness(0.95);
+  filter: brightness(1.2);
 }
 
 @media only screen and (max-width: 960px) {
