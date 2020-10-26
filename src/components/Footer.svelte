@@ -46,14 +46,14 @@ a {
 <footer>
   <div class="icons">
     <!-- prettier-ignore -->
-    <a href="mailto:dicha.arkana03@gmail.com" target="_blank" rel="norel noreferrer">
+    <a href="mailto:{email}" target="_blank" rel="norel noreferrer">
       <Email height="1.5rem" width="1.5rem" />
     </a>
     <!-- prettier-ignore -->
-    <a href="https://github.com/elianiva" target="_blank" rel="norel noreferrer">
+    <a href="{github}" target="_blank" rel="norel noreferrer">
       <Github height="1.5rem" width="1.5rem" />
     </a>
-    <a href="https://twitter/elianiva_" target="_blank" rel="norel noreferrer">
+    <a href="{twitter}" target="_blank" rel="norel noreferrer">
       <Twitter height="1.5rem" width="1.5rem" />
     </a>
     <a href="https://elianiva.github.io" target="_blank" rel="norel noreferrer">
@@ -66,17 +66,20 @@ a {
     and
     <a class="vercel" href="https://vercel.app">Vercel</a>
     • Source code is available on
-    <a class="github" href="https://github.com/elianiva/elianiva.me">Github</a>
+    <a class="github" href="{github}/elianiva.me">Github</a>
   </p>
   <p>
     Copyright &copy; 2020
-    <a class="elianiva" href="https://github.com/elianiva">Elianiva</a>
+    <a class="elianiva" href="{github}">Elianiva</a>
   </p>
 </footer>
 
 <script>
+import data from "../site-data.js"
 import Email from "../icons/email.svg"
 import Github from "../icons/github.svg"
 import Twitter from "../icons/twitter.svg"
 import RSS from "../icons/rss.svg"
+
+const { github, twitter, email } = data
 </script>
