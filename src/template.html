@@ -10,7 +10,7 @@
       // set dark mode correctly before everythings get rendered
       // thanks https://github.com/pveyes
       try {
-        const preference = localStorage.getItem("darkmode") || "light"
+        const preference = localStorage.getItem("theme") || "dark"
         if (preference) {
           document.documentElement.setAttribute("data-theme", preference)
         }

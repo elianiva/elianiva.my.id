@@ -5,7 +5,7 @@ main {
   min-height: 100vh;
 }
 
-main div {
+div {
   flex: 1;
   margin-top: 4rem;
 }
@@ -31,11 +31,11 @@ import { theme } from "@/utils/theme"
 export let segment
 
 onMount(() => {
-  const preference = localStorage.getItem("darkmode") || 'light'
+  const preference = localStorage.getItem("theme") || 'dark'
   theme.set(preference)
 
   theme.subscribe(current => {
-    localStorage.setItem("darkmode", current)
+    localStorage.setItem("theme", current)
     document.documentElement.setAttribute("data-theme", current)
   })
 })
