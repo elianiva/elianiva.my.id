@@ -31,13 +31,14 @@
   }
 
   .project__title {
-    font-family: "Roboto Condensed", sans-serif;
+    color: var(--color-main-text);
+    font-family: "Overpass", sans-serif;
     font-size: 2rem;
   }
 
   .project__demo,
   .project__source {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -53,7 +54,7 @@
   }
   .project__demo {
     background-color: var(--color-main-accent);
-    color: var(--color-alt-bg);
+    color: #ffffff;
   }
   .project__source {
     background-color: var(--color-special-bg);
@@ -71,7 +72,7 @@
   }
 
   .project__content {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
@@ -85,7 +86,8 @@
   }
 
   .stack__title {
-    font-family: "Roboto Condensed", sans-serif;
+    color: var(--color-main-text);
+    font-family: "Overpass", sans-serif;
     font-weight: 600;
     font-size: 1.5rem;
   }
@@ -124,10 +126,10 @@
   }
 
   .stack__name {
-    font-family: "Roboto Condensed", sans-serif;
+    color: var(--color-main-text);
+    font-family: "Overpass", sans-serif;
     font-size: 1.25rem;
     text-decoration: none;
-    color: #292021;
     transition: color ease-out 0.2s;
   }
 
@@ -142,6 +144,7 @@
   }
 
   :global(.project__content p) {
+    color: var(--color-main-text);
     margin-bottom: 1rem;
   }
 
@@ -198,7 +201,6 @@
   }
 
   :global(.project__content pre code) {
-    background-color: #1d2021;
     padding: 0;
     border-radius: 0;
     font-size: 1rem;
@@ -214,12 +216,21 @@
 </style>
 
 <svelte:head>
-  <link
-    rel="preload"
-    href="/prism.css"
-    as="style"
-    onload="this.rel='stylesheet'"
-  />
+  {#if $theme === 'light'}
+    <link
+      rel="preload"
+      href="/prism-gruvbox-hard.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+  {:else}
+    <link
+      rel="preload"
+      href="/prism-night-owl.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+  {/if}
 </svelte:head>
 
 <SEO {title} thumbnail={`${data.siteUrl}/project/${slug}/cover.png`} />
@@ -282,6 +293,7 @@
   import Code from "@/icons/code.svg"
   import Waypoint from "svelte-waypoint"
   import ProgressButton from "@/components/ProgressButton.svelte"
+  import { theme } from "@/utils/theme"
   import data from "@/site-data"
   export let title
 
