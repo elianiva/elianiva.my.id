@@ -1,18 +1,18 @@
 <style>
-main {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+  main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-div {
-  flex: 1;
-  margin-top: 4rem;
-}
+  div {
+    flex: 1;
+    margin-top: 4rem;
+  }
 </style>
 
 {#if segment !== undefined}
-  <Navbar segment={segment} />
+  <Navbar {segment} />
   <main>
     <div>
       <slot />
@@ -24,19 +24,19 @@ div {
 {/if}
 
 <script>
-import { onMount } from "svelte"
-import Navbar from "@/components/Navbar.svelte"
-import Footer from "@/components/Footer.svelte"
-import { theme } from "@/utils/theme"
-export let segment
+  import { onMount } from "svelte"
+  import Navbar from "@/components/Navbar.svelte"
+  import Footer from "@/components/Footer.svelte"
+  import { theme } from "@/utils/theme"
+  export let segment
 
-onMount(() => {
-  const preference = localStorage.getItem("theme") || "dark"
-  theme.set(preference)
+  onMount(() => {
+    const preference = localStorage.getItem("theme") || "dark"
+    theme.set(preference)
 
-  theme.subscribe(current => {
-    localStorage.setItem("theme", current)
-    document.documentElement.setAttribute("data-theme", current)
+    theme.subscribe(current => {
+      localStorage.setItem("theme", current)
+      document.documentElement.setAttribute("data-theme", current)
+    })
   })
-})
 </script>

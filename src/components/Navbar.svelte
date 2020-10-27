@@ -1,168 +1,168 @@
 <style>
-.navbar {
-  height: 4rem;
-  border-bottom: 0.0625rem var(--color-borders) solid;
-  z-index: 20;
-  background-color: var(--color-alt-bg);
-}
-
-.navbar .active a {
-  color: var(--color-main-accent);
-}
-
-.navbar__container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.navbar__title {
-  flex: 1;
-}
-
-.navbar__title a {
-  font-family: "Kaushan Script", cursive;
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-decoration: none;
-  color: var(--color-main-text);
-  transition: color ease-out 0.2s;
-}
-
-.navbar__title a:hover {
-  color: var(--color-main-accent);
-}
-
-.navbar__items {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  justify-items: center;
-  gap: 0.75rem;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 1.25rem;
-}
-
-.navbar__item a {
-  position: relative;
-  color: var(--color-main-text);
-  text-decoration: none;
-  transition: color ease-out 0.2s;
-}
-
-.navbar__item a:hover {
-  color: var(--color-main-accent);
-}
-
-.navbar__item a:hover::before {
-  transform: scale(1);
-}
-
-.navbar__item a::before {
-  content: "";
-  position: absolute;
-  bottom: -0.25rem;
-  left: 0;
-  right: 0;
-  height: 0.125rem;
-  background-color: var(--color-main-accent);
-  transform: scale(0);
-  transition: transform ease-out 0.2s;
-}
-
-.navbar__hamburger {
-  display: none;
-  cursor: pointer;
-}
-
-.navbar__checkbox {
-  opacity: 0;
-}
-
-.navbar__button {
-  border: none;
-  background: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  color: var(--color-main-text);
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 480px) {
-  .navbar__items {
-    display: none;
+  .navbar {
+    height: 4rem;
+    border-bottom: 0.0625rem var(--color-borders) solid;
+    z-index: 20;
+    background-color: var(--color-alt-bg);
   }
 
-  .navbar__hamburger {
-    position: relative;
-    z-index: 10;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 0.25rem;
-    width: 1.5rem;
-    height: 0.85rem;
+  .navbar .active a {
+    color: var(--color-main-accent);
   }
 
-  .navbar__checkbox {
-    position: absolute;
-    width: 100%;
+  .navbar__container {
     height: 100%;
-    z-index: 2;
+    display: flex;
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
-  .navbar__checkbox:checked ~ .navbar__hamburger_item--1 {
-    transform: rotate(45deg) translate3d(0, 0.5rem, 0);
+  .navbar__title {
+    flex: 1;
   }
 
-  .navbar__checkbox:checked ~ .navbar__hamburger_item--2 {
-    transform: scale(0);
+  .navbar__title a {
+    font-family: "Kaushan Script", cursive;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--color-main-text);
+    transition: color ease-out 0.2s;
   }
 
-  .navbar__checkbox:checked ~ .navbar__hamburger_item--3 {
-    transform: rotate(-45deg) translate3d(0, -0.5rem, 0);
+  .navbar__title a:hover {
+    color: var(--color-main-accent);
   }
 
-  [class^="navbar__hamburger_item"] {
+  .navbar__items {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 0.75rem;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.25rem;
+  }
+
+  .navbar__item a {
     position: relative;
-    display: block;
-    background-color: var(--color-main-text);
+    color: var(--color-main-text);
+    text-decoration: none;
+    transition: color ease-out 0.2s;
+  }
+
+  .navbar__item a:hover {
+    color: var(--color-main-accent);
+  }
+
+  .navbar__item a:hover::before {
+    transform: scale(1);
+  }
+
+  .navbar__item a::before {
+    content: "";
+    position: absolute;
+    bottom: -0.25rem;
+    left: 0;
+    right: 0;
+    height: 0.125rem;
+    background-color: var(--color-main-accent);
+    transform: scale(0);
     transition: transform ease-out 0.2s;
   }
 
-  .navbar__mobile {
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-alt-bg);
+  .navbar__hamburger {
+    display: none;
+    cursor: pointer;
+  }
+
+  .navbar__checkbox {
+    opacity: 0;
+  }
+
+  .navbar__button {
+    border: none;
+    background: none;
+    outline: none;
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-
-  .navbar__mobile_items {
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    align-items: center;
-    justify-items: center;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .navbar__mobile_item a {
-    font-family: "Roboto Condensed", sans-serif;
-    text-decoration: none;
-    font-size: 1.5rem;
     color: var(--color-main-text);
+    cursor: pointer;
   }
-}
+
+  @media only screen and (max-width: 480px) {
+    .navbar__items {
+      display: none;
+    }
+
+    .navbar__hamburger {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 0.25rem;
+      width: 1.5rem;
+      height: 0.85rem;
+    }
+
+    .navbar__checkbox {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .navbar__checkbox:checked ~ .navbar__hamburger_item--1 {
+      transform: rotate(45deg) translate3d(0, 0.5rem, 0);
+    }
+
+    .navbar__checkbox:checked ~ .navbar__hamburger_item--2 {
+      transform: scale(0);
+    }
+
+    .navbar__checkbox:checked ~ .navbar__hamburger_item--3 {
+      transform: rotate(-45deg) translate3d(0, -0.5rem, 0);
+    }
+
+    [class^="navbar__hamburger_item"] {
+      position: relative;
+      display: block;
+      background-color: var(--color-main-text);
+      transition: transform ease-out 0.2s;
+    }
+
+    .navbar__mobile {
+      position: fixed;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-alt-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar__mobile_items {
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      align-items: center;
+      justify-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .navbar__mobile_item a {
+      font-family: "Roboto Condensed", sans-serif;
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: var(--color-main-text);
+    }
+  }
 </style>
 
 <svelte:window bind:innerHeight={screenHeight} bind:scrollY={scrollPos} />
@@ -191,7 +191,7 @@
         class="navbar__checkbox"
         on:input={toggleNav}
         type="checkbox"
-        checked={checked}
+        {checked}
       />
       <span class="navbar__hamburger_item--1" />
       <span class="navbar__hamburger_item--2" />
@@ -224,48 +224,48 @@
 {/if}
 
 <script>
-import { fly } from "svelte/transition"
-import Moon from "@/icons/moon.svg"
-import { theme } from "@/utils/theme"
-export let segment
-export let position = null
+  import { fly } from "svelte/transition"
+  import Moon from "@/icons/moon.svg"
+  import { theme } from "@/utils/theme"
+  export let segment
+  export let position = null
 
-let screenHeight, scrollPos, navPosition
-let isVisible = false
-let checked = false
+  let screenHeight, scrollPos, navPosition
+  let isVisible = false
+  let checked = false
 
-$: navPosition = getNavbarPosition(scrollPos)
-$: isHamburgerVisible = scrollPos >= screenHeight ? "block" : "none"
-$: console.log(isHamburgerVisible)
+  $: navPosition = getNavbarPosition(scrollPos)
+  $: isHamburgerVisible = scrollPos >= screenHeight ? "block" : "none"
+  $: console.log(isHamburgerVisible)
 
-const getNavbarPosition = scrollPos => {
-  if (position === "home") {
-    return `
+  const getNavbarPosition = scrollPos => {
+    if (position === "home") {
+      return `
     position: ${scrollPos >= screenHeight ? "fixed" : "absolute"};
     left: 0;
     right: 0;
     top: ${scrollPos >= screenHeight ? "100vh" : "unset"};
     transform: ${scrollPos >= screenHeight ? "translateY(-100vh)" : "unset"};
     `
-  } else {
-    return `
+    } else {
+      return `
     position: fixed;
     left: 0;
     right: 0;
     `
+    }
   }
-}
 
-const toggleDarkMode = () => {
-  theme.update(current => (current === "light" ? "dark" : "light"))
-}
+  const toggleDarkMode = () => {
+    theme.update(current => (current === "light" ? "dark" : "light"))
+  }
 
-const toggleNav = () => {
-  checked = !checked
-  isVisible = !isVisible
+  const toggleNav = () => {
+    checked = !checked
+    isVisible = !isVisible
 
-  // turn off scrolling when mobile nav is visible
-  if (checked) document.body.style.overflow = "hidden"
-  else document.body.style.overflow = "auto"
-}
+    // turn off scrolling when mobile nav is visible
+    if (checked) document.body.style.overflow = "hidden"
+    else document.body.style.overflow = "auto"
+  }
 </script>

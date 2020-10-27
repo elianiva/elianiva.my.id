@@ -1,0 +1,101 @@
+---
+title: I finally rebuild my site using Sapper and MDsveX
+date: 2020-10-20
+desc: A post where I explain why I migrate my website using Sapper
+tags:
+  - svelte
+  - website
+---
+
+# Table of Content
+
+# Introduction
+Well, I've been trying out Svelte lately and so far I love it. I finally rebuild my site using Sapper. Previously I was using Gatsby, it was an awesome DX but I want to try something new and fresh.
+
+# Reasons
+## Why did I rebuild my site?
+Of course, I want to try this new technology called Svelte. If you read my [previous post](https://elianiva.me/post/my-experience-with-svelte), I said that I want to rebuild my website using [Svelte](https://svelte.dev). Using [Sapper](https://sapper.svelte.dev), to be more specific.
+
+I only use my previous website as a blog. A place where I put some random post with the main reason of "self-documenting". I also found it useful when you learned something new and you try to explain it to else. It makes me understand it even better.
+
+## Why did I choose Svelte/Sapper?
+I choose Svelte (or Sapper to be more specific) because it's a unique framework. Actually, [Svelte is a language](https://gist.github.com/Rich-Harris/0f910048478c2a6505d1c32185b61934). Why didn't I choose something like Vue/Nuxt? Because it's too similar to React/Next in my opinion.
+
+They both use Virtual DOM while Svelte does not. Svelte converts our app into ideal JavaScript at _build time_, rather than interpreting our application code at _runtime_.
+
+> Rethinking Reactivity with Svelte
+
+# My Experience
+## How was the development experience?
+Well, I came from Gatsby which has _a lot_ of plugins. This time I made it using Sapper which has no plugins. I have to do stuff by myself. It's still a great experience nonetheless.
+
+Svelte is a new technology, meaning that `nvim-lsp` most likely hasn't supported it yet. nvim-lsp is a builtin lsp client for a text editor that I use which is [Neovim](https://neovim.io). Thankfully, adding an LSP config for that is quite easy so I made [a pull request](https://github.com/neovim/nvim-lspconfig/pull/385) for it.
+
+Because of this project, I also have a chance to tinker around even more with Lua stuff in Neovim which I'll talk about in a different post.
+
+## Issues that I encountered
+Initially, I want to use [SCSS](https://sass-lang.com/) instead of plain CSS. As always, nothing goes smoothly in our life. It conflicts with `svelte-image` which throws a bunch of errors. To be fair, it doesn't affect anything, it's just hurt for me to see those errors whenever I start the dev server. I decided to just use the good ol' plain CSS.
+
+Another issue that I encountered is the table of content. You see, the table of content has a list of links which has an href of a heading ID. At the time of writing this, Sapper has an issue where if an URL has an href of `#heading-id` (started with a hash) then it will go to `/#heading-id` instead of adding the href to the end of the URL like `/post/slug#heading-id`. This issue is currently being tracked [here](https://github.com/sveltejs/sapper/issues/331).
+
+The solution for it was quite simple, I just need to add this piece of code (thanks to [this comment](https://github.com/sveltejs/sapper/issues/331#issuecomment-706627790)) on my post layout and it's fixed.
+
+```javascript
+import { onMount } from 'svelte'
+onMount(() => {
+  document.querySelectorAll('a').forEach(a => {
+    if (!a.hash || !document.querySelectorAll(a.hash).length) return
+    a.addEventListener('click', event => {
+      event.preventDefault()
+      window.location.hash = event.target.getAttribute('href')
+    })
+  })
+})
+```
+
+I also couldn't make [shiki](https://shiki.matsu.io) work with MDsveX. There's nothing wrong with the default highlighter of MDsveX (which is [prismjs](https://prismjs.com)) but I want to use Shiki because it has the same syntax grammar as vscode and it looks better. To give you a better idea, here's a comparison side by side.
+
+# Technologies I Use
+## The core
+I use Sapper (obviously) for this website. Why did I choose Sapper, you might ask. Well, because Sapper supports SSR. Though at the time of writing this, there has been a Svelte Summit and there's a panel where Rich Harris, the creator of Svelte said that Sapper will be discontinued and Svelte will support SSR instead.
+
+I am so hyped for this. Svelte will also use [Snowpack](https://snowpack.dev) instead of Rollup so it will support Hot Module Reloading. Couldn't wait for it to be released to Master branch. As of now, it's still in private and quite unstable.
+
+It looks so cool at a first glance. If you want to see it yourself, [there you go](https://www.youtube.com/watch?v=qSfdtmcZ4d0&t=53s). I found a [good article](https://codechips.me/snowpack-svelte-typescript-tailwindcss/) that you might also want to read.
+
+I have an intention of moving this site to Svelte in the future once it supports SSR. Rich Harris said that the future version of Svelte will be quite similar with Sapper so it won't be a hassle to migrate.
+
+## Post and project pages
+I use [MDsveX](https://mdsvex.com) as a source for my post and project page. It's basically like [MDX](https://mdxjs.com/) but for Svelte. I use Markdown on my previous site. I chose MDsveX because of [this talk](https://www.youtube.com/watch?v=Tr9wJYvnA24). It was a great talk, props to Svelte Indonesia community. The talk convinced me enough to use MDsveX instead of plain Markdown.
+
+I have two separate layouts which are [post layout](TODO) and [project layout](TODO). If you want to know the differences, just check it out yourself ツ
+
+## Stylings
+As I mentioned earlier, I was going to use SCSS but got canceled. I use PostCSS instead to utilize its rich plugin ecosystem. Currently, I use [autoprefixer](https://github.com/postcss/autoprefixer) to prefix all of my CSS and [cssnano](https://cssnano.co/) to minify my CSS.
+
+## Optimisation
+I use [svelte-image](https://github.com/matyunya/svelte-image) to lazyload images for my site. Though, I'm having some issue right now. There's a warning which says
+
+```
+Cannot process a dynamic value: MustacheTag
+```
+
+This is caused by passing a variable to `svelte-image` component like this. In other words, `svelte-image` doesn't support dynamic path.
+
+Currently I just use `svelte-waypoint` to lazyload my images.
+
+```html
+<Image src={src} />
+
+<script>
+export let src
+</script>
+```
+
+This issue is currently tracked [here](https://github.com/matyunya/svelte-image/issues/6). At the moment, this issue is not possible to fix because of [this reason](https://github.com/matyunya/svelte-image/issues/31#issuecomment-550711822). I really hope this issue will get fixed soon in the future.
+
+## Hosting
+I use [Vercel](https://vercel.com) to host my site. I used Vercel quite a few in the past and it's been great. It's simple to set up and integrate with Github. It's also free!
+
+# Conclusion
+All in all, I'm glad that finally decided to rebuild my site using Sapper. It was a great experience. Thanks to [iamyuu](https://github.com/iamyuu) because I took a lot of inspiration from his site (code wise, not the UI).

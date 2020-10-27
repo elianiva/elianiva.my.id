@@ -4,8 +4,8 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "svelteSortOrder": "styles-markup-scripts",
-  "svelteAllowShorthand": false,
+  "svelteAllowShorthand": true,
   "svelteBracketNewLine": true,
-  "svelteIndentScriptAndStyle": false,
+  "svelteIndentScriptAndStyle": true,
   "printWidth": 80
 }
