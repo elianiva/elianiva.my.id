@@ -11,20 +11,16 @@
       // set dark mode correctly before everythings get rendered
       // thanks https://github.com/pveyes
       try {
-        const { matches: isDarkMode } = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        )
-
+        // prettier-ignore
+        const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
         let preference
-        if (localStorage.getItem("theme")) {
-          preference = localStorage.getItem("theme")
-        } else {
-          preference = isDarkTheme ? "dark" : "light"
-        }
 
-        if (preference) {
-          document.documentElement.setAttribute("data-theme", preference)
-        }
+        // prettier-ignore
+        if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
+        else preference = isDarkTheme ? "dark" : "light"
+
+        // prettier-ignore
+        if (preference) document.documentElement.setAttribute("data-theme", preference)
       } catch (err) {
         console.log(err)
       }

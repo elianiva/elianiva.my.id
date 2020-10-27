@@ -36,13 +36,11 @@
     )
 
     let preference
-    if (localStorage.getItem("theme")) {
-      preference = localStorage.getItem("theme")
-    } else {
-      preference = isDarkTheme ? "dark" : "light"
-    }
 
-    console.log(preference)
+    // prettier-ignore
+    if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
+    else preference = isDarkTheme ? "dark" : "light"
+
     theme.set(preference)
 
     theme.subscribe(current => {
