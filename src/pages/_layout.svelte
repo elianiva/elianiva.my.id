@@ -31,7 +31,11 @@
   export let segment
 
   onMount(() => {
-    const preference = localStorage.getItem("theme") || "dark"
+    const { matches: isDarkTheme } = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    )
+    const preference =
+      localStorage.getItem("theme") || isDarkTheme ? "dark" : "light"
     theme.set(preference)
 
     theme.subscribe(current => {
