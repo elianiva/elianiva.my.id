@@ -10,12 +10,12 @@ tags:
 # Table of Content
 
 # Introduction
-I've been using Window Manager for the past 8 months, more or less. Starting from i3, I then moved to i3-gaps, then came across BSPWM. During that period, I switched back and forth between i3-gaps and BSPWM and sometimes tried other WM like Openbox, DWM, AwesomeWM, Xmonad. They're all work great, but not quite. Know what I mean?
+I've been using Window Manager for the past 8 months, more or less. Starting from i3, I then moved to i3-gaps, then came across BSPWM. During that period, I switched back and forth between i3-gaps and BSPWM and sometimes tried other WM like Openbox, DWM, AwesomeWM, Xmonad. They're all work great, but not quite to my taste.
 
-Well, because of this pandemic and whatnot, you're advised to stay at home. That's why our school closed until it ends, which means I have plenty of free time. I decided to use some of my time to try another Window Manager which is 2BWM.
+Well, because of this pandemic and whatnot, we're advised to stay at home. Almost all of public facility such as school, market, etc got closed. This means I have plenty of free time. I decided to use some of my time to try another Window Manager which is 2BWM.
 
 # Why 2BWM?
-I chose it mostly because it has 2 borders. I know that you can make BSPWM have 2 borders but I can't make it work. It uses chwb2 or something like that from wmutils. Another reason is that I want to try a different workflow. i3 and BSPWM is a tiling window manager. I'd assume you already know what a tiling WM is, otherwise [read this](https://en.wikipedia.org/wiki/Tiling_window_manager).
+I chose 2bwm mostly because it has 2 borders. I know that you can make BSPWM have 2 borders but I can't make it work. It uses chwb2 or something like that from wmutils. Another reason is that I want to try a different workflow. i3 and BSPWM is a tiling window manager. I'd assume you already know what a tiling WM is, otherwise [read this](https://en.wikipedia.org/wiki/Tiling_window_manager).
 
 What makes me more interested in this WM is, even though it's a floating WM, it can be fully controlled using a keyboard only. You can even move your cursor using a keybind! But I don't really use this feature.
 
