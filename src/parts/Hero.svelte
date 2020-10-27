@@ -90,7 +90,7 @@
   }
 </style>
 
-<section class="hero">
+<section class="hero" in:fade={{ duration: 200 }}>
   <div class="hero__left">
     <a href="https://github.com/elianiva">
       <img
@@ -115,5 +115,6 @@
 </section>
 
 <script>
+  import { fade } from "svelte/transition"
   import Circle from "../icons/circle.svg"
 </script>
