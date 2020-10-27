@@ -8,18 +8,6 @@
     z-index: 2;
   }
 
-  .section::after {
-    position: absolute;
-    content: "";
-    bottom: 3rem;
-    right: -2rem;
-    width: 10rem;
-    height: 4rem;
-    background-color: var(--color-main-accent);
-    opacity: 0.05;
-    z-index: -1;
-  }
-
   .section__title {
     font-family: "Overpass", sans-serif;
     position: relative;
