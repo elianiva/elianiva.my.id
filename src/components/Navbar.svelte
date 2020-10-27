@@ -80,9 +80,7 @@
 
   .navbar__hamburger {
     display: none;
-    opacity: 0;
     cursor: pointer;
-    transition: opacity ease-out 0.2s;
   }
 
   .navbar__checkbox {
@@ -196,18 +194,33 @@
         </button>
       </li>
     </ul>
-    <div class="navbar__hamburger" style="opacity: {isHamburgerVisible}">
-      <input
-        class="navbar__checkbox"
-        on:input={toggleNav}
-        type="checkbox"
-        {checked}
-        aria-label="toggle menu"
-      />
-      <span class="navbar__hamburger_item--1" />
-      <span class="navbar__hamburger_item--2" />
-      <span class="navbar__hamburger_item--3" />
-    </div>
+    {#if segment === null && scrollPos >= screenHeight}
+      <div class="navbar__hamburger" transition:fade={{ duration: 200 }}>
+        <input
+          class="navbar__checkbox"
+          on:input={toggleNav}
+          type="checkbox"
+          {checked}
+          aria-label="toggle menu"
+        />
+        <span class="navbar__hamburger_item--1" />
+        <span class="navbar__hamburger_item--2" />
+        <span class="navbar__hamburger_item--3" />
+      </div>
+    {:else if segment !== null}
+      <div class="navbar__hamburger" transition:fade={{ duration: 200 }}>
+        <input
+          class="navbar__checkbox"
+          on:input={toggleNav}
+          type="checkbox"
+          {checked}
+          aria-label="toggle menu"
+        />
+        <span class="navbar__hamburger_item--1" />
+        <span class="navbar__hamburger_item--2" />
+        <span class="navbar__hamburger_item--3" />
+      </div>
+    {/if}
   </div>
 </nav>
 {#if isVisible}
@@ -239,7 +252,7 @@
 {/if}
 
 <script>
-  import { fly } from "svelte/transition"
+  import { fly, fade } from "svelte/transition"
   import Moon from "@/icons/moon.svg"
   import { theme } from "@/utils/theme"
   export let segment
@@ -250,7 +263,6 @@
   let checked = false
 
   $: navPosition = getNavbarPosition(scrollPos)
-  $: isHamburgerVisible = scrollPos >= screenHeight ? 1 : 0
 
   const getNavbarPosition = scrollPos => {
     if (position === "home") {
