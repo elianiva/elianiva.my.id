@@ -75,10 +75,12 @@
     {/each}
   </div>
 </div>
+<ProgressButton showBar={false} />
 
 <script>
-  import SEO from "../../components/SEO.svelte"
-  import PostCard from "../../components/PostCard.svelte"
+  import SEO from "@/components/SEO.svelte"
+  import PostCard from "@/components/PostCard.svelte"
+  import ProgressButton from "@/components/ProgressButton.svelte"
 
   const posts = __POSTS__
 </script>

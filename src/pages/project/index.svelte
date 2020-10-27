@@ -48,10 +48,12 @@
     {/each}
   </div>
 </div>
+<ProgressButton showBar={false} />
 
 <script>
-  import SEO from "../../components/SEO.svelte"
+  import SEO from "@/components/SEO.svelte"
   import Image from "svelte-image"
-  import ProjectCard from "../../components/ProjectCard.svelte"
+  import ProjectCard from "@/components/ProjectCard.svelte"
+  import ProgressButton from "@/components/ProgressButton.svelte"
   const projects = __PROJECTS__
 </script>
