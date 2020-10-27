@@ -61,7 +61,7 @@
 
   const projects = __PROJECTS__
 
-  // use `requestAnimationFrame` because we need to wait
-  // for the next DOM update, otherwise it woudn't work
-  onMount(() => requestAnimationFrame(() => window.scrollTo(0, 0)))
+  // use setTimeout because we need to wait
+  // for some time before scrolling, otherwise it would look glitchy
+  onMount(() => setTimeout(() => window.scrollTo(0, 0), 50))
 </script>
