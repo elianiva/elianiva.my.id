@@ -110,7 +110,7 @@
     type="posts"
   />
   <Section
-    title="Projects"
+    title="Recent Projects"
     data={projects.splice(0, 3)}
     btnText="More Projects"
     url="/project"

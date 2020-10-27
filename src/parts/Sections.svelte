@@ -37,7 +37,7 @@
   .section__button {
     display: inline-block;
     margin-top: 2rem;
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 1.5rem 0.75rem;
     color: #f4f4f4;
     background-color: var(--color-main-accent);
     text-decoration: none;
