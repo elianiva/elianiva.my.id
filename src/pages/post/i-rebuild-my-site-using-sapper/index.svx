@@ -1,7 +1,7 @@
 ---
 title: I finally rebuild my site using Sapper and MDsveX
 date: 2020-10-20
-desc: A post where I explain why I migrate my website using Sapper
+desc: A post where I explain why I migrate my website using Svelte/Sapper
 tags:
   - svelte
   - website
@@ -53,7 +53,7 @@ onMount(() => {
 })
 ```
 
-I also couldn't make [shiki](https://shiki.matsu.io) work with MDsveX. There's nothing wrong with the default highlighter of MDsveX (which is [prismjs](https://prismjs.com)) but I want to use Shiki because it has the same syntax grammar as vscode and it looks better. To give you a better idea, here's a comparison side by side.
+I also couldn't make [shiki](https://shiki.matsu.io) work with MDsveX. There's nothing wrong with the default highlighter of MDsveX (which is [prismjs](https://prismjs.com)) but I want to use Shiki because it has the same syntax grammar as vscode and it looks better. MDsveX will use Shiki in the future version according to [pngwn's comment](https://github.com/pngwn/MDsveX/issues/139#issuecomment-688478536).
 
 # Technologies I Use
 ## The core
@@ -97,5 +97,13 @@ This issue is currently tracked [here](https://github.com/matyunya/svelte-image/
 ## Hosting
 I use [Vercel](https://vercel.com) to host my site. I used Vercel quite a few in the past and it's been great. It's simple to set up and integrate with Github. It's also free!
 
+## Resources
+Here are some resources that helped me making this website. Hope you find this useful ツ
+
+- https://github.com/iamyuu/iamyuu
+- https://web.dev/blog
+- https://fatihkalifa.com/dark-mode-web
+- https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/
+
 # Conclusion
-All in all, I'm glad that finally decided to rebuild my site using Sapper. It was a great experience. Thanks to [iamyuu](https://github.com/iamyuu) because I took a lot of inspiration from his site (code wise, not the UI).
+All in all, I'm glad that finally decided to rebuild my site using Sapper. It was a great experience. I am really looking forward to `svelte@next` release, it looks so promising.
