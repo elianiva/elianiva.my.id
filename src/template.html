@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="theme-color" content="#20263a" />
     <meta name="supported-color-scheme" content="dark light" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="color-scheme" content="light dark" />
 
     <script>
       // set dark mode correctly before everythings get rendered
@@ -14,8 +14,14 @@
         const { matches: isDarkMode } = window.matchMedia(
           "(prefers-color-scheme: dark)"
         )
-        const preference =
-          localStorage.getItem("theme") || isDarkMode ? "dark" : "light"
+
+        let preference
+        if (localStorage.getItem("theme")) {
+          preference = localStorage.getItem("theme")
+        } else {
+          preference = isDarkTheme ? "dark" : "light"
+        }
+
         if (preference) {
           document.documentElement.setAttribute("data-theme", preference)
         }

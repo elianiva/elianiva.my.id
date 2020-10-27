@@ -34,8 +34,15 @@
     const { matches: isDarkTheme } = window.matchMedia(
       "(prefers-color-scheme: dark)"
     )
-    const preference =
-      localStorage.getItem("theme") || isDarkTheme ? "dark" : "light"
+
+    let preference
+    if (localStorage.getItem("theme")) {
+      preference = localStorage.getItem("theme")
+    } else {
+      preference = isDarkTheme ? "dark" : "light"
+    }
+
+    console.log(preference)
     theme.set(preference)
 
     theme.subscribe(current => {
