@@ -175,13 +175,13 @@
     <ul class="navbar__items">
       <li class="navbar__item"><a href="/">Home</a></li>
       <li class="navbar__item" class:active={segment === 'post'}>
-        <a href="/post">Posts</a>
+        <a href="/post" sapper:noscroll>Posts</a>
       </li>
       <li class="navbar__item" class:active={segment === 'project'}>
-        <a href="/project">Projects</a>
+        <a href="/project" sapper:noscroll>Projects</a>
       </li>
       <li class="navbar__item" class:active={segment === 'about'}>
-        <a href="/about">About</a>
+        <a href="/about" sapper:noscroll>About</a>
       </li>
       <li class="navbar__item">
         <button
@@ -214,13 +214,13 @@
         <a href="/">Home</a>
       </li>
       <li class="navbar__mobile_item" class:active={segment === 'post'}>
-        <a href="/post" on:click={toggleNav}>Posts</a>
+        <a href="/post" on:click={toggleNav} sapper:noscroll>Posts</a>
       </li>
       <li class="navbar__mobile_item" class:active={segment === 'project'}>
-        <a href="/project" on:click={toggleNav}>Projects</a>
+        <a href="/project" on:click={toggleNav} sapper:noscroll>Projects</a>
       </li>
       <li class="navbar__mobile_item" class:active={segment === 'about'}>
-        <a href="/about" on:click={toggleNav}>About</a>
+        <a href="/about" on:click={toggleNav} sapper:noscroll>About</a>
       </li>
       <li class="navbar__mobile_item">
         <button
@@ -276,7 +276,7 @@
     isVisible = !isVisible
 
     // turn off scrolling when mobile nav is visible
-    if (checked) document.body.style.overflow = "hidden"
-    else document.body.style.overflow = "auto"
+    if (checked) document.body.overflow = "hidden"
+    else document.body.overflow = "auto"
   }
 </script>

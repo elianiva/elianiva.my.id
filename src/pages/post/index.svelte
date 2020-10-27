@@ -78,9 +78,14 @@
 <ProgressButton showBar={false} />
 
 <script>
+  import { onMount } from "svelte"
   import SEO from "@/components/SEO.svelte"
   import PostCard from "@/components/PostCard.svelte"
   import ProgressButton from "@/components/ProgressButton.svelte"
 
   const posts = __POSTS__
+
+  // use `requestAnimationFrame` because we need to wait
+  // for the next DOM update, otherwise it woudn't work
+  onMount(() => requestAnimationFrame(() => window.scrollTo(0, 0)))
 </script>
