@@ -38,16 +38,20 @@
 
   .navbar__items {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    gap: 1rem;
     align-items: center;
     justify-items: center;
-    gap: 0.75rem;
-    font-family: "Overpass", sans-serif;
-    font-size: 1.25rem;
+  }
+
+  .navbar__item {
+    padding-top: 0.25rem;
   }
 
   .navbar__item a {
+    font-family: "Overpass", sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
     position: relative;
     color: var(--color-alt-text);
     text-decoration: none;
@@ -55,15 +59,14 @@
   }
 
   .navbar__item a:hover {
-    /* color: var(--color-main-accent); */
     color: var(--color-shine);
   }
 
-  .navbar__item a:hover::before {
+  .navbar__item a:hover::after {
     transform: scale(1);
   }
 
-  .navbar__item a::before {
+  .navbar__item a::after {
     content: "";
     position: absolute;
     bottom: -0.25rem;
@@ -76,7 +79,7 @@
   }
 
   .navbar__hamburger {
-    display: block;
+    display: none;
     opacity: 0;
     cursor: pointer;
     transition: opacity ease-out 0.2s;
