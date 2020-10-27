@@ -47,17 +47,19 @@
 <footer>
   <div class="icons">
     <!-- prettier-ignore -->
-    <a href="mailto:{email}" target="_blank" rel="norel noreferrer">
+    <a href="mailto:{email}" target="_blank" rel="norel noreferrer" aria-label="email">
       <Email height="1.5rem" width="1.5rem" />
     </a>
     <!-- prettier-ignore -->
-    <a href="{github}" target="_blank" rel="norel noreferrer">
+    <a href="{github}" target="_blank" rel="norel noreferrer" aria-label="github">
       <Github height="1.5rem" width="1.5rem" />
     </a>
-    <a href={twitter} target="_blank" rel="norel noreferrer">
+    <!-- prettier-ignore -->
+    <a href={twitter} target="_blank" rel="norel noreferrer" aria-label="twitter" >
       <Twitter height="1.5rem" width="1.5rem" />
     </a>
-    <a href="https://elianiva.github.io" target="_blank" rel="norel noreferrer">
+    <!-- prettier-ignore -->
+    <a href="https://elianiva.github.io" target="_blank" rel="norel noreferrer" aria-label="rss">
       <RSS height="1.5rem" width="1.5rem" />
     </a>
   </div>

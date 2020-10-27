@@ -181,7 +181,11 @@
         <a href="/about">About</a>
       </li>
       <li class="navbar__item">
-        <button class="navbar__button" on:click={toggleDarkMode}>
+        <button
+          class="navbar__button"
+          on:click={toggleDarkMode}
+          aria-label="toggle darkmode"
+        >
           <Moon class="navbar__darkmode" width="1.5rem" height="1.5rem" />
         </button>
       </li>
@@ -192,6 +196,7 @@
         on:input={toggleNav}
         type="checkbox"
         {checked}
+        aria-label="toggle menu"
       />
       <span class="navbar__hamburger_item--1" />
       <span class="navbar__hamburger_item--2" />
@@ -215,7 +220,11 @@
         <a href="/about" on:click={toggleNav}>About</a>
       </li>
       <li class="navbar__mobile_item">
-        <button class="navbar__button" on:click={toggleDarkMode}>
+        <button
+          class="navbar__button"
+          on:click={toggleDarkMode}
+          aria-label="toggle darkmode"
+        >
           <Moon class="navbar__darkmode" width="1.5rem" height="1.5rem" />
         </button>
       </li>
