@@ -40,20 +40,6 @@
   color: var(--color-main-text);
 }
 
-.post__edit::before {
-  position: absolute;
-  content: "";
-  bottom: -0.25rem;
-  left: -0.25rem;
-  right: -0.25rem;
-  top: 0;
-  transform: scale3d(1, 0.1, 1);
-  background-color: var(--color-main-accent);
-  z-index: -1;
-  transition: all ease-out 0.2s;
-  transform-origin: bottom;
-}
-
 .post__edit:hover::before {
   transform: scale3d(1, 1, 1);
 }
@@ -76,11 +62,24 @@
 }
 
 :global(.post__content h1) {
+  position: relative;
   font-family: "Overpass", sans-serif;
   font-size: 2rem;
   line-height: 3.5rem;
-  border-bottom: 0.125rem var(--color-main-accent) solid;
-  /* margin: 0.25rem 0 0.75rem; */
+}
+
+:global(.post__content h1::after) {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.125rem;
+  background-image: linear-gradient(
+    to right,
+    var(--color-main-accent),
+    rgba(0, 0, 0, 0)
+  );
 }
 
 :global(.post__content h2) {
@@ -140,10 +139,6 @@
   transition: all ease-out 0.2s;
 }
 
-:global(.post__content a:hover) {
-  color: #ffffff;
-}
-
 :global(.post__content a::before) {
   position: absolute;
   content: "";
@@ -151,16 +146,19 @@
   left: -0.25rem;
   right: -0.25rem;
   top: 0.25rem;
-  transform: scale3d(1, 0.1, 1);
-  background-color: var(--color-main-accent);
-  background-color: red;
+  transform: scale3d(0, 0.1, 1);
+  transform-origin: 0 100%;
+  background-image: linear-gradient(
+    to right,
+    var(--color-main-accent),
+    rgba(0, 0, 0, 0)
+  );
   z-index: -1;
-  transition: all ease-out 0.2s;
-  transform-origin: bottom;
+  transition: transform ease-out 0.2s;
 }
 
 :global(.post__content a:hover::before) {
-  transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 0.1, 1);
 }
 
 :global(.post__content code) {
@@ -181,27 +179,28 @@
 }
 
 :global(.post__content ul) {
-  list-style-position: inside;
+  /* list-style-position: inside; */
+  list-style: none;
 }
 
-:global(.post__content ul > li) {
+:global(.post__content ul li) {
+  position: relative;
   font-size: 1.125rem;
   line-height: 2rem;
   padding-left: 1rem;
 }
 
-:global(.post__content ul > li p) {
+:global(.post__content ul li::before) {
+  content: "\203A";
+  color: var(--color-main-text);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-right: 0.5rem;
+}
+
+:global(.post__content ul li p) {
   display: inline-block;
   margin: 0;
-}
-
-:global(.post__content ul > li a::before) {
-  opacity: 0;
-  transition: all ease-out 0.2s;
-}
-
-:global(.post__content ul > li a:hover::before) {
-  opacity: 1;
 }
 
 :global(.post__content ul li > ul *) {

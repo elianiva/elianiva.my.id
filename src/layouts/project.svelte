@@ -95,7 +95,7 @@
 .stack__divider {
   height: 0.125rem;
   border: none;
-  background-color: var(--color-border);
+  background-color: var(--color-borders);
   margin: 0.5rem 0;
 }
 
@@ -105,7 +105,7 @@
   gap: 1rem;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 0.0625rem var(--color-border) solid;
+  border-bottom: 0.0625rem var(--color-borders) solid;
 }
 
 .stack__item:last-child {
@@ -157,10 +157,6 @@
   transition: all ease-out 0.2s;
 }
 
-:global(.project__content p a:hover) {
-  color: var(--color-main-text);
-}
-
 :global(.project__content p a::before) {
   position: absolute;
   content: "";
@@ -168,15 +164,19 @@
   left: -0.25rem;
   right: -0.25rem;
   top: 0;
-  transform: scale3d(0, 0.1, 0);
-  background-color: rgba(255, 72, 81, 0.5);
+  transform: scale3d(0, 0.1, 1);
+  transform-origin: 0 100%;
+  background-image: linear-gradient(
+    to right,
+    var(--color-main-accent),
+    rgba(0, 0, 0, 0)
+  );
   z-index: -1;
-  transition: all ease-out 0.2s;
-  transform-origin: bottom;
+  transition: transform ease-out 0.2s;
 }
 
 :global(.project__content a:hover::before) {
-  transform: scale3d(0, 1, 0);
+  transform: scale3d(1, 0.1, 1);
 }
 
 :global(.project__content code) {
