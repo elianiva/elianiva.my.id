@@ -87,5 +87,5 @@
 
   // use setTimeout because we need to wait
   // for some time before scrolling, otherwise it would look glitchy
-  onMount(() => setTimeout(() => window.scrollTo(0, 0), 50))
+  onMount(() => setTimeout(() => window.scrollTo(0, 0), 100))
 </script>
