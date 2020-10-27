@@ -1,8 +1,4 @@
 <style>
-  :global(html) {
-    scroll-behavior: smooth;
-  }
-
   .post {
     max-width: 1080px;
     padding: 1rem;
