@@ -7,7 +7,7 @@
   }
 
   .navbar .active a {
-    color: var(--color-main-accent);
+    color: var(--color-shine);
   }
 
   .navbar__container {
@@ -49,13 +49,14 @@
 
   .navbar__item a {
     position: relative;
-    color: var(--color-main-text);
+    color: var(--color-alt-text);
     text-decoration: none;
     transition: color ease-out 0.2s;
   }
 
   .navbar__item a:hover {
-    color: var(--color-main-accent);
+    /* color: var(--color-main-accent); */
+    color: var(--color-shine);
   }
 
   .navbar__item a:hover::before {
@@ -75,8 +76,10 @@
   }
 
   .navbar__hamburger {
-    display: none;
+    display: block;
+    opacity: 0;
     cursor: pointer;
+    transition: opacity ease-out 0.2s;
   }
 
   .navbar__checkbox {
@@ -190,7 +193,7 @@
         </button>
       </li>
     </ul>
-    <div class="navbar__hamburger" style="display: {isHamburgerVisible}">
+    <div class="navbar__hamburger" style="opacity: {isHamburgerVisible}">
       <input
         class="navbar__checkbox"
         on:input={toggleNav}
@@ -244,8 +247,7 @@
   let checked = false
 
   $: navPosition = getNavbarPosition(scrollPos)
-  $: isHamburgerVisible = scrollPos >= screenHeight ? "block" : "none"
-  $: console.log(isHamburgerVisible)
+  $: isHamburgerVisible = scrollPos >= screenHeight ? 1 : 0
 
   const getNavbarPosition = scrollPos => {
     if (position === "home") {

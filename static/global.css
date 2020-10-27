@@ -1,6 +1,6 @@
 @media (prefers-color-scheme: light) {
   :root {
-    --color-main-accent: #E62324;
+    --color-main-accent: #FF3C3D;
     --color-main-bg: #fbfaff;
     --color-alt-bg: #ffffff;
     --color-special-bg: #efefef;
@@ -8,6 +8,7 @@
     --color-alt-text: #696969;
     --color-borders: #e4e4e4;
     --color-thin: #b0b0b0;
+    --color-shine: #000000;
   }
 
   [data-theme="dark"] {
@@ -17,8 +18,9 @@
     --color-special-bg: #2c3445;
     --color-main-text: #f3f2f7;
     --color-alt-text: #8FA0BF;
-    --color-borders: #0b0b0d;
+    --color-borders: #3B465A;
     --color-thin: #6B7A99;
+    --color-shine: #ffffff;
   }
 
   [data-theme="dark"] img {
@@ -34,13 +36,14 @@
     --color-special-bg: #2c3445;
     --color-main-text: #f3f2f7;
     --color-alt-text: #8FA0BF;
-    --color-borders: #0b0b0d;
+    --color-borders: #3B465A;
     --color-thin: #6B7A99;
+    --color-shine: #ffffff;
   }
 
   /* set light colours if user overrides it */
   [data-theme="light"] {
-    --color-main-accent: #E62324;
+    --color-main-accent: #FF3C3D;
     --color-main-bg: #fbfaff;
     --color-alt-bg: #ffffff;
     --color-special-bg: #f4f4f4;
@@ -48,6 +51,7 @@
     --color-alt-text: #696969;
     --color-borders: #e4e4e4;
     --color-thin: #b0b0b0;
+    --color-shine: #000000;
   }
 
   [data-theme="light"] img {
