@@ -1,89 +1,89 @@
 <style>
-  .card {
-    overflow: hidden;
-    border: 0.0625rem var(--color-borders) solid;
-    border-radius: 0.25rem;
-    text-align: left;
-    background-color: var(--color-alt-bg);
-  }
+.card {
+  overflow: hidden;
+  border: 0.0625rem var(--color-borders) solid;
+  border-radius: 0.25rem;
+  text-align: left;
+  background-color: var(--color-alt-bg);
+}
 
-  .card__img {
-    position: relative;
-    display: block;
-    width: 100%;
-    z-index: 2;
-  }
+.card__img {
+  position: relative;
+  display: block;
+  width: 100%;
+  z-index: 2;
+}
 
-  .card__details {
-    padding: 1rem;
-    display: grid;
-    grid-template-rows: 2rem 4.5rem 1fr;
-    border-top: 0.0625rem var(--color-borders) solid;
-  }
+.card__details {
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: 2rem 4.5rem 1fr;
+  border-top: 0.0625rem var(--color-borders) solid;
+}
 
-  .card__title {
-    text-decoration: none;
-    color: var(--color-main-text);
-    font-family: "Overpass", sans-serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.75rem;
-    transition: all ease-out 0.2s;
-  }
+.card__title {
+  text-decoration: none;
+  color: var(--color-main-text);
+  font-family: "Overpass", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  transition: all ease-out 0.2s;
+}
 
-  .card__title:hover {
+.card__title:hover {
+  color: var(--color-main-accent);
+}
+
+.card__desc {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5rem;
+  color: var(--color-alt-text);
+}
+
+.card__links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.card__demo,
+.card__source {
+  font-family: "Overpass", sans-serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: filter ease-out 0.2s;
+}
+
+.card__demo:hover,
+.card__source:hover {
+  filter: brightness(1.2);
+}
+
+.card__demo {
+  background-color: var(--color-main-accent);
+  color: #f4f4f4;
+}
+
+.card__source {
+  background-color: var(--color-special-bg);
+  color: var(--color-alt-text);
+}
+
+:global(.card__icon) {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+@media only screen and (min-width: 480px) {
+  .card__details:hover {
     color: var(--color-main-accent);
   }
-
-  .card__desc {
-    font-family: "Open Sans", sans-serif;
-    line-height: 1.5rem;
-    color: var(--color-alt-text);
-  }
-
-  .card__links {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-  }
-
-  .card__demo,
-  .card__source {
-    font-family: "Overpass", sans-serif;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    transition: filter ease-out 0.2s;
-  }
-
-  .card__demo:hover,
-  .card__source:hover {
-    filter: brightness(1.2);
-  }
-
-  .card__demo {
-    background-color: var(--color-main-accent);
-    color: #f4f4f4;
-  }
-
-  .card__source {
-    background-color: var(--color-special-bg);
-    color: var(--color-alt-text);
-  }
-
-  :global(.card__icon) {
-    width: 1.125rem;
-    height: 1.125rem;
-  }
-
-  @media only screen and (min-width: 480px) {
-    .card__details:hover {
-      color: var(--color-main-accent);
-    }
-  }
+}
 </style>
 
 <div class="card">
@@ -113,8 +113,8 @@
 </div>
 
 <script>
-  import Code from "@/icons/code.svg"
-  import Chrome from "@/icons/chrome.svg"
-  import Waypoint from "svelte-waypoint"
-  export let title, src, desc, href, demo, source
+import Code from "@/icons/code.svg"
+import Chrome from "@/icons/chrome.svg"
+import Waypoint from "svelte-waypoint"
+export let title, src, desc, href, demo, source
 </script>

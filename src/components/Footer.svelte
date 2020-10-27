@@ -1,47 +1,47 @@
 <style>
-  footer {
-    margin-top: 3rem;
-    border-top: 0.0625rem var(--color-borders) solid;
-    font-family: "Overpass", sans-serif;
-    text-align: center;
-    padding: 2rem 1rem;
-    background-color: var(--color-alt-bg);
-  }
+footer {
+  margin-top: 3rem;
+  border-top: 0.0625rem var(--color-borders) solid;
+  font-family: "Overpass", sans-serif;
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--color-alt-bg);
+}
 
-  p {
-    line-height: 1.5rem;
-    color: var(--color-main-text);
-  }
-  a {
-    text-decoration: none;
-  }
-  .sapper {
-    color: #ff3e00;
-  }
-  .vercel {
-    color: #2f6ef3;
-  }
-  .github {
-    color: #8351e6;
-  }
-  .elianiva {
-    color: #ff4851;
-  }
+p {
+  line-height: 1.5rem;
+  color: var(--color-main-text);
+}
+a {
+  text-decoration: none;
+}
+.sapper {
+  color: #ff3e00;
+}
+.vercel {
+  color: #2f6ef3;
+}
+.github {
+  color: #8351e6;
+}
+.elianiva {
+  color: #ff4851;
+}
 
-  .icons {
-    margin: 0 auto 0.5rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 220px;
-  }
+.icons {
+  margin: 0 auto 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 220px;
+}
 
-  .icons a {
-    color: var(--color-main-text);
-    transition: color ease-out 0.2s;
-  }
-  .icons a:hover {
-    color: var(--color-main-accent);
-  }
+.icons a {
+  color: var(--color-main-text);
+  transition: color ease-out 0.2s;
+}
+.icons a:hover {
+  color: var(--color-main-accent);
+}
 </style>
 
 <footer>
@@ -75,11 +75,11 @@
 </footer>
 
 <script>
-  import data from "@/site-data.js"
-  import Email from "@/icons/email.svg"
-  import Github from "@/icons/github.svg"
-  import Twitter from "@/icons/twitter.svg"
-  import RSS from "@/icons/rss.svg"
+import data from "@/site-data.js"
+import Email from "@/icons/email.svg"
+import Github from "@/icons/github.svg"
+import Twitter from "@/icons/twitter.svg"
+import RSS from "@/icons/rss.svg"
 
-  const { github, twitter, email } = data
+const { github, twitter, email } = data
 </script>

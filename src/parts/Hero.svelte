@@ -1,93 +1,93 @@
 <style>
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+  color: var(--color-main-text);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.hero__greet {
+  font-size: 1.25rem;
+  font-family: "Overpass", sans-serif;
+  font-weight: 600;
+  color: var(--color-main-accent);
+}
+
+.hero__name {
+  position: relative;
+  display: block;
+  font-family: "Overpass", sans-serif;
+  font-size: clamp(1.25rem, calc(5vw + 1.25rem), 3.5rem);
+  font-weight: 600;
+}
+
+.hero__role {
+  font-family: "Overpass", sans-serif;
+  font-size: clamp(1rem, calc(5vw + 1rem), 1.5rem);
+  display: block;
+}
+
+.hero__desc {
+  position: relative;
+  display: block;
+  color: var(--color-alt-text);
+  font-family: "Open Sans", sans-serif;
+  font-size: clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem);
+  line-height: 2rem;
+  margin: 0 0 1rem;
+}
+
+.hero__pict {
+  width: clamp(12rem, calc(20vw + 4rem), 16rem);
+  height: clamp(12rem, calc(20vw + 4rem), 16rem);
+  border-radius: 10rem;
+  border: 0.5rem var(--color-alt-bg) solid;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+:global(.hero__pattern) {
+  position: absolute;
+  right: -2rem;
+  top: -2rem;
+  width: clamp(6rem, calc(10vw + 4rem), 12rem);
+  height: 12rem;
+  z-index: -1;
+  color: var(--color-main-accent);
+  opacity: 0.1;
+}
+
+.hero__right {
+  position: relative;
+}
+
+.hero__right::after {
+  position: absolute;
+  content: "</>";
+  bottom: -2rem;
+  left: -2rem;
+  width: 3rem;
+  height: 4rem;
+  font-size: 4rem;
+  font-family: monospace;
+  font-weight: 900;
+  color: var(--color-main-accent);
+  opacity: 0.1;
+}
+@media only screen and (max-width: 960px) {
   .hero {
-    position: relative;
-    display: grid;
-    grid-template-columns: 20rem 1fr;
     gap: 2rem;
-    align-items: center;
-    justify-items: center;
-    color: var(--color-main-text);
-    max-width: 1080px;
-    margin: 0 auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 14rem 1fr;
+    text-align: center;
+    margin-top: 0;
+    gap: 1rem;
   }
-
-  .hero__greet {
-    font-size: 1.25rem;
-    font-family: "Overpass", sans-serif;
-    font-weight: 600;
-    color: var(--color-main-accent);
-  }
-
-  .hero__name {
-    position: relative;
-    display: block;
-    font-family: "Overpass", sans-serif;
-    font-size: clamp(1.25rem, calc(5vw + 1.25rem), 3.5rem);
-    font-weight: 600;
-  }
-
-  .hero__role {
-    font-family: "Overpass", sans-serif;
-    font-size: clamp(1rem, calc(5vw + 1rem), 1.5rem);
-    display: block;
-  }
-
-  .hero__desc {
-    position: relative;
-    display: block;
-    color: var(--color-alt-text);
-    font-family: "Open Sans", sans-serif;
-    font-size: clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem);
-    line-height: 2rem;
-    margin: 0 0 1rem;
-  }
-
-  .hero__pict {
-    width: clamp(12rem, calc(20vw + 4rem), 16rem);
-    height: clamp(12rem, calc(20vw + 4rem), 16rem);
-    border-radius: 10rem;
-    border: 0.5rem var(--color-alt-bg) solid;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  }
-
-  :global(.hero__pattern) {
-    position: absolute;
-    right: -2rem;
-    top: -2rem;
-    width: clamp(6rem, calc(10vw + 4rem), 12rem);
-    height: 12rem;
-    z-index: -1;
-    color: var(--color-main-accent);
-    opacity: 0.1;
-  }
-
-  .hero__right {
-    position: relative;
-  }
-
-  .hero__right::after {
-    position: absolute;
-    content: "</>";
-    bottom: -2rem;
-    left: -2rem;
-    width: 3rem;
-    height: 4rem;
-    font-size: 4rem;
-    font-family: monospace;
-    font-weight: 900;
-    color: var(--color-main-accent);
-    opacity: 0.1;
-  }
-  @media only screen and (max-width: 960px) {
-    .hero {
-      gap: 2rem;
-      grid-template-columns: 1fr;
-      grid-template-rows: 14rem 1fr;
-      text-align: center;
-      margin-top: 0;
-      gap: 1rem;
-    }
-  }
+}
 </style>
 
 <section class="hero" in:fade={{ duration: 200 }}>
@@ -114,6 +114,6 @@
 </section>
 
 <script>
-  import { fade } from "svelte/transition"
-  import Circle from "@/icons/circle.svg"
+import { fade } from "svelte/transition"
+import Circle from "@/icons/circle.svg"
 </script>

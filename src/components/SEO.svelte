@@ -26,16 +26,16 @@
 </svelte:head>
 
 <script>
-  import { stores } from "@sapper/app"
-  import data from "@/site-data"
+import { stores } from "@sapper/app"
+import data from "@/site-data"
 
-  const { page } = stores()
+const { page } = stores()
 
-  const { siteName, siteUrl } = data
+const { siteName, siteUrl } = data
 
-  export let title = ""
-  export let isPost = false
-  export let thumbnail = false
-  export let desc = data.desc
-  export let keywords = data.keywords
+export let title = ""
+export let isPost = false
+export let thumbnail = false
+export let desc = data.desc
+export let keywords = data.keywords
 </script>

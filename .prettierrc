@@ -6,6 +6,6 @@
   "svelteSortOrder": "styles-markup-scripts",
   "svelteAllowShorthand": true,
   "svelteBracketNewLine": true,
-  "svelteIndentScriptAndStyle": true,
+  "svelteIndentScriptAndStyle": false,
   "printWidth": 80
 }

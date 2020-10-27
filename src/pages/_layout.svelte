@@ -1,14 +1,14 @@
 <style>
-  main {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  div {
-    flex: 1;
-    margin-top: 4rem;
-  }
+div {
+  flex: 1;
+  margin-top: 4rem;
+}
 </style>
 
 {#if segment !== undefined}
@@ -24,28 +24,28 @@
 {/if}
 
 <script>
-  import { onMount } from "svelte"
-  import Navbar from "@/components/Navbar.svelte"
-  import Footer from "@/components/Footer.svelte"
-  import { theme } from "@/utils/theme"
-  export let segment
+import { onMount } from "svelte"
+import Navbar from "@/components/Navbar.svelte"
+import Footer from "@/components/Footer.svelte"
+import { theme } from "@/utils/theme"
+export let segment
 
-  onMount(() => {
-    const { matches: isDarkTheme } = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    )
+onMount(() => {
+  const { matches: isDarkTheme } = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  )
 
-    let preference
+  let preference
 
-    // prettier-ignore
-    if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
+  // prettier-ignore
+  if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
     else preference = isDarkTheme ? "dark" : "light"
 
-    theme.set(preference)
+  theme.set(preference)
 
-    theme.subscribe(current => {
-      localStorage.setItem("theme", current)
-      document.documentElement.setAttribute("data-theme", current)
-    })
+  theme.subscribe(current => {
+    localStorage.setItem("theme", current)
+    document.documentElement.setAttribute("data-theme", current)
   })
+})
 </script>

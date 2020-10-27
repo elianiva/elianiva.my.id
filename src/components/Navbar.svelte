@@ -1,172 +1,172 @@
 <style>
-  .navbar {
-    height: 4rem;
-    border-bottom: 0.0625rem var(--color-borders) solid;
-    z-index: 20;
-    background-color: var(--color-alt-bg);
-  }
+.navbar {
+  height: 4rem;
+  border-bottom: 0.0625rem var(--color-borders) solid;
+  z-index: 20;
+  background-color: var(--color-alt-bg);
+}
 
-  .navbar .active a {
-    color: var(--color-shine);
-  }
+.navbar .active a {
+  color: var(--color-shine);
+}
 
-  .navbar__container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
+.navbar__container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
 
-  .navbar__title {
-    flex: 1;
-  }
+.navbar__title {
+  flex: 1;
+}
 
-  .navbar__title a {
-    font-family: "Kaushan Script", cursive;
-    font-size: 1.5rem;
-    font-weight: 400;
-    text-decoration: none;
-    color: var(--color-main-text);
-    transition: color ease-out 0.2s;
-  }
+.navbar__title a {
+  font-family: "Kaushan Script", cursive;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--color-main-text);
+  transition: color ease-out 0.2s;
+}
 
-  .navbar__title a:hover {
-    color: var(--color-main-accent);
-  }
+.navbar__title a:hover {
+  color: var(--color-main-accent);
+}
 
+.navbar__items {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.navbar__item {
+  padding-top: 0.25rem;
+}
+
+.navbar__item a {
+  font-family: "Overpass", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  position: relative;
+  color: var(--color-alt-text);
+  text-decoration: none;
+  transition: color ease-out 0.2s;
+}
+
+.navbar__item a:hover {
+  color: var(--color-shine);
+}
+
+.navbar__item a:hover::after {
+  transform: scale(1);
+}
+
+.navbar__item a::after {
+  content: "";
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  right: 0;
+  height: 0.125rem;
+  background-color: var(--color-main-accent);
+  transform: scale(0);
+  transition: transform ease-out 0.2s;
+}
+
+.navbar__hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.navbar__checkbox {
+  opacity: 0;
+}
+
+.navbar__button {
+  border: none;
+  background: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  color: var(--color-main-text);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 480px) {
   .navbar__items {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-items: center;
-  }
-
-  .navbar__item {
-    padding-top: 0.25rem;
-  }
-
-  .navbar__item a {
-    font-family: "Overpass", sans-serif;
-    font-size: 1.25rem;
-    line-height: 1.25rem;
-    position: relative;
-    color: var(--color-alt-text);
-    text-decoration: none;
-    transition: color ease-out 0.2s;
-  }
-
-  .navbar__item a:hover {
-    color: var(--color-shine);
-  }
-
-  .navbar__item a:hover::after {
-    transform: scale(1);
-  }
-
-  .navbar__item a::after {
-    content: "";
-    position: absolute;
-    bottom: -0.25rem;
-    left: 0;
-    right: 0;
-    height: 0.125rem;
-    background-color: var(--color-main-accent);
-    transform: scale(0);
-    transition: transform ease-out 0.2s;
+    display: none;
   }
 
   .navbar__hamburger {
-    display: none;
-    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.25rem;
+    width: 1.5rem;
+    height: 0.85rem;
   }
 
   .navbar__checkbox {
-    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
   }
 
-  .navbar__button {
-    border: none;
-    background: none;
-    outline: none;
+  .navbar__checkbox:checked ~ .navbar__hamburger_item--1 {
+    transform: rotate(45deg) translate3d(0, 0.5rem, 0);
+  }
+
+  .navbar__checkbox:checked ~ .navbar__hamburger_item--2 {
+    transform: scale(0);
+  }
+
+  .navbar__checkbox:checked ~ .navbar__hamburger_item--3 {
+    transform: rotate(-45deg) translate3d(0, -0.5rem, 0);
+  }
+
+  [class^="navbar__hamburger_item"] {
+    position: relative;
+    display: block;
+    background-color: var(--color-main-text);
+    transition: transform ease-out 0.2s;
+  }
+
+  .navbar__mobile {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-alt-bg);
     display: flex;
     align-items: center;
+    justify-content: center;
+  }
+
+  .navbar__mobile_items {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .navbar__mobile_item a {
+    font-family: "Overpass", sans-serif;
+    text-decoration: none;
+    font-size: 1.5rem;
     color: var(--color-main-text);
-    cursor: pointer;
   }
-
-  @media only screen and (max-width: 480px) {
-    .navbar__items {
-      display: none;
-    }
-
-    .navbar__hamburger {
-      position: relative;
-      z-index: 10;
-      display: grid;
-      grid-template-rows: repeat(3, 1fr);
-      gap: 0.25rem;
-      width: 1.5rem;
-      height: 0.85rem;
-    }
-
-    .navbar__checkbox {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-    }
-
-    .navbar__checkbox:checked ~ .navbar__hamburger_item--1 {
-      transform: rotate(45deg) translate3d(0, 0.5rem, 0);
-    }
-
-    .navbar__checkbox:checked ~ .navbar__hamburger_item--2 {
-      transform: scale(0);
-    }
-
-    .navbar__checkbox:checked ~ .navbar__hamburger_item--3 {
-      transform: rotate(-45deg) translate3d(0, -0.5rem, 0);
-    }
-
-    [class^="navbar__hamburger_item"] {
-      position: relative;
-      display: block;
-      background-color: var(--color-main-text);
-      transition: transform ease-out 0.2s;
-    }
-
-    .navbar__mobile {
-      position: fixed;
-      z-index: 5;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: var(--color-alt-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .navbar__mobile_items {
-      display: grid;
-      grid-template-rows: repeat(5, 1fr);
-      align-items: center;
-      justify-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .navbar__mobile_item a {
-      font-family: "Overpass", sans-serif;
-      text-decoration: none;
-      font-size: 1.5rem;
-      color: var(--color-main-text);
-    }
-  }
+}
 </style>
 
 <svelte:window bind:innerHeight={screenHeight} bind:scrollY={scrollPos} />
@@ -252,46 +252,46 @@
 {/if}
 
 <script>
-  import { fly, fade } from "svelte/transition"
-  import Moon from "@/icons/moon.svg"
-  import { theme } from "@/utils/theme"
-  export let segment
-  export let position = null
+import { fly, fade } from "svelte/transition"
+import Moon from "@/icons/moon.svg"
+import { theme } from "@/utils/theme"
+export let segment
+export let position = null
 
-  let screenHeight, scrollPos, navPosition
-  let isVisible = false
-  let checked = false
+let screenHeight, scrollPos, navPosition
+let isVisible = false
+let checked = false
 
-  $: navPosition = getNavbarPosition(scrollPos)
+$: navPosition = getNavbarPosition(scrollPos)
 
-  const getNavbarPosition = scrollPos => {
-    if (position === "home") {
-      return `
+const getNavbarPosition = scrollPos => {
+  if (position === "home") {
+    return `
     position: ${scrollPos >= screenHeight ? "fixed" : "absolute"};
     left: 0;
     right: 0;
     top: ${scrollPos >= screenHeight ? "100vh" : "unset"};
     transform: ${scrollPos >= screenHeight ? "translateY(-100vh)" : "unset"};
     `
-    } else {
-      return `
+  } else {
+    return `
     position: fixed;
     left: 0;
     right: 0;
     `
-    }
   }
+}
 
-  const toggleDarkMode = () => {
-    theme.update(current => (current === "light" ? "dark" : "light"))
-  }
+const toggleDarkMode = () => {
+  theme.update(current => (current === "light" ? "dark" : "light"))
+}
 
-  const toggleNav = () => {
-    checked = !checked
-    isVisible = !isVisible
+const toggleNav = () => {
+  checked = !checked
+  isVisible = !isVisible
 
-    // turn off scrolling when mobile nav is visible
-    if (checked) document.body.overflow = "hidden"
-    else document.body.overflow = "auto"
-  }
+  // turn off scrolling when mobile nav is visible
+  if (checked) document.body.overflow = "hidden"
+  else document.body.overflow = "auto"
+}
 </script>
