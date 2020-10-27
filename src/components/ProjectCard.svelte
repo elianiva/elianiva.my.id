@@ -36,7 +36,7 @@
   }
 
   .card__desc {
-    font-family: "Inter", sans-serif;
+    font-family: "Open Sans", sans-serif;
     line-height: 1.5rem;
     color: var(--color-alt-text);
   }

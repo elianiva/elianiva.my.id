@@ -38,7 +38,7 @@
   .hero__button {
     padding: 0.75rem 2rem;
     font-size: 1.125rem;
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     border: none;
     background-color: var(--color-main-accent);
     color: #f4f4f4;
@@ -52,7 +52,7 @@
     padding: 0.75rem 2rem;
     background-color: var(--color-main-bg);
     color: var(--color-alt-text);
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-size: 1.125rem;
     border: none;
     border-radius: 0.25rem;

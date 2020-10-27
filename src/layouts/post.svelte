@@ -8,7 +8,7 @@
   }
 
   .post__title {
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-size: 2.5rem;
     margin-top: 2rem;
     text-transform: uppercase;
@@ -17,7 +17,7 @@
   }
 
   .post__date {
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     display: block;
     text-align: center;
     font-size: 1.125rem;
@@ -27,7 +27,7 @@
 
   .post__edit {
     position: relative;
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     text-align: center;
     font-size: 1.125rem;
     line-height: 2rem;
@@ -59,7 +59,7 @@
   }
 
   .post__content {
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
     max-width: 70ch;
     margin: 0 auto;
     font-size: 1.125rem;
@@ -76,7 +76,7 @@
   }
 
   :global(.post__content h1) {
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-size: 2rem;
     line-height: 3.5rem;
     border-bottom: 0.125rem var(--color-main-accent) solid;
@@ -85,7 +85,7 @@
 
   :global(.post__content h2) {
     position: relative;
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     line-height: 1.75rem;
     font-size: 1.625rem;
     padding-left: 1.5rem;
@@ -93,7 +93,7 @@
 
   :global(.post__content h3) {
     position: relative;
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-size: 1.5rem;
     line-height: 2.25rem;
     padding-left: 0.5rem;
@@ -271,7 +271,7 @@
     background-color: var(--color-special-bg);
     color: var(--color-main-text);
     border-radius: 0.25rem;
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-weight: 500;
   }
 
@@ -341,7 +341,7 @@
   import ProgressButton from "@/components/ProgressButton.svelte"
   import dayjs from "dayjs"
   import data from "@/site-data"
-  import { theme } from "@/utils/store"
+  import { theme } from "@/utils/theme"
   export let title, date
 
   let content

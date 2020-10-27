@@ -2,7 +2,7 @@
   .section {
     position: relative;
     margin-top: 4rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: var(--color-main-text);
     text-align: center;
     z-index: 2;
@@ -21,7 +21,7 @@
   }
 
   .section__title {
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     position: relative;
     display: inline-block;
     font-size: 2rem;
@@ -53,7 +53,7 @@
     color: #f4f4f4;
     background-color: var(--color-main-accent);
     text-decoration: none;
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-size: 1.25rem;
     border-radius: 0.25rem;
     transition: all ease-out 0.2s;

@@ -7,7 +7,7 @@
   }
 
   .posts__title {
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     position: relative;
     display: inline-block;
     font-size: 2rem;
@@ -53,7 +53,7 @@
 
 <SEO title="Posts" />
 
-<div class="posts">
+<section class="posts">
   <h1 class="posts__title">All Posts</h1>
   <label for="posts__input">
     <input
@@ -74,7 +74,7 @@
       />
     {/each}
   </div>
-</div>
+</section>
 <ProgressButton showBar={false} />
 
 <script>

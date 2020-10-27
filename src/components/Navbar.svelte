@@ -43,7 +43,7 @@
     align-items: center;
     justify-items: center;
     gap: 0.75rem;
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-size: 1.25rem;
   }
 
@@ -160,7 +160,7 @@
     }
 
     .navbar__mobile_item a {
-      font-family: "Roboto Condensed", sans-serif;
+      font-family: "Overpass", sans-serif;
       text-decoration: none;
       font-size: 1.5rem;
       color: var(--color-main-text);

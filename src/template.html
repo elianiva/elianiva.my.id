@@ -17,7 +17,7 @@
 
         // prettier-ignore
         if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
-        else preference = isDarkTheme ? "dark" : "light"
+        else preference = isDarkMode ? "dark" : "light"
 
         // prettier-ignore
         if (preference) document.documentElement.setAttribute("data-theme", preference)
@@ -37,12 +37,6 @@
     <!-- external resources (fonts) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
-      rel="preload"
-      as="style"
-      onload="this.rel='stylesheet'"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
       rel="preload"
       as="style"
       onload="this.rel='stylesheet'"

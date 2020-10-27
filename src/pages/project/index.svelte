@@ -5,8 +5,9 @@
     padding: 2rem 1rem 0;
     text-align: center;
   }
+
   .posts__title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
     position: relative;
     display: inline-block;
     font-size: 2rem;
@@ -14,6 +15,7 @@
     margin-bottom: 2rem;
     color: var(--color-main-text);
   }
+
   .posts__title::before {
     content: "";
     position: absolute;
@@ -24,6 +26,7 @@
     border-radius: 0.25rem;
     background-color: var(--color-main-accent);
   }
+
   .posts__cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
@@ -33,7 +36,7 @@
 
 <SEO title="Projects" />
 
-<div class="posts">
+<section class="posts">
   <h1 class="posts__title">All Projects</h1>
   <div class="posts__cards">
     {#each projects as project}
@@ -47,7 +50,7 @@
       />
     {/each}
   </div>
-</div>
+</section>
 <ProgressButton showBar={false} />
 
 <script>

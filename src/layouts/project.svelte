@@ -38,7 +38,7 @@
 
   .project__demo,
   .project__source {
-    font-family: "Inter", sans-serif;
+    font-family: "Open Sans", sans-serif;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -72,7 +72,7 @@
   }
 
   .project__content {
-    font-family: "Inter", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
