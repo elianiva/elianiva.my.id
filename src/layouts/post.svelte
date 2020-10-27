@@ -47,16 +47,15 @@
     left: -0.25rem;
     right: -0.25rem;
     top: 0;
-    transform: scale3d(0, 0.1, 0);
+    transform: scale3d(1, 0.1, 1);
     background-color: var(--color-main-accent);
-    opacity: 0.5;
     z-index: -1;
     transition: all ease-out 0.2s;
     transform-origin: bottom;
   }
 
   .post__edit:hover::before {
-    transform: scale3d(0, 1, 0);
+    transform: scale3d(1, 1, 1);
   }
 
   .post__content {
@@ -142,7 +141,7 @@
   }
 
   :global(.post__content a:hover) {
-    color: var(--color-main-text);
+    color: #ffffff;
   }
 
   :global(.post__content a::before) {
@@ -152,16 +151,16 @@
     left: -0.25rem;
     right: -0.25rem;
     top: 0.25rem;
-    transform: scale3d(0, 0.1, 0);
+    transform: scale3d(1, 0.1, 1);
     background-color: var(--color-main-accent);
-    opacity: 0.5;
+    background-color: red;
     z-index: -1;
     transition: all ease-out 0.2s;
     transform-origin: bottom;
   }
 
   :global(.post__content a:hover::before) {
-    transform: scale3d(0, 1, 0);
+    transform: scale3d(1, 1, 1);
   }
 
   :global(.post__content code) {
@@ -342,7 +341,7 @@
   import ProgressButton from "@/components/ProgressButton.svelte"
   import dayjs from "dayjs"
   import data from "@/site-data"
-  import { theme } from "@/utils/theme"
+  import { theme } from "@/utils/store"
   export let title, date
 
   let content
