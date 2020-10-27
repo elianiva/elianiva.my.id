@@ -216,21 +216,12 @@
 </style>
 
 <svelte:head>
-  {#if $theme === 'light'}
-    <link
-      rel="preload"
-      href="/prism-gruvbox-hard.css"
-      as="style"
-      onload="this.rel='stylesheet'"
-    />
-  {:else}
-    <link
-      rel="preload"
-      href="/prism-night-owl.css"
-      as="style"
-      onload="this.rel='stylesheet'"
-    />
-  {/if}
+  <link
+    rel="preload"
+    href="/prism-night-owl.css"
+    as="style"
+    onload="this.rel='stylesheet'"
+  />
 </svelte:head>
 
 <SEO {title} thumbnail={`${data.siteUrl}/project/${slug}/cover.png`} />
