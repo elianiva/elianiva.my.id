@@ -50,7 +50,7 @@
 
 .navbar__item a {
   font-family: "Overpass", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.25rem;
   position: relative;
   color: var(--color-alt-text);

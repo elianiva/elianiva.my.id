@@ -1,6 +1,6 @@
 @media (prefers-color-scheme: light) {
   :root {
-    --color-main-accent: #5974dd;
+    --color-main-accent: #3D58A5;
     --color-main-bg: #fbfaff;
     --color-alt-bg: #ffffff;
     --color-special-bg: #efefef;
@@ -43,7 +43,7 @@
 
   /* set light colours if user overrides it */
   [data-theme="light"] {
-    --color-main-accent: #5974dd;
+    --color-main-accent: #3D58A5;
     --color-main-bg: #fbfaff;
     --color-alt-bg: #ffffff;
     --color-special-bg: #f4f4f4;
