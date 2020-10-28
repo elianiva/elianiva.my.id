@@ -20,7 +20,11 @@
   font-family: "Overpass", sans-serif;
   color: var(--color-main-text);
   font-size: 2rem;
-  margin: 2rem 0 1rem;
+  margin: 0 0 1rem;
+}
+
+.about__heading:not(:first-child) {
+  margin-top: 2rem;
 }
 
 .about__heading::after {
@@ -91,7 +95,7 @@
 }
 
 .about__paren {
-  color: var(--color-thin);
+  color: var(--color-alt-text);
 }
 
 .lmao {
@@ -109,33 +113,54 @@
       Hi! My name is Dicha Zelianivan Arkana. I go on the internet as Elianiva.
       Yup, my usename is
       <i>part</i>
-      of my middle name and I'm proud of it ツ. I'm a 16 y/o asian boi who loves
-      to build website and contribute to any open source projects that I like.
+      of my middle name and I'm proud of it ツ. I'm a 16 y/o Asian boi who loves
+      to build websites and contribute to any open source projects that I like.
       My biggest goal in my life is to make an impact to open source community
       so even if I die, people can still enjoy what I've made when I was alive
-      =).
+      and not just forgotten like I never existed in the first place =)
     </p>
     <p class="about__text">
       I've been learning web development for about a year and a half. I
       understand the basic of HTML, CSS, and JS quite well. Currently learning
       React/Next, Svelte/Sapper, and Typescript. Besides webdev stuff, I also
-      learn Rust and Lua. Though, I'm still at the very early stage of Rust and
+      know Rust and Lua. Though, I'm still at the very early stage of Rust and
       only use Lua for Neovim and AwesomeWM.
     </p>
     <p class="about__text">
       I live in a beautiful country called Indonesia. I can speak Indonesian
       natively
-      <span class="about__paren">(obviously)</span>, Javanese
-      <span class="about__paren">(kinda)</span>
-      natively, and English fluently. I am currently learning Japanese because I
-      want to be able to speak a language that uses different writing system.
+      <span class="about__paren">(obviously)</span>, Javanese natively, and
+      English fluently. I am currently learning Japanese because I want to be
+      able to speak a language that uses different writing system.
       <span class="lmao">and watch anime with no subtitle lol</span>
+    </p>
+    <p class="about__text">
+      If you want to reach me then feel free to hit me up on
+      <a
+        class="about__link"
+        href="https://twitter.com/@elianiva_"
+        target="_blank"
+        rel="norel noreferrer"
+      >Twitter</a>
+      or Discord @elianiva#1558. Though I'm rarely active on those two. I only
+      use Twitter to simp over Vtubers and retweet some arts that I like despite
+      having no followers lmao. Reason why is I want to "save" them so I can
+      just scroll through my profile and see some good arts. I barely use
+      Discord. I just open it every now and then, that's about it. I am trying
+      to use Discord more often lately though. If it's urgent then just
+      <a
+        class="about__link"
+        href="mailto:dicha.arkana03@gmail.com"
+        target="_blank"
+        rel="norel noreferrer"
+      >email me,</a>
+      I check my email quite often.
     </p>
     <details class="about__details">
       <summary class="about__summary">Fun fact about me</summary>
       <p class="about__text" style="margin-top: 1rem;" transition:fade>
-        I'm easily obsessed with one thing that I just found and like. For
-        example, I found out
+        I'm easily obsessed with one thing that I just found and like. I found
+        out
         <a
           class="about__link"
           target="_blank"
@@ -144,19 +169,29 @@
         >Babymetal</a>
         (check them out btw ツ) few months ago and got obsessed with them. They
         are the main reason why I decided to learn Japanese and appreciate
-        Japanese culture. The other example is Kill La Kill. I love this anime
+        Japanese culture. Another thing is Kill La Kill. I love this anime so
+        much
         <span class="about__paren">(no, not because 2d anime tiddies)</span>
-        so much that I want to learn to draw so I can draw Ryuko myself xD. My
-        website colour is heavily inspired from Senketsu (dark mode) and
-        Junketsu (light mode).
+        that I want to learn to draw so I can draw Ryuko myself xD. My website
+        colour is heavily inspired from Senketsu (dark mode) and Junketsu (light
+        mode).
       </p>
     </details>
     <h1 class="about__heading">About My Website</h1>
     <p class="about__text">
       I made this website so I can post stuff that I learned and share it to the
       others. I also use this as a note to myself because I sometimes forgot
-      stuff that I did in the past. By having this website, I can just revisit
-      what I've done in the past.
+      stuff that I did. By having this website, I can just revisit what I've
+      done in the past.
+    </p>
+    <p class="about__text">
+      I use Sapper and MDSveX to build this website and it's hosted on Vercel.
+      If you want more detail about my website the you might want to read
+      <a
+        class="about__link"
+        href="{data.siteUrl}/post/i-rebuild-my-site-using-sapper"
+      >this post</a>
+      where I explain the process of me making this site.
     </p>
     <p class="about__text">
       The picture that you see on the home page is Ryuko Matoi from Kill La
@@ -167,24 +202,24 @@
         target="_blank"
         rel="noreferrer norel"
       >Enzore</a>, such an awesome artist. Do yourself a favour by checking his
-      artworks ツ. I don't want to use a picture of myself like most people do
+      artworks ツ. I took it from my github profile so that might change in the
+      future. I don't want to use a picture of myself like some people do
       because, yeah, no, bad idea. Don't want random people on the internet see
-      my real face.
+      my real face, at least for now.
     </p>
     <h1 class="about__heading">About My Setup</h1>
     <p class="about__text">
-      I use Linux as my Operating System.
+      My laptop is Thinkpad X220. I use Linux as my Operating System.
       <a
         href="https://archlinux.org"
         class="about__link"
         rel="norel noreferrer"
       >Archlinux</a>
-      is the distribution that I use. I've used Linux for about a year. I also
-      understand how to use CLI because I spent most of my time inside terminal
-      and rest of it inside a browser.
+      to be more specific. I've used Linux for about a year. I spent most of my
+      time inside terminal and rest of it inside a browser or random GUI app.
     </p>
     <p class="about__text">
-      I use a Window Maager called
+      I use a Window Manager called
       <a
         href="https://awesomewm.org"
         class="about__link"
@@ -193,12 +228,12 @@
       <i>awesome</i>
       window manager. You can read
       <a
-        href="{data.siteUrl}/post/full-explanation-of-my-dotfiles"
+        href="{data.siteUrl}/post/full-explanation-of-my-awesomewm-config"
         class="about__link"
         rel="norel noreferrer"
       >this post</a>
-      where I explained about my dotfiles in detail. I also use a text editor
-      called
+      where I explained about my dotfiles in full detail. I also use a text
+      editor called
       <a
         href="https://neovim.io"
         class="about__link"
@@ -206,7 +241,7 @@
       >Neovim</a>. My Neovim config is written in lua and is quite lengthy so I
       also made a
       <a
-        href="https://neovim.io"
+        href="{data.siteUrl}/post/full-explanation-of-my-neovim-config"
         class="about__link"
         rel="norel noreferrer"
       >post</a>
