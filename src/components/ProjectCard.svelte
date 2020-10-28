@@ -86,7 +86,7 @@
 }
 </style>
 
-<div class="card">
+<div class="card" in:fade={{ duration: 200 }}>
   <Waypoint throttle="500" offset="320">
     <img class="card__img" {src} alt={title} loading="lazy" />
   </Waypoint>
@@ -113,6 +113,7 @@
 </div>
 
 <script>
+import { fade } from "svelte/transition"
 import Code from "@/icons/code.svg"
 import Chrome from "@/icons/chrome.svg"
 import Waypoint from "svelte-waypoint"

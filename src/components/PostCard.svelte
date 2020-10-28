@@ -85,7 +85,7 @@
 }
 </style>
 
-<div class="card">
+<div class="card" in:fade={{ duration: 200 }}>
   <a rel="prefetch" {href} class="card__details">
     <span class="card__title">{title}</span>
     <div class="card__date">
@@ -100,6 +100,7 @@
 </div>
 
 <script>
+import { fade } from "svelte/transition"
 import Calendar from "@/icons/calendar.svg"
 import dayjs from "dayjs"
 export let title, desc, href, date, tags
