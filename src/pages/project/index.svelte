@@ -54,15 +54,10 @@
 <ProgressButton showBar={false} />
 
 <script>
-import { onMount } from "svelte"
 import SEO from "@/components/SEO.svelte"
 import ProjectCard from "@/components/ProjectCard.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 
 // eslint-disable-next-line
 const projects = __PROJECTS__
-
-// use setTimeout because we need to wait
-// for some time before scrolling, otherwise it would look glitchy
-onMount(() => setTimeout(() => window.scrollTo(0, 0), 100))
 </script>

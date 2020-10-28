@@ -176,13 +176,13 @@
     <ul class="navbar__items">
       <li class="navbar__item"><a href="/">Home</a></li>
       <li class="navbar__item" class:active={segment === 'post'}>
-        <a href="/post" sapper:noscroll>Posts</a>
+        <a href="/post">Posts</a>
       </li>
       <li class="navbar__item" class:active={segment === 'project'}>
-        <a href="/project" sapper:noscroll>Projects</a>
+        <a href="/project">Projects</a>
       </li>
       <li class="navbar__item" class:active={segment === 'about'}>
-        <a href="/about" sapper:noscroll>About</a>
+        <a href="/about">About</a>
       </li>
       <li class="navbar__item">
         <button
@@ -230,13 +230,13 @@
         <a href="/">Home</a>
       </li>
       <li class="navbar__mobile_item" class:active={segment === 'post'}>
-        <a href="/post" on:click={toggleNav} sapper:noscroll>Posts</a>
+        <a href="/post" on:click={toggleNav}>Posts</a>
       </li>
       <li class="navbar__mobile_item" class:active={segment === 'project'}>
-        <a href="/project" on:click={toggleNav} sapper:noscroll>Projects</a>
+        <a href="/project" on:click={toggleNav}>Projects</a>
       </li>
       <li class="navbar__mobile_item" class:active={segment === 'about'}>
-        <a href="/about" on:click={toggleNav} sapper:noscroll>About</a>
+        <a href="/about" on:click={toggleNav}>About</a>
       </li>
       <li class="navbar__mobile_item">
         <button

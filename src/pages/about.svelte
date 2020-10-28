@@ -256,13 +256,7 @@
 </section>
 
 <script>
-import { onMount } from "svelte"
 import { fade } from "svelte/transition"
 import data from "@/site-data"
 import SEO from "@/components/SEO.svelte"
-
-// use setTimeout because we need to wait
-// for some time before scrolling, otherwise it would look glitchy
-onMount(() => setTimeout(() => window.scrollTo(0, 0), 100))
-// i gave up on this, it sometimes works and sometimes not, idk how to fix
 </script>
