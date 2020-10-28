@@ -37,5 +37,6 @@ p {
 export let status
 export let error
 
+// eslint-disable-next-line
 const dev = process.env.NODE_ENV === "development"
 </script>

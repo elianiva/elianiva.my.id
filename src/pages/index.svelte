@@ -128,6 +128,8 @@ import Footer from "@/components/Footer.svelte"
 import Section from "@/parts/Sections.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 
+// eslint-disable-next-line
 const posts = __POSTS__
+// eslint-disable-next-line
 const projects = __PROJECTS__
 </script>

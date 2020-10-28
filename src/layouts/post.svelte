@@ -331,10 +331,10 @@ import SEO from "@/components/SEO.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import dayjs from "dayjs"
 import data from "@/site-data"
-import { theme } from "@/utils/theme"
 export let title, date
 
 let content
+// eslint-disable-next-line
 const posts = __POSTS__
 const currentPost = posts.filter(post => post.title === title)[0]
 

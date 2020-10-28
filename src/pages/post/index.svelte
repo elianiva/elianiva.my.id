@@ -82,6 +82,7 @@ import SEO from "@/components/SEO.svelte"
 import PostCard from "@/components/PostCard.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 
+// eslint-disable-next-line
 const posts = __POSTS__
 
 // use setTimeout because we need to wait

@@ -284,10 +284,10 @@ import Chrome from "@/icons/chrome.svg"
 import Code from "@/icons/code.svg"
 import Waypoint from "svelte-waypoint"
 import ProgressButton from "@/components/ProgressButton.svelte"
-import { theme } from "@/utils/theme"
 import data from "@/site-data"
 export let title
 
+// eslint-disable-next-line
 const projects = __PROJECTS__
 const currentProject = projects.filter(project => project.title === title)[0]
 

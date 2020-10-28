@@ -59,6 +59,7 @@ import SEO from "@/components/SEO.svelte"
 import ProjectCard from "@/components/ProjectCard.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 
+// eslint-disable-next-line
 const projects = __PROJECTS__
 
 // use setTimeout because we need to wait
