@@ -55,14 +55,13 @@
 
 <section class="posts">
   <h1 class="posts__title">All Posts</h1>
-  <label for="posts__input">
-    <input
-      class="posts__input"
-      id="posts__input"
-      type="text"
-      placeholder="Search for post..."
-    />
-  </label>
+  <input
+    class="posts__input"
+    id="posts__input"
+    type="text"
+    placeholder="Search for post..."
+    aria-label="search post"
+  />
   <div class="posts__cards">
     {#each posts as post}
       <PostCard
