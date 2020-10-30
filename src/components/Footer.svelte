@@ -12,20 +12,14 @@ p {
   line-height: 1.5rem;
   color: var(--color-main-text);
 }
+
 a {
   text-decoration: none;
 }
-.sapper {
-  color: #ff3e00;
-}
-.vercel {
-  color: #2f6ef3;
-}
-.github {
-  color: #8351e6;
-}
-.elianiva {
-  color: #ff4851;
+
+.hl {
+  color: var(--color-main-accent);
+  font-weight: 600;
 }
 
 .icons {
@@ -65,13 +59,13 @@ a {
   </div>
   <p>
     Powered by
-    <a class="sapper" href="https://sapper.svelte.dev">Sapper</a>
+    <a class="hl" href="https://sapper.svelte.dev">Sapper</a>
     and
-    <a class="vercel" href="https://vercel.app">Vercel</a>
+    <a class="hl" href="https://vercel.app">Vercel</a>
     • Source code is available on
-    <a class="github" href="{github}/elianiva.me">Github</a>
+    <a class="hl" href="{github}/elianiva.me">Github</a>
   </p>
-  <p>Copyright &copy; 2020 <a class="elianiva" href={github}>Elianiva</a></p>
+  <p>Copyright &copy; 2020 <a class="hl" href={github}>Elianiva</a></p>
 </footer>
 
 <script>
