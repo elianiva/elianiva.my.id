@@ -132,6 +132,7 @@
 }
 
 :global(.post__content a) {
+  font-weight: 600;
   position: relative;
   display: inline-block;
   color: var(--color-main-accent);
@@ -162,9 +163,11 @@
 }
 
 :global(.post__content code) {
+  font-weight: 600;
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
+  font-size: 1.125rem;
 }
 
 :global(.post__content p > code::before),
@@ -172,7 +175,12 @@
   content: "`";
 }
 
+:global(.post__content pre) {
+  border: 0.125rem var(--color-borders) solid;
+}
+
 :global(.post__content pre code) {
+  font-weight: 400;
   padding: 0;
   border-radius: 0;
   font-size: 1rem;
@@ -262,7 +270,6 @@
   display: flex;
   gap: 0.5rem;
   justify-content: center;
-  margin-top: 1rem;
 }
 
 .post__tag {
