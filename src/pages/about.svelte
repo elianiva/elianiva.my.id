@@ -111,13 +111,10 @@
     <h1 class="about__heading">About Me</h1>
     <p class="about__text">
       Hi! My name is Dicha Zelianivan Arkana. I go on the internet as Elianiva.
-      Yup, my usename is
-      <i>part</i>
-      of my middle name and I'm proud of it ツ. I'm a 16 y/o Asian boi who loves
-      to build websites and contribute to any open source projects that I like.
-      My biggest goal in my life is to make an impact to open source community
-      so even if I die, people can still enjoy what I've made when I was alive
-      and not just forgotten like I never existed in the first place =)
+      It was taken from my middle name without the first and last letter. I'm a
+      16 y/o Asian boi who loves to build websites and contribute to any open
+      source projects that I like. My biggest goal in my life is to contribute
+      to as much open source projects as I can to help more people =)
     </p>
     <p class="about__text">
       I've been learning web development for about a year and a half. I
@@ -132,7 +129,7 @@
       <span class="about__paren">(obviously)</span>, Javanese natively, and
       English fluently. I am currently learning Japanese because I want to be
       able to speak a language that uses different writing system.
-      <span class="lmao">and watch anime with no subtitle lol</span>
+      <span class="lmao">and ofc, to watch anime with no subtitle lol</span>
     </p>
     <p class="about__text">
       If you want to reach me then feel free to hit me up on
@@ -147,14 +144,13 @@
       having no followers lmao. Reason why is I want to "save" them so I can
       just scroll through my profile and see some good arts. I barely use
       Discord. I just open it every now and then, that's about it. I am trying
-      to use Discord more often lately though. If it's urgent then just
+      to use Discord more often lately though. Or you can just
       <a
         class="about__link"
         href="mailto:dicha.arkana03@gmail.com"
         target="_blank"
         rel="norel noreferrer"
-      >email me,</a>
-      I check my email quite often.
+      >email me</a>, I check my email quite often.
     </p>
     <details class="about__details">
       <summary class="about__summary">Fun fact about me</summary>
@@ -172,9 +168,8 @@
         Japanese culture. Another thing is Kill La Kill. I love this anime so
         much
         <span class="about__paren">(no, not because 2d anime tiddies)</span>
-        that I want to learn to draw so I can draw Ryuko myself xD. My website
-        colour is heavily inspired from Senketsu (dark mode) and Junketsu (light
-        mode).
+        that I want to learn to draw again and my website colour is heavily
+        inspired from Senketsu and Junketsu.
       </p>
     </details>
     <h1 class="about__heading">About My Website</h1>
@@ -195,17 +190,30 @@
     </p>
     <p class="about__text">
       The picture that you see on the home page is Ryuko Matoi from Kill La
-      Kill. It was made by
+      Kill. It was commissioned from
       <a
         class="about__link"
-        href="https://www.facebook.com/enjor.s"
+        href="https://twitter.com/enzore_"
         target="_blank"
         rel="noreferrer norel"
-      >Enzore</a>, such an awesome artist. Do yourself a favour by checking his
-      artworks ツ. I took it from my github profile so that might change in the
-      future. I don't want to use a picture of myself like some people do
-      because, yeah, no, bad idea. Don't want random people on the internet see
-      my real face, at least for now.
+      >Enzore</a>, such a cool artist. Do yourself a favour by checking his
+      artworks! I took it from my
+      <a
+        class="about__link"
+        href="{data.github}"
+        target="_blank"
+        rel="noreferrer norel"
+      >github profile</a>
+      so that might change in the
+      future. Also, if you noticed the icon for my website, it's a shitty
+      drawing of
+      <a
+        class="about__link"
+        href="https://knowyourmeme.com/photos/709240-kill-la-kill"
+        target="_blank"
+        rel="noreferrer norel"
+      >derp eyed Ryuko</a> that I made a while back. I like to draw every now
+      and then just for fun.
     </p>
     <h1 class="about__heading">About My Setup</h1>
     <p class="about__text">
@@ -232,25 +240,24 @@
         class="about__link"
         rel="norel noreferrer"
       >this post</a>
-      where I explained about my dotfiles in full detail. I also use a text
-      editor called
+      where I explained about my dotfiles briefly if you want to steal my
+      dotfiles. I also use a text editor called
       <a
         href="https://neovim.io"
         class="about__link"
         rel="norel noreferrer"
       >Neovim</a>. My Neovim config is written in lua and is quite lengthy so I
-      also made a
+      made a
       <a
         href="{data.siteUrl}/post/full-explanation-of-my-neovim-config"
         class="about__link"
         rel="norel noreferrer"
       >post</a>
-      about my neovim config to make it easier if people want to steal something
-      from my config.
+      about my neovim config as well.
     </p>
     <p class="about__text">
       Well, I guess that's about it. Thanks for visiting my website and I hope
-      you found something useful from my site. Have a good day!
+      you found something useful from my site. Have a wonderful day! =)
     </p>
   </section>
 </section>
