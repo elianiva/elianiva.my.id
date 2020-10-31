@@ -1,5 +1,5 @@
 ---
-title: I finally rebuild my site using Sapper and MDsveX
+title: I rebuild my site using Sapper and MDsveX from scratch
 date: 2020-10-20
 desc: A post where I explain why I migrate my website using Svelte/Sapper
 tags:
@@ -100,11 +100,11 @@ This issue is currently tracked [here](https://github.com/matyunya/svelte-image/
 ## Hosting
 I use [Vercel](https://vercel.com) to host my site. I used Vercel quite a few in the past and it's been great. It's simple to set up and integrate with Github. It's also free!
 
-## Resources
+# Resources
 Here are some resources that helped me making this website. Hope you find this useful ツ
 
 - https://github.com/iamyuu/iamyuu
-- https://web.dev/blog
+- https://web.dev/
 - https://fatihkalifa.com/dark-mode-web
 - https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/
 
