@@ -233,26 +233,15 @@
         rel="norel noreferrer"
       >AwesomeWM</a>, such an
       <i>awesome</i>
-      window manager. You can read
-      <a
-        href="{data.siteUrl}/post/full-explanation-of-my-awesomewm-config"
-        class="about__link"
-        rel="norel noreferrer"
-      >this post</a>
-      where I explained about my dotfiles briefly if you want to steal my
-      dotfiles. I also use a text editor called
+      window manager. I am planning on making a post where I explained about my
+      dotfiles in case you want to steal my dotfiles. I also use a text editor
+      called
       <a
         href="https://neovim.io"
         class="about__link"
         rel="norel noreferrer"
-      >Neovim</a>. My Neovim config is written in lua and is quite lengthy so I
-      made a
-      <a
-        href="{data.siteUrl}/post/full-explanation-of-my-neovim-config"
-        class="about__link"
-        rel="norel noreferrer"
-      >post</a>
-      about my neovim config as well.
+      >Neovim</a>. My Neovim config is written in lua and is quite lengthy so
+      I'm also planning on making a post about my neovim config as well.
     </p>
     <p class="about__text">
       Well, I guess that's about it. Thanks for visiting my website and I hope
