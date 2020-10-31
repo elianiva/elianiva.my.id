@@ -75,5 +75,5 @@ onMount(() => (documentHeight = document.body.scrollHeight))
 
 $: progress = (currentPosition / documentHeight) * 100
 
-const scrollToTop = () => window.scrollTo({ top: 0 })
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
 </script>
