@@ -200,20 +200,19 @@
       artworks! I took it from my
       <a
         class="about__link"
-        href="{data.github}"
+        href={data.github}
         target="_blank"
         rel="noreferrer norel"
       >github profile</a>
-      so that might change in the
-      future. Also, if you noticed the icon for my website, it's a shitty
-      drawing of
+      so that might change in the future. Also, if you noticed the icon for my
+      website, it's a shitty drawing of
       <a
         class="about__link"
         href="https://knowyourmeme.com/photos/709240-kill-la-kill"
         target="_blank"
         rel="noreferrer norel"
-      >derp eyed Ryuko</a> that I made a while back. I like to draw every now
-      and then just for fun.
+      >derp eyed Ryuko</a>
+      that I made a while back. I like to draw every now and then just for fun.
     </p>
     <h1 class="about__heading">About My Setup</h1>
     <p class="about__text">
