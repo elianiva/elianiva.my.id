@@ -291,7 +291,7 @@ const toggleNav = () => {
   isVisible = !isVisible
 
   // turn off scrolling when mobile nav is visible
-  if (checked) document.body.overflow = "hidden"
-  else document.body.overflow = "auto"
+  if (checked) document.body.style.overflow = "hidden"
+  else document.body.style.overflow = "auto"
 }
 </script>
