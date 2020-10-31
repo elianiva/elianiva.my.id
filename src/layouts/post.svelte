@@ -340,7 +340,15 @@ const currentPost = posts.filter(post => post.title === title)[0]
 
 onMount(() => {
   content.querySelectorAll("a").forEach(a => {
-    if (!a.hash || !content.querySelectorAll(a.hash).length) return
+    // if the link doesn't have # href or id matching the # href then do nothing
+    if (
+      !a.hash ||
+      // use `decodeURIComponent` to handle Japanese characters
+      !content.querySelectorAll(decodeURIComponent(a.hash)).length
+    ) {
+      return
+    }
+
     a.addEventListener("click", event => {
       event.preventDefault()
       window.location.hash = event.target.getAttribute("href")

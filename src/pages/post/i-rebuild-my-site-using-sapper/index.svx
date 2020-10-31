@@ -53,7 +53,8 @@ onMount(() => {
 })
 ```
 
-You might want to change `document` to something else because if you use `document` then it will change the `a` behaviour of the entire document. You can see mine [here](https://github.com/elianiva/elianiva.me/blob/a0c824de5b372ff210a1e3f44d10ef80e2be4190/src/layouts/post.svelte#L351-L359).
+You might want to change `document` to something else because if you use `document` then it will change the `a` behaviour of the entire document. You can see mine [here](https://github.com/elianiva/elianiva.me/blob/a0c824de5b372ff210a1e3f44d10ef80e2be4190/src/layouts/post.svelte#L340-L356).
+I also use `decodeURIComponent` to handle Japanese characters.
 
 I also couldn't make [shiki](https://shiki.matsu.io) work with MDsveX. There's nothing wrong with the default highlighter of MDsveX (which is [prismjs](https://prismjs.com)) but I want to use Shiki because it has the same syntax grammar as VScode and it looks better in my opinion. Though, MDsveX will use Shiki in the future version according to [pngwn's comment](https://github.com/pngwn/MDsveX/issues/139#issuecomment-688478536).
 
