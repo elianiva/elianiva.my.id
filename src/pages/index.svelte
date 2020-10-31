@@ -10,7 +10,7 @@
 .hero {
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(var(--mobile-vh, 1vh) * 100);
   margin: 0 auto;
   padding: 1rem 0;
 }
@@ -119,6 +119,7 @@
 <ProgressButton showBar={false} />
 
 <script>
+import { onMount } from "svelte"
 import SEO from "@/components/SEO.svelte"
 import Hero from "@/parts/Hero.svelte"
 import Navbar from "@/components/Navbar.svelte"
@@ -130,4 +131,11 @@ import ProgressButton from "@/components/ProgressButton.svelte"
 const posts = __POSTS__
 // eslint-disable-next-line
 const projects = __PROJECTS__
+
+// calculate mobile window height *including* the browser UI
+// using plain 100vh would ignore browser's UI
+onMount(() => {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--mobile-vh', `${vh}px`);
+})
 </script>

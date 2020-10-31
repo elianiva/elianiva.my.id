@@ -28,7 +28,7 @@
 
 .hero__role {
   font-family: "Overpass", sans-serif;
-  font-size: clamp(1rem, calc(5vw + 1rem), 2rem);
+  font-size: clamp(1rem, calc(5vw + 0.5rem), 2rem);
   display: block;
 }
 
@@ -38,7 +38,7 @@
   color: var(--color-alt-text);
   font-family: "Open Sans", sans-serif;
   font-size: clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem);
-  line-height: 2rem;
+  line-height: 1.5rem;
   margin: 0 0 1rem;
 }
 
