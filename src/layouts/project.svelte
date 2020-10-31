@@ -1,25 +1,30 @@
 <style>
 .project {
   max-width: 1080px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  grid-auto-flow: dense;
+  align-items: flex-start;
   margin: 2rem auto;
   padding: 0 1rem;
   gap: 1rem;
 }
 
-.project__left {
-  width: 70%;
+.project__cover {
+  grid-column: 1/2;
+  width: 100%;
 }
 
 .project__wrapper {
   border-radius: 0.5rem;
   overflow: hidden;
   border: 0.0625rem var(--color-special-bg) solid;
-  height: 24.5rem;
-  margin-bottom: 2rem;
 }
 
 .project__img {
+  display: block;
+  height: 100%;
   width: 100%;
 }
 
@@ -34,6 +39,11 @@
   color: var(--color-main-text);
   font-family: "Overpass", sans-serif;
   font-size: 2rem;
+}
+
+.project__buttons {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .project__demo,
@@ -72,14 +82,15 @@
 }
 
 .project__content {
+  grid-column: 1/2;
   font-family: "Open Sans", sans-serif;
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
 .project__stack {
-  width: 30%;
-  height: 100%;
+  grid-column: 2/3;
+  width: 100%;
   padding: 1rem;
   border: 0.0625rem var(--color-borders) solid;
   border-radius: 0.5rem;
@@ -213,6 +224,25 @@
     border-radius: 0;
   }
 }
+
+@media only screen and (max-width: 880px) {
+  .project__cover {
+    grid-column: 1/3;
+  }
+
+  .project__content {
+    grid-column: 1/3;
+  }
+
+  .project__stack {
+    grid-row: 2/3;
+    grid-column: 1/3;
+  }
+
+  .project__header {
+    flex-direction: column;
+  }
+}
 </style>
 
 <svelte:head>
@@ -227,7 +257,7 @@
 <SEO {title} thumbnail={`${data.siteUrl}/project/${slug}/cover.png`} />
 
 <section class="project">
-  <main class="project__left">
+  <div class="project__cover">
     <div class="project__wrapper">
       <img
         src={`/project/${slug}/cover.png`}
@@ -236,9 +266,11 @@
         loading="lazy"
       />
     </div>
-    <div class="project__content">
-      <div class="project__header">
-        <h1 class="project__title">{title}</h1>
+  </div>
+  <div class="project__content">
+    <div class="project__header">
+      <h1 class="project__title">{title}</h1>
+      <div class="project__buttons">
         <a
           class="project__demo"
           href={demo ? demo : '#'}
@@ -252,10 +284,10 @@
           rel="norel noreferrer"
         ><Code class="card__icon" />Source</a>
       </div>
-      <hr class="project__divider" />
-      <slot />
     </div>
-  </main>
+    <hr class="project__divider" />
+    <slot />
+  </div>
   <div class="project__stack">
     <span class="stack__title">Tech Stack</span>
     <hr class="stack__divider" />
