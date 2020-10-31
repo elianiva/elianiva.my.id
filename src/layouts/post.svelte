@@ -289,6 +289,7 @@
   :global(.post__content pre) {
     margin-left: -1rem !important;
     margin-right: -1rem !important;
+    border: none;
     border-radius: 0;
   }
   :global(.post__content ul *) {

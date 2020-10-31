@@ -45,24 +45,22 @@
   margin-right: 1rem;
   border-radius: 0.25rem;
   text-decoration: none;
-  transition: all ease-out 0.2s;
 }
 
 .hero__button--inactive {
   padding: 0.75rem 2rem;
-  background-color: var(--color-main-bg);
+  background-color: var(--color-special-bg);
   color: var(--color-alt-text);
   font-family: "Overpass", sans-serif;
   font-size: 1.125rem;
   border: none;
   border-radius: 0.25rem;
   text-decoration: none;
-  transition: all ease-out 0.2s;
 }
 
 .hero__button:hover,
 .hero__button--inactive:hover {
-  filter: brightness(1.2);
+  filter: brightness(0.95);
 }
 
 @media only screen and (max-width: 960px) {

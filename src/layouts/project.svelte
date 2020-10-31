@@ -229,14 +229,12 @@
 <section class="project">
   <main class="project__left">
     <div class="project__wrapper">
-      <Waypoint throttle="500" offset="320">
-        <img
-          src={`/project/${slug}/cover.png`}
-          alt={title}
-          class="project__img"
-          loading="lazy"
-        />
-      </Waypoint>
+      <img
+        src={`/project/${slug}/cover.png`}
+        alt={title}
+        class="project__img"
+        loading="lazy"
+      />
     </div>
     <div class="project__content">
       <div class="project__header">
@@ -264,7 +262,11 @@
     {#each stack as item}
       <div class="stack__item">
         <div class="stack__logo">
-          <img src="/logo/{item[0].toLowerCase()}.png" alt={item} />
+          <img
+            src="/logo/{item[0].toLowerCase()}.png"
+            alt={item}
+            style="filter: {item[0].toLowerCase() === 'nextjs' ? 'var(--filter-invert)' : ''} "
+          />
         </div>
         <a
           href={item[1]}
@@ -282,7 +284,6 @@
 import SEO from "@/components/SEO.svelte"
 import Chrome from "@/icons/chrome.svg"
 import Code from "@/icons/code.svg"
-import Waypoint from "svelte-waypoint"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import data from "@/site-data"
 export let title

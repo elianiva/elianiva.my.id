@@ -9,6 +9,7 @@
     --color-borders: #e4e4e4;
     --color-thin: #b0b0b0;
     --color-shine: #000000;
+    --filter-invert: invert(0);
   }
 
   [data-theme="dark"] {
@@ -21,6 +22,7 @@
     --color-borders: #3b465a;
     --color-thin: #6b7a99;
     --color-shine: #ffffff;
+    --filter-invert: invert(100%);
   }
 
   [data-theme="dark"] img {
@@ -39,6 +41,7 @@
     --color-borders: #3b465a;
     --color-thin: #6b7a99;
     --color-shine: #ffffff;
+    --filter-invert: invert(100%);
   }
 
   /* set light colours if user overrides it */
@@ -52,6 +55,7 @@
     --color-borders: #e4e4e4;
     --color-thin: #b0b0b0;
     --color-shine: #000000;
+    --filter-invert: invert(0);
   }
 
   [data-theme="light"] img {
