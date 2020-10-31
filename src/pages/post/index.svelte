@@ -61,9 +61,10 @@
     type="text"
     placeholder="Search for post..."
     aria-label="search post"
+    on:input={filterPost}
   />
   <div class="posts__cards">
-    {#each posts as post}
+    {#each filteredPosts as post}
       <PostCard
         title={post.title}
         href={`/post/${post.slug}`}
@@ -83,4 +84,25 @@ import ProgressButton from "@/components/ProgressButton.svelte"
 
 // eslint-disable-next-line
 const posts = __POSTS__
+let keyword = ""
+let filteredPosts = []
+
+$: filteredPosts = posts.filter(post => {
+  const title = post.title.toLowerCase()
+  const slug = post.slug.toLowerCase()
+  const tags = post.tags.map(x => x.toLowerCase())
+  const query = keyword.toLowerCase()
+  return title.includes(query) || slug.includes(query) || tags.includes(query)
+})
+
+const debounce = (func, wait) => {
+  let timeout
+
+  return (...args) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => func(...args), wait)
+  }
+}
+
+const filterPost = debounce(e => (keyword = e.target.value), 500)
 </script>
