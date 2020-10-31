@@ -28,7 +28,7 @@
 
 .hero__role {
   font-family: "Overpass", sans-serif;
-  font-size: clamp(1rem, calc(5vw + 1rem), 1.5rem);
+  font-size: clamp(1rem, calc(5vw + 1rem), 2rem);
   display: block;
 }
 
@@ -103,7 +103,7 @@
   <div class="hero__right">
     <span class="hero__greet">Hi there!</span>
     <span class="hero__name"> I'm Elianiva. </span>
-    <span class="hero__role">A Frontend Developer and Open Source Enthusiast</span>
+    <span class="hero__role">A Frontend Developer and I love Open Source!</span>
     <p class="hero__desc">
       I'm a 16 y/o boi from Indonesia. I love making random websites and
       contribute to any open source projects that I like. I also love Anime and
