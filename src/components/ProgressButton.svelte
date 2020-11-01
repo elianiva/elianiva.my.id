@@ -27,7 +27,7 @@
 
 .progress {
   position: fixed;
-  top: 3.5rem;
+  top: 4rem;
   left: 0;
   right: 0;
   height: 0.125rem;
