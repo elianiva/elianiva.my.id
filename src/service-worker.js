@@ -7,16 +7,16 @@ const ASSETS = `cache${timestamp}`
 const to_cache = shell.concat(files)
 const cached = new Set(to_cache)
 
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches
-      .open(ASSETS)
-      .then(cache => cache.addAll(to_cache))
-      .then(() => {
-        self.skipWaiting()
-      })
-  )
-})
+// self.addEventListener("install", event => {
+//   event.waitUntil(
+//     caches
+//       .open(ASSETS)
+//       .then(cache => cache.addAll(to_cache))
+//       .then(() => {
+//         self.skipWaiting()
+//       })
+//   )
+// })
 
 self.addEventListener("activate", event => {
   event.waitUntil(
