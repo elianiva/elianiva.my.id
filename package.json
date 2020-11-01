@@ -1,7 +1,8 @@
 {
   "name": "elianiva.me",
   "description": "Elianiva's personal site ツ",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "dev": "sapper dev --routes src/pages --ext '.svelte .svx' --port 5000",
     "build": "sapper build --routes src/pages --ext '.svelte .svx' --legacy",
