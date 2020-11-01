@@ -47,7 +47,6 @@
     "svelte": "^3.17.3",
     "svelte-image": "^0.2.7",
     "svelte-preprocess": "^4.5.1",
-    "svelte-waypoint": "^0.1.4",
-    "vercel-sapper": "^0.43.0"
+    "svelte-waypoint": "^0.1.4"
   }
 }
