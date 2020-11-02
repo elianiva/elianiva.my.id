@@ -51,7 +51,7 @@
     {/each}
   </div>
 </section>
-<ProgressButton showBar={false} />
+<ProgressButton />
 
 <script>
 import SEO from "@/components/SEO.svelte"

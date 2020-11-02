@@ -116,7 +116,7 @@
   />
 </main>
 <Footer />
-<ProgressButton showBar={false} />
+<ProgressButton />
 
 <script>
 import { onMount } from "svelte"
@@ -135,7 +135,7 @@ const projects = __PROJECTS__
 // calculate mobile window height *including* the browser UI
 // using plain 100vh would ignore browser's UI
 onMount(() => {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--mobile-vh', `${vh}px`);
+  const vh = window.innerHeight * 0.01
+  document.documentElement.style.setProperty("--mobile-vh", `${vh}px`)
 })
 </script>

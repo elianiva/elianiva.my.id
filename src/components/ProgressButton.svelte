@@ -24,33 +24,9 @@
 :global(.button__icon) {
   color: var(--color-main-text);
 }
-
-.progress {
-  position: fixed;
-  top: 4rem;
-  left: 0;
-  right: 0;
-  height: 0.125rem;
-  overflow-x: hidden;
-}
-
-.progress__bar {
-  position: absolute;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-color: var(--color-main-accent);
-  transition: width ease-out 0.2s;
-}
 </style>
 
 <svelte:window bind:scrollY={currentPosition} />
-
-{#if showBar}
-  <div class="progress">
-    <div class="progress__bar" style="width: {Math.trunc(progress)}%" />
-  </div>
-{/if}
 
 {#if currentPosition > 400}
   <div
@@ -68,7 +44,6 @@ import { fade } from "svelte/transition"
 import Up from "@/icons/up.svg"
 
 let currentPosition, documentHeight, progress
-export let showBar = true
 
 // needs to be inside onMount to make `document` available
 onMount(() => (documentHeight = document.body.scrollHeight))
