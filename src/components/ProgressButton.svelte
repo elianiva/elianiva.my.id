@@ -43,7 +43,7 @@ import { onMount } from "svelte"
 import { fade } from "svelte/transition"
 import Up from "@/icons/up.svg"
 
-let currentPosition, documentHeight, progress
+let currentPosition, documentHeight
 
 // needs to be inside onMount to make `document` available
 onMount(() => (documentHeight = document.body.scrollHeight))
