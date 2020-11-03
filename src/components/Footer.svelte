@@ -53,7 +53,7 @@ a {
       <Twitter height="1.5rem" width="1.5rem" />
     </a>
     <!-- prettier-ignore -->
-    <a href="https://elianiva.github.io" target="_blank" rel="norel noreferrer" aria-label="rss">
+    <a href="https://elianiva.me/rss.xml" rel="alternate" type="application/rss+xml" aria-label="rss">
       <RSS height="1.5rem" width="1.5rem" />
     </a>
   </div>
