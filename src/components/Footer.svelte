@@ -53,7 +53,7 @@ a {
       <Twitter height="1.5rem" width="1.5rem" />
     </a>
     <!-- prettier-ignore -->
-    <a href="https://elianiva.me/rss.xml" rel="alternate" type="application/rss+xml" aria-label="rss">
+    <a href="/rss.xml" rel="alternate" type="application/rss+xml" aria-label="rss">
       <RSS height="1.5rem" width="1.5rem" />
     </a>
   </div>
@@ -75,5 +75,5 @@ import Github from "@/icons/github.svg"
 import Twitter from "@/icons/twitter.svg"
 import RSS from "@/icons/rss.svg"
 
-const { github, twitter, email } = data
+const { github, twitter, email, siteUrl } = data
 </script>
