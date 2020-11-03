@@ -93,7 +93,7 @@
   <Hero />
   <div class="hero__bar">
     <div class="hero__buttons">
-      <a class="hero__button" href="/projects">Projects</a>
+      <a class="hero__button" href="/project">Projects</a>
       <a class="hero__button--inactive" href="/about">About</a>
     </div>
   </div>
