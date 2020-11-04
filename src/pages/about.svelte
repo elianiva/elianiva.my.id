@@ -249,9 +249,11 @@
     </p>
   </section>
 </section>
+<ProgressButton />
 
 <script>
 import { fade } from "svelte/transition"
 import data from "@/site-data"
 import SEO from "@/components/SEO.svelte"
+import ProgressButton from "@/components/ProgressButton.svelte"
 </script>
