@@ -4,6 +4,9 @@
   border-bottom: 0.0625rem var(--color-borders) solid;
   z-index: 20;
   background-color: var(--color-alt-bg);
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .navbar .active a {
@@ -170,7 +173,7 @@
 </style>
 
 <svelte:window bind:innerHeight={screenHeight} bind:scrollY={scrollPos} />
-<nav class="navbar" style={navPosition}>
+<nav class="navbar">
   <div class="navbar__container">
     <div class="navbar__title"><a href="/">Elianiva</a></div>
     <ul class="navbar__items">
@@ -256,31 +259,10 @@ import { fly, fade } from "svelte/transition"
 import Moon from "@/icons/moon.svg"
 import { theme } from "@/utils/theme"
 export let segment
-export let position = null
 
-let screenHeight, scrollPos, navPosition
+let screenHeight, scrollPos
 let isVisible = false
 let checked = false
-
-$: navPosition = getNavbarPosition(scrollPos)
-
-const getNavbarPosition = scrollPos => {
-  if (position === "home") {
-    return `
-    position: ${scrollPos >= screenHeight ? "fixed" : "absolute"};
-    left: 0;
-    right: 0;
-    top: ${scrollPos >= screenHeight ? "100vh" : "unset"};
-    transform: ${scrollPos >= screenHeight ? "translateY(-100vh)" : "unset"};
-    `
-  } else {
-    return `
-    position: fixed;
-    left: 0;
-    right: 0;
-    `
-  }
-}
 
 const toggleDarkMode = () => {
   theme.update(current => (current === "light" ? "dark" : "light"))
