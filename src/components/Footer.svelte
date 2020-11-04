@@ -75,5 +75,5 @@ import Github from "@/icons/github.svg"
 import Twitter from "@/icons/twitter.svg"
 import RSS from "@/icons/rss.svg"
 
-const { github, twitter, email, siteUrl } = data
+const { github, twitter, email } = data
 </script>

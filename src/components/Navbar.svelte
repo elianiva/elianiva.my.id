@@ -197,33 +197,18 @@
         </button>
       </li>
     </ul>
-    {#if segment === null && scrollPos >= screenHeight}
-      <div class="navbar__hamburger" transition:fade={{ duration: 200 }}>
-        <input
-          class="navbar__checkbox"
-          on:input={toggleNav}
-          type="checkbox"
-          {checked}
-          aria-label="toggle menu"
-        />
-        <span class="navbar__hamburger_item--1" />
-        <span class="navbar__hamburger_item--2" />
-        <span class="navbar__hamburger_item--3" />
-      </div>
-    {:else if segment !== null}
-      <div class="navbar__hamburger" transition:fade={{ duration: 200 }}>
-        <input
-          class="navbar__checkbox"
-          on:input={toggleNav}
-          type="checkbox"
-          {checked}
-          aria-label="toggle menu"
-        />
-        <span class="navbar__hamburger_item--1" />
-        <span class="navbar__hamburger_item--2" />
-        <span class="navbar__hamburger_item--3" />
-      </div>
-    {/if}
+    <div class="navbar__hamburger" transition:fade={{ duration: 200 }}>
+      <input
+        class="navbar__checkbox"
+        on:input={toggleNav}
+        type="checkbox"
+        {checked}
+        aria-label="toggle menu"
+      />
+      <span class="navbar__hamburger_item--1" />
+      <span class="navbar__hamburger_item--2" />
+      <span class="navbar__hamburger_item--3" />
+    </div>
   </div>
 </nav>
 {#if isVisible}

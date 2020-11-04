@@ -28,7 +28,7 @@
 
 <svelte:window bind:scrollY={currentPosition} />
 
-{#if currentPosition > 400}
+{#if currentPosition > 50}
   <div
     class="button"
     on:click={scrollToTop}
@@ -39,16 +39,10 @@
 {/if}
 
 <script>
-import { onMount } from "svelte"
 import { fade } from "svelte/transition"
 import Up from "@/icons/up.svg"
 
-let currentPosition, documentHeight
-
-// needs to be inside onMount to make `document` available
-onMount(() => (documentHeight = document.body.scrollHeight))
-
-$: progress = (currentPosition / documentHeight) * 100
+let currentPosition
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
 </script>

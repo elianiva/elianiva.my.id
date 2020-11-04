@@ -87,6 +87,14 @@
     margin-top: 0;
     gap: 1rem;
   }
+  :global(.hero__pattern) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 6rem;
+    z-index: -1;
+    color: rgba(255, 72, 81, 0.075);
+  }
 }
 </style>
 
