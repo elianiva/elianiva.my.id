@@ -174,11 +174,9 @@ import Image from "svelte-image"
 
 <Image src="/post/prettify-screenshot-using-imagemagick/rounded.png" alt="rounded" />
 
-It's not obvious because my website background is white. But you can still see the shadow. Here's another variation.
+Here's another version
 
 <Image src="/post/prettify-screenshot-using-imagemagick/square.png" alt="square" />
-
-This one is more obvious because there's a small white border there.
 
 # Conclusion
 Imagemagick is a powerful CLI tools to manipulate an image. It can do so much more, if you're interested on that then you can go to [their website](https://www.imagemagick.org/) for some advanced guide. That's all for this post, thanks for reading and have a nice day ツ
