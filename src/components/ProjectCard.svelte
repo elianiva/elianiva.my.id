@@ -11,6 +11,9 @@
   position: relative;
   display: block;
   width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  background-color: var(--color-alt-text);
   z-index: 2;
 }
 

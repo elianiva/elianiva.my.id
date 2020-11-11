@@ -163,12 +163,12 @@
 }
 
 :global(.post__content code) {
-  font-family: 'Inconsolata';
-  font-weight: 600;
+  font-family: "Inconsolata";
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
   font-size: 1.125rem;
+  background-color: var(--color-alt-bg);
 }
 
 :global(.post__content p > code::before),
@@ -181,10 +181,11 @@
 }
 
 :global(.post__content pre code) {
-  font-family: 'Inconsolata';
+  font-family: "Inconsolata";
   font-weight: 400;
   padding: 0;
   border-radius: 0;
+  background: none;
 }
 
 :global(.post__content ul) {

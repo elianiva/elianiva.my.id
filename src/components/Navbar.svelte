@@ -4,9 +4,10 @@
   border-bottom: 0.0625rem var(--color-borders) solid;
   z-index: 20;
   background-color: var(--color-alt-bg);
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
+  top: 0;
 }
 
 .navbar .active a {
@@ -172,7 +173,6 @@
 }
 </style>
 
-<svelte:window bind:innerHeight={screenHeight} bind:scrollY={scrollPos} />
 <nav class="navbar">
   <div class="navbar__container">
     <div class="navbar__title"><a href="/">Elianiva</a></div>
@@ -245,7 +245,6 @@ import Moon from "@/icons/moon.svg"
 import { theme } from "@/utils/theme"
 export let segment
 
-let screenHeight, scrollPos
 let isVisible = false
 let checked = false
 
