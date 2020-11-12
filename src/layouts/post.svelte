@@ -120,6 +120,7 @@
 :global(.post__content pre) {
   border-radius: 0.5rem;
   scrollbar-color: var(--color-thin) var(--color-special-bg);
+  border: 0.125rem var(--color-borders) solid;
 }
 
 :global(.post__content pre::-webkit-scrollbar-thumb) {
@@ -174,10 +175,6 @@
 :global(.post__content p > code::before),
 :global(.post__content p > code::after) {
   content: "`";
-}
-
-:global(.post__content pre) {
-  border: 0.125rem var(--color-borders) solid;
 }
 
 :global(.post__content pre code) {

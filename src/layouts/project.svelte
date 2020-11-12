@@ -191,15 +191,22 @@
 }
 
 :global(.project__content code) {
-  background-color: var(--color-special-bg);
+  font-family: "Inconsolata";
+  color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
+}
+
+:global(.post__content p > code::before),
+:global(.post__content p > code::after) {
+  content: "`";
 }
 
 :global(.project__content pre) {
   border-radius: 0.5rem;
   margin: 0.5rem 0;
   scrollbar-color: var(--color-thin) var(--color-special-bg);
+  border: 0.125rem var(--color-borders) solid;
 }
 
 :global(.project__content pre::-webkit-scrollbar-thumb) {
