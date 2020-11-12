@@ -10,7 +10,6 @@ import { mdsvex } from "mdsvex"
 import config from "sapper/config/rollup.js"
 import pkg from "./package.json"
 import svelteSVG from "rollup-plugin-svelte-svg"
-import svelteImage from "svelte-image"
 import posts from "./src/utils/fetch-all-posts"
 import projects from "./src/utils/fetch-all-projects"
 import remarkSlug from "remark-slug"
@@ -30,7 +29,7 @@ const sveltePreprocess = require("svelte-preprocess")({
   postcss: {
     plugins: [
       require("autoprefixer")({ overrideBrowserslist: "last 2 versions" }),
-      !dev && require("cssnano")({ preset: "default" })
+      !dev && require("cssnano")({ preset: "default" }),
     ].filter(Boolean),
   },
 })
@@ -48,11 +47,6 @@ const svelteOptions = {
       },
       remarkPlugins: [remarkSlug, remarkToc],
     }),
-    svelteImage({
-      placeholder: "blur",
-      outputDir: "g/",
-      sizes: [800],
-    }),
   ],
 }
 
@@ -62,9 +56,7 @@ export default {
     output: config.client.output(),
     plugins: [
       alias({
-        entries: [
-          { find: "@", replacement: path.resolve(__dirname, "src/") },
-        ],
+        entries: [{ find: "@", replacement: path.resolve(__dirname, "src/") }],
       }),
       replace({
         "process.browser": true,
@@ -122,9 +114,7 @@ export default {
     output: config.server.output(),
     plugins: [
       alias({
-        entries: [
-          { find: "@", replacement: path.resolve(__dirname, "src/") },
-        ],
+        entries: [{ find: "@", replacement: path.resolve(__dirname, "src/") }],
       }),
       replace({
         "process.browser": false,

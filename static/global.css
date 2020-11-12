@@ -80,10 +80,11 @@ body {
   background-color: var(--color-main-bg);
 }
 
-/* fix svelte-image */
-div.wrapper {
-  display: block !important;
-}
+/* keep this just in case */
+/* /1* fix svelte-image *1/ */
+/* div.wrapper { */
+/*   display: block !important; */
+/* } */
 
 html {
   scrollbar-color: var(--color-thin) var(--color-special-bg);

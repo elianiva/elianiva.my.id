@@ -32,13 +32,9 @@ I was like, "Oh come on. I'm already comfortable with my current setup. I still 
 
 Finally, I installed it. I took a quick screenshot after installing it because I was so excited. Here, take a look!
 
-<script>
-import Image from "svelte-image"
-</script>
+![manjaro](/post/why-i-use-linux/manjaro.png)
 
-<Image src="/post/why-i-use-linux/manjaro.png" alt="manjaro" />
-
-Manjaro is based on Arch. Some people say that it's Arch without all of its fuss. I mean, it's true. At the time I'm writing this, I use Arch. For beginners that want to try Archlinux, it's a good starting point. I ended up using it for nearly 8 months. It was a great experience. That came from the same person that also makes fun of its name. I know, I'm such a hypocrite lmao.
+Manjaro is based on Arch. Some people say that it's Arch without all of its fuss. I mean, it's true. At the time I'm writing this, I use Arch. For beginners that want to try Archlinux, it's a good starting point. I ended up using it for nearly 8 months. It was a great experience.
 
 # Why Linux?
 So, why do I use Linux then? Well, let me give you a quick list of why Linux is better than the other OS

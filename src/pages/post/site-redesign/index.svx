@@ -27,13 +27,8 @@ Nothing much changed here except I made it to be more 'informative' I guess. I a
 ## Home page
 Previously, I have this one big section that fills the entire screen with a logo and a quick description about me. That's not very good in terms of the UX. I decided to make it look more compact by dividing it into 2 sides. Here's the comparison.
 
-<script>
-import Image from "svelte-image"
-</script>
-
-<Image src="/post/site-redesign/old.png" alt="old" />
-
-<Image src="/post/site-redesign/new.png" alt="new" />
+![old](/post/site-redesign/old.png)
+![new](/post/site-redesign/new.png)
 
 I also don't have a new logo for my username yet. So it is what it is. I'll make that in the future.
 
@@ -42,11 +37,11 @@ I also don't have a new logo for my username yet. So it is what it is. I'll make
 ## Tags page
 I decided to remove the category. I think tags will be enough because I have another plan for the "category" thingy. I'll talk about that later on. If you've seen my archives page before, it kinda look like a mess, like seriously. I mean just look at this.
 
-<Image src="/post/site-redesign/old-tag.png" alt="old" />
+![old](/post/site-redesign/old-tag.png)
 
 and compare that to this.
 
-<Image src="/post/site-redesign/new-tag.png" alt="new" />
+![new](/post/site-redesign/new-tag.png)
 
 The new page looks _way_ better than the old one. At least in my opinion.
 

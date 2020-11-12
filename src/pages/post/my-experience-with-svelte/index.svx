@@ -59,17 +59,13 @@ It looks very similar to pure html isn't it? I also prefer Svelte syntax over Vu
 ## What I've made using Svelte
 I've made 2 websites using Svelte. The first one is [Three Of Something](https://three-of-something.vercel.app/) which is a place where I put the result of small challenge where I implement a UI design that I found to code. I do this challenge every week with both of my friends, [NikarashiHatsu](https://github.com/nikarashihatsu) and [LynSotera](https://github.com/LynSotera). Here's a screenshot of the homepage.
 
-<script>
-import Image from "svelte-image"
-</script>
-
-<Image src="/post/my-experience-with-svelte/tos.png" alt="three of something" />
+![three of  something](/post/my-experience-with-svelte/tos.png)
 
 Go visit the website if you're interested ツ
 
 The second website that I made is [Kanaizu](https://kanaizu.vercel.app/). It's basically some sort of quiz app where you need to type the correct romaji for the shown kana. The main reason of why I made this app is because I want to learn more about Svelte and to help my friend memorise Japanese kana. Here's the homepage of it.
 
-<Image src="/post/my-experience-with-svelte/kanaizu.png" alt="kanaizu" />
+![kanaizu](/post/my-experience-with-svelte/kanaizu.png)
 
 Again, go visit the website if you're interested ツ
 
