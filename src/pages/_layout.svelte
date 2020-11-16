@@ -33,6 +33,7 @@ div {
 </svelte:head>
 <Navbar {segment} />
 <main>
+<Loading />
   <div>
     <slot />
   </div>
@@ -43,6 +44,7 @@ div {
 import { onMount } from "svelte"
 import Navbar from "@/components/Navbar.svelte"
 import Footer from "@/components/Footer.svelte"
+import Loading from "@/components/Loading.svelte"
 import { theme } from "@/utils/theme"
 export let segment
 
