@@ -15,3 +15,6 @@ stack:
 I didn't have the idea to make a dedicated site just to showcase all of the design. [NikarashiHatsu](https://github.com/nikarashihatsu/) made his homepage then I thought it was a good idea to have a dedicated website for it. I was going to just put it on the repo readme.
 
 This challenge has been quite a fun experience so far. I'm looking forward to how many designs that I'll be able to implement before I decided to stop or don't have time to do this anymore.
+
+Also, If you want to do this challenge with us, just open a PR on [this repo](https://github.com/elianiva/three-of-something). It's not like you _must_ make one every week. It's just nice to have more friend :)
+I'll mention your name on the website and you can quit whenever you want.
