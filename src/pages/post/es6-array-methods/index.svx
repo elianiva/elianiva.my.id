@@ -48,7 +48,7 @@ user.find(user => !user.admin)
 
 It will return the first match which is `{id: 1, name: "John Doe", admin: false}`. If you want it to spit an array with matching condition, then you would use `.filter()` which we will talk about later.
 
-`Array.prototype.find()` will return undefined if the given condition is not fullfilled (the item that you're looking for is not available). You can play around with this [here](https://repl.it/@elianiva/find-method).
+`Array.prototype.find()` will return undefined if the given condition is not fulfilled (the item that you're looking for is not available). You can play around with this [here](https://repl.it/@elianiva/find-method).
 
 ## Filter
 Like I said earlier, if you want multiple results based off on your condition then you would use `Array.prototype.filter()`. Let's try it with the code below.
@@ -94,10 +94,10 @@ const items = [
 items.some(item => item.discount)
 ```
 
-As you can see, it returns `true` because there are _some_ items that is currently in a discount. Go ahead and try to change them all to `false` on repl.it [here](https://repl.it/@elianiva/some-method).
+As you can see, it returns `true` because there are _some_ items that is currently in a discount. Go ahead and try to change them all to `false` on [repl.it](https://repl.it/@elianiva/some-method).
 
 ## Every
-Ok great, now you can check whether or not an array has some items that match you requirements. There's also a method that will return `true` if _every_ one of them matches your condition. Check the code below.
+OK great, now you can check whether or not an array has some items that match you requirements. There's also a method that will return `true` if _every_ one of them matches your condition. Check the code below.
 
 ```javascript
 const students = [
@@ -165,7 +165,7 @@ const numbers = [1, 1, 1, 1, 1]
 numbers.reduce((acc, curr) => (acc + curr), 5)
 ```
 
-Reduce method is quite hard to understand at first, don't worry. Reduce deservces an article in itself, check out [this article](https://alligator.io/js/finally-understand-reduce/) to understand `reduce()` even more.
+Reduce method is quite hard to understand at first, don't worry. Reduce deserves an article in itself, check out [this article](https://alligator.io/js/finally-understand-reduce/) to understand `reduce()` even more.
 
 # References
 There are so many references for these methods out there already. [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) is one of the best reference out there if you want something more technical and detail. Also checkout [this tweet](https://twitter.com/profulsadangi/status/1288053880010334208) (and follow him too! He shared _a lot_ of useful stuff in a form of simple yet concise sketch).
