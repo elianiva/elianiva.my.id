@@ -39,13 +39,13 @@ If you want to know this file even more, [google has it covered](https://develop
 ## Making the page
 Honestly, nothing much to tell here. You can go as overkill as you want for a startpage or just go ahead and pick one from the internet. I suggest you to go to [r/startpage](https://reddit.com/r/startpage) subreddit for a start. Here's mine.
 
-![old startpage](/post/chrome-custom-newtab/old.png)
+![old startpage](/assets/post/chrome-custom-newtab/old.png)
 
 It's super simple, I just set some vim-like shortcut (prefixed with colon) like `:o` to open a new website, `:s` to do google search, `:gh` to open github, etc. If you want mine, you can get it [here](https://github.com/elianiva/dotfiles/blob/master/codes/chrome-page).
 
 (17-10-2020) UPDATE: I made a new once since the old one is too minimal. Here's the new one.
 
-![new startpage](/post/chrome-custom-newtab/new.png)
+![new startpage](/assets/post/chrome-custom-newtab/new.png)
 
 And you can get it [here](https://github.com/elianiva/dotfiles/blob/master/codes/startpage)
 

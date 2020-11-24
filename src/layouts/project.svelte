@@ -267,7 +267,7 @@
   <div class="project__cover">
     <div class="project__wrapper">
       <img
-        src={`/project/${slug}/cover.png`}
+        src={`/assets/project/${slug}/cover.png`}
         alt={title}
         class="project__img"
         loading="lazy"
@@ -302,7 +302,7 @@
       <div class="stack__item">
         <div class="stack__logo">
           <img
-            src="/logo/{item[0].toLowerCase()}.png"
+            src="/assets/logo/{item[0].toLowerCase()}.png"
             alt={item}
             style="filter: {item[0].toLowerCase() === 'nextjs' ? 'var(--filter-invert)' : ''} "
           />

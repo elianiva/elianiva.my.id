@@ -91,7 +91,7 @@
 
 <div class="card" in:fade={{ duration: 200 }}>
   <Waypoint throttle="500" offset="320">
-    <img class="card__img" {src} alt={title} loading="lazy" />
+    <img class="card__img" src={imgSrc} alt={title} loading="lazy" />
   </Waypoint>
   <div class="card__details">
     <a rel="prefetch" {href} class="card__title">{title}</a>
@@ -120,5 +120,5 @@ import { fade } from "svelte/transition"
 import Code from "@/icons/code.svg"
 import Chrome from "@/icons/chrome.svg"
 import Waypoint from "svelte-waypoint"
-export let title, src, desc, href, demo, source
+export let title, imgSrc, desc, href, demo, source
 </script>

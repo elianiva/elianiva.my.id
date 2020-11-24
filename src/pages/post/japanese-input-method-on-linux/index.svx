@@ -70,15 +70,15 @@ After installing it, it will be available to Fcitx as an input method.
 ## Configuration
 Now what we need to do is set Mozc as Fcitx input method. To do that, open up the `fcitx-configtool`. It will roughly look like this, it may look different because of you theme.
 
-![fcitx configtool](/post/japanese-input-method-on-linux/configtool.png)
+![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool.png)
 
 Press the **`+`** sign on the bottom left corner. A pop-up will appear and make sure you uncheck the **Only Show Current Language**, otherwise the **Mozc** input method won't show up.
 
-![fcitx configtool](/post/japanese-input-method-on-linux/configtool-2.png)
+![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-2.png)
 
 After you uncheck the box, search for **Mozc** then press OK. Here's the end result.
 
-![fcitx configtool](/post/japanese-input-method-on-linux/configtool-3.png)
+![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-3.png)
 
 After setting it all up, execute `fcitx` on startup depending on your DE/WM. In my case, I use DWM so I put it in `~/.xprofile` like so.
 
@@ -91,14 +91,14 @@ It's also applicable to any other DE/WM since `~/.xprofile` gets executed after 
 
 Fcitx is toggleable using a keybind that you can change from the `fcitx-confgitool` which looks like this.
 
-![fcitx configtool](/post/japanese-input-method-on-linux/configtool-4.png)
+![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-4.png)
 
 You can change the **Trigger Input Method** to whatever key you like. I personally use `alt+space`
 
 ## Usage
 If you've done configuring it, try to activate it by pressing the keybind that you've defined before then try to type on something. It will look like this.
 
-![fcitx completion preview](/post/japanese-input-method-on-linux/preview.png)
+![fcitx completion preview](/assets/post/japanese-input-method-on-linux/preview.png)
 
 It looks like an autocomplete from a text editor. The way it works is if you write **romaji**, it auto converts it to **hiragana** which you can then press `TAB` to scroll the options.
 

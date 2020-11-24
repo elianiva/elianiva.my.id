@@ -30,20 +30,20 @@ I do the dark theme first because I'm a huge fan of dark themed website (or anyt
 
 After making the dark one for the mobile, I made the light one. Again, I took the colour scheme from Material Themes and changed it a bit. Here's the screenshot that I took after finishing the mobile layout.
 
-![finished mobile layout](/post/making-of-my-site/mobile-finished.png)
+![finished mobile layout](/assets/post/making-of-my-site/mobile-finished.png)
 
 ## Responsive design
 I've finished the mobile layout (YAY!), now it is time to make the desktop one. Again, I started out by making the dark themed first then convert it to light theme. Since I've created the mobile version, it is easier to make the desktop one. After done by that, I quite happy with the result
 
-![finished desktop layout](/post/making-of-my-site/finished-partial.png)
+![finished desktop layout](/assets/post/making-of-my-site/finished-partial.png)
 
 Eventhough I liked the result, there's one thing that seems wrong. The light theme doesn't look really 'Light'. It still has those dark parts for the code blocks. I think asking for people's opinion is a good idea because several minds is better than one, so I asked my friends on Facebook and they said it's better to make the light theme pure white. So I changed the code blocks to white.
 
 The next day, I checked my design again and I think there's a few parts that doesn't seem right. They are the READ MORE button and the date on the post page so I changed them. Here's the difference between them.
 
-![no button card](/post/making-of-my-site/no-button.png)
+![no button card](/assets/post/making-of-my-site/no-button.png)
 
-![button card](/post/making-of-my-site/button.png)
+![button card](/assets/post/making-of-my-site/button.png)
 
 After making 2 version of my website (mobile and desktop), I think the design process is finished and the fun and challenging part begins!
 

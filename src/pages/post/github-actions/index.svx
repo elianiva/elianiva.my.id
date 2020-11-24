@@ -100,19 +100,19 @@ Those are my brief explanation and how I understand each fields. If you want mor
 ## See it in action
 We've set up the config file, time to see it in action. Push the config file to the remote repo and go to github action tab.
 
-![action tab](/post/github-actions/1.png)
+![action tab](/assets/post/github-actions/1.png)
 
 If we click one of the action from the list, it will go to its own page which will look like this.
 
-![action page](/post/github-actions/3.png)
+![action page](/assets/post/github-actions/3.png)
 
 Our action name will show up here. Try to click on that.
 
-![action name](/post/github-actions/4.png)
+![action name](/assets/post/github-actions/4.png)
 
 It will show this. The log of our action's jobs.
 
-![action jobs](/post/github-actions/5.png)
+![action jobs](/assets/post/github-actions/5.png)
 
 # Conclusion
 The reason why I moved from Travis CI is not because Travis CI is bad or anything. It's just I want to try a new thing, plus it's available on the same site that my repo is hosted. I can just visit one site to check on my repo or my build status.
