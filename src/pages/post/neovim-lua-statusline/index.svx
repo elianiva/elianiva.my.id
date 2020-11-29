@@ -108,7 +108,7 @@ Statusline.separators = {
 }
 ```
 
-I use the arrow separator, either one is fine. It will look here because my website doesn't use nerdfont :p
+I use the arrow separator, either one is fine. It will look empty here because my website doesn't use nerdfont :p
 
 ## Mode indicator
 The first indicator of our statusline would be the Mode indicator.
