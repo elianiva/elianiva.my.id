@@ -13,6 +13,8 @@ Hi everyone! In this post, I will talk about making your own custom statusline i
 
 The reason why I made this post is also because I want to change my statusline. While my current statusline looks eye candy (to me at least), it takes a whole lot of space. So, I want to simplifiy it and why not make that process as a post. Let's get into it!
 
+(29-11-2020) UPDATE: I wrote a better version of this in Lua which you can read [here](https://elianiva.me/post/neovim-lua-statusline)
+
 # Prerequisite
 First of all, we need to prepare a few things :
 - (Neo)Vim Text Editor (Duh, isn't that obvious?).
