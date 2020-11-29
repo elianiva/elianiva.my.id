@@ -312,6 +312,9 @@ end
 We've made our Active and Inactive statusline, let's make them change dynamically.
 
 ```lua
+Statusline.active = function() return Statusline:set_active() end
+Statusline.inactive = function() return Statusline:set_inactive() end
+
 vim.cmd('augroup Statusline')
 vim.cmd('au!')
 vim.cmd('au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()')
@@ -321,14 +324,214 @@ vim.cmd('augroup END')
 
 This auto command runs every time you enter or leave a buffer and set the corresponding statusline. It needs to be done using vimscript because it doesn't have lua version *yet*. It's currently a [work in progress](https://github.com/neovim/neovim/pull/12378) at the time of writing this post.
 
+We made a new function because the colon `:` in lua is a method, but it's also reserved in vimscript. So we need a function that doesn't need that in lua.
+
 # Result
-Let's see the result.
+Let's see the whole file now.
+
+```lua
+Statusline = {}
+
+Statusline.is_truncated = function(_, width)
+  local current_window = vim.fn.winnr()
+  local current_width = vim.fn.winwidth(current_window)
+  return current_width < width
+end
+
+Statusline.colors = {
+  active        = '%#StatusLine#',
+  inactive      = '%#StatuslineNC#',
+  mode          = '%#Mode#',
+  mode_alt      = '%#ModeAlt#',
+  git           = '%#Git#',
+  git_alt       = '%#GitAlt#',
+  filetype      = '%#Filetype#',
+  filetype_alt  = '%#FiletypeAlt#',
+  line_col      = '%#LineCol#',
+  line_col_alt  = '%#LineColAlt#',
+}
+
+local hl = function(group, options)
+  local bg = options.bg == nil and '' or 'guibg=' .. options.bg
+  local fg = options.fg == nil and '' or 'guifg=' .. options.fg
+  local gui = options.gui == nil and '' or 'gui=' .. options.gui
+
+  vim.cmd(string.format(
+    'hi %s %s %s %s',
+    group, bg, fg, gui
+  ))
+end
+
+local color_hl = {
+  {'Active', { bg = 'blue', fg = '#EBDBB2' }},
+  {'Inactive', { bg = '#3C3836', fg = '#928374' }},
+  {'Mode', { bg = '#928374', fg = '#1D2021', gui="bold" }},
+  {'LineCol', { bg = '#928374', fg = '#1D2021', gui="bold" }},
+  {'Git', { bg = '#504945', fg = '#EBDBB2' }},
+  {'Filetype', { bg = '#504945', fg = '#EBDBB2' }},
+  {'Filename', { bg = '#504945', fg = '#EBDBB2' }},
+  {'ModeAlt', { bg = '#504945', fg = '#928374' }},
+  {'GitAlt', { bg = '#3C3836', fg = '#504945' }},
+  {'LineColAlt', { bg = '#504945', fg = '#928374' }},
+  {'FiletypeAlt', { bg = '#3C3836', fg = '#504945' }},
+}
+
+for _, highlight in pairs(highlights) do
+  hl(highlight[1], highlight[2])
+end
+
+Statusline.separators = {
+  arrow = { '', '' },
+  rounded = { '', '' },
+}
+
+Statusline.get_current_mode = function()
+  local modes = {
+    ['n']  = {'Normal', 'N'};
+    ['no'] = {'N·Pending', 'N' ;
+    ['v']  = {'Visual', 'V' };
+    ['V']  = {'V·Line', 'V' };
+    [''] = {'V·Block', 'V'};
+    ['s']  = {'Select', 'S'};
+    ['S']  = {'S·Line', 'S'};
+    [''] = {'S·Block', 'S'};
+    ['i']  = {'Insert', 'S'};
+    ['R']  = {'Replace', 'R'};
+    ['Rv'] = {'V·Replace', 'V'};
+    ['c']  = {'Command', 'C'};
+    ['cv'] = {'Vim Ex ', 'V'};
+    ['ce'] = {'Ex ', 'E'};
+    ['r']  = {'Prompt ', 'P'};
+    ['rm'] = {'More ', 'M'};
+    ['r?'] = {'Confirm ', 'C'};
+    ['!']  = {'Shell ', 'S'};
+    ['t']  = {'Terminal ', 'T'};
+  }
+
+  local current_mode = vim.fn.mode()
+
+  if self:is_truncated(80) then
+    return string.format(' %s ', modes[current_mode][2]):upper()
+  else
+    return string.format(' %s ', modes[current_mode][1]):upper()
+  end
+end
+
+Statusline.get_git_status = function()
+  -- use fallback because it doesn't set this variable on initial `BufEnter`
+  local signs = vim.b.gitsigns_status_dict or {head = '', added = 0, changed = 0, removed = 0}
+
+  if self:is_truncated(90) then
+    if signs.head ~= '' then
+      return string.format('  %s ', signs.head or '')
+    else
+      return ''
+    end
+  else
+    if signs.head ~= '' then
+      return string.format(
+        ' +%s ~%s -%s |  %s ',
+        signs.added, signs.changed, signs.removed, signs.head
+      )
+    else
+      return ''
+    end
+  end
+end
+
+Statusline.get_filename = function(self)
+  if self:is_truncated(140) then
+    return " %f "
+  else
+    return " %F "
+  end
+end
+
+Statusline.get_filetype = function()
+  local filetype = vim.bo.filetype
+  if filetype == '' then
+    return ''
+  else
+    return string.format(' %s ', filetype):lower()
+  end
+end
+
+Statusline.get_line_col = function(self)
+  if self:is_truncated(60) then
+    return ' %l:%c '
+  else
+    return ' Ln %l, Col %c '
+  end
+end
+
+Statusline.get_lsp_diagnostic = function(self)
+  local result = {}
+  local levels = {
+    errors = 'Error',
+    warnings = 'Warning',
+    info = 'Information',
+    hints = 'Hint'
+  }
+
+  for k, level in pairs(levels) do
+    result[k] = vim.lsp.diagnostic.get_count(0, level)
+  end
+
+  if self:is_truncated(120) then
+    return ''
+  else
+    return string.format(
+      "| :%s :%s :%s :%s ",
+      result['errors'] or 0, result['warnings'] or 0,
+      result['info'] or 0, result['hints'] or 0
+    )
+  end
+end
+
+Statusline.set_active = function(self)
+  local mode = self.colors.mode .. self:get_current_mode()
+  local mode_alt = self.colors.mode_alt .. self.separators.arrow[1]
+  local git = self.colors.git .. self:get_git_status()
+  local git_alt = self.colors.git_alt .. self.separators.arrow[1]
+  local filename = self.colors.inactive .. self:get_filename()
+  local filetype_alt = self.colors.filetype_alt .. self.separators.arrow[2]
+  local filetype = self.colors.filetype .. self:get_filetype()
+  local line_col = self.colors.line_col .. self:get_line_col()
+  local line_col_alt = self.colors.line_col_alt .. self.separators.arrow[2]
+  local diagnostic = self.colors.line_col .. self:get_lsp_diagnostic()
+
+  return table.concat({
+    self.colors.active,
+    mode, mode_alt, git, git_alt,
+    "%=", filename, "%=",
+    filetype_alt, filetype, line_col_alt, line_col, diagnostic
+  })
+end
+
+Statusline.set_inactive = function(self)
+  return self.colors.inactive .. '%= %F %='
+end
+
+Statusline.active = function() return Statusline:set_active() end
+Statusline.inactive = function() return Statusline:set_inactive() end
+
+vim.cmd('augroup Statusline')
+vim.cmd('au!')
+vim.cmd('au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()')
+vim.cmd('au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()')
+vim.cmd('augroup END')
+```
+
+And here's the result.
 
 ![result](/assets/post/neovim-lua-statusline/result.png)
 
 Here's a [preview video](https://streamable.com/nqcwp6) for a better demonstration. As you can see on the video, they change their appearance based on the screen width.
 
 That's the active statusline, I don't think I need to put a screenshot for the inactive one because nothing interesting going on there :p.
+
+Here's [my statusline file](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/_statusline.lua) for a reference
+There are also some statusline plugins written in lua if you need more reference such as [express_line.nvim](https://github.com/tjdevries/express_line.nvim), [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim), and [neoline.vim](https://github.com/adelarsq/neoline.vim)
 
 # Conclusion
 I really like how it turned out and Lua support on Neovim is the best. Kudos to all of Neovim contributors! If you have a better suggestion for this post then feel free to click on the `suggest an edit` link below the title, it will bring you to the original file of this post. Anyway, thanks for reading, and have a great day! ツ
