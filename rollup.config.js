@@ -35,8 +35,6 @@ const sveltePreprocess = require("svelte-preprocess")({
 })
 
 const svelteOptions = {
-  dev,
-  hydratable: true,
   extensions: [".svelte", ".svx"],
   preprocess: [
     sveltePreprocess,
@@ -65,6 +63,10 @@ export default {
         __PROJECTS__: JSON.stringify(projects),
       }),
       svelte({
+        compilerOptions: {
+          dev,
+          hydratable: true,
+        },
         emitCss: true,
         ...svelteOptions,
       }),
@@ -123,7 +125,11 @@ export default {
         __PROJECTS__: JSON.stringify(projects),
       }),
       svelte({
-        generate: "ssr",
+        compilerOptions: {
+          generate: "ssr",
+          dev,
+          hydratable: true,
+        },
         ...svelteOptions,
       }),
       resolve({
