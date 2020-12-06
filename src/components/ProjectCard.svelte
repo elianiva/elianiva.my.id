@@ -82,6 +82,10 @@
   height: 1.125rem;
 }
 
+.card :global(.wrapper) {
+  display: block;
+}
+
 @media only screen and (min-width: 480px) {
   .card__details:hover {
     color: var(--color-main-accent);
