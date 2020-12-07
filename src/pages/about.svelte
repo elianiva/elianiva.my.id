@@ -112,9 +112,10 @@
     <p class="about__text">
       Hi! My name is Dicha Zelianivan Arkana. I go on the internet as Elianiva.
       It was taken from my middle name without the first and last letter. I'm a
-      16 y/o Asian boi who loves to build websites and contribute to any open
+      17 y/o Asian boi who loves to build websites and contribute to any open
       source projects that I like. My biggest goal in my life is to contribute
-      to as much open source projects as I can to help more people =)
+      to as much open source projects as I can to help as many people as I could
+      =)
     </p>
     <p class="about__text">
       I've been learning web development for about a year and a half. I
