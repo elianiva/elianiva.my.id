@@ -76,8 +76,13 @@ body {
   height: 100%;
 }
 
+html {
+  scrollbar-color: var(--color-thin) var(--color-special-bg);
+}
+
 body {
   background-color: var(--color-main-bg);
+  overflow-x: hidden;
 }
 
 /* keep this just in case */
@@ -85,10 +90,6 @@ body {
 /* div.wrapper { */
 /*   display: block !important; */
 /* } */
-
-html {
-  scrollbar-color: var(--color-thin) var(--color-special-bg);
-}
 
 html::-webkit-scrollbar-thumb {
   background-color: var(--color-main-accent);
