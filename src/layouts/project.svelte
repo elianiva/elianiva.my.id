@@ -191,7 +191,7 @@
 }
 
 :global(.project__content code) {
-  font-family: "Inconsolata";
+  font-family: "JetBrains Mono", monospace;
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;

@@ -21,7 +21,7 @@
   display: block;
   text-align: center;
   font-size: 1.125rem;
-  line-height: 2rem;
+  line-height: 2em;
   color: var(--color-alt-text);
 }
 
@@ -30,7 +30,7 @@
   font-family: "Overpass", sans-serif;
   text-align: center;
   font-size: 1.125rem;
-  line-height: 2rem;
+  line-height: 2em;
   color: var(--color-main-accent);
   transition: color ease-out 0.2s;
   text-decoration: none;
@@ -53,7 +53,7 @@
 }
 
 :global(.post__content p) {
-  line-height: 2rem;
+  line-height: 1.75em;
   font-size: 1.125rem;
 }
 
@@ -65,7 +65,7 @@
   position: relative;
   font-family: "Overpass", sans-serif;
   font-size: 2rem;
-  line-height: 3.5rem;
+  line-height: 1.75em;
 }
 
 :global(.post__content h1::after) {
@@ -85,7 +85,7 @@
 :global(.post__content h2) {
   position: relative;
   font-family: "Overpass", sans-serif;
-  line-height: 1.75rem;
+  line-height: 1.5em;
   font-size: 1.625rem;
   padding-left: 1.5rem;
 }
@@ -94,7 +94,7 @@
   position: relative;
   font-family: "Overpass", sans-serif;
   font-size: 1.5rem;
-  line-height: 2.25rem;
+  line-height: 2em;
   padding-left: 0.5rem;
   padding-left: 1.5rem;
 }
@@ -164,25 +164,22 @@
 }
 
 :global(.post__content code) {
-  font-family: "Inconsolata";
+  font-family: "JetBrains Mono", monospace;
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
-  font-size: 1.125rem;
+  font-size: 1rem;
   background-color: var(--color-alt-bg);
-}
-
-:global(.post__content p > code::before),
-:global(.post__content p > code::after) {
-  content: "`";
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.1);
 }
 
 :global(.post__content pre code) {
-  font-family: "Inconsolata";
+  font-family: "JetBrains Mono", monospace;
   font-weight: 400;
   padding: 0;
   border-radius: 0;
   background: none;
+  box-shadow: none;
 }
 
 :global(.post__content ul) {
@@ -193,7 +190,7 @@
 :global(.post__content ul li) {
   position: relative;
   font-size: 1.125rem;
-  line-height: 2rem;
+  line-height: 1.75em;
   padding-left: 1rem;
 }
 
@@ -201,7 +198,7 @@
   content: "\203A";
   color: var(--color-main-text);
   font-size: 1.5rem;
-  line-height: 2rem;
+  line-height: 1.5em;
   margin-right: 0.5rem;
 }
 
@@ -223,7 +220,7 @@
 :global(.post__content table a) {
   transition: all ease-out 0.2s;
   font-weight: 600;
-  line-height: 1.25rem;
+  line-height: 1.25em;
   font-style: italic;
 }
 
@@ -293,6 +290,9 @@
   }
   :global(.post__content ul *) {
     font-size: 0.95rem !important;
+  }
+  :global(.post__content p) {
+    font-size: 1rem;
   }
 }
 </style>

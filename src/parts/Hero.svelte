@@ -38,7 +38,7 @@
   color: var(--color-alt-text);
   font-family: "Open Sans", sans-serif;
   font-size: clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem);
-  line-height: 1.5rem;
+  line-height: 1.5em;
   margin: 0 0 1rem;
 }
 

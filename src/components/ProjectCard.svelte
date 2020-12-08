@@ -30,7 +30,7 @@
   font-family: "Overpass", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  line-height: 1.75rem;
+  line-height: 1.5em;
   transition: all ease-out 0.2s;
 }
 
@@ -40,7 +40,7 @@
 
 .card__desc {
   font-family: "Open Sans", sans-serif;
-  line-height: 1.5rem;
+  line-height: 1.5em;
   color: var(--color-alt-text);
 }
 

@@ -9,7 +9,7 @@ footer {
 }
 
 p {
-  line-height: 1.5rem;
+  line-height: 1.5em;
   color: var(--color-main-text);
 }
 

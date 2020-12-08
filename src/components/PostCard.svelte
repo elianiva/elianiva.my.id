@@ -21,14 +21,14 @@
   font-family: "Overpass", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  line-height: 1.75rem;
+  line-height: 1.5em;
   text-transform: capitalize;
 }
 
 .card__desc {
   border-top: 0.0625rem var(--color-borders) solid;
   font-family: "Open Sans", sans-serif;
-  line-height: 1.5rem;
+  line-height: 1.5em;
   color: var(--color-alt-text);
   margin-top: 0.25rem;
   padding-top: 0.5rem;
