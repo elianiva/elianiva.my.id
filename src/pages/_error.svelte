@@ -64,9 +64,7 @@
       Wanna go
       <a class="err__url" href="/">back home?</a>
     </span>
-  {:else}
-    <span class="err__msg"> Something went wrong. </span>
-  {/if}
+  {:else}<span class="err__msg"> Something went wrong. </span>{/if}
 </div>
 
 {#if dev && error.stack}

@@ -33,7 +33,7 @@ div {
 </svelte:head>
 <Navbar {segment} />
 <main>
-<Loading />
+  <Loading />
   <div>
     <slot />
   </div>
