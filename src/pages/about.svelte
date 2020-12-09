@@ -44,8 +44,8 @@
 .about__text {
   font-family: "Open Sans", sans-serif;
   color: var(--color-main-text);
-  font-size: 1.125rem;
-  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 2em;
 }
 
 .about__details {
