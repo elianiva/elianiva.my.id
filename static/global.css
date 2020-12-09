@@ -85,12 +85,6 @@ body {
   overflow-x: hidden;
 }
 
-/* keep this just in case */
-/* /1* fix svelte-image *1/ */
-/* div.wrapper { */
-/*   display: block !important; */
-/* } */
-
 html::-webkit-scrollbar-thumb {
   background-color: var(--color-main-accent);
 }
@@ -99,3 +93,10 @@ html::-webkit-scrollbar {
   background-color: var(--color-special-bg);
   width: 0.5rem;
 }
+
+/* keep this just in case */
+/* /1* fix svelte-image *1/ */
+/* div.wrapper { */
+/*   display: block !important; */
+/* } */
+
