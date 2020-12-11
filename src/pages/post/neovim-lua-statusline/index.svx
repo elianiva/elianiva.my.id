@@ -196,6 +196,10 @@ Next one is the filename indicator. I'd like to be able to see the filename with
 ```lua
 Statusline.get_filename = function(self)
   if self:is_truncated(140) then
+    if self:is_truncated(90) then
+      return " %t "
+    end
+
     return " %f "
   else
     return " %F "
@@ -203,7 +207,7 @@ Statusline.get_filename = function(self)
 end
 ```
 
-Depending on our `winwidth`, it will display an absolute path or relative path to our CWD.
+Depending on our `winwidth`, it will display an absolute path, relative path to our CWD, or current filename.
 
 ## Filetype indicator
 I want to see the filetype of the current buffer, so I'd like to include this on my statusline as well.
