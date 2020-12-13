@@ -1,7 +1,7 @@
 ---
-title: Write your Neovim statusline in Lua
+title: How I made my Neovim statusline in Lua
 date: 2020-11-29
-desc: A post where we're going to make our personalised neovim statusline in Lua.
+desc: A post where I explain how I made my custom statusline in Lua
 tags:
   - neovim
 ---
@@ -196,18 +196,16 @@ Next one is the filename indicator. I'd like to be able to see the filename with
 ```lua
 Statusline.get_filename = function(self)
   if self:is_truncated(140) then
-    if self:is_truncated(90) then
-      return " %t "
-    end
-
-    return " %f "
+    return " %<%f "
   else
-    return " %F "
+    return " %<%F "
   end
 end
 ```
 
 Depending on our `winwidth`, it will display an absolute path, relative path to our CWD, or current filename.
+
+The `%<` is to tell the statusline to truncate this indicator if it's too long or doesn't have enough space instead of truncating other indicator.
 
 ## Filetype indicator
 I want to see the filetype of the current buffer, so I'd like to include this on my statusline as well.
