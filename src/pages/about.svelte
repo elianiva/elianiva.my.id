@@ -119,10 +119,9 @@
     </p>
     <p class="about__text">
       I've been learning web development for about a year and a half. I
-      understand the basic of HTML, CSS, and JS quite well. Currently learning
-      React/Next, Svelte/Sapper, and Typescript. Besides webdev stuff, I also
-      know Rust and Lua. Though, I'm still at the very early stage of Rust and
-      only use Lua for Neovim and AwesomeWM.
+      understand the basic of HTML, CSS, and JS quite well. Still learning about
+      React, Svelte, and Typescript. Recently I've been learning Lua and Golang.
+      I was learning Rust previously but I decided to pick Golang Instead.
     </p>
     <p class="about__text">
       I live in a beautiful country called Indonesia. I can speak Indonesian

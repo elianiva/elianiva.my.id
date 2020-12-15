@@ -9,7 +9,10 @@
   <meta property="og:url" content="{siteUrl}{$page.path}" />
   <meta property="og:title" content={title || siteName} />
   <meta property="og:description" content={desc} />
-  <meta property="og:image" content={thumbnail || 'https://avatars3.githubusercontent.com/u/51877647?s=240&v=4'} />
+  <meta
+    property="og:image"
+    content={thumbnail || 'https://avatars3.githubusercontent.com/u/51877647?s=240&v=4'}
+  />
 
   <!-- Twitter -->
   <meta
