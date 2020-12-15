@@ -42,7 +42,7 @@
     {#each projects as project}
       <ProjectCard
         title={project.title}
-        imgSrc={`/assets/project/${project.slug}/cover.png`}
+        imgSrc={`/assets/project/${project.slug}/cover.webp`}
         href={`/project/${project.slug}`}
         desc={project.desc}
         demo={project.demo}

@@ -1,6 +1,4 @@
 __sapper__
 node_modules
 package-lock.json
-yarn.lock
-
 .vercel
