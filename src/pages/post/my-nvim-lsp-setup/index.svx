@@ -1,0 +1,214 @@
+# What is LSP and Why?
+If you don't already know what LSP is, well, LSP is a Language Server Protocol and it was created by Microsoft. It's a better implementation of language support for a text editor. Instead of having to implement it for every language on every text editor, we only need a server for a specific language and a client for a text editor that can speak to the server.
+
+Imagine the editor as `X` and language feature as `Y`, the first solution would take `X*Y` to implement because it needs to implements *every* language features for *every* editor. The second solution which is the LSP way would only take `X+Y` because it would only take a server for the language and a client that can speak to that server. The server can be used for any text editor that has a client and the client can speak to any LSP server. No more reinventing the wheel, great!
+
+Here are some resources that explain LSP *way better* and in more detail.
+- [LSP guide for VScode](https://code.visualstudio.com/api/language-extensions/language-server-extension-guide)
+- [Official page for LSP](https://microsoft.github.io/language-server-protocol/)
+- [TJ's talk about LSP on Vimconf 2020](https://www.youtube.com/watch?v=C9X5VF9ASac)
+
+# Neovim builtin LSP client
+I use Neovim's built-in LSP client which only available on the `master` branch of Neovim at the time of writing this. I was using [coc.nvim](https://github.com/neoclide/coc.nvim) but it was slow on my machine because it uses node and it's a remote plugin that adds some overhead. It still works great nonetheless, it's just slow in my machine.
+
+The new neovim's built-in LSP client is written in Lua and Neovim now ships with LuaJIT which makes it super fast. I couldn't recommend you enough to watch [TJ's talk about Neovim LSP client on Vimconf 2020](https://www.youtube.com/watch?v=C9X5VF9ASac), he explained it well.
+
+# Configuration
+## nvim-lspconfig
+Neovim has a repo with LSP configuration for a various language called [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), this is *NOT* where the LSP client lives, the client already ships with Neovim. It's just a repo that holds the configuration for the client.
+
+I have this piece of code on my config to install it. I use [packer.nvim](https://github.com/wbthomason/packer.nvim)
+
+```lua
+use {'neovim/nvim-lspconfig', opt = true} -- builtin lsp config
+```
+
+## Setup
+I have a directory filled with LSP related config. Here's some snippet that sets up the LSP.
+
+```lua
+local custom_on_attach = function(client)
+  mappings.lsp_mappings()
+
+  if client.config.flags then
+    client.config.flags.allow_incremental_sync = true
+  end
+end
+
+local custom_on_init = function()
+  print('Language Server Protocol started!')
+end
+
+nvim_lsp.gopls.setup{
+  on_attach = custom_on_attach,
+  on_init = custom_on_init,
+}
+```
+
+I made a `custom_on_attach` function to attach LSP specific mappings and enable `incremental_sync` if the server supports it. I also made a custom `on_init` function to notify me when the LSP is running. Though, I'm not sure if `on_init` is the correct thing that I'm looking for. Sometimes it notifies me when the LSP server hasn't even started yet.
+
+You can find the full content of this file [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/init.lua)
+
+## Mappings
+Here are some of my LSP related mappings which you can find in the file [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/_mappings.lua)
+
+```lua
+local remap = vim.api.nvim_set_keymap
+local M = {}
+
+M.lsp_mappings = function()
+  remap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+  remap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+  remap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+  remap('i', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
+  remap('n', 'gD', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { noremap = true, silent = true })
+  remap('n', 'gr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', { noremap = true, silent = true })
+  remap('n', 'gR', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+end
+
+return M
+```
+
+Almost all mappings I use are bound to the default function except the one that shows LSP references. I use [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) and it has a built-in that shows references from LSP. It's nicer in my opinion because I can then fuzzy find the reference.
+
+## Language-specific config
+I have most of my LSP config to be default but I gave several LSP an option like `tsserver`, `svelteserver`, or `sumneko_lua`.
+
+### tsserver
+I have my `tsserver` to be started on every JS/TS file regardless of its directory. The default config will only start when it found `package.json` or `.git`.
+
+```lua
+nvim_lsp.tsserver.setup{
+  filetypes = { 'javascript', 'typescript', 'typescriptreact' },
+  on_attach = custom_on_attach,
+  on_init = custom_on_init,
+  root_dir = function() return vim.loop.cwd() end
+}
+```
+
+### svelteserver
+I disabled its HTML emmet suggestion and removed `>` and `<` from `triggerCharacters`. They're so annoying to me.
+
+```lua
+nvim_lsp.svelte.setup{
+  on_attach = function(client)
+    mappings.lsp_mappings()
+
+    if client.config.flags then
+      client.config.flags.allow_incremental_sync = true
+    end
+    client.server_capabilities.completionProvider.triggerCharacters = {
+      ".", '"', "'", "`", "/", "@", "*",
+      "#", "$", "+", "^", "(", "[", "-", ":"
+    }
+  end,
+  on_init = custom_on_init,
+  filetypes = { 'html', 'svelte' },
+  settings = {
+    svelte =  {
+      plugin = {
+        html = {
+          completions = {
+            enable = true,
+            emmet = false
+          },
+        },
+      }
+    }
+  },
+}
+```
+
+### sumneko_lua
+I took this from the example on TJ's talk and added some global variables for AwesomeWM.
+
+```lua
+nvim_lsp.sumneko_lua.setup{
+  on_attach = custom_on_attach,
+  on_init = custom_on_init,
+  settings = {
+    Lua = {
+      runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
+      completion = { keywordSnippet = "Disable" },
+      diagnostics = {
+        enable = true,
+        globals = {
+          "vim", "describe", "it", "before_each", "after_each",
+          "awesome", "theme", "client"
+        },
+      },
+    }
+  }
+}
+```
+
+## Diagnostic
+I was using [diagnostic-nvim](https://github.com/nvim-lua/diagnostic-nvim) before [this big PR](https://github.com/neovim/neovim/pull/12655) got merged which makes diagnostic-nvim redundant. Here's some of my diagnostic config.
+
+```lua
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = false,
+  }
+)
+
+vim.fn.sign_define('LspDiagnosticsSignError', { text = "", texthl = "LspDiagnosticsDefaultError" })
+vim.fn.sign_define('LspDiagnosticsSignWarning', { text = "", texthl = "LspDiagnosticsDefaultWarning" })
+vim.fn.sign_define('LspDiagnosticsSignInformation', { text = "", texthl = "LspDiagnosticsDefaultInformation" })
+vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagnosticsDefaultHint" })
+```
+
+I enabled `virtual_text` and `signs` for the diagnostic hint and only update the diagnostic when I switch between insert mode and normal mode. It's quite annoying when I haven't finished typing and get yelled at by LSP because it expects me to put `=` after a variable name that I haven't even finished typing yet.
+
+I also have this bit to change the virtual text prefix and give it more spacing from the actual text.
+
+```lua
+-- custom diagnostic handling
+vim.lsp.diagnostic.get_virtual_text_chunks_for_line = function(bufnr, line, line_diagnostics)
+  if #line_diagnostics == 0 then
+    return nil
+  end
+
+  local line_length = #(vim.api.nvim_buf_get_lines(bufnr, line, line + 1, false)[1] or '')
+  local get_highlight = vim.lsp.diagnostic._get_severity_highlight_name
+
+  -- Create a little more space between virtual text and contents
+  local virt_texts = {{string.rep(" ", 10 - line_length)}}
+
+  for i = 1, #line_diagnostics - 1 do
+    table.insert(virt_texts, {"»", get_highlight(line_diagnostics[i].severity)})
+  end
+  local last = line_diagnostics[#line_diagnostics]
+
+  if last.message then
+    table.insert(
+      virt_texts,
+      {
+        string.format("» %s", last.message:gsub("\r", ""):gsub("\n", "  ")),
+        get_highlight(last.severity)
+      }
+    )
+
+    return virt_texts
+  end
+
+  return virt_texts
+end
+```
+
+## Custom handlers
+I override 2 handlers which are `textDocument/hover` and `textDocument/rename`. I took the custom hover handler from [glepnir's plugin](https://github.com/glepnir/lspsaga.nvim/blob/main/lua/lspsaga/window.lua) and modified it a bit. The rename handler is just a workaround for [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) that I took from [this comment](https://github.com/rust-analyzer/rust-analyzer/issues/4901#issuecomment-698095462).
+
+You can find both of them [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/_window.lua) and [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/_custom_handlers.lua).
+
+# Closing Note
+I'm pretty pleased with my current setup. Kudos to Neovim's developer that brings LSP client to be a built-in feature. These are some other great LSP client for (Neo)vim, definitely check them out!
+
+- [coc.nvim](https://github.com/neoclide/coc.nvim)
+- [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
+- [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+- [ALE](https://github.com/dense-analysis/ale)
+
+If you've read this far then thank you and have a wonderful day :)
