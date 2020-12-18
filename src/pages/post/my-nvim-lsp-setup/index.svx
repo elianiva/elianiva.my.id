@@ -1,3 +1,11 @@
+---
+title: My setup for Neovim's builtin LSP client
+date: 2020-12-18
+desc: A post where I go through my Neovim's LSP client configuration for various languages
+tags:
+  - neovim
+---
+
 # What is LSP and Why?
 If you don't already know what LSP is, well, LSP is a Language Server Protocol and it was created by Microsoft. It's a better implementation of language support for a text editor. Instead of having to implement it for every language on every text editor, we only need a server for a specific language and a client for a text editor that can speak to the server.
 
@@ -211,4 +219,4 @@ I'm pretty pleased with my current setup. Kudos to Neovim's developer that bring
 - [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 - [ALE](https://github.com/dense-analysis/ale)
 
-If you've read this far then thank you and have a wonderful day :)
+Here's my [whole config](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/) if you want them. If you've read this far then thank you and have a wonderful day :)
