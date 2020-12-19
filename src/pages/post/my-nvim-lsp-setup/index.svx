@@ -6,6 +6,8 @@ tags:
   - neovim
 ---
 
+# Table of Content
+
 # What is LSP and Why?
 If you don't already know what LSP is, well, LSP is a Language Server Protocol and it was created by Microsoft. It's a better implementation of language support for a text editor. Instead of having to implement it for every language on every text editor, we only need a server for a specific language and a client for a text editor that can speak to the server.
 
