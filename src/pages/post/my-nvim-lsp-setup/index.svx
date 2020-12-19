@@ -19,9 +19,9 @@ Here are some resources that explain LSP *way better* and in more detail.
 - [TJ's talk about LSP on Vimconf 2020](https://www.youtube.com/watch?v=C9X5VF9ASac)
 
 # Neovim builtin LSP client
-I use Neovim's built-in LSP client which only available on the `master` branch of Neovim at the time of writing this. I was using [coc.nvim](https://github.com/neoclide/coc.nvim) but it was slow on my machine because it uses node and it's a remote plugin that adds some overhead. It still works great nonetheless, it's just slow in my machine.
+I use Neovim's built-in LSP client which only available on the `master` branch of Neovim at the time of writing this. I was using [coc.nvim](https://github.com/neoclide/coc.nvim) but it was slow on my machine because it uses node and it's a remote plugin that adds some overhead. It still works great nonetheless, it's just slow on my machine.
 
-The new neovim's built-in LSP client is written in Lua and Neovim now ships with LuaJIT which makes it super fast. I couldn't recommend you enough to watch [TJ's talk about Neovim LSP client on Vimconf 2020](https://www.youtube.com/watch?v=C9X5VF9ASac), he explained it well.
+The new neovim's built-in LSP client is written in Lua and Neovim now ships with LuaJIT which makes it super fast. I couldn't recommend you enough to watch [TJ's talk about Neovim LSP client on Vimconf 2020](https://www.youtube.com/watch?v=C9X5VF9ASac), he explained it really well.
 
 # Configuration
 ## nvim-lspconfig
@@ -57,10 +57,10 @@ nvim_lsp.gopls.setup{
 
 I made a `custom_on_attach` function to attach LSP specific mappings and enable `incremental_sync` if the server supports it. I also made a custom `on_init` function to notify me when the LSP is running. Though, I'm not sure if `on_init` is the correct thing that I'm looking for. Sometimes it notifies me when the LSP server hasn't even started yet.
 
-You can find the full content of this file [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/init.lua)
+You can find the full content of this file [here](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/init.lua)
 
 ## Mappings
-Here are some of my LSP related mappings which you can find in the file [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/_mappings.lua)
+Here are some of my LSP related mappings which you can find in the file [here](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/_mappings.lua)
 
 ```lua
 local remap = vim.api.nvim_set_keymap
@@ -211,7 +211,69 @@ end
 ## Custom handlers
 I override 2 handlers which are `textDocument/hover` and `textDocument/rename`. I took the custom hover handler from [glepnir's plugin](https://github.com/glepnir/lspsaga.nvim/blob/main/lua/lspsaga/window.lua) and modified it a bit. The rename handler is just a workaround for [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) that I took from [this comment](https://github.com/rust-analyzer/rust-analyzer/issues/4901#issuecomment-698095462).
 
-You can find both of them [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/_window.lua) and [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/_custom_handlers.lua).
+You can find both of them [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/_window.lua) and [here](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/_custom_handlers.lua).
+
+## Linting and Formatting
+I recently started using [efm-langserver](https://github.com/mattn/efm-langserver) to run [eslint](https://eslint.org) and formatting like [prettier](https://prettier.io), [gofmt](https://golang.org/cmd/gofmt/), [LuaFormatter](https://github.com/Koihik/LuaFormatter), and [rustfmt](https://github.com/rust-lang/rustfmt).
+
+It was kinda hard to setup but it was well worth it. The formatter is *fast* and I got nice linting from external linters like ESLint. Here's some of my config for efm-langserver.
+
+```lua
+nvim_lsp.efm.setup{
+  cmd = {"efm-langserver"},
+  on_attach = function(client)
+    client.resolved_capabilities.rename = false
+    client.resolved_capabilities.hover = false
+  end,
+  on_init = custom_on_init,
+  settings = {
+    rootMarkers = {vim.loop.cwd()},
+    languages = {
+      javascript = { eslint, prettier },
+    }
+  }
+}
+```
+
+I disabled the capability for rename and hover on efm-langserver because the server doesn't support that and I don't want to have any conflict with the other server that's running.
+
+My prettier is a table with a key of `formatCommand` with its value as a function to check if `.prettierrc` is present on current directory and fallback to my global `.prettierrc` if it doesn't have a local `.prettierrc`.
+
+```lua
+local prettier = {
+  formatCommand = (
+    function()
+      if not vim.fn.empty(vim.fn.glob(vim.loop.cwd() .. '/.prettierrc')) then
+        return "prettier --config ./.prettierrc"
+      else
+        return "prettier --config ~/.config/nvim/.prettierrc"
+      end
+    end
+  )()
+}
+```
+
+The ESlint config is pretty simple, it looks like this.
+
+```lua
+local eslint = {
+  lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
+  lintIgnoreExitCode = true,
+  lintStdin = true,
+  lintFormats = {"%f:%l:%c: %m"},
+  rootMarkers = {
+    "package.json",
+    ".eslintrc.js",
+    ".eslintrc.yaml",
+    ".eslintrc.yml",
+    ".eslintrc.json",
+  }
+}
+```
+
+I need to explicitly specify the `lintFormats`, otherwise it shows the wrong message and it's really annoying.
+
+You can get my full config for `efm-langserver` [here](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/init.lua#L69-L125)
 
 # Closing Note
 I'm pretty pleased with my current setup. Kudos to Neovim's developer that brings LSP client to be a built-in feature. These are some other great LSP client for (Neo)vim, definitely check them out!
@@ -221,4 +283,4 @@ I'm pretty pleased with my current setup. Kudos to Neovim's developer that bring
 - [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 - [ALE](https://github.com/dense-analysis/ale)
 
-Here's my [whole config](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/) if you want them. If you've read this far then thank you and have a wonderful day :)
+Here's my [whole config](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/) if you want them. If you've read this far then thank you and have a wonderful day :)
