@@ -57,10 +57,10 @@ nvim_lsp.gopls.setup{
 
 I made a `custom_on_attach` function to attach LSP specific mappings and enable `incremental_sync` if the server supports it. I also made a custom `on_init` function to notify me when the LSP is running. Though, I'm not sure if `on_init` is the correct thing that I'm looking for. Sometimes it notifies me when the LSP server hasn't even started yet.
 
-You can find the full content of this file [here](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/init.lua)
+You can find the full content of this file [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/init.lua)
 
 ## Mappings
-Here are some of my LSP related mappings which you can find in the file [here](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/_mappings.lua)
+Here are some of my LSP related mappings which you can find in the file [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/_mappings.lua)
 
 ```lua
 local remap = vim.api.nvim_set_keymap
@@ -159,7 +159,10 @@ I was using [diagnostic-nvim](https://github.com/nvim-lua/diagnostic-nvim) befor
 ```lua
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true,
+    virtual_text = {
+      prefix = "»",
+      spacing = 4,
+    },
     signs = true,
     update_in_insert = false,
   }
@@ -171,48 +174,12 @@ vim.fn.sign_define('LspDiagnosticsSignInformation', { text = "", texthl = "Ls
 vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagnosticsDefaultHint" })
 ```
 
-I enabled `virtual_text` and `signs` for the diagnostic hint and only update the diagnostic when I switch between insert mode and normal mode. It's quite annoying when I haven't finished typing and get yelled at by LSP because it expects me to put `=` after a variable name that I haven't even finished typing yet.
-
-I also have this bit to change the virtual text prefix and give it more spacing from the actual text.
-
-```lua
--- custom diagnostic handling
-vim.lsp.diagnostic.get_virtual_text_chunks_for_line = function(bufnr, line, line_diagnostics)
-  if #line_diagnostics == 0 then
-    return nil
-  end
-
-  local line_length = #(vim.api.nvim_buf_get_lines(bufnr, line, line + 1, false)[1] or '')
-  local get_highlight = vim.lsp.diagnostic._get_severity_highlight_name
-
-  -- Create a little more space between virtual text and contents
-  local virt_texts = {{string.rep(" ", 10 - line_length)}}
-
-  for i = 1, #line_diagnostics - 1 do
-    table.insert(virt_texts, {"»", get_highlight(line_diagnostics[i].severity)})
-  end
-  local last = line_diagnostics[#line_diagnostics]
-
-  if last.message then
-    table.insert(
-      virt_texts,
-      {
-        string.format("» %s", last.message:gsub("\r", ""):gsub("\n", "  ")),
-        get_highlight(last.severity)
-      }
-    )
-
-    return virt_texts
-  end
-
-  return virt_texts
-end
-```
+I set the prefix for `virtual_text` to be `»` because I don't really like the default one and enabled `signs` for the diagnostic hint. I also made it to only update the diagnostic when I switch between insert mode and normal mode because it's quite annoying when I haven't finished typing and get yelled at by LSP because it expects me to put `=` after a variable name that I haven't even finished typing yet.
 
 ## Custom handlers
 I override 2 handlers which are `textDocument/hover` and `textDocument/rename`. I took the custom hover handler from [glepnir's plugin](https://github.com/glepnir/lspsaga.nvim/blob/main/lua/lspsaga/window.lua) and modified it a bit. The rename handler is just a workaround for [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) that I took from [this comment](https://github.com/rust-analyzer/rust-analyzer/issues/4901#issuecomment-698095462).
 
-You can find both of them [here](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/lsp/_window.lua) and [here](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/_custom_handlers.lua).
+You can find both of them [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/_window.lua) and [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/_custom_handlers.lua).
 
 ## Linting and Formatting
 I recently started using [efm-langserver](https://github.com/mattn/efm-langserver) to run [eslint](https://eslint.org) and formatting like [prettier](https://prettier.io), [gofmt](https://golang.org/cmd/gofmt/), [LuaFormatter](https://github.com/Koihik/LuaFormatter), and [rustfmt](https://github.com/rust-lang/rustfmt).
@@ -274,7 +241,7 @@ local eslint = {
 
 I need to explicitly specify the `lintFormats`, otherwise it shows the wrong message and it's really annoying.
 
-You can get my full config for `efm-langserver` [here](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/init.lua#L69-L125)
+You can get my full config for `efm-langserver` [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/init.lua#L69-L125)
 
 # Closing Note
 I'm pretty pleased with my current setup. Kudos to Neovim's developer that brings LSP client to be a built-in feature. These are some other great LSP client for (Neo)vim, definitely check them out!
@@ -284,4 +251,4 @@ I'm pretty pleased with my current setup. Kudos to Neovim's developer that bring
 - [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 - [ALE](https://github.com/dense-analysis/ale)
 
-Here's my [whole config](https://github.com/elianiva/dotfiles/blob/4de59e520d60160c484427da62d2e361ff93df32/nvim/.config/nvim/lua/modules/lsp/) if you want them. If you've read this far then thank you and have a wonderful day :)
+Here's my [whole config](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/) if you want them. If you've read this far then thank you and have a wonderful day :)
