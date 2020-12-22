@@ -243,6 +243,27 @@ I need to explicitly specify the `lintFormats`, otherwise it shows the wrong mes
 
 You can get my full config for `efm-langserver` [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/init.lua#L69-L125)
 
+UPDATE(22-12-2020): I no longer use efm-langserver for formatting because I have an issue with prettier not working correctly when using it to format svelte file. So I use [formatter.nvim](https://github.com/mhartington/formatter.nvim) as my formatter.
+
+## Diagnostic Conflict
+UPDATE(22-12-2020): When I use efm-langserver, the diagnostic that comes from the LSP (like `tsserver`) and external linter that efm-langserver uses are conflicting. So, I made a custom function for it to check if there's a file like `.eslintrc.js`, it will turn off the diagnostic that comes from LSP and use ESlint instead.
+
+That being said, I think this is kinda a hacky way? Because when I use this method, the global config for diagnostic gets overriden. I have to manually pass the config table like this.
+
+```lua
+vim.lsp.diagnostic.on_publish_diagnostics(_, _, result, client_id, _, {
+  underline = true,
+  virtual_text = {
+    prefix = "»",
+    spacing = 4,
+  },
+  signs = true,
+  update_in_insert = false,
+})
+```
+
+I think you supposed to use `vim.with` but I couldn't get it work. You can get my updated EFM config [here](https://github.com/elianiva/dotfiles/blob/5f813d893ff5a5928bac52995d6b4f806a8b3d2a/nvim/.config/nvim/lua/modules/lsp/init.lua)
+
 # Closing Note
 I'm pretty pleased with my current setup. Kudos to Neovim's developer that brings LSP client to be a built-in feature. These are some other great LSP client for (Neo)vim, definitely check them out!
 
