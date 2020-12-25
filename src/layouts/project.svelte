@@ -267,7 +267,7 @@
   <div class="project__cover">
     <div class="project__wrapper">
       <img
-        src={`/assets/project/${slug}/cover.png`}
+        src={`/assets/project/${slug}/cover.webp`}
         alt={title}
         class="project__img"
         loading="lazy"
