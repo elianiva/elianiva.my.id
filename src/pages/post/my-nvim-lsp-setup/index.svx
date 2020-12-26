@@ -182,7 +182,9 @@ I override 2 handlers which are `textDocument/hover` and `textDocument/rename`. 
 You can find both of them [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/_window.lua) and [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/_custom_handlers.lua).
 
 ## Linting and Formatting
-I recently started using [efm-langserver](https://github.com/mattn/efm-langserver) to run [eslint](https://eslint.org) and formatting like [prettier](https://prettier.io), [gofmt](https://golang.org/cmd/gofmt/), [LuaFormatter](https://github.com/Koihik/LuaFormatter), and [rustfmt](https://github.com/rust-lang/rustfmt).
+I recently started using [efm-langserver](https://github.com/mattn/efm-langserver) to run [eslint](https://eslint.org) and formatting like [prettier](https://prettier.io), [gofmt](https://golang.org/cmd/gofmt/) , [LuaFormatter](https://github.com/Koihik/LuaFormatter), and [rustfmt](https://github.com/rust-lang/rustfmt).
+
+**(26-12-2020) UPDATE:** I now use [gofumpt](https://github.com/mvdan/gofumpt) for stricter formatting.
 
 It was kinda hard to setup but it was well worth it. The formatter is *fast* and I got nice linting from external linters like ESLint. Here's some of my config for efm-langserver.
 
@@ -264,6 +266,61 @@ vim.lsp.diagnostic.on_publish_diagnostics(_, _, result, client_id, _, {
 
 I think you supposed to use `vim.with` but I couldn't get it work. You can get my updated EFM config [here](https://github.com/elianiva/dotfiles/blob/5f813d893ff5a5928bac52995d6b4f806a8b3d2a/nvim/.config/nvim/lua/modules/lsp/init.lua)
 
+## Completion and Snippets
+I use a completion and snippet plugin to make my life easier. For completion, I use [nvim-compe](https://github.com/hrsh7th/nvim-compe), previously I was using [completion-nvim](https://github.com/nvim-lua/completion-nvim) but I had some issues with it such as path completion sometimes not showing up and flickering. You may use whatever works for you.
+
+Snippet wise, I use [vim-vsnip](https://github.com/hrsh7th/vim-vsnip). I would love to use [snippets.nvim](https://github.com/norcalli/snippets.nvim) but it doesn't integrate well with LSP's snippet. Honestly, using JSON as a format to store snippet is really stupid. It doesn't support newline so what you would do is use an array of strings. Because **vim-vsnip** needs to be compatible with LSP's snippet, well, it has to use JSON format as well.
+
+Here's some of my `nvim-compe` config
+
+```lua
+local remap = vim.api.nvim_set_keymap
+
+require'compe'.setup {
+  enabled = true;
+  debug = false;
+  min_length = 2;
+  preselect = "disable";
+  source_timeout = 200;
+  incomplete_delay = 400;
+  allow_prefix_unmatch = false;
+  source = {
+    path = true;
+    buffer = true;
+    vsnip = true;
+    nvim_lsp = true;
+  };
+}
+
+vim.g.vsnip_snippet_dir = vim.fn.stdpath("config").."/snippets"
+
+-- check prev character, depending on previous char
+-- it will do special stuff or just `<CR>`
+-- i.e: accept completion item, indent html, autoindent braces/etc, just enter
+remap(
+  'i', '<CR>',
+  table.concat{
+  'pumvisible()',
+  '? complete_info()["selected"] != "-1"',
+  '? compe#confirm(lexima#expand("<LT>CR>", "i"))',
+  ': "<C-g>u".lexima#expand("<LT>CR>", "i")',
+  ': v:lua.Util.check_html_char() ? lexima#expand("<LT>CR>", "i")."<ESC>O"',
+  ': lexima#expand("<LT>CR>", "i")'
+  },
+  { silent = true, expr = true }
+)
+
+-- cycle tab or insert tab depending on prev char
+remap(
+  'i', '<Tab>',
+  'pumvisible() ? "<C-n>" : v:lua.Util.check_backspace() ? "<Tab>" : compe#confirm(lexima#expand("<LT>CR>", "i"))',
+  { silent = true, noremap = true, expr = true }
+)
+remap('i', '<S-Tab>', 'pumvisible() ? "<C-p>" : "<S-Tab>"', { noremap = true, expr = true })
+```
+
+You can get the full config for my completion setup [here](https://github.com/elianiva/dotfiles/blob/5f813d893ff5a5928bac52995d6b4f806a8b3d2a/nvim/.config/nvim/lua/plugins/_completion.lua)
+
 # Closing Note
 I'm pretty pleased with my current setup. Kudos to Neovim's developer that brings LSP client to be a built-in feature. These are some other great LSP client for (Neo)vim, definitely check them out!
 
@@ -272,4 +329,4 @@ I'm pretty pleased with my current setup. Kudos to Neovim's developer that bring
 - [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 - [ALE](https://github.com/dense-analysis/ale)
 
-Here's my [whole config](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/) if you want them. If you've read this far then thank you and have a wonderful day :)
+Here's my [whole LSP config](https://github.com/elianiva/dotfiles/tree/master/nvim/.config/nvim/lua/modules/lsp) if you want them. If you've read this far then thank you and have a wonderful day :)
