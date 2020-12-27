@@ -168,11 +168,11 @@ xclip -selection clipboard -i /tmp/image.png -t image/png
 
 I added the last line to copy the result into my clipboard so I can easily paste it anywhere and don't have to delete the screenshot when I no longer need it. Here's the result.
 
-![rounded](/post/prettify-screenshot-using-imagemagick/rounded.png)
+![rounded](/assets/post/prettify-screenshot-using-imagemagick/rounded.png)
 
 Here's another version
 
-![square](/post/prettify-screenshot-using-imagemagick/square.png)
+![square](/assets/post/prettify-screenshot-using-imagemagick/square.png)
 
 # Conclusion
 Imagemagick is a powerful CLI tools to manipulate an image. It can do so much more, if you're interested on that then you can go to [their website](https://www.imagemagick.org/) for some advanced guide. That's all for this post, thanks for reading and have a nice day ツ
