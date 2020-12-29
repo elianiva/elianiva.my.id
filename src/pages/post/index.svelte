@@ -13,6 +13,7 @@
   font-size: 2rem;
   font-weight: 600;
   color: var(--color-main-text);
+  margin-bottom: 1rem;
 }
 
 .posts__title::before {
