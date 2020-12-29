@@ -197,11 +197,6 @@
   border-radius: 0.25rem;
 }
 
-.post__content :global(p > code::before),
-.post__content :global(p > code::after) {
-  content: "`";
-}
-
 .project__content :global(pre) {
   border-radius: 0.5rem;
   margin: 0.5rem 0;

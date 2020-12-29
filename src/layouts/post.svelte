@@ -269,10 +269,10 @@
   color: var(--color-main-text);
 }
 
-.post__content :global(h1 a):hover,
-.post__content :global(h2 a):hover,
-.post__content :global(h3 a):hover {
-  color: var(--color-main-text);
+.post__content :global(h1 a::before),
+.post__content :global(h2 a::before),
+.post__content :global(h3 a::before){
+  display: none;
 }
 
 .post__tags {
