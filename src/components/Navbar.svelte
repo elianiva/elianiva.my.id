@@ -2,7 +2,7 @@
 .navbar {
   height: 4rem;
   border-bottom: 0.0625rem var(--color-borders) solid;
-  z-index: 20;
+  z-index: 30;
   background-color: var(--color-alt-bg);
   position: fixed;
   left: 0;
@@ -108,7 +108,6 @@
 
   .navbar__hamburger {
     position: relative;
-    z-index: 10;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     gap: 0.25rem;
@@ -120,7 +119,6 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 2;
   }
 
   .navbar__checkbox:checked ~ .navbar__hamburger_item--1 {
