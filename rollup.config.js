@@ -46,7 +46,7 @@ const svelteOptions = {
       },
       remarkPlugins: [
         remarkSlug,
-        [remarkAutolink, { behaviour: "wrap" }],
+        [remarkAutolink, { behavior: "wrap" }],
         remarkToc,
       ],
     }),
