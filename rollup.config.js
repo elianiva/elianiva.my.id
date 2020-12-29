@@ -14,6 +14,7 @@ import posts from "./src/utils/fetch-all-posts"
 import projects from "./src/utils/fetch-all-projects"
 import remarkSlug from "remark-slug"
 import remarkToc from "remark-toc"
+import remarkAutolink from "remark-autolink-headings"
 
 const mode = process.env.NODE_ENV
 const dev = mode === "development"
@@ -43,7 +44,11 @@ const svelteOptions = {
         _: "./src/layouts/post.svelte",
         project: "./src/layouts/project.svelte",
       },
-      remarkPlugins: [remarkSlug, remarkToc],
+      remarkPlugins: [
+        remarkSlug,
+        [remarkAutolink, { behaviour: "wrap" }],
+        remarkToc,
+      ],
     }),
   ],
 }
