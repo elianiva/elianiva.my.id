@@ -52,7 +52,7 @@
   text-align: left;
 }
 
-:global(.post__content p) {
+.post__content :global(p) {
   line-height: 1.75em;
   font-size: 1.125rem;
 }
@@ -61,14 +61,14 @@
   margin-top: 1rem;
 }
 
-:global(.post__content h1) {
+.post__content :global(h1) {
   position: relative;
   font-family: "Overpass", sans-serif;
   font-size: 2rem;
   line-height: 1.75em;
 }
 
-:global(.post__content h1::after) {
+.post__content :global(h1::after) {
   content: "";
   position: absolute;
   left: 0;
@@ -82,7 +82,7 @@
   );
 }
 
-:global(.post__content h2) {
+.post__content :global(h2) {
   position: relative;
   font-family: "Overpass", sans-serif;
   line-height: 1.5em;
@@ -90,7 +90,7 @@
   padding-left: 1.5rem;
 }
 
-:global(.post__content h3) {
+.post__content :global(h3) {
   position: relative;
   font-family: "Overpass", sans-serif;
   font-size: 1.5rem;
@@ -99,49 +99,50 @@
   padding-left: 1.5rem;
 }
 
-:global(.post__content h3::after) {
+.post__content :global(h3::after) {
   content: "• ";
   position: absolute;
   left: 0;
   color: var(--color-main-accent);
 }
 
-:global(.post__content h2::after) {
+.post__content :global(h2::after) {
   content: "# ";
   position: absolute;
   left: 0;
   color: var(--color-main-accent);
 }
 
-:global(.post__content img) {
+.post__content :global(img) {
   width: 100%;
 }
 
-:global(.post__content pre) {
+.post__content :global(pre) {
   border-radius: 0.5rem;
   scrollbar-color: var(--color-thin) var(--color-special-bg);
   border: 0.125rem var(--color-borders) solid;
 }
 
-:global(.post__content pre::-webkit-scrollbar-thumb) {
+.post__content :global(pre::-webkit-scrollbar-thumb) {
   background-color: var(--color-thin);
 }
 
-:global(.post__content pre::-webkit-scrollbar) {
+.post__content :global(pre::-webkit-scrollbar) {
   background-color: var(--color-special-bg);
   height: 0.5rem;
 }
 
-:global(.post__content a) {
+.post__content :global(a) {
   font-weight: 600;
   position: relative;
   display: inline-block;
   color: var(--color-main-accent);
   text-decoration: none;
   transition: all ease-out 0.2s;
+  z-index: 5;
 }
 
-:global(.post__content a::before) {
+.post__content :global(a::before) {
   position: absolute;
   content: "";
   bottom: 0.25rem;
@@ -159,11 +160,11 @@
   transition: transform ease-out 0.2s;
 }
 
-:global(.post__content a:hover::before) {
+.post__content :global(a:hover::before) {
   transform: scale3d(1, 0.1, 1);
 }
 
-:global(.post__content code) {
+.post__content :global(code) {
   font-family: "JetBrains Mono", monospace;
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
@@ -173,7 +174,7 @@
   box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.1);
 }
 
-:global(.post__content pre code) {
+.post__content :global(pre code) {
   font-family: "JetBrains Mono", monospace;
   font-weight: 400;
   padding: 0;
@@ -182,19 +183,19 @@
   box-shadow: none;
 }
 
-:global(.post__content ul) {
+.post__content :global(ul) {
   /* list-style-position: inside; */
   list-style: none;
 }
 
-:global(.post__content ul li) {
+.post__content :global(ul li) {
   position: relative;
   font-size: 1.125rem;
   line-height: 1.75em;
   padding-left: 1rem;
 }
 
-:global(.post__content ul li::before) {
+.post__content :global(ul li::before) {
   content: "\203A";
   color: var(--color-main-text);
   font-size: 1.5rem;
@@ -202,44 +203,44 @@
   margin-right: 0.5rem;
 }
 
-:global(.post__content ul li p) {
+.post__content :global(ul li p) {
   display: inline-block;
   margin: 0;
 }
 
-:global(.post__content ul li > ul *) {
+.post__content :global(ul li > ul *) {
   font-size: 1.125rem;
 }
 
-:global(.post__content table) {
+.post__content :global(table) {
   width: 100%;
   border-radius: 0.2rem;
   overflow: hidden;
 }
 
-:global(.post__content table a) {
+.post__content :global(table a) {
   transition: all ease-out 0.2s;
   font-weight: 600;
   line-height: 1.25em;
   font-style: italic;
 }
 
-:global(.post__content table tr:nth-child(odd)) {
+.post__content :global(table tr:nth-child(odd)) {
   background-color: var(--color-special-bg);
 }
 
-:global(.post__content table th) {
+.post__content :global(table th) {
   background-color: var(--color-main-accent);
   color: var(--color-alt-bg);
   font-size: 1.25rem;
 }
 
-:global(.post__content table th),
-:global(.post__content table td) {
+.post__content :global(table th),
+.post__content :global(table td) {
   padding: 0.75rem 1rem;
 }
 
-:global(.post__content blockquote p) {
+.post__content :global(blockquote p) {
   font-size: 1.5rem;
   color: var(--color-thin);
   font-style: italic;
@@ -247,11 +248,11 @@
   margin: 1rem 0;
 }
 
-:global(.post__content blockquote p::before) {
+.post__content :global(blockquote p::before) {
   content: "“	";
 }
 
-:global(.post__content blockquote p::after) {
+.post__content :global(blockquote p::after) {
   content: " ”";
 }
 
@@ -260,6 +261,18 @@
   display: block;
   height: 4.5rem;
   margin-top: -4.5rem;
+}
+
+.post__content :global(h1 a),
+.post__content :global(h2 a),
+.post__content :global(h3 a) {
+  color: var(--color-main-text);
+}
+
+.post__content :global(h1 a):hover,
+.post__content :global(h2 a):hover,
+.post__content :global(h3 a):hover {
+  color: var(--color-main-text);
 }
 
 .post__tags {
@@ -288,9 +301,11 @@
     border: none;
     border-radius: 0;
   }
+
   :global(.post__content ul *) {
     font-size: 0.95rem !important;
   }
+
   :global(.post__content p) {
     font-size: 1rem;
   }

@@ -154,12 +154,12 @@
   vertical-align: top;
 }
 
-:global(.project__content p) {
+.project__content :global(p) {
   color: var(--color-main-text);
   margin-bottom: 1rem;
 }
 
-:global(.project__content p a) {
+.project__content :global(p a) {
   position: relative;
   display: inline-block;
   color: var(--color-main-accent);
@@ -168,7 +168,7 @@
   transition: all ease-out 0.2s;
 }
 
-:global(.project__content p a::before) {
+.project__content :global(p a::before) {
   position: absolute;
   content: "";
   bottom: 0;
@@ -186,46 +186,46 @@
   transition: transform ease-out 0.2s;
 }
 
-:global(.project__content a:hover::before) {
+.project__content :global(a:hover::before) {
   transform: scale3d(1, 0.1, 1);
 }
 
-:global(.project__content code) {
+.project__content :global(code) {
   font-family: "JetBrains Mono", monospace;
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
 }
 
-:global(.post__content p > code::before),
-:global(.post__content p > code::after) {
+.post__content :global(p > code::before),
+.post__content :global(p > code::after) {
   content: "`";
 }
 
-:global(.project__content pre) {
+.project__content :global(pre) {
   border-radius: 0.5rem;
   margin: 0.5rem 0;
   scrollbar-color: var(--color-thin) var(--color-special-bg);
   border: 0.125rem var(--color-borders) solid;
 }
 
-:global(.project__content pre::-webkit-scrollbar-thumb) {
+.project__content :global(pre::-webkit-scrollbar-thumb) {
   background-color: var(--color-thin);
 }
 
-:global(.project__content pre::-webkit-scrollbar) {
+.project__content :global(pre::-webkit-scrollbar) {
   background-color: var(--color-special-bg);
   height: 0.5rem;
 }
 
-:global(.project__content pre code) {
+.project__content :global(pre code) {
   padding: 0;
   border-radius: 0;
   font-size: 1rem;
 }
 
 @media only screen and (max-width: 480px) {
-  :global(.project__content pre) {
+  .project__content :global(pre) {
     margin-left: -1rem !important;
     margin-right: -1rem !important;
     border-radius: 0;
