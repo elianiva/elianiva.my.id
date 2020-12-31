@@ -250,21 +250,24 @@ UPDATE(22-12-2020): I no longer use efm-langserver for formatting because I have
 ## Diagnostic Conflict
 UPDATE(22-12-2020): When I use efm-langserver, the diagnostic that comes from the LSP (like `tsserver`) and external linter that efm-langserver uses are conflicting. So, I made a custom function for it to check if there's a file like `.eslintrc.js`, it will turn off the diagnostic that comes from LSP and use ESlint instead.
 
-That being said, I think this is kinda a hacky way? Because when I use this method, the global config for diagnostic gets overriden. I have to manually pass the config table like this.
+<p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">That being said, I think this is kinda a hacky way? Because when I use this method, the global config for diagnostic gets overriden. I have to manually pass the config table like this.</p>
+
+<p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">I think you supposed to use `vim.with` but I couldn't get it work.</p>
+
+
+UPDATE(01-01-2021): I've found a better way to do this (thanks to TJ) which looks like this.
 
 ```lua
-vim.lsp.diagnostic.on_publish_diagnostics(_, _, result, client_id, _, {
-  underline = true,
-  virtual_text = {
-    prefix = "»",
-    spacing = 4,
-  },
-  signs = true,
-  update_in_insert = false,
-})
+local is_using_eslint = function(_, _, result, client_id)
+  if is_cfg_present("/.eslintrc.json") or is_cfg_present("/.eslintrc.js") then
+    return
+  end
+
+  return vim.lsp.handlers["textDocument/publishDiagnostics"](_, _, result, client_id)
+end
 ```
 
-I think you supposed to use `vim.with` but I couldn't get it work. You can get my updated EFM config [here](https://github.com/elianiva/dotfiles/blob/5f813d893ff5a5928bac52995d6b4f806a8b3d2a/nvim/.config/nvim/lua/modules/lsp/init.lua)
+I've overridden the `vim.lsp.handlers["textDocument/publishDiagnostics"]` anyway so reusing it would also works and it looks way cleaner.
 
 ## Completion and Snippets
 I use a completion and snippet plugin to make my life easier. For completion, I use [nvim-compe](https://github.com/hrsh7th/nvim-compe), previously I was using [completion-nvim](https://github.com/nvim-lua/completion-nvim) but I had some issues with it such as path completion sometimes not showing up and flickering. You may use whatever works for you.
@@ -322,9 +325,9 @@ remap('i', '<S-Tab>', 'pumvisible() ? "<C-p>" : "<S-Tab>"', { noremap = true, ex
 You can get the full config for my completion setup [here](https://github.com/elianiva/dotfiles/blob/5f813d893ff5a5928bac52995d6b4f806a8b3d2a/nvim/.config/nvim/lua/plugins/_completion.lua)
 
 # Closing Note
-I'm pretty pleased with my current setup. Kudos to Neovim's developer that brings LSP client to be a built-in feature. These are some other great LSP client for (Neo)vim, definitely check them out!
+I'm pretty pleased with my current setup. Kudos to Neovim's developer that brings LSP client to be a built-in feature! These are of course some other great LSP client alternatives for (Neo)vim, definitely check them out!
 
-- [coc.nvim](https://github.com/neoclide/coc.nvim)
+- [coc.nvim](https://github.com/neoclide/coc.nvim) (highly recommend this if you're just getting started)
 - [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
 - [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 - [ALE](https://github.com/dense-analysis/ale)
