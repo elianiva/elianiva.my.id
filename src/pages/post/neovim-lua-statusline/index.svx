@@ -532,7 +532,7 @@ Here's a [preview video](https://streamable.com/nqcwp6) for a better demonstrati
 
 That's the active statusline, I don't think I need to put a screenshot for the inactive one because nothing interesting going on there :p.
 
-Here's [my statusline file](https://github.com/elianiva/dotfiles/4de59e520d60160c484427da62d2e361ff93df32/master/nvim/.config/nvim/lua/modules/_statusline.lua) for a reference.
+Here's [my statusline file](https://github.com/elianiva/dotfiles/blob/81f3cb6bdffae7375b8f6da2d3914cc11ce0342a/nvim/.config/nvim/lua/modules/_statusline.lua) for a reference.
 There are also some great statusline plugins written in lua if you want to get started quickly such as [express_line.nvim](https://github.com/tjdevries/express_line.nvim), [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim), and [neoline.vim](https://github.com/adelarsq/neoline.vim).
 
 # Closing Note
