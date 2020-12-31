@@ -245,17 +245,17 @@ I need to explicitly specify the `lintFormats`, otherwise it shows the wrong mes
 
 You can get my full config for `efm-langserver` [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/init.lua#L69-L125)
 
-UPDATE(22-12-2020): I no longer use efm-langserver for formatting because I have an issue with prettier not working correctly when using it to format svelte file. So I use [formatter.nvim](https://github.com/mhartington/formatter.nvim) as my formatter.
+**UPDATE(22-12-2020):** I no longer use efm-langserver for formatting because I have an issue with prettier not working correctly when using it to format svelte file. So I use [formatter.nvim](https://github.com/mhartington/formatter.nvim) as my formatter.
 
 ## Diagnostic Conflict
-UPDATE(22-12-2020): When I use efm-langserver, the diagnostic that comes from the LSP (like `tsserver`) and external linter that efm-langserver uses are conflicting. So, I made a custom function for it to check if there's a file like `.eslintrc.js`, it will turn off the diagnostic that comes from LSP and use ESlint instead.
+**UPDATE(22-12-2020):** When I use efm-langserver, the diagnostic that comes from the LSP (like `tsserver`) and external linter that efm-langserver uses are conflicting. So, I made a custom function for it to check if there's a file like `.eslintrc.js`, it will turn off the diagnostic that comes from LSP and use ESlint instead.
 
 <p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">That being said, I think this is kinda a hacky way? Because when I use this method, the global config for diagnostic gets overriden. I have to manually pass the config table like this.</p>
 
 <p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">I think you supposed to use `vim.with` but I couldn't get it work.</p>
 
 
-UPDATE(01-01-2021): I've found a better way to do this (thanks to TJ) which looks like this.
+**UPDATE(01-01-2021):** I've found a better way to do this (thanks to TJ) which looks like this.
 
 ```lua
 local is_using_eslint = function(_, _, result, client_id)
