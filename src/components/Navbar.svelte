@@ -28,12 +28,10 @@
 }
 
 .navbar__title a {
-  font-family: "Kaushan Script", cursive;
-  font-size: 1.5rem;
   font-weight: 400;
   text-decoration: none;
   color: var(--color-main-text);
-  transition: color ease-out 0.2s;
+  transition: color ease-out 0.1s;
 }
 
 .navbar__title a:hover {
@@ -59,7 +57,7 @@
   position: relative;
   color: var(--color-alt-text);
   text-decoration: none;
-  transition: color ease-out 0.2s;
+  transition: color ease-out 0.1s;
 }
 
 .navbar__item a:hover {
@@ -173,7 +171,9 @@
 
 <nav class="navbar">
   <div class="navbar__container">
-    <div class="navbar__title"><a href="/">Elianiva</a></div>
+    <div class="navbar__title">
+      <a href="/"><Logo class="logo__icon" /></a>
+    </div>
     <ul class="navbar__items">
       <li class="navbar__item"><a href="/">Home</a></li>
       <li class="navbar__item" class:active={segment === 'post'}>
@@ -240,6 +240,7 @@
 <script>
 import { fly, fade } from "svelte/transition"
 import Moon from "@/icons/moon.svg"
+import Logo from "@/icons/logo.svg"
 import { theme } from "@/utils/theme"
 export let segment
 
