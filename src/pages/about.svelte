@@ -56,6 +56,7 @@
 .about__summary {
   color: var(--color-main-text);
   transition: color ease-out 0.2s;
+  font-size: 1.125rem;
   cursor: pointer;
   outline: none;
 }
@@ -110,25 +111,28 @@
   <section class="about__section">
     <h1 class="about__heading">About Me</h1>
     <p class="about__text">
-      Hi! My name is Dicha Zelianivan Arkana. I go on the internet as Elianiva.
-      It was taken from my middle name without the first and last letter. I'm a
-      17 y/o Asian boi who loves to build websites and contribute to any open
-      source projects that I like. My biggest goal in my life is to contribute
-      to as much open source projects as I can to help as many people as I could
-      =)
+      Hi there! I'm Elianiva. My real name is Dicha Zelianivan Arkana. My
+      nickname on the internet was taken from my middle name without the first
+      and last letter. I'm a 17 y/o Asian boi who loves to build websites and
+      contribute to any open source projects that I like. My biggest goal in my
+      life is to contribute to as much open source projects as I can to help as
+      many people as I could =)
     </p>
     <p class="about__text">
-      I've been learning web development for about a year and a half. I
-      understand the basic of HTML, CSS, and JS quite well. Still learning about
-      React, Svelte, and Typescript. Recently I've been learning Lua and Golang.
-      I was learning Rust previously but I decided to pick Golang Instead.
+      I've been learning web development since roughly around 2019. I understand
+      the basic of HTML, CSS, and JS quite well. I'm still learning about
+      React/Next, Svelte, and Typescript but felt quite comfortable enoguh to
+      use them daily. I've been learning Lua and Golang recently. I was focusing
+      on learning Rust previously but I decided to focus on Golang Instead. I
+      still code Rust every now and then but just because I like it, not
+      planning any exciting stuff with it.
     </p>
     <p class="about__text">
       I live in a beautiful country called Indonesia. I can speak Indonesian
       natively
-      <span class="about__paren">(obviously)</span>, Javanese natively, and
-      English fluently. I am currently learning Japanese because I want to be
-      able to speak a language that uses different writing system.
+      <span class="about__paren">(obviously)</span>, and English quite fluently.
+      I am currently learning Japanese because I want to be able to speak a
+      language that uses a different writing system.
       <span class="lmao">and ofc, to watch anime with no subtitle lol</span>
     </p>
     <p class="about__text">
@@ -150,10 +154,26 @@
         href="mailto:dicha.arkana03@gmail.com"
         target="_blank"
         rel="norel noreferrer"
-      >email me</a>, I check my email quite often.
+      >email me</a>, I check my email quite often. I also like to hang around on
+      <a
+        class="about__link"
+        href="https://gitter.im/neovim/neovim"
+        target="_blank"
+        rel="norel noreferrer"
+      >Neovim's Gitter</a>
+      and
+      <a
+        class="about__link"
+        href="https://gitter.im/nvim-telescope/telescope.nvim"
+        target="_blank"
+        rel="norel noreferrer"
+      >nvim-telescope's Gitter</a>
+      occasionally.
     </p>
     <details class="about__details">
-      <summary class="about__summary">Fun fact about me</summary>
+      <summary class="about__summary">
+        Fun fact about me (click this if you really want to know me :)
+      </summary>
       <p class="about__text" style="margin-top: 1rem;" transition:fade>
         I'm easily obsessed with one thing that I just found and like. I found
         out
@@ -171,13 +191,18 @@
         that I want to learn to draw again and my website colour is heavily
         inspired from Senketsu and Junketsu.
       </p>
+      <p class="about__text">
+        I sometimes don't really like to discuss stuff that I like with other
+        people. I don't know why, I like some things better if I just enjoy it
+        myself and not talk about it with someone else.
+      </p>
     </details>
-    <h1 class="about__heading">About My Website</h1>
+    <h1 class="about__heading">My Website</h1>
     <p class="about__text">
-      I made this website so I can post stuff that I learned and share it to the
-      others. I also use this as a note to myself because I sometimes forgot
-      stuff that I did. By having this website, I can just revisit what I've
-      done in the past.
+      I made this website so I can post stuff that I learned and share it to
+      other people. I also use this as a note to myself because believe it or
+      not, I sometimes forgot stuff that I did. By having this website, I can
+      just revisit what I've done in the past.
     </p>
     <p class="about__text">
       I use Sapper and MDSveX to build this website and it's hosted on Vercel.
@@ -186,7 +211,7 @@
         class="about__link"
         href="{data.siteUrl}/post/i-rebuild-my-site-using-sapper"
       >this post</a>
-      where I explain the process of me making this site.
+      where I explain the process of making this site.
     </p>
     <p class="about__text">
       The picture that you see on the home page is Ryuko Matoi from Kill La
@@ -214,7 +239,7 @@
       >derp eyed Ryuko</a>
       that I made a while back. I like to draw every now and then just for fun.
     </p>
-    <h1 class="about__heading">About My Setup</h1>
+    <h1 class="about__heading">My Setup</h1>
     <p class="about__text">
       My laptop is Thinkpad X220. I use Linux as my Operating System.
       <a
@@ -233,15 +258,26 @@
         rel="norel noreferrer"
       >AwesomeWM</a>, such an
       <i>awesome</i>
-      window manager. I am planning on making a post where I explained about my
-      dotfiles in case you want to steal my dotfiles. I also use a text editor
-      called
+      window manager. I also use a text editor called
       <a
         href="https://neovim.io"
         class="about__link"
         rel="norel noreferrer"
-      >Neovim</a>. My Neovim config is written in lua and is quite lengthy so
-      I'm also planning on making a post about my neovim config as well.
+      >Neovim</a>. I've been using it fulltime for about a year. It's actually
+      my first text editor that I feel comfortable with and do something serious
+      hence I can't relate when people say "VIM has a high learning curve". I
+      started using it when I got my first laptop. After using it for quite a
+      while my config is has grown quite a lot. It is now written in lua and is
+      quite lengthy. I've written some post explaining some of my config, I
+      don't want to write it for every single part of my config because it's
+      quite self explanatory if you look at it. Anyway, here's
+      <a
+        class="about__link"
+        href="https://github.com/elianiva/dotfiles"
+        rel="norel noreferrer"
+      >
+        my dotfiles
+      </a> if you want.
     </p>
     <p class="about__text">
       Well, I guess that's about it. Thanks for visiting my website and I hope
