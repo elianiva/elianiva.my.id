@@ -1,5 +1,5 @@
 ---
-title: How to get Japanese input method on Linux
+title: Setting up Japanese input method on Linux
 date: 2020-06-05
 desc: Installing fcitx and mozc for Japanese input method so you can type 日本語 on Linux
 tags:
@@ -37,16 +37,17 @@ After installing it, we need to set our input method variable to `fcitx`.
 
 ## Configuration
 To set our input method to `fcitx`, we need to change our environment variable.
-I set it on `~/.xprofile`, but you can set it on `~/.pam-environment`, `~/.profile`, or anything that gets sourced on login.
+I set it on `~/.pam_environment`, but you can set it on `~/.xprofile`, `~/.profile`, `~/.xinitrc` or anything that gets sourced on login. Mine's looks like this.
 
 ``` bash
-# ~/.xprofile
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+GTK_IM_MODULE DEFAULT=fcitx
+QT_IM_MODULE  DEFAULT=fcitx
+XMODIFIERS    DEFAULT=\@im=fcitx
+SDL_IM_MODULE DEFAULT=fcitx
+IBUS_USE_PORTAL=1
 ```
 
-After doing that, you're done.
+You need to add `export` if you put it on `~/.xprofile` or `~/.xinitrc`.
 
 # Mozc
 ## What Is Mozc?
@@ -68,43 +69,48 @@ $ sudo apt-get install fcitx-mozc
 After installing it, it will be available to Fcitx as an input method.
 
 ## Configuration
-Now what we need to do is set Mozc as Fcitx input method. To do that, open up the `fcitx-configtool`. It will roughly look like this, it may look different because of you theme.
+Now what we need to do is set Mozc as Fcitx input method. To do that, open up the `fcitx-configtool`. It will roughly look like this, it may look different because of your theme.
 
 ![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool.png)
 
-Press the **`+`** sign on the bottom left corner. A pop-up will appear and make sure you uncheck the **Only Show Current Language**, otherwise the **Mozc** input method won't show up.
+Press the **`+`** sign on the bottom left corner. A pop-up will appear and make sure you uncheck the checkbox that says `Only Show Current Language`, otherwise the `Mozc` input method won't show up.
 
 ![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-2.png)
 
-After you uncheck the box, search for **Mozc** then press OK. Here's the end result.
+After you uncheck the box, search for `Mozc` then press OK. Here's the end result.
 
 ![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-3.png)
 
-After setting it all up, execute `fcitx` on startup depending on your DE/WM. In my case, I use DWM so I put it in `~/.xprofile` like so.
+After setting it all up, execute `fcitx` on startup depending on your DE/WM. I put it in `~/.xprofile` like so.
 
 ``` bash
 # ~/.xprofile
 fcitx &
 ```
 
-It's also applicable to any other DE/WM since `~/.xprofile` gets executed after you logged in. After doing that, make sure you restart your DE/WM.
+If you put it on `~/.xprofile`, it will get executed when you log in regardless of your DE/WM (this isn't the case if you're using a display manager like [slim](https://wiki.archlinux.org/index.php/SLiM)). After doing that, make sure you restart your DE/WM.
+
+**(01-01-2021) UPDATE:** I now use SLIM which doesn't execute `~/.xprofile`, it executes `~/.xinitrc` so I just move it there.
 
 Fcitx is toggleable using a keybind that you can change from the `fcitx-confgitool` which looks like this.
 
 ![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-4.png)
 
-You can change the **Trigger Input Method** to whatever key you like. I personally use `alt+space`
+You can change the `Trigger Input Method` to whatever key you like. I personally use `alt+space`.
 
 ## Usage
 If you've done configuring it, try to activate it by pressing the keybind that you've defined before then try to type on something. It will look like this.
 
 ![fcitx completion preview](/assets/post/japanese-input-method-on-linux/preview.png)
 
-It looks like an autocomplete from a text editor. The way it works is if you write **romaji**, it auto converts it to **hiragana** which you can then press `TAB` to scroll the options.
+It looks like an autocomplete from a text editor. The way it works is if you write `romaji`, it auto converts it to `hiragana` which you can then press `TAB` to scroll the options.
 
-For example, if you write `watashi` then it will show `わたし` and if you continue pressing `TAB` it will be the kanji form of it which is `私`. This also applies to **katakana**.
+For example, if you write `watashi` then it will show `わたし` and if you continue pressing `TAB` it will be the kanji form of it which is `私`. This also applies to `katakana`.
 
-# Conclusion
+## Tips
+**(01-01-2021) UPDATE: **If you don't like the default light theme, you can change the appearance of it by changing the skin. Click the `fcitx` icon on you systray, under the skin section, there should be 3 default theme. I personally use the dark one because I'm a big fan of dark mode.
+
+# Closing Note
 All in all, I'm pretty satisfied with this setup. I don't have to learn a new keyboard layout to insert Japanese characters. I can just write romaji and it will turn into hiragana, katakana, or kanji.
 
-Anyway, thanks for reading this post. I hope this post help you and have a good day!
+Anyway, thanks for reading this post. I hope you find this post useful and have a good day!
