@@ -37,29 +37,37 @@
 .card__date {
   font-family: "Overpass", sans-serif;
   display: flex;
+  gap: 0.4rem;
   align-items: center;
   justify-self: start;
   font-size: 0.8rem;
-  gap: 0.25rem;
   color: var(--color-alt-text);
   border-radius: 0.25rem;
 }
 
+.card__date :global(.date__icon) {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+  margin-top: -0.25rem;
+}
+
 .card__tags {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .card__tag {
-  /* background-color: #ff4851; */
+  background-color: var(--color-special-bg);
   font-family: "Overpass", sans-serif;
   font-weight: 600;
   color: var(--color-main-text);
   font-size: 0.8rem;
   text-decoration: none;
   gap: 0.5rem;
-  padding: 0.5rem 0 0;
-  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.25rem;
   transition: filter ease-out 0.2s;
   text-transform: capitalize;
 }
@@ -73,11 +81,6 @@
   font-weight: 600;
 }
 
-:global(.card__icon) {
-  width: 0.5rem;
-  height: 0.5rem;
-}
-
 @media only screen and (min-width: 480px) {
   .card__details:hover {
     color: var(--color-main-accent);
@@ -89,8 +92,8 @@
   <a rel="prefetch" {href} class="card__details">
     <span class="card__title">{title}</span>
     <div class="card__date">
-      <Calendar class="card__icon" />
-      <span>{dayjs(date).format('DD MMMM YYYY')}</span>
+      <Calendar class="date__icon" />
+      <span class="date__label">{dayjs(date).format('DD MMMM YYYY')}</span>
     </div>
     <p class="card__desc">{desc}</p>
     <div class="card__tags">
