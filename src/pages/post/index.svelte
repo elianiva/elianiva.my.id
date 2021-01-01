@@ -106,8 +106,11 @@
       on:input={filterPost}
       bind:this={inputBox}
     />
-    {#if isCompletionVisible && tagKeyword !== '#'}
-      <div class="input__autocomplete">
+    {#if isCompletionVisible}
+      <div
+        transition:fly={{ duration: 100, y: -50 }}
+        class="input__autocomplete"
+      >
         {#each [...new Set(tags)] as tag}
           {#if tag.match(new RegExp(tagKeyword.substr(1)))}
             <!-- prettier-ignore -->
@@ -152,6 +155,7 @@
 <ProgressButton />
 
 <script>
+import { fly } from "svelte/transition"
 import SEO from "@/components/SEO.svelte"
 import PostCard from "@/components/PostCard.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
@@ -178,20 +182,12 @@ $: filteredPosts = posts.filter(post => {
 
   const title = post.title.toLowerCase().includes(query)
   const slug = post.slug.toLowerCase().includes(query)
-  const tags = tagFilter.length > 0 ? tagFilter.some(x=> post.tags.includes(x)) : true
+  const tags =
+    tagFilter.length > 0 ? tagFilter.some(x => post.tags.includes(x)) : true
   return (title || slug) && tags
 })
 
-const debounce = (func, wait) => {
-  let timeout
-
-  return (...args) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => func(...args), wait)
-  }
-}
-
-const filterPost = debounce(({ target: { value } }) => {
+const filterPost = ({ target: { value } }) => {
   // always reset the completion visibility
   isCompletionVisible = false
 
@@ -202,5 +198,5 @@ const filterPost = debounce(({ target: { value } }) => {
 
   tagKeyword = value
   isCompletionVisible = true
-}, 400)
+}
 </script>
