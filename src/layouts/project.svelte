@@ -90,6 +90,7 @@
 
 .project__stack {
   grid-column: 2/3;
+  grid-row: 1/-1;
   width: 100%;
   padding: 1rem;
   border: 0.0625rem var(--color-borders) solid;
@@ -130,6 +131,7 @@
   padding: 0.5rem;
   border-radius: 0.5rem;
   background-color: var(--color-special-bg);
+  overflow: hidden;
 }
 
 .stack__logo img {
@@ -235,7 +237,6 @@
 .project__content :global(blockquote p::after) {
   content: " ”";
 }
-
 
 @media only screen and (max-width: 480px) {
   .project__content :global(pre) {
