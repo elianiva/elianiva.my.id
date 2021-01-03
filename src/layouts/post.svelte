@@ -241,7 +241,8 @@
 }
 
 .post__content :global(blockquote p) {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
   color: var(--color-thin);
   font-style: italic;
   font-family: serif;

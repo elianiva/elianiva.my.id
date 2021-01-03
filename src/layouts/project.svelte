@@ -219,6 +219,24 @@
   font-size: 1rem;
 }
 
+.project__content :global(blockquote p) {
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+  color: var(--color-thin);
+  font-style: italic;
+  font-family: serif;
+  margin: 1rem 0;
+}
+
+.project__content :global(blockquote p::before) {
+  content: "“	";
+}
+
+.project__content :global(blockquote p::after) {
+  content: " ”";
+}
+
+
 @media only screen and (max-width: 480px) {
   .project__content :global(pre) {
     margin-left: -1rem !important;
