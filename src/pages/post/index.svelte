@@ -183,7 +183,7 @@ $: filteredPosts = posts.filter(post => {
   const title = post.title.toLowerCase().includes(query)
   const slug = post.slug.toLowerCase().includes(query)
   const tags =
-    tagFilter.length > 0 ? tagFilter.some(x => post.tags.includes(x)) : true
+    tagFilter.length > 0 ? tagFilter.every(x => post.tags.includes(x)) : true
   return (title || slug) && tags
 })
 
