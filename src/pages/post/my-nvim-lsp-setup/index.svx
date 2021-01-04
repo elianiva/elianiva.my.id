@@ -153,6 +153,17 @@ nvim_lsp.sumneko_lua.setup{
 }
 ```
 
+**(04-01-2021) UPDATE:** Because `:LSPInstall` has been removed, we need to install the LSP manually and override the `cmd` field. I have the LSP repo at `~/repos/lua-language-server`. So what I need to add is something like this
+
+```lua
+local sumneko_root = os.getenv("HOME") .. "/repos/lua-language-server"
+cmd = {
+  sumneko_root
+  .. "/bin/Linux/lua-language-server", "-E",
+  sumneko_root .. "/main.lua"
+},
+```
+
 ## Diagnostic
 I was using [diagnostic-nvim](https://github.com/nvim-lua/diagnostic-nvim) before [this big PR](https://github.com/neovim/neovim/pull/12655) got merged which makes diagnostic-nvim redundant. Here's some of my diagnostic config.
 
