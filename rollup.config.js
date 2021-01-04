@@ -10,8 +10,7 @@ import { mdsvex } from "mdsvex"
 import config from "sapper/config/rollup.js"
 import pkg from "./package.json"
 import svelteSVG from "rollup-plugin-svelte-svg"
-import posts from "./src/utils/fetch-all-posts"
-import projects from "./src/utils/fetch-all-projects"
+import { getResources } from "./src/utils/fetch-all"
 import remarkSlug from "remark-slug"
 import remarkToc from "remark-toc"
 import remarkAutolink from "remark-autolink-headings"
@@ -64,8 +63,8 @@ export default {
       replace({
         "process.browser": true,
         "process.env.NODE_ENV": JSON.stringify(mode),
-        __POSTS__: JSON.stringify(posts),
-        __PROJECTS__: JSON.stringify(projects),
+        __POSTS__: JSON.stringify(getResources("post")),
+        __PROJECTS__: JSON.stringify(getResources("project")),
       }),
       svelte({
         compilerOptions: {
@@ -126,8 +125,8 @@ export default {
       replace({
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode),
-        __POSTS__: JSON.stringify(posts),
-        __PROJECTS__: JSON.stringify(projects),
+        __POSTS__: JSON.stringify(getResources("post")),
+        __PROJECTS__: JSON.stringify(getResources("project")),
       }),
       svelte({
         compilerOptions: {
