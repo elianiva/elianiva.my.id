@@ -322,7 +322,7 @@
   />
 </svelte:head>
 
-<SEO {title} thumbnail={`${data.siteUrl}/post/${currentPost.slug}/cover.png`} {desc} />
+<SEO {desc} {title} />
 
 <section class="post">
   <h1 class="post__title">{title}</h1>
@@ -338,7 +338,7 @@
     rel="norel noreferrer"
   >Suggest An Edit</a>
   <div class="post__tags">
-    {#each currentPost.tags as tag}
+    {#each tags as tag}
       <div class="post__tag">{tag}</div>
     {/each}
   </div>
@@ -354,7 +354,7 @@ import SEO from "@/components/SEO.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import dayjs from "dayjs"
 import data from "@/site-data"
-export let title, date
+export let title, date, desc, tags
 
 let content
 // eslint-disable-next-line

@@ -275,7 +275,7 @@
   />
 </svelte:head>
 
-<SEO {title} thumbnail={`${data.siteUrl}/project/${slug}/cover.webp`} {desc} />
+<SEO {title} {desc} thumbnail={`${data.siteUrl}/project/${slug}/cover.webp`} />
 
 <section class="project">
   <div class="project__cover">
@@ -339,7 +339,7 @@ import Chrome from "@/icons/chrome.svg"
 import Code from "@/icons/code.svg"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import data from "@/site-data"
-export let title
+export let title, desc
 
 // eslint-disable-next-line
 const projects = __PROJECTS__
