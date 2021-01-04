@@ -322,7 +322,7 @@
   />
 </svelte:head>
 
-<SEO {title} thumbnail={`${data.siteUrl}/post/${currentPost.slug}/cover.png`} />
+<SEO {title} thumbnail={`${data.siteUrl}/post/${currentPost.slug}/cover.png`} {desc} />
 
 <section class="post">
   <h1 class="post__title">{title}</h1>
