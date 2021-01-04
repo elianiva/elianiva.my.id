@@ -172,7 +172,7 @@
 <nav class="navbar">
   <div class="navbar__container">
     <div class="navbar__title">
-      <a href="/"><Logo class="logo__icon" /></a>
+      <a href="/" aria-label="logo"><Logo class="logo__icon" /></a>
     </div>
     <ul class="navbar__items">
       <li class="navbar__item"><a href="/">Home</a></li>
