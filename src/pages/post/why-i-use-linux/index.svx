@@ -32,7 +32,7 @@ I was like, "Oh come on. I'm already comfortable with my current setup. I still 
 
 Finally, I installed it. I took a quick screenshot after installing it because I was so excited. Here, take a look!
 
-![manjaro](/post/why-i-use-linux/manjaro.png)
+![manjaro](/assets/post/why-i-use-linux/manjaro.png)
 
 Manjaro is based on Arch. Some people say that it's Arch without all of its fuss. I mean, it's true. At the time I'm writing this, I use Arch. For beginners that want to try Archlinux, it's a good starting point. I ended up using it for nearly 8 months. It was a great experience.
 

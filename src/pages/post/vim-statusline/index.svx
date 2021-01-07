@@ -28,7 +28,7 @@ All is set, let's actually make the statusline!
 ## Deprecating the old one
 First thing first, I removed my old statusline. You don't need to do it if you don't have it already. If you are curious how my statusline looks, let me show you.
 
-![old statusline](/assets/post/vim-statusline-old.png)
+![old statusline](/assets/post/vim-statusline/old.png)
 
 As you can see, it looks like a capsule for each module. I took the design from a reddit post that I've found the other day. [Here it is](https://www.reddit.com/r/vimporn/comments/efjcv0/gruvboxxx/?utm_source=share&utm_medium=web2x). It looks sick when I saw it for the first time. But, as time passes I started to think that it wasted quite a lot of space. So I decided to change it
 
