@@ -197,6 +197,7 @@
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
+  font-size: 1rem;
 }
 
 .project__content :global(pre) {
@@ -218,7 +219,6 @@
 .project__content :global(pre code) {
   padding: 0;
   border-radius: 0;
-  font-size: 1rem;
 }
 
 .project__content :global(blockquote p) {
