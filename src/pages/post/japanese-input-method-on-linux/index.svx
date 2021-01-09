@@ -39,7 +39,7 @@ After installing it, we need to set our input method variable to `fcitx`.
 To set our input method to `fcitx`, we need to change our environment variable.
 I set it on `~/.pam_environment`, but you can set it on `~/.xprofile`, `~/.profile`, `~/.xinitrc` or anything that gets sourced on login. Mine's looks like this.
 
-``` bash
+```bash
 GTK_IM_MODULE DEFAULT=fcitx
 QT_IM_MODULE  DEFAULT=fcitx
 XMODIFIERS    DEFAULT=\@im=fcitx
@@ -109,6 +109,8 @@ For example, if you write `watashi` then it will show `わたし` and if you con
 
 ## Tips
 **(01-01-2021) UPDATE: **If you don't like the default light theme, you can change the appearance of it by changing the skin. Click the `fcitx` icon on you systray, under the skin section, there should be 3 default theme. I personally use the dark one because I'm a big fan of dark mode.
+
+You might want to install `fcitx-qt` to be able to use it inside QT app. You might also need to add `IBUS_USE_PORTAL=1` in `~/.pam_environment` to make it work inside Telegram Desktop. I didn't need to add this when I was using KDE Plasma but I need to add it now because I use AwesomeWM.
 
 # Closing Note
 All in all, I'm pretty satisfied with this setup. I don't have to learn a new keyboard layout to insert Japanese characters. I can just write romaji and it will turn into hiragana, katakana, or kanji.
