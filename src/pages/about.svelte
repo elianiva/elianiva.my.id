@@ -103,6 +103,12 @@
   color: var(--color-main-text);
   opacity: 0.15;
 }
+
+.no {
+  color: var(--color-alt-text);
+  font-style: italic;
+  text-decoration: line-through;
+}
 </style>
 
 <SEO title="About" />
@@ -111,21 +117,22 @@
   <section class="about__section">
     <h1 class="about__heading">About Me</h1>
     <p class="about__text">
-      Hi there! I'm Elianiva. My real name is Dicha Zelianivan Arkana. My
-      nickname on the internet was taken from my middle name without the first
-      and last letter. I'm a 17 y/o Asian boi who loves to build websites and
-      contribute to any open source projects that I like. My biggest goal in my
-      life is to contribute to as much open source projects as I can to help as
-      many people as I could =)
+      Hi there! I'm Elianiva. My nickname was taken from my middle name without
+      the first and last letter. I'm a 17 y/o Asian boi who loves to build
+      websites and contribute to any open source projects that I like.
     </p>
     <p class="about__text">
       I've been learning web development since roughly around 2019. I understand
       the basic of HTML, CSS, and JS quite well. I'm still learning about
       React/Next, Svelte, and Typescript but felt quite comfortable enoguh to
-      use them daily. I've been learning Lua and Golang recently. I was focusing
-      on learning Rust previously but I decided to focus on Golang Instead. I
-      still code Rust every now and then but just because I like it, not
-      planning any exciting stuff with it.
+      use them daily. I've been learning Lua and Golang recently.
+      <span class="no">
+        I was focusing on learning Rust previously but I decided to focus on
+        Golang Instead. I still code Rust every now and then but just because I
+        like it, not planning any exciting stuff with it.
+      </span>
+      I now want to do more serious stuff with Rust instead of Go, after using
+      Go for a while, I think I prefer Rust ;)
     </p>
     <p class="about__text">
       I live in a beautiful country called Indonesia. I can speak Indonesian
@@ -154,47 +161,42 @@
         href="mailto:dicha.arkana03@gmail.com"
         target="_blank"
         rel="norel noreferrer"
-      >email me</a>, I check my email quite often. I also like to hang around on
-      <a
-        class="about__link"
-        href="https://gitter.im/neovim/neovim"
-        target="_blank"
-        rel="norel noreferrer"
-      >Neovim's Gitter</a>
-      and
-      <a
-        class="about__link"
-        href="https://gitter.im/nvim-telescope/telescope.nvim"
-        target="_blank"
-        rel="norel noreferrer"
-      >nvim-telescope's Gitter</a>
-      occasionally.
+      >email me</a>, I check my email quite often.
     </p>
     <details class="about__details">
       <summary class="about__summary">
-        Fun fact about me (click this if you really want to know me :)
+        Fun fact about me (click this if you really want to know me ;)
       </summary>
       <p class="about__text" style="margin-top: 1rem;" transition:fade>
-        I'm easily obsessed with one thing that I just found and like. I found
-        out
+        I'm that guy who easily gets obsessed with something that I found
+        interesting. One of them is
         <a
           class="about__link"
           target="_blank"
           rel="norel noreferrer"
           href="https://www.youtube.com/user/BABYMETALofficial"
         >Babymetal</a>
-        (check them out btw ツ) few months ago and got obsessed with them. They
-        are the main reason why I decided to learn Japanese and appreciate
-        Japanese culture. Another thing is Kill La Kill. I love this anime so
-        much
+        (check them out btw ツ), I found them out around March 2020 and got
+        instantly obsessed with them. They are the main reason why I decided to
+        learn Japanese and appreciate Japanese culture :p Another one is Kill La
+        Kill. I love this anime so much
         <span class="about__paren">(no, not because 2d anime tiddies)</span>
         that I want to learn to draw again and my website colour is heavily
         inspired from Senketsu and Junketsu.
       </p>
       <p class="about__text">
-        I sometimes don't really like to discuss stuff that I like with other
-        people. I don't know why, I like some things better if I just enjoy it
-        myself and not talk about it with someone else.
+        I also love Vtubers. Before I watch them, I said to myself "why would I
+        watch some random 2D anime character streaming on Youtube?" but here I
+        am, ended up watching
+        <i>a lot</i>
+        of vtubers on my free time. It also helped me learn Japanese a bit.
+      </p>
+      <p class="about__text">
+        Some weird thing about me is, I don't really like to discuss stuff that
+        I like with other people (not all of them, I do enjoy talking about
+        anime related stuff with my friends). I don't know why, I like some
+        things better if I just enjoy it myself and not talk about it with other
+        people.
       </p>
     </details>
     <h1 class="about__heading">My Website</h1>
@@ -247,8 +249,10 @@
         class="about__link"
         rel="norel noreferrer"
       >Archlinux</a>
-      to be more specific. I've used Linux for about a year. I spent most of my
-      time inside terminal and rest of it inside a browser or random GUI app.
+      to be more specific. I've used Linux since around Q3 of 2019. I spent most
+      of my time inside terminal and rest of it inside a browser or random GUI
+      app. I prefer using my keyboard over my mouse everywhere if possible
+      (except browsing the internet, mouse is way better)
     </p>
     <p class="about__text">
       I use a Window Manager called
@@ -263,21 +267,21 @@
         href="https://neovim.io"
         class="about__link"
         rel="norel noreferrer"
-      >Neovim</a>. I've been using it fulltime for about a year. It's actually
-      my first text editor that I feel comfortable with and do something serious
-      hence I can't relate when people say "VIM has a high learning curve". I
-      started using it when I got my first laptop. After using it for quite a
-      while my config is has grown quite a lot. It is now written in lua and is
-      quite lengthy. I've written some post explaining some of my config, I
-      don't want to write it for every single part of my config because it's
-      quite self explanatory if you look at it. Anyway, here's
+      >Neovim</a>. I've been using it fulltime since around Q4 of 2019. It's
+      actually my first text editor that I feel comfortable with and do
+      something serious hence I can't relate when people say "VIM has a high
+      learning curve" :p I started using it when I got my first laptop. After
+      using it for quite a while my config is has grown quite a lot. It is now
+      written in lua and is quite lengthy. I've written some post explaining
+      some of my config if you're interested on that. Anyway, here's
       <a
         class="about__link"
         href="https://github.com/elianiva/dotfiles"
         rel="norel noreferrer"
       >
         my dotfiles
-      </a> if you want.
+      </a>
+      if you want.
     </p>
     <p class="about__text">
       Well, I guess that's about it. Thanks for visiting my website and I hope
