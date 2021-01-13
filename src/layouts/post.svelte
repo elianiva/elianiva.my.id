@@ -181,10 +181,10 @@
   border-radius: 0;
   background: none;
   box-shadow: none;
+  color: #e4e4e4;
 }
 
 .post__content :global(ul) {
-  /* list-style-position: inside; */
   list-style: none;
 }
 
@@ -268,6 +268,13 @@
 .post__content :global(h2 a),
 .post__content :global(h3 a) {
   color: var(--color-main-text);
+}
+
+.post__content :global(del),
+.post__content :global(del *) {
+  color: var(--color-alt-text) !important;
+  font-style: italic;
+  text-decoration: line-through;
 }
 
 .post__content :global(h1 a::before),
