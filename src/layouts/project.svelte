@@ -292,12 +292,14 @@
     <div class="project__header">
       <h1 class="project__title">{title}</h1>
       <div class="project__buttons">
-        <a
-          class="project__demo"
-          href={demo ? demo : '#'}
-          target="_blank"
-          rel="norel noreferrer"
-        ><Chrome class="project__icon" />Demo</a>
+        {#if demo}
+          <a
+            class="project__demo"
+            href={demo}
+            target="_blank"
+            rel="norel noreferrer"
+          ><Chrome class="project__icon" />Demo</a>
+        {/if}
         <a
           class="project__source"
           href={source}
