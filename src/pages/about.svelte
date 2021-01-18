@@ -117,9 +117,11 @@
   <section class="about__section">
     <h1 class="about__heading">About Me</h1>
     <p class="about__text">
-      Hi there! I'm Elianiva. My nickname was taken from my middle name without
-      the first and last letter. I'm a 17 y/o Asian boi who loves to build
-      websites and contribute to any open source projects that I like.
+      Hi there! I'm Elianiva. My online alias was taken from my middle name
+      without the first and last letter. My name is Dicha Zelianivan Arkana.
+      I'm a 17 y/o Asian boi who loves to build websites (or any software
+      related things at this point) and contribute to any open source projects
+      that I like.
     </p>
     <p class="about__text">
       I've been learning web development since roughly around 2019. I understand
