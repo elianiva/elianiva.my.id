@@ -188,6 +188,11 @@
   transition: transform ease-out 0.2s;
 }
 
+.project__content :global(img) {
+  width: 100%;
+  margin-top: 1rem;
+}
+
 .project__content :global(a:hover::before) {
   transform: scale3d(1, 0.1, 1);
 }
