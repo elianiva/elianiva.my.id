@@ -13,3 +13,7 @@ stack:
 **Nyaa.si Scraper** is a scraper that I made to play around with Rust and Deno. The idea came from my friend, but he made this using Golang.
 
 It was a fun little thing to do in my spare time. It's also the first thing I made using Deno. Feel free to try it if you want :)
+
+Both Rust and Deno version looks the same. Here's how the Deno version for example.
+
+![preview](/assets/project/nyaa-si-scraper/preview.webp)
