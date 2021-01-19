@@ -99,11 +99,6 @@
   color: var(--color-alt-text);
 }
 
-.lmao {
-  color: var(--color-main-text);
-  opacity: 0.15;
-}
-
 .no {
   color: var(--color-alt-text);
   font-style: italic;
@@ -142,7 +137,6 @@
       <span class="about__paren">(obviously)</span>, and English quite fluently.
       I am currently learning Japanese because I want to be able to speak a
       language that uses a different writing system.
-      <span class="lmao">and ofc, to watch anime with no subtitle lol</span>
     </p>
     <p class="about__text">
       If you want to reach me then feel free to hit me up on
