@@ -151,7 +151,7 @@ You probably notice that `V·Block` and `S·Block` look empty but it's not. It's
 
 What that code does is it creates a key-value pair table with String as a key and a table as a value. We use the table's key to match what `vim.fn.mode()` returns.
 
-Depending on our `winwidth`, it will return different output. For example, if our `winwidth` isn't wide enough, it will return `N` instead of `Normal`. If you want to change when will it change then adjust the argument that we passed into `is_truncated` function. I use `80` because that's what works for me.
+Depending on our `winwidth`, it will return different output. For example, if our `winwidth` isn't wide enough, it will return `N` instead of `Normal`. If you want to change when it will change then adjust the argument that is passed to `is_truncated` function. I use `80` because that's what works for me.
 
 ## Git status
 I use [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) to show the git hunk status on `signcolumn`. It also provides some details like how many lines have been changed, added, or removed. It also provides the branch name. So, I'd like to integrate this functionality into my statusline. Let's make our second function
@@ -534,7 +534,7 @@ And here's the result.
 
 Here's a [preview video](https://streamable.com/nqcwp6) for a better demonstration. As you can see on the video, they change their appearance based on the screen width.
 
-That's the active statusline, I don't think I need to put a screenshot for the inactive one because nothing interesting going on there :p.
+That's the active statusline, I don't think I need to put a screenshot for the inactive one because there's nothing interesting going on there :p.
 
 Here's [my statusline file](https://github.com/elianiva/dotfiles/blob/d890c21015d1dd856a4d751cef0e514066e2ed1f/nvim/.config/nvim/lua/modules/_statusline.lua) for a reference.
 There are also some great statusline plugins written in lua if you want to get started quickly such as [express_line.nvim](https://github.com/tjdevries/express_line.nvim), [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim), and [neoline.vim](https://github.com/adelarsq/neoline.vim).
