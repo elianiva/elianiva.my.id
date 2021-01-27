@@ -279,7 +279,7 @@
 
 .post__content :global(h1 a::before),
 .post__content :global(h2 a::before),
-.post__content :global(h3 a::before){
+.post__content :global(h3 a::before) {
   display: none;
 }
 
@@ -335,15 +335,15 @@
   <h1 class="post__title">{title}</h1>
   <span class="post__date">
     Posted on
-    {dayjs(date).format('dddd')},
-    {dayjs(date).format('DD MMMM YYYY')}
+    {dayjs(date).format("dddd")},
+    {dayjs(date).format("DD MMMM YYYY")}
   </span>
   <a
     class="post__edit"
     href="https://github.com/elianiva/elianiva.me/blob/master/src/pages/post/{currentPost.slug}/index.svx"
     target="_blank"
-    rel="norel noreferrer"
-  >Suggest An Edit</a>
+    rel="norel noreferrer">Suggest An Edit</a
+  >
   <div class="post__tags">
     {#each tags as tag}
       <div class="post__tag">{tag}</div>
@@ -360,7 +360,6 @@ import { onMount } from "svelte"
 import SEO from "@/components/SEO.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import dayjs from "dayjs"
-import data from "@/site-data"
 export let title, date, desc, tags
 
 let content
@@ -370,18 +369,13 @@ const currentPost = posts.filter(post => post.title === title)[0]
 
 onMount(() => {
   content.querySelectorAll("a").forEach(a => {
-    // if the link doesn't have # href or id matching the # href then do nothing
-    if (
-      !a.hash ||
-      // use `decodeURIComponent` to handle Japanese characters
-      !content.querySelectorAll(decodeURIComponent(a.hash)).length
-    ) {
-      return
-    }
+    // use `decodeURIComponent` to handle Japanese characters
+    // prettier-ignore
+    if (!a.hash || !content.querySelectorAll(decodeURIComponent(a.hash)).length) return
 
-    a.addEventListener("click", event => {
-      event.preventDefault()
-      window.location.hash = event.target.getAttribute("href")
+    a.addEventListener("click", e => {
+      e.preventDefault()
+      window.location.hash = e.target.getAttribute("href")
     })
   })
 })
