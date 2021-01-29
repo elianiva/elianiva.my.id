@@ -19,7 +19,7 @@ Here are some resources that explain LSP *way better* and in more detail.
 - [TJ's talk about LSP on Vimconf 2020](https://www.youtube.com/watch?v=C9X5VF9ASac)
 
 # Neovim builtin LSP client
-I use Neovim's built-in LSP client which only available on the `master` branch of Neovim at the time of writing this. I was using [coc.nvim](https://github.com/neoclide/coc.nvim) but it was slow on my machine because it uses node and it's a remote plugin that adds some overhead. It still works great nonetheless, it's just slow on my machine.
+I use Neovim's built-in LSP client which only available on the `master` branch of Neovim at the time of writing this. I was using [coc.nvim](https://github.com/neoclide/coc.nvim) but it was slow on my machine because it uses node and it's a remote plugin which adds some overhead. It still works great nonetheless, it's just slow on my machine.
 
 The new neovim's built-in LSP client is written in Lua and Neovim now ships with LuaJIT which makes it super fast. I couldn't recommend you enough to watch [TJ's talk about Neovim LSP client on Vimconf 2020](https://www.youtube.com/watch?v=C9X5VF9ASac), he explained it really well.
 
@@ -263,12 +263,12 @@ You can get my full config for `efm-langserver` [here](https://github.com/eliani
 ## Diagnostic Conflict
 **UPDATE(22-12-2020):** When I use efm-langserver, the diagnostic that comes from the LSP (like `tsserver`) and external linter that efm-langserver uses are conflicting. So, I made a custom function for it to check if there's a file like `.eslintrc.js`, it will turn off the diagnostic that comes from LSP and use ESlint instead.
 
-<p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">That being said, I think this is kinda a hacky way? Because when I use this method, the global config for diagnostic gets overriden. I have to manually pass the config table like this.</p>
+<p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">That being said, I think this is kinda a hacky way? Because when I use this method, the global config for diagnostic gets overridden. I have to manually pass the config table like this.</p>
 
 <p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">I think you supposed to use `vim.with` but I couldn't get it work.</p>
 
 
-**UPDATE(01-01-2021):** I've found a better way to do this (thanks to TJ) which looks like this.
+**UPDATE(01-01-2021):** I've found a better way to do this (thanks TJ) which looks like this.
 
 ```lua
 local is_using_eslint = function(_, _, result, client_id)
@@ -285,7 +285,7 @@ I've overridden the `vim.lsp.handlers["textDocument/publishDiagnostics"]` anyway
 ## Completion and Snippets
 I use a completion and snippet plugin to make my life easier. For completion, I use [nvim-compe](https://github.com/hrsh7th/nvim-compe), previously I was using [completion-nvim](https://github.com/nvim-lua/completion-nvim) but I had some issues with it such as path completion sometimes not showing up and flickering. You may use whatever works for you.
 
-Snippet wise, I use [vim-vsnip](https://github.com/hrsh7th/vim-vsnip). I would love to use [snippets.nvim](https://github.com/norcalli/snippets.nvim) but it doesn't integrate well with LSP's snippet. Honestly, using JSON as a format to store snippet is really stupid. It doesn't support newline so what you would do is use an array of strings. Because **vim-vsnip** needs to be compatible with LSP's snippet, well, it has to use JSON format as well.
+Snippet wise, I use [vim-vsnip](https://github.com/hrsh7th/vim-vsnip). I would love to use [snippets.nvim](https://github.com/norcalli/snippets.nvim) but it doesn't integrate well with LSP's snippet. Honestly, using JSON as a format to store snippet is really stupid in my opinion. It doesn't support newline so what you would do is use an array of strings. Because **vim-vsnip** needs to be compatible with LSP's snippet, well, it has to use JSON format as well.
 
 Here's some of my `nvim-compe` config
 

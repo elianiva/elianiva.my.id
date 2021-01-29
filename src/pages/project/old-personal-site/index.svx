@@ -1,7 +1,7 @@
 ---
 title: Old Personal Website
 date: 2020-05-02
-desc: My old website made using Gatsby
+desc: My old website made with Gatsby
 demo: https://old.elianiva.me
 source: https://github.com/elianiva/elianiva.github.io
 layout: project
@@ -10,7 +10,7 @@ stack:
   - ['Vercel', 'https://vercel.app']
 ---
 
-My previous website was made using GatsbyJS. It went through 2 iterations but the one that you're seeing now is the second iteration. The first one is way too ugly to a point where it's not worth to even show it :p
+My previous website was made with GatsbyJS. It went through 2 iterations but the one that you're seeing now is the second iteration. The first one is way too ugly to a point where it's not worth to even show it :p
 
 This is my first website that I've put my whole effort into, I made it around February 2020 and redesign it around May 2020. I'm actually quite surprised that I managed to make this website and maintain it overtime.
 

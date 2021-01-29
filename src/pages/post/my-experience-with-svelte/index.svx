@@ -56,7 +56,7 @@ It looks very similar to pure html isn't it? I also prefer Svelte syntax over Vu
 <Counter v-bind:count="count"/>
 ```
 
-## What I've made using Svelte
+## What I've made with Svelte
 I've made 2 websites using Svelte. The first one is [Three Of Something](https://three-of-something.vercel.app/) which is a place where I put the result of small challenge where I implement a UI design that I found to code. I do this challenge every week with both of my friends, [NikarashiHatsu](https://github.com/nikarashihatsu) and [LynSotera](https://github.com/LynSotera). Here's a screenshot of the homepage.
 
 ![three of  something](/assets/post/my-experience-with-svelte/tos.png)
