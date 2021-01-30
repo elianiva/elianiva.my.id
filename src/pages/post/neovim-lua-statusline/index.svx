@@ -35,8 +35,8 @@ This first function is going to be a helper function that will return true of fa
 
 ```lua
 Statusline.is_truncated = function(_, width)
-  local current_window = vim.fn.winnr()
-  local current_width = vim.fn.winwidth(current_window)
+  local current_window = fn.winnr()
+  local current_width = fn.winwidth(current_window)
   return current_width < width
 end
 ```
@@ -61,20 +61,19 @@ Statusline.colors = {
 }
 ```
 
-For now, ignore the names, we'll talk about that later on in this post. This part doesn't define the colours, it only defines the group name. Let's define their colours.
+For now, ignore those names, we'll talk about that later on in this post. This part doesn't define the colours, it only defines the highlight groups. Let's define their colours.
 
 ```lua
-local hl = function(group, options)
+local set_hl = function(group, options)
   local bg = options.bg == nil and '' or 'guibg=' .. options.bg
   local fg = options.fg == nil and '' or 'guifg=' .. options.fg
   local gui = options.gui == nil and '' or 'gui=' .. options.gui
 
-  vim.cmd(string.format(
-    'hi %s %s %s %s',
-    group, bg, fg, gui
-  ))
+  vim.cmd(string.format('hi %s %s %s %s', group, bg, fg, gui))
 end
 
+-- you can of course pick whatever colour you want, I picked these colours
+-- because I use Gruvbox and I like them
 local color_hl = {
   {'StatusLine', { fg = '#3C3836', bg = '#EBDBB2' }},
   {'StatusLineNc', { fg = '#3C3836', bg = '#928374' }},
@@ -94,7 +93,7 @@ for _, highlight in pairs(highlights) do
 end
 ```
 
-You can define this using vimscript but I prefer doing it in Lua because why not ツ It's more fun for me and I don't like vimscript since I use vim for the first time, so this is nicer.
+You can define this using vimscript but I prefer doing it in Lua because why not ツ It's more fun for me and I don't like vimscript since I use (n)vim for the first time, so this is nicer.
 
 I personally put this bit on another file where I override my colourscheme, but putting it on this file works fine as well.
 
@@ -102,13 +101,20 @@ I personally put this bit on another file where I override my colourscheme, but 
 Since I use [nerdfont](https://nerdfonts.com), I have fancy symbols that I can use. I use these symbols as a separator.
 
 ```lua
+-- I keep this here just in case I changed my mind so I don't have to find these icons again when I need them
+-- you can of course just store one of them if you want
 Statusline.separators = {
   arrow = { '', '' },
   rounded = { '', '' },
+  blank = { '', '' },
 }
+
+local active_sep = 'blank' -- so we don't have to change anything
 ```
 
 I use the arrow separator, either one is fine. It will look empty here because my website doesn't use nerdfont :p
+
+**UPDATE(30-01-2021):** I now use blank separator.
 
 ## Mode indicator
 The first indicator of our statusline would be the Mode indicator.
@@ -137,13 +143,12 @@ Statusline.get_current_mode = function()
     ['t']  = {'Terminal ', 'T'};
   }
 
-  local current_mode = vim.fn.mode()
+  local current_mode = fn.mode()
 
   if self:is_truncated(80) then
     return string.format(' %s ', modes[current_mode][2]):upper()
-  else
-    return string.format(' %s ', modes[current_mode][1]):upper()
   end
+  return string.format(' %s ', modes[current_mode][1]):upper()
 end
 ```
 
@@ -151,36 +156,28 @@ You probably notice that `V·Block` and `S·Block` look empty but it's not. It's
 
 What that code does is it creates a key-value pair table with String as a key and a table as a value. We use the table's key to match what `vim.fn.mode()` returns.
 
-Depending on our `winwidth`, it will return different output. For example, if our `winwidth` isn't wide enough, it will return `N` instead of `Normal`. If you want to change when it will change then adjust the argument that is passed to `is_truncated` function. I use `80` because that's what works for me.
+Depending on our `winwidth`, it will return different output. For example, if our `winwidth` isn't wide enough, it will return `N` instead of `Normal`. If you want to change when it will change then adjust the argument that is passed to `is_truncated` function. I use `80` because that's the sweet spot for me.
 
 ## Git status
-I use [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) to show the git hunk status on `signcolumn`. It also provides some details like how many lines have been changed, added, or removed. It also provides the branch name. So, I'd like to integrate this functionality into my statusline. Let's make our second function
+I use [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) to show the git hunk status on `signcolumn`. It provides some details like how many lines have been changed, added, or removed. It also provides the branch name. So, I'd like to integrate this functionality into my statusline. Let's make our second function.
 
 ```lua
-Statusline.get_git_status = function()
+Statusline.get_git_status = function(self)
   -- use fallback because it doesn't set this variable on initial `BufEnter`
   local signs = vim.b.gitsigns_status_dict or {head = '', added = 0, changed = 0, removed = 0}
+  local is_head_empty = signs.head ~= ''
 
   if self:is_truncated(90) then
-    if signs.head ~= '' then
-      return string.format('  %s ', signs.head or '')
-    else
-      return ''
-    end
-  else
-    if signs.head ~= '' then
-      return string.format(
-        ' +%s ~%s -%s |  %s ',
-        signs.added, signs.changed, signs.removed, signs.head
-      )
-    else
-      return ''
-    end
+    return is_head_empty and string.format('  %s ', signs.head or '') or ''
   end
+
+  return is_head_empty
+    and string.format(' +%s ~%s -%s |  %s ', signs.added, signs.changed, signs.removed, signs.head)
+    or ''
 end
 ```
 
-What we did is get the git hunk status from gitsigns.nvim and put it on a variable. I use fallback here because gitsigns.nvim doesn't set that variable fast enough on initial `BufEnter` so I always get a `nil` error.
+What that code does is it gets the git hunk status from gitsigns.nvim and put it on a variable. I use fallback here because gitsigns.nvim doesn't set that variable fast enough on initial `BufEnter` so I always get a `nil` error.
 
 The next bit is we check if the branch name exists or not (basically checking if we're in a git repo or not), if it exists then we'd return a formatted status that will look something like this.
 
@@ -188,22 +185,19 @@ The next bit is we check if the branch name exists or not (basically checking if
 
 If our screen isn't wide enough, it will remove the git hunk summary and just display the branch name.
 
-I use [nerdfont](https://nerdfonts.com) for the git branch icon and the separator.
+If you get confused with `and` and `or`, don't worry. It's similar to ternary operator. `cond and true or false` is the same as `cond ? true : false`.
 
 ## Filename indicator
-Next one is the filename indicator. I'd like to be able to see the filename without having to press `C-g` every time I want to check the filename and its path.
+The next one is the filename indicator. I'd like to be able to see the filename without having to press `<C-g>` every time I want to check the filename and its full path.
 
 ```lua
 Statusline.get_filename = function(self)
-  if self:is_truncated(140) then
-    return " %<%f "
-  else
-    return " %<%F "
-  end
+  if self:is_truncated(140) then return " %<%f " end
+  return " %<%F "
 end
 ```
 
-Depending on our `winwidth`, it will display an absolute path, relative path to our CWD, or current filename.
+Depending on our `winwidth`, it will display an absolute path, relative path to our `$CWD`, or just the current filename.
 
 The `%<` is to tell the statusline to truncate this indicator if it's too long or doesn't have enough space instead of truncating other indicator.
 
@@ -212,27 +206,27 @@ I want to see the filetype of the current buffer, so I'd like to include this on
 
 ```lua
 Statusline.get_filetype = function()
+  local file_name, file_ext = fn.expand("%:t"), fn.expand("%:e")
+  local icon = require'nvim-web-devicons'.get_icon(file_name, file_ext, { default = true })
+
   local filetype = vim.bo.filetype
-  if filetype == '' then
-    return ''
-  else
-    return string.format(' %s ', filetype):lower()
-  end
+  if filetype == '' then return '' end
+
+  return string.format(' %s %s ', icon, filetype):lower()
 end
 ```
 
 It gets a value from `vim.bo.filetype` which will return a filetype and we'll make it lowercase using `lower()` method. If the current buffer doesn't have a filetype, it will return nothing.
+
+I also use [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) to get icons for the current filetype.
 
 ## Line indicator
 Even though I have `number` and `relativenumber` turned on, I'd like to have this on my statusline as well.
 
 ```lua
 Statusline.get_line_col = function(self)
-  if self:is_truncated(60) then
-    return ' %l:%c '
-  else
-    return ' Ln %l, Col %c '
-  end
+  if self:is_truncated(60) then return ' %l:%c ' end
+  return ' Ln %l, Col %c '
 end
 ```
 
@@ -269,40 +263,42 @@ end
 
 I got this section from [this repo](https://github.com/nvim-lua/lsp-status.nvim) with some modification. It will be hidden when our `winwidth` is less than `120`. I don't personally use this because I use a small monitor so it rarely fit :p
 
+**UPDATE(30-01-2021):** I now show this in my `tabline`. [Here's](https://github.com/elianiva/dotfiles/blob/dcac8bce32b521e94da8c165426f948ee7507f13/nvim/.config/nvim/lua/plugin/_bufferline.lua) my config for that. It will show the available diagnostics at the top right corner.
+
 # Different Statusline
-We don't want our active and inactive statusline to be the same. It would be better if they have a distinct separation, at least in my opinion.
+We don't want our active and inactive statusline to be the same, right?. It would be better if they have a distinct separation.
 
 ## Active Statusline
 We've made the components/indicators, time to combine them all.
 
 ```lua
 Statusline.set_active = function(self)
-  local mode = self.colors.mode .. self:get_current_mode()
-  local mode_alt = self.colors.mode_alt .. self.separators.arrow[1]
-  local git = self.colors.git .. self:get_git_status()
-  local git_alt = self.colors.git_alt .. self.separators.arrow[1]
-  local filename = self.colors.inactive .. self:get_filename()
-  local filetype_alt = self.colors.filetype_alt .. self.separators.arrow[2]
-  local filetype = self.colors.filetype .. self:get_filetype()
-  local line_col = self.colors.line_col .. self:get_line_col()
-  local line_col_alt = self.colors.line_col_alt .. self.separators.arrow[2]
-  local diagnostic = self.colors.line_col .. self:get_lsp_diagnostic()
+  local colors = self.colors
+
+  local mode = colors.mode .. self:get_current_mode()
+  local mode_alt = colors.mode_alt .. self.separators[active_sep][1]
+  local git = colors.git .. self:get_git_status()
+  local git_alt = colors.git_alt .. self.separators[active_sep][1]
+  local filename = colors.inactive .. self:get_filename()
+  local filetype_alt = colors.filetype_alt .. self.separators[active_sep][2]
+  local filetype = colors.filetype .. self:get_filetype()
+  local line_col = colors.line_col .. self:get_line_col()
+  local line_col_alt = colors.line_col_alt .. self.separators[active_sep][2]
 
   return table.concat({
-    self.colors.active,
-    mode, mode_alt, git, git_alt,
+    colors.active, mode, mode_alt, git, git_alt,
     "%=", filename, "%=",
-    filetype_alt, filetype, line_col_alt, line_col, diagnostic
+    filetype_alt, filetype, line_col_alt, line_col
   })
 end
 ```
 
-Remember the highlight groups that we defined earlier? We concatenate them with our indicator. For example, the result will look something like `%#Mode#Normal`.
+Remember the highlight groups that we defined earlier? We concatenate them with our indicator. The end result for the mode indicator will look something like `%#Mode#Normal`.
 
 The `%=` acts like a separator. If we put one, it will place the next indicators to the right, since I want my filename indicator to be in the middle, I put 2 of them around my filename indicator. It will basically center it. You can freely swap them around of course.
 
 ## Inactive Statusline
-Like I said previously, I'd like to have a distinct separation between my active and inactive statusline. There's nothing much going on here, it only shows absolute file path on the center and dimmed background.
+Like I said previously, Having a clear separation between the active and inactive statusline is nice. There's nothing much going on here, it only shows absolute file path on the center with dimmed foreground.
 
 ```lua
 Statusline.set_inactive = function(self)
@@ -323,7 +319,7 @@ vim.api.nvim_exec([[
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
   au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
   augroup END
-]], true)
+]], false)
 ```
 
 This auto command runs every time you enter or leave a buffer and set the corresponding statusline. It needs to be done using vimscript because it doesn't have lua version *yet*. It's currently a [work in progress](https://github.com/neovim/neovim/pull/12378) at the time of writing this post.
@@ -334,14 +330,21 @@ We made a new function because the colon `:` in lua is a method, but it's also r
 Let's see the whole file now.
 
 ```lua
+local fn = vim.fn
+
 Statusline = {}
 
-Statusline.is_truncated = function(_, width)
-  local current_window = vim.fn.winnr()
-  local current_width = vim.fn.winwidth(current_window)
-  return current_width < width
-end
+-- possible values are 'arrow' | 'rounded' | 'blank'
+local active_sep = 'blank'
 
+-- change them if you want to different separator
+Statusline.separators = {
+  arrow = { '', '' },
+  rounded = { '', '' },
+  blank = { '', '' },
+}
+
+-- highlight groups
 Statusline.colors = {
   active        = '%#StatusLine#',
   inactive      = '%#StatuslineNC#',
@@ -355,50 +358,22 @@ Statusline.colors = {
   line_col_alt  = '%#LineColAlt#',
 }
 
-local set_hl = function(group, options)
-  local bg = options.bg == nil and '' or 'guibg=' .. options.bg
-  local fg = options.fg == nil and '' or 'guifg=' .. options.fg
-  local gui = options.gui == nil and '' or 'gui=' .. options.gui
-
-  vim.cmd(string.format(
-    'hi %s %s %s %s',
-    group, bg, fg, gui
-  ))
+Statusline.is_truncated = function(_, width)
+  local current_window = fn.winnr()
+  local current_width = fn.winwidth(current_window)
+  return current_width < width
 end
 
-local color_hl = {
-  {'Active', { bg = 'blue', fg = '#EBDBB2' }},
-  {'Inactive', { bg = '#3C3836', fg = '#928374' }},
-  {'Mode', { bg = '#928374', fg = '#1D2021', gui="bold" }},
-  {'LineCol', { bg = '#928374', fg = '#1D2021', gui="bold" }},
-  {'Git', { bg = '#504945', fg = '#EBDBB2' }},
-  {'Filetype', { bg = '#504945', fg = '#EBDBB2' }},
-  {'Filename', { bg = '#504945', fg = '#EBDBB2' }},
-  {'ModeAlt', { bg = '#504945', fg = '#928374' }},
-  {'GitAlt', { bg = '#3C3836', fg = '#504945' }},
-  {'LineColAlt', { bg = '#504945', fg = '#928374' }},
-  {'FiletypeAlt', { bg = '#3C3836', fg = '#504945' }},
-}
-
-for _, highlight in pairs(highlights) do
-  set_hl(highlight[1], highlight[2])
-end
-
-Statusline.separators = {
-  arrow = { '', '' },
-  rounded = { '', '' },
-}
-
-Statusline.get_current_mode = function()
+Statusline.get_current_mode = function(self)
   local modes = {
     ['n']  = {'Normal', 'N'};
-    ['no'] = {'N·Pending', 'N' ;
+    ['no'] = {'N·Pending', 'N'} ;
     ['v']  = {'Visual', 'V' };
     ['V']  = {'V·Line', 'V' };
-    [''] = {'V·Block', 'V'};
+    [''] = {'V·Block', 'V'}; -- this is not ^V, but it's , they're different
     ['s']  = {'Select', 'S'};
     ['S']  = {'S·Line', 'S'};
-    [''] = {'S·Block', 'S'};
+    [''] = {'S·Block', 'S'}; -- same with this one, it's not ^S but it's 
     ['i']  = {'Insert', 'S'};
     ['R']  = {'Replace', 'R'};
     ['Rv'] = {'V·Replace', 'V'};
@@ -412,103 +387,66 @@ Statusline.get_current_mode = function()
     ['t']  = {'Terminal ', 'T'};
   }
 
-  local current_mode = vim.fn.mode()
+  local current_mode = fn.mode()
 
   if self:is_truncated(80) then
     return string.format(' %s ', modes[current_mode][2]):upper()
-  else
-    return string.format(' %s ', modes[current_mode][1]):upper()
   end
+  return string.format(' %s ', modes[current_mode][1]):upper()
 end
 
-Statusline.get_git_status = function()
+Statusline.get_git_status = function(self)
   -- use fallback because it doesn't set this variable on initial `BufEnter`
   local signs = vim.b.gitsigns_status_dict or {head = '', added = 0, changed = 0, removed = 0}
+  local is_head_empty = signs.head ~= ''
 
   if self:is_truncated(90) then
-    if signs.head ~= '' then
-      return string.format('  %s ', signs.head or '')
-    else
-      return ''
-    end
-  else
-    if signs.head ~= '' then
-      return string.format(
-        ' +%s ~%s -%s |  %s ',
-        signs.added, signs.changed, signs.removed, signs.head
-      )
-    else
-      return ''
-    end
+    return is_head_empty and string.format('  %s ', signs.head or '') or ''
   end
+
+  return is_head_empty
+    and string.format(' +%s ~%s -%s |  %s ', signs.added, signs.changed, signs.removed, signs.head)
+    or ''
 end
 
 Statusline.get_filename = function(self)
-  if self:is_truncated(140) then
-    return " %f "
-  else
-    return " %F "
-  end
+  if self:is_truncated(140) then return " %<%f " end
+  return " %<%F "
 end
 
 Statusline.get_filetype = function()
+  local file_name, file_ext = fn.expand("%:t"), fn.expand("%:e")
+  local icon = require'nvim-web-devicons'.get_icon(file_name, file_ext, { default = true })
+
   local filetype = vim.bo.filetype
-  if filetype == '' then
-    return ''
-  else
-    return string.format(' %s ', filetype):lower()
-  end
+  if filetype == '' then return '' end
+
+  return string.format(' %s %s ', icon, filetype):lower()
 end
 
 Statusline.get_line_col = function(self)
-  if self:is_truncated(60) then
-    return ' %l:%c '
-  else
-    return ' Ln %l, Col %c '
-  end
+  if self:is_truncated(60) then return ' %l:%c ' end
+  return ' Ln %l, Col %c '
 end
 
-Statusline.get_lsp_diagnostic = function(self)
-  local result = {}
-  local levels = {
-    errors = 'Error',
-    warnings = 'Warning',
-    info = 'Information',
-    hints = 'Hint'
-  }
-
-  for k, level in pairs(levels) do
-    result[k] = vim.lsp.diagnostic.get_count(0, level)
-  end
-
-  if self:is_truncated(120) then
-    return ''
-  else
-    return string.format(
-      "| :%s :%s :%s :%s ",
-      result['errors'] or 0, result['warnings'] or 0,
-      result['info'] or 0, result['hints'] or 0
-    )
-  end
-end
 
 Statusline.set_active = function(self)
-  local mode = self.colors.mode .. self:get_current_mode()
-  local mode_alt = self.colors.mode_alt .. self.separators.arrow[1]
-  local git = self.colors.git .. self:get_git_status()
-  local git_alt = self.colors.git_alt .. self.separators.arrow[1]
-  local filename = self.colors.inactive .. self:get_filename()
-  local filetype_alt = self.colors.filetype_alt .. self.separators.arrow[2]
-  local filetype = self.colors.filetype .. self:get_filetype()
-  local line_col = self.colors.line_col .. self:get_line_col()
-  local line_col_alt = self.colors.line_col_alt .. self.separators.arrow[2]
-  local diagnostic = self.colors.line_col .. self:get_lsp_diagnostic()
+  local colors = self.colors
+
+  local mode = colors.mode .. self:get_current_mode()
+  local mode_alt = colors.mode_alt .. self.separators[active_sep][1]
+  local git = colors.git .. self:get_git_status()
+  local git_alt = colors.git_alt .. self.separators[active_sep][1]
+  local filename = colors.inactive .. self:get_filename()
+  local filetype_alt = colors.filetype_alt .. self.separators[active_sep][2]
+  local filetype = colors.filetype .. self:get_filetype()
+  local line_col = colors.line_col .. self:get_line_col()
+  local line_col_alt = colors.line_col_alt .. self.separators[active_sep][2]
 
   return table.concat({
-    self.colors.active,
-    mode, mode_alt, git, git_alt,
+    colors.active, mode, mode_alt, git, git_alt,
     "%=", filename, "%=",
-    filetype_alt, filetype, line_col_alt, line_col, diagnostic
+    filetype_alt, filetype, line_col_alt, line_col
   })
 end
 
@@ -519,25 +457,62 @@ end
 Statusline.active = function() return Statusline:set_active() end
 Statusline.inactive = function() return Statusline:set_inactive() end
 
+-- set statusline
+-- TODO: replace this once we can define autocmd using lua
 vim.api.nvim_exec([[
   augroup Statusline
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
   au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
   augroup END
-]], true)
+]], false)
+
+----[[
+--  NOTE: I don't use this since the statusline already has
+--  so much stuff going on. Feel free to use it!
+--  credit: https://github.com/nvim-lua/lsp-status.nvim
+--
+--  I now use `tabline` to display these errors, go to `_bufferline.lua` if you
+--  want to check that out
+----]]
+-- Statusline.get_lsp_diagnostic = function(self)
+--   local result = {}
+--   local levels = {
+--     errors = 'Error',
+--     warnings = 'Warning',
+--     info = 'Information',
+--     hints = 'Hint'
+--   }
+
+--   for k, level in pairs(levels) do
+--     result[k] = vim.lsp.diagnostic.get_count(0, level)
+--   end
+
+--   if self:is_truncated(120) then
+--     return ''
+--   else
+--     return string.format(
+--       "| :%s :%s :%s :%s ",
+--       result['errors'] or 0, result['warnings'] or 0,
+--       result['info'] or 0, result['hints'] or 0
+--     )
+--   end
+-- end
 ```
 
 And here's the result.
 
 ![result](/assets/post/neovim-lua-statusline/result.png)
 
-Here's a [preview video](https://streamable.com/nqcwp6) for a better demonstration. As you can see on the video, they change their appearance based on the screen width.
+Also a [preview video](https://streamable.com/arzm3q) for a better demonstration. As you can see on the video, they change their appearance based on the window width.
 
 That's the active statusline, I don't think I need to put a screenshot for the inactive one because there's nothing interesting going on there :p.
 
-Here's [my statusline file](https://github.com/elianiva/dotfiles/blob/d890c21015d1dd856a4d751cef0e514066e2ed1f/nvim/.config/nvim/lua/modules/_statusline.lua) for a reference.
-There are also some great statusline plugins written in lua if you want to get started quickly such as [express_line.nvim](https://github.com/tjdevries/express_line.nvim), [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim), and [neoline.vim](https://github.com/adelarsq/neoline.vim).
+Here's [my statusline file](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/_statusline.lua) for a reference.
+
+There are also some great statusline plugins written in lua if you want to get started quickly such as [tjdevries/express_line.nvim](https://github.com/tjdevries/express_line.nvim), [glepnir/galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim), and [adelarsq/neoline.vim](https://github.com/adelarsq/neoline.vim).
 
 # Closing Note
-I really like how it turned out, Lua support on Neovim is probably the best update I've ever experienced. Kudos to all of Neovim contributors! If you have a better suggestion for this post then feel free to click on the `suggest an edit` link below the title, it will bring you to the original file of this post. Anyway, thanks for reading, and have a great day! ツ
+I really like how it turned out, Lua support on Neovim is probably the best update I've ever experienced. It makes me want to play around with Neovim's API even more.  Kudos to all of Neovim contributors!
+
+If you have a better suggestion for this post then feel free to click on the `suggest an edit` link below the title, it will bring you to the original file of this post. Anyway, thanks for reading, and gave a great day! ツ
