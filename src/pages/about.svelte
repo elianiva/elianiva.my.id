@@ -128,7 +128,7 @@
       I was born and raised in Indonesia. I can speak Indonesian natively
       <span class="about__paren">(obviously)</span>, and English quite fluently.
       I am currently learning Japanese because I want to be able to speak a
-      language that uses a different writing system. Though, I want to try to
+      language that uses a different writing system. Also, I want to try to
       live abroad in the future.
     </p>
     <p class="about__text">
