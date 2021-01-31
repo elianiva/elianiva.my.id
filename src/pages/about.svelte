@@ -113,30 +113,23 @@
     <h1 class="about__heading">About Me</h1>
     <p class="about__text">
       Hi there! I'm Elianiva. My online alias was taken from my middle name
-      without the first and last letter. My name is Dicha Zelianivan Arkana.
-      I'm a 17 y/o Asian boi who loves to build websites (or any software
-      related things at this point) and contribute to any open source projects
-      that I like.
+      without the first and last letter. My name is Dicha Zelianivan Arkana. I'm
+      a 17 y/o Asian boi who loves to build websites (or any software related
+      things at this point) and contribute to any open source projects that I
+      like.
     </p>
     <p class="about__text">
-      I've been learning web development since roughly around 2019. I understand
-      the basic of HTML, CSS, and JS quite well. I'm still learning about
-      React/Next, Svelte, and Typescript but felt quite comfortable enoguh to
-      use them daily. I've been learning Lua and Golang recently.
-      <span class="no">
-        I was focusing on learning Rust previously but I decided to focus on
-        Golang Instead. I still code Rust every now and then but just because I
-        like it, not planning any exciting stuff with it.
-      </span>
-      I now want to do more serious stuff with Rust instead of Go, after using
-      Go for a while, I think I prefer Rust ;)
+      I've been learning web development since Q3 2019. I know HTML, CSS, and
+      JS/TS and all that jazz quite well. Currently interested on learning lower
+      level language like Rust. I also quite like Lua since I use Neovim and
+      AwesomeWM.
     </p>
     <p class="about__text">
-      I live in a beautiful country called Indonesia. I can speak Indonesian
-      natively
+      I was born and raised in Indonesia. I can speak Indonesian natively
       <span class="about__paren">(obviously)</span>, and English quite fluently.
       I am currently learning Japanese because I want to be able to speak a
-      language that uses a different writing system.
+      language that uses a different writing system. Though, I want to try to
+      live abroad in the future.
     </p>
     <p class="about__text">
       If you want to reach me then feel free to hit me up on
@@ -144,20 +137,17 @@
         class="about__link"
         href="https://twitter.com/@elianiva_"
         target="_blank"
-        rel="norel noreferrer"
-      >Twitter</a>
-      or Discord @elianiva#1558. Though I'm rarely active on those two. I only
-      use Twitter to simp over Vtubers and retweet some arts that I like despite
-      having no followers lmao. Reason why is I want to "save" them so I can
-      just scroll through my profile and see some good arts. I barely use
-      Discord. I just open it every now and then, that's about it. I am trying
-      to use Discord more often lately though. Or you can just
+        rel="norel noreferrer">Twitter</a
+      >
+      or Discord @elianiva#1558. I rarely checked Twitter and only use it for Vtuber
+      or Art related stuff. I became more active on Discord lately though, so that'd
+      be a better option to reach me out. Or you can just
       <a
         class="about__link"
         href="mailto:dicha.arkana03@gmail.com"
         target="_blank"
-        rel="norel noreferrer"
-      >email me</a>, I check my email quite often.
+        rel="norel noreferrer">email me</a
+      >, I check my email quite often.
     </p>
     <details class="about__details">
       <summary class="about__summary">
@@ -170,15 +160,15 @@
           class="about__link"
           target="_blank"
           rel="norel noreferrer"
-          href="https://www.youtube.com/user/BABYMETALofficial"
-        >Babymetal</a>
-        (check them out btw ツ), I found them out around March 2020 and got
-        instantly obsessed with them. They are the main reason why I decided to
-        learn Japanese and appreciate Japanese culture :p Another one is Kill La
-        Kill. I love this anime so much
-        <span class="about__paren">(no, not because 2d anime tiddies)</span>
-        that I want to learn to draw again and my website colour is heavily
-        inspired from Senketsu and Junketsu.
+          href="https://www.youtube.com/user/BABYMETALofficial">Babymetal</a
+        >, I found them out around March 2020 and got instantly obsessed with
+        them. They are the main reason why I decided to learn Japanese and
+        appreciate Japanese culture.
+      </p>
+      <p class="about__text">
+        I also love an anime called Kill La Kill (as you might have known
+        judging by my github profile), I took Senketsu and Junketsu colour for
+        my website ツ
       </p>
       <p class="about__text">
         I also love Vtubers. Before I watch them, I said to myself "why would I
@@ -197,18 +187,18 @@
     </details>
     <h1 class="about__heading">My Website</h1>
     <p class="about__text">
-      I made this website so I can post stuff that I learned and share it to
-      other people. I also use this as a note to myself because believe it or
-      not, I sometimes forgot stuff that I did. By having this website, I can
-      just revisit what I've done in the past.
+      I made this website mainly because I want to keep a note to myself, but I
+      thought it's a good idea to make it public. I sometimes forgot stuff
+      that I did. By having this website, I can just revisit what I've done in
+      the past.
     </p>
     <p class="about__text">
       I use Sapper and MDSveX to build this website and it's hosted on Vercel.
       If you want more detail about my website the you might want to read
       <a
         class="about__link"
-        href="{data.siteUrl}/post/i-rebuild-my-site-using-sapper"
-      >this post</a>
+        href="{data.siteUrl}/post/i-rebuild-my-site-using-sapper">this post</a
+      >
       where I explain the process of making this site.
     </p>
     <p class="about__text">
@@ -218,58 +208,52 @@
         class="about__link"
         href="https://twitter.com/enzore_"
         target="_blank"
-        rel="noreferrer norel"
-      >Enzore</a>, such a cool artist. Do yourself a favour by checking his
-      artworks! I took it from my
+        rel="noreferrer norel">Enzore</a
+      >, such a cool artist. Do yourself a favour by checking his artworks! I
+      took it from my
       <a
         class="about__link"
         href={data.github}
         target="_blank"
-        rel="noreferrer norel"
-      >github profile</a>
-      so that might change in the future. Also, if you noticed the icon for my
-      website, it's a shitty drawing of
+        rel="noreferrer norel">github pfp</a
+      >
+      so that might change in the future. Also, if you noticed the icon for my website,
+      it's a shitty drawing of
       <a
         class="about__link"
         href="https://knowyourmeme.com/photos/709240-kill-la-kill"
         target="_blank"
-        rel="noreferrer norel"
-      >derp eyed Ryuko</a>
+        rel="noreferrer norel">derp eyed Ryuko</a
+      >
       that I made a while back. I like to draw every now and then just for fun.
     </p>
     <h1 class="about__heading">My Setup</h1>
     <p class="about__text">
       My laptop is Thinkpad X220. I use Linux as my Operating System.
-      <a
-        href="https://archlinux.org"
-        class="about__link"
-        rel="norel noreferrer"
-      >Archlinux</a>
+      <a href="https://archlinux.org" class="about__link" rel="norel noreferrer"
+        >Archlinux</a
+      >
       to be more specific. I've used Linux since around Q3 of 2019. I spent most
-      of my time inside terminal and rest of it inside a browser or random GUI
-      app. I prefer using my keyboard over my mouse everywhere if possible
-      (except browsing the internet, mouse is way better)
+      of my time inside terminal and rest of it inside a browser or random GUI app.
+      I prefer using my keyboard over my mouse everywhere if possible (except browsing
+      the internet, mouse is way better)
     </p>
     <p class="about__text">
       I use a Window Manager called
-      <a
-        href="https://awesomewm.org"
-        class="about__link"
-        rel="norel noreferrer"
-      >AwesomeWM</a>, such an
+      <a href="https://awesomewm.org" class="about__link" rel="norel noreferrer"
+        >AwesomeWM</a
+      >, such an
       <i>awesome</i>
       window manager. I also use a text editor called
-      <a
-        href="https://neovim.io"
-        class="about__link"
-        rel="norel noreferrer"
-      >Neovim</a>. I've been using it fulltime since around Q4 of 2019. It's
-      actually my first text editor that I feel comfortable with and do
-      something serious hence I can't relate when people say "VIM has a high
-      learning curve" :p I started using it when I got my first laptop. After
-      using it for quite a while my config is has grown quite a lot. It is now
-      written in lua and is quite lengthy. I've written some post explaining
-      some of my config if you're interested on that. Anyway, here's
+      <a href="https://neovim.io" class="about__link" rel="norel noreferrer"
+        >Neovim</a
+      >. I've been using it fulltime since around Q4 of 2019. It's actually my
+      first text editor that I feel comfortable with and do something serious
+      hence I can't relate when people say "VIM has a high learning curve" :p
+      I started using it when I got my first laptop. After using it for quite a
+      while my config is has grown quite a lot. It is now written in Lua and is
+      quite lengthy. I've written some post explaining some of my config if
+      you're interested on that. Anyway, here's
       <a
         class="about__link"
         href="https://github.com/elianiva/dotfiles"
