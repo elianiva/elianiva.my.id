@@ -13,7 +13,7 @@
   width: 100%;
   height: 12rem;
   object-fit: cover;
-  background-color: var(--color-alt-text);
+  background-color: var(--color-borders);
   z-index: 2;
 }
 
