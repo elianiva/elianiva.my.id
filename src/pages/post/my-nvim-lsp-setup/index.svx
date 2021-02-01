@@ -187,12 +187,8 @@ vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagno
 
 I set the prefix for `virtual_text` to be `»` because I don't really like the default one and enabled `signs` for the diagnostic hint. I also made it to only update the diagnostic when I switch between insert mode and normal mode because it's quite annoying when I haven't finished typing and get yelled at by LSP because it expects me to put `=` after a variable name that I haven't even finished typing yet.
 
-## Custom handlers
-I override 2 handlers which are `textDocument/hover` and `textDocument/rename`. I took the custom hover handler from [glepnir's plugin](https://github.com/glepnir/lspsaga.nvim/blob/main/lua/lspsaga/window.lua) and modified it a bit. ~~The rename handler is just a workaround for [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) that I took from [this comment](https://github.com/rust-analyzer/rust-analyzer/issues/4901#issuecomment-698095462).~~
-
-**(13-01-2021) UPDATE:** There's a [PR](https://github.com/neovim/neovim/pull/13534) that has been merged to fix the issue with `textDocument/rename` so I removed my workaround.
-
-You can find both of them [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/_window.lua) and [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/_custom_handlers.lua).
+## Fancy Stuff
+**(01-02-2021) UPDATE:** I now use [lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) to enhance the builtin LSP experience like bordered window, popup menu for code actions, etc. Just go to its Github page, there's no point of me explaining it here. It's really good :)
 
 ## Linting and Formatting
 I recently started using [efm-langserver](https://github.com/mattn/efm-langserver) to run [eslint](https://eslint.org) and formatting like [prettier](https://prettier.io), [gofmt](https://golang.org/cmd/gofmt/) , [LuaFormatter](https://github.com/Koihik/LuaFormatter), and [rustfmt](https://github.com/rust-lang/rustfmt).
