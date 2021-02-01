@@ -115,8 +115,9 @@
 
   .navbar__checkbox {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    z-index: 50;
   }
 
   .navbar__checkbox:checked ~ .navbar__hamburger_item--1 {
@@ -198,7 +199,7 @@
     <div class="navbar__hamburger" transition:fade={{ duration: 200 }}>
       <input
         class="navbar__checkbox"
-        on:input={toggleNav}
+        on:input|stopPropagation={toggleNav}
         type="checkbox"
         {checked}
         aria-label="toggle menu"
