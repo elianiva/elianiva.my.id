@@ -11,8 +11,8 @@ div {
 }
 </style>
 
-<svelte:head>
-  <script>
+<svelte:head
+  ><script>
   // set dark mode correctly before everythings get rendered
   // thanks https://github.com/pveyes
   try {
@@ -29,8 +29,8 @@ div {
   } catch (err) {
     console.log(err)
   }
-  </script>
-</svelte:head>
+  </script></svelte:head
+>
 <Navbar {segment} />
 <main>
   <Loading />

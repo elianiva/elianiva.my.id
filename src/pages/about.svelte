@@ -98,12 +98,6 @@
 .about__paren {
   color: var(--color-alt-text);
 }
-
-.no {
-  color: var(--color-alt-text);
-  font-style: italic;
-  text-decoration: line-through;
-}
 </style>
 
 <SEO title="About" />
@@ -128,8 +122,8 @@
       I was born and raised in Indonesia. I can speak Indonesian natively
       <span class="about__paren">(obviously)</span>, and English quite fluently.
       I am currently learning Japanese because I want to be able to speak a
-      language that uses a different writing system. Also, I want to try to
-      live abroad in the future.
+      language that uses a different writing system. Also, I want to try to live
+      abroad in the future.
     </p>
     <p class="about__text">
       If you want to reach me then feel free to hit me up on
@@ -188,9 +182,9 @@
     <h1 class="about__heading">My Website</h1>
     <p class="about__text">
       I made this website mainly because I want to keep a note to myself, but I
-      thought it's a good idea to make it public. I sometimes forgot stuff
-      that I did. By having this website, I can just revisit what I've done in
-      the past.
+      thought it's a good idea to make it public. I sometimes forgot stuff that
+      I did. By having this website, I can just revisit what I've done in the
+      past.
     </p>
     <p class="about__text">
       I use Sapper and MDSveX to build this website and it's hosted on Vercel.
@@ -249,8 +243,8 @@
         >Neovim</a
       >. I've been using it fulltime since around Q4 of 2019. It's actually my
       first text editor that I feel comfortable with and do something serious
-      hence I can't relate when people say "VIM has a high learning curve" :p
-      I started using it when I got my first laptop. After using it for quite a
+      hence I can't relate when people say "VIM has a high learning curve" :p I
+      started using it when I got my first laptop. After using it for quite a
       while my config is has grown quite a lot. It is now written in Lua and is
       quite lengthy. I've written some post explaining some of my config if
       you're interested on that. Anyway, here's

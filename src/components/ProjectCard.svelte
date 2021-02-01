@@ -104,17 +104,17 @@
       {#if demo}
         <a
           class="card__demo"
-          href={demo ? demo : '#'}
+          href={demo ? demo : "#"}
           target="_blank"
-          rel="norel noreferrer"
-        ><Chrome class="card__icon" />Demo</a>
+          rel="norel noreferrer"><Chrome class="card__icon" />Demo</a
+        >
       {/if}
       <a
         class="card__source"
         href={source}
         target="_blank"
-        rel="norel noreferrer"
-      ><Code class="card__icon" />Source</a>
+        rel="norel noreferrer"><Code class="card__icon" />Source</a
+      >
     </div>
   </div>
 </div>

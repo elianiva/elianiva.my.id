@@ -302,15 +302,15 @@
             class="project__demo"
             href={demo}
             target="_blank"
-            rel="norel noreferrer"
-          ><Chrome class="project__icon" />Demo</a>
+            rel="norel noreferrer"><Chrome class="project__icon" />Demo</a
+          >
         {/if}
         <a
           class="project__source"
           href={source}
           target="_blank"
-          rel="norel noreferrer"
-        ><Code class="card__icon" />Source</a>
+          rel="norel noreferrer"><Code class="card__icon" />Source</a
+        >
       </div>
     </div>
     <hr class="project__divider" />
@@ -325,15 +325,17 @@
           <img
             src="/assets/logo/{item[0].toLowerCase()}.png"
             alt={item}
-            style="filter: {item[0].toLowerCase() === 'nextjs' ? 'var(--filter-invert)' : ''} "
+            style="filter: {item[0].toLowerCase() === 'nextjs'
+              ? 'var(--filter-invert)'
+              : ''} "
           />
         </div>
         <a
           href={item[1]}
           class="stack__name"
           target="_blank"
-          rel="norel noreferrer"
-        >{item[0]}</a>
+          rel="norel noreferrer">{item[0]}</a
+        >
       </div>
     {/each}
   </div>

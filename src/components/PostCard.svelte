@@ -93,7 +93,7 @@
     <span class="card__title">{title}</span>
     <div class="card__date">
       <Calendar class="date__icon" />
-      <span class="date__label">{dayjs(date).format('DD MMMM YYYY')}</span>
+      <span class="date__label">{dayjs(date).format("DD MMMM YYYY")}</span>
     </div>
     <p class="card__desc">{desc}</p>
     <div class="card__tags">
