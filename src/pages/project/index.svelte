@@ -53,11 +53,17 @@
 </section>
 <ProgressButton />
 
+<script context="module">
+export async function preload() {
+  const projects = await (await this.fetch(`/api/project/all.json`)).json()
+  return { projects }
+}
+</script>
+
 <script>
 import SEO from "@/components/SEO.svelte"
 import ProjectCard from "@/components/ProjectCard.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 
-// eslint-disable-next-line
-const projects = __PROJECTS__
+export let projects
 </script>
