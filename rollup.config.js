@@ -122,8 +122,6 @@ export default {
       replace({
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode),
-        __POSTS__: JSON.stringify(getResources("post")),
-        __PROJECTS__: JSON.stringify(getResources("project")),
       }),
       svelte({
         compilerOptions: {
