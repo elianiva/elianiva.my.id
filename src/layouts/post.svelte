@@ -340,7 +340,7 @@
   </span>
   <a
     class="post__edit"
-    href="https://github.com/elianiva/elianiva.me/blob/master/src/pages/post/{currentPost.slug}/index.svx"
+    href="https://github.com/elianiva/elianiva.me/blob/master/src/pages/post/{currentSlug}/index.svx"
     target="_blank"
     rel="norel noreferrer">Suggest An Edit</a
   >
@@ -357,21 +357,25 @@
 
 <script>
 import { onMount } from "svelte"
+import { stores } from "@sapper/app"
 import SEO from "@/components/SEO.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import dayjs from "dayjs"
 export let title, date, desc, tags
 
+const { page } = stores()
+const currentSlug = $page.path.split("/")[2]
+
 let content
-// eslint-disable-next-line
-const posts = __POSTS__
-const currentPost = posts.filter(post => post.title === title)[0]
 
 onMount(() => {
   content.querySelectorAll("a").forEach(a => {
     // use `decodeURIComponent` to handle Japanese characters
     // prettier-ignore
-    if (!a.hash || !content.querySelectorAll(decodeURIComponent(a.hash)).length) return
+    if (
+      !a.hash ||
+      !content.querySelectorAll(decodeURIComponent(a.hash)).length
+    ) return
 
     a.addEventListener("click", e => {
       e.preventDefault()
