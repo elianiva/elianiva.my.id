@@ -342,7 +342,15 @@
 </section>
 <ProgressButton />
 
+<script context="module">
+export async function preload() {
+  const projects = await (await this.fetch(`/api/project.json`)).json()
+  return { projects }
+}
+</script>
+
 <script>
+import { onMount } from "svelte"
 import SEO from "@/components/SEO.svelte"
 import Chrome from "@/icons/chrome.svg"
 import Code from "@/icons/code.svg"
@@ -350,9 +358,17 @@ import ProgressButton from "@/components/ProgressButton.svelte"
 import data from "@/site-data"
 export let title, desc
 
-// eslint-disable-next-line
-const projects = __PROJECTS__
-const currentProject = projects.filter(project => project.title === title)[0]
+let slug, demo, source
+let stack = []
 
-const { slug, stack, demo, source } = currentProject
+// TODO: find a better solution
+onMount(async () => {
+  // eslint-disable-next-line
+  const currentProject = await fetch(`/api/project.json?title=${title}`).then(x => x.json())
+
+  slug = currentProject[0].slug
+  stack = currentProject[0].stack
+  demo = currentProject[0].demo
+  source = currentProject[0].source
+})
 </script>
