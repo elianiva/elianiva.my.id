@@ -30,8 +30,8 @@
 
 <script context="module">
 export async function preload() {
-  const posts = await (await this.fetch(`/api/post/all.json?limit=3`)).json()
-  const projects = await (await this.fetch(`/api/project/all.json?limit=3`)).json()
+  const posts = await (await this.fetch(`/api/post.json?limit=3`)).json()
+  const projects = await (await this.fetch(`/api/project.json?limit=3`)).json()
 
   return { posts, projects }
 }

@@ -156,7 +156,7 @@
 
 <script context="module">
 export async function preload() {
-  const posts = await (await this.fetch(`/api/post/all.json`)).json()
+  const posts = await (await this.fetch(`/api/post.json`)).json()
   return { posts }
 }
 </script>

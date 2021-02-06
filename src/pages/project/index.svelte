@@ -55,7 +55,7 @@
 
 <script context="module">
 export async function preload() {
-  const projects = await (await this.fetch(`/api/project/all.json`)).json()
+  const projects = await (await this.fetch(`/api/project.json`)).json()
   return { projects }
 }
 </script>
