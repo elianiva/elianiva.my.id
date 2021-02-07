@@ -281,7 +281,7 @@ I've overridden the `vim.lsp.handlers["textDocument/publishDiagnostics"]` anyway
 ## Completion and Snippets
 I use a completion and snippet plugin to make my life easier. For completion, I use [nvim-compe](https://github.com/hrsh7th/nvim-compe), previously I was using [completion-nvim](https://github.com/nvim-lua/completion-nvim) but I had some issues with it such as path completion sometimes not showing up and flickering. You may use whatever works for you.
 
-Snippet wise, I use [vim-vsnip](https://github.com/hrsh7th/vim-vsnip). I would love to use [snippets.nvim](https://github.com/norcalli/snippets.nvim) but it doesn't integrate well with LSP's snippet. Honestly, using JSON as a format to store snippet is really stupid in my opinion. It doesn't support newline so what you would do is use an array of strings. Because **vim-vsnip** needs to be compatible with LSP's snippet, well, it has to use JSON format as well.
+Snippet wise, I use [vim-vsnip](https://github.com/hrsh7th/vim-vsnip). I love to use [snippets.nvim](https://github.com/norcalli/snippets.nvim) but it doesn't integrate well with LSP's snippet.
 
 Here's some of my `nvim-compe` config
 
