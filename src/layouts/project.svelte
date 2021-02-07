@@ -229,7 +229,7 @@
 .project__content :global(blockquote p) {
   font-size: 1.125rem;
   letter-spacing: 0.02em;
-  color: var(--color-thin);
+  color: var(--color-alt-text);
   font-style: italic;
   font-family: serif;
   margin: 1rem 0;
@@ -280,13 +280,13 @@
   />
 </svelte:head>
 
-<SEO {title} {desc} thumbnail={`${data.siteUrl}/project/${slug}/cover.webp`} />
+<SEO {title} {desc} thumbnail={`${data.siteUrl}/project/${currentSlug}/cover.webp`} />
 
 <section class="project">
   <div class="project__cover">
     <div class="project__wrapper">
       <img
-        src={`/assets/project/${slug}/cover.webp`}
+        src={`/assets/project/${currentSlug}/cover.webp`}
         alt={title}
         class="project__img"
         loading="lazy"
@@ -350,25 +350,14 @@ export async function preload() {
 </script>
 
 <script>
-import { onMount } from "svelte"
+import { stores } from "@sapper/app"
 import SEO from "@/components/SEO.svelte"
 import Chrome from "@/icons/chrome.svg"
 import Code from "@/icons/code.svg"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import data from "@/site-data"
-export let title, desc
+export let title, desc, demo, source, stack
 
-let slug, demo, source
-let stack = []
-
-// TODO: find a better solution
-onMount(async () => {
-  // eslint-disable-next-line
-  const currentProject = await fetch(`/api/project.json?title=${title}`).then(x => x.json())
-
-  slug = currentProject[0].slug
-  stack = currentProject[0].stack
-  demo = currentProject[0].demo
-  source = currentProject[0].source
-})
+const { page } = stores()
+const currentSlug = $page.path.split("/")[2]
 </script>
