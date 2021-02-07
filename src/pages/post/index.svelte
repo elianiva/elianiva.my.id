@@ -154,6 +154,13 @@
 </section>
 <ProgressButton />
 
+<script context="module">
+export async function preload() {
+  const posts = await (await this.fetch(`/api/post.json`)).json()
+  return { posts }
+}
+</script>
+
 <script>
 import { fly } from "svelte/transition"
 import SEO from "@/components/SEO.svelte"
@@ -162,7 +169,7 @@ import ProgressButton from "@/components/ProgressButton.svelte"
 import Tag from "@/components/Tag.svelte"
 
 // eslint-disable-next-line
-const posts = __POSTS__
+export let posts
 let inputBox = null
 let keyword = ""
 let tagKeyword = ""

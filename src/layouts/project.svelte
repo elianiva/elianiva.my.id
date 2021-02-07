@@ -229,7 +229,7 @@
 .project__content :global(blockquote p) {
   font-size: 1.125rem;
   letter-spacing: 0.02em;
-  color: var(--color-thin);
+  color: var(--color-alt-text);
   font-style: italic;
   font-family: serif;
   margin: 1rem 0;
@@ -280,13 +280,13 @@
   />
 </svelte:head>
 
-<SEO {title} {desc} thumbnail={`${data.siteUrl}/project/${slug}/cover.webp`} />
+<SEO {title} {desc} thumbnail={`${data.siteUrl}/project/${currentSlug}/cover.webp`} />
 
 <section class="project">
   <div class="project__cover">
     <div class="project__wrapper">
       <img
-        src={`/assets/project/${slug}/cover.webp`}
+        src={`/assets/project/${currentSlug}/cover.webp`}
         alt={title}
         class="project__img"
         loading="lazy"
@@ -342,17 +342,22 @@
 </section>
 <ProgressButton />
 
+<script context="module">
+export async function preload() {
+  const projects = await (await this.fetch(`/api/project.json`)).json()
+  return { projects }
+}
+</script>
+
 <script>
+import { stores } from "@sapper/app"
 import SEO from "@/components/SEO.svelte"
 import Chrome from "@/icons/chrome.svg"
 import Code from "@/icons/code.svg"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import data from "@/site-data"
-export let title, desc
+export let title, desc, demo, source, stack
 
-// eslint-disable-next-line
-const projects = __PROJECTS__
-const currentProject = projects.filter(project => project.title === title)[0]
-
-const { slug, stack, demo, source } = currentProject
+const { page } = stores()
+const currentSlug = $page.path.split("/")[2]
 </script>

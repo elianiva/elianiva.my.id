@@ -13,14 +13,14 @@
   <Hero />
   <Section
     title="Recent Posts"
-    data={posts.splice(0, 3)}
+    data={posts}
     btnText="More Posts"
     url="/post"
     type="posts"
   />
   <Section
     title="Recent Projects"
-    data={projects.splice(0, 3)}
+    data={projects}
     btnText="More Projects"
     url="/project"
     type="projects"
@@ -28,14 +28,20 @@
 </main>
 <ProgressButton />
 
+<script context="module">
+export async function preload() {
+  const posts = await (await this.fetch(`/api/post.json?limit=3`)).json()
+  const projects = await (await this.fetch(`/api/project.json?limit=3`)).json()
+
+  return { posts, projects }
+}
+</script>
+
 <script>
 import SEO from "@/components/SEO.svelte"
 import Hero from "@/parts/Hero.svelte"
 import Section from "@/parts/Sections.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 
-// eslint-disable-next-line
-const posts = __POSTS__
-// eslint-disable-next-line
-const projects = __PROJECTS__
+export let posts, projects
 </script>
