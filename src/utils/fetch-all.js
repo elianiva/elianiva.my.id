@@ -13,7 +13,7 @@ export const getResources = kind => {
     .filter(file => !HAS_EXTENSION.test(file) && `${file}/index.svx`)
     .map(fileName => {
       const postContent = fs.readFileSync(
-        `${getPagePath}/${fileName}/index.svx`,
+        `${getPagePath(kind)}/${fileName}/index.svx`,
         {
           encoding: "utf8",
         }
