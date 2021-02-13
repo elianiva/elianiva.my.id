@@ -1,7 +1,7 @@
 ---
 title: I tried Svelte-Kit, it was Unsurprisingly good
 date: 2021-02-13
-desc: I've run out of patience waiting for the stable release, so I tried the experimental version anyway
+desc: I've run out of my patience waiting for the stable release, so I tried the experimental version anyway
 tags:
   - svelte
   - website
