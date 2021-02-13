@@ -11,26 +11,27 @@ div {
 }
 </style>
 
-<svelte:head
-  ><script>
-  // set dark mode correctly before everythings get rendered
-  // thanks https://github.com/pveyes
-  try {
-    // prettier-ignore
-    const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
-    let preference
+<svelte:head>
+  <script>
+    // set dark mode correctly before everythings get rendered
+    // thanks https://github.com/pveyes
+    try {
+      // prettier-ignore
+      const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
+      let preference
 
-    // prettier-ignore
-    if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
-        else preference = isDarkMode ? "dark" : "light"
+      // prettier-ignore
+      if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
+      else preference = isDarkMode ? "dark" : "light"
 
-    // prettier-ignore
-    if (preference) document.documentElement.setAttribute("data-theme", preference)
-  } catch (err) {
-    console.log(err)
-  }
-  </script></svelte:head
->
+      // prettier-ignore
+      if (preference) document.documentElement.setAttribute("data-theme", preference)
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+</svelte:head>
+
 <Navbar {segment} />
 <main>
   <Loading />

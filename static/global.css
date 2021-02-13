@@ -12,6 +12,7 @@
     --filter-invert: invert(0);
   }
 
+  /* set dark colours if user overrides it */
   [data-theme="dark"] {
     --color-main-accent: #f23c4a;
     --color-main-bg: #171c26;

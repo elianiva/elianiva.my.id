@@ -280,7 +280,11 @@
   />
 </svelte:head>
 
-<SEO {title} {desc} thumbnail={`${data.siteUrl}/project/${currentSlug}/cover.webp`} />
+<SEO
+  {title}
+  {desc}
+  thumbnail={`${data.siteUrl}/project/${currentSlug}/cover.webp`}
+/>
 
 <section class="project">
   <div class="project__cover">
