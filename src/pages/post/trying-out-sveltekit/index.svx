@@ -85,9 +85,9 @@ At first, I don't know how Snowpack works at all. After a little bit of reading 
 I also did this to `tsconfig.json` so I get that sweet path completion from tsserver.
 
 ## Dynamic Pages
-For the job detail page, I use the Svelte-Kit dynamic page feature. You can name it `[slug].svelte`, you'll have access to the `slug` variable which you can then use to fetch specific data for that page.
+For the job detail page, I use the Svelte-Kit dynamic page feature. You make a file with `[slug].svelte` as its name and you'll have access to the `slug` variable which you can then use to fetch specific data for that page.
 
-The `slug` page could be whatever you want. So if you have `pages/job/[slug]` So if you have `pages/job/[slug].svelte` and you go to `/job/foobar`, you'll have `foobar` as a `slug` value. In my case, it's a long random ID that I can use to fetch a specific job detail.
+The `slug` page could be whatever you want. So if you have `pages/job/[id]` So if you have `pages/job/[id].svelte` and you go to `/job/foobar`, you'll have `foobar` as the `id` value. In my case, it's a long random ID that I can use to fetch a specific job detail.
 
 Github Job API gave me an HTML string that I could directly use using `@html` in Svelte, I don't think this is harmful since it's Github API after all, but you need to be really careful when using `@html` and receiving an input from the user since it opens a possibility for XSS.
 
