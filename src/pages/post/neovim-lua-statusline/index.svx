@@ -25,7 +25,7 @@ that is it can now use Lua for its config. Quite a while ago I wrote [this post]
 We will write our file inside `~/.config/nvim/Lua/` so it will get picked up by Neovim. Let's call it `statusline.lua` inside that path.
 
 ## Our first function
-Let's make our first function, but before that, let's prepare a global variable for our statusline to expose it to `v:lua`. You can call it whatever you want, usually it's called `M`, but I'll call it `Statusline`. Our current file will look something like this.
+Let's make our first function, but before that, let's prepare a global variable for our statusline to expose it to `v:lua` and an alias for `vim.fn` to make it shorter. You can call it whatever you want, usually it's called `M`, but I'll call it `Statusline`. Our current file will look something like this.
 
 ```lua
 Statusline = {}
