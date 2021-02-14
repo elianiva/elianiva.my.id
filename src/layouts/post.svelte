@@ -181,7 +181,7 @@
   border-radius: 0;
   background: none;
   box-shadow: none;
-  color: #e4e4e4;
+  color: var(--color-main-text);
 }
 
 .post__content :global(ul) {

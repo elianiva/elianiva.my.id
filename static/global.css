@@ -10,6 +10,7 @@
     --color-thin: #b0b0b0;
     --color-shine: #000000;
     --filter-invert: invert(0);
+    --filter-darken: brightness(0.75) saturate(1.2);
   }
 
   /* set dark colours if user overrides it */
@@ -24,6 +25,7 @@
     --color-thin: #6b7a99;
     --color-shine: #ffffff;
     --filter-invert: invert(100%);
+    --filter-darken: brightness(1) saturate(1);
   }
 
   [data-theme="dark"] img {
@@ -43,6 +45,7 @@
     --color-thin: #6b7a99;
     --color-shine: #ffffff;
     --filter-invert: invert(100%);
+    --filter-darken: brightness(1) saturate(1);
   }
 
   /* set light colours if user overrides it */
@@ -57,6 +60,7 @@
     --color-thin: #b0b0b0;
     --color-shine: #000000;
     --filter-invert: invert(0);
+    --filter-darken: brightness(0.75) saturate(1.2);
   }
 
   [data-theme="light"] img {

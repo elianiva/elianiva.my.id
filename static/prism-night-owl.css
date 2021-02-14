@@ -1,6 +1,6 @@
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #d6deeb;
+  color: var(--color-main-text);
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
@@ -43,8 +43,8 @@ pre[class*="language-"] {
 }
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  color: #fff;
-  background: #011627;
+  color: var(--color-main-text);
+  background: var(--color-alt-bg);
 }
 :not(pre) > code[class*="language-"] {
   padding: 0.1em;
@@ -56,47 +56,58 @@ pre[class*="language-"] {
 .token.prolog {
   color: #637777;
   font-style: italic;
+  filter: var(--filter-darken);
 }
 .token.punctuation {
   color: #c792ea;
+  filter: var(--filter-darken);
 }
 .namespace {
   color: #b2ccd6;
+  filter: var(--filter-darken);
 }
 .token.deleted {
   color: rgba(239, 83, 80, 0.56);
   font-style: italic;
+  filter: var(--filter-darken);
 }
 .token.property,
 .token.symbol {
   color: #80cbc4;
+  filter: var(--filter-darken);
 }
 .token.keyword,
 .token.operator,
 .token.tag {
   color: #7fdbca;
+  filter: var(--filter-darken);
 }
 .token.boolean {
   color: #ff5874;
+  filter: var(--filter-darken);
 }
 .token.number {
   color: #f78c6c;
+  filter: var(--filter-darken);
 }
 .token.builtin,
 .token.char,
 .token.constant,
 .token.function {
   color: #82aaff;
+  filter: var(--filter-darken);
 }
 .token.doctype,
 .token.selector {
   color: #c792ea;
   font-style: italic;
+  filter: var(--filter-darken);
 }
 .token.attr-name,
 .token.inserted {
   color: #addb67;
   font-style: italic;
+  filter: var(--filter-darken);
 }
 .language-css .token.string,
 .style .token.string,
@@ -104,16 +115,18 @@ pre[class*="language-"] {
 .token.string,
 .token.url {
   color: #addb67;
+  filter: var(--filter-darken);
 }
 .token.atrule,
 .token.attr-value,
 .token.class-name {
   color: #ffcb8b;
+  filter: var(--filter-darken);
 }
 .token.important,
 .token.regex,
 .token.variable {
-  color: #d6deeb;
+  color: var(--color-main-text);
 }
 .token.bold,
 .token.important {
