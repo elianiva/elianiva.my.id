@@ -10,7 +10,18 @@
     --color-thin: #b0b0b0;
     --color-shine: #000000;
     --filter-invert: invert(0);
-    --filter-darken: brightness(0.75) saturate(1.2);
+    --color-code-selection: rgba(211, 237, 243, 0.95);
+    --prism-comment: #989fb1;
+    --prism-punctuation: #d6438a;
+    --prism-namespace: #0c969b;
+    --prism-symbol: #0c969b;
+    --prism-keyword: #2AA298;
+    --prism-boolean: #bc5454;
+    --prism-number: #aa0982;
+    --prism-builtin: #4876d6;
+    --prism-selector: #994cc3;
+    --prism-inserted: #08916a;
+    --prism-classname: #111111;
   }
 
   /* set dark colours if user overrides it */
@@ -25,7 +36,18 @@
     --color-thin: #6b7a99;
     --color-shine: #ffffff;
     --filter-invert: invert(100%);
-    --filter-darken: brightness(1) saturate(1);
+    --color-code-selection: rgba(29, 59, 83, 0.90)
+    --prism-comment: #637777;
+    --prism-punctuation: #c792ea;
+    --prism-namespace: #b2ccd6;
+    --prism-symbol: #80cbc4;
+    --prism-keyword: #7fdbca;
+    --prism-boolean: #ff5874;
+    --prism-number: #f78c6c;
+    --prism-builtin: #82aaff;
+    --prism-selector: #c792ea;
+    --prism-inserted: #addb67;
+    --prism-classname: #ffcb8b;
   }
 
   [data-theme="dark"] img {
@@ -45,7 +67,18 @@
     --color-thin: #6b7a99;
     --color-shine: #ffffff;
     --filter-invert: invert(100%);
-    --filter-darken: brightness(1) saturate(1);
+    --color-code-selection: rgba(29, 59, 83, 0.90);
+    --prism-comment: #637777;
+    --prism-punctuation: #c792ea;
+    --prism-namespace: #b2ccd6;
+    --prism-symbol: #80cbc4;
+    --prism-keyword: #7fdbca;
+    --prism-boolean: #ff5874;
+    --prism-number: #f78c6c;
+    --prism-builtin: #82aaff;
+    --prism-selector: #c792ea;
+    --prism-inserted: #addb67;
+    --prism-classname: #ffcb8b;
   }
 
   /* set light colours if user overrides it */
@@ -60,11 +93,18 @@
     --color-thin: #b0b0b0;
     --color-shine: #000000;
     --filter-invert: invert(0);
-    --filter-darken: brightness(0.75) saturate(1.2);
-  }
-
-  [data-theme="light"] img {
-    filter: brightness(1) contrast(1);
+    --color-code-selection: rgba(211, 237, 243, 0.95);
+    --prism-comment: #989fb1;
+    --prism-punctuation: #d6438a;
+    --prism-namespace: #0c969b;
+    --prism-symbol: #0c969b;
+    --prism-keyword: #2AA298;
+    --prism-boolean: #bc5454;
+    --prism-number: #aa0982;
+    --prism-builtin: #4876d6;
+    --prism-selector: #994cc3;
+    --prism-inserted: #08916a;
+    --prism-classname: #111111;
   }
 }
 
