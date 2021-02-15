@@ -9,7 +9,7 @@ tags:
 [gitsigns-link]: https://github.com/lewis6991/gitsigns.nvim
 [nerdfont-link]: https://nerdfonts.com
 [alacritty-link]: https://github.com/alacritty/alacritty
-[short-circuit]: https://en.wikipedia.org/wiki/Short_circuit
+[short-circuit]: https://en.m.wikipedia.org/wiki/Short-circuit_evaluation
 [nvim-web-devicons]: https://github.com/kyazdani42/nvim-web-devicons
 [lsp-status]: https://github.com/nvim-lua/lsp-status.nvim
 [bufferline-lua]: https://github.com/elianiva/dotfiles/blob/dcac8bce32b521e94da8c165426f948ee7507f13/nvim/.config/nvim/lua/plugin/_bufferline.lua
