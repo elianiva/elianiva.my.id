@@ -118,18 +118,27 @@
 }
 
 .post__content :global(pre) {
-  border-radius: 0.5rem;
   scrollbar-color: var(--color-thin) var(--color-special-bg);
-  border: 0.125rem var(--color-borders) solid;
-}
-
-.post__content :global(pre::-webkit-scrollbar-thumb) {
-  background-color: var(--color-thin);
+  border: 0.0625rem var(--color-borders) solid;
 }
 
 .post__content :global(pre::-webkit-scrollbar) {
-  background-color: var(--color-special-bg);
+  background-color: var(--color-alt-bg);
   height: 0.5rem;
+}
+
+.post__content :global(pre:hover::-webkit-scrollbar) {
+  background-color: var(--color-special-bg);
+  cursor: pointer;
+}
+
+.post__content :global(pre::-webkit-scrollbar-thumb) {
+  background-color: var(--color-alt-bg);
+  cursor: pointer;
+}
+
+.post__content :global(pre:hover::-webkit-scrollbar-thumb) {
+  background-color: var(--color-thin);
 }
 
 .post__content :global(a) {

@@ -2,7 +2,6 @@
 .card {
   overflow: hidden;
   border: 0.0625rem var(--color-borders) solid;
-  border-radius: 0.25rem;
   text-align: left;
   background-color: var(--color-alt-bg);
   z-index: 2;
@@ -42,7 +41,6 @@
   justify-self: start;
   font-size: 0.8rem;
   color: var(--color-alt-text);
-  border-radius: 0.25rem;
 }
 
 .card__date :global(.date__icon) {

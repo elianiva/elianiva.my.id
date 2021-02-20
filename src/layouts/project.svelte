@@ -17,7 +17,6 @@
 }
 
 .project__wrapper {
-  border-radius: 0.5rem;
   overflow: hidden;
   border: 0.0625rem var(--color-special-bg) solid;
 }
@@ -94,7 +93,6 @@
   width: 100%;
   padding: 1rem;
   border: 0.0625rem var(--color-borders) solid;
-  border-radius: 0.5rem;
 }
 
 .stack__title {
@@ -201,7 +199,6 @@
   font-family: "JetBrains Mono", monospace;
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
   font-size: 1rem;
 }
 

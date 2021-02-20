@@ -2,7 +2,6 @@
 .card {
   overflow: hidden;
   border: 0.0625rem var(--color-borders) solid;
-  border-radius: 0.25rem;
   text-align: left;
   background-color: var(--color-alt-bg);
 }
