@@ -360,24 +360,43 @@
   </div>
   <main class="post__content" bind:this={content}>
     <slot />
+    <h1>Comments</h1>
+    {#if $theme === "dark"}
+      <div>
+        <script
+          src="https://utteranc.es/client.js"
+          repo="elianiva/elianiva.me"
+          issue-term="pathname"
+          label="Comments"
+          theme="dark-blue"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </div>
+    {:else}
+      <div>
+        <script
+          src="https://utteranc.es/client.js"
+          repo="elianiva/elianiva.me"
+          issue-term="pathname"
+          label="Comments"
+          theme="github-light"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </div>
+    {/if}
   </main>
-  <script
-    src="https://utteranc.es/client.js"
-    repo="elianiva/elianiva.me"
-    issue-term="pathname"
-    label="Comments"
-    theme="dark-blue"
-    crossorigin="anonymous"
-    async
-  ></script>
 </section>
 <ProgressButton />
 
 <script>
+// TODO: change utterance theme to github-dark once the new version came out
 import { onMount } from "svelte"
 import { stores } from "@sapper/app"
 import SEO from "@/components/SEO.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
+import { theme } from "@/utils/theme"
 import dayjs from "dayjs"
 export let title, date, desc, tags
 
