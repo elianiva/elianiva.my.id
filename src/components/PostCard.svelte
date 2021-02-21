@@ -13,7 +13,6 @@
   padding: 1rem;
   display: grid;
   grid-template-rows: 3.5rem 2rem 5.5rem 1fr;
-  transition: all ease-out 0.2s;
 }
 
 .card__title {
@@ -22,6 +21,7 @@
   font-weight: 600;
   line-height: 1.5em;
   text-transform: capitalize;
+  transition: all ease-out 0.1s;
 }
 
 .card__desc {
@@ -80,7 +80,7 @@
 }
 
 @media only screen and (min-width: 480px) {
-  .card__details:hover {
+  .card__details:hover .card__title{
     color: var(--color-main-accent);
   }
 }
