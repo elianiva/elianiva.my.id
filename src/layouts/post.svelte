@@ -361,6 +361,15 @@
   <main class="post__content" bind:this={content}>
     <slot />
   </main>
+  <script
+    src="https://utteranc.es/client.js"
+    repo="elianiva/elianiva.me"
+    issue-term="pathname"
+    label="Comments"
+    theme="dark-blue"
+    crossorigin="anonymous"
+    async
+  ></script>
 </section>
 <ProgressButton />
 
