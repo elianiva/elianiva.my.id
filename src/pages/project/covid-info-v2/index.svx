@@ -1,7 +1,7 @@
 ---
 title: Covid Info v2
 date: 2021-01-07
-desc: A simple app to get current covid data. Made with React.
+desc: A remake of my previous app that shows the current COVID19 data. Made with Next, Typescript, and Twind
 demo: https://covid-info-v2.vercel.app
 source: https://github.com/elianiva/covid-info-v2
 layout: project
