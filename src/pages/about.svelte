@@ -242,8 +242,7 @@
       <a href="https://neovim.io" class="about__link" rel="norel noreferrer"
         >Neovim</a
       >. I've been using it fulltime since around Q4 of 2019. It's actually my
-      first text editor that I feel comfortable with and do something serious
-      hence I can't relate when people say "VIM has a high learning curve" :p I
+      first text editor that I feel comfortable with and do something serious. I
       started using it when I got my first laptop. After using it for quite a
       while my config is has grown quite a lot. It is now written in Lua and is
       quite lengthy. I've written some post explaining some of my config if
