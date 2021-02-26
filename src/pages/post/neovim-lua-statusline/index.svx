@@ -53,6 +53,19 @@ local M = {}
 This first function is going to be a helper function that will return `true` of `false` based on the current window width. I use this to decide whether or not a component should display a full or a truncated version of it.
 
 ```lua
+M.trunc_width = setmetatable({
+  -- You can adjust these values to your liking, if you want
+  -- I promise this will all makes sense later :)
+  mode       = 80,
+  git_status = 90,
+  filename   = 140,
+  line_col   = 60,
+}, {
+  __index = function()
+    return 80 -- handle edge cases, if there's any
+  end
+})
+
 M.is_truncated = function(_, width)
   local current_width = api.nvim_win_get_width(0)
   return current_width < width
@@ -60,6 +73,8 @@ end
 ```
 
 This function calls `vim.api.nvim_win_get_width` for the current active window which will return its width. This function will return `true` if the current window width is less than the passed argument thus telling a component to truncate its content.
+
+**UPDATE(26-02-2021):** Thanks @Evgeni for the suggestion on creating a table for each section truncation width, it's easier to keep track of which component has how many width.
 
 ## Highlight groups
 I have this table that contains a string for the highlight group. I can then concatenate one of its items with a component and apply the highlight group for that component.
@@ -136,44 +151,53 @@ I use the arrow separator, either one is fine. It will look empty here because m
 The first component for my statusline is the one that shows the current mode.
 
 ```lua
-M.get_current_mode = function()
-    local modes = {
-    ['n']  = {'Normal', 'N'};
-    ['no'] = {'N·Pending', 'N·P'} ;
-    ['v']  = {'Visual', 'V' };
-    ['V']  = {'V·Line', 'V·L' };
-    [''] = {'V·Block', 'V·B'};
-    ['s']  = {'Select', 'S'};
-    ['S']  = {'S·Line', 'S·L'};
-    [''] = {'S·Block', 'S·B'};
-    ['i']  = {'Insert', 'I'};
-    ['ic'] = {'Insert', 'I'};
-    ['R']  = {'Replace', 'R'};
-    ['Rv'] = {'V·Replace', 'V·R'};
-    ['c']  = {'Command', 'C'};
-    ['cv'] = {'Vim·Ex ', 'V·E'};
-    ['ce'] = {'Ex ', 'E'};
-    ['r']  = {'Prompt ', 'P'};
-    ['rm'] = {'More ', 'M'};
-    ['r?'] = {'Confirm ', 'C'};
-    ['!']  = {'Shell ', 'S'};
-    ['t']  = {'Terminal ', 'T'};
-  }
+M.modes = setmetatable({
+  ['n']  = {'Normal', 'N'};
+  ['no'] = {'N·Pending', 'N·P'} ;
+  ['v']  = {'Visual', 'V' };
+  ['V']  = {'V·Line', 'V·L' };
+  [''] = {'V·Block', 'V·B'};
+  ['s']  = {'Select', 'S'};
+  ['S']  = {'S·Line', 'S·L'};
+  [''] = {'S·Block', 'S·B'};
+  ['i']  = {'Insert', 'I'};
+  ['ic'] = {'Insert', 'I'};
+  ['R']  = {'Replace', 'R'};
+  ['Rv'] = {'V·Replace', 'V·R'};
+  ['c']  = {'Command', 'C'};
+  ['cv'] = {'Vim·Ex ', 'V·E'};
+  ['ce'] = {'Ex ', 'E'};
+  ['r']  = {'Prompt ', 'P'};
+  ['rm'] = {'More ', 'M'};
+  ['r?'] = {'Confirm ', 'C'};
+  ['!']  = {'Shell ', 'S'};
+  ['t']  = {'Terminal ', 'T'};
+}, {
+  __index = function()
+      return {'Unknown', 'U'} -- handle edge cases
+  end
+})
 
+M.get_current_mode = function()
   local current_mode = api.nvim_get_mode().mode
 
-  if self:is_truncated(80) then
+  if self:is_truncated(self.trunc_width.mode) then
     return string.format(' %s ', modes[current_mode][2]):upper()
   end
+
   return string.format(' %s ', modes[current_mode][1]):upper()
 end
 ```
 
-You probably notice that `V·Block` and `S·Block` look empty but they're not. It's a special character of `C-V` and `C-S`. If you go to (Neo)vim and press `C-V` in insert mode twice, it will insert something like `^V`. It's not the same as `^V`, I thought they were the same but they're not.
+You probably notice that `V·Block` and `S·Block` look empty but they're not. It's a special character of `C-V` and `C-S`. If you go to (Neo)vim and press `C-V` in insert mode twice, it will insert something like `^V`. It's not the same as `^V`, I thought they're the same but they're not.
 
 What that code does is creates a key-value pair table with string as a key and a table as its value. I use the table's key to match what `vim.api.nvim_get_mode().mode` returns.
 
-Depending on the current window width, it will return different output. For example, if my current window isn't wide enough, it will return `N` instead of `Normal`. If you want to change when it will start to change then adjust the argument that is passed to the `is_truncated` function. I use `80` because that's the sweet spot for me.
+Depending on the current window width, it will return different output. For example, if my current window isn't wide enough, it will return `N` instead of `Normal`. If you want to change when it will start to change then adjust the argument that is passed to the `is_truncated` function. Remember that `trunc_width` table from earlier? We use `mode` value here so that my Mode component will get truncated if my window width is less than `80`.
+
+**UPDATE(26-02-2021):** Thanks to @Evgeni for pointing me out, I moved the `mode` table outside of the function because previously I was putting it inside a function which will get created every time the function is executed.
+
+**UPDATE(26-02-2021):** Also, since I moved from `vim.fn.mode` to `vim.api.nvim_get_mode().mode`, there are *a lot* of missing keys on my `mode` table; Hence a metatable is used so it will give me an `Unknown` mode instead of throwing an error when there's no matching key on the table. (Also thanks @Evgeni :)
 
 ## Git Status Component
 I use [gitsigns.nvim][gitsigns-link] to show the git hunk status on `signcolumn`. It provides some details like how many lines have been changed, added, or removed. It also provides the branch name. So, I'd like to integrate this functionality into my statusline.
@@ -184,7 +208,7 @@ M.get_git_status = function(self)
   local signs = vim.b.gitsigns_status_dict or {head = '', added = 0, changed = 0, removed = 0}
   local is_head_empty = signs.head ~= ''
 
-  if self:is_truncated(90) then
+  if self:is_truncated(self.trunc_width.git_status) then
     return is_head_empty and string.format('  %s ', signs.head or '') or ''
   end
 
@@ -212,7 +236,7 @@ My next component is a filename component. I'd like to be able to see the filena
 
 ```lua
 M.get_filename = function(self)
-  if self:is_truncated(140) then return " %<%f " end
+  if self:is_truncated(self.trunc_width.filename) then return " %<%f " end
   return " %<%F "
 end
 ```
@@ -244,7 +268,7 @@ Even though I have `number` and `relativenumber` turned on, I'd like to have thi
 
 ```lua
 M.get_line_col = function(self)
-  if self:is_truncated(60) then return ' %l:%c ' end
+  if self:is_truncated(self.trunc_width.line_col) then return ' %l:%c ' end
   return ' Ln %l, Col %c '
 end
 ```
@@ -268,7 +292,7 @@ M.get_lsp_diagnostic = function(self)
     result[k] = vim.lsp.diagnostic.get_count(0, level)
   end
 
-  if self:is_truncated(120) then
+  if self:is_truncated(self.trunc_width.diagnostic) then
     return ''
   else
     return string.format(
@@ -394,49 +418,64 @@ M.colors = {
   line_col_alt  = '%#LineColAlt#',
 }
 
+M.trunc_width = setmetatable({
+  mode       = 80,
+  git_status = 90,
+  filename   = 140,
+  line_col   = 60,
+}, {
+  __index = function()
+      return 80
+  end
+})
+
 M.is_truncated = function(_, width)
   local current_width = api.nvim_win_get_width(0)
   return current_width < width
 end
 
-M.get_current_mode = function(self)
-  local modes = {
-    ['n']  = {'Normal', 'N'};
-    ['no'] = {'N·Pending', 'N·P'} ;
-    ['v']  = {'Visual', 'V' };
-    ['V']  = {'V·Line', 'V·L' };
-    [''] = {'V·Block', 'V·B'}; -- this is not ^V, but it's , they're different
-    ['s']  = {'Select', 'S'};
-    ['S']  = {'S·Line', 'S·L'};
-    [''] = {'S·Block', 'S·B'}; -- same with this one, it's not ^S but it's 
-    ['i']  = {'Insert', 'I'};
-    ['ic'] = {'Insert', 'I'};
-    ['R']  = {'Replace', 'R'};
-    ['Rv'] = {'V·Replace', 'V·R'};
-    ['c']  = {'Command', 'C'};
-    ['cv'] = {'Vim·Ex ', 'V·E'};
-    ['ce'] = {'Ex ', 'E'};
-    ['r']  = {'Prompt ', 'P'};
-    ['rm'] = {'More ', 'M'};
-    ['r?'] = {'Confirm ', 'C'};
-    ['!']  = {'Shell ', 'S'};
-    ['t']  = {'Terminal ', 'T'};
-  }
+M.modes = setmetatable({
+  ['n']  = {'Normal', 'N'};
+  ['no'] = {'N·Pending', 'N·P'} ;
+  ['v']  = {'Visual', 'V' };
+  ['V']  = {'V·Line', 'V·L' };
+  [''] = {'V·Block', 'V·B'}; -- this is not ^V, but it's , they're different
+  ['s']  = {'Select', 'S'};
+  ['S']  = {'S·Line', 'S·L'};
+  [''] = {'S·Block', 'S·B'}; -- same with this one, it's not ^S but it's 
+  ['i']  = {'Insert', 'I'};
+  ['ic'] = {'Insert', 'I'};
+  ['R']  = {'Replace', 'R'};
+  ['Rv'] = {'V·Replace', 'V·R'};
+  ['c']  = {'Command', 'C'};
+  ['cv'] = {'Vim·Ex ', 'V·E'};
+  ['ce'] = {'Ex ', 'E'};
+  ['r']  = {'Prompt ', 'P'};
+  ['rm'] = {'More ', 'M'};
+  ['r?'] = {'Confirm ', 'C'};
+  ['!']  = {'Shell ', 'S'};
+  ['t']  = {'Terminal ', 'T'};
+}, {
+  __index = function()
+      return {'Unknown', 'U'} -- handle edge cases
+  end
+})
 
+M.get_current_mode = function(self)
   local current_mode = api.nvim_get_mode().mode
 
-  if self:is_truncated(80) then
-    return string.format(' %s ', modes[current_mode][2]):upper()
+  if self:is_truncated(self.trunc_width.mode) then
+    return string.format(' %s ', self.modes[current_mode][2]):upper()
   end
-  return string.format(' %s ', modes[current_mode][1]):upper()
+  return string.format(' %s ', self.modes[current_mode][1]):upper()
 end
 
 M.get_git_status = function(self)
-  -- use fallback because it doesn't set this variable on initial `BufEnter`
+  -- use fallback because it doesn't set this variable on the initial `BufEnter`
   local signs = vim.b.gitsigns_status_dict or {head = '', added = 0, changed = 0, removed = 0}
   local is_head_empty = signs.head ~= ''
 
-  if self:is_truncated(90) then
+  if self:is_truncated(self.trunc_width.git_status) then
     return is_head_empty and string.format('  %s ', signs.head or '') or ''
   end
 
@@ -449,7 +488,7 @@ M.get_git_status = function(self)
 end
 
 M.get_filename = function(self)
-  if self:is_truncated(140) then return " %<%f " end
+  if self:is_truncated(self.trunc_width.filename) then return " %<%f " end
   return " %<%F "
 end
 
@@ -463,7 +502,7 @@ M.get_filetype = function()
 end
 
 M.get_line_col = function(self)
-  if self:is_truncated(60) then return ' %l:%c ' end
+  if self:is_truncated(self.trunc_width.line_col) then return ' %l:%c ' end
   return ' Ln %l, Col %c '
 end
 
