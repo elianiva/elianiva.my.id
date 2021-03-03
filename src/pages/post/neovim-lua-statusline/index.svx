@@ -373,7 +373,7 @@ Statusline = setmetatable(M, {
   end
 })
 
-vim.api.nvim_exec([[
+api.nvim_exec([[
   augroup Statusline
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')
@@ -548,7 +548,7 @@ Statusline = setmetatable(M, {
 
 -- set statusline
 -- TODO: replace this once we can define autocmd using lua
-vim.api.nvim_exec([[
+api.nvim_exec([[
   augroup Statusline
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')
