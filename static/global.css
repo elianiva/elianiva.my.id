@@ -36,7 +36,7 @@
     --color-thin: #6b7a99;
     --color-shine: #ffffff;
     --filter-invert: invert(100%);
-    --color-code-selection: rgba(29, 59, 83, 0.90)
+    --color-code-selection: rgba(29, 59, 83, 0.90);
     --prism-comment: #637777;
     --prism-punctuation: #c792ea;
     --prism-namespace: #b2ccd6;
