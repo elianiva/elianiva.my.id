@@ -6,6 +6,11 @@ tags:
   - neovim
 ---
 
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
+
 [gitsigns-link]: https://github.com/lewis6991/gitsigns.nvim
 [nerdfont-link]: https://nerdfonts.com
 [alacritty-link]: https://github.com/alacritty/alacritty
@@ -74,7 +79,11 @@ end
 
 This function calls `vim.api.nvim_win_get_width` for the current active window which will return its width. This function will return `true` if the current window width is less than the passed argument thus telling a component to truncate its content.
 
-**UPDATE(26-02-2021):** Thanks @Evgeni for the suggestion on creating a table for each section truncation width, it's easier to keep track of which component has how many width.
+<Update date="26-02-2021">
+
+Thanks @Evgeni for the suggestion on creating a table for each section truncation width, it's easier to keep track of which component has how many width.
+
+</Update>
 
 ## Highlight groups
 I have this table that contains a string for the highlight group. I can then concatenate one of its items with a component and apply the highlight group for that component.
@@ -145,7 +154,11 @@ local active_sep = 'blank'
 
 I use the arrow separator, either one is fine. It will look empty here because my website doesn't use Nerdfont.
 
-**UPDATE(30-01-2021):** I now use the blank separator.
+<Update date="30-01-2021">
+
+I now use the blank separator.
+
+</Update>
 
 ## Mode Component
 The first component for my statusline is the one that shows the current mode.
@@ -195,9 +208,14 @@ What that code does is creates a key-value pair table with string as a key and a
 
 Depending on the current window width, it will return different output. For example, if my current window isn't wide enough, it will return `N` instead of `Normal`. If you want to change when it will start to change then adjust the argument that is passed to the `is_truncated` function. Remember that `trunc_width` table from earlier? We use `mode` value here so that my Mode component will get truncated if my window width is less than `80`.
 
-**UPDATE(26-02-2021):** Thanks to @Evgeni for pointing me out, I moved the `mode` table outside of the function because previously I was putting it inside a function which will get created every time the function is executed.
+<Update date="26-02-2021">
 
-**UPDATE(26-02-2021):** Also, since I moved from `vim.fn.mode` to `vim.api.nvim_get_mode().mode`, there are *a lot* of missing keys on my `mode` table; Hence a metatable is used so it will give me an `Unknown` mode instead of throwing an error when there's no matching key on the table. (Also thanks @Evgeni :)
+Thanks to @Evgeni for pointing me out, I moved the `mode` table outside of the function because previously I was putting it inside a function which will get created every time the function is executed.
+<br />
+Also, since I moved from `vim.fn.mode` to `vim.api.nvim_get_mode().mode`, there are *a lot* of missing keys on my `mode` table; Hence a metatable is used so it will give me an `Unknown` mode instead of throwing an error when there's no matching key on the table. (Also thanks @Evgeni :)
+
+</Update>
+
 
 ## Git Status Component
 I use [gitsigns.nvim][gitsigns-link] to show the git hunk status on `signcolumn`. It provides some details like how many lines have been changed, added, or removed. It also provides the branch name. So, I'd like to integrate this functionality into my statusline.
@@ -306,7 +324,11 @@ end
 
 I got this section from [this repo][lsp-status] with some modification. It will be hidden when the current window width is less than `120`. I don't personally use this because I use a small monitor.
 
-**UPDATE(30-01-2021):** I display this at my `tabline`, I took it from [cooper-anderson's][cooper-ampersand] config and heavily modify it. [Here's][bufferline-lua] the relevant file for that. It will show the available diagnostics at the top right corner of the screen and update them in real-time.
+<Update date="30-01-2021">
+
+I display this at my `tabline` instead, I took it from [cooper-anderson's][cooper-ampersand] config and heavily modify it. [Here's][bufferline-lua] the relevant file for that. It will show the available diagnostics at the top right corner of the screen and update them in real-time.
+
+</Update>
 
 # Different Statusline
 I want to have 3 different statusline for different states which are *Active* for the currently active window, *Inactive* for the inactive window, and *Explorer* for the file explorer window.

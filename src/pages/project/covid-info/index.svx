@@ -15,4 +15,12 @@ stack:
 
 I'm planning on remaking this if I got time for it using Svelte.
 
-**(01-05-2021) UPDATE:** I've made a remake for this using NextJS. I didn't choose Svelte because I want to explore more stuff about NextJS and I've done quite a bit of Svelte recently, so doing something different is nice. You can check it out [here](https://elianiva.me/project/covid-info-v2)
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
+<Update date="01-05-2021">
+
+I've made a remake using NextJS. I didn't choose Svelte because I want to explore more stuff about NextJS and I've done quite a bit of Svelte recently, so doing something different is nice. You can check it out [here](https://elianiva.me/project/covid-info-v2)
+
+</Update>

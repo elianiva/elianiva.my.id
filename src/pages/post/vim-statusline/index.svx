@@ -6,6 +6,10 @@ tags:
   - neovim
 ---
 
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
 # Table of Content
 
 # Introduction
@@ -13,7 +17,11 @@ Hi everyone! In this post, I will talk about making your own custom statusline i
 
 The reason why I made this post is also because I want to change my statusline. While my current statusline looks eye candy (to me at least), it takes a whole lot of space. So, I want to simplifiy it and why not make that process as a post. Let's get into it!
 
-(29-11-2020) UPDATE: I wrote a better version of this in Lua which you can read [here](https://elianiva.me/post/neovim-lua-statusline)
+<Update date="29-11-2020">
+
+I wrote a better version of this in Lua which you can read [here](https://elianiva.me/post/neovim-lua-statusline)
+
+</Update>
 
 # Prerequisite
 First of all, we need to prepare a few things :
@@ -422,7 +430,11 @@ Here's what it looks like when it's finished
 It doesn't look like an eye candy, but it doesn't take a whole lotta space.
 If you want the old one, [Here it is](https://github.com/irrellia/dotfiles/blob/0c1ca17af07d7fdf72577a44d2a1e8bbab855d93/.config/nvim/modules/statusline.vim). Just take what you need from that file, it's not that hard to understand ;)
 
-(15-10-2020) UPDATE: Welp, I accidentally lost my old statusline because I `git push --force` the other day. Sorry
+<Update date="15-10-2020">
+
+Welp, I accidentally lost my old statusline because I `git push --force` the other day. Sorry :p
+
+</Update>
 
 # Conclusion
 Making a custom statusline of your own is quite a lengthy process. But, I think it's a fun process nonetheless. If you want to tinker with it even more, just do it! It's a repetitive process once you know the basic. I'm not a vim expert myself, so sorry if I've missed something in this post. Alright then, I'm gonna end this post right here. If you have any question regarding to this post, feel free to hit me up! See ya!

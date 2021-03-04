@@ -7,6 +7,10 @@ tags:
   - japanese
 ---
 
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
 # Table of Content
 
 # Introduction
@@ -90,7 +94,11 @@ fcitx &
 
 If you put it on `~/.xprofile`, it will get executed when you log in regardless of your DE/WM (this isn't the case if you're using a display manager like [slim](https://wiki.archlinux.org/index.php/SLiM)). After doing that, make sure you restart your DE/WM.
 
-**(01-01-2021) UPDATE:** I now use SLIM which doesn't execute `~/.xprofile`, it executes `~/.xinitrc` so I just move it there.
+<Update date="01-01-2021">
+
+I now use SLIM which doesn't execute `~/.xprofile`, it executes `~/.xinitrc` so I just move it there.
+
+</Update>
 
 Fcitx is toggleable using a keybind that you can change from the `fcitx-confgitool` which looks like this.
 
@@ -108,7 +116,12 @@ It looks like an autocomplete from a text editor. The way it works is if you wri
 For example, if you write `watashi` then it will show `わたし` and if you continue pressing `TAB` it will be the kanji form of it which is `私`. This also applies to `katakana`.
 
 ## Tips
-**(01-01-2021) UPDATE: **If you don't like the default light theme, you can change the appearance of it by changing the skin. Click the `fcitx` icon on you systray, under the skin section, there should be 3 default theme. I personally use the dark one because I'm a big fan of dark mode.
+
+<Update date="01-01-2021">
+
+If you don't like the default light theme, you can change the appearance of it by changing the skin. Click the `fcitx` icon on you systray, under the skin section, there should be 3 default theme. I personally use the dark one because I'm a big fan of dark mode.
+
+</Update>
 
 You might want to install `fcitx-qt` to be able to use it inside QT app. You might also need to add `IBUS_USE_PORTAL=1` in `~/.pam_environment` to make it work inside Telegram Desktop. I didn't need to add this when I was using KDE Plasma but I need to add it now because I use AwesomeWM.
 

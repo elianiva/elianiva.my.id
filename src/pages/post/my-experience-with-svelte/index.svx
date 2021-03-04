@@ -7,6 +7,10 @@ tags:
   - website
 ---
 
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
 # Table of Content
 
 # Introduction
@@ -240,7 +244,11 @@ Well, I fell in love with this *language*. It's so simple yet it's so good. Sorr
 
 I want to rebuild this blog using [Sapper](https://sapper.dev) + [MDSveX](https://mdsvex.com/) in the future. Don't get me wrong, [Gatsby](https://www.gatsbyjs.com/) is great. I just want to try out something new. <i style="color: #eaeaea">Svelte's bundle size is also smaller compared to React, that's also why ツ</i>
 
-(01-11-2020) UPDATE: If you're reading this then you're currently at my 'new' website that I mentioned earlier =)
+<Update date="01-11-2020">
+
+If you're reading this then you're currently at my 'new' website that I mentioned earlier =)
+
+</Update>
 
 Thanks for reading this! You should definitely try Svelte, you wouldn't regret it. Anyway, have a good day folks! =)
 

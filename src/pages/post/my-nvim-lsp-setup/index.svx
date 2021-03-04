@@ -6,6 +6,10 @@ tags:
   - neovim
 ---
 
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
 # Table of Content
 
 # What is LSP and Why?
@@ -153,7 +157,9 @@ nvim_lsp.sumneko_lua.setup{
 }
 ```
 
-**(04-01-2021) UPDATE:** Because `:LSPInstall` has been removed, we need to install the LSP manually and override the `cmd` field. I have the LSP repo at `~/repos/lua-language-server`. So what I need to add is something like this
+<Update date="04-01-2021">
+Because `:LSPInstall` has been removed, we need to install the LSP manually and override the `cmd` field. I have the LSP repo at `~/repos/lua-language-server`. So what I need to add is something like this
+</Update>
 
 ```lua
 local sumneko_root = os.getenv("HOME") .. "/repos/lua-language-server"
@@ -188,12 +194,21 @@ vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagno
 I set the prefix for `virtual_text` to be `»` because I don't really like the default one and enabled `signs` for the diagnostic hint. I also made it to only update the diagnostic when I switch between insert mode and normal mode because it's quite annoying when I haven't finished typing and get yelled at by LSP because it expects me to put `=` after a variable name that I haven't even finished typing yet.
 
 ## Fancy Stuff
-**(01-02-2021) UPDATE:** I now use [lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) to enhance the builtin LSP experience like bordered window, popup menu for code actions, etc. Just go to its Github page, there's no point of me explaining it here. It's really good :)
+
+<Update date="01-02-2021">
+
+I now use [lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) to enhance the builtin LSP experience like bordered window, popup menu for code actions, etc. Just go to its Github page, there's no point of me explaining it here. It's really good :)
+
+</Update>
 
 ## Linting and Formatting
 I recently started using [efm-langserver](https://github.com/mattn/efm-langserver) to run [eslint](https://eslint.org) and formatting like [prettier](https://prettier.io), [gofmt](https://golang.org/cmd/gofmt/) , [LuaFormatter](https://github.com/Koihik/LuaFormatter), and [rustfmt](https://github.com/rust-lang/rustfmt).
 
-**(26-12-2020) UPDATE:** I now use [gofumpt](https://github.com/mvdan/gofumpt) for stricter formatting.
+<Update date="26-12-2020">
+
+I now use [gofumpt](https://github.com/mvdan/gofumpt) for stricter formatting.
+
+</Update>
 
 It was kinda hard to setup but it was well worth it. The formatter is *fast* and I got nice linting from external linters like ESLint. Here's some of my config for efm-langserver.
 
@@ -254,17 +269,30 @@ I need to explicitly specify the `lintFormats`, otherwise it shows the wrong mes
 
 You can get my full config for `efm-langserver` [here](https://github.com/elianiva/dotfiles/blob/fe280b5475f9a0dd8f4d7dfe5f8217cf46197b8a/nvim/.config/nvim/lua/modules/lsp/init.lua#L69-L125)
 
-**UPDATE(22-12-2020):** I no longer use efm-langserver for formatting because I have an issue with prettier not working correctly when using it to format svelte file. So I use [formatter.nvim](https://github.com/mhartington/formatter.nvim) as my formatter.
+<Update date="22-12-2020">
+
+I no longer use efm-langserver for formatting because I have an issue with prettier not working correctly when using it to format svelte file. So I use [formatter.nvim](https://github.com/mhartington/formatter.nvim) as my formatter.
+
+</Update>
 
 ## Diagnostic Conflict
-**UPDATE(22-12-2020):** When I use efm-langserver, the diagnostic that comes from the LSP (like `tsserver`) and external linter that efm-langserver uses are conflicting. So, I made a custom function for it to check if there's a file like `.eslintrc.js`, it will turn off the diagnostic that comes from LSP and use ESlint instead.
+
+<Update date="22-12-2020">
+
+When I use efm-langserver, the diagnostic that comes from the LSP (like `tsserver`) and external linter that efm-langserver uses are conflicting. So, I made a custom function for it to check if there's a file like `.eslintrc.js`, it will turn off the diagnostic that comes from LSP and use ESlint instead.
+
+</Update>
 
 <p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">That being said, I think this is kinda a hacky way? Because when I use this method, the global config for diagnostic gets overridden. I have to manually pass the config table like this.</p>
 
 <p style="color: var(--color-alt-text); text-decoration: line-through; font-style: italic">I think you supposed to use `vim.with` but I couldn't get it work.</p>
 
 
-**UPDATE(01-01-2021):** I've found a better way to do this (thanks TJ) which looks like this.
+<Update date="01-01-2021">
+
+I've found a better way from one of [TJ's](https://www.twitch.tv/teej_dv) stream to do this which looks like this.
+
+</Update>
 
 ```lua
 local is_using_eslint = function(_, _, result, client_id)

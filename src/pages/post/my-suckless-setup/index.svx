@@ -7,6 +7,10 @@ tags:
   - window manager
 ---
 
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
 # Table of Content
 
 # Introduction
@@ -18,7 +22,11 @@ Suckless has a window manager called DWM which stands for Dynamic Window Manager
 
 DWM has 3 layouts by default. They are tiling with master and stack layout, floating, and monocle. One of the reasons I chose DWM is because of the master and stack layout. There are some WM with master and stack layout except DWM, but I don't like them as much as DWM. For example, I don't want AwesomeWM because I don't fancy writing config in Lua.
 
-(27-10-2020) UPDATE: lmao guess who's suddently got so obsessed with lua and used AwesomeWM? Yep, I use AwesomeWM now xD
+<Update date="27-10-2020">
+
+lmao guess who's suddently got so obsessed with Lua and decided to use AwesomeWM
+
+</Update>
 
 Another example is Xmonad, that's an instant big no. It has a ton of Haskell dependencies and its config file is written in Haskell which I never heard of until I found out this WM. I'm not saying that it's bad, I just don't want to write Haskell.
 
@@ -157,7 +165,11 @@ As I said, I only use 1 patch for dmenu and that patch is...
 ## ST (Simple Terminal)
 Suckless have a terminal called **ST** or **Simple Terminal** or **Suckless Terminal**. It's the best terminal in my opinion. It supports true colour, ligatures, box drawing, unicode support, and more stuff that you can achieve by applying some patches.
 
-(27-10-2020) UPDATE: Some of you might think it's the best, but then I came across [Alacritty](https://github.com/alacritty/alacritty) and it's instantly became my new "best terminal" out there.
+<Update date="27-10-2020">
+
+Some of you might think it's the best, but then I came across [Alacritty](https://github.com/alacritty/alacritty) and it's instantly became my new "best terminal" out there.
+
+</Update>
 
 It's _ultra_ minimal out of the box. You don't even have a scroll feature builtin. It's reasonable because not everyone needs a scroll feature. For example, if you use **tmux** then the scroll feature would be redundant.
 

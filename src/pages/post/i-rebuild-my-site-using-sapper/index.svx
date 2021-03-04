@@ -7,6 +7,10 @@ tags:
   - website
 ---
 
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
 # Table of Content
 
 # Introduction
@@ -97,7 +101,11 @@ In other words, `svelte-image` doesn't support dynamic path. I just use `svelte-
 
 This issue is currently tracked [here](https://github.com/matyunya/svelte-image/issues/6). At the moment, this issue is not possible to fix because of [this reason](https://github.com/matyunya/svelte-image/issues/31#issuecomment-550711822). I really hope this issue will get fixed soon in the future.
 
-UPDATE(12-11-2020): I no longer uses svelte-image because for some reason, [sharp](https://github.com/lovell/sharp) made the image filesize bigger even though the resolution is smaller.
+<Update date="12-11-2020">
+
+I no longer uses svelte-image because for some reason, [sharp](https://github.com/lovell/sharp) made the image filesize bigger even though the resolution is smaller.
+
+</Update>
 
 ## Hosting
 I use [Vercel](https://vercel.com) to host my site. I used Vercel quite a few in the past and it's been great. It's simple to set up and integrate with Github. It's also free!

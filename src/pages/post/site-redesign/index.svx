@@ -8,6 +8,10 @@ tags:
   - website
 ---
 
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
 # Table of Content
 
 # Introduction
@@ -32,7 +36,11 @@ Previously, I have this one big section that fills the entire screen with a logo
 
 I also don't have a new logo for my username yet. So it is what it is. I'll make that in the future.
 
-(06-09-2020) UPDATE: I decided to use my github profile picture instead.
+<Update date="06-09-2020">
+
+I decided to use my github profile picture instead.
+
+</Update>
 
 ## Tags page
 I decided to remove the category. I think tags will be enough because I have another plan for the "category" thingy. I'll talk about that later on. If you've seen my archives page before, it kinda look like a mess, like seriously. I mean just look at this.
@@ -63,7 +71,11 @@ I am planning on making this page to be a place where I put some sort of series.
 
 So currently, it is a work in progress. "coming soon", that's all you got for now.
 
-(17-10-2020) UPDATE: I changed my mind. I won't make this section. I never have the time to do it unfortunately.
+<Update date="17-10-2020">
+
+I changed my mind. I won't make this section. I never have the time to do it unfortunately.
+
+</Update>
 
 ## Other stuff
 I fixed some little bugs that's previously happened and what not. Just some tiny little improvements.
