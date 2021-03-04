@@ -60,8 +60,11 @@ export default {
         entries: [{ find: "@", replacement: path.resolve(__dirname, "src/") }],
       }),
       replace({
-        "process.browser": true,
-        "process.env.NODE_ENV": JSON.stringify(mode),
+        values: {
+          "process.browser": true,
+          "process.env.NODE_ENV": JSON.stringify(mode),
+        },
+        preventAssignment: true
       }),
       svelte({
         compilerOptions: {
@@ -120,8 +123,11 @@ export default {
         entries: [{ find: "@", replacement: path.resolve(__dirname, "src/") }],
       }),
       replace({
-        "process.browser": false,
-        "process.env.NODE_ENV": JSON.stringify(mode),
+        values: {
+          "process.browser": false,
+          "process.env.NODE_ENV": JSON.stringify(mode),
+        },
+        preventAssignment: true
       }),
       svelte({
         compilerOptions: {
