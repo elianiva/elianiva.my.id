@@ -77,10 +77,10 @@ self.addEventListener("fetch", event => {
         // which Sapper has generated for you. It's not right for every
         // app, but if it's right for yours then uncomment this section
         /*
-				if (!cachedAsset && url.origin === self.origin && routes.find(route => route.pattern.test(url.pathname))) {
-					return caches.match('/service-worker-index.html');
-				}
-				*/
+        if (!cachedAsset && url.origin === self.origin && routes.find(route => route.pattern.test(url.pathname))) {
+          return caches.match('/service-worker-index.html');
+        }
+        */
 
         return cachedAsset || fetchAndCache(event.request)
       })()

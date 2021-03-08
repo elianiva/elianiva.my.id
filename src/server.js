@@ -16,4 +16,4 @@ app
   )
   .listen(PORT, err => err && console.error("error", err))
 
-export default app
+module.exports = app
