@@ -17,6 +17,8 @@ tags:
 [frontend-mentor]: https://www.frontendmentor.io/challenges/github-jobs-api-93L-NL6rP
 [spinner-link]: https://icons8.com/cssload/en/horizontal-bars
 [gh-job-repo]: https://github.com/elianiva/gh-job
+[telescope-nvim]: https://github.com/nvim-telescope/telescope.nvim
+[nvim-tree-lua]: https://github.com/kyazdani42/nvim-tree.lua
 
 # Table Of Content
 
@@ -69,7 +71,7 @@ Right now, Svelte-Kit uses `$layout.svelte` for its layout. I don't like this na
 
 I thought I was editing a `$layout.svelte` file but I was editing a `.svelte` file instead because ZSH thought `$layout` is a variable name. I need to escape it so it would open a `\$layout.svelte` instead.
 
-Two plugins that I use for my editor which are [telescope.nvim] and [nvim-tree.lua] has an issue with this filename, it doesn't escape it before opening it. So I fixed them both which then lead me to get distracted on doing other stuff and leaving this app :p
+Two plugins that I use for my editor which are [telescope.nvim][telescope-nvim] and [nvim-tree.lua][nvim-tree-lua] has an issue with this filename, it doesn't escape it before opening it. So I fixed them both which then made me distracted and doing other stuff instead of finishing this app :p
 
 ## Server Routes
 Github API has CORS protection so I had to make my own proxy server. Thankfully, Svelte-Kit did a great job with this one. I only need to create a file with a suffix of `.json.ts` or `.json.js`.
@@ -85,11 +87,11 @@ At first, I don't know how Snowpack works at all. After a little bit of reading 
 I also did this to `tsconfig.json` so I get that sweet path completion from tsserver.
 
 ## Dynamic Pages
-For the job detail page, I use the Svelte-Kit dynamic page feature. You make a file with `[slug].svelte` as its name and you'll have access to the `slug` variable which you can then use to fetch specific data for that page.
+For the job detail page, I use the Svelte-Kit dynamic page feature. You would make a file with `[slug].svelte` as its name and you'll have access to the `slug` variable which you can then use to fetch specific data for that page.
 
 The `slug` page could be whatever you want. So if you have `pages/job/[id]` So if you have `pages/job/[id].svelte` and you go to `/job/foobar`, you'll have `foobar` as the `id` value. In my case, it's a long random ID that I can use to fetch a specific job detail.
 
-Github Job API gave me an HTML string that I could directly use using `@html` in Svelte, I don't think this is harmful since it's Github API after all, but you need to be really careful when using `@html` and receiving an input from the user since it opens a possibility for XSS.
+Github Job API gave me an HTML string that I could directly use using `@html` in Svelte, I don't think this is harmful since it's Github API after all, but you need to be really careful when using `@html` since it opens a possibility for XSS.
 
 ## Loading Feedback
 I couldn't figure out how to get the current loading state in Svelte-Kit. I used Sapper `preloading` state in the past for my website but I don't know how to do the same thing in Svelte-Kit.
@@ -97,7 +99,7 @@ I couldn't figure out how to get the current loading state in Svelte-Kit. I used
 I added a loading animation when you try to find a job using the search bar but that's it. I took it from [here][spinner-link] and convert it to a Svelte component.
 
 ## Dark Mode
-The original design has a dark mode and I'm a big fan of dark mode so why not implement this just for fun. I've implemented this feature before for my website so it's smooth sailing ;)
+The original design has a dark mode, and I'm a big fan of dark mode so, why not implement this just for fun. I've implemented this feature before for my website so it's smooth sailing ;)
 
 I use `localStorage` to store the current theme data and load the state to Svelte's store *before* the user sees the page so they won't see Flash Of Incorrect Theme or whatever you want to call it by putting the loading mechanism *before* the HTML body.
 
