@@ -25,7 +25,7 @@ export const getResources = kind => {
         slug: fileName.replace(HAS_EXTENSION, ""),
       }
     })
-    .sort((a, b) => b.date.getTime() - a.date.getTime())
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return result
 }
