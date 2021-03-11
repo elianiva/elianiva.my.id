@@ -57,16 +57,17 @@ use {'neovim/nvim-lspconfig', opt = true} -- builtin lsp config
 I have a directory filled with LSP related config. Here's some snippet that sets up the LSP.
 
 ```lua
-local custom_on_attach = function(client)
+local custom_on_attach = function()
   mappings.lsp_mappings()
+
+end
+
+local custom_on_init = function(client)
+  print('Language Server Protocol started!')
 
   if client.config.flags then
     client.config.flags.allow_incremental_sync = true
   end
-end
-
-local custom_on_init = function()
-  print('Language Server Protocol started!')
 end
 
 nvim_lsp.gopls.setup{
@@ -75,7 +76,7 @@ nvim_lsp.gopls.setup{
 }
 ```
 
-I made a `custom_on_attach` function to attach LSP specific mappings and enable `incremental_sync` flag for the client. I also made a custom `on_init` function to notify me when the LSP is started. Though, I'm not sure if `on_init` is the correct thing that I'm looking for. Sometimes it notifies me when the LSP server hasn't even started yet :p
+I made a `custom_on_attach` function to attach LSP specific mappings. I also made a custom `on_init` function to notify me when the LSP is started and enable `incremental_sync`. Though, I'm not sure if `on_init` is the correct thing that I'm looking for. Sometimes it notifies me when the LSP server hasn't even started yet :p
 
 <Update date="2021-02-14">
 
@@ -141,9 +142,6 @@ svelteserver = {
   on_attach = function(client)
     mappings.lsp_mappings()
 
-    if client.config.flags then
-      client.config.flags.allow_incremental_sync = true
-    end
     client.server_capabilities.completionProvider.triggerCharacters = {
       ".", '"', "'", "`", "/", "@", "*",
       "#", "$", "+", "^", "(", "[", "-", ":"
