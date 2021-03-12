@@ -1,6 +1,11 @@
 ---
 title: My setup for Neovim's builtin LSP client
 date: 2020-12-18
+desc: A post where I explain about my setup for Neovim's builtin LSP
+tags:
+  - neovim
+---
+
 [lsp-guide-vscode]: https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
 [lsp-website]: https://microsoft.github.io/language-server-protocol/
 [tj-vimconf]: https://www.youtube.com/watch?v=C9X5VF9ASac
