@@ -2,7 +2,7 @@
 title: GH Jobs
 date: 2021-02-13
 desc: Simple app that I made when trying out Svelte-Kit which uses Github Job API
-demo: false
+demo: https://svlt.elianiva.me
 source: https://github.com/elianiva/gh-job
 layout: project
 stack:

@@ -106,5 +106,15 @@ I use `localStorage` to store the current theme data and load the state to Svelt
 ## Deployment
 I was trying to deploy this app to Vercel but it keeps changing constantly so stuff breaks easily. I decided not to deploy this in the end.
 
+<script>
+import Update from "@/components/Update.svelte"
+</script>
+
+<Update date="21-03-2021">
+
+I managed to deploy this app [here](https://svlt.elianiva.me) using `@sveltejs/adapter-vercel`. Though I'm using a temporary fork of mine to make it work. It's *really* satisfying knowing that it finally works :DD
+
+</Update>
+
 # Closing Note
 So far, Svelte-Kit lives up to my expectation. I'm really excited to wait for its final stable release. Anyway, [here][gh-job-repo] is the repo if you want to check it out yourself, and thanks for reading this post. Have a wonderful day! ;)
