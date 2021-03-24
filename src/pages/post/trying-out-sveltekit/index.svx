@@ -1,7 +1,7 @@
 ---
 title: I tried Svelte-Kit, it was Unsurprisingly good
 date: 2021-02-13
-desc: I've run out of my patience waiting for the stable release, so I tried the experimental version anyway
+desc: I've run out of my patience waiting for the stable release and got too hyped for it
 tags:
   - svelte
   - website
@@ -113,6 +113,8 @@ import Update from "@/components/Update.svelte"
 <Update date="21-03-2021">
 
 I managed to deploy this app [here](https://svlt.elianiva.me) using `@sveltejs/adapter-vercel`. Though I'm using a temporary fork of mine to make it work. It's *really* satisfying knowing that it finally works :DD
+
+Also, it's not 100% functional on Vercel (for some reason, not sure why). You'd need to run it locally to fully experience the app.
 
 </Update>
 
