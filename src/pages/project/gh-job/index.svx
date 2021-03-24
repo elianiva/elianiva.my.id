@@ -18,5 +18,3 @@ You can read more about my thoughts about this app and Svelte-Kit in general [he
 It can filter the result by the title, location, and whether if it's a full-time job or not. It also has dark mode.
 
 It's pretty basic since I only made this for an experimental purpose.
-
-**NOTE**: It's not 100% functional on Vercel (for some reason, not sure why). You'd need to run it locally to fully experience the app.
