@@ -13,6 +13,7 @@
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.2",
     "@sveltejs/adapter-node": "next",
+    "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
