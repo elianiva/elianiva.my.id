@@ -1,6 +1,6 @@
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="1280.000000pt" height="1280.000000pt" viewBox="0 0 1280.000000 1280.000000"
- preserveAspectRatio="xMidYMid meet">
+  width="1280.000000pt" height="1280.000000pt" viewBox="0 0 1280.000000 1280.000000"
+  preserveAspectRatio="xMidYMid meet" class={className}>
 <metadata>
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
@@ -210,3 +210,7 @@ fill="currentColor" stroke="none">
 -369 155 32 275 190 260 339 -11 105 -90 213 -190 262 -61 29 -155 36 -217 16z"/>
 </g>
 </svg>
+
+<script lang="ts">
+export let className: string
+</script>
