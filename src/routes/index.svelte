@@ -29,6 +29,7 @@
 <ProgressButton />
 
 <script context="module">
+export const prerender = true
 export async function load({ fetch }) {
   const posts = await (await fetch(`/api/post.json?limit=3`)).json()
   const projects = await (await fetch(`/api/project.json?limit=3`)).json()

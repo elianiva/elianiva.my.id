@@ -1,7 +1,7 @@
 const { mdsvex } = require("mdsvex");
 const mdsvexConfig = require("./mdsvex.config.cjs");
 const sveltePreprocess = require("svelte-preprocess");
-const adapterVercel = require("@sveltejs/adapter-static");
+const adapterVercel = require("@sveltejs/adapter-vercel");
 const pkg = require("./package.json");
 const path = require("path");
 

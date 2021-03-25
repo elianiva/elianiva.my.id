@@ -54,6 +54,7 @@
 <ProgressButton />
 
 <script context="module">
+export const prerender = true
 export async function load({ fetch }) {
   const projects = await (await fetch(`/api/project.json`)).json()
   return { props: { projects } }
