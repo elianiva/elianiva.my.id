@@ -122,7 +122,7 @@
 import { fade } from "svelte/transition"
 import Code from "$lib/icons/Code.svelte"
 import Chrome from "$lib/icons/Chrome.svelte"
-import { onMount } from "svelte";
+import { onMount } from "svelte"
 
 let Waypoint: any // this doesn't have TS declaration so..
 onMount(async () => {

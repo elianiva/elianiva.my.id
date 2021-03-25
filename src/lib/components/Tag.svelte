@@ -34,4 +34,3 @@
 export let label: string
 export let onClick: () => void
 </script>
-

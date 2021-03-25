@@ -77,4 +77,3 @@ import RSS from "$lib/icons/Rss.svelte"
 
 const { github, twitter, email } = data
 </script>
-
