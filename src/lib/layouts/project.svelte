@@ -279,13 +279,13 @@
   />
 </svelte:head>
 
-<SEO {title} {desc} thumbnail={`${data.siteUrl}/${currentSlug}/cover.webp`} />
+<SEO {title} {desc} thumbnail={`${data.siteUrl}${currentSlug}/cover.webp`} />
 
 <section class="project">
   <div class="project__cover">
     <div class="project__wrapper">
       <img
-        src={`/assets/${currentSlug}/cover.webp`}
+        src={`/assets${currentSlug}/cover.webp`}
         alt={title}
         class="project__img"
         loading="lazy"
