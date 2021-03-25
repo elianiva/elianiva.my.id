@@ -29,7 +29,7 @@ It has been a few months since that summit and it still hasn't been released yet
 
 # My Experience
 ## Project Setup
-Since I never tried it out myself nor do I watch someone else try it, I was quite surprised. It broke from the start. I mean, that's what you get from experimental software. It turns out it was caused by the new release of [Snowpack v3](snowpack-v3-link).
+Since I never tried it out myself nor do I watch someone else try it, I was quite surprised. It broke from the start. I mean, that's what you get from experimental software. It turns out it was caused by the new release of [Snowpack v3][snowpack-v3-link].
 
 Thankfully, the Svelte team is super responsive and fixed it in a couple of days or so. I tried it out and it works.
 
