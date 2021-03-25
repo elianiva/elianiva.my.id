@@ -10,6 +10,9 @@
     "prettier": "prettier --write --plugin-search-dir=. ./**/*.svelte",
     "lint": "eslint --fix ./**/*.svelte"
   },
+  "dependencies": {
+    "front-matter": "^4.0.2"
+  },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.2",
     "@sveltejs/adapter-node": "next",
@@ -19,7 +22,6 @@
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.19.0",
     "eslint-plugin-svelte3": "^3.0.0",
-    "front-matter": "^4.0.2",
     "mdsvex": "^0.8.9",
     "prettier": "^2.2.1",
     "prettier-plugin-svelte": "^2.1.1",
