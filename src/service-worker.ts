@@ -4,7 +4,6 @@ const CACHE_NAME = `cache-${timestamp}`
 
 console.log("build", build)
 
-
 // dont' cache images on initial load
 const ASSETS = build.filter(file => !/.*\.(png|webp|jpg|)/.test(file))
 self.addEventListener("install", event => {
@@ -21,13 +20,13 @@ self.addEventListener("activate", event => {
   )
 })
 
-self.addEventListener("fetch", event => {
+self.addEventListener("fetch", async event => {
   const { request } = event
 
   if (request.method !== "GET" || request.headers.has("range")) return
 
   const url = new URL(request.url)
-  const cached = caches.match(request)
+  const cached = await caches.match(request)
 
   if (url.origin === location.origin && build.includes(url.pathname)) {
     // always return build files from cache
