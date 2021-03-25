@@ -33,10 +33,8 @@
 </svelte:head>
 
 <script lang="ts">
-import { stores } from "$app/stores"
+import { page } from "$app/stores"
 import data from "$lib/data/site"
-
-const { page } = stores()
 
 const { siteName, siteUrl } = data
 
