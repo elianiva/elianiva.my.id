@@ -334,7 +334,9 @@
     rel="preload"
     href="/prism-night-owl.css"
     as="style"
-    on:load={() => (this.rel = "stylesheet")}
+    on:load={function () {
+      this.rel = "stylesheet"
+    }}
   />
 </svelte:head>
 
@@ -342,7 +344,15 @@
 
 <section class="post">
   <h1 class="post__title">{title}</h1>
-  <span class="post__date"> Posted on {day}, {fullDate} </span>
+  <span class="post__date">
+    Posted on
+    {new Date(date).toLocaleDateString("en-Gb", { weekday: "long" })},
+    {new Date(date).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })}
+  </span>
   <a
     class="post__edit"
     href="https://github.com/elianiva/elianiva.me/blob/master/src/pages/post/{currentSlug}/index.svx"
@@ -392,15 +402,11 @@ import { page } from "$app/stores"
 import SEO from "$lib/components/SEO.svelte"
 import ProgressButton from "$lib/components/ProgressButton.svelte"
 import { theme } from "$lib/utils/theme"
-import dayjs from "dayjs"
 
 export let title
 export let date
 export let desc
 export let tags
-
-const day = dayjs(date).format("dddd")
-const fullDate = dayjs(date).format("DD MMMM YYYY")
 
 const currentSlug = $page.path
 

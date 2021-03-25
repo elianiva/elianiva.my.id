@@ -273,21 +273,23 @@
     rel="preload"
     href="/prism-night-owl.css"
     as="style"
-    on:load={() => (this.rel = "stylesheet")}
+    on:load={function () {
+      this.rel = "stylesheet"
+    }}
   />
 </svelte:head>
 
 <SEO
   {title}
   {desc}
-  thumbnail={`${data.siteUrl}/project/${currentSlug}/cover.webp`}
+  thumbnail={`${data.siteUrl}/${currentSlug}/cover.webp`}
 />
 
 <section class="project">
   <div class="project__cover">
     <div class="project__wrapper">
       <img
-        src={`/assets/project/${currentSlug}/cover.webp`}
+        src={`/assets/${currentSlug}/cover.webp`}
         alt={title}
         class="project__img"
         loading="lazy"
@@ -345,10 +347,10 @@
 
 <script>
 import { page } from "$app/stores"
-import SEO from "@/components/SEO.svelte"
+import SEO from "$lib/components/SEO.svelte"
 import Chrome from "$lib/icons/Chrome.svelte"
 import Code from "$lib/icons/Code.svelte"
-import ProgressButton from "@/components/ProgressButton.svelte"
+import ProgressButton from "$lib/components/ProgressButton.svelte"
 import data from "$lib/data/site"
 
 export let title
