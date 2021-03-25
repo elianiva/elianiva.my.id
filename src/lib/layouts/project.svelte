@@ -273,7 +273,7 @@
     rel="preload"
     href="/prism-night-owl.css"
     as="style"
-    onload="this.rel='stylesheet'"
+    on:load={() => (this.rel = "stylesheet")}
   />
 </svelte:head>
 
@@ -303,14 +303,14 @@
             class="project__demo"
             href={demo}
             target="_blank"
-            rel="norel noreferrer"><Chrome class="project__icon" />Demo</a
+            rel="norel noreferrer"><Chrome className="project__icon" />Demo</a
           >
         {/if}
         <a
           class="project__source"
           href={source}
           target="_blank"
-          rel="norel noreferrer"><Code class="card__icon" />Source</a
+          rel="norel noreferrer"><Code className="card__icon" />Source</a
         >
       </div>
     </div>
@@ -346,8 +346,8 @@
 <script>
 import { page } from "$app/stores"
 import SEO from "@/components/SEO.svelte"
-import Chrome from "@/icons/chrome.svg"
-import Code from "@/icons/code.svg"
+import Chrome from "$lib/icons/Chrome.svelte"
+import Code from "$lib/icons/Code.svelte"
 import ProgressButton from "@/components/ProgressButton.svelte"
 import data from "$lib/data/site"
 
