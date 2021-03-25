@@ -1,57 +1,48 @@
 <style>
-:root {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-main {
-  text-align: center;
-  padding: 1em;
+.main {
+  max-width: 1080px;
   margin: 0 auto;
-}
-
-h1 {
-  color: #ff3e00;
-  text-transform: uppercase;
-  font-size: 4rem;
-  font-weight: 100;
-  line-height: 1.1;
-  margin: 4rem auto;
-  max-width: 14rem;
-}
-
-p {
-  max-width: 14rem;
-  margin: 2rem auto;
-  line-height: 1.35;
-}
-
-@media (min-width: 480px) {
-  h1 {
-    max-width: none;
-  }
-
-  p {
-    max-width: none;
-  }
+  padding: 2rem 1rem 0;
+  z-index: 2;
 }
 </style>
 
-<main>
-  <h1>Hello world!</h1>
+<SEO title="Home" />
 
-  <Counter />
-
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
-  <p>
-    Visit <a href="/example-markdown">the /example-markdown page</a> to see some
-    markdown rendered by mdsvex.
-  </p>
+<main class="main">
+  <Hero />
+  <Section
+    title="Recent Posts"
+    data={posts}
+    btnText="More Posts"
+    url="/post"
+    type="posts"
+  />
+  <Section
+    title="Recent Projects"
+    data={projects}
+    btnText="More Projects"
+    url="/project"
+    type="projects"
+  />
 </main>
+<ProgressButton />
+
+<script context="module">
+export async function load({ fetch }) {
+  const posts = await (await fetch(`/api/post.json?limit=3`)).json()
+  const projects = await (await fetch(`/api/project.json?limit=3`)).json()
+
+  return { props: { posts, projects } }
+}
+</script>
 
 <script lang="ts">
-import Counter from "$lib/Counter.svelte"
+import SEO from "$lib/components/SEO.svelte"
+import Hero from "$lib/parts/Hero.svelte"
+import Section from "$lib/parts/Section.svelte"
+import ProgressButton from "$lib/components/ProgressButton.svelte"
+
+export let posts: Array<any>
+export let projects: Array<any>
 </script>
