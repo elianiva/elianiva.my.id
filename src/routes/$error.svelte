@@ -35,9 +35,7 @@
   bottom: -0.25rem;
   left: -0.25rem;
   right: -0.25rem;
-  top: 0.25rem;
-  transform: scale3d(0, 0.1, 1);
-  transform-origin: 0 100%;
+  top: 0.25rem; transform: scale3d(0, 0.1, 1); transform-origin: 0 100%;
   background-image: linear-gradient(
     to right,
     var(--color-main-accent),
