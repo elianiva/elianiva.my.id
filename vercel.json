@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "./src/pages/api/*.ts": {
+      "includeFiles": "./src/pages/{post,project}"
+    }
+  }
+}
