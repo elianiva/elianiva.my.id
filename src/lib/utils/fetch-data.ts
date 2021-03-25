@@ -3,8 +3,7 @@ import frontmatter, { FrontMatterResult } from "front-matter"
 import path from "path"
 
 const HAS_EXTENSION = /\.[^/.]+$/
-const getPagePath = (kind: string): string =>
-  path.resolve(`./src/pages/${kind}`)
+const getPagePath = (kind: string) => path.resolve(`./src/pages/${kind}`)
 
 interface ResultAttr {
   title: string
