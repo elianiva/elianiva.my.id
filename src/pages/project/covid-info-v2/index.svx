@@ -1,0 +1,43 @@
+---
+title: Covid Info v2
+date: 2021-01-07
+desc: A remake of my previous app that shows the current COVID19 data. Made with Next, Typescript, and Twind
+demo: https://covid-info-v2.vercel.app
+source: https://github.com/elianiva/covid-info-v2
+layout: project
+stack:
+  - ['Typescript', 'https://typescriptlang.org']
+  - ['Apexcharts', 'https://apexcharts.com']
+  - ['Leaflet', 'https://leafletjs.com']
+  - ['TwindCSS', 'https://twind.dev']
+  - ['Vercel', 'https://vercel.app']
+---
+
+**Covid Info v2** is a remake of my previous version which you can check [over here](https://elianiva.me/project/covid-info).
+
+I made the first version a few months ago, around May 2020. It was my first React app that I ever made with a third party API instead of static data. It was made with React, Javascript, and Vanilla CSS.
+
+Since that time, I've learned _a lot_ about Javascript. Turns out there's this thing called Typescript which is an _awesome_ thing, it's Javscript but statically typed/strong typed. I also found out about [NextJS](https://nextjs.org) which is basically [React](https://reactjs.org) + more features like SSR, SSG, and a bunch more cool features.
+
+I decided to remake this app to see how far I've learned these technologies. It's also because my friend want to make a similar app, hence I decided to make this so I can help him along the way.
+
+I chose Typescript because it's like a godsend for Javascript developers, it's so pleasant to work with. It provides a better development experience. I also decided to use [twind](https://twind.dev) that I found recently. It's also my first css-in-js library that I've ever used. TwindCSS is basically one of css-in-js solution for [TailwindCSS](https://tailwindcss.com). I chose it because it's really unique in my opinion, instead of shipping the prebuilt CSS to the end user, it ships the compiler. So, no matter how many styles you have, the end result would be ~10KB. Quoting from its official docs.
+
+> Another big advantage we see of shipping the interpreter compiler itself (rather than pre-compiled output) is that the effective size of the CSS for your whole app is deterministic and fixed. The weight of the compiler itself along with your theme file is all that users will ever download, no matter how many styles you use.
+
+> Currently the compiler weighs around 10KB which is smaller than styled-components and the average tailwind output.
+
+I use the API provided by [disease.sh](https://disease.sh/). They have quite a lot of endpoints that you can use. More than enough for my needs.
+
+Design wise, I took some of it from this [beautiful dribbble shot](https://dribbble.com/shots/10803637-Corona-Virus-Covid-19-Dashboard). It's easy enough to implement since I'm quite good at CSS (at least that's what I think :p) because I am so used to implement a design every week for [svelteception](https://elianiva.me/project/svelteception). All goes well, except for the world map section.
+
+I never made any map related thing, so this is the first time I use a map library like [LeafletJS](https://leafletjs.com). Since I use NextJS which utilize SSR, I can't just import Leaflet as is because it needs a `window` object. At first, I'm using [react-leaflet-universal](https://github.com/masotime/react-leaflet-universal) but I'm not sure if that's the best solution.
+The next day, I found out that NextJS can import a module _only_ if the page has been rendered on the client side by using its `dynamic` module, I was blown away the first time I found it. I no longer need a thin wrapper like react-leaflet-universal.
+
+I was going to make a feature where if you click on a country, it would zoom the map but ended up not doing it because I have no idea how to do it, I've Google it up and still couldn't find any solution.
+
+Initially, I want to make it responsive/mobile friendly. Twind has this nice feature where you can group tailwindcss directives. It looks something like this `md:(col(start-1 end-2) row(start-2 end-4))`, this saves me a lot of time. After doing that for maybe half and hour, I thought it doesn't look that good in terms of UI/UX so I threw it away.
+
+I use [Vercel](https://vercel.com/) to deploy this app. I really love Vercel because they provide so many features yet it's still free. Deploying NextJS app on Vercel is really easy because NextJS is also made by Vercel so they must have optimised their platform for NextJS app. You can even get analytics if you deploy your NextJS app on Vercel.
+
+Honestly, I am quite proud of this one. I learned a lot along the way, seeing them compared side by side made me happy. I didn't waste a year doing nothing, I made some progress.

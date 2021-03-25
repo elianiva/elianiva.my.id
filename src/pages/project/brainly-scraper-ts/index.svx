@@ -1,0 +1,18 @@
+---
+title: Brainly Scraper
+date: 2020-09-12
+desc: A tiny (~2KB) library to scrape data from brainly written in Typescript.
+demo: false
+source: https://github.com/elianiva/brainly-scraper-ts
+layout: project
+stack:
+  - ['Typescript', 'https://typescriptlang.org']
+---
+
+**Brainly Scraper** is a tiny (~2KB) library that I made for [my whatsapp bot](https://github.com/elianiva/img-to-sticker-bot) which is now dead. I made this just for fun and learn Typescript.
+
+After creating this library, I learned some stuff about HTTP request like headers which allow me to get the data from brainly. If the header isn't present then my request would get rejected.
+
+I also learned that you can query into GraphQL server using `query` object on the request body. I thought you can only get a request from a GraphQL server using GraphQL client like Apollo, urql, and Relay.
+
+This library might be buggy. I never found an error though, if you're interested with this library then feel free to give it a try.

@@ -1,0 +1,22 @@
+---
+title: Kana Board
+date: 2020-06-25
+desc: An app to help me memorise Japanese vocab. Made with React, Redux, and Tailwind
+demo: https://kana-board.vercel.app
+source: https://github.com/elianiva/kana-board
+layout: project
+stack:
+  - ['ReactJS', 'https://reactjs.org']
+  - ['Redux', 'https://redux.js.org']
+  - ['TailwindCSS', 'https://tailwindcss.com']
+  - ['Vercel', 'https://vercel.app']
+---
+
+**Kana Board** is a simple app that I made with React + Redux. The reason why I made this is to help me memorize Japanese vocabulary. Another reason is that I am learning Redux and todolist app is hella boring to make. I won't use it either since I never arrange my activities :p I just do something whenever I feel like it.
+
+I got this idea from a Youtube video from a channel called Japanese Ammo With Misa. She did this by using a book, but I can't be bothered to grab a pen and write it using my hand because my handwriting is ugly as heck. Most likely I ended up not reading it because I couldn't read it. So I made this app instead.
+Basically, you have some sort of table with 5 columns in it. The first column is used to write the kana of that Japanese word. The second column is used to write the meaning of that word in English. Then the third column is to write an example of that word in a sentence, it will highlight the word that is written in the first column to make it more clear on which part of a sentence that word is used. The fourth column is used to write the context, it explains briefly when to use that word. Finally, the last column is used to write my own example.
+
+I made the table so that it can only be edited when the date of the table creation is the same as your current date. Basically, it's only editable for a day (it's not always 24 hours, it depends on when you create it). I did this because I want to see how many words I learned in a day and I don't want to cheat by adding a new word in a table that is created a week ago.
+
+I don't use this app anymore since I moved to Anki.

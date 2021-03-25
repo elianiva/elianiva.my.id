@@ -1,0 +1,54 @@
+---
+title: My impression of Lenovo Thinkpad X220
+date: 2020-03-19
+desc: I finally became one of those Linux users, the one who has old Thinkpad with them.
+tags:
+  - other
+---
+
+# Table of Content
+
+# Introduction
+So, I have a pretty bad laptop with Intel Celeron N4000 processor which runs super slow. Of course I can't stand that, so I decided to change my laptop to a something better and that is none other than Thinkpad.
+
+# Why did I choose Thinkpad?
+
+Well, if you don't know. Thinkpad is a great laptop with cheap price. Like, really cheap. You can get it under \$100 and still have quite a decent laptop. Thinkpad is pretty popular in Linux community as far as I know because most of them are really compatible with Linux. It's a go to if you confused whether or not your Linux will be compatible with your laptop or not.
+
+Thinkpad is also known with the legendary classic keyboard and trackpoint. The keyboard is so tactile, it's really comfortable to type on unlike most of chichlet keyboard thee days. The trackpoint is also very useful compared to the touchpad. You don't have to leave your home row to move your cursor which is very useful for someone lazy like I am.
+
+Despite being an old laptop (it was released on 2011), it is however a very durable laptop. This bad boy looks really solid the second you look at it. Even though it's made from plastic, it feels like a solid rock. Thinkpad is also very upgradable which makes it very convenient.
+
+# My X220 Review
+
+## Where and how much
+
+I buy this bad boy on a local online store for like Rp1.950.000,00 (\$ 124). It has a perfect condition. I can't believe how good it is when it arrived. I tought there will be some scratches and what not, but it turns out to be in a perfect condition.
+
+At first, I want to buy a Thinkpad T420. But I decided to pick X220 because I think it's more portable because of its smaller size.
+
+## First impression
+
+I was so impressed with its condition. No scratches or anything like that. I think it's refurbished but I'm not really sure since the store didn't mentioned it. I'm glad that is has the US keyboard layout, not the one with that ginormous enter key and small space bar. It doesn't have a fingerprint which I won't use anyway. The battery still got 86% health which is awesome. I also got the original charger and not one of those weird ones.
+
+## Features that I love
+
+First think first, let's talk about the keyboard. This classic 7 rows keyboard is just awesome. It's so tactile and comfy to type on compared to my old laptop which has an island style keyboard or chichlet like most of other newer laptops have. I could type for hours on this bad boy where if I type on my old one, I got tired quickly. It also have a separate media key to control the volume.
+
+Now let's talk about the Trackpoint. You know, the red dot on Thinkpad keyboard. It's there not for no reason. It's used to move your cursor. As far as my experience go, it's better than using a touchpad because you don't have to move your fingers from the home row. That's very convenient.
+
+Thinklight! This feature isn't that quite helpful as far as I use my X220. But I'm pretty sure that it'll be helpful when you work in the dark and want to see your keyboard.
+
+I also like the touch of lights that indicates your battery and sleep outside of the lid. My previous laptop didn't have this feature. This Thinkpad also got many ports. 3 USB 2.0 ports, HDMI port, VGA port, Audio jack, even the obscure one that I don't know what it called lol.
+
+## Performance
+
+This bad boy has an Intel Core i5 2520M processors. It's not the best but it runs pretty well. Previously, I have a laptop that runs Intel Celeron N4000. It was so sluggish. Now that I have an i5 processor, it runs way better.
+
+About the battery. Since it still has 86% health, it can hold up around 4-5 hours in my experience. It runs perfectly without any issue.
+
+It has 4GB of RAMs. I planning on upgrading it in the future to 8GB. I also planning on upgrading it to mSATA SSD. Currently it runs HDD, but it has no issue though so I don't worry that much.
+
+# Conclusion
+
+All in all, I'm really satisfied with this laptop. I don't regret buying it, at all. It worth all of my money. I slapp Archlinux to this bad boy as soon as I get it and it has no single issue. Everything is perfect, media button is working, Thinklight is also working. I really hope this bad boy will last for the next 3 years or so. If you want a cheap laptop with a great value, I'd recommend Thinkpad. I didn't give you the full specs for X220 because I'm pretty sure that you're capable to look it up on google. That's it for this short review, have a good day! ;)

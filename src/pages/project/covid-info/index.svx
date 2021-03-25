@@ -1,0 +1,26 @@
+---
+title: Covid Info
+date: 2020-04-22
+desc: A simple app to get current covid data. Made with React.
+demo: https://covid-info.now.sh
+source: https://github.com/elianiva/covid-info
+layout: project
+stack:
+  - ['ReactJS', 'https://reactjs.org']
+  - ['ChartJS', 'https://chartjs.org']
+  - ['Vercel', 'https://vercel.app']
+---
+
+**Covid Info** is the first React app I made that uses a third party API as its data source. This app is also kinda buggy because when I made it, I don't really care about any other feature except the homepage that shows current covid data.
+
+I'm planning on remaking this if I got time for it using Svelte.
+
+<script>
+  import Update from "@/components/Update.svelte"
+</script>
+
+<Update date="01-05-2021">
+
+I've made a remake using NextJS. I didn't choose Svelte because I want to explore more stuff about NextJS and I've done quite a bit of Svelte recently, so doing something different is nice. You can check it out [here](https://elianiva.me/project/covid-info-v2)
+
+</Update>

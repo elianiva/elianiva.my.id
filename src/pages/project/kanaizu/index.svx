@@ -1,0 +1,39 @@
+---
+title: Kanaizu
+date: 2020-09-29
+desc: A japanese kana quiz app built using Routify and TailwindCSS
+demo: https://kanaizu.vercel.app
+source: https://github.com/elianiva/kanaizu
+layout: project
+stack:
+  - ['Routify', 'https://routify.dev']
+  - ['TailwindCSS', 'https://tailwindcss.com']
+  - ['Vercel', 'https://vercel.app']
+---
+
+**Kanaizu** is an app that I made when I was starting to learn Svelte. I made this app because I want to help my friend memorise Japanese kana because we're both learning Japanese at the time I'm writing this. It's also because I want to try Routify. I made this app for about a week, maybe that's way too long but hey, it was my second time so I barely know the basics.
+
+I got the data from [Wikibooks](https://en.wikibooks.org/wiki/JLPT_Guide). It has around ~508 words. I picked them randomly, most of them are N5 and N4. I picked them using a weird method. As you can see, the words that they provide has kanji because that's how you would use it, with kanji. I only want the hiragana or katakana version. So what I did was scrape the data and make this tiny and unefficient script using js that would transform the data that I got from the site which is an array of words into an object that looks something like this.
+
+```json
+{
+  "data": [
+    {
+      "hiragana": "たべる",
+      "romaji": "taberu"
+    },
+    {
+      "hiragana": "わかる",
+      "romaji": "wakaru"
+    }
+  ]
+}
+```
+
+I converted it from kanji to hiragana/katakana using [this tool](https://nihongodera.com/tools/kana-converter). Big thanks for the creator of that tool. It would be _very_ tedious if it didn't exist. Imagine converting hundreds of words manually.
+
+I use Tailwind CSS for this project which means that I have to setup postcss. Again, because this is my second time trying Routify and my first time setting up Tailwind CSS specifically for Routify, as expected, I messed up. I have no idea what I was doing until a few hours later but it's worth it. I learned something new.
+
+I you're interested with this app, go ahead and try it yourself ツ
+
+There's some inconsistency though, but it's _rarely_ appear. I can't fix it because it's quite unpredictable. Basically, it won't show your score. Just refresh the app if this happen.
