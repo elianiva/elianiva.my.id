@@ -192,7 +192,7 @@
           on:click={toggleDarkMode}
           aria-label="toggle darkmode"
         >
-          <Moon className="navbar__darkmode" width="1.5rem" height="1.5rem" />
+          <Moon className="navbar__darkmode" width="24" height="24" />
         </button>
       </li>
     </ul>
@@ -231,7 +231,7 @@
           on:click={toggleDarkMode}
           aria-label="toggle darkmode"
         >
-          <Moon className="navbar__darkmode" width="1.5rem" height="1.5rem" />
+          <Moon className="navbar__darkmode" width="24" height="24" />
         </button>
       </li>
     </ul>

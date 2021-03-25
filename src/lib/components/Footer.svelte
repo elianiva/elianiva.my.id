@@ -42,19 +42,19 @@ a {
   <div class="icons">
     <!-- prettier-ignore -->
     <a href="mailto:{email}" target="_blank" rel="norel noreferrer" aria-label="email">
-      <Email height="1.5rem" width="1.5rem" />
+      <Email height="24" width="24" />
     </a>
     <!-- prettier-ignore -->
     <a href="{github}" target="_blank" rel="norel noreferrer" aria-label="github">
-      <Github height="1.5rem" width="1.5rem" />
+      <Github height="24" width="24" />
     </a>
     <!-- prettier-ignore -->
     <a href={twitter} target="_blank" rel="norel noreferrer" aria-label="twitter" >
-      <Twitter height="1.5rem" width="1.5rem" />
+      <Twitter height="24" width="24" />
     </a>
     <!-- prettier-ignore -->
     <a href="/rss.xml" rel="alternate" type="application/rss+xml" aria-label="rss">
-      <RSS height="1.5rem" width="1.5rem" />
+      <RSS height="24" width="24" />
     </a>
   </div>
   <p>

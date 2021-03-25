@@ -48,7 +48,7 @@ import Footer from "$lib/components/Footer.svelte"
 import Loading from "$lib/components/Loading.svelte"
 import { theme } from "$lib/utils/theme"
 
-export let segment: string
+export let segment: string = ""
 
 onMount(() => {
   const { matches: isDarkTheme } = window.matchMedia(

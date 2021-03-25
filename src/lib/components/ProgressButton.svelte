@@ -34,7 +34,7 @@
     on:click={scrollToTop}
     transition:fade={{ duration: 100 }}
   >
-    <Up width="1.5rem" height="1.5rem" className="button__icon" />
+    <Up width="24" height="24" className="button__icon" />
   </div>
 {/if}
 
