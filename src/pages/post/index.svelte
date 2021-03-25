@@ -134,9 +134,7 @@
     {#each tagFilter as filter}
       <Tag
         label={filter}
-        onClick={() => {
-          tagFilter = tagFilter.filter(x => x !== filter)
-        }}
+        onClick={() => (tagFilter = tagFilter.filter(x => x !== filter))}
       />
     {/each}
   </div>
@@ -155,21 +153,22 @@
 <ProgressButton />
 
 <script context="module">
-export async function preload() {
-  const posts = await (await this.fetch(`/api/post.json`)).json()
-  return { posts }
+export const prerender = true
+export async function load({ fetch }) {
+  const posts = await (await fetch(`/api/post.json`)).json()
+  return { props: { posts } }
 }
 </script>
 
-<script>
+<script lang="ts">
 import { fly } from "svelte/transition"
-import SEO from "@/components/SEO.svelte"
-import PostCard from "@/components/PostCard.svelte"
-import ProgressButton from "@/components/ProgressButton.svelte"
-import Tag from "@/components/Tag.svelte"
+import SEO from "$lib/components/SEO.svelte"
+import PostCard from "$lib/components/PostCard.svelte"
+import ProgressButton from "$lib/components/ProgressButton.svelte"
+import Tag from "$lib/components/Tag.svelte"
 
 // eslint-disable-next-line
-export let posts
+export let posts: Array<any>
 let inputBox = null
 let keyword = ""
 let tagKeyword = ""
@@ -194,7 +193,8 @@ $: filteredPosts = posts.filter(post => {
   return (title || slug) && tags
 })
 
-const filterPost = ({ target: { value } }) => {
+// TODO(elianiva): figure out the correct type for this
+const filterPost: any = ({ target: { value } }) => {
   // always reset the completion visibility
   isCompletionVisible = false
 

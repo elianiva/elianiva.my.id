@@ -107,7 +107,7 @@ I use `localStorage` to store the current theme data and load the state to Svelt
 I was trying to deploy this app to Vercel but it keeps changing constantly so stuff breaks easily. I decided not to deploy this in the end.
 
 <script>
-import Update from "@/components/Update.svelte"
+import Update from "$lib/components/Update.svelte"
 </script>
 
 <Update date="21-03-2021">
