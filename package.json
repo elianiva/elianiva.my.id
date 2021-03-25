@@ -18,6 +18,7 @@
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.19.0",
     "eslint-plugin-svelte3": "^3.0.0",
+    "front-matter": "^4.0.2",
     "mdsvex": "^0.8.9",
     "prettier": "^2.2.1",
     "prettier-plugin-svelte": "^2.1.1",
@@ -28,6 +29,7 @@
     "remark-toc": "^7.2.0",
     "svelte": "^3.29.0",
     "svelte-preprocess": "^4.0.0",
+    "svelte-waypoint": "^0.1.4",
     "tslib": "^2.0.0",
     "typescript": "^4.2.3",
     "vite": "^2.1.0"
