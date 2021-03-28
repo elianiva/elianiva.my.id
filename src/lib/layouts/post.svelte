@@ -328,7 +328,7 @@
   </span>
   <a
     class="post__edit"
-    href="https://github.com/elianiva/elianiva.me/blob/master/src/routes/post{currentSlug}/index.svx"
+    href="https://github.com/elianiva/elianiva.my.id/blob/master/src/routes/post{currentSlug}/index.svx"
     target="_blank"
     rel="norel noreferrer">Suggest An Edit</a
   >
@@ -344,7 +344,7 @@
       <div>
         <script
           src="https://utteranc.es/client.js"
-          repo="elianiva/elianiva.me"
+          repo="elianiva/elianiva.my.id"
           issue-term="pathname"
           label="Comments"
           theme="dark-blue"
@@ -355,7 +355,7 @@
       <div>
         <script
           src="https://utteranc.es/client.js"
-          repo="elianiva/elianiva.me"
+          repo="elianiva/elianiva.my.id"
           issue-term="pathname"
           label="Comments"
           theme="github-light"

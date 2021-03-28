@@ -29,7 +29,7 @@ tags:
 
 # Introduction
 Hello there! So, I've been playing around with the latest Neovim feature and
-that is it can now use Lua for its config. Quite a while ago I wrote [this post](https://elianiva.me/post/vim-statusline) where I explain how I made my statusline. Now, it's time to update that post using Lua :)
+that is it can now use Lua for its config. Quite a while ago I wrote [this post](https://elianiva.my.id/post/vim-statusline) where I explain how I made my statusline. Now, it's time to update that post using Lua :)
 
 # Prerequisite
 If you want to follow along, then these are the prerequisite.

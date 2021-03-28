@@ -18,7 +18,7 @@ Well, I've been trying out Svelte lately and so far I love it. I finally rebuild
 
 # Reasons
 ## Why did I rebuild my site?
-Of course, I want to try this new technology called Svelte. If you read my [previous post](https://elianiva.me/post/my-experience-with-svelte), I said that I want to rebuild my website using [Svelte](https://svelte.dev). Using [Sapper](https://sapper.svelte.dev), to be more specific.
+Of course, I want to try this new technology called Svelte. If you read my [previous post](https://elianiva.my.id/post/my-experience-with-svelte), I said that I want to rebuild my website using [Svelte](https://svelte.dev). Using [Sapper](https://sapper.svelte.dev), to be more specific.
 
 I only use my previous website as a blog. A place where I put some random post with the main reason of "self-documenting". I also found it useful when you learned something new and you try to explain it to else. It makes me understand it even better.
 
@@ -57,7 +57,7 @@ onMount(() => {
 })
 ```
 
-You might want to change `document` to something else because if you use `document` then it will change the `a` behaviour of the entire document. You can see mine [here](https://github.com/elianiva/elianiva.me/blob/a0c824de5b372ff210a1e3f44d10ef80e2be4190/src/layouts/post.svelte#L340-L356).
+You might want to change `document` to something else because if you use `document` then it will change the `a` behaviour of the entire document. You can see mine [here](https://github.com/elianiva/elianiva.my.id/blob/a0c824de5b372ff210a1e3f44d10ef80e2be4190/src/layouts/post.svelte#L340-L356).
 I also use `decodeURIComponent` to handle Japanese characters.
 
 I also couldn't make [shiki](https://shiki.matsu.io) work with MDsveX. There's nothing wrong with the default highlighter of MDsveX (which is [prismjs](https://prismjs.com)) but I want to use Shiki because it has the same syntax grammar as VScode and it looks better in my opinion. Though, MDsveX will use Shiki in the future version according to [pngwn's comment](https://github.com/pngwn/MDsveX/issues/139#issuecomment-688478536).
@@ -75,7 +75,7 @@ I have an intention of moving this site to Svelte in the future once it supports
 ## Post and project pages
 I use [MDsveX](https://mdsvex.com) as a source for my post and project page. It's basically like [MDX](https://mdxjs.com/) but for Svelte. I use Markdown on my previous site. I chose MDsveX because of [this talk](https://www.youtube.com/watch?v=Tr9wJYvnA24). It was a great talk, props to Svelte Indonesia community. The talk convinced me enough to use MDsveX instead of plain Markdown.
 
-I have two separate layouts which are [post layout](https://github.com/elianiva/elianiva.me/blob/master/src/layouts/post.svelte) and [project layout](https://github.com/elianiva/elianiva.me/blob/master/src/layouts/project.svelte). If you want to know the differences, just check it out yourself ツ
+I have two separate layouts which are [post layout](https://github.com/elianiva/elianiva.my.id/blob/master/src/layouts/post.svelte) and [project layout](https://github.com/elianiva/elianiva.me/blob/master/src/layouts/project.svelte). If you want to know the differences, just check it out yourself ツ
 
 ## Stylings
 As I mentioned earlier, I was going to use SCSS but got canceled. I use PostCSS instead to utilize its rich plugin ecosystem. Currently, I use [autoprefixer](https://github.com/postcss/autoprefixer) to prefix all of my CSS and [cssnano](https://cssnano.co/) to minify my CSS.
