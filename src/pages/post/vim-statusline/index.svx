@@ -19,7 +19,7 @@ The reason why I made this post is also because I want to change my statusline. 
 
 <Update date="29-11-2020">
 
-I wrote a better version of this in Lua which you can read [here](https://elianiva.me/post/neovim-lua-statusline)
+I wrote a better version of this in Lua which you can read [here](https://elianiva.my.id/post/neovim-lua-statusline)
 
 </Update>
 

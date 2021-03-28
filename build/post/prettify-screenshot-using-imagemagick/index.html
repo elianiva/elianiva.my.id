@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#20263a" />
+    <meta name="supported-color-scheme" content="dark light" />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="https://elianiva.me/rss.xml"
+    />
+
+    <!-- don't load global.css async because it's critical -->
+    <link href="/global.css" rel="stylesheet" />
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- external resources (fonts) -->
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      href="https://dev-cats.github.io/code-snippets/JetBrainsMono.css"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+
+    <title>Prettify your screenshot using imagemagick | Elianiva</title><script data-svelte="svelte-1q2vxzd">// set dark mode correctly before everythings get rendered
+  // thanks https://github.com/pveyes
+  try {
+    // prettier-ignore
+    const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
+    let preference
+
+    if (localStorage.getItem("theme"))
+      preference = localStorage.getItem("theme")
+    else preference = isDarkMode ? "dark" : "light"
+
+    // prettier-ignore
+    if (preference) document.documentElement.setAttribute("data-theme", preference)
+  } catch (err) {
+    console.log(err)
+  }
+  </script><link rel="preload" href="/prism-night-owl.css" as="style" data-svelte="svelte-vz1hne"><link rel="canonical" href="https://elianiva.me/post/prettify-screenshot-using-imagemagick" data-svelte="svelte-1piz2fp"><meta name="description" content="Wanna make your screenshot a bit more fancy? Say no more, Imagemagick got you covered" data-svelte="svelte-1piz2fp"><meta name="keywords" content="personal,website,blog,article" data-svelte="svelte-1piz2fp"><meta property="og:type" content="website" data-svelte="svelte-1piz2fp"><meta property="og:url" content="https://elianiva.me/post/prettify-screenshot-using-imagemagick" data-svelte="svelte-1piz2fp"><meta property="og:title" content="Prettify your screenshot using imagemagick" data-svelte="svelte-1piz2fp"><meta property="og:description" content="Wanna make your screenshot a bit more fancy? Say no more, Imagemagick got you covered" data-svelte="svelte-1piz2fp"><meta property="og:image" content="https://avatars3.githubusercontent.com/u/51877647?s=240&amp;v=4" data-svelte="svelte-1piz2fp"><meta property="twitter:card" content="summary" data-svelte="svelte-1piz2fp"><meta property="twitter:url" content="https://elianiva.me/post/prettify-screenshot-using-imagemagick" data-svelte="svelte-1piz2fp"><meta property="twitter:title" content="Prettify your screenshot using imagemagick" data-svelte="svelte-1piz2fp"><meta property="twitter:description" content="Wanna make your screenshot a bit more fancy? Say no more, Imagemagick got you covered" data-svelte="svelte-1piz2fp">
+
+
+
+<link rel="modulepreload" href="/./_app/start-f65e4750.js">
+			<link rel="modulepreload" href="/./_app/chunks/stores-7ca13020.js">
+			<link rel="modulepreload" href="/./_app/chunks/preload-helper-9f12a5fd.js">
+			<link rel="modulepreload" href="/./_app/chunks/theme-0c5a7997.js">
+			<link rel="modulepreload" href="/./_app/pages/post/prettify-screenshot-using-imagemagick/index.svx-d31bb46b.js">
+			<link rel="modulepreload" href="/./_app/chunks/post-df226dec.js">
+			<link rel="modulepreload" href="/./_app/chunks/ProgressButton-a8599f0a.js">
+			<link rel="stylesheet" href="/./_app/assets/start-c7eab101.css">
+			<link rel="stylesheet" href="/./_app/assets/post-b66d8946.css">
+			<link rel="stylesheet" href="/./_app/assets/ProgressButton-42b56f44.css">
+
+
+		<script type="module">
+			import { start } from "/./_app/start-f65e4750.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":"/."},
+				status: 200,
+				error: null,
+				session: void 0,
+				nodes: [
+					import("/./_app/pages/post/prettify-screenshot-using-imagemagick/index.svx-d31bb46b.js")
+				],
+				page: {
+					host: location.host,
+					path: "/post/prettify-screenshot-using-imagemagick",
+					query: new URLSearchParams(""),
+					params: {}
+				}
+			});
+		</script>
+  </head>
+  <body>
+    <div id="svelte">
+
+
+
+
+<nav class="navbar svelte-140cklc"><div class="navbar__container svelte-140cklc"><div class="navbar__title svelte-140cklc"><a href="/" aria-label="logo" class="svelte-140cklc"><svg width="77" height="22" viewBox="0 0 77 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo__icon"><path d="M10.336 9.776C10.864 9.776 11.272 9.92 11.56 10.208C11.864 10.496 12.016 10.896 12.016 11.408C12.016 11.536 12 11.672 11.968 11.816C11.952 11.944 11.928 12.056 11.896 12.152C11.688 12.12 11.456 12.096 11.2 12.08C10.944 12.048 10.64 12.032 10.288 12.032C9.6 12.032 8.904 12.096 8.2 12.224C7.496 12.336 6.824 12.432 6.184 12.512C5.816 13.36 5.48 14.184 5.176 14.984C4.872 15.768 4.608 16.488 4.384 17.144C4.176 17.8 4.008 18.368 3.88 18.848C3.768 19.328 3.704 19.688 3.688 19.928C4.984 19.656 6.288 19.424 7.6 19.232C8.928 19.04 10.32 18.896 11.776 18.8C11.952 19.072 12.096 19.368 12.208 19.688C12.336 20.008 12.4 20.352 12.4 20.72C12.4 20.816 12.4 20.92 12.4 21.032C12.4 21.144 12.384 21.256 12.352 21.368C11.904 21.352 11.432 21.336 10.936 21.32C10.44 21.32 9.792 21.32 8.992 21.32C8.464 21.32 7.96 21.328 7.48 21.344C7.016 21.376 6.544 21.416 6.064 21.464C5.584 21.512 5.072 21.576 4.528 21.656C4 21.736 3.4 21.832 2.728 21.944C1.992 21.656 1.28 20.952 0.592 19.832C0.864 19.256 1.24 18.384 1.72 17.216C2.216 16.032 2.84 14.456 3.592 12.488C2.872 12.264 2.4 11.864 2.176 11.288C2.256 11.208 2.488 11.112 2.872 11C3.256 10.872 3.728 10.744 4.288 10.616C4.528 9.992 4.728 9.448 4.888 8.984C5.064 8.52 5.216 8.088 5.344 7.688C5.472 7.272 5.584 6.872 5.68 6.488C5.792 6.088 5.896 5.656 5.992 5.192C5.432 5.16 4.992 5.008 4.672 4.736C4.352 4.448 4.192 4.08 4.192 3.632C4.192 3.504 4.208 3.352 4.24 3.176C4.288 3 4.336 2.848 4.384 2.72C4.704 2.768 5.008 2.8 5.296 2.816C5.6 2.832 5.992 2.84 6.472 2.84C7.48 2.84 8.424 2.816 9.304 2.768C10.184 2.704 10.976 2.64 11.68 2.576C12.4 2.512 13.016 2.456 13.528 2.408C14.04 2.344 14.432 2.312 14.704 2.312C15.072 2.312 15.4 2.504 15.688 2.888C15.976 3.272 16.192 3.816 16.336 4.52C15.84 4.472 15.432 4.44 15.112 4.424C14.808 4.408 14.536 4.4 14.296 4.4C13.416 4.4 12.608 4.448 11.872 4.544C11.152 4.624 10.456 4.712 9.784 4.808C9.688 4.952 9.576 5.136 9.448 5.36C9.336 5.584 9.184 5.896 8.992 6.296C8.8 6.696 8.56 7.2 8.272 7.808C8 8.416 7.664 9.176 7.264 10.088C7.872 9.992 8.44 9.92 8.968 9.872C9.512 9.808 9.968 9.776 10.336 9.776ZM14.6009 18.464C14.6009 17.76 14.7689 16.776 15.1049 15.512C15.4409 14.232 15.9129 12.744 16.5209 11.048C17.5129 8.344 18.4409 6.096 19.3049 4.304C20.1849 2.496 21.0409 1.088 21.8729 0.079999C22.0649 0.111999 22.2969 0.191998 22.5689 0.319999C22.8569 0.447999 23.1369 0.591999 23.4089 0.751999C23.6809 0.895999 23.9209 1.048 24.1289 1.208C24.3529 1.368 24.4969 1.496 24.5609 1.592C23.3129 3.064 22.2169 4.648 21.2729 6.344C20.3289 8.04 19.4649 9.984 18.6809 12.176C18.0089 14.064 17.4969 15.768 17.1449 17.288C16.7929 18.792 16.6169 20.048 16.6169 21.056C16.6169 21.328 16.6169 21.496 16.6169 21.56C16.6169 21.624 16.6249 21.688 16.6409 21.752C16.4169 21.72 16.2249 21.664 16.0649 21.584C15.9049 21.504 15.8009 21.408 15.7529 21.296C15.7209 21.216 15.6329 21.096 15.4889 20.936C15.3449 20.792 15.2169 20.68 15.1049 20.6C14.9609 20.504 14.8409 20.256 14.7449 19.856C14.6489 19.44 14.6009 18.976 14.6009 18.464ZM20.3208 18.392C20.3208 18.248 20.3288 18.072 20.3448 17.864C20.3768 17.64 20.4248 17.352 20.4888 17C20.5528 16.632 20.6328 16.192 20.7288 15.68C20.8408 15.168 20.9768 14.552 21.1367 13.832C21.1688 13.672 21.2408 13.416 21.3528 13.064C21.4648 12.712 21.6088 12.344 21.7848 11.96C21.9768 11.56 22.2008 11.176 22.4568 10.808C22.7288 10.44 23.0488 10.168 23.4168 9.992C23.6888 10.056 24.0488 10.224 24.4968 10.496C24.9448 10.752 25.3288 11.112 25.6488 11.576C25.2808 11.992 24.9688 12.408 24.7128 12.824C24.4728 13.24 24.2488 13.672 24.0408 14.12C23.8488 14.568 23.6648 15.032 23.4888 15.512C23.3288 15.992 23.1448 16.496 22.9368 17.024C22.7608 17.472 22.6008 17.936 22.4568 18.416C22.3128 18.88 22.2328 19.288 22.2168 19.64C22.2168 19.928 22.2088 20.128 22.1928 20.24C22.1928 20.368 22.1528 20.432 22.0728 20.432C22.0088 20.432 21.8808 20.392 21.6888 20.312C21.4968 20.232 21.2968 20.112 21.0888 19.952C20.8968 19.776 20.7208 19.56 20.5608 19.304C20.4008 19.048 20.3208 18.744 20.3208 18.392ZM24.9048 7.976C24.9048 7.88 24.9288 7.736 24.9768 7.544C24.8968 7.464 24.8248 7.344 24.7608 7.184C24.7128 7.024 24.6888 6.88 24.6888 6.752C24.6888 6.608 24.7048 6.416 24.7368 6.176C24.7848 5.92 24.8408 5.648 24.9048 5.36C24.9688 5.072 25.0488 4.776 25.1448 4.472C25.2408 4.152 25.3368 3.864 25.4328 3.608C25.6248 3.608 25.8568 3.664 26.1288 3.776C26.4168 3.872 26.7048 4.008 26.9928 4.184C27.2808 4.344 27.5448 4.528 27.7848 4.736C28.0248 4.928 28.2088 5.112 28.3368 5.288C28.1608 5.464 27.9288 5.712 27.6408 6.032C27.3528 6.336 27.0728 6.664 26.8008 7.016C26.5288 7.352 26.2808 7.672 26.0568 7.976C25.8328 8.28 25.6888 8.496 25.6248 8.624C25.4328 8.592 25.2648 8.512 25.1208 8.384C24.9768 8.24 24.9048 8.104 24.9048 7.976ZM34.2486 10.304C34.4086 10.304 34.5926 10.336 34.8006 10.4C35.0246 10.448 35.2246 10.52 35.4006 10.616C35.5766 10.696 35.7206 10.784 35.8326 10.88C35.9606 10.976 36.0246 11.064 36.0246 11.144C35.7046 11.816 35.4086 12.496 35.1366 13.184C34.8646 13.856 34.6326 14.504 34.4406 15.128C34.2486 15.752 34.0966 16.336 33.9846 16.88C33.8886 17.424 33.8406 17.896 33.8406 18.296C33.8406 18.744 33.8886 19.12 33.9846 19.424C34.0806 19.712 34.2406 19.92 34.4646 20.048C34.2726 20.176 34.0246 20.28 33.7206 20.36C33.4166 20.44 33.1446 20.48 32.9046 20.48C32.0406 20.48 31.6086 19.888 31.6086 18.704C31.6086 17.792 31.9126 16.544 32.5206 14.96C32.2006 15.696 31.8326 16.392 31.4166 17.048C31.0006 17.688 30.5766 18.256 30.1446 18.752C29.7126 19.248 29.2726 19.656 28.8246 19.976C28.3926 20.28 27.9926 20.464 27.6246 20.528C27.0326 20.496 26.5526 20.216 26.1846 19.688C25.8166 19.144 25.6326 18.456 25.6326 17.624C25.6326 16.728 25.8246 15.784 26.2086 14.792C26.5926 13.8 27.0806 12.88 27.6726 12.032C28.2806 11.184 28.9366 10.48 29.6406 9.92C30.3446 9.344 31.0246 9.04 31.6806 9.008C31.8406 9.056 32.0166 9.152 32.2086 9.296C32.4166 9.44 32.6086 9.608 32.7846 9.8C32.9766 9.992 33.1366 10.192 33.2646 10.4C33.3926 10.592 33.4646 10.76 33.4806 10.904C32.8406 11 32.1766 11.312 31.4886 11.84C30.8166 12.368 30.2006 13.008 29.6406 13.76C29.0966 14.496 28.6486 15.288 28.2966 16.136C27.9446 16.984 27.7686 17.776 27.7686 18.512C27.7686 18.816 27.8806 19.008 28.1046 19.088C28.5686 18.992 29.1046 18.6 29.7126 17.912C30.3206 17.208 31.0566 16.128 31.9206 14.672C32.0806 14.384 32.2566 14.064 32.4486 13.712C32.6566 13.36 32.8646 12.992 33.0726 12.608C33.2806 12.224 33.4806 11.84 33.6726 11.456C33.8806 11.056 34.0726 10.672 34.2486 10.304ZM41.1301 8.36C41.5461 8.488 41.9381 8.776 42.3061 9.224C42.6741 9.656 42.9461 10.136 43.1221 10.664C42.9461 11.096 42.6741 11.616 42.3061 12.224C41.9381 12.832 41.5701 13.456 41.2021 14.096C40.8341 14.72 40.4981 15.32 40.1941 15.896C39.9061 16.456 39.7381 16.92 39.6901 17.288C39.9461 17.016 40.2261 16.704 40.5301 16.352C40.8501 15.984 41.1541 15.624 41.4421 15.272C41.7461 14.904 42.0261 14.576 42.2821 14.288C42.5381 13.984 42.7381 13.76 42.8821 13.616C43.1861 13.296 43.5461 12.928 43.9621 12.512C44.3781 12.08 44.8101 11.68 45.2581 11.312C45.7221 10.928 46.1861 10.608 46.6501 10.352C47.1141 10.08 47.5381 9.944 47.9221 9.944C48.3381 9.944 48.6821 10.088 48.9541 10.376C49.2421 10.648 49.4661 10.936 49.6261 11.24C49.6261 11.272 49.5621 11.32 49.4341 11.384C49.3221 11.432 49.1541 11.584 48.9301 11.84C48.7061 12.128 48.4501 12.528 48.1621 13.04C47.8901 13.536 47.6181 14.08 47.3461 14.672C47.0901 15.248 46.8741 15.84 46.6981 16.448C46.5221 17.056 46.4341 17.608 46.4341 18.104C46.4341 18.504 46.4821 18.76 46.5781 18.872C46.6901 18.984 46.8421 19.04 47.0341 19.04C47.2101 19.04 47.3941 19 47.5861 18.92C47.7781 18.84 47.9301 18.8 48.0421 18.8C48.1061 18.832 48.1541 18.904 48.1861 19.016C48.2341 19.112 48.2581 19.2 48.2581 19.28C48.1301 19.392 47.9781 19.504 47.8021 19.616C47.6261 19.728 47.4421 19.832 47.2501 19.928C47.0581 20.024 46.8661 20.104 46.6741 20.168C46.4981 20.232 46.3381 20.264 46.1941 20.264C45.7301 20.264 45.3461 20.192 45.0421 20.048C44.7541 19.92 44.5221 19.744 44.3461 19.52C44.1861 19.296 44.0741 19.032 44.0101 18.728C43.9461 18.408 43.9141 18.072 43.9141 17.72C43.9141 17.528 43.9301 17.312 43.9621 17.072C43.9941 16.832 44.0581 16.552 44.1541 16.232C44.2501 15.896 44.3861 15.504 44.5621 15.056C44.7381 14.592 44.9621 14.04 45.2341 13.4C45.2021 13.4 44.9861 13.512 44.5861 13.736C44.1861 13.96 43.7541 14.304 43.2901 14.768C42.5381 15.488 41.8581 16.2 41.2501 16.904C40.6581 17.608 40.0501 18.392 39.4261 19.256C39.0741 19.752 38.7621 20.168 38.4901 20.504C38.2341 20.856 38.0101 21.088 37.8181 21.2C37.4821 21.008 37.2341 20.736 37.0741 20.384C36.9141 20.048 36.7941 19.696 36.7141 19.328C36.7141 19.024 36.7541 18.64 36.8341 18.176C36.9301 17.712 37.0501 17.2 37.1941 16.64C37.3541 16.064 37.5461 15.464 37.7701 14.84C37.9941 14.216 38.2421 13.592 38.5141 12.968C39.1221 11.56 39.6741 10.456 40.1701 9.656C40.6821 8.856 41.0021 8.424 41.1301 8.36ZM50.227 18.392C50.227 18.248 50.235 18.072 50.251 17.864C50.283 17.64 50.331 17.352 50.395 17C50.459 16.632 50.539 16.192 50.635 15.68C50.747 15.168 50.883 14.552 51.043 13.832C51.075 13.672 51.147 13.416 51.259 13.064C51.371 12.712 51.515 12.344 51.691 11.96C51.883 11.56 52.107 11.176 52.363 10.808C52.635 10.44 52.955 10.168 53.323 9.992C53.595 10.056 53.955 10.224 54.403 10.496C54.851 10.752 55.235 11.112 55.555 11.576C55.187 11.992 54.875 12.408 54.619 12.824C54.379 13.24 54.155 13.672 53.947 14.12C53.755 14.568 53.571 15.032 53.395 15.512C53.235 15.992 53.051 16.496 52.843 17.024C52.667 17.472 52.507 17.936 52.363 18.416C52.219 18.88 52.139 19.288 52.123 19.64C52.123 19.928 52.115 20.128 52.099 20.24C52.099 20.368 52.059 20.432 51.979 20.432C51.915 20.432 51.787 20.392 51.595 20.312C51.403 20.232 51.203 20.112 50.995 19.952C50.803 19.776 50.627 19.56 50.467 19.304C50.307 19.048 50.227 18.744 50.227 18.392ZM54.811 7.976C54.811 7.88 54.835 7.736 54.883 7.544C54.803 7.464 54.731 7.344 54.667 7.184C54.619 7.024 54.595 6.88 54.595 6.752C54.595 6.608 54.611 6.416 54.643 6.176C54.691 5.92 54.747 5.648 54.811 5.36C54.875 5.072 54.955 4.776 55.051 4.472C55.147 4.152 55.243 3.864 55.339 3.608C55.531 3.608 55.763 3.664 56.035 3.776C56.323 3.872 56.611 4.008 56.899 4.184C57.187 4.344 57.451 4.528 57.691 4.736C57.931 4.928 58.115 5.112 58.243 5.288C58.067 5.464 57.835 5.712 57.547 6.032C57.259 6.336 56.979 6.664 56.707 7.016C56.435 7.352 56.187 7.672 55.963 7.976C55.739 8.28 55.595 8.496 55.531 8.624C55.339 8.592 55.171 8.512 55.027 8.384C54.883 8.24 54.811 8.104 54.811 7.976ZM57.1949 11.504C57.1949 11.216 57.2109 10.944 57.2429 10.688C57.2909 10.432 57.3789 10.216 57.5069 10.04C57.6349 9.848 57.8109 9.704 58.0349 9.608C58.2589 9.496 58.5549 9.44 58.9229 9.44C59.1469 9.44 59.3949 9.464 59.6669 9.512C59.9549 9.56 60.1629 9.648 60.2909 9.776C60.2269 10.048 60.1709 10.288 60.1229 10.496C60.0909 10.704 60.0589 10.936 60.0269 11.192C60.0109 11.432 59.9949 11.728 59.9789 12.08C59.9629 12.416 59.9469 12.856 59.9309 13.4C59.8989 14.488 59.8429 15.464 59.7629 16.328C59.6989 17.176 59.5389 18.024 59.2829 18.872C59.2829 18.936 59.3069 18.968 59.3549 18.968C59.5949 18.792 59.8669 18.536 60.1709 18.2C60.4749 17.864 60.7949 17.488 61.1309 17.072C61.4669 16.64 61.8029 16.184 62.1389 15.704C62.4749 15.224 62.7869 14.752 63.0749 14.288C63.4589 13.616 63.8829 12.776 64.3469 11.768C64.8109 10.76 65.1949 9.68 65.4989 8.528C65.5949 8.528 65.7149 8.552 65.8589 8.6C66.0189 8.632 66.1709 8.68 66.3149 8.744C66.4749 8.792 66.6109 8.848 66.7229 8.912C66.8509 8.976 66.9389 9.032 66.9869 9.08C66.9549 9.768 66.7869 10.472 66.4829 11.192C66.1949 11.912 65.8429 12.608 65.4269 13.28C65.0109 13.952 64.5709 14.584 64.1069 15.176C63.6429 15.768 63.2189 16.28 62.8349 16.712C62.0669 17.608 61.2909 18.408 60.5069 19.112C59.7389 19.816 58.8189 20.496 57.7469 21.152C57.3309 20.992 57.0029 20.776 56.7629 20.504C56.5229 20.248 56.4029 19.976 56.4029 19.688C56.4029 19.496 56.4429 19.28 56.5229 19.04C56.6189 18.784 56.7229 18.464 56.8349 18.08C56.9469 17.68 57.0429 17.184 57.1229 16.592C57.2189 16 57.2669 15.248 57.2669 14.336C57.2669 13.808 57.2509 13.28 57.2189 12.752C57.2029 12.208 57.1949 11.792 57.1949 11.504ZM74.9127 10.304C75.0727 10.304 75.2567 10.336 75.4647 10.4C75.6887 10.448 75.8887 10.52 76.0647 10.616C76.2407 10.696 76.3847 10.784 76.4967 10.88C76.6247 10.976 76.6887 11.064 76.6887 11.144C76.3687 11.816 76.0727 12.496 75.8007 13.184C75.5287 13.856 75.2967 14.504 75.1047 15.128C74.9127 15.752 74.7607 16.336 74.6487 16.88C74.5527 17.424 74.5047 17.896 74.5047 18.296C74.5047 18.744 74.5527 19.12 74.6487 19.424C74.7447 19.712 74.9047 19.92 75.1287 20.048C74.9367 20.176 74.6887 20.28 74.3847 20.36C74.0807 20.44 73.8087 20.48 73.5687 20.48C72.7047 20.48 72.2727 19.888 72.2727 18.704C72.2727 17.792 72.5767 16.544 73.1847 14.96C72.8647 15.696 72.4967 16.392 72.0807 17.048C71.6647 17.688 71.2407 18.256 70.8087 18.752C70.3767 19.248 69.9367 19.656 69.4887 19.976C69.0567 20.28 68.6567 20.464 68.2887 20.528C67.6967 20.496 67.2167 20.216 66.8487 19.688C66.4807 19.144 66.2967 18.456 66.2967 17.624C66.2967 16.728 66.4887 15.784 66.8727 14.792C67.2567 13.8 67.7447 12.88 68.3367 12.032C68.9447 11.184 69.6007 10.48 70.3047 9.92C71.0087 9.344 71.6887 9.04 72.3447 9.008C72.5047 9.056 72.6807 9.152 72.8727 9.296C73.0807 9.44 73.2727 9.608 73.4487 9.8C73.6407 9.992 73.8007 10.192 73.9287 10.4C74.0567 10.592 74.1287 10.76 74.1447 10.904C73.5047 11 72.8407 11.312 72.1527 11.84C71.4807 12.368 70.8647 13.008 70.3047 13.76C69.7607 14.496 69.3127 15.288 68.9607 16.136C68.6087 16.984 68.4327 17.776 68.4327 18.512C68.4327 18.816 68.5447 19.008 68.7687 19.088C69.2327 18.992 69.7687 18.6 70.3767 17.912C70.9847 17.208 71.7207 16.128 72.5847 14.672C72.7447 14.384 72.9207 14.064 73.1127 13.712C73.3207 13.36 73.5287 12.992 73.7367 12.608C73.9447 12.224 74.1447 11.84 74.3367 11.456C74.5447 11.056 74.7367 10.672 74.9127 10.304Z" fill="currentColor"></path></svg></a></div>
+    <ul class="navbar__items svelte-140cklc"><li class="navbar__item svelte-140cklc"><a href="/" class="svelte-140cklc">Home</a></li>
+      <li class="navbar__item svelte-140cklc"><a href="/post" class="svelte-140cklc">Posts</a></li>
+      <li class="navbar__item svelte-140cklc"><a href="/project" class="svelte-140cklc">Projects</a></li>
+      <li class="navbar__item svelte-140cklc"><a href="/about" class="svelte-140cklc">About</a></li>
+      <li class="navbar__item svelte-140cklc"><button class="navbar__button svelte-140cklc" aria-label="toggle darkmode"><svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moonnavbar__darkmode"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></li></ul>
+    <div class="navbar__hamburger svelte-140cklc"><input class="navbar__checkbox svelte-140cklc" type="checkbox"  aria-label="toggle menu">
+      <span class="navbar__hamburger_item--1 svelte-140cklc"></span>
+      <span class="navbar__hamburger_item--2 svelte-140cklc"></span>
+      <span class="navbar__hamburger_item--3 svelte-140cklc"></span></div></div></nav>
+
+<main class="svelte-r7qf84">
+  <div class="svelte-r7qf84">
+
+
+
+<section class="post svelte-5m0jjt"><h1 class="post__title svelte-5m0jjt">Prettify your screenshot using imagemagick</h1>
+  <span class="post__date svelte-5m0jjt">Posted on
+    Thursday,
+    6 August 2020</span>
+  <a class="post__edit svelte-5m0jjt" href="https://github.com/elianiva/elianiva.me/blob/master/src/pages/post/post/prettify-screenshot-using-imagemagick/index.svx" target="_blank" rel="norel noreferrer">Suggest An Edit</a>
+  <div class="post__tags svelte-5m0jjt"><div class="post__tag svelte-5m0jjt">linux</div></div>
+  <main class="post__content svelte-5m0jjt"><h1 id="table-of-content"><a href="#table-of-content">Table of Content</a></h1>
+<ul><li><p><a href="#introduction">Introduction</a></p></li>
+<li><p><a href="#prerequisite">Prerequisite</a></p></li>
+<li><p><a href="#making-the-script">Making The Script</a></p>
+<ul><li><a href="#backdrop">Backdrop</a></li>
+<li><a href="#border">Border</a></li>
+<li><a href="#shadow">Shadow</a></li>
+<li><a href="#rounded-corner">Rounded Corner</a></li>
+<li><a href="#combining-them-all">Combining Them All</a></li></ul></li>
+<li><p><a href="#conclusion">Conclusion</a></p></li></ul>
+<h1 id="introduction"><a href="#introduction">Introduction</a></h1>
+<p>Let’s make our screenshot prettier by using a software called <a href="https://imagemagick.org" rel="nofollow">Imagemagick</a>. In this post, we will add some fancy effects like backdrop, shadow, border, and rounded corner with a simple script.</p>
+<h1 id="prerequisite"><a href="#prerequisite">Prerequisite</a></h1>
+<p>Before we make the script, there are a few things that you’ll need to prepare.</p>
+<ul><li><strong>Imagemagick</strong> - obviously</li>
+<li><strong>Any screenshot software</strong> - I use <a href="https://flameshot.js.org/" rel="nofollow">flameshot</a></li>
+<li><strong>Clipboard</strong> - I use <a href="https://github.com/astrand/xclip" rel="nofollow">xclip</a> (optional)</li></ul>
+<p>After having all of that, let’s make the script.</p>
+<h1 id="making-the-script"><a href="#making-the-script">Making The Script</a></h1>
+<h2 id="backdrop"><a href="#backdrop">Backdrop</a></h2>
+<p>Backdrop is actually just a really thicc border. Here’s how to do that on imagemagick.</p>
+<pre class="language-bash"><code class="language-bash">convert source.png -bordercolor white -border <span class="token number">10</span> result.png</code></pre>
+<p>You can adjust the color by changing the <code>bordercolor</code> value. I use white because it looks nice to me. You can use HEX, RGB, and RGBA format. For more references, go to <a href="https://imagemagick.org/script/color.php" rel="nofollow">their website</a>.</p>
+<p>To adjust the thickness of it, you change the <code>border</code> value. I use 10 here because it’s not too big and it’s not too small for me.</p>
+<h2 id="border"><a href="#border">Border</a></h2>
+<p>Previously, we made a thicc border as a backdrop, this time we make a thin border before the shadow</p>
+<pre class="language-bash"><code class="language-bash">convert source.png -bordercolor white -border <span class="token number">4</span> result.png</code></pre>
+<p>It’s basically the same, just with a different value.</p>
+<h2 id="shadow"><a href="#shadow">Shadow</a></h2>
+<p>To give you screenshot a shadow is quite simple. Here’s how to do it.</p>
+<pre class="language-bash"><code class="language-bash">convert source.png <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -background black -shadow 40x5+0+0 <span class="token punctuation"></span><span class="token punctuation">)</span> <span class="token punctuation"></span>
++swap -background none -layers merge +repage result.png<span class="token punctuation">;</span> <span class="token punctuation"></span></code></pre>
+<p>To change the shadow color, adjust the first <code>background</code> value. I use black because black shadow is the only one that is acceptable to me. The <code>40</code> here is the shadow opacity, you can change it to whatever you like. The shadow radius here is <code>5</code>. This will add to your backdrop thickness. If you have <code>10</code> of backdrop and you have <code>5</code> of border radius then you’ll end up with <code>15</code> of backdrop.</p>
+<h2 id="rounded-corner"><a href="#rounded-corner">Rounded Corner</a></h2>
+<p>It’s quite a lengthy one, but don’t worry. The only thing we’d change is the border radius.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># rounded corners</span>
+convert /tmp/image.png <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">(</span> +clone  -alpha extract <span class="token punctuation"></span>
+        -draw <span class="token string">'fill black polygon 0,0 0,5 5,0 fill white circle 5,5 5,0'</span> <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flip <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flop <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">)</span> -alpha off -compose CopyOpacity -composite /tmp/image.png</code></pre>
+<p>The border radius here is <code>5</code>. Change every <code>5</code> to whatever you want like <code>10</code> for example but <code>5</code> is the sweet spot for me. For more technical explanation and details you can refer to <a href="http://www.imagemagick.org/Usage/thumbnails/#rounded" rel="nofollow">their website</a></p>
+<h2 id="combining-them-all"><a href="#combining-them-all">Combining Them All</a></h2>
+<p>Those are all the parts that we need. Let’s combine them together. Make a file called whatever you want and make it executable by using <code>chmod +x filename</code> and edit the file.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/dash</span></code></pre>
+<p>I use <code>dash</code> for my script, but <code>bash</code> or <code>zsh</code> will do just fine. I don’t know if it’ll work with <code>fish</code> though, I suppose it’ll work just fine. Add your screenshot program to take the image that we will be using. I’m using <a href="https://flameshot.js.org/" rel="nofollow">Flameshot</a> so it will look like this.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/dash</span>
+
+flameshot gui --raw <span class="token operator">></span> /tmp/image.png</code></pre>
+<p>I store the image on <code>/tmp</code> directory because I will copy it to my clipboard and won’t be using the original image.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/dash</span>
+
+flameshot gui --raw <span class="token operator">></span> /tmp/image.png
+
+<span class="token comment"># rounded corners</span>
+convert /tmp/image.png <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">(</span> +clone  -alpha extract <span class="token punctuation"></span>
+        -draw <span class="token string">'fill black polygon 0,0 0,5 5,0 fill white circle 5,5 5,0'</span> <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flip <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flop <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">)</span> -alpha off -compose CopyOpacity -composite /tmp/image.png</code></pre>
+<p>The first effect I apply is the rounded corner and store the result in <code>/tmp/image.png</code>.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/dash</span>
+
+flameshot gui --raw <span class="token operator">></span> /tmp/image.png
+
+<span class="token comment"># rounded corners</span>
+convert /tmp/image.png <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">(</span> +clone  -alpha extract <span class="token punctuation"></span>
+        -draw <span class="token string">'fill black polygon 0,0 0,5 5,0 fill white circle 5,5 5,0'</span> <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flip <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flop <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">)</span> -alpha off -compose CopyOpacity -composite /tmp/image.png
+
+<span class="token comment"># shadow</span>
+convert /tmp/image.png <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -background black -shadow 40x5+0+0 <span class="token punctuation"></span><span class="token punctuation">)</span> <span class="token punctuation"></span>
++swap -background none -layers merge +repage /tmp/image.png<span class="token punctuation">;</span> <span class="token punctuation"></span></code></pre>
+<p>Next one is the shadow. I don’t use the small border because it looks weird on a smaller screenshot. You can use it if you like.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/dash</span>
+
+flameshot gui --raw <span class="token operator">></span> /tmp/image.png
+
+<span class="token comment"># rounded corners</span>
+convert /tmp/image.png <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">(</span> +clone  -alpha extract <span class="token punctuation"></span>
+        -draw <span class="token string">'fill black polygon 0,0 0,5 5,0 fill white circle 5,5 5,0'</span> <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flip <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flop <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">)</span> -alpha off -compose CopyOpacity -composite /tmp/image.png
+
+<span class="token comment"># shadow</span>
+convert /tmp/image.png <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -background black -shadow 40x5+0+0 <span class="token punctuation"></span><span class="token punctuation">)</span> <span class="token punctuation"></span>
++swap -background none -layers merge +repage /tmp/image.png<span class="token punctuation">;</span> <span class="token punctuation"></span>
+
+<span class="token comment"># white backdrop</span>
+convert /tmp/image.png -bordercolor white -border <span class="token number">10</span> /tmp/image.png</code></pre>
+<p>The last effect I apply is white backdrop. Next step is optional, but if you want to you can add it as well.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/dash</span>
+
+flameshot gui --raw <span class="token operator">></span> /tmp/image.png
+
+<span class="token comment"># rounded corners</span>
+convert /tmp/image.png <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">(</span> +clone  -alpha extract <span class="token punctuation"></span>
+        -draw <span class="token string">'fill black polygon 0,0 0,5 5,0 fill white circle 5,5 5,0'</span> <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flip <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+        <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -flop <span class="token punctuation"></span><span class="token punctuation">)</span> -compose Multiply -composite <span class="token punctuation"></span>
+     <span class="token punctuation"></span><span class="token punctuation">)</span> -alpha off -compose CopyOpacity -composite /tmp/image.png
+
+<span class="token comment"># shadow</span>
+convert /tmp/image.png <span class="token punctuation"></span><span class="token punctuation">(</span> +clone -background black -shadow 40x5+0+0 <span class="token punctuation"></span><span class="token punctuation">)</span> <span class="token punctuation"></span>
++swap -background none -layers merge +repage /tmp/image.png<span class="token punctuation">;</span> <span class="token punctuation"></span>
+
+<span class="token comment"># white backdrop</span>
+convert /tmp/image.png -bordercolor white -border <span class="token number">10</span> /tmp/image.png
+
+<span class="token comment"># copy to clipboard</span>
+xclip -selection clipboard -i /tmp/image.png -t image/png</code></pre>
+<p>I added the last line to copy the result into my clipboard so I can easily paste it anywhere and don’t have to delete the screenshot when I no longer need it. Here’s the result.</p>
+<p><img src="/assets/post/prettify-screenshot-using-imagemagick/rounded.png" alt="rounded"></p>
+<p>Here’s another version</p>
+<p><img src="/assets/post/prettify-screenshot-using-imagemagick/square.png" alt="square"></p>
+<h1 id="conclusion"><a href="#conclusion">Conclusion</a></h1>
+<p>Imagemagick is a powerful CLI tools to manipulate an image. It can do so much more, if you’re interested on that then you can go to <a href="https://www.imagemagick.org/" rel="nofollow">their website</a> for some advanced guide. That’s all for this post, thanks for reading and have a nice day ツ</p>
+    <h1>Comments</h1>
+    <div><script src="https://utteranc.es/client.js" repo="elianiva/elianiva.me" issue-term="pathname" label="Comments" theme="github-light" crossorigin="anonymous" async></script></div></main></section>
+
+
+</div>
+  <footer class="svelte-191vxzd"><div class="icons svelte-191vxzd">
+    <a href="mailto:dicha.arkana03@gmail.com" target="_blank" rel="norel noreferrer" aria-label="email" class="svelte-191vxzd"><svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+    
+    <a href="https://github.com/elianiva" target="_blank" rel="norel noreferrer" aria-label="github" class="svelte-191vxzd"><svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+    
+    <a href="https://twitter.com/@elianiva_" target="_blank" rel="norel noreferrer" aria-label="twitter" class="svelte-191vxzd"><svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+    
+    <a href="/rss.xml" rel="alternate" type="application/rss+xml" aria-label="rss" class="svelte-191vxzd"><svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></div>
+  <p class="svelte-191vxzd">Powered by
+    <a class="hl svelte-191vxzd" href="https://sapper.svelte.dev">Sapper</a>
+    and
+    <a class="hl svelte-191vxzd" href="https://vercel.app">Vercel</a>
+    • Source code is available on
+    <a class="hl svelte-191vxzd" href="https://github.com/elianiva/elianiva.me">Github</a></p>
+  <p class="svelte-191vxzd">Copyright © 2020 <a class="hl svelte-191vxzd" href="https://github.com/elianiva">Elianiva</a></p>
+</footer>
+</main>
+
+
+
+	
+</div>
+  </body>
+</html>

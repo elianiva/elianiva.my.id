@@ -112,7 +112,7 @@ import Update from "@/components/Update.svelte"
 
 <Update date="21-03-2021">
 
-I managed to deploy this app [here](https://svlt.elianiva.me) using `@sveltejs/adapter-vercel`. ~~Though I'm using a temporary fork of mine to make it work~~ It's been fixed. It's *really* satisfying knowing that it finally works :DD
+I managed to deploy this app [here](https://svlt.elianiva.my.id) using `@sveltejs/adapter-vercel`. ~~Though I'm using a temporary fork of mine to make it work~~ It's been fixed. It's *really* satisfying knowing that it finally works :DD
 
 </Update>
 

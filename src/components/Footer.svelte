@@ -63,7 +63,7 @@ a {
     and
     <a class="hl" href="https://vercel.app">Vercel</a>
     • Source code is available on
-    <a class="hl" href="{github}/elianiva.me">Github</a>
+    <a class="hl" href="{github}/elianiva.my.id">Github</a>
   </p>
   <p>Copyright &copy; 2020 <a class="hl" href={github}>Elianiva</a></p>
 </footer>

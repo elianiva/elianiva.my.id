@@ -13,7 +13,7 @@ stack:
   - ['Vercel', 'https://vercel.app']
 ---
 
-**Covid Info v2** is a remake of my previous version which you can check [over here](https://elianiva.me/project/covid-info).
+**Covid Info v2** is a remake of my previous version which you can check [over here](https://elianiva.my.id/project/covid-info).
 
 I made the first version a few months ago, around May 2020. It was my first React app that I ever made with a third party API instead of static data. It was made with React, Javascript, and Vanilla CSS.
 
@@ -29,7 +29,7 @@ I chose Typescript because it's like a godsend for Javascript developers, it's s
 
 I use the API provided by [disease.sh](https://disease.sh/). They have quite a lot of endpoints that you can use. More than enough for my needs.
 
-Design wise, I took some of it from this [beautiful dribbble shot](https://dribbble.com/shots/10803637-Corona-Virus-Covid-19-Dashboard). It's easy enough to implement since I'm quite good at CSS (at least that's what I think :p) because I am so used to implement a design every week for [svelteception](https://elianiva.me/project/svelteception). All goes well, except for the world map section.
+Design wise, I took some of it from this [beautiful dribbble shot](https://dribbble.com/shots/10803637-Corona-Virus-Covid-19-Dashboard). It's easy enough to implement since I'm quite good at CSS (at least that's what I think :p) because I am so used to implement a design every week for [svelteception](https://elianiva.my.id/project/svelteception). All goes well, except for the world map section.
 
 I never made any map related thing, so this is the first time I use a map library like [LeafletJS](https://leafletjs.com). Since I use NextJS which utilize SSR, I can't just import Leaflet as is because it needs a `window` object. At first, I'm using [react-leaflet-universal](https://github.com/masotime/react-leaflet-universal) but I'm not sure if that's the best solution.
 The next day, I found out that NextJS can import a module _only_ if the page has been rendered on the client side by using its `dynamic` module, I was blown away the first time I found it. I no longer need a thin wrapper like react-leaflet-universal.
