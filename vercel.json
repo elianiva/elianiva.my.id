@@ -5,7 +5,7 @@
       "src": "package.json",
       "use": "vercel-sapper",
       "config": {
-        "include": ["./src/pages/post", "./src/pages/project"]
+        "include": ["./src/routes/post", "./src/routes/project"]
       }
     }
   ]

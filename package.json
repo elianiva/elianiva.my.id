@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "dev": "sapper dev --routes src/pages --ext '.svelte .svx' --port 5000",
-    "build": "sapper build --routes src/pages --ext '.svelte .svx' --legacy",
-    "export": "sapper export --routes src/pages --ext '.svelte .svx' --legacy",
+    "dev": "sapper dev --ext '.svelte .svx' --port 5000",
+    "build": "sapper build --ext '.svelte .svx' --legacy",
+    "export": "sapper export --ext '.svelte .svx' --legacy",
     "start": "node __sapper__/build",
     "prettier": "prettier --write --plugin-search-dir=. ./**/*.svelte",
     "lint": "eslint --fix ./**/*.svelte"

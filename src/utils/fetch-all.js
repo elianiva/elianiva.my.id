@@ -3,7 +3,7 @@ import frontmatter from "front-matter"
 import path from "path"
 
 const HAS_EXTENSION = /\.[^/.]+$/
-const getPagePath = kind => path.resolve(`./src/pages/${kind}`)
+const getPagePath = kind => path.resolve(`./src/routes/${kind}`)
 
 export const getResources = kind => {
   if (!kind) throw new Error("KIND IS REQUIRED!")
