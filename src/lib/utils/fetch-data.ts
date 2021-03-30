@@ -1,5 +1,5 @@
 import fs from "fs"
-import frontmatter, { FrontMatterResult } from "front-matter"
+import matter from "gray-matter"
 import path from "path"
 
 const HAS_EXTENSION = /\.[^/.]+$/
@@ -14,25 +14,29 @@ interface ResultAttr {
   source: string
   layout: string
   stack: Array<Array<string>>
+  slug: string
 }
 
-export const getResources = (kind: string) => {
+export const getResources = (kind: string): ResultAttr[] => {
   if (!kind) throw new Error("KIND IS REQUIRED!")
 
   return fs
     .readdirSync(getPagePath(kind))
     .filter((file: string) => !HAS_EXTENSION.test(file) && `${file}/index.svx`)
-    .map((fileName: string) => {
-      const postContent = fs.readFileSync(
-        `${getPagePath(kind)}/${fileName}/index.svx`,
-        { encoding: "utf8" }
-      )
+    .map(
+      (fileName: string): ResultAttr => {
+        const postContent = fs.readFileSync(
+          `${getPagePath(kind)}/${fileName}/index.svx`,
+          { encoding: "utf8" }
+        )
 
-      const {
-        attributes,
-      }: FrontMatterResult<Partial<ResultAttr>> = frontmatter(postContent)
+        const { data } = matter(postContent)
 
-      return { ...attributes, slug: fileName.replace(HAS_EXTENSION, "") }
-    })
+        return {
+          ...(data as ResultAttr),
+          slug: fileName.replace(HAS_EXTENSION, ""),
+        }
+      }
+    )
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
