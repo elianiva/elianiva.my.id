@@ -6,7 +6,7 @@ tags:
   - website
 ---
 
-[gatby-link]: https://www.gatsbyjs.com/
+[gatsby-link]: https://www.gatsbyjs.com/
 [react-link]: https://reactjs.org/
 [svelte-link]: https://svelte.dev/
 [sapper-link]: https://sapper.svelte.dev/
