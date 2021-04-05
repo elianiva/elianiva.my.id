@@ -10,10 +10,7 @@ module.exports = {
     ecmaVersion: 2019,
     sourceType: "module",
   },
-  plugins: [
-    "svelte3",
-    "@typescript-eslint",
-  ],
+  plugins: ["svelte3", "@typescript-eslint"],
   overrides: [
     {
       files: ["*.svelte"],
@@ -22,6 +19,6 @@ module.exports = {
   ],
   rules: {},
   settings: {
-    'svelte3/typescript': require('typescript')
-  }
+    "svelte3/typescript": require("typescript"),
+  },
 }

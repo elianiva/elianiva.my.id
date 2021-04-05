@@ -17,7 +17,7 @@ interface ResultAttr {
   slug: string
 }
 
-export const getResources = (kind: string): ResultAttr[] => {
+export const getResources = (kind: "post" | "project"): ResultAttr[] => {
   if (!kind) throw new Error("KIND IS REQUIRED!")
 
   return fs
