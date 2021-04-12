@@ -113,9 +113,9 @@
     <span class="hero__name"> I'm Elianiva. </span>
     <span class="hero__role">A Frontend Developer and I love Open Source!</span>
     <p class="hero__desc">
-      I'm a 17 y/o boi from Indonesia. I love making random websites and
-      contribute to any open source projects that I like. I also love Anime and
-      Linux related stuff, such perfect combination to lose your life eh? ツ
+      I'm a 17 y/o boi from Indonesia, trying to learn many things at the same
+      time and contributing to as many open source projects as I can. I also
+      like GNU/Linux, tinkering my text editor, and sometimes watch Anime.
     </p>
     <Circle className="hero__pattern" />
   </div>
