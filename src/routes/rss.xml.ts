@@ -22,7 +22,7 @@ const renderXmlRssFeed = (items: any) => `<?xml version="1.0" encoding="UTF-8" ?
     <atom:link href="${
       data.siteUrl
     }/feed.xml" rel="self" type="application/rss+xml" />
-    <generator>Sapper</generator>
+    <generator>Svelte-Kit</generator>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${items.map(feedItem).join("\n")}
   </channel>
