@@ -59,22 +59,17 @@
 <div class="err">
   {#if status === 404}
     <h1 class="err__status">{status}</h1>
-    <span class="err__msg"
-      >Sorry, you might have entered the wrong URL.
+    <span class="err__msg">
+      Sorry, you might have entered the wrong URL.
       <br />
       Wanna go back
       <a class="err__url" href="/">home?</a>
     </span>
-  {:else}<span class="err__msg"> Something went wrong. </span>{/if}
+  {:else}
+    <span class="err__msg"> Something went wrong. </span>
+  {/if}
 </div>
 
-{#if dev && error.stack}
-  <pre>{error.stack}</pre>
-{/if}
-
 <script lang="ts">
-import { dev } from "$app/env"
-
-export let status: number
-export let error: Error
+export let status: number = 404
 </script>
