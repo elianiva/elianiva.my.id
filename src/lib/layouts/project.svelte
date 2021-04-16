@@ -130,6 +130,7 @@
   border-radius: 0.5rem;
   background-color: var(--color-special-bg);
   overflow: hidden;
+  aspect-ratio: 1/1;
 }
 
 .stack__logo img {
@@ -322,7 +323,7 @@
       <div class="stack__item">
         <div class="stack__logo">
           <img
-            src="/assets/logo/{item[0].toLowerCase()}.png"
+            src="/assets/logo/{item[0].toLowerCase().replace(/\s+/g, '-')}.png"
             alt={item}
             style="filter: {item[0].toLowerCase() === 'nextjs'
               ? 'var(--filter-invert)'
