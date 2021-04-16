@@ -115,7 +115,8 @@
     <p class="hero__desc">
       I'm a 17 y/o boi from Indonesia, trying to learn many things at the same
       time and contributing to as many open source projects as I can. I also
-      like GNU/Linux, tinkering my text editor, and sometimes watch Anime.
+      like GNU/Linux, tinkering my text editor, and watch Anime every now and
+      then.
     </p>
     <Circle className="hero__pattern" />
   </div>
