@@ -248,9 +248,9 @@ code {
       Originally, I made this website as a place to keep my "notes", but I
       thought that wouldn't be useful unless I share it with other people. I
       also think it's cool to have your own website where you can do
-      <em>whatever</em> you want with it. If you want to check my portfolio,
-      either check on the <A href="/project" blank={false}>projects</A> page or
-      <A href="https://github.com/elianiva/">my github profile.</A>
+      <em>whatever</em> you want with it. If you want to check *all* my personal
+      works , either check on the <A href="/project" blank={false}>projects</A>
+      page or <A href="https://github.com/elianiva/">my github profile.</A>
     </p>
     <p class="about__text">
       I use
