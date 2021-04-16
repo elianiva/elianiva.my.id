@@ -169,22 +169,8 @@
   transition: all ease-out 0.2s;
 }
 
-.project__content :global(p a::before) {
-  position: absolute;
-  content: "";
-  bottom: 0;
-  left: -0.25rem;
-  right: -0.25rem;
-  top: 0;
-  transform: scale3d(0, 0.1, 1);
-  transform-origin: 0 100%;
-  background-image: linear-gradient(
-    to right,
-    var(--color-main-accent),
-    rgba(0, 0, 0, 0)
-  );
-  z-index: -1;
-  transition: transform ease-out 0.2s;
+.project__content :global(a:hover) {
+  text-decoration: underline;
 }
 
 .project__content :global(img) {

@@ -142,35 +142,15 @@
 }
 
 .post__content :global(a) {
-  font-weight: 600;
   position: relative;
   display: inline-block;
   color: var(--color-main-accent);
   text-decoration: none;
-  transition: all ease-out 0.2s;
   z-index: 5;
 }
 
-.post__content :global(a::before) {
-  position: absolute;
-  content: "";
-  bottom: 0.25rem;
-  left: -0.25rem;
-  right: -0.25rem;
-  top: 0.25rem;
-  transform: scale3d(0, 0.1, 1);
-  transform-origin: 0 100%;
-  background-image: linear-gradient(
-    to right,
-    var(--color-main-accent),
-    rgba(0, 0, 0, 0)
-  );
-  z-index: -1;
-  transition: transform ease-out 0.2s;
-}
-
-.post__content :global(a:hover::before) {
-  transform: scale3d(1, 0.1, 1);
+.post__content :global(a:hover) {
+  text-decoration: underline;
 }
 
 .post__content :global(code) {
@@ -264,13 +244,6 @@
 
 .post__content :global(blockquote p::after) {
   content: " ”";
-}
-
-:global(:target:before) {
-  content: "";
-  display: block;
-  height: 4.5rem;
-  margin-top: -4.5rem;
 }
 
 .post__content :global(h1 a),
@@ -396,7 +369,6 @@
 
 <script>
 // TODO(elianiva): change utterance theme to github-dark once the new version came out
-// TODO(elianiva): convert to typescript someday
 import { onMount } from "svelte"
 import { page } from "$app/stores"
 import SEO from "$lib/components/SEO.svelte"
