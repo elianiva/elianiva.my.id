@@ -9,6 +9,10 @@ div {
   flex: 1;
   margin-top: 4.5rem;
 }
+
+:global(html) {
+  scroll-padding-top: 4.5rem;
+}
 </style>
 
 <svelte:head>
