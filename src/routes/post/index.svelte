@@ -193,7 +193,6 @@ $: filteredPosts = posts.filter(post => {
   return (title || slug) && tags
 })
 
-// TODO(elianiva): figure out the correct type for this
 const filterPost: any = ({ target: { value } }) => {
   // always reset the completion visibility
   isCompletionVisible = false

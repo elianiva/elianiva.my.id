@@ -193,11 +193,13 @@ code {
         <span class="item__title">Java</span>
         <p class="item__content">
           I only used Java several times. One of my
-          <A href="https://TODO">final school assignment</A> is to make a desktop
-          app using Java. I'm not going to lie, I don't really enjoy writing Java
-          as much as I do with other languages. Maybe it's due to the fact that I
-          don't really like OOP in the first place, and the fact that you could have
-          a <code>deeply/nested/modules/like/this/to/get/to/one/file.java</code>
+          <A href="{data.siteUrl}/project/java-cashier-app">
+            final school assignment
+          </A> is to make a desktop app using Java. I'm not going to lie, I don't
+          really enjoy writing Java as much as I do with other languages. Maybe it's
+          due to the fact that I don't really like OOP in the first place, and the
+          fact that you could have a
+          <code>deeply/nested/modules/like/this/to/get/to/one/file.java</code>
           and you have to
           <code
             >import pkg.name.deeply.nested.modules.like.this.to.get.to.one.file</code
@@ -262,8 +264,8 @@ code {
       to build this website and it's hosted on Vercel. If you want more detail about
       my website the you might want to read
       <A href="{data.siteUrl}/post/i-rebuild-my-site-using-sapper">this post</A>
-      or <A href="TODO">this updated post</A> where I explain the process of making
-      (or rather,
+      or <A href="{data.siteUrl}/post/from-sapper-to-kit">this updated post</A> where
+      I explain the process of making (or rather,
       <em>rebuilding</em>) this site.
     </p>
     <h1 class="about__heading">My Setup</h1>
