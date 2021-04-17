@@ -29,19 +29,21 @@
 <ProgressButton />
 
 <script context="module">
-export async function preload() {
-  const posts = await (await this.fetch(`/api/post.json?limit=3`)).json()
-  const projects = await (await this.fetch(`/api/project.json?limit=3`)).json()
+export const prerender = true
+export async function load({ fetch }) {
+  const posts = await (await fetch(`/api/post.json?limit=3`)).json()
+  const projects = await (await fetch(`/api/project.json?limit=3`)).json()
 
-  return { posts, projects }
+  return { props: { posts, projects } }
 }
 </script>
 
-<script>
-import SEO from "@/components/SEO.svelte"
-import Hero from "@/parts/Hero.svelte"
-import Section from "@/parts/Sections.svelte"
-import ProgressButton from "@/components/ProgressButton.svelte"
+<script lang="ts">
+import SEO from "$lib/components/SEO.svelte"
+import Hero from "$lib/parts/Hero.svelte"
+import Section from "$lib/parts/Section.svelte"
+import ProgressButton from "$lib/components/ProgressButton.svelte"
 
-export let posts, projects
+export let posts: Array<any>
+export let projects: Array<any>
 </script>

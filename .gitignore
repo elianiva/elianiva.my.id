@@ -1,4 +1,8 @@
-__sapper__
+.DS_Store
 node_modules
-package-lock.json
+/.svelte
+/build
+/functions
+.vercel_build_output
+
 .vercel

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#20263a" />
+    <meta name="supported-color-scheme" content="dark light" />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="https://elianiva.my.id/rss.xml"
+    />
+
+    <!-- don't load global.css async because it's critical -->
+    <link href="/global.css" rel="stylesheet" />
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- external resources (fonts) -->
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      href="https://dev-cats.github.io/code-snippets/JetBrainsMono.css"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+
+    %svelte.head%
+  </head>
+  <body>
+    <div id="svelte">%svelte.body%</div>
+  </body>
+</html>

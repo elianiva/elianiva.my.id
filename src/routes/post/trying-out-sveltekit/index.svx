@@ -29,7 +29,7 @@ It has been a few months since that summit and it still hasn't been released yet
 
 # My Experience
 ## Project Setup
-Since I never tried it out myself nor do I watch someone else try it, I was quite surprised. It broke from the start. I mean, that's what you get from experimental software. It turns out it was caused by the new release of [Snowpack v3](snowpack-v3-link).
+Since I never tried it out myself nor do I watch someone else try it, I was quite surprised. It broke from the start. I mean, that's what you get from experimental software. It turns out it was caused by the new release of [Snowpack v3][snowpack-v3-link].
 
 Thankfully, the Svelte team is super responsive and fixed it in a couple of days or so. I tried it out and it works.
 
@@ -89,7 +89,7 @@ I also did this to `tsconfig.json` so I get that sweet path completion from tsse
 ## Dynamic Pages
 For the job detail page, I use the Svelte-Kit dynamic page feature. You would make a file with `[slug].svelte` as its name and you'll have access to the `slug` variable which you can then use to fetch specific data for that page.
 
-The `slug` page could be whatever you want. So if you have `pages/job/[id]` So if you have `pages/job/[id].svelte` and you go to `/job/foobar`, you'll have `foobar` as the `id` value. In my case, it's a long random ID that I can use to fetch a specific job detail.
+The `slug` page could be whatever you want. So if you have `pages/job/[id]`. So if you have `pages/job/[id].svelte` and you go to `/job/foobar`, you'll have `foobar` as the `id` value. In my case, it's a long random ID that I can use to fetch a specific job detail.
 
 Github Job API gave me an HTML string that I could directly use using `@html` in Svelte, I don't think this is harmful since it's Github API after all, but you need to be really careful when using `@html` since it opens a possibility for XSS.
 
@@ -107,7 +107,7 @@ I use `localStorage` to store the current theme data and load the state to Svelt
 I was trying to deploy this app to Vercel but it keeps changing constantly so stuff breaks easily. I decided not to deploy this in the end.
 
 <script>
-import Update from "@/components/Update.svelte"
+import Update from "$lib/components/Update.svelte"
 </script>
 
 <Update date="21-03-2021">

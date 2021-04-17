@@ -1,0 +1,130 @@
+---
+title: Migrating from Sapper to Svelte-Kit
+date: 2021-04-14
+desc: A write-up of my experience migrating a website from Sapper to Svelte-Kit
+tags:
+  - svelte
+  - website
+---
+
+[pre-link]: /post/trying-out-sveltekit#introduction
+[beta-link]: https://svelte.dev/blog/sveltekit-beta
+[adder-link]: https://github.com/svelte-add/svelte-adders
+[abbr-link]: https://kit.svelte.dev/docs#modules
+[err-img-link]: /assets/post/from-sapper-to-kit/error.png
+[svg-link]: https://github.com/vitejs/vite/issues/1204
+[endpoint-link]: https://kit.svelte.dev/docs#routing-endpoints
+
+# Table Of Contents
+
+# Introduction
+Svelte-Kit has been hyping me up this last couple of months. You *might* want to read my [previous post][pre-link] where I write about my very first experience of trying Svelte-Kit. I think it's *good enough* for me to migrate my website using Sapper to Svelte-Kit.
+
+When I migrate my site it wasn't in public beta, but the repo is public on Github. Then a few days later, the Svelte team [opened a public beta][beta-link] for Svelte-Kit. Anyway, here's my entire process, more or less ;)
+
+# Process
+## Migration Strategy
+I didn't fully follow the migration guide, I started from a clean Svelte-Kit template and move my file one by one from the old website to the new one. The reason why is because I want to refactor my website instead of just migrate it, and it felt easier to do it this way.
+
+## Initial Setup
+I found this tool called [svelte-adders][adder-link] which makes my life *so much* easier. I can add MDSveX and PostCSS in no time using this. Simply run this command and you're good to go.
+
+```
+npx svelte-add mdsvex
+npx svelte-add postcss
+```
+
+## File Structure
+
+Svelte-Kit has this alias called `$lib` and [many others][abbr-link]. It made my file structure cleaner and nicer to work with. It prevents me from doing this `../../../../` nonsense. I know that I can create my own alias, but it's nice to have it out of the box.
+
+```javascript
+// you'd do this
+import asdf from "$lib/asdf-module"
+
+// instead of this nonsense
+import asdf from "../../../asdf-module"
+```
+
+## From JS to TS
+I've been wanting to move from Javascript to Typescript for quite a while. When I make my website, svelte language server or ESLint didn't have support for Typescript, yet. They both support it now and I think it's a perfect time to move to Typescript.
+
+As expected, I got *a lot* of type errors, but they're easily fixable. It felt really good to finally use Typescript for my own website.
+
+One minor issue though, it seems like MDSveX layouts don't have support for Typescript, at least *yet*. So I didn't use Typescript for those.
+
+## SVGs
+I decided to convert *all* of my SVG assets into Svelte components manually because Vite hasn't support inline-svg, [yet][svg-link]. It was painful to do, but oh well, I can't complain ツ
+
+## Server Routes
+It is called as `endpoints` according to [the docs][endpoint-link]. It looks a bit different from the one in Sapper, but it's pretty straightforward to migrate.
+
+### Sapper
+```javascript
+import { getResources } from "../../utils/fetch-all.js"
+
+export async function get(req, res, next) {
+  const { limit, title } = req.query
+
+  let result = getResources("post")
+
+  if (limit) result = result.slice(0, limit)
+  if (title) result = result.filter(item => item.title === title)
+
+  if (result !== null) {
+    res.setHeader("Content-Type", "application/json")
+    res.end(JSON.stringify(result))
+    return
+  }
+
+  next()
+}
+```
+
+### Sveltekit
+```typescript
+import { getResources } from "$lib/utils/fetch-data"
+import type { RequestHandler } from "@sveltejs/kit"
+
+export const get: RequestHandler = async ({ query: q }) => {
+  let result = getResources("post")
+
+  const limit = parseInt(q.get("limit"))
+  const title = q.get("title")
+
+  if (limit) result = result.slice(0, limit)
+  if (title) result = result.filter(item => item.title === title)
+
+  if (result) {
+    return {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: result,
+    }
+  }
+
+  return {
+    status: 404,
+    body: "Not Found",
+  }
+}
+```
+
+The main difference here is, you'd need to call a specific function (`res.end`) to return a response in Sapper, while in Svelte-Kit, you simply return an object and that counts as the response.
+
+## Loading Progress
+I had a loading progress bar in my old website which utilises the `preloading` store from `@svelte/app` stores. In Svelte-Kit, I use `$navigating` store, it also provides `from` and `to` property which I think could be useful.
+
+## Error Pages
+I had an issue with Svelte-Kit error page where it doesn't want to load the CSS. It was a blocker for a few days, but thankfully it has been solved.
+
+Svelte-Kit also has a new error popup which I believe comes from Vite. It looks similar to NextJS's error popup if you've used NextJS before.
+
+![error][err-img-link]
+
+# Closing Notes
+Overall, I think it's pretty easy to do a migration from Sapper to Svelte-Kit. There are some things that I still want to do like using Shiki for code block highlighting since MDSveX now supports custom async highlighter. The Svelte team did a great job making the migration experience as seamless as possible, and I'm grateful for that!
+
+Anyway, thanks for reading my post and have a wonderful day! :)

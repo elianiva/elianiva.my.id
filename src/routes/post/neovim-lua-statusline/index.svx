@@ -7,7 +7,7 @@ tags:
 ---
 
 <script>
-  import Update from "@/components/Update.svelte"
+  import Update from "$lib/components/Update.svelte"
 </script>
 
 
