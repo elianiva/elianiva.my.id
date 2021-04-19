@@ -93,9 +93,7 @@
 </style>
 
 <div class="card" in:fade={{ duration: 200 }}>
-  <svelte:component this={Waypoint} throttle="500" offset="320">
-    <img class="card__img" src={imgSrc} alt={title} loading="lazy" />
-  </svelte:component>
+  <img class="card__img" src={imgSrc} alt={title} loading="lazy" />
   <div class="card__details">
     <a rel="prefetch" {href} class="card__title">{title}</a>
     <p class="card__desc">{desc}</p>
@@ -122,13 +120,6 @@
 import { fade } from "svelte/transition"
 import Code from "$lib/icons/Code.svelte"
 import Chrome from "$lib/icons/Chrome.svelte"
-import { onMount } from "svelte"
-
-let Waypoint: any // this doesn't have TS declaration so..
-onMount(async () => {
-  const module = await import("svelte-waypoint")
-  Waypoint = module.default
-})
 
 export let title: string
 export let imgSrc: string
