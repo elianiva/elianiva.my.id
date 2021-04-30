@@ -4,6 +4,7 @@ const CACHE_NAME = `cache-${timestamp}`
 
 // dont' cache images on initial load
 const ASSETS = build.filter(file => !/.*\.(png|webp|jpg|)/.test(file))
+
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)))
 })
@@ -19,34 +20,17 @@ self.addEventListener("activate", event => {
 })
 
 self.addEventListener("fetch", async event => {
-  const { request } = event
+  event.respondWith(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME)
+      const cachedResponse = await cache.match(event.request)
 
-  if (request.method !== "GET" || request.headers.has("range")) return
+      if (cachedResponse) return cachedResponse
 
-  const url = new URL(request.url)
-  const cached = await caches.match(request)
+      const networkResponse = await fetch(event.request)
+      event.waitUntil(cache.put(event.request, networkResponse.clone()))
 
-  if (url.origin === location.origin && build.includes(url.pathname)) {
-    // always return build files from cache
-    return event.respondWith(cached)
-  }
-
-  if (url.protocol === "https:" || location.hostname === "localhost") {
-    // hit the network for everything else...
-    const promise = fetch(request)
-
-    // ...and cache successful responses...
-    promise.then(response => {
-      // cache successful responses
-      if (response.ok && response.type === "basic") {
-        const clone = response.clone()
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(request, clone)
-        })
-      }
-    })
-
-    // ...but if it fails, fall back to cache if available
-    event.respondWith(promise.catch(() => cached || promise))
-  }
+      return networkResponse
+    })()
+  )
 })
