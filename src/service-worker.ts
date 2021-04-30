@@ -2,8 +2,6 @@ import { timestamp, build } from "$service-worker"
 
 const CACHE_NAME = `cache-${timestamp}`
 
-console.log("build", build)
-
 // dont' cache images on initial load
 const ASSETS = build.filter(file => !/.*\.(png|webp|jpg|)/.test(file))
 self.addEventListener("install", event => {
@@ -14,7 +12,7 @@ self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(async keys => {
       for (const key of keys) {
-        if (!key.includes(timestamp)) caches.delete(key)
+        if (!key.includes(timestamp.toString())) caches.delete(key)
       }
     })
   )
@@ -30,8 +28,10 @@ self.addEventListener("fetch", async event => {
 
   if (url.origin === location.origin && build.includes(url.pathname)) {
     // always return build files from cache
-    event.respondWith(cached)
-  } else if (url.protocol === "https:" || location.hostname === "localhost") {
+    return event.respondWith(cached)
+  }
+
+  if (url.protocol === "https:" || location.hostname === "localhost") {
     // hit the network for everything else...
     const promise = fetch(request)
 
