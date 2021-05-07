@@ -13,14 +13,14 @@
   <Hero />
   <Section
     title="Recent Posts"
-    data={posts}
+    data={posts.slice(0, 3)}
     btnText="More Posts"
     url="/post"
     type="posts"
   />
   <Section
     title="Recent Projects"
-    data={projects}
+    data={projects.slice(0, 3)}
     btnText="More Projects"
     url="/project"
     type="projects"
