@@ -69,11 +69,11 @@ a {
 </footer>
 
 <script>
-import data from "$lib/data/site"
-import Email from "$lib/icons/Email.svelte"
-import Github from "$lib/icons/Github.svelte"
-import Twitter from "$lib/icons/Twitter.svelte"
-import RSS from "$lib/icons/Rss.svelte"
+import data from "$lib/data/site";
+import Email from "$lib/icons/Email.svelte";
+import Github from "$lib/icons/Github.svelte";
+import Twitter from "$lib/icons/Twitter.svelte";
+import RSS from "$lib/icons/Rss.svelte";
 
-const { github, twitter, email } = data
+const { github, twitter, email } = data;
 </script>

@@ -239,26 +239,26 @@
 {/if}
 
 <script lang="ts">
-import { fly, fade } from "svelte/transition"
-import Moon from "$lib/icons/Moon.svelte"
-import Logo from "$lib/icons/Logo.svelte"
-import { theme } from "$lib/utils/theme"
+import { fly, fade } from "svelte/transition";
+import Moon from "$lib/icons/Moon.svelte";
+import Logo from "$lib/icons/Logo.svelte";
+import { theme } from "$lib/utils/theme";
 
-export let segment: string
+export let segment: string;
 
-let isVisible = false
-let checked = false
+let isVisible = false;
+let checked = false;
 
 const toggleDarkMode = () => {
-  theme.update(current => (current === "light" ? "dark" : "light"))
-}
+  theme.update(current => (current === "light" ? "dark" : "light"));
+};
 
 const toggleNav = () => {
-  checked = !checked
-  isVisible = !isVisible
+  checked = !checked;
+  isVisible = !isVisible;
 
   // turn off scrolling when mobile nav is visible
-  if (checked) document.body.style.overflow = "hidden"
-  else document.body.style.overflow = "auto"
-}
+  if (checked) document.body.style.overflow = "hidden";
+  else document.body.style.overflow = "auto";
+};
 </script>

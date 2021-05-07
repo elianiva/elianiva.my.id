@@ -13,22 +13,22 @@ div {
 
 <svelte:head>
   <script>
-    // set dark mode correctly before everythings get rendered
-    // thanks https://github.com/pveyes
-    try {
-      // prettier-ignore
-      const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
-      let preference
+  // set dark mode correctly before everythings get rendered
+  // thanks https://github.com/pveyes
+  try {
+    // prettier-ignore
+    const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
+    let preference;
 
-      // prettier-ignore
-      if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
+    // prettier-ignore
+    if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
       else preference = isDarkMode ? "dark" : "light"
 
-      // prettier-ignore
-      if (preference) document.documentElement.setAttribute("data-theme", preference)
-    } catch (err) {
-      console.log(err)
-    }
+    // prettier-ignore
+    if (preference) document.documentElement.setAttribute("data-theme", preference)
+  } catch (err) {
+    console.log(err);
+  }
   </script>
 </svelte:head>
 
@@ -42,29 +42,29 @@ div {
 </main>
 
 <script>
-import { onMount } from "svelte"
-import Navbar from "@/components/Navbar.svelte"
-import Footer from "@/components/Footer.svelte"
-import Loading from "@/components/Loading.svelte"
-import { theme } from "@/utils/theme"
-export let segment
+import { onMount } from "svelte";
+import Navbar from "@/components/Navbar.svelte";
+import Footer from "@/components/Footer.svelte";
+import Loading from "@/components/Loading.svelte";
+import { theme } from "@/utils/theme";
+export let segment;
 
 onMount(() => {
   const { matches: isDarkTheme } = window.matchMedia(
     "(prefers-color-scheme: dark)"
-  )
+  );
 
-  let preference
+  let preference;
 
   // prettier-ignore
   if (localStorage.getItem("theme")) preference = localStorage.getItem("theme")
     else preference = isDarkTheme ? "dark" : "light"
 
-  theme.set(preference)
+  theme.set(preference);
 
   theme.subscribe(current => {
-    localStorage.setItem("theme", current)
-    document.documentElement.setAttribute("data-theme", current)
-  })
-})
+    localStorage.setItem("theme", current);
+    document.documentElement.setAttribute("data-theme", current);
+  });
+});
 </script>

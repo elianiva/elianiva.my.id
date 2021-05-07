@@ -99,13 +99,13 @@
 </section>
 
 <script lang="ts">
-import Pattern from "$lib/icons/Pattern.svelte"
-import PostCard from "$lib/components/PostCard.svelte"
-import ProjectCard from "$lib/components/ProjectCard.svelte"
+import Pattern from "$lib/icons/Pattern.svelte";
+import PostCard from "$lib/components/PostCard.svelte";
+import ProjectCard from "$lib/components/ProjectCard.svelte";
 
-export let title: string
-export let data: Array<Record<string, any>>
-export let btnText: string
-export let url: string
-export let type: "posts" | "projects"
+export let title: string;
+export let data: Array<Record<string, any>>;
+export let btnText: string;
+export let url: string;
+export let type: "posts" | "projects";
 </script>

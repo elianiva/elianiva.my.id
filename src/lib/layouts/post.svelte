@@ -308,7 +308,7 @@
     href="/prism-night-owl.css"
     as="style"
     on:load={function () {
-      this.rel = "stylesheet"
+      this.rel = "stylesheet";
     }}
   />
 </svelte:head>
@@ -369,20 +369,20 @@
 
 <script>
 // TODO(elianiva): change utterance theme to github-dark once the new version came out
-import { onMount } from "svelte"
-import { page } from "$app/stores"
-import SEO from "$lib/components/SEO.svelte"
-import ProgressButton from "$lib/components/ProgressButton.svelte"
-import { theme } from "$lib/utils/theme"
+import { onMount } from "svelte";
+import { page } from "$app/stores";
+import SEO from "$lib/components/SEO.svelte";
+import ProgressButton from "$lib/components/ProgressButton.svelte";
+import { theme } from "$lib/utils/theme";
 
-export let title
-export let date
-export let desc
-export let tags
+export let title;
+export let date;
+export let desc;
+export let tags;
 
-const currentSlug = $page.path
+const currentSlug = $page.path;
 
-let content
+let content;
 
 onMount(() => {
   content.querySelectorAll("a").forEach(a => {
@@ -394,9 +394,9 @@ onMount(() => {
     ) return
 
     a.addEventListener("click", e => {
-      e.preventDefault()
-      window.location.hash = e.target.getAttribute("href")
-    })
-  })
-})
+      e.preventDefault();
+      window.location.hash = e.target.getAttribute("href");
+    });
+  });
+});
 </script>

@@ -299,8 +299,8 @@ code {
 <ProgressButton />
 
 <script>
-import data from "$lib/data/site"
-import SEO from "$lib/components/SEO.svelte"
-import A from "$lib/components/Link.svelte"
-import ProgressButton from "$lib/components/ProgressButton.svelte"
+import data from "$lib/data/site";
+import SEO from "$lib/components/SEO.svelte";
+import A from "$lib/components/Link.svelte";
+import ProgressButton from "$lib/components/ProgressButton.svelte";
 </script>

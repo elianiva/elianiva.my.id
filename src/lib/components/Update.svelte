@@ -43,15 +43,15 @@
 </section>
 
 <script lang="ts">
-export let date: string = ""
+export let date: string = "";
 
-const [d, m, y] = date.split("-")
-const dateObj = new Date(parseInt(y), parseInt(m), parseInt(d))
+const [d, m, y] = date.split("-");
+const dateObj = new Date(parseInt(y), parseInt(m), parseInt(d));
 
 const formattedDate = dateObj.toLocaleDateString("en-UK", {
   weekday: "short",
   year: "numeric",
   month: "long",
   day: "numeric",
-})
+});
 </script>

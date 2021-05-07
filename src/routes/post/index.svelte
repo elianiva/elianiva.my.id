@@ -153,56 +153,56 @@
 <ProgressButton />
 
 <script context="module">
-export const prerender = true
+export const prerender = true;
 export async function load({ fetch }) {
-  const posts = await (await fetch(`/api/post.json`)).json()
-  return { props: { posts } }
+  const posts = await (await fetch(`/api/post.json`)).json();
+  return { props: { posts } };
 }
 </script>
 
 <script lang="ts">
-import { fly } from "svelte/transition"
-import SEO from "$lib/components/SEO.svelte"
-import PostCard from "$lib/components/PostCard.svelte"
-import ProgressButton from "$lib/components/ProgressButton.svelte"
-import Tag from "$lib/components/Tag.svelte"
+import { fly } from "svelte/transition";
+import SEO from "$lib/components/SEO.svelte";
+import PostCard from "$lib/components/PostCard.svelte";
+import ProgressButton from "$lib/components/ProgressButton.svelte";
+import Tag from "$lib/components/Tag.svelte";
 
 // eslint-disable-next-line
-export let posts: Array<any>
-let inputBox = null
-let keyword = ""
-let tagKeyword = ""
-let filteredPosts = []
-let tagFilter = []
-let isCompletionVisible = false
+export let posts: Array<any>;
+let inputBox = null;
+let keyword = "";
+let tagKeyword = "";
+let filteredPosts = [];
+let tagFilter = [];
+let isCompletionVisible = false;
 
 // count available tags and insert it to an object, ex: `{a: 2, b: 3}`
-const tags = posts.map(post => post.tags).flat()
-let count = {}
+const tags = posts.map(post => post.tags).flat();
+let count = {};
 for (const x of tags) {
-  count[x] = (count[x] || 0) + 1
+  count[x] = (count[x] || 0) + 1;
 }
 
 $: filteredPosts = posts.filter(post => {
-  const query = keyword.substr(1).toLowerCase()
+  const query = keyword.substr(1).toLowerCase();
 
-  const title = post.title.toLowerCase().includes(query)
-  const slug = post.slug.toLowerCase().includes(query)
+  const title = post.title.toLowerCase().includes(query);
+  const slug = post.slug.toLowerCase().includes(query);
   const tags =
-    tagFilter.length > 0 ? tagFilter.every(x => post.tags.includes(x)) : true
-  return (title || slug) && tags
-})
+    tagFilter.length > 0 ? tagFilter.every(x => post.tags.includes(x)) : true;
+  return (title || slug) && tags;
+});
 
 const filterPost: any = ({ target: { value } }) => {
   // always reset the completion visibility
-  isCompletionVisible = false
+  isCompletionVisible = false;
 
   if (!value.match(/^#/)) {
-    keyword = value
-    return
+    keyword = value;
+    return;
   }
 
-  tagKeyword = value
-  isCompletionVisible = true
-}
+  tagKeyword = value;
+  isCompletionVisible = true;
+};
 </script>

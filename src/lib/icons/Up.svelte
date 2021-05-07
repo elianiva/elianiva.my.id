@@ -13,7 +13,7 @@
 >
 
 <script lang="ts">
-export let width: string
-export let height: string
-export let className: string
+export let width: string;
+export let height: string;
+export let className: string;
 </script>

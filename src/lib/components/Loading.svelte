@@ -16,33 +16,33 @@
 {/if}
 
 <script>
-import { onMount, onDestroy } from "svelte"
-import { navigating } from "$app/stores"
+import { onMount, onDestroy } from "svelte";
+import { navigating } from "$app/stores";
 
-let counter
-let width = 0
-let speed = 10
+let counter;
+let width = 0;
+let speed = 10;
 
 const resetProgress = () => {
-  clearInterval(counter)
-  width = 0
-  speed = 0
-}
+  clearInterval(counter);
+  width = 0;
+  speed = 0;
+};
 
 const startProgress = () => {
   counter = setInterval(() => {
     if (width === 95) {
-      clearInterval(counter)
-      return
+      clearInterval(counter);
+      return;
     }
-    width += 5
-    speed += 500
-  }, speed)
-}
+    width += 5;
+    speed += 500;
+  }, speed);
+};
 
-$: if (!$navigating) resetProgress()
-$: if ($navigating) startProgress()
+$: if (!$navigating) resetProgress();
+$: if ($navigating) startProgress();
 
-onMount(() => startProgress())
-onDestroy(() => resetProgress())
+onMount(() => startProgress());
+onDestroy(() => resetProgress());
 </script>

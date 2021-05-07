@@ -22,16 +22,16 @@ div {
   try {
     // prettier-ignore
     const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
-    let preference
+    let preference;
 
     if (localStorage.getItem("theme"))
-      preference = localStorage.getItem("theme")
-    else preference = isDarkMode ? "dark" : "light"
+      preference = localStorage.getItem("theme");
+    else preference = isDarkMode ? "dark" : "light";
 
     // prettier-ignore
     if (preference) document.documentElement.setAttribute("data-theme", preference)
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
   </script>
 </svelte:head>
@@ -46,31 +46,31 @@ div {
 </main>
 
 <script lang="ts">
-import { onMount } from "svelte"
-import Navbar from "$lib/components/Navbar.svelte"
-import Footer from "$lib/components/Footer.svelte"
-import Loading from "$lib/components/Loading.svelte"
-import { theme } from "$lib/utils/theme"
+import { onMount } from "svelte";
+import Navbar from "$lib/components/Navbar.svelte";
+import Footer from "$lib/components/Footer.svelte";
+import Loading from "$lib/components/Loading.svelte";
+import { theme } from "$lib/utils/theme";
 
-export let segment: string = ""
+export let segment: string = "";
 
 onMount(() => {
   const { matches: isDarkTheme } = window.matchMedia(
     "(prefers-color-scheme: dark)"
-  )
+  );
 
-  type Theme = "dark" | "light"
-  let preference: Theme
+  type Theme = "dark" | "light";
+  let preference: Theme;
 
   // prettier-ignore
   if (localStorage.getItem("theme")) preference = localStorage.getItem("theme") as Theme
   else preference = isDarkTheme ? "dark" : "light"
 
-  theme.set(preference)
+  theme.set(preference);
 
   theme.subscribe(current => {
-    localStorage.setItem("theme", current)
-    document.documentElement.setAttribute("data-theme", current)
-  })
-})
+    localStorage.setItem("theme", current);
+    document.documentElement.setAttribute("data-theme", current);
+  });
+});
 </script>

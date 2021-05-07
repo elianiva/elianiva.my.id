@@ -17,6 +17,6 @@
 >
 
 <script lang="ts">
-export let width: string
-export let height: string
+export let width: string;
+export let height: string;
 </script>

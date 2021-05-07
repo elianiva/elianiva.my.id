@@ -35,6 +35,6 @@
 </a>
 
 <script lang="ts">
-export let href: string
-export let blank: boolean = true
+export let href: string;
+export let blank: boolean = true;
 </script>

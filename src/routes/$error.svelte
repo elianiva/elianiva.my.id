@@ -71,5 +71,5 @@
 </div>
 
 <script lang="ts">
-export let status: number = 404
+export let status: number = 404;
 </script>

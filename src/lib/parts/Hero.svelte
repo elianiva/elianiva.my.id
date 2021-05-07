@@ -123,6 +123,6 @@
 </section>
 
 <script lang="ts">
-import { fade } from "svelte/transition"
-import Circle from "$lib/icons/Circle.svelte"
+import { fade } from "svelte/transition";
+import Circle from "$lib/icons/Circle.svelte";
 </script>

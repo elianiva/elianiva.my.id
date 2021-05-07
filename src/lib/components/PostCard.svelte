@@ -107,12 +107,12 @@
 </div>
 
 <script lang="ts">
-import { fade } from "svelte/transition"
-import Calendar from "$lib/icons/Calendar.svelte"
+import { fade } from "svelte/transition";
+import Calendar from "$lib/icons/Calendar.svelte";
 
-export let title: string
-export let desc: string
-export let href: string
-export let date: string
-export let tags: Array<string>
+export let title: string;
+export let desc: string;
+export let href: string;
+export let date: string;
+export let tags: Array<string>;
 </script>

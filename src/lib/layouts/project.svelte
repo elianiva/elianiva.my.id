@@ -261,7 +261,7 @@
     href="/prism-night-owl.css"
     as="style"
     on:load={function () {
-      this.rel = "stylesheet"
+      this.rel = "stylesheet";
     }}
   />
 </svelte:head>
@@ -329,18 +329,18 @@
 <ProgressButton />
 
 <script>
-import { page } from "$app/stores"
-import SEO from "$lib/components/SEO.svelte"
-import Chrome from "$lib/icons/Chrome.svelte"
-import Code from "$lib/icons/Code.svelte"
-import ProgressButton from "$lib/components/ProgressButton.svelte"
-import data from "$lib/data/site"
+import { page } from "$app/stores";
+import SEO from "$lib/components/SEO.svelte";
+import Chrome from "$lib/icons/Chrome.svelte";
+import Code from "$lib/icons/Code.svelte";
+import ProgressButton from "$lib/components/ProgressButton.svelte";
+import data from "$lib/data/site";
 
-export let title
-export let desc
-export let demo
-export let source
-export let stack
+export let title;
+export let desc;
+export let demo;
+export let source;
+export let stack;
 
-const currentSlug = $page.path
+const currentSlug = $page.path;
 </script>

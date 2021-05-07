@@ -54,17 +54,17 @@
 <ProgressButton />
 
 <script context="module">
-export const prerender = true
+export const prerender = true;
 export async function load({ fetch }) {
-  const projects = await (await fetch(`/api/project.json`)).json()
-  return { props: { projects } }
+  const projects = await (await fetch(`/api/project.json`)).json();
+  return { props: { projects } };
 }
 </script>
 
 <script lang="ts">
-import SEO from "$lib/components/SEO.svelte"
-import ProjectCard from "$lib/components/ProjectCard.svelte"
-import ProgressButton from "$lib/components/ProgressButton.svelte"
+import SEO from "$lib/components/SEO.svelte";
+import ProjectCard from "$lib/components/ProjectCard.svelte";
+import ProgressButton from "$lib/components/ProgressButton.svelte";
 
-export let projects: Array<any>
+export let projects: Array<any>;
 </script>

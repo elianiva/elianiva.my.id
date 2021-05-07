@@ -117,14 +117,14 @@
 </div>
 
 <script lang="ts">
-import { fade } from "svelte/transition"
-import Code from "$lib/icons/Code.svelte"
-import Chrome from "$lib/icons/Chrome.svelte"
+import { fade } from "svelte/transition";
+import Code from "$lib/icons/Code.svelte";
+import Chrome from "$lib/icons/Chrome.svelte";
 
-export let title: string
-export let imgSrc: string
-export let desc: string
-export let href: string
-export let demo: string
-export let source: string
+export let title: string;
+export let imgSrc: string;
+export let desc: string;
+export let href: string;
+export let demo: string;
+export let source: string;
 </script>

@@ -39,10 +39,12 @@
 {/if}
 
 <script lang="ts">
-import { fade } from "svelte/transition"
-import Up from "$lib/icons/Up.svelte"
+import { fade } from "svelte/transition";
+import Up from "$lib/icons/Up.svelte";
 
-let currentPosition: number
+const asdf = 20;
 
-const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
+let currentPosition: number;
+
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 </script>
