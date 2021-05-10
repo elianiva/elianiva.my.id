@@ -1,0 +1,20 @@
+---
+title: Inventory App
+date: 2021-03-26
+desc: An Inventory App made with CodeIgniter v4
+demo: false
+source: https://github.com/elianiva/ci-inventaris
+layout: project
+stack:
+  - ['PHP', 'https://www.php.net/']
+  - ['CodeIgniter', 'https://codeigniter.com/']
+  - ['TailwindCSS', 'https://tailwindcss.com']
+---
+
+This app was made using [CodeIgniter](https://codeigniter.com/). It's for one of my final assignment, just like my [previous app](/project/java-cashier-app)
+
+It's my first *kinda* serious app using PHP. I said *kinda* because I don't like PHP, it's weird and if I could, I wouldn't choose it.
+
+Please go to [the readme](https://github.com/elianiva/ci-inventaris/blob/master/README.md) if you want some more information about this app.
+
+Note: The app UI is using Bahasa Indonesia, but I tried to make the code *mostly* in English because I dislike when the code is a mixed bag of two or more different languages -- I didn't make *some* of them in English though, because I want it to match the database name and changing it to English made me confused.

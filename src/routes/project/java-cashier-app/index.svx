@@ -19,3 +19,5 @@ It's my first time ever to write a Java GUI app, and I'm not going to lie, I don
 Some of them are enjoyable, I learn a few new things about Object Oriented Programming, but some of them are frustrating :)
 
 Anyway, please go to [the readme](https://github.com/elianiva/kasir-java/blob/tugas-akhir/README.md) if you want some more information about this app.
+
+Note: The app UI is using Bahasa Indonesia, but I tried to make the code *mostly* in English because I dislike when the code is a mixed bag of two or more different languages.
