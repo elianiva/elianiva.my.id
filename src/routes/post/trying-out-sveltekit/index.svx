@@ -19,6 +19,7 @@ tags:
 [gh-job-repo]: https://github.com/elianiva/gh-job
 [telescope-nvim]: https://github.com/nvim-telescope/telescope.nvim
 [nvim-tree-lua]: https://github.com/kyazdani42/nvim-tree.lua
+[underscore-pr-link]: https://github.com/sveltejs/kit/pull/1370
 
 # Table Of Content
 
@@ -73,6 +74,16 @@ I thought I was editing a `$layout.svelte` file but I was editing a `.svelte` fi
 
 Two plugins that I use for my editor which are [telescope.nvim][telescope-nvim] and [nvim-tree.lua][nvim-tree-lua] has an issue with this filename, it doesn't escape it before opening it. So I fixed them both which then made me distracted and doing other stuff instead of finishing this app :p
 
+<script>
+import Update from "$lib/components/Update.svelte"
+</script>
+
+<Update date="10-04-2021">
+
+Good news! Since [#1370][underscore-pr-link], SvelteKit uses `__layout.svelte` instead of `$layout.svelte` -- This also applies to the error page.
+
+</Update>
+
 ## Server Routes
 Github API has CORS protection so I had to make my own proxy server. Thankfully, Svelte-Kit did a great job with this one. I only need to create a file with a suffix of `.json.ts` or `.json.js`.
 
@@ -105,10 +116,6 @@ I use `localStorage` to store the current theme data and load the state to Svelt
 
 ## Deployment
 I was trying to deploy this app to Vercel but it keeps changing constantly so stuff breaks easily. I decided not to deploy this in the end.
-
-<script>
-import Update from "$lib/components/Update.svelte"
-</script>
 
 <Update date="21-03-2021">
 
