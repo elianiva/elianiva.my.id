@@ -1,7 +1,7 @@
 ---
 title: My impression of Lenovo Thinkpad X220
 date: 2020-03-19
-desc: I finally became one of those Linux users, the one who has old Thinkpad with them.
+desc: I finally became one of those Linux users, the one who has an old Thinkpad with them.
 tags:
   - other
 ---
@@ -48,6 +48,16 @@ This bad boy has an Intel Core i5 2520M processors. It's not the best but it run
 About the battery. Since it still has 86% health, it can hold up around 4-5 hours in my experience. It runs perfectly without any issue.
 
 It has 4GB of RAMs. I planning on upgrading it in the future to 8GB. I also planning on upgrading it to mSATA SSD. Currently it runs HDD, but it has no issue though so I don't worry that much.
+
+<script>
+  import Update from "$lib/components/Update.svelte"
+</script>
+
+<Update date="15-08-2020">
+
+I bought an SSD an upgraded my RAM, man it feels *so* much better.
+
+</Update>
 
 # Conclusion
 
