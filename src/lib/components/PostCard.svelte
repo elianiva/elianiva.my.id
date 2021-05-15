@@ -99,7 +99,7 @@
         })}
       </span>
     </div>
-    <p class="card__desc">{desc}</p>
+    <p class="card__desc">{@html desc}</p>
     <div class="card__tags">
       {#each tags as tag}<span class="card__tag">{tag}</span>{/each}
     </div>
