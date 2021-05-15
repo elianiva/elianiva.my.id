@@ -66,6 +66,7 @@
   font-family: "Overpass", sans-serif;
   font-size: 2rem;
   line-height: 1.75em;
+  letter-spacing: 0.05em;
 }
 
 .post__content :global(h1::after) {
@@ -88,6 +89,7 @@
   line-height: 1.5em;
   font-size: 1.625rem;
   padding-left: 1.5rem;
+  letter-spacing: 0.05em;
 }
 
 .post__content :global(h3) {
@@ -97,6 +99,7 @@
   line-height: 2em;
   padding-left: 0.5rem;
   padding-left: 1.5rem;
+  letter-spacing: 0.05em;
 }
 
 .post__content :global(h3::after) {
