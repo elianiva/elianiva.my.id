@@ -88,6 +88,7 @@ code {
   text-decoration: line-through;
   color: var(--color-alt-text);
 }
+
 </style>
 
 <SEO title="About" />
@@ -135,9 +136,10 @@ code {
     </p>
     <h1 class="about__heading">Programming Languages</h1>
     <p class="about__text" style="margin-bottom: 1rem">
-      Here are some programming (and markup) languages that I know. I'm trying
-      not to limit myself to <em>one</em> language because not every problems can
-      be solved using that language, in my opinion.
+      Here are some programming (and markup) languages that I know. I'm quite
+      proficient using <em>some</em> of them, and some are just 'comfortable
+      enough'. I'm trying not to limit myself to <em>one</em> language because not
+      every problems can be solved using that language, in my opinion.
     </p>
     <ul class="about__list">
       <li class="list__item">
@@ -204,6 +206,15 @@ code {
           <code
             >import pkg.name.deeply.nested.modules.like.this.to.get.to.one.file</code
           >, not to mention you <em>have</em> to name the class the same as the filename.
+        </p>
+      </li>
+      <li class="list__item">
+        <span class="item__title">PHP</span>
+        <p class="item__content">
+          I pretty much use this only for school related stuff because my
+          school's curriculum use PHP and Java for its main languages. This is
+          one of those language that I'm 'comfortable enough' using, I just want
+          to get my assignments done and not use it for anything else :p
         </p>
       </li>
     </ul>
@@ -303,4 +314,5 @@ import data from "$lib/data/site";
 import SEO from "$lib/components/SEO.svelte";
 import A from "$lib/components/Link.svelte";
 import ProgressButton from "$lib/components/ProgressButton.svelte";
+
 </script>
