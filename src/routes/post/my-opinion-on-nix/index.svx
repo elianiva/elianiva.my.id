@@ -90,6 +90,8 @@ Now, the problem with this is since every package is 'isolated', *some* of them 
 
 Another example is `fcitx5` which is an IME that I use to type 日本語. I don't know if it's my setup, but it doesn't seem to be able to find its addons like `mozc` -- I can switch my input method, but it has no effect when I'm typing.
 
+The absolute deal-breaker for me though, is any package that uses OpenGL can't be used outside of NixOS without some sort of [wrapper](https://github.com/guibou/nixGL).
+
 They work flawlessly on NixOS when I tried it, but I guess it's because the entire system is *designed* for them.
 
 Also, when it's downloading something, there is no progress bar which makes it seems like it doesn't do anything when it's downloading a big package. I have a slow connection and I got confused when it's trying to download something big.
@@ -120,6 +122,8 @@ So, here's a summary of what I think about Nix. Again, please take them with a g
 
 - The language is good. Yes, there are some quirks but every language have their own quirks.
 - The package manager is great! It provides a hermetic build environment -- It's super useful when you're working with many people.
+- It can be used on multiple operating systems. This is great if you're working with someone who uses a different operating system.
+- You became more nerdy than most people around you :p
 
 ### Why I won't use it
 
