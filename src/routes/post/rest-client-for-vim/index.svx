@@ -60,5 +60,16 @@ The great thing about this plugin is that, it gives the response in a json forma
 
 Please refer to the repository for installation or configuration because they explain it really well, there's no point of me explaining it here :D
 
+<script>
+import Update from '$lib/components/Update.svelte'
+</script>
+
+<Update date="19-04-2021">
+
+In the midst of lua hype, I found [this plugin](https://github.com/NTBBloodbath/rest.nvim) which doesn't depend on coc.nvim
+It has a similar JSON output which is nice
+
+</Update>
+
 # Conclusion
 I'm glad I found this plugin because I am no longer need postman. I might need it for more advanced feature, but for now, simple rest client is fine. I don't have to leave my terminal and go to a separate program for that which is awesome. My current setup is having 3 tmux panes, 1 for Neovim, 1 for running the server and stuff, 1 for the rest client.
