@@ -203,9 +203,9 @@ code {
           fact that you could have a
           <code>deeply/nested/modules/like/this/to/get/to/one/file.java</code>
           and you have to
-          <code
-            >import pkg.name.deeply.nested.modules.like.this.to.get.to.one.file</code
-          >, not to mention you <em>have</em> to name the class the same as the filename.
+          <code>
+            import pkg.name.deeply.nested.modules.like.this.to.get.to.one.file
+          </code>.
         </p>
       </li>
       <li class="list__item">
