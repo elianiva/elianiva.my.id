@@ -78,7 +78,7 @@ I don't think the syntax is quirky, it's unique in my opinion and I like it. If 
 
 ## The Good
 
-One of the nicest thing out of many things about Nix package manager is you can execute an isolated shell and it can be easily reproducible. You can use `shell.nix` or `default.nix` and execute `nix-shell` on that directory. You can read [this article][shell-intro] or the [official wiki](https://nixos.wiki/wiki/Development_environment_with_nix-shell) to understand what it does
+One of the nicest thing out of many things about Nix package manager is you can execute an isolated shell and it can be easily reproduced. You can use `shell.nix` or `default.nix` and execute `nix-shell` on that directory. You can read [this article][shell-intro] or the [official wiki](https://nixos.wiki/wiki/Development_environment_with_nix-shell) to understand what it does
 
 You can also execute a package temporarily using `nix-shell -p <pkgname>` without installing it. It's super cool!
 
