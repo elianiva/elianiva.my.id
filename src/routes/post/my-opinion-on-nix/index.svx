@@ -118,14 +118,14 @@ I stopped using it though because I don't use Nix *that* often (yet) and I don't
 
 So, here's a summary of what I think about Nix. Again, please take them with a grain of salt as this is my personal opinion and I might be completely wrong ;)
 
-### Why Nix is good
+## Why Nix is good
 
 - The language is good. Yes, there are some quirks but every language have their own quirks.
 - The package manager is great! It provides a hermetic build environment -- It's super useful when you're working with many people.
 - It can be used on multiple operating systems. This is great if you're working with someone who uses a different operating system.
 - You became more nerdy than most people around you :p
 
-### Why I won't use it
+## Why I won't use it
 
 - I'm not going to use it for now since I don't work collaboratively with several people (yet ;) and most of the time I code in NodeJS related stuff, Rust, and Lua, so using it won't bring any significant benefit -- Unless I do some serious Haskell project which seems like it will bring an impact.
 - I already have a package manager; which is Pacman. Using both Pacman and Nix seems like a weird setup to me. If I use MacOS, I would definitely use Nix.
