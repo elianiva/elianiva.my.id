@@ -250,7 +250,7 @@ code {
     <p class="about__text">
       If you want to reach me then feel free to hit me up on
       <A href="https://twitter.com/@elianiva_">Twitter</A>
-      or Discord @elianiva#1558. I barely checked Twitter, only use it for Vtuber
+      or Discord @elianiva#7886. I barely checked Twitter, only use it for Vtuber
       or Art related stuff. A better option is my Discord since I'm quite active
       on that platform. You can also
       <A href="mailto:dicha.arkana03@gmail.com">email me</A>
