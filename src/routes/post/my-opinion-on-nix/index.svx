@@ -15,6 +15,7 @@ tags:
 [direnv-link]: https://direnv.net/
 [lorri-link]: https://github.com/target/lorri
 [hm-link]: https://github.com/nix-community/home-manager
+[nixgl-link]: https://github.com/guibou/nixGL
 
 # Table Of Content
 
@@ -86,11 +87,11 @@ It's also cross-platform, you can install it on MacOS or any GNU/Linux distribut
 
 ## The Not-So-Good
 
-Now, the problem with this is since every package is 'isolated', *some* of them like `telegram-desktop` won't work properly. It couldn't pick up the system theme, resulting in an ugly cursor. I know this is a minor issue, but it bothers me.
+Now, the problem with this is since every package is 'isolated', *some* of them like `telegram-desktop` won't work properly. It couldn't pick up the system theme, resulting in an ugly cursor. I know this is a minor issue, but it bothers me more than it should lol.
 
 Another example is `fcitx5` which is an IME that I use to type 日本語. I don't know if it's my setup, but it doesn't seem to be able to find its addons like `mozc` -- I can switch my input method, but it has no effect when I'm typing.
 
-The absolute deal-breaker for me though, is any package that uses OpenGL can't be used outside of NixOS without some sort of [wrapper](https://github.com/guibou/nixGL).
+The absolute deal-breaker for me though, is any package that uses OpenGL can't be used outside of NixOS without some sort of [wrapper][nixgl-link]. I don't really like adding a wrapper just to achieve this.
 
 They work flawlessly on NixOS when I tried it, but I guess it's because the entire system is *designed* for them.
 
@@ -121,13 +122,13 @@ So, here's a summary of what I think about Nix. Again, please take them with a g
 ## Why Nix is good
 
 - The language is good. Yes, there are some quirks but every language have their own quirks.
-- The package manager is great! It provides a hermetic build environment -- It's super useful when you're working with many people.
+- The package manager is great! It provides a hermetic build environment. It's super useful when you're working with many people.
 - It can be used on multiple operating systems. This is great if you're working with someone who uses a different operating system.
 - You became more nerdy than most people around you :p
 
 ## Why I won't use it
 
-- I'm not going to use it for now since I don't work collaboratively with several people (yet ;) and most of the time I code in NodeJS related stuff, Rust, and Lua, so using it won't bring any significant benefit -- Unless I do some serious Haskell project which seems like it will bring an impact.
+- I'm not going to use it for now since I don't work collaboratively with several people (yet ;) and most of the time I code in NodeJS related stuff, Rust, and Lua, so using it won't bring any significant benefit. I think it would be beneficial when I do some serious low level programming that requires a bunch of system dependencies that needs to be easily reproducible.
 - I already have a package manager; which is Pacman. Using both Pacman and Nix seems like a weird setup to me. If I use MacOS, I would definitely use Nix.
 - I have a slow connection and low storage. Some packages from Pacman get duplicated in Nix; I know this is necessary for reproducibility but I'm not trying to reproduce it anywhere at the moment.
 - I don't want to fall *too* deep into yet another rabbit hole ;)
