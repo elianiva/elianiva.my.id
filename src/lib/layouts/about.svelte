@@ -97,6 +97,8 @@
   font-size: 0.8rem;
   background-color: var(--color-alt-bg);
   box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .about__content :global(del) {
