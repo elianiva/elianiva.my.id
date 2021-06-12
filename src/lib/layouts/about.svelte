@@ -71,7 +71,7 @@
 }
 
 .about__content :global(li) {
-  padding-bottom: 1rem;
+  padding: 1rem 0 0;
 }
 
 .about__content :global(li p:first-child) {
@@ -104,6 +104,18 @@
 .about__content :global(del) {
   text-decoration: line-through;
   color: var(--color-alt-text);
+}
+
+.about__content :global(p a) {
+  position: relative;
+  display: inline-block;
+  color: var(--color-main-accent);
+  text-decoration: none;
+  z-index: 5;
+}
+
+.about__content :global(p a:hover) {
+  text-decoration: underline;
 }
 </style>
 
