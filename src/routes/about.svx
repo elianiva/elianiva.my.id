@@ -31,25 +31,34 @@ When I was turning 16, I'm starting to think more about my future. I don't find 
 
 ## Spoken Languages
 
-My mother tongue is Bahasa Indonesia, I can also speak English, currently learning Japanese because I want to be able to speak a language that uses a different writing system. I'm also trying to learn a bit of Arabic, the one that is used in the Quran.
+My mother tongue is Bahasa Indonesia, I can also speak English, currently learning Japanese because I want to be able to speak a language that uses a different writing system. I'm also trying to learn a bit of Fusha Arabic, which is the one used in the Quran.
 
 
-## Programming Languages
+## Programming / Markup Languages
 
-Here are some programming (and markup) languages that I know. I'm quite
-proficient using <em>some</em> of them, and some are just 'comfortable
-enough'. I'm trying not to limit myself to <em>one</em> language because not
-every problem can be solved using that language, in my opinion.
+Here are some programming *and* markup languages that I know. I'm quite proficient using *some* of them, and some are just 'comfortable enough'. I'm trying not to limit myself to *one* language because not every problem can be solved using that language, in my opinion.
 
-- **HTML/CSS**
+- **HTML/CSS/Markdown**
 
-  I'd consider myself to be quite proficient in both of these languages.
+  I'd consider myself to be quite proficient in these languages.
   I really like CSS as a styling language, but not so much with HTML.
 
   [Svelteception](https://svelteception.vercel.app) is one of my website where
   I heavily use HTML/CSS, and I'm quite proud of it. I basically took random UI
   designs that I found on the internet (mostly from Dribbble) and implemented
   them. It's only meant for the look though, it's not functional.
+
+  Markdown is something that everybody should know, it's dead simple and it's
+  very nice to work with.
+
+
+- **LaTeX**
+
+  I've been trying to use LaTeX more often recently since it's a very
+  interesting concept to me. I don't really like Rich Text Editor like
+  Microsoft Word, Google Docs, etc. Being able to create an article, cv, etc,
+  without ever touching those editors is superb. Though I haven't touched
+  the bibliography stuff, I only used them for basic things.
 
 
 - **Javascript/Typescript**
