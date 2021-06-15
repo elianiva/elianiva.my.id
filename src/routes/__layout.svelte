@@ -22,16 +22,14 @@ div {
   try {
     // prettier-ignore
     const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
-    let preference;
 
-    if (localStorage.getItem("theme"))
-      preference = localStorage.getItem("theme");
-    else preference = isDarkMode ? "dark" : "light";
+    const theme = localStorage.getItem("theme");
+    let preference = theme ? theme : isDarkMode ? "dark" : "light";
 
     // prettier-ignore
     if (preference) document.documentElement.setAttribute("data-theme", preference)
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
   </script>
 </svelte:head>
