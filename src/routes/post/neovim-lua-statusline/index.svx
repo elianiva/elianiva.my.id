@@ -389,9 +389,7 @@ I use metatable to set the statusline from autocmd because the `:` symbol confli
 ```lua
 Statusline = setmetatable(M, {
   __call = function(statusline, mode)
-    if mode == "active" then return statusline:set_active() end
-    if mode == "inactive" then return statusline:set_inactive() end
-    if mode == "explorer" then return statusline:set_explorer() end
+    return self["set_" .. mode](self)
   end
 })
 
@@ -501,12 +499,10 @@ M.get_git_status = function(self)
     return is_head_empty and string.format('  %s ', signs.head or '') or ''
   end
 
-  return is_head_empty
-    and string.format(
-      ' +%s ~%s -%s |  %s ',
-      signs.added, signs.changed, signs.removed, signs.head
-    )
-    or ''
+  return is_head_empty and string.format(
+    ' +%s ~%s -%s |  %s ',
+    signs.added, signs.changed, signs.removed, signs.head
+  ) or ''
 end
 
 M.get_filename = function(self)
@@ -621,6 +617,12 @@ Also a [preview video](https://streamable.com/arzm3q) for a better demonstration
 That's the active statusline, I don't think I need to put a screenshot for the inactive one because nothing is interesting going on there :p.
 
 Here's [my statusline file](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/_statusline.lua) for a reference.
+
+<Update date="17-06-2021">
+
+I've changed my statusline quite a bit so it won't look the same as the one you see in this post
+
+</Update>
 
 There are also some great statusline plugins written in lua if you want to get started quickly such as [tjdevries/express_line.nvim][express-line], [glepnir/galaxyline.nvim][galaxyline], [adelarsq/neoline.vim][neoline] and so on.
 
