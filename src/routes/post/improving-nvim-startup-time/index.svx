@@ -1,0 +1,322 @@
+---
+title: Improving Neovim Startup Time Using Lazy Load
+date: 2021-06-20
+desc: A post where I explain how I made my neovim startup time from ~300ms to ~20ms with 50 plugins
+tags:
+  - neovim
+---
+
+[packer-link]: https://github.com/wbthomason/packer.nvim
+[compe-link]: https://github.com/hrsh7th/nvim-compe
+[telescope-link]: https://github.com/nvim-telescope/telescope.nvim
+[lspconfig-link]: https://github.com/neovim/nvim-lspconfig
+[luasnip-link]: https://github.com/L3MON4D3/LuaSnip
+[lush-link]: https://github.com/rktjmp/lush.nvim
+[devicons-link]: https://github.com/kyazdani42/nvim-web-devicons
+[nonicons-link]: https://github.com/yamatsum/nvim-nonicons
+[dap-link]: https://github.com/mfussenegger/nvim-dap
+[treesitter-link]: https://github.com/nvim-treesitter/nvim-treesitter
+[matchup-link]: https://github.com/nvim-treesitter/nvim-treesitter
+[matchup-link]: https://github.com/andymass/vim-matchup
+[align-link]: https://github.com/junegunn/vim-easy-align
+[commentary-link]: https://github.com/tpope/vim-commentary
+[vimtex-link]: https://github.com/lervag/vimtex
+[markdown-link]: https://github.com/plasticboy/vim-markdown
+[test-link]: https://github.com/vim-test/vim-test
+[startuptime-link]: https://github.com/tweekmonster/startuptime.vim
+[plugins-link]: https://github.com/elianiva/dotfiles/blob/master/nvim/lua/plugins/init.lua
+
+# Table of Content
+
+# Introduction
+
+Hello hello! I've been using Neovim with *a lot* of plugins and the startup time is horrible. I have around 50 plugins and it took roughly 300ms to load up.  Still quite fast compared to modern editors but it's definitely slower than a plain Neovim without any plugin.
+
+I've found a way how to solve this problem by lazy loading almost every plugin, I thought it's a good idea to write it here in case people want to do the same.
+
+
+# Prerequisite
+
+To do this, you need a package manager that supports lazy loading. I'm using [packer.nvim][packer-link], I don't know about the other package manager, but the core concept is just "load the plugin on a certain event" rather than "load everything on startup".
+
+**NOTE:** I will be omitting irrelevant parts of the snippet so they're not exactly the same as the one in my config.
+
+
+# UI-related Plugins
+
+## Colour Scheme
+
+I made my colour scheme using [lush.nvim][lush-link] (fantastic plugin, go check it out btw). I load it on `VimEnter` event, it runs -- quoting from `:h VimEnter` -- "After doing all the startup stuff".
+
+Here's a snippet for it:
+
+```lua
+{
+  "rktjmp/lush.nvim",
+  event = "VimEnter",
+  requires = { "~/repos/gruvy", "~/repos/icy" },
+  config = function()
+    require("lush")(require("lush_theme.icy")) -- activate the colourscheme
+  end,
+}
+```
+
+As you can see, I don't use `:colorscheme icy` because I don't really like `vim.cmd` stuff. Lush has a function to load the colorscheme *directly*.
+
+## DevIcons
+
+I have [nvim-web-devicons][devicons-link] installed and a few plugins depend on it. I load it *after* lush and let plugins that depend on it load *after* this plugin gets loaded.
+
+Here's a snippet on how I load it:
+
+```lua
+{
+  "kyazdani42/nvim-web-devicons",
+  after = "lush.nvim",
+  requires = {
+    -- requires nonicons font installed
+    { "yamatsum/nvim-nonicons", after = "nvim-web-devicons" },
+  }
+}
+```
+
+I also have [nvim-nonicons][nonicons-link] installed for prettier filetype icons than the ones that come from NerdFont.
+
+
+## Treesitter
+
+I mainly use [nvim-treesitter][treesitter-link] for better highlighting -- note that it can do *more* than just highlighting -- so it makes sense to load it *only* if there's a file loaded in a buffer. For that reason, I load it on the `BufRead` event.
+
+```lua
+{
+  "~/repos/nvim-treesitter", -- I like to play around with this plugin so I use a local directory instead of the repo
+  event = "BufRead",
+}
+```
+
+There are a bunch of plugins that depend on this, I just make sure they get loaded *after* this plugin gets loaded by adding `after = "nvim-treesitter"` to their definition.
+
+
+# Utility-related Plugins
+
+## vim-matchup
+
+I load [vim-matchup][matchup-link] plugin on `CursorMoved` event. It will get triggered when I move the cursor, the only time I want to load this plugin is when I move to parentheses, brackets, etc.
+
+```lua
+{
+  "andymass/vim-matchup",
+  event = "CursorMoved",
+}
+```
+
+## vim-easy-align
+
+[vim-easy-align][align-link] is quite a handy plugin to have, it can align stuff to make it look nicer. This plugin gets triggered by `<Plug>(EasyAlign)`. It looks like a `cmd` but it actually belongs to `keys` because it's a mapping.
+
+```lua
+{
+  "junegunn/vim-easy-align",
+  keys = "<Plug>(EasyAlign)",
+}
+```
+
+This way, the plugin won't be available *unless* I trigger it.
+
+
+## vim-commentary
+
+Similar to the previous plugin, I trigger [vim-commentary][commentary-link] using the `keys` field so it will get loaded *only* if I want it.
+
+```lua
+{
+  "tpope/vim-commentary",
+  keys = "gc",
+}
+```
+
+## vim-test
+
+Since [vim-test][test-link] is triggered by executing a command, I can use it to lazy-load this plugin by doing so:
+
+```lua
+{
+  "vim-test/vim-test",
+  cmd = { "TestFile", "TestNearest", "TestSuite", "TestVisit" },
+}
+```
+
+The `cmd` could also be a string if there's only 1 item.
+
+
+# Language-related Plugins
+
+I have several plugins for better language support such as [vimtex][vimtex-link] for latex and [vim-markdown][markdown-link] for markdown. I load them *only* on certain filetypes.
+
+Here's a snippet for vim-markdown:
+
+```lua
+{
+  "plasticboy/vim-markdown", -- or "lervag/vimtex"
+  filetype = "markdown", -- or "latex"
+  setup = function()
+    vim.g.vim_markdown_folding_disabled = 1
+    vim.g.vim_markdown_frontmatter = 1
+  end
+}
+```
+
+As you can see, I do the config inside the `setup` key instead of `config` key. This makes those global variables get set *before* the plugin gets loaded, otherwise it won't affect the plugin.
+
+
+# LSP-related Plugins
+
+I made LSP-related plugins to be loaded on `BufRead` event or specific `filetype`, because it gets triggered *after* a file gets loaded into a buffer. I sometimes open Neovim as a scratch which doesn't load any file to a buffer so these plugins won't get loaded.
+
+Here's some example from my config
+
+## nvim-lspconfig
+
+I load [nvim-lspconfig][lspconfig-link] on `BufRead` event because it contains a bunch of LSP configurations.
+
+```lua
+{
+  "neovim/nvim-lspconfig",
+  event = "BufRead", -- this is the important field
+}
+```
+
+
+## Flutter, Rust, Java, and Typescript servers
+
+I load them using a `filetype` because they have their own 'extension', so to speak. I don't use the one provided in `nvim-lspconfig` because these servers have some special functionalities which can only be achieved using some extra implementation rather than just 'starting the server' like inlay hints, widget guides, etc.
+
+Here's a snippet:
+
+```lua
+{
+  "simrat39/rust-tools.nvim", -- or "akinsho/flutter-tools.nvim", etc
+  ft = "rust", -- this is the important field, adjust them to the appropriate filetype
+}
+```
+
+If I open any filetype that doesn't match them, they won't get loaded, reducing the time needed to open Neovim.
+
+
+## Completion and Snippet
+
+I use [nvim-compe][compe-link] for autocompletion. I load it on the `InsertEnter` event. It only makes sense to load an autocompletion plugin after I go to *Insert Mode*. Sometimes, I open Neovim just to look at a file, move around, never get into Insert Mode, and quit Neovim. For this reason, *always* loading nvim-compe will be redundant.
+
+Here's a snippet for it:
+
+```lua
+{
+  "hrsh7th/nvim-compe",
+  event = "InsertEnter",
+  requires = {
+    require("plugins.luasnip").plugin
+  }
+}
+```
+
+If you noticed, I have a `requires` field. I like to structure my plugin definition to be linked to each other if a plugin *requires* another plugin, in this case, it's [LuaSnip][luasnip-link].
+
+Since a snippet requires some character to be inserted, I load it on `InsertCharPre` event.
+
+```lua
+{
+  "L3MON4D3/LuaSnip",
+  event = "InsertCharPre",
+}
+```
+
+# DAP Client
+
+I have [nvim-dap][dap-link] installed for debugging, since I trigger its functionality using `<Leader>d` prefix -- `<Leader>db` to add a breakpoint, for example -- so I load it only when I press `<Leader>d`. Packer has a field called `keys` to place the keybind that triggers this plugin.
+
+```lua
+{
+  "mfussenegger/nvim-dap",
+  keys = "<Leader>d",
+}
+```
+
+
+# Tips
+
+## Loading Configuration
+
+Since we're loading them on a certain event, their config needs to get loaded *after* the plugin has been loaded. Fortunately, packer has a feature where you can specify the configuration for the plugin. If you're trying to load the configuration separately, you might load the configuration *before* the plugin gets loaded which will cause an unwanted error.
+
+We can do it by using the `config` field provided by packer. If it's a huge config, I'd recommend putting it to another file and do `require("your.config")` inside the `config` function like so:
+
+```lua
+{
+  "you/your-cool-plugin",
+  config = function()
+    require("your.config")
+  end
+}
+```
+
+The reason is everything inside packer definition will get compiled into `packer_compiled.vim` so if you want to update your config inside that `config` field, you'll need to recompile every time. This way, you don't need to do that, you can just edit `your/config.lua` file.
+
+## Disabling Built-In Plugins
+
+If you want more speedup, I'd recommend disabling the builtin vim plugins -- or don't if you're using them -- like so:
+
+```lua
+vim.g.loaded_gzip         = 1
+vim.g.loaded_tar          = 1
+vim.g.loaded_tarPlugin    = 1
+vim.g.loaded_zipPlugin    = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_netrw        = 1
+vim.g.loaded_netrwPlugin  = 1
+vim.g.loaded_matchit      = 1
+vim.g.loaded_matchparen   = 1
+vim.g.loaded_spec         = 1
+```
+
+
+# Closing Notes
+
+Those are not all of my plugins obviously, it would take forever to go through 50 plugins I used :p
+
+Here's my startup time -- tested using [startuptime.vim][startuptime-link] -- for reference.
+
+- Before (fully) lazy loading:
+
+  ```
+  Total Time:  219.446 -- Outstanding
+
+  Slowest 10 plugins (out of 30)~
+                      [vimrc]	 173.742
+                          icy	 17.158
+                    [runtime]	 11.249
+                   nvim-compe	 5.735
+                  vim-matchup	 4.569
+  nvim-treesitter-textobjects	 2.347
+                 vim-nonicons	 1.997
+                vim-sandwhich	 1.158
+              nvim-treesitter	 0.995
+                splitjoin.vim	 0.496
+  ```
+
+- After lazy loading:
+
+  ```
+  Total Time:   20.338 -- Flawless Victory
+
+  Slowest 6 plugins (out of 6)~
+         [vimrc]	10.630
+       [runtime]	9.529
+    vim-markdown	0.062
+       [unknown]	0.050
+    plenary.nvim	0.045
+  which-key.nvim	0.022
+  ```
+
+As you can see, my plugins -- the list is [here][plugins-link] -- don't get listed because they don't get loaded right away upon entering Neovim which is great! It feels more snappy than before.
+
+Anyway, hope you find something useful from this post and have a nice day! ツ
