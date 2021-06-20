@@ -278,7 +278,7 @@ vim.g.loaded_matchparen   = 1
 vim.g.loaded_spec         = 1
 ```
 
-## Disabling Built-In Plugins
+## Only Load Packer When Needed
 
 If you don't need packer all the time, just mark it as opt and add this line at the top of the file.
 
@@ -298,7 +298,6 @@ Here are some references around this topic that I've used:
 - [vhyrro config](https://github.com/vhyrro/neovhy/blob/main/lua/plugins.lua)
 
 
-If you need packer, you'll go to that file and do `luafile %`, boom, packer gets loaded and you can do packer related stuff.
 # Closing Notes
 
 Those are not all of my plugins obviously, it would take forever to go through 50 plugins I used :p
