@@ -278,7 +278,27 @@ vim.g.loaded_matchparen   = 1
 vim.g.loaded_spec         = 1
 ```
 
+## Disabling Built-In Plugins
 
+If you don't need packer all the time, just mark it as opt and add this line at the top of the file.
+
+```lua
+vim.cmd [[ packadd packer.nvim ]]
+```
+
+If you need packer, you'll go to that file and do `luafile %`, boom, packer gets loaded and you can do packer related stuff.
+
+
+## References
+
+Here are some references around this topic that I've used:
+
+- [packer.nvim][packer-link]
+- [ray-x config](https://github.com/ray-x/nvim/tree/4afc9f52038c96f5d679c11ab46df9984dcde3e0/lua)
+- [vhyrro config](https://github.com/vhyrro/neovhy/blob/main/lua/plugins.lua)
+
+
+If you need packer, you'll go to that file and do `luafile %`, boom, packer gets loaded and you can do packer related stuff.
 # Closing Notes
 
 Those are not all of my plugins obviously, it would take forever to go through 50 plugins I used :p
