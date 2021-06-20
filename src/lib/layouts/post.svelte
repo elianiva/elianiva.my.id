@@ -10,10 +10,9 @@
 .post__title {
   font-family: "Overpass", sans-serif;
   font-size: 2.5rem;
-  margin-top: 2rem;
   text-transform: uppercase;
   max-width: 30ch;
-  margin: 0 auto;
+  margin: 3rem auto 0;
 }
 
 .post__date {
@@ -32,12 +31,12 @@
   font-size: 1.125rem;
   line-height: 2em;
   color: var(--color-main-accent);
-  transition: color ease-out 0.2s;
   text-decoration: none;
+  margin-bottom: 1rem;
 }
 
 .post__edit:hover {
-  color: var(--color-main-text);
+  text-decoration: underline;
 }
 
 .post__edit:hover::before {
@@ -55,15 +54,22 @@
 .post__content :global(p) {
   line-height: 1.75em;
   font-size: 1.125rem;
+  margin: 0 0 1.25rem;
 }
 
-:global(.post__content > * + *) {
-  margin-top: 1rem;
+.post__content :global(h1),
+.post__content :global(h2),
+.post__content :global(h3) {
+  position: relative;
+  font-family: "Overpass", sans-serif;
+  margin: 2.5rem 0 0.5rem;
+}
+
+.post__content :global(h1 + h2) {
+  margin: 1.5rem 0 0.5rem;
 }
 
 .post__content :global(h1) {
-  position: relative;
-  font-family: "Overpass", sans-serif;
   font-size: 2rem;
   line-height: 1.75em;
   letter-spacing: 0.05em;
@@ -84,17 +90,20 @@
 }
 
 .post__content :global(h2) {
-  position: relative;
-  font-family: "Overpass", sans-serif;
   line-height: 1.5em;
   font-size: 1.625rem;
   padding-left: 1.5rem;
   letter-spacing: 0.05em;
 }
 
+.post__content :global(h2::after) {
+  content: "# ";
+  position: absolute;
+  left: 0;
+  color: var(--color-main-accent);
+}
+
 .post__content :global(h3) {
-  position: relative;
-  font-family: "Overpass", sans-serif;
   font-size: 1.5rem;
   line-height: 2em;
   padding-left: 0.5rem;
@@ -109,13 +118,6 @@
   color: var(--color-main-accent);
 }
 
-.post__content :global(h2::after) {
-  content: "# ";
-  position: absolute;
-  left: 0;
-  color: var(--color-main-accent);
-}
-
 .post__content :global(img) {
   width: 100%;
 }
@@ -123,6 +125,7 @@
 .post__content :global(pre) {
   scrollbar-color: var(--color-thin) var(--color-special-bg);
   border: 0.0625rem var(--color-borders) solid;
+  margin: 1.25rem 0;
 }
 
 .post__content :global(pre::-webkit-scrollbar) {
@@ -180,11 +183,17 @@
   list-style: none;
 }
 
+.post__content :global(#table-of-content + ul) {
+  margin: 0 0 1.5rem;
+}
+
 .post__content :global(ul li) {
   position: relative;
   font-size: 1.125rem;
   line-height: 1.75em;
   padding-left: 1rem;
+  /* white-space: pre-wrap; */
+  word-wrap: break-word;
 }
 
 .post__content :global(ul li::before) {

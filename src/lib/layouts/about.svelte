@@ -34,11 +34,11 @@
 
 .about__content :global(h2) {
   font-size: 1.5rem;
-  margin: 0.5rem 0 0.5rem;
+  margin: 2.5rem 0 0.5rem;
 }
 
 .about__content :global(h1:not(:first-child)) {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .about__content :global(h1::after) {
@@ -84,7 +84,7 @@
 .about__content :global(li p:not(:first-child)) {
   font-family: "Open Sans", sans-serif;
   color: var(--color-main-text);
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.75em;
   padding-left: 1.5rem;
 }

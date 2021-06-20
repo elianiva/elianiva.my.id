@@ -114,7 +114,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: color ease-out 0.1s, background-color ease-out 0.1s;
+  transition: color ease-out 0.05s, background-color ease-out 0.025s;
 }
 
 html,

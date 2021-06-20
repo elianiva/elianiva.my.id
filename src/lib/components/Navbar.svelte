@@ -57,7 +57,7 @@
   position: relative;
   color: var(--color-alt-text);
   text-decoration: none;
-  transition: color ease-out 0.1s;
+  transition: color ease-out 0.05s;
 }
 
 .navbar__item a:hover {

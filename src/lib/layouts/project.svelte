@@ -142,7 +142,6 @@
   font-family: "Overpass", sans-serif;
   font-size: 1.25rem;
   text-decoration: none;
-  transition: color ease-out 0.2s;
 }
 
 .stack__name:hover {
