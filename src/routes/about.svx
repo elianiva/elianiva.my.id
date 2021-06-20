@@ -67,7 +67,7 @@ Here are some programming *and* markup languages that I know. I'm quite proficie
   introduced to programming. (technically second, but I think you can
   guess why :) Nowadays I prefer Typescript because I prefer statically
   typed language for most cases. It provides a better developer
-  experience in my opinion.
+  experience in my opinion. <br/><br/>
 
   I would say that I'm quite good at it, I've made several apps in the past.
   Either full-stack or just the front-end. My go-to framework/library for frontend
