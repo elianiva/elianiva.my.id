@@ -1,7 +1,7 @@
 <style>
 .post {
   max-width: 1080px;
-  padding: 1rem;
+  padding: 1rem 2rem;
   margin: 0 auto;
   color: var(--color-main-text);
   text-align: center;
@@ -92,15 +92,7 @@
 .post__content :global(h2) {
   line-height: 1.5em;
   font-size: 1.625rem;
-  padding-left: 1.5rem;
   letter-spacing: 0.05em;
-}
-
-.post__content :global(h2::after) {
-  content: "# ";
-  position: absolute;
-  left: 0;
-  color: var(--color-main-accent);
 }
 
 .post__content :global(h3) {
