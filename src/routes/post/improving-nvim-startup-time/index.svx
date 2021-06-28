@@ -19,11 +19,11 @@ tags:
 [matchup-link]: https://github.com/nvim-treesitter/nvim-treesitter
 [matchup-link]: https://github.com/andymass/vim-matchup
 [align-link]: https://github.com/junegunn/vim-easy-align
-[commentary-link]: https://github.com/tpope/vim-commentary
 [vimtex-link]: https://github.com/lervag/vimtex
 [markdown-link]: https://github.com/plasticboy/vim-markdown
 [test-link]: https://github.com/vim-test/vim-test
 [startuptime-link]: https://github.com/tweekmonster/startuptime.vim
+[plenary-link]: https://github.com/nvim-lua/plenary.nvim
 [plugins-link]: https://github.com/elianiva/dotfiles/blob/master/nvim/lua/plugins/init.lua
 
 # Table of Content
@@ -39,7 +39,7 @@ I've found a way how to solve this problem by lazy loading almost every plugin, 
 
 To do this, you need a package manager that supports lazy loading. I'm using [packer.nvim][packer-link], I don't know about the other package manager, but the core concept is just "load the plugin on a certain event" rather than "load everything on startup".
 
-**NOTE:** I will be omitting irrelevant parts of the snippet so they're not exactly the same as the one in my config.
+**NOTE:** I will be omitting irrelevant parts of the config for the sake of brevity
 
 
 # UI-related Plugins
@@ -65,18 +65,21 @@ As you can see, I don't use `:colorscheme icy` because I don't really like `vim.
 
 ## DevIcons
 
-I have [nvim-web-devicons][devicons-link] installed and a few plugins depend on it. I load it *after* lush and let plugins that depend on it load *after* this plugin gets loaded.
+I have [nvim-web-devicons][devicons-link] installed and a few plugins depend on it. I use the `module` field to let it load only when a plugin `require` it.
 
 Here's a snippet on how I load it:
 
 ```lua
 {
   "kyazdani42/nvim-web-devicons",
-  after = "lush.nvim",
+  module = "nvim-web-devicons",
   requires = {
     -- requires nonicons font installed
-    { "yamatsum/nvim-nonicons", after = "nvim-web-devicons" },
-  }
+    {
+      "yamatsum/nvim-nonicons",
+      module = "nvim-nonicons"
+    },
+  },
 }
 ```
 
@@ -124,15 +127,33 @@ I load [vim-matchup][matchup-link] plugin on `CursorMoved` event. It will get tr
 This way, the plugin won't be available *unless* I trigger it.
 
 
-## vim-commentary
+## Telescope
 
-Similar to the previous plugin, I trigger [vim-commentary][commentary-link] using the `keys` field so it will get loaded *only* if I want it.
+Similar to the previous plugin, I trigger [telescope.nvim][telescope-link] using the `keys` field so it will get loaded *only* if I want it. But, I also have the `module` field which tells packer to load this plugin whenever it gets `require`d by another module.
 
 ```lua
 {
-  "tpope/vim-commentary",
-  keys = "gc",
+  "~/repos/telescope.nvim",
+  module = "telescope",
+  keys = {
+    {"", "<C-p>"},
+    {"", "<C-f>"},
+    {"n", "<Leader>f"}
+  },
 }
+```
+
+I use `<C-p>` to trigger `find_files` and `<C-f>` to trigger `grep_string`, the rest prefixed with `<Leader>f`.
+
+
+## Plenary
+Some of my plugins depends on [plenary.nvim][plenary-link] but plenary itself is just a module so it makes sense to load it _only_ when something needs it. Again, I'm using `module` key for this.
+
+```lua
+  {
+    "nvim-lua/plenary.nvim",
+    module = "plenary"
+  },
 ```
 
 ## vim-test
@@ -325,15 +346,15 @@ Here's my startup time -- tested using [startuptime.vim][startuptime-link] -- fo
 - After lazy loading:
 
   ```
-  Total Time:   20.338 -- Flawless Victory
+  Total Time:   18.821 -- Flawless Victory
 
   Slowest 6 plugins (out of 6)~
-         [vimrc]	10.630
-       [runtime]	9.529
-    vim-markdown	0.062
-       [unknown]	0.050
-    plenary.nvim	0.045
-  which-key.nvim	0.022
+      [runtime]	 9.079
+        [vimrc]	 7.544
+    packer.nvim	 1.973
+  diffview.nvim	 0.117
+   vim-markdown	 0.067
+      [unknown]	 0.041
   ```
 
 As you can see, my plugins -- the list is [here][plugins-link] -- don't get listed because they don't get loaded right away upon entering Neovim which is great! It feels more snappy than before.
