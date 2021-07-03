@@ -1,7 +1,7 @@
 ---
 title: Improving Neovim Startup Time Using Lazy Load
 date: 2021-06-20
-desc: A post where I explain how I made my neovim startup time from ~300ms to ~20ms with 50 plugins
+desc: A post where I explain how I made my neovim startup time from ~300ms to <100ms with ~50 plugins
 tags:
   - neovim
 ---
@@ -9,15 +9,11 @@ tags:
 [packer-link]: https://github.com/wbthomason/packer.nvim
 [compe-link]: https://github.com/hrsh7th/nvim-compe
 [telescope-link]: https://github.com/nvim-telescope/telescope.nvim
-[lspconfig-link]: https://github.com/neovim/nvim-lspconfig
 [luasnip-link]: https://github.com/L3MON4D3/LuaSnip
 [lush-link]: https://github.com/rktjmp/lush.nvim
 [devicons-link]: https://github.com/kyazdani42/nvim-web-devicons
-[nonicons-link]: https://github.com/yamatsum/nvim-nonicons
 [dap-link]: https://github.com/mfussenegger/nvim-dap
 [treesitter-link]: https://github.com/nvim-treesitter/nvim-treesitter
-[matchup-link]: https://github.com/nvim-treesitter/nvim-treesitter
-[matchup-link]: https://github.com/andymass/vim-matchup
 [align-link]: https://github.com/junegunn/vim-easy-align
 [vimtex-link]: https://github.com/lervag/vimtex
 [markdown-link]: https://github.com/plasticboy/vim-markdown
@@ -73,18 +69,8 @@ Here's a snippet on how I load it:
 {
   "kyazdani42/nvim-web-devicons",
   module = "nvim-web-devicons",
-  requires = {
-    -- requires nonicons font installed
-    {
-      "yamatsum/nvim-nonicons",
-      module = "nvim-nonicons"
-    },
-  },
 }
 ```
-
-I also have [nvim-nonicons][nonicons-link] installed for prettier filetype icons than the ones that come from NerdFont.
-
 
 ## Treesitter
 
@@ -94,24 +80,11 @@ I mainly use [nvim-treesitter][treesitter-link] for better highlighting -- note 
 {
   "~/repos/nvim-treesitter", -- I like to play around with this plugin so I use a local directory instead of the repo
   event = "BufRead",
+  opt = true
 }
 ```
-
-There are a bunch of plugins that depend on this, I just make sure they get loaded *after* this plugin gets loaded by adding `after = "nvim-treesitter"` to their definition.
-
 
 # Utility-related Plugins
-
-## vim-matchup
-
-I load [vim-matchup][matchup-link] plugin on `CursorMoved` event. It will get triggered when I move the cursor, the only time I want to load this plugin is when I move to parentheses, brackets, etc.
-
-```lua
-{
-  "andymass/vim-matchup",
-  event = "CursorMoved",
-}
-```
 
 ## vim-easy-align
 
@@ -195,18 +168,6 @@ As you can see, I do the config inside the `setup` key instead of `config` key. 
 I made LSP-related plugins to be loaded on `BufRead` event or specific `filetype`, because it gets triggered *after* a file gets loaded into a buffer. I sometimes open Neovim as a scratch which doesn't load any file to a buffer so these plugins won't get loaded.
 
 Here's some example from my config
-
-## nvim-lspconfig
-
-I load [nvim-lspconfig][lspconfig-link] on `BufRead` event because it contains a bunch of LSP configurations.
-
-```lua
-{
-  "neovim/nvim-lspconfig",
-  event = "BufRead", -- this is the important field
-}
-```
-
 
 ## Flutter, Rust, Java, and Typescript servers
 
@@ -346,17 +307,29 @@ Here's my startup time -- tested using [startuptime.vim][startuptime-link] -- fo
 - After lazy loading:
 
   ```
-  Total Time:   18.821 -- Flawless Victory
+    Total Time:   37.353 -- Flawless Victory
 
-  Slowest 6 plugins (out of 6)~
-      [runtime]	 9.079
-        [vimrc]	 7.544
-    packer.nvim	 1.973
-  diffview.nvim	 0.117
-   vim-markdown	 0.067
-      [unknown]	 0.041
+
+  Slowest 8 plugins (out of 8)~
+     packer.nvim	18.373
+       [runtime]	10.696
+         [vimrc]	7.943
+   diffview.nvim	0.122
+  nvim-lspconfig	0.087
+    vim-markdown	0.067
+       [unknown]	0.049
+  which-key.nvim	0.015
+
   ```
 
-As you can see, my plugins -- the list is [here][plugins-link] -- don't get listed because they don't get loaded right away upon entering Neovim which is great! It feels more snappy than before.
+<script>
+  import Update from "$lib/components/Update.svelte"
+</script>
 
-Anyway, hope you find something useful from this post and have a nice day! ツ
+<Update date="01-03-2021">
+
+I've decreased the amount of lazy loading because sometimes they can cause some issue with autocmd.
+
+</Update>
+
+You can find the list of my plugins [here][plugins-link]. Anyway, hope you find something useful from this post and have a nice day! ツ
