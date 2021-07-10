@@ -94,6 +94,14 @@ Here are some programming *and* markup languages that I know. I'm quite proficie
   Rust project haha.
 
 
+- **Go**
+
+  I recently started to invest more time in Go because it's a simple language
+  yet it's quite fast. For me, it's kinda like a middle ground between NodeJS
+  and Rust. I made [this smol API](https://github.com/elainiva/random-jp-api)
+  for my custom Chrome homepage when I learned Go for the first time.
+
+
 - **Java**
 
   I only used Java several times. One of my
