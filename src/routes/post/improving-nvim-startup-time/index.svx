@@ -10,7 +10,6 @@ tags:
 [compe-link]: https://github.com/hrsh7th/nvim-compe
 [telescope-link]: https://github.com/nvim-telescope/telescope.nvim
 [luasnip-link]: https://github.com/L3MON4D3/LuaSnip
-[lush-link]: https://github.com/rktjmp/lush.nvim
 [devicons-link]: https://github.com/kyazdani42/nvim-web-devicons
 [dap-link]: https://github.com/mfussenegger/nvim-dap
 [treesitter-link]: https://github.com/nvim-treesitter/nvim-treesitter
@@ -22,11 +21,15 @@ tags:
 [plenary-link]: https://github.com/nvim-lua/plenary.nvim
 [plugins-link]: https://github.com/elianiva/dotfiles/blob/master/nvim/lua/plugins/init.lua
 
+<script>
+  import Update from "$lib/components/Update.svelte"
+</script>
+
 # Table of Content
 
 # Introduction
 
-Hello hello! I've been using Neovim with *a lot* of plugins and the startup time is horrible. I have around 50 plugins and it took roughly 300ms to load up.  Still quite fast compared to modern editors but it's definitely slower than a plain Neovim without any plugin.
+I've been using Neovim with *a lot* of plugins and the startup time is horrible. I have around 50 plugins and it took roughly 300ms to load up.  Still quite fast compared to modern editors but it's definitely slower than a plain Neovim without any plugin.
 
 I've found a way how to solve this problem by lazy loading almost every plugin, I thought it's a good idea to write it here in case people want to do the same.
 
@@ -39,25 +42,6 @@ To do this, you need a package manager that supports lazy loading. I'm using [pa
 
 
 # UI-related Plugins
-
-## Colour Scheme
-
-I made my colour scheme using [lush.nvim][lush-link] (fantastic plugin, go check it out btw). I load it on `VimEnter` event, it runs -- quoting from `:h VimEnter` -- "After doing all the startup stuff".
-
-Here's a snippet for it:
-
-```lua
-{
-  "rktjmp/lush.nvim",
-  event = "VimEnter",
-  requires = { "~/repos/gruvy", "~/repos/icy" },
-  config = function()
-    require("lush")(require("lush_theme.icy")) -- activate the colourscheme
-  end,
-}
-```
-
-As you can see, I don't use `:colorscheme icy` because I don't really like `vim.cmd` stuff. Lush has a function to load the colorscheme *directly*.
 
 ## DevIcons
 
@@ -184,6 +168,14 @@ Here's a snippet:
 
 If I open any filetype that doesn't match them, they won't get loaded, reducing the time needed to open Neovim.
 
+<Update date="2021-07-20">
+
+After doing this for a while, yeah, it's not a good idea :p
+
+Sometimes it gets wonky.
+
+</Update>
+
 
 ## Completion and Snippet
 
@@ -286,6 +278,14 @@ Those are not all of my plugins obviously, it would take forever to go through 5
 
 Here's my startup time -- tested using [startuptime.vim][startuptime-link] -- for reference.
 
+
+<Update date="07-07-2021">
+
+I've decreased the amount of lazy loading because sometimes they can cause some
+issue with autocmd
+
+</Update>
+
 - Before (fully) lazy loading:
 
   ```
@@ -307,29 +307,21 @@ Here's my startup time -- tested using [startuptime.vim][startuptime-link] -- fo
 - After lazy loading:
 
   ```
-    Total Time:   37.353 -- Flawless Victory
+  Total Time:   62.548 -- Flawless Victory
 
 
-  Slowest 8 plugins (out of 8)~
-     packer.nvim	18.373
-       [runtime]	10.696
-         [vimrc]	7.943
-   diffview.nvim	0.122
-  nvim-lspconfig	0.087
-    vim-markdown	0.067
-       [unknown]	0.049
-  which-key.nvim	0.015
+Slowest 10 plugins (out of 11)~
+   packer.nvim	45.177
+     [runtime]	11.828
+       [vimrc]	5.051
+ diffview.nvim	0.127
+nvim-lspconfig	0.088
+  vim-markdown	0.064
+  plenary.nvim	0.062
+     [unknown]	0.053
+     lush.nvim	0.048
+    nvim-jdtls	0.034
 
   ```
-
-<script>
-  import Update from "$lib/components/Update.svelte"
-</script>
-
-<Update date="07-07-2021">
-
-I've decreased the amount of lazy loading because sometimes they can cause some issue with autocmd.
-
-</Update>
 
 You can find the list of my plugins [here][plugins-link]. Anyway, hope you find something useful from this post and have a nice day! ツ

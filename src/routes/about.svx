@@ -102,27 +102,6 @@ Here are some programming *and* markup languages that I know. I'm quite proficie
   for my custom Chrome homepage when I learned Go for the first time.
 
 
-- **Java**
-
-  I only used Java several times. One of my
-  [final school assignment]({data.siteUrl}/project/java-cashier-app)
-  is to make a desktop app using Java. I'm not going to lie, I don't
-  really enjoy writing Java as much as I do with other languages. Maybe it's
-  because I don't really like OOP in the first place, and the
-  fact that you could have a
-  `deeply/nested/modules/like/this/to/get/to/one/file.java`
-  and you have to
-  `import pkg.name.deeply.nested.modules.like.this.to.get.to.one.file`.
-
-
-- **PHP**
-
-  I pretty much use this only for school-related stuff because my
-  school's curriculum uses PHP and Java for its main languages. This is
-  one of those languages that I'm *comfortable enough* using, I just want
-  to get my assignments done and not use it for anything else :p
-
-
 - **Haskell**
 
   Haskell is like a completely different world to me for now. Every time I met
