@@ -45,8 +45,7 @@
 <script lang="ts">
 export let date: string = "";
 
-const [d, m, y] = date.split("-");
-const dateObj = new Date(parseInt(y), parseInt(m), parseInt(d));
+const dateObj = new Date(date);
 
 const formattedDate = dateObj.toLocaleDateString("en-UK", {
   weekday: "short",

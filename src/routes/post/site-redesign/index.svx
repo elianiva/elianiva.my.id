@@ -36,7 +36,7 @@ Previously, I have this one big section that fills the entire screen with a logo
 
 I also don't have a new logo for my username yet. So it is what it is. I'll make that in the future.
 
-<Update date="06-09-2020">
+<Update date="2020-09-06">
 
 I decided to use my github profile picture instead.
 
@@ -71,7 +71,7 @@ I am planning on making this page to be a place where I put some sort of series.
 
 So currently, it is a work in progress. "coming soon", that's all you got for now.
 
-<Update date="17-10-2020">
+<Update date="2020-10-17">
 
 I changed my mind. I won't make this section. I never have the time to do it unfortunately.
 

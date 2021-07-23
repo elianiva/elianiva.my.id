@@ -17,13 +17,14 @@ tags:
 [short-circuit]: https://en.m.wikipedia.org/wiki/Short-circuit_evaluation
 [nvim-web-devicons]: https://github.com/kyazdani42/nvim-web-devicons
 [lsp-status]: https://github.com/nvim-lua/lsp-status.nvim
-[bufferline-lua]: https://github.com/elianiva/dotfiles/blob/dcac8bce32b521e94da8c165426f948ee7507f13/nvim/.config/nvim/lua/plugin/_bufferline.lua
+[bufferline-lua]: https://github.com/elianiva/dotfiles/blob/950ba38bda8230da8071fc72cf3d8617d6288565/config/nvim/lua/plugins/nvim-bufferline.lua
 [autocmd]: https://github.com/neovim/neovim/pull/12378
 [appearances-lua]: https://github.com/elianiva/dotfiles/blob/934fe3dd54aab909c396bf0fafae285946fa7fb5/nvim/.config/nvim/lua/modules/_appearances.lua
-[cooper-ampersand]: https://github.com/cooper-anderson/dotfiles/blob/2ddc280f3da7b6fc1e77be79393f92652326dd69/nvim/lua/ampersand/plugins/bufferline.lua
 [expressline]: https://github.com/tjdevries/express_line.nvim
 [galaxyline]: https://github.com/glepnir/galaxyline.nvim
 [neoline]: https://github.com/adelarsq/neoline.vim
+[spec-file]: https://github.com/elianiva/icy.nvim/blob/d946e6d783c1903e92cfe46a7a955732ee6d9988/lua/lush_theme/icy.lua
+[new-line]: https://github.com/elianiva/dotfiles/blob/950ba38bda8230da8071fc72cf3d8617d6288565/config/nvim/lua/modules/statusline.lua
 
 # Table of Content
 
@@ -79,7 +80,7 @@ end
 
 This function calls `vim.api.nvim_win_get_width` for the current active window which will return its width. This function will return `true` if the current window width is less than the passed argument thus telling a component to truncate its content.
 
-<Update date="26-02-2021">
+<Update date="2021-02-26">
 
 Thanks @Evgeni for the suggestion on creating a table for each section truncation width, it's easier to keep track of which component has how many width.
 
@@ -104,6 +105,12 @@ M.colors = {
 ```
 
 I made the highlight groups on my `~/.config/nvim/lua/modules/_appearances.lua` along with my other hl-group definitions, but here's the important snippet.
+
+<Update date="2021-07-23">
+
+Now since I made my own colourscheme using Lush, I defined them directly in the [spec file][lush-theme]
+
+</Update>
 
 ```lua
 local set_hl = function(group, options)
@@ -154,7 +161,7 @@ local active_sep = 'blank'
 
 I use the arrow separator, either one is fine. It will look empty here because my website doesn't use Nerdfont.
 
-<Update date="30-01-2021">
+<Update date="2021-01-30">
 
 I now use the blank separator.
 
@@ -208,7 +215,7 @@ What that code does is creates a key-value pair table with string as a key and a
 
 Depending on the current window width, it will return different output. For example, if my current window isn't wide enough, it will return `N` instead of `Normal`. If you want to change when it will start to change then adjust the argument that is passed to the `is_truncated` function. Remember that `trunc_width` table from earlier? We use `mode` value here so that my Mode component will get truncated if my window width is less than `80`.
 
-<Update date="26-02-2021">
+<Update date="2021-02-26">
 
 Thanks to @Evgeni for pointing me out, I moved the `mode` table outside of the function because previously I was putting it inside a function which will get created every time the function is executed.
 <br />
@@ -324,9 +331,9 @@ end
 
 I got this section from [this repo][lsp-status] with some modification. It will be hidden when the current window width is less than `120`. I don't personally use this because I use a small monitor.
 
-<Update date="30-01-2021">
+<Update date="2021-07-23">
 
-I display this at my `tabline` instead, I took it from [cooper-anderson's][cooper-ampersand] config and heavily modify it. [Here's][bufferline-lua] the relevant file for that. It will show the available diagnostics at the top right corner of the screen and update them in real-time.
+I display this at my `tabline` instead since nvim-bufferline now supports custom section. [Here's][bufferline-lua] the relevant file for that. It will show the available diagnostics at the top right corner of the screen and update them in real-time.
 
 </Update>
 
@@ -406,7 +413,7 @@ api.nvim_exec([[
 This auto command runs every time we enter or leave a buffer and set the corresponding statusline. It needs to be done using VimL because it doesn't have lua version *yet*. It's currently a [work in progress][autocmd] at the time of writing this post.
 
 # Result
-Here's how my entire file looks and [here's][appearances-lua] the corresponding highlight-groups definition.
+Here's how the entire file looks.
 
 ```lua
 local fn = vim.fn
@@ -618,9 +625,9 @@ That's the active statusline, I don't think I need to put a screenshot for the i
 
 Here's [my statusline file](https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/_statusline.lua) for a reference.
 
-<Update date="17-06-2021">
+<Update date="2021-06-17">
 
-I've changed my statusline quite a bit so it won't look the same as the one you see in this post
+I've changed [my statusline][new-line] quite a bit so it won't look the same as the one you see in this post.
 
 </Update>
 

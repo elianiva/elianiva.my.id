@@ -64,7 +64,7 @@ Please refer to the repository for installation or configuration because they ex
 import Update from '$lib/components/Update.svelte'
 </script>
 
-<Update date="19-04-2021">
+<Update date="2021-04-19">
 
 In the midst of lua hype, I found [this plugin](https://github.com/NTBBloodbath/rest.nvim) which doesn't depend on coc.nvim
 It has a similar JSON output which is nice

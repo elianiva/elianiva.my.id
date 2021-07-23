@@ -22,7 +22,7 @@ Suckless has a window manager called DWM which stands for Dynamic Window Manager
 
 DWM has 3 layouts by default. They are tiling with master and stack layout, floating, and monocle. One of the reasons I chose DWM is because of the master and stack layout. There are some WM with master and stack layout except DWM, but I don't like them as much as DWM. For example, I don't want AwesomeWM because I don't fancy writing config in Lua.
 
-<Update date="27-10-2020">
+<Update date="2020-10-27">
 
 lmao guess who's suddently got so obsessed with Lua and decided to use AwesomeWM
 
@@ -165,7 +165,7 @@ As I said, I only use 1 patch for dmenu and that patch is...
 ## ST (Simple Terminal)
 Suckless have a terminal called **ST** or **Simple Terminal** or **Suckless Terminal**. It's the best terminal in my opinion. It supports true colour, ligatures, box drawing, unicode support, and more stuff that you can achieve by applying some patches.
 
-<Update date="27-10-2020">
+<Update date="2020-10-27">
 
 Some of you might think it's the best, but then I came across [Alacritty](https://github.com/alacritty/alacritty) and it's instantly became my new "best terminal" out there.
 

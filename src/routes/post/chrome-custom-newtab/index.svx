@@ -47,7 +47,7 @@ Honestly, nothing much to tell here. You can go as overkill as you want for a st
 
 It's super simple, I just set some vim-like shortcut (prefixed with colon) like `:o` to open a new website, `:s` to do google search, `:gh` to open github, etc. If you want mine, you can get it [here](https://github.com/elianiva/dotfiles/blob/master/misc/codes/chrome-page).
 
-<Update date="17-10-2020">
+<Update date="2020-10-17">
 
 I made a new once since the old one is too minimal. Here's the new one.
 
@@ -57,7 +57,7 @@ I made a new once since the old one is too minimal. Here's the new one.
 
 You can get it [here](https://github.com/elianiva/dotfiles/blob/master/misc/codes/startpage)
 
-<Update date="26-02-2021">
+<Update date="2021-02-16">
 
 I simplified my previous startpage by removing the icons and changing the font and the background. I also added a random sentence at the top so I will always memorise a word everytime I open a newtab page. There's also a link to [jisho.org](https://jisho.org) in case I got interested on that word.
 

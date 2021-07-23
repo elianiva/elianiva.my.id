@@ -53,7 +53,7 @@ It has 4GB of RAMs. I planning on upgrading it in the future to 8GB. I also plan
   import Update from "$lib/components/Update.svelte"
 </script>
 
-<Update date="15-08-2020">
+<Update date="2020-08-15">
 
 I bought an SSD an upgraded my RAM, man it feels *so* much better.
 

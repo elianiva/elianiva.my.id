@@ -78,7 +78,7 @@ Two plugins that I use for my editor which are [telescope.nvim][telescope-nvim] 
 import Update from "$lib/components/Update.svelte"
 </script>
 
-<Update date="10-04-2021">
+<Update date="2021-04-10">
 
 Good news! Since [#1370][underscore-pr-link], SvelteKit uses `__layout.svelte` instead of `$layout.svelte` -- This also applies to the error page.
 
@@ -117,9 +117,9 @@ I use `localStorage` to store the current theme data and load the state to Svelt
 ## Deployment
 I was trying to deploy this app to Vercel but it keeps changing constantly so stuff breaks easily. I decided not to deploy this in the end.
 
-<Update date="21-03-2021">
+<Update date="2021-03-21">
 
-I managed to deploy this app [here](https://svlt.elianiva.my.id) using `@sveltejs/adapter-vercel`. ~~Though I'm using a temporary fork of mine to make it work~~ It's been fixed. It's *really* satisfying knowing that it finally works :DD
+I managed to deploy this app [here](https://svlt.elianiva.my.id) using `@sveltejs/adapter-vercel`. ~~Though I'm using a temporary fork of mine to make it work~~ It's been fixed. It's *really* satisfying knowing that it finally works!
 
 </Update>
 

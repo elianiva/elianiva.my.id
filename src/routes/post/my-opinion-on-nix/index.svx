@@ -17,6 +17,10 @@ tags:
 [hm-link]: https://github.com/nix-community/home-manager
 [nixgl-link]: https://github.com/guibou/nixGL
 
+<script>
+  import Update from "$lib/components/Update.svelte"
+</script>
+
 # Table Of Content
 
 # Introduction
@@ -26,6 +30,12 @@ I've been trying to dive into Nix recently and it has been pleasant. The reason 
 If you don't know about Nix, it's a declarative, purely functional lazily evaluated language *and* a package manager, and there's also NixOS which is a distribution entirely based on Nix. I won't explain what they are in this post, so please refer to their [official website][nix-website].
 
 This post is going to be focused on my opinion about it so please take it with a grain of salt ;)
+
+<Update date="2021-07-23">
+
+I've decided to use Nix to manage my dotfiles and most of my packages since I moved to Fedora. I still use `dnf` for GUI packages since they don't play nicely when installed through Nix.
+
+</Update>
 
 # NixOS
 

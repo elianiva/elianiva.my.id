@@ -19,7 +19,7 @@ I'm planning on remaking this if I got time for it using Svelte.
   import Update from "$lib/components/Update.svelte"
 </script>
 
-<Update date="01-03-2021">
+<Update date="2021-03-01">
 
 I've made a remake using NextJS. I didn't choose Svelte because I want to explore more stuff about NextJS and I've done quite a bit of Svelte recently, so doing something different is nice. You can check it out [here](https://elianiva.my.id/project/covid-info-v2)
 

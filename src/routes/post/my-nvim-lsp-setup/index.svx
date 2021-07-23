@@ -15,14 +15,14 @@ tags:
 [coc-nvim]: https://github.com/neoclide/coc.nvim
 [lspsaga-nvim]: https://github.com/glepnir/lspsaga.nvim
 [telescope-nvim]: https://github.com/nvim-telescope/telescope.nvim
-[lsp-init-lua]: https://github.com/elianiva/dotfiles/blob/235c54445268f5838ac4a03669fde4d0a4738fea/nvim/.config/nvim/lua/modules/lsp/init.lua
+[lsp-init-lua]: https://github.com/elianiva/dotfiles/blob/950ba38bda8230da8071fc72cf3d8617d6288565/config/nvim/lua/modules/lsp/init.lua
 [vim-vsnip]: https://github.com/hrsh7th/vim-vsnip
 [snippets-nvim]: https://github.com/norcalli/snippets.nvim
 [completion-nvim]: https://github.com/nvim-lua/completion-nvim
 [tj-twitch]: https://www.twitch.tv/teej_dv
-[efm-config]: https://github.com/elianiva/dotfiles/blob/235c54445268f5838ac4a03669fde4d0a4738fea/nvim/.config/nvim/lua/modules/lsp/init.lua#L89-L108
-[efm-ls]: https://github.com/mattn/efm-langserver
-[lsp-mappings]: https://github.com/elianiva/dotfiles/blob/235c54445268f5838ac4a03669fde4d0a4738fea/nvim/.config/nvim/lua/modules/lsp/_mappings.lua
+[null-config]: https://github.com/elianiva/dotfiles/blob/950ba38bda8230da8071fc72cf3d8617d6288565/config/nvim/lua/plugins/null-ls.lua
+[null-ls]: https://github.com/jose-elias-alvarez/null-ls.nvim
+[lsp-mappings]: https://github.com/elianiva/dotfiles/blob/950ba38bda8230da8071fc72cf3d8617d6288565/config/nvim/lua/modules/lsp/mappings.lua
 [diagnostic-nvim]: https://github.com/nvim-lua/diagnostic-nvim
 [big-pr]: https://github.com/neovim/neovim/pull/12655
 
@@ -83,7 +83,7 @@ nvim_lsp.gopls.setup{
 
 I made a `custom_on_attach` function to attach LSP specific mappings. I also made a custom `on_init` function to notify me when the LSP is started and enable `incremental_sync`. Though, I'm not sure if `on_init` is the correct thing that I'm looking for. Sometimes it notifies me when the LSP server hasn't even started yet :p
 
-<Update date="2021-02-14">
+<Update date="2021-02-04">
 
 I've updated my config to use a *better* way to set them up. Basically, I have a key-value pair table, each item is a table with the server name as its key. This way, I wouldn't need to copy and paste `nvim_lsp.lsp_name.setup{...}`.
 
@@ -223,79 +223,18 @@ vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagno
 
 I set the prefix for `virtual_text` to be `»` because I don't really like the default one and enabled `signs` for the diagnostic hint. I also made it to only update the diagnostic when I switch between insert mode and normal mode because it's quite annoying when I haven't finished typing and get yelled at by LSP because it expects me to put `=` after a variable name that I haven't even finished typing yet.
 
+
 ## Linting and Formatting
-I recently started using [efm-langserver][efm-ls] to run [eslint](https://eslint.org) and formatting like [prettier](https://prettier.io), [gofmt](https://golang.org/cmd/gofmt/) , [stylua](https://github.com/johnnymorganz/stylua), and [rustfmt](https://github.com/rust-lang/rustfmt).
+I recently started using [null-ls][efm-ls] to run [eslint](https://eslint.org) and formatters like [prettier](https://prettier.io) and [stylua](https://github.com/johnnymorganz/stylua).
 
-<Update date="26-12-2020">
+You can get my full config for `null-ls` [here][null-config]
 
-I now use [gofumpt](https://github.com/mvdan/gofumpt) for stricter formatting.
-
-</Update>
-
-It was kinda hard to setup but it was well worth it. The formatter is *fast* and I got nice linting from external linters like ESLint. Here's some of my config for efm-langserver.
-
-```lua
-nvim_lsp.efm.setup{
-  cmd = {"efm-langserver"},
-  on_attach = function(client)
-    client.resolved_capabilities.rename = false
-    client.resolved_capabilities.hover = false
-  end,
-  on_init = custom_on_init,
-  settings = {
-    rootMarkers = {vim.loop.cwd()},
-    languages = {
-      javascript = { eslint, prettier },
-      -- other languages here
-    }
-  }
-}
-```
-
-I disabled the capability for rename and hover on efm-langserver because the server doesn't support that and I don't want to have any conflict with the other server that's running.
-
-My prettier is a table with a key of `formatCommand` with its value as a function to check if `.prettierrc` is present on current directory and fallback to my global `.prettierrc` if it doesn't have a local `.prettierrc`.
-
-```lua
-local prettier = {
-  formatCommand = (
-    function()
-      if not vim.fn.empty(vim.fn.glob(vim.loop.cwd() .. '/.prettierrc')) then
-        return "prettier --config ./.prettierrc"
-      else
-        return "prettier --config ~/.config/nvim/.prettierrc"
-      end
-    end
-  )()
-}
-```
-
-The ESlint config is pretty simple, it looks like this.
-
-```lua
-local eslint = {
-  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-  lintIgnoreExitCode = true,
-  lintStdin = true,
-  lintFormats = { "%f:%l:%c: %m" },
-}
-```
-
-I need to explicitly specify the `lintFormats`, otherwise it shows the wrong message and it's really annoying.
-
-You can get my full config for `efm-langserver` [here][efm-config]
-
-<Update date="22-12-2020">
-
-I am no longer using efm-langserver for formatting because I have an issue with prettier not working correctly when using it to format svelte file. So I use [formatter.nvim](https://github.com/mhartington/formatter.nvim) instead.
-
-</Update>
 
 ## Diagnostic Conflict
 
 When I use efm-langserver, the diagnostic that comes from the LSP (like `tsserver`) and external linter that efm-langserver uses are conflicting. So, I made a custom function for it to check if there's a file like `.eslintrc.js`, it will turn off the diagnostic that comes from LSP and use ESlint instead.
 
-<Update date="01-01-2021">
+<Update date="2021-01-01">
 
 I've found a better way from one of [TJ's][tj-twitch] stream to do this which looks like this.
 

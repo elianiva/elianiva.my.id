@@ -31,7 +31,7 @@ tags:
 
 I've been using Neovim with *a lot* of plugins and the startup time is horrible. I have around 50 plugins and it took roughly 300ms to load up.  Still quite fast compared to modern editors but it's definitely slower than a plain Neovim without any plugin.
 
-I've found a way how to solve this problem by lazy loading almost every plugin, I thought it's a good idea to write it here in case people want to do the same.
+I've found a way how to solve this problem by lazy loading almost most of my plugins, I thought it's a good idea to write it here in case people want to do the same.
 
 
 # Prerequisite
@@ -39,6 +39,8 @@ I've found a way how to solve this problem by lazy loading almost every plugin, 
 To do this, you need a package manager that supports lazy loading. I'm using [packer.nvim][packer-link], I don't know about the other package manager, but the core concept is just "load the plugin on a certain event" rather than "load everything on startup".
 
 **NOTE:** I will be omitting irrelevant parts of the config for the sake of brevity
+
+**DISCLAIMER: THESE TIPS MAY OR MAY NOT WORK FOR YOU. PLEASE DON'T LAZYLOAD EVERYTHING BLINDLY, IT CAN MESS UP YOUR CONFIG.**
 
 
 # UI-related Plugins
@@ -238,6 +240,7 @@ The reason is everything inside packer definition will get compiled into `packer
 ## Disabling Built-In Plugins
 
 If you want more speedup, I'd recommend disabling the builtin vim plugins -- or don't if you're using them -- like so:
+This won't add *that* much, but I like to disable them since I'm not using them anyway.
 
 ```lua
 vim.g.loaded_gzip         = 1
@@ -265,7 +268,7 @@ If you need packer, you'll go to that file and do `luafile %`, boom, packer gets
 
 ## References
 
-Here are some references around this topic that I've used:
+Here are some references that I've used:
 
 - [packer.nvim][packer-link]
 - [ray-x config](https://github.com/ray-x/nvim/tree/4afc9f52038c96f5d679c11ab46df9984dcde3e0/lua)
@@ -279,10 +282,9 @@ Those are not all of my plugins obviously, it would take forever to go through 5
 Here's my startup time -- tested using [startuptime.vim][startuptime-link] -- for reference.
 
 
-<Update date="07-07-2021">
+<Update date="2021-07-07">
 
-I've decreased the amount of lazy loading because sometimes they can cause some
-issue with autocmd
+I've decreased the amount of lazy loading because sometimes they can cause some issue with autocmd
 
 </Update>
 
