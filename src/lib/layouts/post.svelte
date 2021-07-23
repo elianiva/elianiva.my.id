@@ -233,21 +233,17 @@
   padding: 0.75rem 1rem;
 }
 
+
+.post__content :global(blockquote) {
+  border-left: 0.125rem var(--color-borders) solid;
+  padding-left: 0.5rem;
+}
+
 .post__content :global(blockquote p) {
   font-size: 1.125rem;
   letter-spacing: 0.02em;
   color: var(--color-thin);
-  font-style: italic;
-  font-family: serif;
   margin: 1rem 0;
-}
-
-.post__content :global(blockquote p::before) {
-  content: "“	";
-}
-
-.post__content :global(blockquote p::after) {
-  content: " ”";
 }
 
 .post__content :global(h1 a),
