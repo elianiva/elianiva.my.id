@@ -35,6 +35,8 @@ This post is going to be focused on my opinion about it so please take it with a
 
 I've decided to use Nix to manage my dotfiles and most of my packages since I moved to Fedora. I still use `dnf` for GUI packages since they don't play nicely when installed through Nix.
 
+Here's my [flake.nix](https://github.com/elianiva/dotfiles/blob/master/flake.nix) in case you want it ;)
+
 </Update>
 
 # NixOS
