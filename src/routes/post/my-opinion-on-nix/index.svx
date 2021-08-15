@@ -31,9 +31,11 @@ If you don't know about Nix, it's a declarative, purely functional lazily evalua
 
 This post is going to be focused on my opinion about it so please take it with a grain of salt ;)
 
-<Update date="2021-07-23">
+<Update date="2021-08-15">
 
-I've decided to use Nix to manage my dotfiles and most of my packages since I moved to Fedora. I still use `dnf` for GUI packages since they don't play nicely when installed through Nix.
+~~I've decided to use Nix to manage my dotfiles and most of my packages since I moved to Fedora. I still use `dnf` for GUI packages since they don't play nicely when installed through Nix.~~
+
+I'm back to Arch, but I kept using Nix.
 
 Here's my [flake.nix](https://github.com/elianiva/dotfiles/blob/master/flake.nix) in case you want it ;)
 

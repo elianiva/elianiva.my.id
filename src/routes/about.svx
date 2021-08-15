@@ -134,7 +134,7 @@ I use [~~Sapper~~](https://sapper.svelte.dev) [Svete-Kit](https://kit.svelte.dev
 
 # My Setup
 
-My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System. [~~Archlinux~~](https://archlinux.org) [Fedora](https://getfedora.org) to be more specific. I've used Linux since around late 2019. I spend most of my time inside the terminal which is [Kitty](https://github.com/kovidgoyal/kitty) and the browser. I prefer using my keyboard over my mouse everywhere if possible (except browsing the internet, the mouse is inherently better)
+My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System. [Archlinux](https://archlinux.org) to be more specific. I've used Linux since around late 2019. I spend most of my time inside the terminal which is [Kitty](https://github.com/kovidgoyal/kitty) and the browser. I prefer using my keyboard over my mouse everywhere if possible (except browsing the internet, the mouse is inherently better)
 
 I use a Window Manager called [AwesomeWM](https://awesomewm.org), such an *awesome* window manager. I also use a text editor called [Neovim](https://neovim.io) I've been using it full-time since late 2019. It's actually my first text editor that I feel comfortable with. I started using it when I got my first laptop and got serious about programming. Anyway, here's [my dotfiles](https://github.com/elianiva/dotfiles) if you want :)
 
