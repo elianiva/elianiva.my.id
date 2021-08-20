@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Making You Own Custom Startpage For Chrome
 date: 2020-09-15
 desc: An attempt of creating a custom startpage so that I don't get bored whenever I open a new tab on chrome.

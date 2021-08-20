@@ -1,4 +1,5 @@
 ---
+draft: false
 title: I tried Svelte-Kit, it was Unsurprisingly good
 date: 2021-02-13
 desc: I've run out of my patience waiting for the stable release and got too hyped for it

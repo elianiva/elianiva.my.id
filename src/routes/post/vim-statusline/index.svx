@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Making your own statusline in (Neo)vim
 date: 2020-02-15
 desc: A post where I made my own lightsaber. I mean, my own vim's statusline to make my vim looks even more personalised

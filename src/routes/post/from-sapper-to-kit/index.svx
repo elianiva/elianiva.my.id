@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Migrating from Sapper to Svelte-Kit
 date: 2021-04-14
 desc: A write-up of my experience migrating a website from Sapper to Svelte-Kit

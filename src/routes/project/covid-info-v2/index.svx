@@ -15,7 +15,7 @@ stack:
 
 **Covid Info v2** is a remake of my previous version which you can check [over here](https://elianiva.my.id/project/covid-info).
 
-I made the first version a few months ago, around May 2020. It was my first React app that I ever made with a third party API instead of static data. It was made with React, Javascript, and Vanilla CSS.
+I made the first version a few months ago, around May 2020. It was my first React app that I've ever made with a third party API instead of static data. It was made with React, Javascript, and Vanilla CSS.
 
 Since that time, I've learned _a lot_ about Javascript. Turns out there's this thing called Typescript which is an _awesome_ thing, it's Javscript but statically typed/strong typed. I also found out about [NextJS](https://nextjs.org) which is basically [React](https://reactjs.org) + more features like SSR, SSG, and a bunch more cool features.
 

@@ -1,4 +1,5 @@
 ---
+draft: false
 title: My opinion on Nix, The package Manager
 date: 2021-05-13
 desc: I really like Nix, it's great and all, but I don't think I'm going to use it, <em>yet</em>.

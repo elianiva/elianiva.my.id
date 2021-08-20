@@ -15,6 +15,7 @@ interface ResultAttr {
   layout: string
   stack: Array<Array<string>>
   slug: string
+  draft: boolean
 }
 
 export const getResources = (kind: "post" | "project"): ResultAttr[] => {

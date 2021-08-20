@@ -1,4 +1,5 @@
 ---
+draft: false
 title: ES6 high order array methods explained
 date: 2020-07-29
 desc: A post where I try to explain ES6 array methods in a simplest way possible that I could think of.

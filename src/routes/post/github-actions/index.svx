@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Using github actions for SSG deployment
 date: 2020-08-01
 desc: Utilizing github action to automate boring stuff which is building and deploying SSG manually

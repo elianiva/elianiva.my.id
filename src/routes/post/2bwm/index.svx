@@ -1,4 +1,5 @@
 ---
+draft: false
 title: My impression on two border window manager
 date: 2020-04-01
 desc: My impression of a keyboard oriented stacking window manager called Two Border Window Manager or 2BWM

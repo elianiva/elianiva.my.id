@@ -1,4 +1,5 @@
 ---
+draft: true
 title: My setup for Neovim's builtin LSP client
 date: 2020-12-18
 desc: A post where I explain about my setup for Neovim's builtin LSP
@@ -34,6 +35,9 @@ tags:
 # Table of Content
 
 # What is LSP and Why?
+
+> **20-08-2021**: This post is no longer maintained because I've changed my config quite a bit since I wrote this and I don't feel like updating it :p
+
 If you don't already know what LSP is, well, LSP is a Language Server Protocol and it was created by Microsoft. It's a better implementation of language support for a text editor. Instead of having to implement it for every language on every text editor, we only need a server for a specific language and a client for a text editor that can speak to the server.
 
 Imagine the editor as `X` and language feature as `Y`, the first solution would take `X*Y` to implement because it needs to implements *every* language features for *every* editor. The second solution which is the LSP way would only take `X+Y` because it would only take a server for the language and a client that can speak to that server. The server can be used for any text editor that has a client and the client can speak to any LSP server. No more reinventing the wheel, great!

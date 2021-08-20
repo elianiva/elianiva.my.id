@@ -1,4 +1,5 @@
 ---
+draft: false
 title: The process of making my website (Part 2)
 date: 2020-02-13
 desc: Continuation of my previous post which is me telling my experience about how I made my blog using Gatsby
