@@ -171,6 +171,11 @@
   color: var(--color-main-text);
 }
 
+.post__content :global(.shiki) {
+  background-color: #20263a !important;
+  padding: 1rem;
+}
+
 .post__content :global(ul) {
   list-style: none;
 }
