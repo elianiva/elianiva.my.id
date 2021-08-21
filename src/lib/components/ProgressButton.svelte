@@ -42,8 +42,6 @@
 import { fade } from "svelte/transition";
 import Up from "$lib/icons/Up.svelte";
 
-const asdf = 20;
-
 let currentPosition: number;
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

@@ -7,7 +7,7 @@
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "start": "svelte-kit preview",
-    "prettier": "prettier --write --plugin-search-dir=. ./**/*.svelte",
+    "format": "prettier --write --plugin-search-dir=. ./**/*.svelte",
     "lint": "eslint --fix ./**/*.svelte"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">= 12.17.0"
+    "node": ">=14.17.4"
   },
   "dependencies": {
     "gray-matter": "^4.0.3"

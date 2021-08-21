@@ -233,7 +233,6 @@
   padding: 0.75rem 1rem;
 }
 
-
 .post__content :global(blockquote) {
   border-left: 0.125rem var(--color-borders) solid;
   padding-left: 0.5rem;

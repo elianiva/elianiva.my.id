@@ -11,6 +11,8 @@ stack:
 
 Graphene is [carbon.now.sh](https://carbon.now.sh) alternative. It's using [Shiki](https://shiki.matsu.io) as its highlighter so the result is as colourful as vscode. It's actually the first time I've ever used a headless browser.
 
-Big thanks to [@aldy505](https://github.com/aldy505) for helping me (a lot) with the deployment witchraft and code reviews.
+Big thanks to [@aldy505](https://github.com/aldy505) for helping me (a lot) with the deployment/backend witchraft and code reviews.
 
 Just go to the readme for more details :)
+
+..and ignore the commit message, it's a mess
