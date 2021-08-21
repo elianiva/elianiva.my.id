@@ -178,6 +178,11 @@
 
 .post__content :global(ul) {
   list-style: none;
+  margin: 0 0 1.25rem;
+}
+
+.post__content :global(:not(li) ul) {
+  margin: 0;
 }
 
 .post__content :global(#table-of-content + ul) {
