@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "remark-torchlight": "^0.0.2",
     "shiki": "^0.9.7"
   }
 }
