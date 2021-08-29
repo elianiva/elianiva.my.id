@@ -28,7 +28,7 @@ export default {
   },
   remarkPlugins: [remarkTOC],
   rehypePlugins: [rehypeSlug, [rehypeAutolink, { behavior: "wrap" }]],
-  highlight: {
-    highlighter,
-  },
+  // highlight: {
+  //   highlighter,
+  // },
 };
