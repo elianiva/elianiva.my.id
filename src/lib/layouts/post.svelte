@@ -98,7 +98,6 @@
 .post__content :global(h3) {
   font-size: 1.5rem;
   line-height: 2em;
-  padding-left: 0.5rem;
   padding-left: 1.5rem;
   letter-spacing: 0.05em;
 }
@@ -171,7 +170,7 @@
   color: var(--color-main-text);
 }
 
-.post__content :global(.shiki) {
+.post__content :global(pre) {
   background-color: #20263a !important;
   padding: 1rem;
 }
