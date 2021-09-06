@@ -14,43 +14,27 @@ import ProgressButton from "$lib/components/ProgressButton.svelte";
 <SEO title="About" />
 
 # About Me
+Hi there! I'm Elianiva. I'm a 17 y/o pleb who loves to build websites (or any software-related things at this point :) and contribute to open source projects as many as I can to make other people happy!
 
-Hi there! I'm Elianiva. My online alias was taken from my middle name without the first and the last letter. My name is Dicha Zelianivan Arkana, in case you're curious. I'm a 17 y/o pleb who loves to build websites (or any software-related things at this point :) and contribute to open source projects as many as I can to make other people happy!
+I was born and raised in Indonesia up until now, though I'd love to try to live abroad. I've been always interested in technology ever since I could remember. I started programming around 2018. My first language was actually Java, but then I got frustrated and went with Web Developer route, which is what I'm mainly doing until now.
 
-
-# Personal Background
-
-I was born in Indonesia, Java island to be more precise. I've been always interested in technology since I was around 6 years old. I had my first PC when I was 7 or 8, but I thought it was "a machine to play games" so I only use it just for that, I don't even know which button to press to open the game haha.
-
-I never cared about tech stuff until I reach 13, I like to tinker around with my phone back then. A friend of mine told me to check out how to build a website using HTML. I got curious and try to learn many web-related things. After a while, I stopped learning it because I don't think it has any benefit.
-
-When I was turning 16, I'm starting to think more about my future. I don't find any game is fun to play anymore. Now, I'm trying to contribute as much as I can to open source projects to make other people happy and improve my skills that could be useful in the future.
-
-
-# My Interests in Languages
-
-## Spoken Languages
-
-My mother tongue is Bahasa Indonesia, I can also speak English, currently learning Japanese because I want to be able to speak a language that uses a different writing system. I'm also trying to learn a bit of Arabic.
+My mother language is Bahasa Indonesia, I can also speak English, and a little bit of Japanese, でも、日本語はまだまだですw
 
 
 ## Programming / Markup Languages
-
-Here are some programming *and* markup languages that I know. I'm quite proficient using *some* of them, and some are just 'comfortable enough'. I'm trying not to limit myself to *one* language because not every problem can be solved using that language, in my opinion.
+I actually know more than these, but they're irrelevant as I don't use them that often compared to these ones.
 
 - **HTML/CSS/Markdown**
 
-  I'd consider myself to be quite proficient in these languages.
-  I really like CSS as a styling language, but not so much with HTML.
+  It's basically a requirement for your average web developer. If you want to
+  see my work, [Svelteception](https://svelteception.vercel.app) is probably
+  one of my proudest CSS work. I basically took random UI designs that I found
+  on the internet (mostly from Dribbble) and implemented them. It was initially
+  a challenge-sort-of-thing that I do with my friends, but they got busy and no
+  longer have time for it. It's only meant for the look though.
 
-  [Svelteception](https://svelteception.vercel.app) is one of my website where
-  I heavily use HTML/CSS, and I'm quite proud of it. I basically took random UI
-  designs that I found on the internet (mostly from Dribbble) and implemented
-  them. It's only meant for the look though, it's not functional.
-
-  Markdown is something that everybody should know, it's dead simple and it's
-  very nice to work with.
-
+  Markdown is something that everybody knows, it's dead simple and nice to work
+  with.
 
 - **LaTeX**
 
@@ -69,10 +53,10 @@ Here are some programming *and* markup languages that I know. I'm quite proficie
   typed language for most cases. It provides a better developer
   experience in my opinion. <br/><br/>
 
-  I would say that I'm quite good at it, I've made several apps in the past.
-  Either full-stack or just the front-end. My go-to framework/library for frontend
-  is usually Svelte or React and my go-to framework/library for back-end is Fastify
-  or Express, but I'm trying not to limit myself to a certain framework, I like
+  I've made several apps in the past. Either full-stack or just the front-end.
+  My go-to framework/library for frontend is usually Svelte or React (with
+  NextJS) and my go-to framework/library for back-end is Fastify or Express,
+  but again, I'm trying not to limit myself to a certain framework, I like
   learning new things!
 
 
@@ -82,16 +66,15 @@ Here are some programming *and* markup languages that I know. I'm quite proficie
   for my text editor, which is [Neovim](https://neovim.io) and my window
   manager [AwesomeWM](https://awesomewm.org/).  I think it's a nice, small and
   a very simple language, it's meant to be easily embeddable, so it doesn't
-  have a big stdlib like Python.
+  have a big stdlib like Python. Also, LuaJIT is crazy fast for a scripting
+  language.
 
 
 - **Rust**
 
   Rust an interesting language IMO. I did several simple experiments with Rust
   like [nyaa.si scraper]({data.siteUrl}/project/nyaa-si-scraper) just for fun.
-  I really want to spend more time with it, but I already have too many things
-  to do, and my laptop isn't powerful enough so it took *forever* to compile a
-  Rust project haha.
+  I really want to spend more time with it, but I don't have many use case for it (yet) and its compile time is just frustrating on my current laptop.
 
 
 - **Go**
@@ -100,24 +83,6 @@ Here are some programming *and* markup languages that I know. I'm quite proficie
   yet it's quite fast. For me, it's kinda like a middle ground between NodeJS
   and Rust. I made [this smol API](https://github.com/elainiva/random-jp-api)
   for my custom Chrome homepage when I learned Go for the first time.
-
-
-- **Haskell**
-
-  Haskell is like a completely different world to me for now. Every time I met
-  someone who knows Haskell, they always speak about how great it is. It
-  introduces me to the Functional Programming paradigm. I've tried to learn some
-  of it, but I haven't learned this language thoroughly because I don't think I
-  would need it right now.
-
-
-- **Clojure**
-
-  I'm interested in learning Clojure or any Lisp-family languages in the future
-  because I quite like [S-Expression](https://en.wikipedia.org/wiki/S-expression)
-  The syntax is unique and simple, it gives me happiness when I try to learn it,
-  let alone use it! But for now, I don't have a strong reason to learn it deeply
-  because again, I don't think I would need it
 
 
 # Social
@@ -134,7 +99,7 @@ I use [~~Sapper~~](https://sapper.svelte.dev) [Svete-Kit](https://kit.svelte.dev
 
 # My Setup
 
-My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System. [Archlinux](https://archlinux.org) to be more specific. I've used Linux since around late 2019. I spend most of my time inside the terminal which is [Kitty](https://github.com/kovidgoyal/kitty) and the browser. I prefer using my keyboard over my mouse everywhere if possible (except browsing the internet, the mouse is inherently better)
+My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System. [Archlinux](https://archlinux.org) to be more specific, with [Nix](https://nixos.org) as my package manager. I've used Linux since ~2019. I'd say I'm not a GUI-guy myself because I prefer spending my time inside the terminal (except browsing the web, of course)
 
 I use a Window Manager called [AwesomeWM](https://awesomewm.org), such an *awesome* window manager. I also use a text editor called [Neovim](https://neovim.io) I've been using it full-time since late 2019. It's actually my first text editor that I feel comfortable with. I started using it when I got my first laptop and got serious about programming. Anyway, here's [my dotfiles](https://github.com/elianiva/dotfiles) if you want :)
 
