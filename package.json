@@ -38,8 +38,6 @@
     "node": ">=14.17.4"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
-    "remark-torchlight": "^0.0.2",
-    "shiki": "^0.9.7"
+    "gray-matter": "^4.0.3"
   }
 }
