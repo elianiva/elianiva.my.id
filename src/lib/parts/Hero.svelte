@@ -12,7 +12,7 @@
 }
 
 .hero__greet {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-family: "Overpass", sans-serif;
   font-weight: 600;
   color: var(--color-main-accent);
@@ -111,12 +111,11 @@
   <div class="hero__right">
     <span class="hero__greet">Hi there!</span>
     <span class="hero__name"> I'm Elianiva. </span>
-    <span class="hero__role">A Frontend Developer and I love Open Source!</span>
+    <span class="hero__role">A Software Developer and I love Open Source!</span>
     <p class="hero__desc">
-      I'm a 17 y/o boi from Indonesia, trying to learn many things at the same
-      time and contributing to as many open source projects as I can. I also
-      like GNU/Linux, tinkering my text editor, and watch Anime every now and
-      then.
+      I'm a 17 y/o boi from Indonesia. I like to write code and contribute to
+      open source projects. I speak Indonesia, English, and a little bit of
+      Japanese. Feel free to hit me up!
     </p>
     <Circle className="hero__pattern" />
   </div>
