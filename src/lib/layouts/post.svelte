@@ -171,7 +171,6 @@
 }
 
 .post__content :global(pre) {
-  background-color: #20263a !important;
   padding: 1rem;
 }
 
