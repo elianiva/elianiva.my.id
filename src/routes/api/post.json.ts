@@ -2,7 +2,7 @@ import { getResources } from "$lib/utils/fetch-data";
 import type { RequestHandler } from "@sveltejs/kit";
 
 export const get: RequestHandler = async ({ query: q }) => {
-  let result = getResources("post").filter(item => !item.draft);
+  let result = (await getResources("post")).filter(item => !item.draft);
 
   const limit = parseInt(q.get("limit"));
   const title = q.get("title");
