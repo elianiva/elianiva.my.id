@@ -6,7 +6,7 @@ demo: https://teknologi-umum-graphene.fly.dev
 source: https://github.com/teknologi-umum/graphene
 layout: project
 stack:
-  - ['Puppeteer', 'https://github.com/puppeteer/puppeteer']
+  - ['Typescript', 'https://typescriptlang.org']
 ---
 
 Graphene is [carbon.now.sh](https://carbon.now.sh) alternative. It's using [Shiki](https://shiki.matsu.io) as its highlighter so the result is as colourful as vscode. It's actually the first time I've ever used a headless browser.
