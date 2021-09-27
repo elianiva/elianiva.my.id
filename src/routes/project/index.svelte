@@ -1,13 +1,13 @@
 <style>
-.posts {
+.projects {
   max-width: 1080px;
   margin: 0 auto;
   padding: 2rem 1rem 0;
   text-align: center;
 }
 
-.posts__title {
-  font-family: "Open Sans", sans-serif;
+.projects__title {
+  font-family: "Kalam", sans-serif;
   position: relative;
   display: inline-block;
   font-size: 2rem;
@@ -16,7 +16,19 @@
   color: var(--color-main-text);
 }
 
-.posts__title::before {
+.projects__title::before {
+  content: "";
+  position: absolute;
+  bottom: -0.25rem;
+  height: 0.25rem;
+  left: 2rem;
+  right: 1.8rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-main-accent);
+  transform: rotateZ(-4deg);
+}
+
+.projects__title::after {
   content: "";
   position: absolute;
   bottom: -0.25rem;
@@ -25,9 +37,10 @@
   right: 2rem;
   border-radius: 0.25rem;
   background-color: var(--color-main-accent);
+  transform: rotateZ(2deg);
 }
 
-.posts__cards {
+.projects__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1.25rem;
@@ -36,9 +49,9 @@
 
 <SEO title="Projects" />
 
-<section class="posts">
-  <h1 class="posts__title">All Projects</h1>
-  <div class="posts__cards">
+<section class="projects">
+  <h1 class="projects__title">All Projects</h1>
+  <div class="projects__cards">
     {#each projects as project}
       <ProjectCard
         title={project.title}

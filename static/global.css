@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     /* --color-main-accent: #3d58a5; */
-    --color-main-accent: #3D5DD9;
+    --color-main-accent: #3d5dd9;
     --color-main-bg: #fbfaff;
     --color-alt-bg: #ffffff;
     --color-special-bg: #efefef;
@@ -44,7 +44,7 @@
     --color-thin: #6b7a99;
     --color-shine: #ffffff;
     --filter-invert: invert(100%);
-    --color-code-selection: rgba(29, 59, 83, 0.90);
+    --color-code-selection: rgba(29, 59, 83, 0.9);
     --prism-comment: #637777;
     --prism-punctuation: #c792ea;
     --prism-namespace: #b2ccd6;
@@ -61,7 +61,7 @@
   /* set light colours if user overrides it */
   [data-theme="light"] {
     /* --color-main-accent: #3d58a5; */
-    --color-main-accent: #3D5DD9;
+    --color-main-accent: #3d5dd9;
     --color-main-bg: #fbfaff;
     --color-alt-bg: #ffffff;
     --color-special-bg: #f4f4f4;
@@ -76,7 +76,7 @@
     --prism-punctuation: #d6438a;
     --prism-namespace: #0c969b;
     --prism-symbol: #0c969b;
-    --prism-keyword: #2AA298;
+    --prism-keyword: #2aa298;
     --prism-boolean: #bc5454;
     --prism-number: #aa0982;
     --prism-builtin: #4876d6;
@@ -106,6 +106,7 @@ html {
 body {
   background-color: var(--color-main-bg);
   overflow-x: hidden;
+  background-image: url("/assets/stardust.png");
 }
 
 html::-webkit-scrollbar-thumb {
@@ -122,4 +123,3 @@ html::-webkit-scrollbar {
 /* div.wrapper { */
 /*   display: block !important; */
 /* } */
-

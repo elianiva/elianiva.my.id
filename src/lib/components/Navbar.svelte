@@ -1,13 +1,26 @@
 <style>
 .navbar {
   height: 4rem;
-  border-bottom: 0.0625rem var(--color-borders) solid;
   z-index: 30;
   background-color: var(--color-alt-bg);
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
+  border-bottom: 0.15rem var(--color-alt-text) solid;
+  border-bottom-left-radius: 200px 4px;
+  border-bottom-right-radius: 208px 5px;
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: rotateZ(0.5deg);
+  border-bottom: 0.15rem var(--color-alt-text) solid;
+  border-bottom-left-radius: 225px 4px;
+  border-bottom-right-radius: 5px 208px;
+  z-index: -1;
 }
 
 .navbar .active a {
@@ -51,7 +64,7 @@
 }
 
 .navbar__item a {
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   font-size: 1.125rem;
   line-height: 1.5em;
   position: relative;
@@ -162,7 +175,7 @@
   }
 
   .navbar__mobile_item a {
-    font-family: "Overpass", sans-serif;
+    font-family: "Kalam", sans-serif;
     text-decoration: none;
     font-size: 1.5rem;
     color: var(--color-main-text);

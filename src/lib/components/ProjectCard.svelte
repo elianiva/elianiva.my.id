@@ -1,9 +1,26 @@
 <style>
+.card-wrapper {
+  position: relative;
+  content: "";
+  inset: 0;
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 25px 118px;
+  border-top-right-radius: 28px 240px;
+  border-bottom-left-radius: 155px 16px;
+  border-bottom-right-radius: 18px 220px;
+  z-index: -1;
+}
+
 .card {
   overflow: hidden;
-  border: 0.0625rem var(--color-borders) solid;
   text-align: left;
   background-color: var(--color-alt-bg);
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 255px 18px;
+  border-top-right-radius: 18px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
+  z-index: 2;
 }
 
 .card__img {
@@ -13,7 +30,6 @@
   height: 12rem;
   object-fit: cover;
   background-color: var(--color-borders);
-  z-index: 2;
 }
 
 .card__details {
@@ -26,7 +42,7 @@
 .card__title {
   text-decoration: none;
   color: var(--color-main-text);
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5em;
@@ -38,7 +54,8 @@
 }
 
 .card__desc {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Neucha", sans-serif;
+  font-size: 1.125rem;
   line-height: 1.5em;
   color: var(--color-alt-text);
 }
@@ -51,7 +68,7 @@
 
 .card__demo,
 .card__source {
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -92,26 +109,28 @@
 }
 </style>
 
-<div class="card" in:fade={{ duration: 200 }}>
-  <img class="card__img" src={imgSrc} alt={title} loading="lazy" />
-  <div class="card__details">
-    <a rel="prefetch" {href} class="card__title">{title}</a>
-    <p class="card__desc">{desc}</p>
-    <div class="card__links">
-      {#if demo}
+<div class="card-wrapper">
+  <div class="card" in:fade={{ duration: 200 }}>
+    <img class="card__img" src={imgSrc} alt={title} loading="lazy" />
+    <div class="card__details">
+      <a rel="prefetch" {href} class="card__title">{title}</a>
+      <p class="card__desc">{desc}</p>
+      <div class="card__links">
+        {#if demo}
+          <a
+            class="card__demo"
+            href={demo ? demo : "#"}
+            target="_blank"
+            rel="norel noreferrer"><Chrome className="card__icon" />Demo</a
+          >
+        {/if}
         <a
-          class="card__demo"
-          href={demo ? demo : "#"}
+          class="card__source"
+          href={source}
           target="_blank"
-          rel="norel noreferrer"><Chrome className="card__icon" />Demo</a
+          rel="norel noreferrer"><Code className="card__icon" />Source</a
         >
-      {/if}
-      <a
-        class="card__source"
-        href={source}
-        target="_blank"
-        rel="norel noreferrer"><Code className="card__icon" />Source</a
-      >
+      </div>
     </div>
   </div>
 </div>

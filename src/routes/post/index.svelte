@@ -7,7 +7,7 @@
 }
 
 .posts__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   position: relative;
   display: inline-block;
   font-size: 2rem;
@@ -22,26 +22,65 @@
   bottom: -0.25rem;
   height: 0.25rem;
   left: 2rem;
+  right: 1.8rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-main-accent);
+  transform: rotateZ(-4deg);
+}
+
+.posts__title::after {
+  content: "";
+  position: absolute;
+  bottom: -0.25rem;
+  height: 0.25rem;
+  left: 2rem;
   right: 2rem;
   border-radius: 0.25rem;
   background-color: var(--color-main-accent);
+  transform: rotateZ(2deg);
 }
 
 .post__input {
   position: relative;
 }
 
-.input__box {
-  display: block;
+.input__box-wrapper {
+  position: relative;
   margin: 0 auto 1rem;
   width: 100%;
+  height: 3rem;
+  transform: rotateZ(-0.25deg);
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 255px 18px;
+  border-top-right-radius: 18px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
+}
+
+.input__box-wrapper::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  transform: rotateZ(0.25deg);
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 25px 118px;
+  border-top-right-radius: 28px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
+  z-index: -1;
+}
+
+.input__box {
+  position: absolute;
+  width: 100%;
+  display: block;
   padding: 0.75rem;
   font-size: 1.125rem;
-  border: none;
-  background-color: var(--color-special-bg);
-  border-radius: 0.25rem;
+  background-color: transparent;
   outline: none;
+  border: none;
   color: var(--color-main-text);
+  font-family: "Neucha", sans-serif;
 }
 
 .input__box::placeholder {
@@ -61,17 +100,33 @@
   left: 0;
   right: 0;
   z-index: 5;
-  background-color: var(--color-special-bg);
+  background-color: var(--color-alt-bg);
   color: var(--color-main-text);
-  border-radius: 0.5rem;
   padding: 0.5rem;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 255px 18px;
+  border-top-right-radius: 18px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
+}
+
+.input__autocomplete::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: rotateZ(0.5deg);
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 205px 18px;
+  border-top-right-radius: 38px 220px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
 }
 
 .autocomplete__item {
   display: block;
   text-align: left;
-  font-family: "Overpass", sans-serif;
+  font-family: "Neucha", sans-serif;
   font-size: 1.125rem;
   padding: 0.5rem;
   color: var(--color-alt-text);
@@ -81,7 +136,6 @@
 }
 
 .autocomplete__item:hover {
-  backdrop-filter: brightness(1.5);
   color: var(--color-main-text);
 }
 
@@ -97,15 +151,17 @@
 <section class="posts">
   <h1 class="posts__title">All Posts</h1>
   <div class="post__input">
-    <input
-      class="input__box"
-      id="posts__input"
-      type="text"
-      placeholder="Find post... (start with # to find tags)"
-      aria-label="search post"
-      on:input={filterPost}
-      bind:this={inputBox}
-    />
+    <div class="input__box-wrapper">
+      <input
+        class="input__box"
+        id="posts__input"
+        type="text"
+        placeholder="Find post... (start with # to find tags)"
+        aria-label="search post"
+        on:input={filterPost}
+        bind:this={inputBox}
+      />
+    </div>
     {#if isCompletionVisible}
       <div
         transition:fly={{ duration: 100, y: -50 }}

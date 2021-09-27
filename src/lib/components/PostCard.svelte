@@ -1,10 +1,27 @@
 <style>
 .card {
-  overflow: hidden;
-  border: 0.0625rem var(--color-borders) solid;
+  position: relative;
   text-align: left;
   background-color: var(--color-alt-bg);
   z-index: 2;
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 255px 18px;
+  border-top-right-radius: 18px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  transform: rotateZ(-2deg);
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 25px 118px;
+  border-top-right-radius: 28px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
+  z-index: -1;
 }
 
 .card__details {
@@ -16,7 +33,7 @@
 }
 
 .card__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5em;
@@ -26,15 +43,16 @@
 
 .card__desc {
   border-top: 0.0625rem var(--color-borders) solid;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Neucha", sans-serif;
   line-height: 1.5em;
+  font-size: 1.15rem;
   color: var(--color-alt-text);
   margin-top: 0.25rem;
   padding-top: 0.5rem;
 }
 
 .card__date {
-  font-family: "Overpass", sans-serif;
+  font-family: "Neucha", sans-serif;
   display: flex;
   gap: 0.4rem;
   align-items: center;
@@ -52,26 +70,19 @@
 
 .card__tags {
   display: flex;
-  gap: 0.5rem;
 }
 
 .card__tag {
-  background-color: var(--color-special-bg);
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   font-weight: 600;
   color: var(--color-main-text);
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-decoration: none;
-  gap: 0.5rem;
   padding: 0.25rem 0.5rem;
   margin-top: 0.5rem;
   border-radius: 0.25rem;
   transition: filter ease-out 0.2s;
   text-transform: capitalize;
-}
-
-.card__tag:hover {
-  filter: brightness(1.2);
 }
 
 .card__tag::before {

@@ -18,7 +18,7 @@ Hi there! I'm Elianiva. I'm a 17 y/o pleb who loves to build websites (or any so
 
 I was born and raised in Indonesia up until now, though I'd love to try to live abroad. I've been always interested in technology ever since I could remember. I started programming around 2018. My first language was actually Java, but then I got frustrated and went with Web Developer route, which is what I'm mainly doing until now.
 
-My mother language is Bahasa Indonesia, I can also speak English, and a little bit of Japanese, でも、日本語はまだまだですw
+My mother language is Bahasa Indonesia, I can also speak English, and a little bit of Japanese, でも、日本語はまだまだです
 
 
 ## Programming / Markup Languages
@@ -65,7 +65,7 @@ I actually know more than these, but they're irrelevant as I don't use them that
   Lua is a language that I thought I would've never learned. I mainly use it
   for my text editor, which is [Neovim](https://neovim.io) and my window
   manager [AwesomeWM](https://awesomewm.org/).  I think it's a nice, small and
-  a very simple language, it's meant to be easily embeddable, so it doesn't
+  a very simple language, it's meant to be easily embeddable, it doesn't
   have a big stdlib like Python. Also, LuaJIT is crazy fast for a scripting
   language.
 

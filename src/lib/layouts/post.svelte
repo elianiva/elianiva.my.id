@@ -8,7 +8,7 @@
 }
 
 .post__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   font-size: 2.5rem;
   text-transform: uppercase;
   max-width: 30ch;
@@ -16,7 +16,7 @@
 }
 
 .post__date {
-  font-family: "Overpass", sans-serif;
+  font-family: "Neucha", sans-serif;
   display: block;
   text-align: center;
   font-size: 1.125rem;
@@ -26,7 +26,7 @@
 
 .post__edit {
   position: relative;
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   text-align: center;
   font-size: 1.125rem;
   line-height: 2em;
@@ -44,7 +44,7 @@
 }
 
 .post__content {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Neucha", sans-serif;
   max-width: 70ch;
   margin: 0 auto;
   font-size: 1.125rem;
@@ -53,7 +53,7 @@
 
 .post__content :global(p) {
   line-height: 1.75em;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   margin: 0 0 1.25rem;
 }
 
@@ -61,7 +61,7 @@
 .post__content :global(h2),
 .post__content :global(h3) {
   position: relative;
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   margin: 2.5rem 0 0.5rem;
 }
 
@@ -115,8 +115,12 @@
 
 .post__content :global(pre) {
   scrollbar-color: var(--color-thin) var(--color-special-bg);
-  border: 0.0625rem var(--color-borders) solid;
   margin: 1.25rem 0;
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 255px 18px;
+  border-top-right-radius: 18px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
 }
 
 .post__content :global(pre::-webkit-scrollbar) {
@@ -151,7 +155,7 @@
 }
 
 .post__content :global(code) {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Fantasque Sans Mono", monospace;
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
@@ -161,7 +165,7 @@
 }
 
 .post__content :global(pre code) {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Fantasque Sans Mono", monospace;
   font-weight: 400;
   padding: 0;
   border-radius: 0;
@@ -247,9 +251,9 @@
 }
 
 .post__content :global(blockquote p) {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   letter-spacing: 0.02em;
-  color: var(--color-thin);
+  color: var(--color-alt-text);
   margin: 1rem 0;
 }
 
@@ -274,17 +278,15 @@
 
 .post__tags {
   display: flex;
-  gap: 0.5rem;
   justify-content: center;
 }
 
 .post__tag {
   padding: 0.25rem 0.5rem;
-  background-color: var(--color-special-bg);
   color: var(--color-main-text);
   border-radius: 0.25rem;
-  font-family: "Overpass", sans-serif;
-  font-weight: 500;
+  font-family: "Kalam", sans-serif;
+  font-weight: 600;
 }
 
 .post__tag::before {

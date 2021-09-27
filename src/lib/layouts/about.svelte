@@ -24,7 +24,7 @@
 .about__content :global(h1),
 .about__content :global(h2) {
   position: relative;
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
 }
 
 .about__content :global(h1) {
@@ -56,9 +56,9 @@
 }
 
 .about__content :global(p) {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Neucha", "M PLUS Rounded 1c", sans-serif;
   color: var(--color-main-text);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 2em;
 }
 
@@ -78,13 +78,13 @@
   display: inline;
   font-size: 1.125rem;
   font-weight: 600;
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
 }
 
 .about__content :global(li p:not(:first-child)) {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Neucha", sans-serif;
   color: var(--color-main-text);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.75em;
   padding-left: 1.5rem;
 }

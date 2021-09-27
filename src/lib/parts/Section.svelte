@@ -9,7 +9,7 @@
 }
 
 .section__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   position: relative;
   display: inline-block;
   font-size: 2rem;
@@ -23,10 +23,24 @@
   bottom: -0.25rem;
   height: 0.25rem;
   left: 2rem;
+  right: 3rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-main-accent);
+  transform: rotateZ(-2deg);
+}
+
+.section__title::after {
+  content: "";
+  position: absolute;
+  bottom: -0.25rem;
+  height: 0.25rem;
+  left: 2.5rem;
   right: 2rem;
   border-radius: 0.25rem;
   background-color: var(--color-main-accent);
+  transform: rotateZ(2deg);
 }
+
 
 .section__cards {
   display: grid;
@@ -35,21 +49,57 @@
 }
 
 .section__button {
+  position: relative;
   display: inline-block;
   margin-top: 2rem;
-  padding: 1rem 1.5rem 0.75rem;
-  color: #f4f4f4;
-  background-color: var(--color-main-accent);
   text-decoration: none;
-  font-family: "Overpass", sans-serif;
-  font-size: 1.25rem;
+  padding: 1rem 1.5rem 0.75rem;
   border-radius: 0.25rem;
   transition: all ease-out 0.2s;
+  background-size: auto auto;
+  background-color: var(--color-main-bg);
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 2px,
+    var(--color-main-accent) 2px,
+    var(--color-main-accent) 4px
+  );
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 255px 18px;
+  border-top-right-radius: 18px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
+}
+
+.section__button::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  transform: rotateZ(2deg);
+  border: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 25px 118px;
+  border-top-right-radius: 28px 240px;
+  border-bottom-left-radius: 255px 18px;
+  border-bottom-right-radius: 18px 220px;
 }
 
 .section__button:hover {
   transform: translate3d(0, -0.25rem, 0);
   filter: brightness(1.2);
+}
+
+.section__button-text {
+  color: var(--color-main-text);
+  background-color: var(--color-alt-bg);
+  font-family: "Kalam", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
+  border-top-left-radius: 255px 118px;
+  border-top-right-radius: 228px 240px;
+  border-bottom-left-radius: 255px 218px;
+  border-bottom-right-radius: 118px 220px;
 }
 
 :global(.section__pattern) {
@@ -95,7 +145,9 @@
       {/each}
     {/if}
   </div>
-  <a href={url} class="section__button">{btnText}</a>
+  <a href={url} class="section__button">
+    <span class="section__button-text">{btnText}</span>
+  </a>
 </section>
 
 <script lang="ts">

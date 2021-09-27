@@ -1,11 +1,25 @@
 <style>
-footer {
+.footer {
+  position: relative;
   margin-top: 3rem;
-  border-top: 0.0625rem var(--color-borders) solid;
-  font-family: "Overpass", sans-serif;
+  font-family: "Kalam", sans-serif;
   text-align: center;
   padding: 2rem 1rem;
   background-color: var(--color-alt-bg);
+  border-top: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 200px 4px;
+  border-top-right-radius: 208px 5px;
+}
+
+.footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: rotateZ(1deg);
+  border-top: 0.15rem var(--color-alt-text) solid;
+  border-top-left-radius: 225px 4px;
+  border-top-right-radius: 5px 208px;
+  z-index: -1;
 }
 
 p {
@@ -38,7 +52,7 @@ a {
 }
 </style>
 
-<footer>
+<footer class="footer">
   <div class="icons">
     <!-- prettier-ignore -->
     <a href="mailto:{email}" target="_blank" rel="norel noreferrer" aria-label="email">

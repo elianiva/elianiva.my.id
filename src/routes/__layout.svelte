@@ -3,6 +3,7 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  z-index: 2;
 }
 
 div {
@@ -12,6 +13,14 @@ div {
 
 :global(html) {
   scroll-padding-top: 4.5rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-main-bg);
+  opacity: 0.625;
+  z-index: -1;
 }
 </style>
 
@@ -34,6 +43,7 @@ div {
   </script>
 </svelte:head>
 
+<div class="overlay" />
 <Navbar {segment} />
 <main>
   <Loading />
