@@ -41,6 +41,7 @@
   background-color: var(--color-special-bg);
   border-radius: 0.25rem;
   outline: none;
+  font-family: "Open Sans", sans-serif;
   color: var(--color-main-text);
 }
 
@@ -63,7 +64,7 @@
   z-index: 5;
   background-color: var(--color-special-bg);
   color: var(--color-main-text);
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   padding: 0.5rem;
   box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
 }
