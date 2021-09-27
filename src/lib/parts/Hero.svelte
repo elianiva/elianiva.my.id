@@ -50,34 +50,10 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-:global(.hero__pattern) {
-  position: absolute;
-  right: -2rem;
-  top: -2rem;
-  width: clamp(6rem, calc(10vw + 4rem), 12rem);
-  height: 12rem;
-  z-index: -1;
-  color: var(--color-main-accent);
-  opacity: 0.1;
-}
-
 .hero__right {
   position: relative;
 }
 
-.hero__right::after {
-  position: absolute;
-  content: "</>";
-  bottom: -2rem;
-  left: -2rem;
-  width: 3rem;
-  height: 4rem;
-  font-size: 4rem;
-  font-family: monospace;
-  font-weight: 900;
-  color: var(--color-main-accent);
-  opacity: 0.1;
-}
 @media only screen and (max-width: 960px) {
   .hero {
     gap: 2rem;
@@ -87,18 +63,10 @@
     margin-top: 0;
     gap: 1rem;
   }
-  :global(.hero__pattern) {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 6rem;
-    z-index: -1;
-    color: rgba(255, 72, 81, 0.075);
-  }
 }
 </style>
 
-<section class="hero" in:fade={{ duration: 200 }}>
+<section class="hero">
   <div class="hero__left">
     <a href="https://github.com/elianiva">
       <img
@@ -117,11 +85,5 @@
       open source projects. I speak Indonesia, English, and a little bit of
       Japanese. Feel free to hit me up!
     </p>
-    <Circle className="hero__pattern" />
   </div>
 </section>
-
-<script lang="ts">
-import { fade } from "svelte/transition";
-import Circle from "$lib/icons/Circle.svelte";
-</script>
