@@ -110,7 +110,7 @@ It will give you several questions. Make sure you choose Svelte, you can leave t
 ```
 
 ## Installing Svelte
-We'll need the [svelte-loader][svelte-loader-link] and [svelte-preprocess][preprocess-link] for our app. As usual, install it using npm.
+We'll need the [svelte-loader][svelte-loader-link] and [svelte-preprocess][svelte-preprocess-link] for our app. As usual, install it using npm.
 
 ```bash
 npm i svelte-loader svelte-preprocess @babel/plugin-syntax-dynamic-import
