@@ -1,5 +1,5 @@
 import data from "$lib/data/site";
-import { getResources } from "$lib/utils/fetch-data";
+import { getResourcesAsync } from "$lib/utils/fetch-data";
 
 const feedItem = (item: any) => `
     <item>
@@ -31,7 +31,7 @@ const renderXmlRssFeed = (
 </rss>`;
 
 export async function get() {
-  const feed = renderXmlRssFeed(await getResources("post"));
+  const feed = renderXmlRssFeed(await getResourcesAsync("post"));
 
   return {
     headers: {

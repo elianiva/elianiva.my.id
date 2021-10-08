@@ -1,12 +1,11 @@
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 import path from "path";
-import pLimit from "p-limit";
 
 const HAS_EXTENSION = /\.[^/.]+$/;
 const getPagePath = (kind: string) => path.resolve(`./src/routes/${kind}`);
 
-interface ResultAttr {
+export interface ResultAttr {
   title: string;
   date: string;
   desc: string;
@@ -19,7 +18,7 @@ interface ResultAttr {
   draft: boolean;
 }
 
-export const getResources = async (
+export const getResourcesAsync = async (
   kind: "post" | "project"
 ): Promise<ResultAttr[]> => {
   if (!kind) throw new Error("KIND IS REQUIRED!");
