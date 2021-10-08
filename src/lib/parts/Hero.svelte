@@ -13,30 +13,32 @@
 
 .hero__greet {
   font-size: 1.5rem;
-  font-family: "Overpass", sans-serif;
-  font-weight: 600;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
   color: var(--color-main-accent);
 }
 
 .hero__name {
   position: relative;
   display: block;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: clamp(1.25rem, calc(5vw + 1.25rem), 3.5rem);
   font-weight: 600;
+  line-height: 1.25em;
 }
 
 .hero__role {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: clamp(1rem, calc(5vw + 0.5rem), 2rem);
   display: block;
+  line-height: 1.5em;
 }
 
 .hero__desc {
   position: relative;
   display: block;
   color: var(--color-alt-text);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem);
   line-height: 1.5em;
   margin: 0 0 1rem;

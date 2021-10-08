@@ -8,7 +8,7 @@
 }
 
 .post__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 2.5rem;
   text-transform: uppercase;
   max-width: 30ch;
@@ -16,7 +16,7 @@
 }
 
 .post__date {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   display: block;
   text-align: center;
   font-size: 1.125rem;
@@ -26,7 +26,7 @@
 
 .post__edit {
   position: relative;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   text-align: center;
   font-size: 1.125rem;
   line-height: 2em;
@@ -44,7 +44,7 @@
 }
 
 .post__content {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   max-width: 70ch;
   margin: 0 auto;
   font-size: 1.125rem;
@@ -61,7 +61,7 @@
 .post__content :global(h2),
 .post__content :global(h3) {
   position: relative;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   margin: 2.5rem 0 0.5rem;
 }
 
@@ -283,7 +283,7 @@
   background-color: var(--color-special-bg);
   color: var(--color-main-text);
   border-radius: 0.25rem;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
 

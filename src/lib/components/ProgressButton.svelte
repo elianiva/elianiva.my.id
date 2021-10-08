@@ -5,15 +5,14 @@
   bottom: 2rem;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 2rem;
   background-color: var(--color-alt-bg);
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+  border: 0.0625rem var(--color-borders) solid;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
   z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all ease-out 0.2s;
   color: var(--color-main-text);
 }
 

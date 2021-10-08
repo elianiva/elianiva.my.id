@@ -51,7 +51,7 @@
 }
 
 .navbar__item a {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 1.125rem;
   line-height: 1.5em;
   position: relative;
@@ -162,7 +162,7 @@
   }
 
   .navbar__mobile_item a {
-    font-family: "Overpass", sans-serif;
+    font-family: "Rubik", sans-serif;
     text-decoration: none;
     font-size: 1.5rem;
     color: var(--color-main-text);

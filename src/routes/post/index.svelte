@@ -7,7 +7,7 @@
 }
 
 .posts__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   position: relative;
   display: inline-block;
   font-size: 2rem;
@@ -41,7 +41,7 @@
   background-color: var(--color-alt-bg);
   border: 0.0625rem var(--color-borders) solid;
   outline: none;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--color-main-text);
 }
 
@@ -66,13 +66,13 @@
   border: 0.0625rem var(--color-borders) solid;
   color: var(--color-main-text);
   padding: 0.5rem;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .autocomplete__item {
   display: block;
   text-align: left;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 1.125rem;
   padding: 0.5rem;
   color: var(--color-alt-text);

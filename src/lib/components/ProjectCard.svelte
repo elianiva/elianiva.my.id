@@ -26,7 +26,7 @@
 .card__title {
   text-decoration: none;
   color: var(--color-main-text);
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5em;
@@ -38,7 +38,7 @@
 }
 
 .card__desc {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5em;
   color: var(--color-alt-text);
 }
@@ -51,7 +51,7 @@
 
 .card__demo,
 .card__source {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   text-decoration: none;
   display: flex;
   align-items: center;

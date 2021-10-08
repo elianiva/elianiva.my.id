@@ -9,7 +9,7 @@
   padding: 0.5rem 1rem;
   background-color: var(--color-main-bg);
   color: var(--color-main-text);
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;

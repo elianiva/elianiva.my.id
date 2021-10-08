@@ -24,7 +24,7 @@
 .about__content :global(h1),
 .about__content :global(h2) {
   position: relative;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .about__content :global(h1) {
@@ -56,7 +56,7 @@
 }
 
 .about__content :global(p) {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--color-main-text);
   font-size: 1.125rem;
   line-height: 2em;
@@ -78,11 +78,11 @@
   display: inline;
   font-size: 1.125rem;
   font-weight: 600;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .about__content :global(li p:not(:first-child)) {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--color-main-text);
   font-size: 1.05rem;
   line-height: 1.75em;

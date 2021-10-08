@@ -16,7 +16,7 @@
 }
 
 .card__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5em;
@@ -26,7 +26,7 @@
 
 .card__desc {
   border-top: 0.0625rem var(--color-borders) solid;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5em;
   color: var(--color-alt-text);
   margin-top: 0.25rem;
@@ -34,7 +34,7 @@
 }
 
 .card__date {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   display: flex;
   gap: 0.4rem;
   align-items: center;
@@ -57,7 +57,7 @@
 
 .card__tag {
   background-color: var(--color-special-bg);
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 600;
   color: var(--color-main-text);
   font-size: 0.8rem;

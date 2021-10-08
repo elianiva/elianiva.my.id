@@ -5,7 +5,7 @@
     --color-main-bg: #fbfaff;
     --color-alt-bg: #ffffff;
     --color-special-bg: #efefef;
-    --color-main-text: #1d1b2e;
+    --color-main-text: #2D3748;
     --color-alt-text: #696969;
     --color-borders: #e4e4e4;
     --color-thin: #b0b0b0;
@@ -19,7 +19,7 @@
     --color-main-bg: #171c26;
     --color-alt-bg: #20263a;
     --color-special-bg: #2c3445;
-    --color-main-text: #f3f2f7;
+    --color-main-text: #EDF2F7;
     --color-alt-text: #8fa0bf;
     --color-borders: #3b465a;
     --color-thin: #6b7a99;
@@ -90,7 +90,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: color ease-out 0.05s, background-color ease-out 0.025s;
 }
 
 html,

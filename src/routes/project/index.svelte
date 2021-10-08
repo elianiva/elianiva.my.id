@@ -7,7 +7,7 @@
 }
 
 .projects__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   position: relative;
   display: inline-block;
   font-size: 2rem;

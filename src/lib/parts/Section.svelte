@@ -2,14 +2,14 @@
 .section {
   position: relative;
   margin-top: 4rem;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--color-main-text);
   text-align: center;
   z-index: 2;
 }
 
 .section__title {
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   position: relative;
   display: inline-block;
   font-size: 2rem;
@@ -41,7 +41,7 @@
   color: #f4f4f4;
   background-color: var(--color-main-accent);
   text-decoration: none;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 1.25rem;
   border-radius: 0.25rem;
   transition: all ease-out 0.2s;

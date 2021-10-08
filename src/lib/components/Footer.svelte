@@ -2,7 +2,7 @@
 footer {
   margin-top: 3rem;
   border-top: 0.0625rem var(--color-borders) solid;
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   text-align: center;
   padding: 2rem 1rem;
   background-color: var(--color-alt-bg);

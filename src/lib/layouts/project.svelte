@@ -36,7 +36,7 @@
 
 .project__title {
   color: var(--color-main-text);
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 2rem;
 }
 
@@ -47,7 +47,7 @@
 
 .project__demo,
 .project__source {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@
 
 .project__content {
   grid-column: 1/2;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
@@ -97,7 +97,7 @@
 
 .stack__title {
   color: var(--color-main-text);
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -139,7 +139,7 @@
 
 .stack__name {
   color: var(--color-main-text);
-  font-family: "Overpass", sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 1.25rem;
   text-decoration: none;
 }
