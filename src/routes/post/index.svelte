@@ -38,8 +38,8 @@
   padding: 0.75rem;
   font-size: 1.125rem;
   border: none;
-  background-color: var(--color-special-bg);
-  border-radius: 0.25rem;
+  background-color: var(--color-alt-bg);
+  border: 0.0625rem var(--color-borders) solid;
   outline: none;
   font-family: "Open Sans", sans-serif;
   color: var(--color-main-text);
@@ -58,13 +58,13 @@
 
 .input__autocomplete {
   position: absolute;
-  top: 3.5rem;
+  top: 4rem;
   left: 0;
   right: 0;
   z-index: 5;
-  background-color: var(--color-special-bg);
+  background-color: var(--color-alt-bg);
+  border: 0.0625rem var(--color-borders) solid;
   color: var(--color-main-text);
-  border-radius: 0.25rem;
   padding: 0.5rem;
   box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
 }
