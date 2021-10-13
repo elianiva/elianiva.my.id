@@ -110,7 +110,7 @@
 }
 
 .post__content :global(h2) {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.5em;
   font-size: 1.625rem;
   letter-spacing: 0.05em;
@@ -162,15 +162,23 @@
   background-color: var(--color-thin);
 }
 
-.post__content :global(p > a) {
+.post__content :global(p > a),
+.post__content :global(ul a) {
   position: relative;
   display: inline-block;
   color: var(--color-main-text);
   z-index: 5;
   text-decoration: none;
+  z-index: 1;
 }
 
-.post__content :global(p > a::after) {
+.post__content :global(p > a:hover),
+.post__content :global(ul a:hover) {
+  color: var(--color-main-accent);
+}
+
+.post__content :global(p > a::after),
+.post__content :global(ul a::after) {
   content: "";
   position: absolute;
   background-color: var(--color-main-accent);
@@ -178,6 +186,7 @@
   left: 0;
   right: 0;
   height: 2px;
+  z-index: -1;
 }
 
 .post__content :global(a:hover) {
@@ -319,6 +328,10 @@
 
   :global(.post__content p) {
     font-size: 1rem;
+  }
+
+  .post__content :global(pre::-webkit-scrollbar) {
+    height: 0;
   }
 }
 </style>
