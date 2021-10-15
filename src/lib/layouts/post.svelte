@@ -91,7 +91,7 @@
 
 .post__content :global(h1) {
   font-size: 1.75rem;
-  line-height: 1.75em;
+  line-height: 1.5em;
   letter-spacing: 0.05em;
 }
 
