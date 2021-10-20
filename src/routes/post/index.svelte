@@ -12,8 +12,8 @@
   display: inline-block;
   font-size: 2rem;
   font-weight: 600;
-  color: var(--color-main-text);
-  margin-bottom: 1rem;
+  color: var(--color-shine);
+  margin-bottom: 2.5rem;
 }
 
 .posts__title::before {
@@ -33,7 +33,7 @@
 
 .input__box {
   display: block;
-  margin: 0 auto 1rem;
+  margin: 0 auto 0;
   width: 100%;
   padding: 0.75rem;
   font-size: 1.125rem;
@@ -58,7 +58,7 @@
 
 .input__autocomplete {
   position: absolute;
-  top: 4rem;
+  top: calc(4rem - 1px); /* 1px = border thickness */
   left: 0;
   right: 0;
   z-index: 5;
@@ -82,14 +82,16 @@
 }
 
 .autocomplete__item:hover {
-  backdrop-filter: brightness(1.5);
-  color: var(--color-main-text);
+  backdrop-filter: var(--filter-brightness);
+  color: var(--color-shine);
 }
 
 .posts__tags {
   display: flex;
   justify-items: center;
   gap: 1rem;
+  margin-top: 1rem;
+  color: var(--color-shine);
 }
 </style>
 
@@ -131,14 +133,16 @@
       </div>
     {/if}
   </div>
-  <div class="posts__tags">
-    {#each tagFilter as filter}
-      <Tag
-        label={filter}
-        onClick={() => (tagFilter = tagFilter.filter(x => x !== filter))}
-      />
-    {/each}
-  </div>
+  {#if tagFilter.length > 0}
+    <div class="posts__tags">
+      {#each tagFilter as filter}
+        <Tag
+          label={filter}
+          onClick={() => (tagFilter = tagFilter.filter(x => x !== filter))}
+        />
+      {/each}
+    </div>
+  {/if}
   <div class="posts__cards">
     {#each filteredPosts as post}
       <PostCard
@@ -151,7 +155,7 @@
     {/each}
   </div>
 </section>
-<ProgressButton />
+<Progress />
 
 <script context="module">
 export const prerender = true;
@@ -165,7 +169,7 @@ export async function load({ fetch }) {
 import { fly } from "svelte/transition";
 import SEO from "$lib/components/SEO.svelte";
 import PostCard from "$lib/components/PostCard.svelte";
-import ProgressButton from "$lib/components/ProgressButton.svelte";
+import Progress from "$lib/components/Progress.svelte";
 import Tag from "$lib/components/Tag.svelte";
 
 // eslint-disable-next-line

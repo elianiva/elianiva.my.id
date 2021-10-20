@@ -1,15 +1,16 @@
 ---
 title: About
-layout: about
+layout: post
+minimal: true
 ---
 
 <script>
 import data from "$lib/data/site";
 import SEO from "$lib/components/SEO.svelte";
-import ProgressButton from "$lib/components/ProgressButton.svelte";
+import Progress from "$lib/components/Progress.svelte";
 </script>
 
-<ProgressButton />
+<Progress />
 
 <SEO title="About" />
 
@@ -48,7 +49,7 @@ I actually know more than these, but they're irrelevant as I don't use them that
   introduced to programming. (technically second, but I think you can
   guess why :) Nowadays I prefer Typescript because I prefer statically
   typed language for most cases. It provides a better developer
-  experience in my opinion. <br/><br/>
+  experience in my opinion. <br/>
 
   I've made several apps in the past. Either full-stack or just the front-end.
   My go-to framework/library for frontend is usually Svelte or React (with
@@ -91,13 +92,13 @@ If you want to reach me then feel free to hit me up on [Twitter](https://twitter
 
 Originally, I made this website as a place to keep my "notes", but I thought that wouldn't be useful unless I share it with other people. I also think it's cool to have your own website where you can do *whatever* you want with it. If you want to check *all* my personal works, either check on the [projects](/project) projects page or [my Github profile.](https://github.com/elianiva/)
 
-I use [~~Sapper~~](https://sapper.svelte.dev) [Svete-Kit](https://kit.svelte.dev) and [MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on Vercel. If you want more detail about my website then you might want to read [this post]({data.siteUrl}/post/i-rebuild-my-site-using-sapper) or [this updated post]({data.siteUrl}/post/from-sapper-to-kit) where I explain the process of making (or rather, *rebuilding*) this site.
+I use [Svete-Kit](https://kit.svelte.dev) and [MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on Vercel. If you want more detail about my website then you might want to read [this post]({data.siteUrl}/post/i-rebuild-my-site-using-sapper) or [this updated post]({data.siteUrl}/post/from-sapper-to-kit) where I explain the process of making (or rather, *rebuilding*) this site.
 
 
 # My Setup
 
 My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System. [Archlinux](https://archlinux.org) to be more specific, with [Nix](https://nixos.org) as my package manager. I've used Linux since ~2019. I'd say I'm not a GUI-guy myself because I prefer spending my time inside the terminal (except browsing the web, of course)
 
-I use a Window Manager called [AwesomeWM](https://awesomewm.org), such an *awesome* window manager. I also use a text editor called [Neovim](https://neovim.io) I've been using it full-time since late 2019. It's actually my first text editor that I feel comfortable with. I started using it when I got my first laptop and got serious about programming. Anyway, here's [my dotfiles](https://github.com/elianiva/dotfiles) if you want :)
+I used to use a Window Manager called [AwesomeWM](https://awesomewm.org), such an *awesome* window manager, though I'm now using [KDE Plasma](https://kde.org/plasma-desktop/). I also use a text editor called [Neovim](https://neovim.io) I've been using it full-time since late 2019. It's actually my first text editor that I feel comfortable with. I started using it when I got my first laptop and got serious about programming. Anyway, here's [my dotfiles](https://github.com/elianiva/dotfiles) if you want :)
 
 Well, I guess that's about it. Thanks for visiting my website and I hope you found something useful from my site. Have a wonderful day! ツ

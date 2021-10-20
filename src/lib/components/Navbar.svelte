@@ -30,7 +30,7 @@
 .navbar__title a {
   font-weight: 400;
   text-decoration: none;
-  color: var(--color-main-text);
+  color: var(--color-shine);
   transition: color ease-out 0.1s;
 }
 
@@ -135,7 +135,7 @@
   [class^="navbar__hamburger_item"] {
     position: relative;
     display: block;
-    background-color: var(--color-main-text);
+    background-color: var(--color-shine);
     transition: transform ease-out 0.2s;
   }
 

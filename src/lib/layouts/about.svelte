@@ -18,7 +18,7 @@
 .about__content :global(h1 *),
 .about__content :global(h2 *) {
   text-decoration: none;
-  color: var(--color-main-text);
+  color: var(--color-shine);
 }
 
 .about__content :global(h1),
@@ -79,6 +79,7 @@
   font-size: 1.125rem;
   font-weight: 600;
   font-family: "Rubik", sans-serif;
+  color: var(--color-shine);
 }
 
 .about__content :global(li p:not(:first-child)) {
@@ -109,13 +110,24 @@
 .about__content :global(p a) {
   position: relative;
   display: inline-block;
-  color: var(--color-main-accent);
+  color: var(--color-shine);
   text-decoration: none;
   z-index: 5;
 }
 
 .about__content :global(p a:hover) {
-  text-decoration: underline;
+  color: var(--color-main-accent);
+}
+
+.about__content :global(p a::after) {
+  content: "";
+  position: absolute;
+  background-color: var(--color-main-accent);
+  bottom: 0.25rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: -1;
 }
 </style>
 

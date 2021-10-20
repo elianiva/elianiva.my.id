@@ -30,7 +30,7 @@ a {
 }
 
 .icons a {
-  color: var(--color-main-text);
+  color: var(--color-shine);
   transition: color ease-out 0.2s;
 }
 .icons a:hover {

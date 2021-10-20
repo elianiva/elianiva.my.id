@@ -3,7 +3,7 @@
   position: relative;
   margin-top: 4rem;
   font-family: "Inter", sans-serif;
-  color: var(--color-main-text);
+  color: var(--color-shine);
   text-align: center;
   z-index: 2;
 }

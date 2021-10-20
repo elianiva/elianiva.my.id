@@ -1,5 +1,5 @@
 <style>
-.hero {
+.header {
   position: relative;
   display: grid;
   grid-template-columns: 20rem 1fr;
@@ -11,30 +11,31 @@
   margin: 0 auto;
 }
 
-.hero__greet {
+.header__greet {
   font-size: 1.5rem;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   color: var(--color-main-accent);
 }
 
-.hero__name {
+.header__name {
   position: relative;
   display: block;
   font-family: "Rubik", sans-serif;
   font-size: clamp(1.25rem, calc(5vw + 1.25rem), 3.5rem);
   font-weight: 600;
   line-height: 1.25em;
+  color: var(--color-shine);
 }
 
-.hero__role {
+.header__role {
   font-family: "Rubik", sans-serif;
   font-size: clamp(1rem, calc(5vw + 0.5rem), 2rem);
   display: block;
   line-height: 1.5em;
 }
 
-.hero__desc {
+.header__desc {
   position: relative;
   display: block;
   color: var(--color-alt-text);
@@ -44,7 +45,7 @@
   margin: 0 0 1rem;
 }
 
-.hero__pict {
+.header__pict {
   width: clamp(12rem, calc(20vw + 4rem), 16rem);
   height: clamp(12rem, calc(20vw + 4rem), 16rem);
   border-radius: 10rem;
@@ -52,12 +53,12 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.hero__right {
+.header__right {
   position: relative;
 }
 
 @media only screen and (max-width: 960px) {
-  .hero {
+  .header {
     gap: 2rem;
     grid-template-columns: 1fr;
     grid-template-rows: 14rem 1fr;
@@ -68,21 +69,21 @@
 }
 </style>
 
-<section class="hero">
-  <div class="hero__left">
+<section class="header">
+  <div class="header__left">
     <a href="https://github.com/elianiva">
       <img
-        class="hero__pict"
+        class="header__pict"
         src="https://avatars3.githubusercontent.com/u/51877647?s=240&v=4"
         alt="github profile"
       />
     </a>
   </div>
-  <div class="hero__right">
-    <span class="hero__greet">Hi there!</span>
-    <span class="hero__name"> I'm Elianiva. </span>
-    <span class="hero__role">A Software Developer and I love Open Source!</span>
-    <p class="hero__desc">
+  <div class="header__right">
+    <span class="header__greet">Hi there!</span>
+    <span class="header__name"> I'm Elianiva. </span>
+    <span class="header__role">A Software Developer and I love Open Source!</span>
+    <p class="header__desc">
       I'm a 17 y/o boi from Indonesia. I like to write code and contribute to
       open source projects. I speak Indonesia, English, and a little bit of
       Japanese. Feel free to hit me up!

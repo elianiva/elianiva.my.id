@@ -10,7 +10,7 @@
 <SEO title="Home" />
 
 <main class="main">
-  <Hero />
+  <Header />
   <Section
     title="Recent Posts"
     data={posts.slice(0, 3)}
@@ -26,7 +26,7 @@
     type="projects"
   />
 </main>
-<ProgressButton />
+<Progress />
 
 <script context="module">
 export const prerender = true;
@@ -40,9 +40,9 @@ export async function load({ fetch }) {
 
 <script lang="ts">
 import SEO from "$lib/components/SEO.svelte";
-import Hero from "$lib/parts/Hero.svelte";
+import Header from "$lib/parts/Header.svelte";
 import Section from "$lib/parts/Section.svelte";
-import ProgressButton from "$lib/components/ProgressButton.svelte";
+import Progress from "$lib/components/Progress.svelte";
 
 export let posts: Array<any>;
 export let projects: Array<any>;

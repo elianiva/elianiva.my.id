@@ -24,7 +24,7 @@ div {
     const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
 
     const theme = localStorage.getItem("theme");
-    let preference = theme ? theme : isDarkMode ? "dark" : "light";
+    let preference = theme || (isDarkMode ? "dark" : "light");
 
     // prettier-ignore
     if (preference) document.documentElement.setAttribute("data-theme", preference)

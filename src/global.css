@@ -7,10 +7,10 @@
   --color-light-alt-text:     #696969;
   --color-light-borders:      #e4e4e4;
   --color-light-thin:         #a0aec0;
-  --color-light-shine:        #000000;
+  --color-light-shine:        #171c26;
 
   --color-dark-main-accent:   #f23c4a;
-  --color-dark-main-bg:       #171c26;
+  --color-dark-main-bg:       #1A202C;
   --color-dark-alt-bg:        #20263a;
   --color-dark-special-bg:    #2c3445;
   --color-dark-main-text:     #a0aec0;
@@ -32,6 +32,7 @@
     --color-thin:        var(--color-light-thin);
     --color-shine:       var(--color-light-shine);
     --filter-invert:     invert(0);
+    --filter-brightness: brightness(0.95);
   }
 
   /* set dark colours if user overrides it */
@@ -46,6 +47,7 @@
     --color-thin:        var(--color-dark-thin);
     --color-shine:       var(--color-dark-shine);
     --filter-invert:     invert(100%);
+    --filter-brightness: brightness(1.5);
   }
 
   [data-theme="dark"] img {
@@ -65,6 +67,7 @@
     --color-thin:        var(--color-dark-thin);
     --color-shine:       var(--color-dark-shine);
     --filter-invert:     invert(100%);
+    --filter-brightness: brightness(1.5);
 
     --color-code-selection: rgba(29, 59, 83, 0.9);
     --prism-comment:        #637777;
@@ -92,6 +95,7 @@
     --color-thin:        var(--color-light-thin);
     --color-shine:       var(--color-light-shine);
     --filter-invert:     invert(0);
+    --filter-brightness: brightness(0.95);
 
     --color-code-selection: rgba(211, 237, 243, 0.95);
     --prism-comment:     #989fb1;

@@ -22,6 +22,7 @@
   line-height: 1.5em;
   text-transform: capitalize;
   transition: all ease-out 0.1s;
+  color: var(--color-shine);
 }
 
 .card__desc {
@@ -59,7 +60,7 @@
   background-color: var(--color-special-bg);
   font-family: "Rubik", sans-serif;
   font-weight: 600;
-  color: var(--color-main-text);
+  color: var(--color-shine);
   font-size: 0.8rem;
   text-decoration: none;
   gap: 0.5rem;

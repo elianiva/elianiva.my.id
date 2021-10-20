@@ -166,8 +166,7 @@
 .post__content :global(ul a) {
   position: relative;
   display: inline-block;
-  color: var(--color-main-text);
-  z-index: 5;
+  color: var(--color-shine);
   text-decoration: none;
   z-index: 1;
 }
@@ -216,7 +215,7 @@
 }
 
 .post__content :global(ul) {
-  list-style: none;
+  list-style-position: inside;
   margin: 0 0 1.25rem;
 }
 
@@ -228,6 +227,10 @@
   margin: 0 0 1.5rem;
 }
 
+.post__content :global(#table-of-content ul li p) {
+  font-weight: 400;
+}
+
 .post__content :global(ul li) {
   position: relative;
   font-size: 1rem;
@@ -237,17 +240,18 @@
   word-wrap: break-word;
 }
 
-.post__content :global(ul li::before) {
-  content: "\203A";
-  color: var(--color-main-text);
-  font-size: 1.5rem;
-  line-height: 1.5em;
-  margin-right: 0.5rem;
+.post__content :global(li p:first-child) {
+  display: inline;
+  font-family: "Rubik", sans-serif;
+  color: var(--color-shine);
 }
 
-.post__content :global(ul li p) {
-  display: inline-block;
-  margin: 0;
+.post__content :global(li p:not(:first-child)) {
+  font-family: "Inter", sans-serif;
+  color: var(--color-main-text);
+  font-size: 1.05rem;
+  line-height: 1.75em;
+  padding-left: 1.5rem;
 }
 
 .post__content :global(ul li > ul *) {
@@ -265,6 +269,7 @@
   font-weight: 600;
   line-height: 1.25em;
   font-style: italic;
+  color: var(--color-shine);
 }
 
 .post__content :global(table tr:nth-child(odd)) {
@@ -283,21 +288,21 @@
 }
 
 .post__content :global(blockquote) {
-  border-left: 0.125rem var(--color-borders) solid;
+  border-left: 0.25rem var(--color-thin) solid;
   padding-left: 0.5rem;
 }
 
 .post__content :global(blockquote p) {
   font-size: 1rem;
   letter-spacing: 0.02em;
-  color: var(--color-thin);
+  color: var(--color-alt-text);
   margin: 1rem 0;
 }
 
 .post__content :global(h1 a),
 .post__content :global(h2 a),
 .post__content :global(h3 a) {
-  color: var(--color-main-text);
+  color: var(--color-shine);
   text-decoration: none;
 }
 
@@ -350,52 +355,60 @@
 <SEO {desc} {title} />
 
 <section class="post">
-  <h1 class="post__title">{title}</h1>
-  <span class="post__date">
-    Posted on
-    {new Date(date).toLocaleDateString("en-Gb", { weekday: "long" })},
-    {new Date(date).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    })}
-  </span>
-  <a
-    class="post__edit"
-    href="https://github.com/elianiva/elianiva.my.id/blob/master/src/routes/post{currentSlug}/index.svx"
-    target="_blank"
-    rel="norel noreferrer">Suggest An Edit</a
-  >
-  <div class="post__tags">
-    {#each tags as tag}
-      <div class="post__tag">{tag}</div>
-    {/each}
-  </div>
+  {#if !minimal}
+    <h1 class="post__title">{title}</h1>
+    <span class="post__date">
+      Posted on
+      {new Date(date).toLocaleDateString("en-Gb", { weekday: "long" })},
+      {new Date(date).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })}
+    </span>
+    <a
+      class="post__edit"
+      href="https://github.com/elianiva/elianiva.my.id/blob/master/src/routes/post{currentSlug}/index.svx"
+      target="_blank"
+      rel="norel noreferrer">Suggest An Edit</a
+    >
+    <div class="post__tags">
+      {#each tags as tag}
+        <div class="post__tag">{tag}</div>
+      {/each}
+    </div>
+  {/if}
   <main class="post__content" bind:this={content}>
     <slot />
-    <h1>Comments</h1>
-    {#if $theme === "dark"}
-      <div>
-        <script {...getCommentOptions(true)}></script>
-      </div>
-    {:else}
-      <div>
-        <script {...getCommentOptions(false)}></script>
-      </div>
+    {#if !minimal}
+      <h1>Comments</h1>
+      {#if $theme === "dark"}
+        <div>
+          <script {...getCommentOptions(true)}></script>
+        </div>
+      {:else}
+        <div>
+          <script {...getCommentOptions(false)}></script>
+        </div>
+      {/if}
     {/if}
   </main>
 </section>
-<ProgressButton />
+<Progress />
 
 <script>
 // TODO(elianiva): change utterance theme to github-dark once the new version came out
 import { onMount } from "svelte";
 import { page } from "$app/stores";
 import SEO from "$lib/components/SEO.svelte";
-import ProgressButton from "$lib/components/ProgressButton.svelte";
+import Progress from "$lib/components/Progress.svelte";
 import { theme } from "$lib/utils/theme";
 
-export let title, date, desc, tags;
+export let title = "";
+export let date = Date.now();
+export let desc = "";
+export let tags = [];
+export let minimal = false;
 
 const currentSlug = $page.path;
 
