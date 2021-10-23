@@ -51,6 +51,14 @@ import Loading from "$lib/components/Loading.svelte";
 import { theme } from "$lib/utils/theme";
 import "../global.css";
 
+// fonts
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/rubik/400.css";
+import "@fontsource/rubik/400-italic.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/400-italic.css";
+
 export let segment: string = "";
 
 onMount(() => {
