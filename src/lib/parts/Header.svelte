@@ -82,11 +82,13 @@
   <div class="header__right">
     <span class="header__greet">Hi there!</span>
     <span class="header__name"> I'm Elianiva. </span>
-    <span class="header__role">A Software Developer and I love Open Source!</span>
+    <span class="header__role">
+      A Software Developer and I love Open Source!
+    </span>
     <p class="header__desc">
-      I'm a 17 y/o boi from Indonesia. I like to write code and contribute to
-      open source projects. I speak Indonesia, English, and a little bit of
-      Japanese. Feel free to hit me up!
+      I like to write code and contribute to open source projects, and sometimes
+      write something in this blog. I speak Indonesia, English, and a little bit
+      of Japanese. Feel free to hit me up!
     </p>
   </div>
 </section>

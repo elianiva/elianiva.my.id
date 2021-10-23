@@ -85,7 +85,7 @@ I actually know more than these, but they're irrelevant as I don't use them that
 
 # Social
 
-If you want to reach me then feel free to hit me up on [Twitter](https://twitter.com/@elianiva_) or Discord @elianiva#7886. I barely checked Twitter, only use it for Vtuber or Art related stuff. A better option is my Discord since I'm quite active on that platform. You can also [email me](mailto:dicha.arkana03@gmail.com) if you prefer, I check my email quite often :)
+If you want to reach me then feel free to hit me up on [Twitter](https://twitter.com/@elianiva_) or Discord @elianiva#7886. I barely checked Twitter, only use it for Vtuber or art related stuff. A better option is my Discord since I'm quite active on that platform. You can also [email me](mailto:dicha.arkana03@gmail.com) if you prefer doing that instead.
 
 
 # Why I Made This Website
@@ -99,6 +99,6 @@ I use [Svete-Kit](https://kit.svelte.dev) and [MDSveX](https://mdsvex.pngwn.io/)
 
 My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System. [Archlinux](https://archlinux.org) to be more specific, with [Nix](https://nixos.org) as my package manager. I've used Linux since ~2019. I'd say I'm not a GUI-guy myself because I prefer spending my time inside the terminal (except browsing the web, of course)
 
-I used to use a Window Manager called [AwesomeWM](https://awesomewm.org), such an *awesome* window manager, though I'm now using [KDE Plasma](https://kde.org/plasma-desktop/). I also use a text editor called [Neovim](https://neovim.io) I've been using it full-time since late 2019. It's actually my first text editor that I feel comfortable with. I started using it when I got my first laptop and got serious about programming. Anyway, here's [my dotfiles](https://github.com/elianiva/dotfiles) if you want :)
+I used to use a Window Manager called [AwesomeWM](https://awesomewm.org), such an *awesome* window manager, though I'm now using [KDE Plasma](https://kde.org/plasma-desktop/). I also use a text editor called [Neovim](https://neovim.io). I've been using it as my main text editor since late 2019. It was actually my first text editor that I feel comfortable with. Anyway, here's [my dotfiles](https://github.com/elianiva/dotfiles) if you want!
 
 Well, I guess that's about it. Thanks for visiting my website and I hope you found something useful from my site. Have a wonderful day! ツ

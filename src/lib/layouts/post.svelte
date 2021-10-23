@@ -13,6 +13,8 @@
   text-transform: uppercase;
   max-width: 30ch;
   margin: 3rem auto 0;
+  color: var(--color-shine);
+  font-weight: 600;
 }
 
 .post__date {
@@ -53,7 +55,7 @@
 .post__tag {
   padding: 0.25rem 0.5rem;
   background-color: var(--color-special-bg);
-  color: var(--color-main-text);
+  color: var(--color-shine);
   border-radius: 0.25rem;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -414,27 +416,32 @@ const currentSlug = $page.path;
 
 let content;
 onMount(() => {
-  content.querySelectorAll("a").forEach(a => {
-    // use `decodeURIComponent` to handle Japanese characters
-    // prettier-ignore
-    if (
+  content.querySelectorAll("a").forEach(
+    (
+      /** @type {any} */
+      a
+    ) => {
+      // use `decodeURIComponent` to handle Japanese characters
+      // prettier-ignore
+      if (
       !a.hash ||
       !content.querySelectorAll(decodeURIComponent(a.hash)).length
     ) return
 
-    a.addEventListener("click", e => {
-      e.preventDefault();
-      window.location.hash = e.target.getAttribute("href");
-    });
-  });
+      a.addEventListener("click", (/** @type {any} */ e) => {
+        e.preventDefault();
+        window.location.hash = e.target.getAttribute("href");
+      });
+    }
+  );
 });
 
-const getCommentOptions = isDark => ({
+const getCommentOptions = (/** @type {boolean} */ isDark) => ({
   src: "https://utteranc.es/client.js",
   repo: "elianiva/elianiva.my.id",
   "issue-term": "pathname",
   label: "Comments",
-  theme: `github-${isDark ? "dark" : "light"}`,
+  theme: `${isDark ? "dark-blue" : "github-light"}`,
   crossorigin: "anonymous",
   async: true,
 });

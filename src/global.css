@@ -17,7 +17,7 @@
   --color-dark-alt-text:      #8fa0bf;
   --color-dark-borders:       #3b465a;
   --color-dark-thin:          #6b7a99;
-  --color-dark-shine:         #ffffff;
+  --color-dark-shine:         #f7fafc;
 }
 
 @media (prefers-color-scheme: light) {
