@@ -49,7 +49,7 @@
 
 .section__button:hover {
   transform: translate3d(0, -0.25rem, 0);
-  filter: brightness(1.2);
+  filter: var(--filter-brightness);
 }
 
 :global(.section__pattern) {

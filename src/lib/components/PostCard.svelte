@@ -72,7 +72,7 @@
 }
 
 .card__tag:hover {
-  filter: brightness(1.2);
+  filter: var(--filter-brightness);
 }
 
 .card__tag::before {

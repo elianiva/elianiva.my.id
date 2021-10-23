@@ -63,7 +63,7 @@
 
 .card__demo:hover,
 .card__source:hover {
-  filter: brightness(1.2);
+  filter: var(--filter-brightness);
 }
 
 .card__demo {

@@ -59,7 +59,7 @@
 
 .project__demo:hover,
 .project__source:hover {
-  filter: brightness(1.2);
+  filter: var(--filter-brightness);
 }
 .project__demo {
   background-color: var(--color-main-accent);

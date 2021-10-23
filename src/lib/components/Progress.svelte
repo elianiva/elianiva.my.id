@@ -17,7 +17,7 @@
 }
 
 .button:hover {
-  filter: brightness(1.2);
+  filter: var(--filter-brightness);
 }
 
 :global(.button__icon) {
