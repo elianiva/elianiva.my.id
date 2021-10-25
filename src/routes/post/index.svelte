@@ -120,7 +120,7 @@
             <span
               class="autocomplete__item"
               on:click={() => {
-                tagFilter = [...tagFilter, tag]
+                tagFilter = [...tagFilter, tag] // cant use push here
                 inputBox.value = ""
                 tagKeyword = ""
                 isCompletionVisible = false
@@ -138,7 +138,9 @@
       {#each tagFilter as filter}
         <Tag
           label={filter}
-          onClick={() => (tagFilter = tagFilter.filter(x => x !== filter))}
+          onClick={() => {
+            tagFilter = tagFilter.filter(x => x !== filter);
+          }}
         />
       {/each}
     </div>
@@ -166,14 +168,15 @@ export async function load({ fetch }) {
 </script>
 
 <script lang="ts">
+import type { Metadata } from "$lib/utils/fetch-data";
 import { fly } from "svelte/transition";
 import SEO from "$lib/components/SEO.svelte";
 import PostCard from "$lib/components/PostCard.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import Tag from "$lib/components/Tag.svelte";
 
-// eslint-disable-next-line
-export let posts: Array<any>;
+export let posts: Metadata[];
+
 let inputBox = null;
 let keyword = "";
 let tagKeyword = "";
@@ -181,7 +184,8 @@ let filteredPosts = [];
 let tagFilter = [];
 let isCompletionVisible = false;
 
-// count available tags and insert it to an object, ex: `{a: 2, b: 3}`
+// count available tags and insert it to an object
+// ex: [a, a, b, b, b] -> { a: 2, b: 3 }
 const tags = posts.map(post => post.tags).flat();
 const count = tags.reduce(
   (acc, curr) => ({ ...acc, [curr]: (acc[curr] || 0) + 1 }),

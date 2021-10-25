@@ -1,6 +1,6 @@
-import type { ResultAttr } from "$lib/utils/fetch-data";
+import type { Metadata } from "$lib/utils/fetch-data";
 
-export const getHandler = (getItemsAsync: () => Promise<ResultAttr[]>) => {
+export const getHandler = (getItemsAsync: () => Promise<Metadata[]>) => {
   return async ({ query: q }) => {
     let items = await getItemsAsync();
 

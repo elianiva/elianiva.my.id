@@ -5,7 +5,7 @@ import path from "path";
 const HAS_EXTENSION = /\.[^/.]+$/;
 const getPagePath = (kind: string) => path.resolve(`./src/routes/${kind}`);
 
-export interface ResultAttr {
+export interface Metadata {
   title: string;
   date: string;
   desc: string;
@@ -20,7 +20,7 @@ export interface ResultAttr {
 
 export const getResourcesAsync = async (
   kind: "post" | "project"
-): Promise<ResultAttr[]> => {
+): Promise<Metadata[]> => {
   if (!kind) throw new Error("KIND IS REQUIRED!");
   const file = await fs.readdir(getPagePath(kind));
 
@@ -29,7 +29,7 @@ export const getResourcesAsync = async (
       .filter(
         (file: string) => !HAS_EXTENSION.test(file) && `${file}/index.svx`
       )
-      .map(async (fileName: string): Promise<ResultAttr> => {
+      .map(async (fileName: string): Promise<Metadata> => {
         const postContent = await fs.readFile(
           `${getPagePath(kind)}/${fileName}/index.svx`,
           { encoding: "utf8" }
@@ -38,7 +38,7 @@ export const getResourcesAsync = async (
         const { data } = matter(postContent);
 
         return {
-          ...(data as ResultAttr),
+          ...(data as Metadata),
           slug: fileName.replace(HAS_EXTENSION, ""),
         };
       })
