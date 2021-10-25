@@ -36,7 +36,7 @@
 
 .project__title {
   color: var(--color-main-text);
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: 2rem;
 }
 
@@ -47,7 +47,7 @@
 
 .project__demo,
 .project__source {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@
 
 .project__content {
   grid-column: 1/2;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
@@ -97,7 +97,7 @@
 
 .stack__title {
   color: var(--color-main-text);
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -139,7 +139,7 @@
 
 .stack__name {
   color: var(--color-main-text);
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.25rem;
   text-decoration: none;
 }
@@ -182,7 +182,7 @@
 }
 
 .project__content :global(code) {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-monospace);
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   font-size: 1rem;

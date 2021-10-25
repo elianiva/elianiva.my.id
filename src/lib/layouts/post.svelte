@@ -8,7 +8,7 @@
 }
 
 .post__title {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: 2.5rem;
   text-transform: uppercase;
   max-width: 30ch;
@@ -18,7 +18,7 @@
 }
 
 .post__date {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   display: block;
   text-align: center;
   font-size: 1.125rem;
@@ -29,7 +29,7 @@
 .post__edit {
   position: relative;
   display: block;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   text-align: center;
   font-size: 1.125rem;
   line-height: 2em;
@@ -57,7 +57,7 @@
   background-color: var(--color-special-bg);
   color: var(--color-shine);
   border-radius: 0.25rem;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 500;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .post__content {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   max-width: 70ch;
   margin: 0 auto;
   font-size: 1rem;
@@ -83,7 +83,7 @@
 .post__content :global(h2),
 .post__content :global(h3) {
   position: relative;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   margin: 2.5rem 0 0.5rem;
 }
 
@@ -195,7 +195,7 @@
 }
 
 .post__content :global(code) {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-monospace);
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border: 0.0625rem var(--color-borders) solid;
@@ -205,7 +205,7 @@
 }
 
 .post__content :global(pre code) {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-monospace);
   font-weight: 400;
   font-size: 0.9rem;
   padding: 0;
@@ -244,12 +244,12 @@
 
 .post__content :global(li p:first-child) {
   display: inline;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   color: var(--color-shine);
 }
 
 .post__content :global(li p:not(:first-child)) {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   color: var(--color-main-text);
   font-size: 1.05rem;
   line-height: 1.75em;

@@ -11,13 +11,13 @@
 
 .err__status {
   font-size: 4rem;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   margin-top: 4rem;
 }
 
 .err__msg {
   font-size: 2rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
 }
 
 .err__url {

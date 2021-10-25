@@ -26,7 +26,7 @@
 .card__title {
   text-decoration: none;
   color: var(--color-main-text);
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5em;
@@ -34,11 +34,11 @@
 }
 
 .card__title:hover {
-  color: var(--color-main-accent);
+  color: var(--color-shine);
 }
 
 .card__desc {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.5em;
   color: var(--color-alt-text);
 }
@@ -51,7 +51,7 @@
 
 .card__demo,
 .card__source {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   text-decoration: none;
   display: flex;
   align-items: center;

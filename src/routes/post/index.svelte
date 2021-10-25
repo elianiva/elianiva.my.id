@@ -7,7 +7,7 @@
 }
 
 .posts__title {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   position: relative;
   display: inline-block;
   font-size: 2rem;
@@ -41,7 +41,7 @@
   background-color: var(--color-alt-bg);
   border: 0.0625rem var(--color-borders) solid;
   outline: none;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   color: var(--color-main-text);
 }
 
@@ -72,7 +72,7 @@
 .autocomplete__item {
   display: block;
   text-align: left;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.125rem;
   padding: 0.5rem;
   color: var(--color-alt-text);

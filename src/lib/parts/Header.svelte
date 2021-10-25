@@ -13,7 +13,7 @@
 
 .header__greet {
   font-size: 1.5rem;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 500;
   color: var(--color-main-accent);
 }
@@ -21,7 +21,7 @@
 .header__name {
   position: relative;
   display: block;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.25rem, calc(5vw + 1.25rem), 3.5rem);
   font-weight: 600;
   line-height: 1.25em;
@@ -29,7 +29,7 @@
 }
 
 .header__role {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(1rem, calc(5vw + 0.5rem), 2rem);
   display: block;
   line-height: 1.5em;
@@ -39,7 +39,7 @@
   position: relative;
   display: block;
   color: var(--color-alt-text);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem);
   line-height: 1.5em;
   margin: 0 0 1rem;

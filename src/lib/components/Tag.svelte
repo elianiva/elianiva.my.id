@@ -2,7 +2,7 @@
 .tag {
   background-color: var(--color-special-bg);
   border-radius: 0.25rem;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.125rem;
   display: inline-grid;
   grid-template-columns: 1fr 2rem;

@@ -16,18 +16,18 @@
 }
 
 .card__title {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5em;
   text-transform: capitalize;
   transition: all ease-out 0.1s;
-  color: var(--color-shine);
+  color: var(--color-main-text);
 }
 
 .card__desc {
   border-top: 0.0625rem var(--color-borders) solid;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.5em;
   color: var(--color-alt-text);
   margin-top: 0.25rem;
@@ -35,7 +35,7 @@
 }
 
 .card__date {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   display: flex;
   gap: 0.4rem;
   align-items: center;
@@ -58,9 +58,9 @@
 
 .card__tag {
   background-color: var(--color-special-bg);
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
-  color: var(--color-shine);
+  color: var(--color-main-text);
   font-size: 0.8rem;
   text-decoration: none;
   gap: 0.5rem;
@@ -71,10 +71,6 @@
   text-transform: capitalize;
 }
 
-.card__tag:hover {
-  filter: var(--filter-brightness);
-}
-
 .card__tag::before {
   content: "# ";
   font-weight: 600;
@@ -82,7 +78,7 @@
 
 @media only screen and (min-width: 480px) {
   .card__details:hover .card__title {
-    color: var(--color-main-accent);
+    color: var(--color-shine);
   }
 }
 </style>
@@ -102,7 +98,9 @@
     </div>
     <p class="card__desc">{@html desc}</p>
     <div class="card__tags">
-      {#each tags as tag}<span class="card__tag">{tag}</span>{/each}
+      {#each tags as tag}
+        <span class="card__tag">{tag}</span>
+      {/each}
     </div>
   </a>
 </div>

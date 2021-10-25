@@ -18,6 +18,10 @@
   --color-dark-borders:       #3b465a;
   --color-dark-thin:          #6b7a99;
   --color-dark-shine:         #f7fafc;
+
+  --font-heading: "Rubik", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-monospace: "JetBrains Mono", monospace;
 }
 
 @media (prefers-color-scheme: light) {
@@ -32,7 +36,7 @@
     --color-thin:        var(--color-light-thin);
     --color-shine:       var(--color-light-shine);
     --filter-invert:     invert(0);
-    --filter-brightness: brightness(0.95);
+    --filter-brightness: brightness(0.97);
   }
 
   /* set dark colours if user overrides it */
@@ -95,9 +99,9 @@
     --color-thin:        var(--color-light-thin);
     --color-shine:       var(--color-light-shine);
     --filter-invert:     invert(0);
-    --filter-brightness: brightness(0.95);
+    --filter-brightness: brightness(0.97);
 
-    --color-code-selection: rgba(211, 237, 243, 0.95);
+    --color-code-selection: rgba(211, 237, 243, 0.97);
     --prism-comment:     #989fb1;
     --prism-punctuation: #d6438a;
     --prism-namespace:   #0c969b;

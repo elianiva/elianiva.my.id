@@ -7,13 +7,13 @@
 }
 
 .projects__title {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   position: relative;
   display: inline-block;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  color: var(--color-main-text);
+  color: var(--color-title);
 }
 
 .projects__title::before {

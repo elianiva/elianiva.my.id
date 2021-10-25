@@ -1,11 +1,16 @@
 <style>
 footer {
   margin-top: 3rem;
-  border-top: 0.0625rem var(--color-borders) solid;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   text-align: center;
   padding: 2rem 1rem;
-  background-color: var(--color-alt-bg);
+  background-color: var(--color-main-bg);
+  filter: opacity(0.5);
+  transition: filter ease-out 0.2s;
+}
+
+footer:hover {
+  filter: opacity(1);
 }
 
 p {
@@ -18,8 +23,7 @@ a {
 }
 
 .hl {
-  color: var(--color-main-accent);
-  font-weight: 600;
+  color: var(--color-shine);
 }
 
 .icons {

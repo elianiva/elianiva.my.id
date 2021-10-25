@@ -24,7 +24,7 @@
 .about__content :global(h1),
 .about__content :global(h2) {
   position: relative;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
 }
 
 .about__content :global(h1) {
@@ -56,7 +56,7 @@
 }
 
 .about__content :global(p) {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   color: var(--color-main-text);
   font-size: 1.125rem;
   line-height: 2em;
@@ -78,12 +78,12 @@
   display: inline;
   font-size: 1.125rem;
   font-weight: 600;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   color: var(--color-shine);
 }
 
 .about__content :global(li p:not(:first-child)) {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   color: var(--color-main-text);
   font-size: 1.05rem;
   line-height: 1.75em;
@@ -91,7 +91,7 @@
 }
 
 .about__content :global(code) {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-monospace);
   color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;

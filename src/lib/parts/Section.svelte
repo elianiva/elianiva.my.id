@@ -2,14 +2,14 @@
 .section {
   position: relative;
   margin-top: 4rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   color: var(--color-shine);
   text-align: center;
   z-index: 2;
 }
 
 .section__title {
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   position: relative;
   display: inline-block;
   font-size: 2rem;
@@ -38,18 +38,18 @@
   display: inline-block;
   margin-top: 2rem;
   padding: 1rem 1.5rem 0.75rem;
-  color: #f4f4f4;
-  background-color: var(--color-main-accent);
+  color: var(--color-main-text);
+  background-color: var(--color-alt-bg);
+  border: 0.0625rem var(--color-borders) solid;
   text-decoration: none;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.25rem;
-  border-radius: 0.25rem;
-  transition: all ease-out 0.2s;
+  transition: transform ease-out 0.2s;
 }
 
 .section__button:hover {
   transform: translate3d(0, -0.25rem, 0);
-  filter: var(--filter-brightness);
+  color: var(--color-shine);
 }
 
 :global(.section__pattern) {

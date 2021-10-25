@@ -9,7 +9,7 @@
   padding: 0.5rem 1rem;
   background-color: var(--color-main-bg);
   color: var(--color-main-text);
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-heading);
   display: flex;
   align-items: center;
   justify-content: space-between;
