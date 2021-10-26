@@ -10,10 +10,10 @@
   font-family: var(--font-heading);
   position: relative;
   display: inline-block;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  color: var(--color-title);
+  color: var(--color-shine);
 }
 
 .projects__title::before {
