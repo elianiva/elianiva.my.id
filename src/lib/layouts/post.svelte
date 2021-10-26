@@ -401,7 +401,6 @@
 <Progress />
 
 <script>
-// TODO(elianiva): change utterance theme to github-dark once the new version came out
 import { onMount } from "svelte";
 import { page } from "$app/stores";
 import SEO from "$lib/components/SEO.svelte";
@@ -418,17 +417,18 @@ const currentSlug = $page.path;
 
 let content;
 onMount(() => {
-  content.querySelectorAll("a").forEach(
+  content.querySelectorAll("h1 a, h2 a, h3 a").forEach(
     (
       /** @type {any} */
       a
     ) => {
       // use `decodeURIComponent` to handle Japanese characters
-      // prettier-ignore
       if (
-      !a.hash ||
-      !content.querySelectorAll(decodeURIComponent(a.hash)).length
-    ) return
+        !a.hash ||
+        !content.querySelectorAll(decodeURIComponent(a.hash)).length
+      ) {
+        return;
+      }
 
       a.addEventListener("click", (/** @type {any} */ e) => {
         e.preventDefault();

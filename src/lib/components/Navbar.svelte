@@ -103,16 +103,6 @@
   opacity: 0;
 }
 
-.navbar__button {
-  border: none;
-  background: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  color: var(--color-main-text);
-  cursor: pointer;
-}
-
 @media only screen and (max-width: 480px) {
   .navbar__items {
     display: none;
@@ -160,7 +150,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-alt-bg);
+    background-color: var(--color-main-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -201,13 +191,7 @@
         <a href="/about">About</a>
       </li>
       <li class="navbar__item">
-        <button
-          class="navbar__button"
-          on:click={toggleDarkMode}
-          aria-label="toggle darkmode"
-        >
-          <Moon className="navbar__darkmode" width="24" height="24" />
-        </button>
+        <Moon />
       </li>
     </ul>
     <div class="navbar__hamburger" transition:fade={{ duration: 200 }}>
@@ -240,13 +224,7 @@
         <a href="/about" on:click={toggleNav}>About</a>
       </li>
       <li class="navbar__mobile_item">
-        <button
-          class="navbar__button"
-          on:click={toggleDarkMode}
-          aria-label="toggle darkmode"
-        >
-          <Moon className="navbar__darkmode" width="24" height="24" />
-        </button>
+        <Moon />
       </li>
     </ul>
   </div>
@@ -254,18 +232,13 @@
 
 <script lang="ts">
 import { fly, fade } from "svelte/transition";
-import Moon from "$lib/icons/Moon.svelte";
+import Moon from "$lib/components/Moon.svelte";
 import Logo from "$lib/icons/Logo.svelte";
-import { theme } from "$lib/utils/theme";
 
 export let segment: string;
 
 let isVisible = false;
 let checked = false;
-
-const toggleDarkMode = () => {
-  theme.update(current => (current === "light" ? "dark" : "light"));
-};
 
 const toggleNav = () => {
   checked = !checked;
