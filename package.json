@@ -40,7 +40,7 @@
   "dependencies": {
     "@fontsource/inter": "^4.5.0",
     "@fontsource/jetbrains-mono": "^4.5.0",
-    "@fontsource/rubik": "^4.5.0",
+    "@fontsource/poppins": "^4.5.0",
     "gray-matter": "^4.0.3",
     "p-limit": "^4.0.0"
   }

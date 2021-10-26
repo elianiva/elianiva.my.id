@@ -62,7 +62,7 @@ I actually know more than these, but they're irrelevant as I don't use them that
 
   Lua is a language that I thought I would've never learned. I mainly use it
   for my text editor, which is [Neovim](https://neovim.io) and my window
-  manager [AwesomeWM](https://awesomewm.org/).  I think it's a nice, small and
+  manager, [AwesomeWM](https://awesomewm.org/).  I think it's a nice, small and
   a very simple language, it's meant to be easily embeddable, so it doesn't
   have a big stdlib like Python. Also, LuaJIT is crazy fast for a scripting
   language.

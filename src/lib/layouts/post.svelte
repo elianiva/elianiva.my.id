@@ -92,7 +92,7 @@
 }
 
 .post__content :global(h1) {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   line-height: 1.5em;
   letter-spacing: 0.05em;
 }
@@ -112,9 +112,8 @@
 }
 
 .post__content :global(h2) {
-  font-size: 1.25rem;
   line-height: 1.5em;
-  font-size: 1.625rem;
+  font-size: 1.25rem;
   letter-spacing: 0.05em;
 }
 
@@ -173,11 +172,6 @@
   z-index: 1;
 }
 
-.post__content :global(p > a:hover),
-.post__content :global(ul a:hover) {
-  color: var(--color-main-accent);
-}
-
 .post__content :global(p > a::after),
 .post__content :global(ul a::after) {
   content: "";
@@ -186,8 +180,15 @@
   bottom: 0.25rem;
   left: 0;
   right: 0;
+  transform: scale3d(0, 0, 0);
   height: 2px;
   z-index: -1;
+}
+
+.post__content :global(p > a:hover::after),
+.post__content :global(ul a:hover::after) {
+  transform: scale3d(1, 1, 1);
+  transition: transform ease-out 0.2s;
 }
 
 .post__content :global(a:hover) {
@@ -229,21 +230,22 @@
   margin: 0 0 1.5rem;
 }
 
-.post__content :global(#table-of-content ul li p) {
+.post__content :global(#table-of-content + ul li p) {
   font-weight: 400;
+  display: inline;
 }
 
 .post__content :global(ul li) {
   position: relative;
   font-size: 1rem;
-  line-height: 1.75em;
+  line-height: 2em;
   padding-left: 1rem;
   /* white-space: pre-wrap; */
   word-wrap: break-word;
 }
 
 .post__content :global(li p:first-child) {
-  display: inline;
+  display: inline-block;
   font-family: var(--font-heading);
   color: var(--color-shine);
 }

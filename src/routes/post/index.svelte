@@ -10,7 +10,7 @@
   font-family: var(--font-heading);
   position: relative;
   display: inline-block;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: var(--color-shine);
   margin-bottom: 2.5rem;

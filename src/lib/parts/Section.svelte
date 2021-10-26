@@ -12,7 +12,7 @@
   font-family: var(--font-heading);
   position: relative;
   display: inline-block;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 2rem;
 }

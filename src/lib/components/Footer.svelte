@@ -1,5 +1,6 @@
 <style>
 footer {
+  position: relative;
   margin-top: 3rem;
   font-family: var(--font-heading);
   text-align: center;
@@ -11,6 +12,21 @@ footer {
 
 footer:hover {
   filter: opacity(1);
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 0.125rem;
+  left: 4rem;
+  right: 4rem;
+  background-image: linear-gradient(
+    to right,
+    #00000000,
+    var(--color-borders),
+    #00000000
+  );
 }
 
 p {

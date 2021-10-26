@@ -12,7 +12,7 @@
 }
 
 .header__greet {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-family: var(--font-heading);
   font-weight: 500;
   color: var(--color-main-accent);
@@ -22,7 +22,7 @@
   position: relative;
   display: block;
   font-family: var(--font-heading);
-  font-size: clamp(1.25rem, calc(5vw + 1.25rem), 3.5rem);
+  font-size: clamp(1.25rem, calc(5vw + 1.25rem), 3rem);
   font-weight: 600;
   line-height: 1.25em;
   color: var(--color-shine);
@@ -30,9 +30,10 @@
 
 .header__role {
   font-family: var(--font-heading);
-  font-size: clamp(1rem, calc(5vw + 0.5rem), 2rem);
+  font-size: clamp(1rem, calc(5vw + 0.5rem), 1.625rem);
+  color: var(--color-shine);
   display: block;
-  line-height: 1.5em;
+  line-height: 1.75em;
 }
 
 .header__desc {

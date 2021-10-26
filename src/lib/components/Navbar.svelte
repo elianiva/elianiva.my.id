@@ -1,13 +1,27 @@
 <style>
 .navbar {
-  height: 4rem;
-  border-bottom: 0.0625rem var(--color-borders) solid;
-  z-index: 30;
-  background-color: var(--color-alt-bg);
   position: fixed;
+  height: 4rem;
+  background-color: var(--color-main-bg);
+  z-index: 30;
   left: 0;
   right: 0;
   top: 0;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 0.125rem;
+  left: 2rem;
+  right: 2rem;
+  background-image: linear-gradient(
+    to right,
+    #00000000,
+    var(--color-borders),
+    #00000000
+  );
 }
 
 .navbar .active a {
@@ -51,7 +65,7 @@
 }
 
 .navbar__item a {
-  font-family: var(--font-heading);
+  font-family: var(--font-sans);
   font-size: 1.125rem;
   line-height: 1.5em;
   position: relative;
@@ -64,10 +78,6 @@
   color: var(--color-shine);
 }
 
-.navbar__item a:hover::after {
-  transform: scale(1);
-}
-
 .navbar__item a::after {
   content: "";
   position: absolute;
@@ -76,8 +86,12 @@
   right: 0;
   height: 0.125rem;
   background-color: var(--color-main-accent);
-  transform: scale(0);
+  transform: scale3d(0, 0, 0);
   transition: transform ease-out 0.2s;
+}
+
+.navbar__item a:hover::after {
+  transform: scale3d(1, 1, 1);
 }
 
 .navbar__hamburger {

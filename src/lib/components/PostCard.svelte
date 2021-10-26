@@ -17,12 +17,12 @@
 
 .card__title {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.5em;
   text-transform: capitalize;
-  transition: all ease-out 0.1s;
   color: var(--color-main-text);
+  transition: color ease-out 0.1s;
 }
 
 .card__desc {

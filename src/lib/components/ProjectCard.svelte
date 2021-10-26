@@ -27,7 +27,7 @@
   text-decoration: none;
   color: var(--color-main-text);
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.5em;
   transition: all ease-out 0.2s;
@@ -77,8 +77,8 @@
 }
 
 :global(.card__icon) {
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
 .card :global(.wrapper) {
