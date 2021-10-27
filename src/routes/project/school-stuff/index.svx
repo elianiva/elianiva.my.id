@@ -5,6 +5,7 @@ desc: A website where I put some of my school assignment cuz why not.
 demo: https://school-stuff.vercel.app
 source: https://github.com/elianiva/school-log
 layout: project
+type: personal
 stack:
   - ['NextJS', 'https://nextjs.org']
   - ['Vercel', 'https://vercel.app']

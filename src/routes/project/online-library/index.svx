@@ -1,0 +1,17 @@
+---
+title: Online Library
+date: 2021-10-27
+desc: An app to help librarian manage the library
+demo: false
+source: https://github.com/elianiva/menghadeh
+layout: project
+type: assignment
+stack:
+  - ['Adonis', 'https://adonisjs.com']
+  - ['Bootstrap', 'https://getbootstrap.com']
+  - ['Typescript', 'https://typescript.com']
+---
+
+A website to help librarian manage the library, sort of.
+
+I don't really enjoy working on this since the spec wasn't clear enough and I have to second guess the requirements. Thankfully all went well.

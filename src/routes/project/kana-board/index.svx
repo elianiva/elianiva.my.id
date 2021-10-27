@@ -5,6 +5,7 @@ desc: An app to help me memorise Japanese vocab.
 demo: https://kana-board.vercel.app
 source: https://github.com/elianiva/kana-board
 layout: project
+type: personal
 stack:
   - ['ReactJS', 'https://reactjs.org']
   - ['Redux', 'https://redux.js.org']

@@ -5,6 +5,7 @@ desc: A desktop cashier app made with Java for one of my final assignment
 demo: false
 source: https://github.com/elianiva/kasir-java
 layout: project
+type: assignment
 stack:
   - ['Java', 'https://www.java.com']
   - ['FlatLAF', 'https://www.formdev.com/flatlaf']

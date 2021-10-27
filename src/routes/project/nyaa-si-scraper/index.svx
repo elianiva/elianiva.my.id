@@ -5,6 +5,7 @@ desc: Scraper for nyaa.si made with Rust and Typescript.
 demo: false
 source: https://github.com/elianiva/nyaa-si-scraper
 layout: project
+type: personal
 stack:
   - ['Deno', 'https://deno.land']
   - ['Rust', 'https://www.rust-lang.org/']

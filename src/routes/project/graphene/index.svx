@@ -5,6 +5,7 @@ desc: Lighter Carbon alternative made with Shiki
 demo: https://teknologi-umum-graphene.fly.dev
 source: https://github.com/teknologi-umum/graphene
 layout: project
+type: personal
 stack:
   - ['Typescript', 'https://typescriptlang.org']
   - ['SharpJS', 'https://sharp.pixelplumbing.com/']

@@ -12,7 +12,7 @@
   display: inline-block;
   font-size: 1.75rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: var(--color-shine);
 }
 
@@ -27,19 +27,53 @@
   background-color: var(--color-main-accent);
 }
 
+.projects__desc {
+  font-family: var(--font-sans);
+  color: var(--color-main-text);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
 .projects__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1.25rem;
+  margin-bottom: 1rem;
 }
 </style>
 
 <SEO title="Projects" />
 
 <section class="projects">
-  <h1 class="projects__title">All Projects</h1>
+  <a href="/project#personal-projects">
+    <h1 id="personal-projects" class="projects__title">Personal Projects</h1>
+  </a>
+  <p class="projects__desc">
+    These are some projects that I do on my free time. Almost all of my Github
+    projects are here, quite proud on some of them.
+  </p>
   <div class="projects__cards">
-    {#each projects as project}
+    {#each projects.filter(p => p.type === "personal") as project}
+      <ProjectCard
+        title={project.title}
+        imgSrc={`/assets/project/${project.slug}/cover.webp`}
+        href={`/project/${project.slug}`}
+        desc={project.desc}
+        demo={project.demo}
+        source={project.source}
+      />
+    {/each}
+  </div>
+  <h1 class="projects__title">School Projects</h1>
+  <p class="projects__desc">
+    These are some projects that I do for school assignments, not exactly proud
+    of them since I don't like to make these kind of thing. Guess I'd put them
+    here anyway in case anyone needs them for reference or something.
+  </p>
+  <div class="projects__cards">
+    {#each projects.filter(p => p.type === "assignment") as project}
       <ProjectCard
         title={project.title}
         imgSrc={`/assets/project/${project.slug}/cover.webp`}

@@ -5,6 +5,7 @@ desc: Simple app that I made when trying out Svelte-Kit which uses Github Job AP
 demo: https://gh-job.vercel.app
 source: https://github.com/elianiva/gh-job
 layout: project
+type: personal
 stack:
   - ['Svelte-Kit', 'https://svelte.dev']
   - ['Typescript', 'https://typescriptlang.org']

@@ -37,7 +37,7 @@
 .project__title {
   color: var(--color-main-text);
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .project__buttons {
@@ -70,8 +70,8 @@
   color: var(--color-alt-text);
 }
 :global(.project__icon) {
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 1rem;
+  height: 1rem;
 }
 .project__divider {
   border: none;

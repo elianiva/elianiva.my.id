@@ -5,6 +5,7 @@ desc: A remake of my previous app that shows the current COVID19 data.
 demo: https://covid-info-v2.vercel.app
 source: https://github.com/elianiva/covid-info-v2
 layout: project
+type: personal
 stack:
   - ['Typescript', 'https://typescriptlang.org']
   - ['Apexcharts', 'https://apexcharts.com']

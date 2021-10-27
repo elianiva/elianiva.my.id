@@ -5,6 +5,7 @@ desc: A realtime chat app made with React, Firebase, and Typescript
 demo: false
 source: https://github.com/elianiva/umaru-chat
 layout: project
+type: personal
 stack:
   - ['ReactJS', 'https://reactjs.com']
   - ['Typescript', 'https://typescriptlang.org']

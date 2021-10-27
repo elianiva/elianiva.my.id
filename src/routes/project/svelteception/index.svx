@@ -5,6 +5,7 @@ desc: A website where I put the result of a small challenge that I did every wee
 demo: https://svelteception.vercel.app
 source: https://github.com/elianiva/svelteception
 layout: project
+type: personal
 stack:
   - ['Routify', 'https://routify.dev']
   - ['Vercel', 'https://vercel.app']

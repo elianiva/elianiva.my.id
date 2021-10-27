@@ -16,6 +16,7 @@ export interface Metadata {
   stack: Array<Array<string>>;
   slug: string;
   draft: boolean;
+  type: string;
 }
 
 export const getResourcesAsync = async (
