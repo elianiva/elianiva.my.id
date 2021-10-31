@@ -37,20 +37,20 @@
 .section__button {
   display: inline-block;
   margin-top: 2rem;
-  padding: 1rem 1.5rem 0.75rem;
-  color: var(--color-main-text);
-  background-color: var(--color-alt-bg);
+  padding: 0.5rem 1.25rem;
+  color: var(--color-alt-bg);
+  background-color: var(--color-main-accent);
   border-radius: 0.25rem;
   box-shadow: var(--card-shadow);
   text-decoration: none;
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   transition: transform ease-out 0.2s;
 }
 
 .section__button:hover {
   transform: translate3d(0, -0.25rem, 0);
-  color: var(--color-shine);
+  color: var(--color-alt-bg);
 }
 
 :global(.section__pattern) {
