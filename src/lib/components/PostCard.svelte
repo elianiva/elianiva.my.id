@@ -1,10 +1,11 @@
 <style>
 .card {
   overflow: hidden;
-  border: 0.0625rem var(--color-borders) solid;
   text-align: left;
   background-color: var(--color-alt-bg);
   z-index: 2;
+  border-radius: 0.25rem;
+  box-shadow: var(--card-shadow);
 }
 
 .card__details {
@@ -26,7 +27,6 @@
 }
 
 .card__desc {
-  border-top: 0.0625rem var(--color-borders) solid;
   font-family: var(--font-sans);
   line-height: 1.5em;
   color: var(--color-alt-text);

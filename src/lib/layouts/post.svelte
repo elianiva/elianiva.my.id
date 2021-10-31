@@ -197,7 +197,6 @@
 
 .post__content :global(code) {
   font-family: var(--font-monospace);
-  color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
   border: 0.0625rem var(--color-borders) solid;
   border-radius: 0.25rem;
@@ -214,7 +213,6 @@
   border-radius: 0;
   background: none;
   box-shadow: none;
-  color: var(--color-main-text);
 }
 
 .post__content :global(ul) {
@@ -226,11 +224,11 @@
   margin: 0;
 }
 
-.post__content :global(#table-of-content + ul) {
+.post__content :global(#table-of-contents + ul) {
   margin: 0 0 1.5rem;
 }
 
-.post__content :global(#table-of-content + ul li p) {
+.post__content :global(#table-of-contents + ul li p) {
   font-weight: 400;
   display: inline;
 }
@@ -345,17 +343,6 @@
 }
 </style>
 
-<svelte:head>
-  <link
-    rel="preload"
-    href="/prism-night-owl.css"
-    as="style"
-    on:load={function () {
-      this.rel = "stylesheet";
-    }}
-  />
-</svelte:head>
-
 <SEO {desc} {title} />
 
 <section class="post">
@@ -406,6 +393,8 @@ import { page } from "$app/stores";
 import SEO from "$lib/components/SEO.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import { theme } from "$lib/utils/theme";
+
+import "../../prism-night-owl.css";
 
 export let title = "";
 export let date = Date.now();

@@ -2,8 +2,9 @@
   --color-light-main-accent:  #3d5dd9;
   --color-light-main-bg:      #f7fafc;
   --color-light-alt-bg:       #ffffff;
+  --color-light-alt-bg-rgb:   255, 255, 255;
   --color-light-special-bg:   #EDF2F7;
-  --color-light-main-text:    #2d3748;
+  --color-light-main-text:    #4A5568 ;
   --color-light-alt-text:     #696969;
   --color-light-borders:      #e4e4e4;
   --color-light-thin:         #a0aec0;
@@ -12,16 +13,22 @@
   --color-dark-main-accent:   #f23c4a;
   --color-dark-main-bg:       #1A202C;
   --color-dark-alt-bg:        #20263a;
+  --color-dark-alt-bg-rgb:    26, 32, 44;
   --color-dark-special-bg:    #2c3445;
   --color-dark-main-text:     #a0aec0;
   --color-dark-alt-text:      #8fa0bf;
   --color-dark-borders:       #3b465a;
   --color-dark-thin:          #6b7a99;
-  --color-dark-shine:         #f7fafc;
+  --color-dark-shine:         #EDF2F7;
 
   --font-heading: "Poppins", sans-serif;
   --font-sans: "Inter", sans-serif;
   --font-monospace: "JetBrains Mono", monospace;
+
+  --card-shadow:
+    0 0.1rem 0.25rem rgba(0, 0, 0, 0.05),
+    0 0.2rem 0.5rem rgba(0, 0, 0, 0.05),
+    0 0.4rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
 @media (prefers-color-scheme: light) {
@@ -29,6 +36,7 @@
     --color-main-accent: var(--color-light-main-accent);
     --color-main-bg:     var(--color-light-main-bg);
     --color-alt-bg:      var(--color-light-alt-bg);
+    --color-alt-bg-rgb:  var(--color-light-alt-bg-rgb);
     --color-special-bg:  var(--color-light-special-bg);
     --color-main-text:   var(--color-light-main-text);
     --color-alt-text:    var(--color-light-alt-text);
@@ -44,6 +52,7 @@
     --color-main-accent: var(--color-dark-main-accent);
     --color-main-bg:     var(--color-dark-main-bg);
     --color-alt-bg:      var(--color-dark-alt-bg);
+    --color-alt-bg-rgb:  var(--color-dark-alt-bg-rgb);
     --color-special-bg:  var(--color-dark-special-bg);
     --color-main-text:   var(--color-dark-main-text);
     --color-alt-text:    var(--color-dark-alt-text);
@@ -64,6 +73,7 @@
     --color-main-accent: var(--color-dark-main-accent);
     --color-main-bg:     var(--color-dark-main-bg);
     --color-alt-bg:      var(--color-dark-alt-bg);
+    --color-alt-bg-rgb:  var(--color-dark-alt-bg-rgb);
     --color-special-bg:  var(--color-dark-special-bg);
     --color-main-text:   var(--color-dark-main-text);
     --color-alt-text:    var(--color-dark-alt-text);
@@ -92,6 +102,7 @@
     --color-main-accent: var(--color-light-main-accent);
     --color-main-bg:     var(--color-light-main-bg);
     --color-alt-bg:      var(--color-light-alt-bg);
+    --color-alt-bg-rgb:  var(--color-light-alt-bg-rgb);
     --color-special-bg:  var(--color-light-special-bg);
     --color-main-text:   var(--color-light-main-text);
     --color-alt-text:    var(--color-light-alt-text);

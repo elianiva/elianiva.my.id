@@ -5,15 +5,15 @@
   bottom: 2rem;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: var(--color-alt-bg);
-  border: 0.0625rem var(--color-borders) solid;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  background-color: var(--color-light-shine);
+  color: var(--color-light-alt-bg);
+  border-radius: 0.25rem;
+  box-shadow: var(--card-shadow);
   z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--color-main-text);
 }
 
 .button:hover {

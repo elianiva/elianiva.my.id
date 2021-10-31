@@ -8,25 +8,11 @@ footer {
   background-color: var(--color-main-bg);
   filter: opacity(0.5);
   transition: filter ease-out 0.2s;
+  border-top: 1px var(--color-borders) solid;
 }
 
 footer:hover {
   filter: opacity(1);
-}
-
-footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  height: 0.125rem;
-  left: 4rem;
-  right: 4rem;
-  background-image: linear-gradient(
-    to right,
-    #00000000,
-    var(--color-borders),
-    #00000000
-  );
 }
 
 p {

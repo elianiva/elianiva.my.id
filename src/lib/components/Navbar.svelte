@@ -2,26 +2,13 @@
 .navbar {
   position: fixed;
   height: 4rem;
-  background-color: var(--color-main-bg);
+  backdrop-filter: saturate(180%) blur(1.5rem);
+  background-color: rgba(var(--color-alt-bg-rgb), 0.7);
   z-index: 30;
   left: 0;
   right: 0;
   top: 0;
-}
-
-.navbar::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  height: 0.125rem;
-  left: 2rem;
-  right: 2rem;
-  background-image: linear-gradient(
-    to right,
-    #00000000,
-    var(--color-borders),
-    #00000000
-  );
+  border-bottom: 1px var(--color-borders) solid;
 }
 
 .navbar .active a {

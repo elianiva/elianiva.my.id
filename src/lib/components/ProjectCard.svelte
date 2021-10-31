@@ -1,9 +1,10 @@
 <style>
 .card {
   overflow: hidden;
-  border: 0.0625rem var(--color-borders) solid;
   text-align: left;
   background-color: var(--color-alt-bg);
+  box-shadow: var(--card-shadow);
+  border-radius: 0.25rem;
 }
 
 .card__img {
@@ -20,7 +21,6 @@
   padding: 1rem;
   display: grid;
   grid-template-rows: 2rem 4.5rem 1fr;
-  border-top: 0.0625rem var(--color-borders) solid;
 }
 
 .card__title {

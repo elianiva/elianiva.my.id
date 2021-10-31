@@ -254,17 +254,6 @@
 }
 </style>
 
-<svelte:head>
-  <link
-    rel="preload"
-    href="/prism-night-owl.css"
-    as="style"
-    on:load={function () {
-      this.rel = "stylesheet";
-    }}
-  />
-</svelte:head>
-
 <SEO {title} {desc} thumbnail={`${data.siteUrl}${currentSlug}/cover.webp`} />
 
 <section class="project">
@@ -334,6 +323,8 @@ import Chrome from "$lib/icons/Chrome.svelte";
 import Code from "$lib/icons/Code.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import data from "$lib/data/site";
+
+import "../../prism-night-owl.css";
 
 export let title;
 export let desc;

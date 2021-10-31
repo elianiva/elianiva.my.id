@@ -40,7 +40,8 @@
   padding: 1rem 1.5rem 0.75rem;
   color: var(--color-main-text);
   background-color: var(--color-alt-bg);
-  border: 0.0625rem var(--color-borders) solid;
+  border-radius: 0.25rem;
+  box-shadow: var(--card-shadow);
   text-decoration: none;
   font-family: var(--font-heading);
   font-size: 1.25rem;

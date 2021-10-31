@@ -1,33 +1,23 @@
 <style>
 .tag {
-  background-color: var(--color-special-bg);
+  background-color: var(--color-alt-bg);
+  box-shadow: var(--card-shadow);
   border-radius: 0.25rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-sans);
   font-size: 1.125rem;
-  display: inline-grid;
-  grid-template-columns: 1fr 2rem;
-  align-items: center;
-  justify-content: space-between;
+  display: inline;
+  padding: 0 0.25rem;
   color: var(--color-alt-text);
+  cursor: pointer;
 }
 
 .tag__name {
   padding: 0.5rem;
 }
-
-.tag__remove {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  border-radius: 0 0.25rem 0.25rem 0;
-  background-color: var(--color-borders);
-  cursor: pointer;
-}
 </style>
 
-<div class="tag">
-  <div class="tag__name"><b>#</b> {label}</div>
-  <div class="tag__remove" on:click={onClick}>&times;</div>
+<div class="tag" on:click={onClick}>
+  <div class="tag__name">#{label}</div>
 </div>
 
 <script lang="ts">

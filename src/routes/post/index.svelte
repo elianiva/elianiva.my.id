@@ -38,8 +38,9 @@
   padding: 0.75rem;
   font-size: 1.125rem;
   border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.075);
   background-color: var(--color-alt-bg);
-  border: 0.0625rem var(--color-borders) solid;
   outline: none;
   font-family: var(--font-sans);
   color: var(--color-main-text);
@@ -58,15 +59,15 @@
 
 .input__autocomplete {
   position: absolute;
-  top: calc(4rem - 1px); /* 1px = border thickness */
+  top: 4rem;
   left: 0;
   right: 0;
   z-index: 5;
   background-color: var(--color-alt-bg);
-  border: 0.0625rem var(--color-borders) solid;
+  border-radius: 0.25rem;
   color: var(--color-main-text);
   padding: 0.5rem;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.075);
 }
 
 .autocomplete__item {
