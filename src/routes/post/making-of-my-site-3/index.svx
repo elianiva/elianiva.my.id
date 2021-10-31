@@ -8,7 +8,7 @@ tags:
   - website
 ---
 
-# Table of Content
+# Table of Contents
 
 # Introduction
 Hi everyone. Welcome to the last part of the 3 part series. This time, I will talk about how I deploy my site to Github Pages. It's a simple yet a fun process. So, let's get into the first step shall we.

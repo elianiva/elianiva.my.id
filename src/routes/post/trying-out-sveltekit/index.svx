@@ -22,7 +22,7 @@ tags:
 [nvim-tree-lua]: https://github.com/kyazdani42/nvim-tree.lua
 [underscore-pr-link]: https://github.com/sveltejs/kit/pull/1370
 
-# Table Of Content
+# Table Of Contents
 
 # Introduction
 As you may or may not know, I love Svelte. I think it's a really good Framework (technically a language but whatever) for building a single page application. Long story short, in October 2020 there's a Svelte Summit in which Rich Harris teased us about Svelte-Kit. It is a new way of building a website using Svelte, it's meant to replace Sapper.

@@ -11,7 +11,7 @@ tags:
   import Update from "$lib/components/Update.svelte"
 </script>
 
-# Table of Content
+# Table of Contents
 
 # Introduction
 Well, I've been wanting to make my own homepage or newtab page. I thought this kind of thing is only possible in firefox. You might have seen some cool custom firefox startpage like [this one](https://www.reddit.com/r/startpages/comments/hfuoqg/a_simple_startpage_i_have_been_working_on). Turns out, if you want a custom newtab page on chrome, you have to make an extension for that. Fortunately, it is super simple.

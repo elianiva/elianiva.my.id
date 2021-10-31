@@ -8,7 +8,7 @@ tags:
   - window manager
 ---
 
-# Table of Content
+# Table of Contents
 
 # Introduction
 I've been using Window Manager for the past 8 months, more or less. Starting from i3, I then moved to i3-gaps, then came across BSPWM. During that period, I switched back and forth between i3-gaps and BSPWM and sometimes tried other WM like Openbox, DWM, AwesomeWM, Xmonad. They're all work great, but not quite to my taste.

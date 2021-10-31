@@ -22,7 +22,7 @@ tags:
   import Update from "$lib/components/Update.svelte"
 </script>
 
-# Table Of Content
+# Table Of Contents
 
 # Introduction
 

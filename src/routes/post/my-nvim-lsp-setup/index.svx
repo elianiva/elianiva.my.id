@@ -32,7 +32,7 @@ tags:
   import Update from "$lib/components/Update.svelte"
 </script>
 
-# Table of Content
+# Table of Contents
 
 # What is LSP and Why?
 

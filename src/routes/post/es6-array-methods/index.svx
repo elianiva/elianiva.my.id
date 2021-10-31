@@ -7,7 +7,7 @@ tags:
   - javascript
 ---
 
-# Table of Content
+# Table of Contents
 
 # Introduction
 ECMAScript 6 introduces some new array methods that is useful to loop through an array items. In this post, I'll try to explain how I understand some ES6 high order array methods like `map()`, `filter()`, `reduce()`, `forEach()`, etc. Hopefully you will understand more about these methods after reading this post. Let's get started.

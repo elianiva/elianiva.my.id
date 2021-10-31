@@ -7,7 +7,7 @@ tags:
   - other
 ---
 
-# Table of Content
+# Table of Contents
 
 # Introduction
 So, I have a pretty bad laptop with Intel Celeron N4000 processor which runs super slow. Of course I can't stand that, so I decided to change my laptop to a something better and that is none other than Thinkpad.

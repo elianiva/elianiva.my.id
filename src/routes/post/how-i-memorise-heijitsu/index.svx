@@ -7,7 +7,7 @@ tags:
   - japanese
 ---
 
-# Table of Content
+# Table of Contents
 
 # Introduction
 This will be a short post. I just want to share how I memorise Japanese weekdays (平日) or heijitsu. I am no expert at japanese just to clarify. Maybe someone will find this useful so might as well share my way of memorising it.

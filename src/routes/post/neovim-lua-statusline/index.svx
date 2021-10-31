@@ -27,7 +27,7 @@ tags:
 [spec-file]: https://github.com/elianiva/icy.nvim/blob/d946e6d783c1903e92cfe46a7a955732ee6d9988/lua/lush_theme/icy.lua
 [new-line]: https://github.com/elianiva/dotfiles/blob/950ba38bda8230da8071fc72cf3d8617d6288565/config/nvim/lua/modules/statusline.lua
 
-# Table of Content
+# Table of Contents
 
 # Introduction
 Hello there! So, I've been playing around with the latest Neovim feature and
