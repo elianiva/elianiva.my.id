@@ -6,9 +6,11 @@ export const getHandler = (getItemsAsync: () => Promise<Metadata[]>) => {
 
     const limit = parseInt(q.get("limit"));
     const title = q.get("title");
+    const type = q.get("type");
 
-    if (limit) items = items.slice(0, limit);
+    if (type) items = items.filter(item => item.type === type);
     if (title) items = items.filter(item => item.title === title);
+    if (limit) items = items.slice(0, limit);
 
     if (items) {
       return {

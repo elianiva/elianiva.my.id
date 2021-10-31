@@ -13,14 +13,14 @@
   <Header />
   <Section
     title="Recent Posts"
-    data={posts.slice(0, 3)}
+    data={posts}
     btnText="More Posts"
     url="/post"
     type="posts"
   />
   <Section
     title="Recent Projects"
-    data={projects.slice(0, 3)}
+    data={projects}
     btnText="More Projects"
     url="/project"
     type="projects"
@@ -32,7 +32,9 @@
 export const prerender = true;
 export async function load({ fetch }) {
   const posts = await (await fetch(`/api/post.json?limit=3`)).json();
-  const projects = await (await fetch(`/api/project.json?limit=3`)).json();
+  const projects = await (
+    await fetch(`/api/project.json?limit=3&type=personal`)
+  ).json();
 
   return { props: { posts, projects } };
 }
