@@ -5,7 +5,7 @@
   bottom: 2rem;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: var(--color-light-shine);
+  background-color: var(--color-main-accent);
   color: var(--color-light-alt-bg);
   border-radius: 0.25rem;
   box-shadow: var(--card-shadow);

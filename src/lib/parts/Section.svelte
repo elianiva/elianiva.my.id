@@ -38,13 +38,14 @@
   display: inline-block;
   margin-top: 2rem;
   padding: 0.5rem 1.25rem;
-  color: var(--color-alt-bg);
+  color: var(--color-light-alt-bg);
   background-color: var(--color-main-accent);
   border-radius: 0.25rem;
   box-shadow: var(--card-shadow);
   text-decoration: none;
   font-family: var(--font-heading);
   font-size: 1.125rem;
+  letter-spacing: 0.02em;
   transition: transform ease-out 0.2s;
 }
 
