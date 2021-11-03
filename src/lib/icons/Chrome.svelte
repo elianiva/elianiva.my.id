@@ -8,19 +8,12 @@
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class={"feather feather-chrome" + className}
-  ><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="4" /><line
-    x1="21.17"
-    y1="8"
-    x2="12"
-    y2="8"
-  /><line x1="3.95" y1="6.06" x2="8.54" y2="14" /><line
-    x1="10.88"
-    y1="21.94"
-    x2="15.46"
-    y2="14"
-  /></svg
+  class="feather feather-globe {className}"
 >
+  <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path
+    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+  />
+</svg>
 
 <script lang="ts">
 export let className: string;

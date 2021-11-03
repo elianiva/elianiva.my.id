@@ -276,14 +276,14 @@
             class="project__demo"
             href={demo}
             target="_blank"
-            rel="norel noreferrer"><Chrome className="project__icon" />Demo</a
+            rel="norel noreferrer"><Chrome className="project__icon" />Visit</a
           >
         {/if}
         <a
           class="project__source"
           href={source}
           target="_blank"
-          rel="norel noreferrer"><Code className="card__icon" />Source</a
+          rel="norel noreferrer"><Github className="project__icon" />Source</a
         >
       </div>
     </div>
@@ -320,7 +320,7 @@
 import { page } from "$app/stores";
 import SEO from "$lib/components/SEO.svelte";
 import Chrome from "$lib/icons/Chrome.svelte";
-import Code from "$lib/icons/Code.svelte";
+import Github from "$lib/icons/Github.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import data from "$lib/data/site";
 

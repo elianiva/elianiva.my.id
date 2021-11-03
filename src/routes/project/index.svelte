@@ -42,6 +42,10 @@
   gap: 1.25rem;
   margin-bottom: 1rem;
 }
+
+#school-projects {
+  margin-top: 2rem;
+}
 </style>
 
 <SEO title="Projects" />
@@ -66,7 +70,9 @@
       />
     {/each}
   </div>
-  <h1 class="projects__title">School Projects</h1>
+  <a href="/project#school-projects">
+    <h1 id="school-projects" class="projects__title">School Projects</h1>
+  </a>
   <p class="projects__desc">
     These are some projects that I do for school assignments, not exactly proud
     of them since I don't like to make these kind of thing. Guess I'd put them

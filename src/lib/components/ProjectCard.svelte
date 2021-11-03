@@ -45,7 +45,8 @@
 
 .card__links {
   display: flex;
-  gap: 0.75rem;
+  justify-content: flex-end;
+  gap: 0.25rem;
   margin-top: 0.5rem;
 }
 
@@ -63,22 +64,20 @@
 
 .card__demo:hover,
 .card__source:hover {
-  filter: var(--filter-brightness);
+  color: var(--color-shine);
 }
 
 .card__demo {
-  background-color: var(--color-main-accent);
-  color: #f4f4f4;
+  color: var(--color-alt-text);
 }
 
 .card__source {
-  background-color: var(--color-special-bg);
   color: var(--color-alt-text);
 }
 
 :global(.card__icon) {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 .card :global(.wrapper) {
@@ -103,14 +102,14 @@
           class="card__demo"
           href={demo ? demo : "#"}
           target="_blank"
-          rel="norel noreferrer"><Chrome className="card__icon" />Demo</a
+          rel="norel noreferrer"><Chrome className="card__icon" />Visit</a
         >
       {/if}
       <a
         class="card__source"
         href={source}
         target="_blank"
-        rel="norel noreferrer"><Code className="card__icon" />Source</a
+        rel="norel noreferrer"><Github className="card__icon" />Source</a
       >
     </div>
   </div>
@@ -118,7 +117,7 @@
 
 <script lang="ts">
 import { fade } from "svelte/transition";
-import Code from "$lib/icons/Code.svelte";
+import Github from "$lib/icons/Github.svelte";
 import Chrome from "$lib/icons/Chrome.svelte";
 
 export let title: string;
