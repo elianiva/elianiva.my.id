@@ -244,7 +244,6 @@
 
 .post__content :global(li p:first-child) {
   display: inline-block;
-  font-family: var(--font-heading);
   color: var(--color-shine);
 }
 

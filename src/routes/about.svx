@@ -15,12 +15,19 @@ import Progress from "$lib/components/Progress.svelte";
 <SEO title="About" />
 
 # About Me
-Hi there! I'm Elianiva. I love to build websites (or any software-related things at this point :) and contribute to open source projects as many as I can to make other people happy!
+Hi there! I'm Elianiva. I love to build websites (or any software-related
+things at this point :) and contribute to open source projects as many as I can
+to make other people happy!
 
-I was born and raised in Indonesia up until now, though I'd love to try to live abroad. I've been always interested in technology ever since I could remember. I started programming around 2018. My first language was actually Java, but then I got frustrated and went with Web Developer route, which is what I'm mainly doing until now.
+I was born and raised in Indonesia up until now, though I'd love to try to live
+abroad. I've been always interested in technology ever since I could remember.
+I started programming around 2018. My first language was actually Java, but
+then I got frustrated and went with Web Developer route, which is what I'm
+mainly doing until now.
 
 ## Programming / Markup Languages
-I actually know more than these, but they're irrelevant as I don't use them that often compared to these ones.
+I actually know more than these, but they're irrelevant as I don't use them
+that often compared to these ones.
 
 - **HTML/CSS/Markdown**
 
@@ -72,7 +79,8 @@ I actually know more than these, but they're irrelevant as I don't use them that
 
   Rust an interesting language IMO. I did several simple experiments with Rust
   like [nyaa.si scraper]({data.siteUrl}/project/nyaa-si-scraper) just for fun.
-  I really want to spend more time with it, but I don't have many use case for it (yet) and its compile time is just frustrating on my current laptop.
+  I really want to spend more time with it, but I don't have many use case for
+  it (yet) and its compile time is just frustrating on my current laptop.
 
 
 - **Go**
@@ -85,20 +93,43 @@ I actually know more than these, but they're irrelevant as I don't use them that
 
 # Social
 
-If you want to reach me then feel free to hit me up on [Twitter](https://twitter.com/@elianiva_) or Discord @elianiva#7886. I barely checked Twitter, only use it for Vtuber or art related stuff. A better option is my Discord since I'm quite active on that platform. You can also [email me](mailto:dicha.arkana03@gmail.com) if you prefer doing that instead.
+If you want to reach me then feel free to hit me up on
+[Twitter](https://twitter.com/@elianiva_) or Discord @elianiva#7886. I barely
+checked Twitter, only use it for Vtuber or art related stuff. A better option
+is my Discord since I'm quite active on that platform. You can also [email
+me](mailto:dicha.arkana03@gmail.com) if you prefer doing that instead.
 
 
 # Why I Made This Website
 
-Originally, I made this website as a place to keep my "notes", but I thought that wouldn't be useful unless I share it with other people. I also think it's cool to have your own website where you can do *whatever* you want with it. If you want to check *all* my personal works, either check on the [projects](/project) projects page or [my Github profile.](https://github.com/elianiva/)
+Originally, I made this website as a place to keep my "notes", but I thought
+that wouldn't be useful unless I share it with other people. I also think it's
+cool to have your own website where you can do *whatever* you want with it. If
+you want to check *all* my personal works, either check on the
+[project](/project) page or [my Github profile.](https://github.com/elianiva/)
 
-I use [Svete-Kit](https://kit.svelte.dev) and [MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on Vercel. If you want more detail about my website then you might want to read [this post]({data.siteUrl}/post/i-rebuild-my-site-using-sapper) or [this updated post]({data.siteUrl}/post/from-sapper-to-kit) where I explain the process of making (or rather, *rebuilding*) this site.
+I use [Svete-Kit](https://kit.svelte.dev) and
+[MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on
+Vercel. If you want more detail about my website then you might want to read
+[this post]({data.siteUrl}/post/i-rebuild-my-site-using-sapper) or [this
+updated post]({data.siteUrl}/post/from-sapper-to-kit) where I explain the
+process of making (or rather, *rebuilding*) this site.
 
 
 # My Setup
 
-My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System. [Archlinux](https://archlinux.org) to be more specific, with [Nix](https://nixos.org) as my package manager. I've used Linux since ~2019. I'd say I'm not a GUI-guy myself because I prefer spending my time inside the terminal (except browsing the web, of course)
+My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System.
+[Archlinux](https://archlinux.org) to be more specific, with
+[Nix](https://nixos.org) as my package manager. I've used Linux since ~2019.
+I'd say I'm not a GUI-guy myself because I prefer spending my time inside the
+terminal (except browsing the web, of course)
 
-I used to use a Window Manager called [AwesomeWM](https://awesomewm.org), such an *awesome* window manager, though I'm now using [KDE Plasma](https://kde.org/plasma-desktop/). I also use a text editor called [Neovim](https://neovim.io). I've been using it as my main text editor since late 2019. It was actually my first text editor that I feel comfortable with. Anyway, here's [my dotfiles](https://github.com/elianiva/dotfiles) if you want!
+I used to use a Window Manager called [AwesomeWM](https://awesomewm.org), such
+an *awesome* window manager, though I'm now using [KDE
+Plasma](https://kde.org/plasma-desktop/). I also use a text editor called
+[Neovim](https://neovim.io). I've been using it as my main text editor since
+late 2019. It was actually my first text editor that I feel comfortable with.
+Anyway, here's [my dotfiles](https://github.com/elianiva/dotfiles) if you want!
 
-Well, I guess that's about it. Thanks for visiting my website and I hope you found something useful from my site. Have a wonderful day! ツ
+Well, I guess that's about it. Thanks for visiting my website and I hope you
+found something useful from my site. Have a wonderful day! ツ
