@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 title: My opinion on Nix, The package Manager
 date: 2021-05-13
 desc: I really like Nix, it's great and all, but I don't think I'm going to use it, <em>yet</em>.
@@ -39,6 +39,12 @@ This post is going to be focused on my opinion about it so please take it with a
 I'm back to Arch, but I kept using Nix.
 
 Here's my [flake.nix](https://github.com/elianiva/dotfiles/blob/master/flake.nix) in case you want it ;)
+
+</Update>
+
+<Update date="2021-11-24">
+
+I stopped using Nix
 
 </Update>
 
