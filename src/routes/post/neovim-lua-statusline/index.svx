@@ -632,7 +632,7 @@ I've changed [my statusline][new-line] quite a bit so it won't look the same as 
 
 </Update>
 
-There are also some great statusline plugins written in lua if you want to get started quickly such as [tjdevries/express_line.nvim][express-line], [glepnir/galaxyline.nvim][galaxyline], [adelarsq/neoline.vim][neoline] and so on.
+There are also some great statusline plugins written in lua if you want to get started quickly such as [tjdevries/express_line.nvim][expressline], [glepnir/galaxyline.nvim][galaxyline], [adelarsq/neoline.vim][neoline] and so on.
 
 # Closing Note
 I really like how it turned out, Lua support on Neovim is probably the best update I've ever experienced. It makes me want to play around with Neovim's API even more. Kudos to all of Neovim contributors!
