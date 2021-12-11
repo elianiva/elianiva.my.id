@@ -3,7 +3,7 @@ title: Online Library
 date: 2021-10-27
 desc: An app to help librarian manage the library
 demo: false
-source: https://github.com/elianiva/menghadeh
+source: https://github.com/elianiva/perpus
 layout: project
 type: assignment
 stack:
