@@ -31,12 +31,14 @@
 <script context="module">
 export const prerender = true;
 export async function load({ fetch }) {
-  const posts = await (await fetch(`/api/post.json?limit=3`)).json();
-  const projects = await (
-    await fetch(`/api/project.json?limit=3&type=personal`)
-  ).json();
+  const [posts, projects] = await Promise.all([
+    fetch(`/api/post.json?limit=3`),
+    fetch(`/api/project.json?limit=3&type=personal`),
+  ]);
 
-  return { props: { posts, projects } };
+  return {
+    props: { posts: await posts.json(), projects: await projects.json() },
+  };
 }
 </script>
 
@@ -45,7 +47,8 @@ import SEO from "$lib/components/SEO.svelte";
 import Header from "$lib/parts/Header.svelte";
 import Section from "$lib/parts/Section.svelte";
 import Progress from "$lib/components/Progress.svelte";
+import type { ResourceMetadata } from "$lib/utils/fetch-data";
 
-export let posts: Array<any>;
-export let projects: Array<any>;
+export let posts: Array<ResourceMetadata>;
+export let projects: Array<ResourceMetadata>;
 </script>

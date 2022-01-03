@@ -5,7 +5,7 @@ import path from "path";
 const HAS_EXTENSION = /\.[^/.]+$/;
 const getPagePath = (kind: string) => path.resolve(`./src/routes/${kind}`);
 
-export interface Metadata {
+export interface ResourceMetadata {
   title: string;
   date: string;
   desc: string;
@@ -21,16 +21,16 @@ export interface Metadata {
 
 export const getResourcesAsync = async (
   kind: "post" | "project"
-): Promise<Metadata[]> => {
+): Promise<ResourceMetadata[]> => {
   if (!kind) throw new Error("KIND IS REQUIRED!");
   const file = await fs.readdir(getPagePath(kind));
 
-  const posts = await Promise.all(
+  const result = await Promise.all(
     file
       .filter(
         (file: string) => !HAS_EXTENSION.test(file) && `${file}/index.svx`
       )
-      .map(async (fileName: string): Promise<Metadata> => {
+      .map(async (fileName: string): Promise<ResourceMetadata> => {
         const postContent = await fs.readFile(
           `${getPagePath(kind)}/${fileName}/index.svx`,
           { encoding: "utf8" }
@@ -39,13 +39,13 @@ export const getResourcesAsync = async (
         const { data } = matter(postContent);
 
         return {
-          ...(data as Metadata),
+          ...(data as ResourceMetadata),
           slug: fileName.replace(HAS_EXTENSION, ""),
         };
       })
   );
 
-  return posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return result
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .filter(post => (kind === "post" ? !post.draft : true));
 };
