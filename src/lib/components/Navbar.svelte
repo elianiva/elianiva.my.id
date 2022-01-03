@@ -2,8 +2,7 @@
 .navbar {
   position: sticky;
   height: 4rem;
-  backdrop-filter: saturate(180%) blur(1.5rem);
-  background-color: rgba(var(--color-alt-bg-rgb), 0.7);
+  background-color: var(--color-alt-bg);
   z-index: 30;
   left: 0;
   right: 0;

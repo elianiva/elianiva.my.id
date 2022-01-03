@@ -2,7 +2,6 @@
   --color-light-main-accent:  #3d5dd9;
   --color-light-main-bg:      #f7fafc;
   --color-light-alt-bg:       #ffffff;
-  --color-light-alt-bg-rgb:   255, 255, 255;
   --color-light-special-bg:   #EDF2F7;
   --color-light-main-text:    #4A5568 ;
   --color-light-alt-text:     #696969;
@@ -13,7 +12,6 @@
   --color-dark-main-accent:   #f23c4a;
   --color-dark-main-bg:       #1A202C;
   --color-dark-alt-bg:        #20263a;
-  --color-dark-alt-bg-rgb:    26, 32, 44;
   --color-dark-special-bg:    #2c3445;
   --color-dark-main-text:     #a0aec0;
   --color-dark-alt-text:      #8fa0bf;
@@ -36,7 +34,6 @@
     --color-main-accent: var(--color-light-main-accent);
     --color-main-bg:     var(--color-light-main-bg);
     --color-alt-bg:      var(--color-light-alt-bg);
-    --color-alt-bg-rgb:  var(--color-light-alt-bg-rgb);
     --color-special-bg:  var(--color-light-special-bg);
     --color-main-text:   var(--color-light-main-text);
     --color-alt-text:    var(--color-light-alt-text);
@@ -52,7 +49,6 @@
     --color-main-accent: var(--color-dark-main-accent);
     --color-main-bg:     var(--color-dark-main-bg);
     --color-alt-bg:      var(--color-dark-alt-bg);
-    --color-alt-bg-rgb:  var(--color-dark-alt-bg-rgb);
     --color-special-bg:  var(--color-dark-special-bg);
     --color-main-text:   var(--color-dark-main-text);
     --color-alt-text:    var(--color-dark-alt-text);
@@ -73,7 +69,6 @@
     --color-main-accent: var(--color-dark-main-accent);
     --color-main-bg:     var(--color-dark-main-bg);
     --color-alt-bg:      var(--color-dark-alt-bg);
-    --color-alt-bg-rgb:  var(--color-dark-alt-bg-rgb);
     --color-special-bg:  var(--color-dark-special-bg);
     --color-main-text:   var(--color-dark-main-text);
     --color-alt-text:    var(--color-dark-alt-text);
@@ -102,7 +97,6 @@
     --color-main-accent: var(--color-light-main-accent);
     --color-main-bg:     var(--color-light-main-bg);
     --color-alt-bg:      var(--color-light-alt-bg);
-    --color-alt-bg-rgb:  var(--color-light-alt-bg-rgb);
     --color-special-bg:  var(--color-light-special-bg);
     --color-main-text:   var(--color-light-main-text);
     --color-alt-text:    var(--color-light-alt-text);
