@@ -87,10 +87,16 @@
 </style>
 
 <div class="card" in:fade={{ duration: 200 }}>
-  <img class="card__img" src={imgSrc} alt={title} loading="lazy" />
+  <img
+    class="card__img"
+    src={imgSrc}
+    alt={title}
+    loading="lazy"
+    data-testid="img"
+  />
   <div class="card__details">
-    <a rel="prefetch" {href} class="card__title">{title}</a>
-    <p class="card__desc">{desc}</p>
+    <a rel="prefetch" {href} class="card__title" data-testid="title">{title}</a>
+    <p class="card__desc" data-testid="desc">{desc}</p>
     <div class="card__links">
       {#if demo}
         <a
@@ -98,6 +104,7 @@
           href={demo ? demo : "#"}
           target="_blank"
           rel="norel noreferrer"
+          data-testid="demo"
         >
           <GlobeIcon /> Visit
         </a>
@@ -107,8 +114,9 @@
         href={source}
         target="_blank"
         rel="norel noreferrer"
+        data-testid="source"
       >
-       <GithubIcon /> Source
+        <GithubIcon /> Source
       </a>
     </div>
   </div>

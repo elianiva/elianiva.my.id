@@ -166,21 +166,37 @@
       <a href="/" aria-label="logo"><Logo className="logo__icon" /></a>
     </div>
     <ul class="navbar__items">
-      <li class="navbar__item"><a href="/">Home</a></li>
-      <li class="navbar__item" class:active={segment === "post"}>
+      <li class="navbar__item" data-testid="home"><a href="/">Home</a></li>
+      <li
+        class="navbar__item"
+        class:active={segment === "post"}
+        data-testid="posts"
+      >
         <a href="/post">Posts</a>
       </li>
-      <li class="navbar__item" class:active={segment === "project"}>
+      <li
+        class="navbar__item"
+        class:active={segment === "project"}
+        data-testid="projects"
+      >
         <a href="/project">Projects</a>
       </li>
-      <li class="navbar__item" class:active={segment === "about"}>
+      <li
+        class="navbar__item"
+        class:active={segment === "about"}
+        data-testid="about"
+      >
         <a href="/about">About</a>
       </li>
       <li class="navbar__item">
         <Moon />
       </li>
     </ul>
-    <div class="navbar__hamburger" transition:fade={{ duration: 200 }}>
+    <div
+      class="navbar__hamburger"
+      transition:fade={{ duration: 200 }}
+      data-testid="hamburger-navigation"
+    >
       <input
         class="navbar__checkbox"
         on:input|stopPropagation={toggleNav}
@@ -195,7 +211,11 @@
   </div>
 </nav>
 {#if isVisible}
-  <div class="navbar__mobile" transition:fly={{ duration: 200, y: -100 }}>
+  <div
+    class="navbar__mobile"
+    transition:fly={{ duration: 200, y: -100 }}
+    data-testid="mobile-nav"
+  >
     <ul class="navbar__mobile_items">
       <li class="navbar__mobile_item" on:click={toggleNav}>
         <a href="/">Home</a>
