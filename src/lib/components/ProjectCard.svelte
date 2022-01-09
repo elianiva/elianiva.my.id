@@ -75,11 +75,6 @@
   color: var(--color-alt-text);
 }
 
-:global(.card__icon) {
-  width: 1.25em;
-  height: 1.25em;
-}
-
 .card :global(.wrapper) {
   display: block;
 }
@@ -102,23 +97,27 @@
           class="card__demo"
           href={demo ? demo : "#"}
           target="_blank"
-          rel="norel noreferrer"><Chrome className="card__icon" />Visit</a
+          rel="norel noreferrer"
         >
+          <GlobeIcon /> Visit
+        </a>
       {/if}
       <a
         class="card__source"
         href={source}
         target="_blank"
-        rel="norel noreferrer"><Github className="card__icon" />Source</a
+        rel="norel noreferrer"
       >
+       <GithubIcon /> Source
+      </a>
     </div>
   </div>
 </div>
 
 <script lang="ts">
 import { fade } from "svelte/transition";
-import Github from "$lib/icons/Github.svelte";
-import Chrome from "$lib/icons/Chrome.svelte";
+import GlobeIcon from "~icons/ph/globe";
+import GithubIcon from "~icons/fe/github";
 
 export let title: string;
 export let imgSrc: string;

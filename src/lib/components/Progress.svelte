@@ -33,13 +33,13 @@
     on:click={scrollToTop}
     transition:fade={{ duration: 100 }}
   >
-    <Up width="24" height="24" className="button__icon" />
+    <UpIcon className="button__icon" />
   </div>
 {/if}
 
 <script lang="ts">
 import { fade } from "svelte/transition";
-import Up from "$lib/icons/Up.svelte";
+import UpIcon from "~icons/ph/caret-up-bold";
 
 let currentPosition: number;
 

@@ -9,6 +9,7 @@ type: personal
 stack:
   - ['Typescript', 'https://typescriptlang.org']
   - ['SharpJS', 'https://sharp.pixelplumbing.com/']
+  - ['SolidJS', 'https://www.solidjs.com/']
 ---
 
 Graphene is [carbon.now.sh](https://carbon.now.sh) alternative. It's using [Shiki](https://shiki.matsu.io) as its highlighter so the result is as colourful as vscode. It's actually the first time I've ever used a headless browser.

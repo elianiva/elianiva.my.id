@@ -48,19 +48,19 @@ a {
   <div class="icons">
     <!-- prettier-ignore -->
     <a href="mailto:{email}" target="_blank" rel="norel noreferrer" aria-label="email">
-      <Email height="24" width="24" />
+      <EnvelopeIcon height="24" width="24" />
     </a>
     <!-- prettier-ignore -->
     <a href="{github}" target="_blank" rel="norel noreferrer" aria-label="github">
-      <Github height="24" width="24" />
+      <GithubIcon height="24" width="24" />
     </a>
     <!-- prettier-ignore -->
     <a href={twitter} target="_blank" rel="norel noreferrer" aria-label="twitter" >
-      <Twitter height="24" width="24" />
+      <TwitterIcon height="24" width="24" />
     </a>
     <!-- prettier-ignore -->
     <a href="/rss.xml" rel="alternate" type="application/rss+xml" aria-label="rss">
-      <RSS height="24" width="24" />
+      <RSSIcon height="24" width="24" />
     </a>
   </div>
   <p>
@@ -76,10 +76,10 @@ a {
 
 <script>
 import data from "$lib/data/site";
-import Email from "$lib/icons/Email.svelte";
-import Github from "$lib/icons/Github.svelte";
-import Twitter from "$lib/icons/Twitter.svelte";
-import RSS from "$lib/icons/Rss.svelte";
+import EnvelopeIcon from "~icons/ph/envelope";
+import GithubIcon from "~icons/ph/github-logo";
+import TwitterIcon from "~icons/ph/twitter-logo";
+import RSSIcon from "~icons/ph/rss";
 
 const { github, twitter, email } = data;
 </script>

@@ -32,6 +32,7 @@
   gap: 1rem;
   align-items: center;
   margin-bottom: 1rem;
+  justify-content: space-between;
 }
 
 .project__title {
@@ -61,18 +62,17 @@
 .project__source:hover {
   filter: var(--filter-brightness);
 }
+
 .project__demo {
   background-color: var(--color-main-accent);
   color: #ffffff;
 }
+
 .project__source {
   background-color: var(--color-special-bg);
   color: var(--color-alt-text);
 }
-:global(.project__icon) {
-  width: 1rem;
-  height: 1rem;
-}
+
 .project__divider {
   border: none;
   height: 0.125rem;
@@ -276,15 +276,19 @@
             class="project__demo"
             href={demo}
             target="_blank"
-            rel="norel noreferrer"><Chrome className="project__icon" />Visit</a
+            rel="norel noreferrer"
           >
+            <GlobeIcon /> Visit
+          </a>
         {/if}
         <a
           class="project__source"
           href={source}
           target="_blank"
-          rel="norel noreferrer"><Github className="project__icon" />Source</a
-        >
+          rel="norel noreferrer"
+          >
+            <GithubIcon /> Source
+          </a>
       </div>
     </div>
     <hr class="project__divider" />
@@ -318,9 +322,9 @@
 
 <script>
 import { page } from "$app/stores";
+import GlobeIcon from "~icons/ph/globe";
+import GithubIcon from "~icons/fe/github";
 import SEO from "$lib/components/SEO.svelte";
-import Chrome from "$lib/icons/Chrome.svelte";
-import Github from "$lib/icons/Github.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import data from "$lib/data/site";
 

@@ -87,7 +87,7 @@
   <a rel="prefetch" {href} class="card__details">
     <span class="card__title">{title}</span>
     <div class="card__date">
-      <Calendar className="date__icon" />
+      <CalendarIcon className="date__icon" />
       <span class="date__label">
         {new Date(date).toLocaleDateString("en-GB", {
           day: "numeric",
@@ -107,7 +107,7 @@
 
 <script lang="ts">
 import { fade } from "svelte/transition";
-import Calendar from "$lib/icons/Calendar.svelte";
+import CalendarIcon from "~icons/ph/calendar-blank-bold";
 
 export let title: string;
 export let desc: string;
