@@ -358,7 +358,7 @@
     </span>
     <a
       class="post__edit"
-      href="https://github.com/elianiva/elianiva.my.id/blob/master/src/routes/post{currentSlug}/index.svx"
+      href="https://github.com/elianiva/elianiva.my.id/blob/master/src/routes{currentSlug}/index.svx"
       target="_blank"
       rel="norel noreferrer">Suggest An Edit</a
     >
