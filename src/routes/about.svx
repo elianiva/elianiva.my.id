@@ -1,7 +1,6 @@
 ---
-title: About
-layout: post
-minimal: true
+title: Bruh
+layout: about
 ---
 
 <script>
@@ -22,7 +21,7 @@ to make other people happy!
 I was born and raised in Indonesia up until now, though I'd love to try to live
 abroad. I've been always interested in technology ever since I could remember.
 I started programming around 2018. My first language was actually Java, but
-then I got frustrated and went with Web Developer route, which is what I'm
+then I got frustrated and went with the Web Developer route, which is what I'm
 mainly doing until now.
 
 ## Programming / Markup Languages
@@ -33,7 +32,7 @@ that often compared to these ones.
 
   It's basically a requirement for your average web developer. If you want to
   see my work, [Svelteception](https://svelteception.vercel.app) is probably
-  one of my proudest CSS work. I basically took random UI designs that I found
+  one of my proudest CSS works. I basically took random UI designs that I found
   on the internet (mostly from Dribbble) and implemented them. It was initially
   a challenge-sort-of-thing that I do with my friends, but they got busy and no
   longer have time for it. It's only meant for the look though.
@@ -60,7 +59,7 @@ that often compared to these ones.
 
   I've made several apps in the past. Either full-stack or just the front-end.
   My go-to framework/library for frontend is usually Svelte or React (with
-  NextJS) and my go-to framework/library for back-end is Fastify or Express,
+  NextJS), and my go-to framework/library for back-end is Fastify or Express,
   but again, I'm trying not to limit myself to a certain framework, I like
   learning new things!
 
@@ -68,19 +67,19 @@ that often compared to these ones.
 - **Lua**
 
   Lua is a language that I thought I would've never learned. I mainly use it
-  for my text editor, which is [Neovim](https://neovim.io) and my window
-  manager, [AwesomeWM](https://awesomewm.org/).  I think it's a nice, small and
-  a very simple language, it's meant to be easily embeddable, so it doesn't
+  for my text editor, which is [Neovim](https://neovim.io), and my window
+  manager, [AwesomeWM](https://awesomewm.org/).  I think it's a nice, small,
+  and very simple language, it's meant to be easily embeddable, so it doesn't
   have a big stdlib like Python. Also, LuaJIT is crazy fast for a scripting
   language.
 
 
 - **Rust**
 
-  Rust an interesting language IMO. I did several simple experiments with Rust
+  Rust is an interesting language IMO. I did several simple experiments with Rust
   like [nyaa.si scraper]({data.siteUrl}/project/nyaa-si-scraper) just for fun.
-  I really want to spend more time with it, but I don't have many use case for
-  it (yet) and its compile time is just frustrating on my current laptop.
+  I really want to spend more time with it, but I don't have that many use cases
+  for it (yet) and its compile-time is just frustrating on my current laptop.
 
 
 - **Go**
@@ -95,7 +94,7 @@ that often compared to these ones.
 
 If you want to reach me then feel free to hit me up on
 [Twitter](https://twitter.com/@elianiva_) or Discord @elianiva#7886. I barely
-checked Twitter, only use it for Vtuber or art related stuff. A better option
+checked Twitter, only use it for Vtuber or art-related stuff. A better option
 is my Discord since I'm quite active on that platform. You can also [email
 me](mailto:dicha.arkana03@gmail.com) if you prefer doing that instead.
 
@@ -121,7 +120,7 @@ process of making (or rather, *rebuilding*) this site.
 My laptop is Thinkpad X220. I use GNU/Linux as my main Operating System.
 [Archlinux](https://archlinux.org) to be more specific, with
 [Nix](https://nixos.org) as my package manager. I've used Linux since ~2019.
-I'd say I'm not a GUI-guy myself because I prefer spending my time inside the
+I'd say I'm not a GUI guy myself because I prefer spending my time inside the
 terminal (except browsing the web, of course)
 
 I used to use a Window Manager called [AwesomeWM](https://awesomewm.org), such
