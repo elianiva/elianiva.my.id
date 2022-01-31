@@ -12,6 +12,7 @@ stack:
   - ['Vercel', 'https://vercel.app']
 ---
 
+
 **Skaga** is a website that I made as an attempt to remake my [school's website](https://smk3jember.sch.id). This is my first website that I built using NextJS. It was a pleasant experience using NextJS for the first time. All goes well and nothing messed up.
 
 This website is also the first time I made a dropdown for the navbar and surprisingly it works the first time I made it. I'm quite proud of the design of this website. I personally think this is _way better_ than the old one.

@@ -1,7 +1,7 @@
 import type { ResourceMetadata } from "$lib/utils/fetch-data";
 
 export const getHandler = (getItemsAsync: () => Promise<ResourceMetadata[]>) => {
-  return async ({ query: q }) => {
+  return async ({ url: { searchParams: q }}) => {
     let items = await getItemsAsync();
 
     const limit = parseInt(q.get("limit"));

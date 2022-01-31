@@ -15,7 +15,6 @@
     "@iconify-json/fe": "^1.0.1",
     "@iconify-json/ph": "^1.0.4",
     "@rollup/plugin-alias": "^3.1.2",
-    "@sveltejs/adapter-static": "next",
     "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.34",
@@ -47,8 +46,8 @@
     "node": ">=14.17.4"
   },
   "dependencies": {
-    "@fontsource/inter": "^4.5.0",
     "@fontsource/jetbrains-mono": "^4.5.0",
+    "@fontsource/open-sans": "^4.5.3",
     "@fontsource/poppins": "^4.5.0",
     "gray-matter": "^4.0.3"
   }

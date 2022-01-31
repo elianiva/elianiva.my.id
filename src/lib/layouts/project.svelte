@@ -336,5 +336,5 @@ export let demo;
 export let source;
 export let stack;
 
-const currentSlug = $page.path;
+const currentSlug = $page.url.pathname;
 </script>

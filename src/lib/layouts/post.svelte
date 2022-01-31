@@ -401,7 +401,7 @@ export let desc = "";
 export let tags = [];
 export let minimal = false;
 
-const currentSlug = $page.path;
+const currentSlug = $page.url.pathname;
 
 let content;
 onMount(() => {
