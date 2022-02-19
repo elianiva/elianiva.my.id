@@ -51,7 +51,6 @@
 
 .section__button:hover {
   transform: translate3d(0, -0.25rem, 0);
-  color: var(--color-alt-bg);
 }
 
 :global(.section__pattern) {
