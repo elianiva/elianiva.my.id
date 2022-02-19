@@ -36,7 +36,7 @@
 }
 
 .project__title {
-  color: var(--color-main-text);
+  color: var(--color-shine);
   font-family: var(--font-heading);
   font-size: 1.5rem;
 }
@@ -65,7 +65,7 @@
 
 .project__demo {
   background-color: var(--color-main-accent);
-  color: #ffffff;
+  color: var(--color-shine);
 }
 
 .project__source {
@@ -156,20 +156,60 @@
 
 .project__content :global(p) {
   color: var(--color-main-text);
-  margin-bottom: 1rem;
+  line-height: 1.75em;
+  font-size: 1rem;
+  margin: 0 0 1.25rem;
 }
 
 .project__content :global(p a) {
   position: relative;
   display: inline-block;
-  color: var(--color-main-accent);
+  color: var(--color-shine);
   text-decoration: none;
-  margin: 0 0.125rem;
-  transition: all ease-out 0.2s;
+  z-index: 1;
 }
 
-.project__content :global(a:hover) {
-  text-decoration: underline;
+.project__content :global(p a::after) {
+  content: "";
+  position: absolute;
+  background-color: var(--color-main-accent);
+  bottom: 0.25rem;
+  left: 0;
+  right: 0;
+  transform: scale3d(0, 0, 0);
+  height: 2px;
+  z-index: -1;
+}
+
+.project__content :global(p a:hover::after) {
+  transform: scale3d(1, 1, 1);
+  transition: transform ease-out 0.2s;
+}
+
+.project__content :global(h2) {
+  line-height: 1.5em;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.project__content :global(h3) {
+  font-size: 1.125rem;
+  line-height: 2em;
+  padding-left: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.project__content :global(h2),
+.project__content :global(h3) {
+  position: relative;
+  font-family: var(--font-heading);
+  margin: 2.5rem 0 0.5rem;
+}
+
+.project__content :global(h2 a),
+.project__content :global(h3 a) {
+  color: var(--color-shine);
+  text-decoration: none;
 }
 
 .project__content :global(img) {
@@ -183,16 +223,31 @@
 
 .project__content :global(code) {
   font-family: var(--font-monospace);
-  color: var(--color-main-accent);
   padding: 0.125rem 0.25rem;
+  border: 0.0625rem var(--color-borders) solid;
+  border-radius: 0.25rem;
   font-size: 1rem;
+  background-color: var(--color-alt-bg);
+}
+
+.project__content :global(pre code) {
+  font-family: var(--font-monospace);
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
 }
 
 .project__content :global(pre) {
-  border-radius: 0.5rem;
-  margin: 0.5rem 0;
+  padding: 1rem;
   scrollbar-color: var(--color-thin) var(--color-special-bg);
-  border: 0.125rem var(--color-borders) solid;
+  border: 0.0625rem var(--color-borders) solid;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  background-color: var(--color-alt-bg);
 }
 
 .project__content :global(pre::-webkit-scrollbar-thumb) {
