@@ -65,7 +65,7 @@
 
 .project__demo {
   background-color: var(--color-main-accent);
-  color: var(--color-shine);
+  color: var(--color-light-alt-bg);
 }
 
 .project__source {
