@@ -51,8 +51,8 @@ import { theme } from "$lib/utils/theme";
 import "../global.css";
 
 // fonts
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/600.css";
+import "@fontsource/open-sans/400.css";
+import "@fontsource/open-sans/600.css";
 import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/400-italic.css";
 import "@fontsource/jetbrains-mono/400.css";
