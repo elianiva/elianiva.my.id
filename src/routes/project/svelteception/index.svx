@@ -8,7 +8,6 @@ layout: project
 type: personal
 stack:
   - ['Routify', 'https://routify.dev']
-  - ['Vercel', 'https://vercel.app']
 ---
 
 **Svelteception** is a website that I made to put all of website that I made for a challenge that I did every week with my friends. [NikarashiHatsu](https://github.com/nikarashihatsu/) and [LynSotera](https://github.com/lynsotera/). It's basically converting UI designs that we found on the internet. Initially, we want to make 3 website each week. But man, we're so busy that we only have time to make one :p

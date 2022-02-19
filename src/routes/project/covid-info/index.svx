@@ -9,7 +9,6 @@ type: personal
 stack:
   - ['ReactJS', 'https://reactjs.org']
   - ['ChartJS', 'https://chartjs.org']
-  - ['Vercel', 'https://vercel.app']
 ---
 
 **Covid Info** is the first React app I made that uses a third party API as its data source. This app is also kinda buggy because when I made it, I don't really care about any other feature except the homepage that shows current covid data.

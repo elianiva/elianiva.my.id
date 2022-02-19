@@ -10,7 +10,6 @@ stack:
   - ['ReactJS', 'https://reactjs.org']
   - ['Redux', 'https://redux.js.org']
   - ['TailwindCSS', 'https://tailwindcss.com']
-  - ['Vercel', 'https://vercel.app']
 ---
 
 **Kana Board** is a simple app that I made with React + Redux. The reason why I made this is to help me memorize Japanese vocabulary. Another reason is that I am learning Redux and todolist app is hella boring to make. I won't use it either since I never arrange my activities :p I just do something whenever I feel like it.

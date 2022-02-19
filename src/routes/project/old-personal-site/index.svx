@@ -8,7 +8,6 @@ layout: project
 type: personal
 stack:
   - ['Gatsby', 'https://gatsbyjs.org']
-  - ['Vercel', 'https://vercel.app']
 ---
 
 My previous website was made with GatsbyJS. It went through 2 iterations but the one that you're seeing now is the second iteration. The first one is way too ugly to a point where it's not worth to even show it :p

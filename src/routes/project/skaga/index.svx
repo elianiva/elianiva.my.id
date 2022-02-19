@@ -9,7 +9,6 @@ type: personal
 stack:
   - ['NextJS', 'https://nextjs.org']
   - ['TailwindCSS', 'https://tailwindcss.com']
-  - ['Vercel', 'https://vercel.app']
 ---
 
 

@@ -11,7 +11,6 @@ stack:
   - ['Apexcharts', 'https://apexcharts.com']
   - ['Leaflet', 'https://leafletjs.com']
   - ['TwindCSS', 'https://twind.dev']
-  - ['Vercel', 'https://vercel.app']
 ---
 
 **Covid Info v2** is a remake of my previous version which you can check [over here](https://elianiva.my.id/project/covid-info).
