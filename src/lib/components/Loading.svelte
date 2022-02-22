@@ -1,13 +1,9 @@
 <style>
 .loading {
-  position: fixed;
-  top: 4rem;
-  left: 0;
-  height: 0.25rem;
+  @apply fixed left-0 w-0 h-1 z-50;
   background-color: var(--color-main-accent);
   z-index: 50;
   transition: width ease-out 0.5s;
-  width: 0;
 }
 </style>
 

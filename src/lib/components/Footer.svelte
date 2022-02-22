@@ -1,20 +1,4 @@
 <style>
-footer {
-  position: relative;
-  margin-top: 3rem;
-  font-family: var(--font-heading);
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: var(--color-main-bg);
-  filter: opacity(0.5);
-  transition: filter ease-out 0.2s;
-  border-top: 1px var(--color-borders) solid;
-}
-
-footer:hover {
-  filter: opacity(1);
-}
-
 p {
   line-height: 1.5em;
   color: var(--color-main-text);
@@ -44,7 +28,9 @@ a {
 }
 </style>
 
-<footer>
+<footer
+  class="relative mt-12 text-center py-2 px-1 bg-gray-100 dark:bg-gray-900 border-t border-gray-300 dark:border-gray-800 transition-[filter_ease-out_0.2s] font-heading"
+>
   <div class="icons">
     <!-- prettier-ignore -->
     <a href="mailto:{email}" target="_blank" rel="norel noreferrer" aria-label="email">
@@ -71,7 +57,10 @@ a {
     • Source code is available on
     <a class="hl" href="{github}/elianiva.my.id">Github</a>
   </p>
-  <p>Copyright &copy; {new Date().getFullYear()} <a class="hl" href={github}>Elianiva</a></p>
+  <p>
+    Copyright &copy; {new Date().getFullYear()}
+    <a class="hl" href={github}>Elianiva</a>
+  </p>
 </footer>
 
 <script>

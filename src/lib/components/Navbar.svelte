@@ -1,76 +1,11 @@
 <style>
-.navbar {
-  position: sticky;
-  height: 4rem;
-  background-color: var(--color-alt-bg);
-  z-index: 30;
-  left: 0;
-  right: 0;
-  top: 0;
-  border-bottom: 1px var(--color-borders) solid;
-}
-
-.navbar .active a {
-  color: var(--color-shine);
-}
-
-.navbar__container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.navbar__title {
-  flex: 1;
-}
-
-.navbar__title a {
-  font-weight: 400;
-  text-decoration: none;
-  color: var(--color-shine);
-  transition: color ease-out 0.1s;
-}
-
-.navbar__title a:hover {
-  color: var(--color-main-accent);
-}
-
-.navbar__items {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-items: center;
-}
-
 .navbar__item {
-  padding-top: 0.25rem;
-}
-
-.navbar__item a {
-  font-family: var(--font-sans);
-  font-size: 1.125rem;
-  line-height: 1.5em;
-  position: relative;
-  color: var(--color-alt-text);
-  text-decoration: none;
-  transition: color ease-out 0.05s;
-}
-
-.navbar__item a:hover {
-  color: var(--color-shine);
+  @apply pt-1;
 }
 
 .navbar__item a::after {
   content: "";
-  position: absolute;
-  bottom: -0.25rem;
-  left: 0;
-  right: 0;
-  height: 0.125rem;
+  @apply absolute -bottom-1 left-0 right-0 h-[0.125rem];
   background-color: var(--color-main-accent);
   transform: scale3d(0, 0, 0);
   transition: transform ease-out 0.2s;
@@ -81,12 +16,11 @@
 }
 
 .navbar__hamburger {
-  display: none;
-  cursor: pointer;
+  @apply hidden cursor-pointer;
 }
 
 .navbar__checkbox {
-  opacity: 0;
+  @apply opacity-0;
 }
 
 @media only screen and (max-width: 480px) {
@@ -160,34 +94,26 @@
 }
 </style>
 
-<nav class="navbar">
-  <div class="navbar__container">
-    <div class="navbar__title">
-      <a href="/" aria-label="logo"><Logo className="logo__icon" /></a>
-    </div>
-    <ul class="navbar__items">
-      <li class="navbar__item" data-testid="home"><a href="/">Home</a></li>
-      <li
-        class="navbar__item"
-        class:active={segment === "post"}
-        data-testid="posts"
-      >
-        <a href="/post">Posts</a>
-      </li>
-      <li
-        class="navbar__item"
-        class:active={segment === "project"}
-        data-testid="projects"
-      >
-        <a href="/project">Projects</a>
-      </li>
-      <li
-        class="navbar__item"
-        class:active={segment === "about"}
-        data-testid="about"
-      >
-        <a href="/about">About</a>
-      </li>
+<nav
+  class="fixed w-[6rem] h-full top-0 left-0 bg-gray-100 dark:bg-gray-900 z-30 border-r border-gray-300 dark:border-gray-800 py-8"
+>
+  <div
+    class="h-full flex flex-col items-center justify-center max-w-screen-lg mx-auto px-4"
+  >
+    <ul class="list-none flex flex-col gap-8 items-center justify-center">
+      {#each routes as r}
+        <li class="navbar__item" data-testid="home">
+          <a
+            class="relative hover:text-slate-700 hover:dark:text-slate-300 text-lg leading-relaxed no-underline font-sans transition-[color_0.1s_ease-out] {r.path ===
+            segment
+              ? 'text-slate-700 dark:text-slate-300'
+              : 'text-slate-400 dark:text-slate-600'}"
+            href={r.path}
+          >
+            <svelte:component this={r.icon} width="2rem" height="2rem" />
+          </a>
+        </li>
+      {/each}
       <li class="navbar__item">
         <Moon />
       </li>
@@ -239,7 +165,10 @@
 <script lang="ts">
 import { fly, fade } from "svelte/transition";
 import Moon from "$lib/components/Moon.svelte";
-import Logo from "$lib/icons/Logo.svelte";
+import HomeIcon from "~icons/ph/house-fill";
+import PostIcon from "~icons/ph/newspaper-fill";
+import AboutIcon from "~icons/ph/user-circle-fill";
+import ProjectIcon from "~icons/ph/browser-fill";
 
 export let segment: string;
 
@@ -254,4 +183,11 @@ const toggleNav = () => {
   if (checked) document.body.style.overflow = "hidden";
   else document.body.style.overflow = "auto";
 };
+
+const routes = [
+  { path: "/", icon: HomeIcon },
+  { path: "/post", icon: PostIcon },
+  { path: "/project", icon: ProjectIcon },
+  { path: "/about", icon: AboutIcon },
+];
 </script>

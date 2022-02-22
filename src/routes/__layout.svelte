@@ -3,6 +3,7 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin-left: 6rem;
 }
 
 div {
@@ -26,7 +27,13 @@ div {
     let preference = theme || (isDarkMode ? "dark" : "light");
 
     // prettier-ignore
-    if (preference) document.documentElement.setAttribute("data-theme", preference)
+    if (preference === "dark") {
+      document.documentElement.classList.add("dark")
+      document.documentElement.classList.remove("light")
+    } else if (preference === "light") {
+      document.documentElement.classList.add("light")
+      document.documentElement.classList.remove("dark")
+    }
   } catch (err) {
     console.error(err);
   }
@@ -47,7 +54,8 @@ import { onMount } from "svelte";
 import Navbar from "$lib/components/Navbar.svelte";
 import Footer from "$lib/components/Footer.svelte";
 import Loading from "$lib/components/Loading.svelte";
-import { theme } from "$lib/utils/theme";
+import { toggleTheme } from "$lib/utils/theme";
+import { theme, Theme } from "$lib/store/theme";
 import "../global.css";
 
 // fonts
@@ -64,19 +72,21 @@ onMount(() => {
   const { matches: isDarkTheme } = window.matchMedia(
     "(prefers-color-scheme: dark)"
   );
-
-  type Theme = "dark" | "light";
+  
   let preference: Theme;
 
   // prettier-ignore
-  if (localStorage.getItem("theme")) preference = localStorage.getItem("theme") as Theme
-  else preference = isDarkTheme ? "dark" : "light"
+  if (localStorage.getItem("theme")) { 
+    preference = localStorage.getItem("theme") as Theme
+  } else { 
+    preference = isDarkTheme ? Theme.DARK : Theme.LIGHT
+  }
 
   theme.set(preference);
 
-  theme.subscribe(current => {
+  theme.subscribe((current) => {
     localStorage.setItem("theme", current);
-    document.documentElement.setAttribute("data-theme", current);
+    toggleTheme(current);
   });
 });
 </script>
