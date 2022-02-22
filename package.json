@@ -7,6 +7,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "@unocss/preset-wind": "^0.26.0",
     "solid-app-router": "^0.3.0",
     "solid-js": "^1.3.5",
     "solid-meta": "^0.27.3",
@@ -14,6 +15,7 @@
     "solid-start-node": "next",
     "typescript": "^4.4.3",
     "undici": "^4.12.2",
+    "unocss": "^0.26.0",
     "vite": "^2.7.13",
     "vite-plugin-inspect": "^0.3.13"
   },

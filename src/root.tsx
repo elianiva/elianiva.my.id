@@ -1,6 +1,9 @@
 // @refresh reload
 import { Links, Meta, Routes, Scripts } from "solid-start/components";
 
+import "uno.css";
+import "@/global.css";
+
 export default function Root() {
   return (
     <html lang="en">

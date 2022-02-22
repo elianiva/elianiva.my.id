@@ -1,18 +1,7 @@
-import Counter from "@/components/Counter";
-import "./index.css";
-
 export default function Home() {
   return (
-    <main>
-      <h1>Hello world!</h1>
-      <Counter />
-      <p>
-        Visit{" "}
-        <a href="https://solidjs.com" target="_blank">
-          solidjs.com
-        </a>{" "}
-        to learn how to build Solid apps.
-      </p>
+    <main class="w-full h-full flex items-center justify-center">
+      <h1 class="color-slate-700 font-sans">Hello world!</h1>
     </main>
   );
 }
