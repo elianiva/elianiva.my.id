@@ -11,7 +11,6 @@ export default {
   preprocess: [mdsvex(mdsvexConfig), sveltePreprocess()],
   kit: {
     adapter: adapterVercel(),
-    target: "#svelte",
     vite: {
       plugins: [Icons({ compiler: "svelte" })],
       resolve: {
