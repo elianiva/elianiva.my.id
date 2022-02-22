@@ -1,25 +1,32 @@
-import { renderToStringAsync } from "solid-js/web";
-import { StartServer } from "solid-start/components";
+import { renderToStream } from "solid-js/web";
+import { createHandler, StartServer } from "solid-start/components";
+import { inlineServerModules } from "solid-start/server";
 
-export default async function handleRequest({
-  request,
-  manifest,
-  headers,
-  context = {}
-}: {
-  request: Request;
-  headers: Response["headers"];
-  manifest: Record<string, any>;
-  context?: Record<string, any>;
-}) {
-  let markup = await renderToStringAsync(() => (
-    <StartServer context={context} url={request.url} manifest={manifest} />
-  ));
+const renderPage = () => {
+  return async ({
+    request,
+    manifest,
+    headers,
+    context = {}
+  }: {
+    request: Request;
+    headers: Response["headers"];
+    manifest: Record<string, any>;
+    context?: Record<string, any>;
+  }) => {
+    const { readable, writable } = new TransformStream();
 
-  headers.set("Content-Type", "text/html");
+    renderToStream(() => (
+      <StartServer context={context} url={request.url} manifest={manifest} />
+    )).pipeTo(writable);
 
-  return new Response(markup, {
-    status: 200,
-    headers
-  });
-}
+    headers.set("Content-Type", "text/html");
+
+    return new Response(readable, {
+      status: 200,
+      headers
+    });
+  };
+};
+
+export default createHandler(inlineServerModules, renderPage);
