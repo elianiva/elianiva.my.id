@@ -1,56 +1,8 @@
 <style>
-.section {
-  position: relative;
-  margin-top: 4rem;
-  font-family: var(--font-sans);
-  color: var(--color-shine);
-  text-align: center;
-  z-index: 2;
-}
-
-.section__title {
-  font-family: var(--font-heading);
-  position: relative;
-  display: inline-block;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-
-.section__title::before {
-  content: "";
-  position: absolute;
-  bottom: -0.25rem;
-  height: 0.25rem;
-  left: 2rem;
-  right: 2rem;
-  border-radius: 0.25rem;
-  background-color: var(--color-main-accent);
-}
-
 .section__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 1.25rem;
-}
-
-.section__button {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.5rem 1.25rem;
-  color: var(--color-light-alt-bg);
-  background-color: var(--color-main-accent);
-  border-radius: 0.25rem;
-  box-shadow: var(--card-shadow);
-  text-decoration: none;
-  font-family: var(--font-heading);
-  font-size: 1.125rem;
-  letter-spacing: 0.02em;
-  transition: transform ease-out 0.2s;
-}
-
-.section__button:hover {
-  transform: translate3d(0, -0.25rem, 0);
 }
 
 :global(.section__pattern) {
@@ -69,9 +21,15 @@
 }
 </style>
 
-<section class="section">
+<section
+  class="relative mt-16 font-sans text-slate-800 dark:text-slate-200 text-center z-[2]"
+>
   <Pattern className="section__pattern" />
-  <h1 class="section__title">{title}</h1>
+  <h1
+    class="font-heading relative inline-block text-2xl font-semibold mb-8 before:content-[''] before:absolute before:-bottom-1 before:h-1 before:left-8 before:right-8 before:rounded-md before:bg-blue-600 before:dark:bg-red-500"
+  >
+    {title}
+  </h1>
   <div class="section__cards">
     {#if type === "posts"}
       {#each data as item}
@@ -96,7 +54,11 @@
       {/each}
     {/if}
   </div>
-  <a href={url} class="section__button">{btnText}</a>
+  <a
+    href={url}
+    class="inline-block mt-8 px-5 py-2 text-white bg-blue-600 dark:bg-red-500 rounded-md shadow-md no-underline font-heading text-lg tracking-wide transition-[transform_ease-out_0.2s] hover:-translate-y-1 transform-gpu"
+    >{btnText}</a
+  >
 </section>
 
 <script lang="ts">

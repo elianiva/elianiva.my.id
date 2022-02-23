@@ -1,18 +1,5 @@
-<style>
-@media only screen and (max-width: 960px) {
-  .header {
-    gap: 2rem;
-    grid-template-columns: 1fr;
-    grid-template-rows: 14rem 1fr;
-    text-align: center;
-    margin-top: 0;
-    gap: 1rem;
-  }
-}
-</style>
-
 <section
-  class="relative grid grid-cols-[20rem,1fr] gap-4 items-center justify-center text-slate-700 dark:text-slate-400 max-w-screen-lg mx-auto"
+  class="relative grid grid-cols-1 text-center justify-items-center md:text-left md:grid-cols-[20rem,1fr] grid-rows-[14rem,1fr] md:grid-rows-none gap-8 md:gap-4 items-center justify-center text-slate-700 dark:text-slate-400 max-w-screen-lg mx-auto"
 >
   <div class="header__left">
     <a href="https://github.com/elianiva">

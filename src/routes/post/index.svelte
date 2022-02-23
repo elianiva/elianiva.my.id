@@ -169,14 +169,14 @@ export async function load({ fetch }) {
 </script>
 
 <script lang="ts">
-import type { Metadata } from "$lib/utils/fetch-data";
+import type { ResourceMetadata } from "$lib/utils/fetch-data";
 import { fly } from "svelte/transition";
 import SEO from "$lib/components/SEO.svelte";
 import PostCard from "$lib/components/PostCard.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import Tag from "$lib/components/Tag.svelte";
 
-export let posts: Metadata[];
+export let posts: ResourceMetadata[];
 
 let inputBox = null;
 let keyword = "";

@@ -1,77 +1,34 @@
 <style>
-.about {
-  max-width: 1080px;
-  margin: 0 auto;
-  color: var(--color-main-text);
-  padding: 2rem 1rem 0;
-}
-
-.about__content {
-  max-width: 80ch;
-  margin: auto;
-}
-
-.about__content > :global(p + p) {
-  margin-top: 1.5rem;
-}
-
 .about__content :global(h1 *),
 .about__content :global(h2 *) {
-  text-decoration: none;
+  @apply no-underline;
   color: var(--color-shine);
 }
 
 .about__content :global(h1),
 .about__content :global(h2) {
-  position: relative;
-  font-family: var(--font-heading);
+  @apply relative font-heading;
 }
 
 .about__content :global(h1) {
-  font-size: 1.75rem;
-  margin: 0 0 1rem;
+  @apply text-3xl mb-4;
 }
 
 .about__content :global(h2) {
-  font-size: 1.5rem;
-  margin: 2.5rem 0 0.5rem;
+  @apply text-2xl mt-10 mb-2;
 }
 
 .about__content :global(h1:not(:first-child)) {
-  margin-top: 3rem;
+  @apply mt-12;
 }
 
 .about__content :global(h1::after) {
   content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 0.125rem;
-  background-image: linear-gradient(
-    to right,
-    var(--color-main-accent),
-    rgba(0, 0, 0, 0)
-  );
-}
-
-.about__content :global(p) {
-  font-family: var(--font-sans);
-  color: var(--color-main-text);
-  font-size: 1.125rem;
-  line-height: 2em;
+  @apply absolute left-0 right-0 bottom-0 h-[0.125rem] bg-fading-line;
 }
 
 .about__content :global(.about__paren) {
   color: var(--color-alt-text);
-}
-
-.about__content :global(ul) {
-  list-style-position: inside;
-}
-
-.about__content :global(li) {
-  padding: 1rem 0 0;
 }
 
 .about__content :global(li p:first-child) {
@@ -131,8 +88,10 @@
 }
 </style>
 
-<section class="about">
-  <section class="about__content">
+<section class="max-w-screen-lg mx-auto pt-8 px-4 pb-0 ">
+  <section
+    class="max-w-[80ch] mx-auto prose prose-slate dark:prose-invert prose-a:no-underline prose-headings:relative prose-headings:font-heading prose-headings:font-extrabold text-slate-600 dark:text-slate-400 prose-h1:after:absolute prose-h1:after:left-0 prose-h1:after:right-0 prose-h1:after:bottom-0 prose-h1:after:h-[0.125rem] prose-h1:after:bg-fading-line"
+  >
     <slot />
   </section>
 </section>

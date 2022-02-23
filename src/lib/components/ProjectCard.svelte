@@ -1,106 +1,31 @@
-<style>
-.card {
-  overflow: hidden;
-  text-align: left;
-  background-color: var(--color-alt-bg);
-  box-shadow: var(--card-shadow);
-  border-radius: 0.25rem;
-}
-
-.card__img {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 12rem;
-  object-fit: cover;
-  background-color: var(--color-borders);
-  z-index: 2;
-}
-
-.card__details {
-  padding: 1rem;
-  display: grid;
-  grid-template-rows: 2rem 4.5rem 1fr;
-}
-
-.card__title {
-  text-decoration: none;
-  color: var(--color-main-text);
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.5em;
-  transition: all ease-out 0.2s;
-}
-
-.card__title:hover {
-  color: var(--color-shine);
-}
-
-.card__desc {
-  font-family: var(--font-sans);
-  line-height: 1.5em;
-  color: var(--color-alt-text);
-}
-
-.card__links {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.25rem;
-  margin-top: 0.5rem;
-}
-
-.card__demo,
-.card__source {
-  font-family: var(--font-heading);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  transition: filter ease-out 0.2s;
-}
-
-.card__demo:hover,
-.card__source:hover {
-  color: var(--color-shine);
-}
-
-.card__demo {
-  color: var(--color-alt-text);
-}
-
-.card__source {
-  color: var(--color-alt-text);
-}
-
-.card :global(.wrapper) {
-  display: block;
-}
-
-@media only screen and (min-width: 480px) {
-  .card__details:hover {
-    color: var(--color-main-accent);
-  }
-}
-</style>
-
-<div class="card" in:fade={{ duration: 200 }}>
+<div
+  class="overflow-hidden text-left bg-white dark:bg-gray-800 shadow-md rounded-md"
+  in:fade={{ duration: 200 }}
+>
   <img
-    class="card__img"
+    class="relative block w-full h-48 object-cover bg-white dark:bg-gray-800 z-[2]"
     src={imgSrc}
     alt={title}
     loading="lazy"
     data-testid="img"
   />
-  <div class="card__details">
-    <a rel="prefetch" {href} class="card__title" data-testid="title">{title}</a>
-    <p class="card__desc" data-testid="desc">{desc}</p>
-    <div class="card__links">
+  <div class="grid grid-rows-[2rem,4.5rem,1fr] p-4">
+    <a
+      rel="prefetch"
+      {href}
+      class="no-underline text-slate-600 hover:text-slate-800 dark:text-slate-400 hover:dark:text-slate-200 text-lg font-heading font-semibold leading-normal transition-[all_ease-out_0.2s]"
+      data-testid="title">{title}</a
+    >
+    <p
+      class="font-sans leading-normal text-slate-600 dark:text-slate-400"
+      data-testid="desc"
+    >
+      {desc}
+    </p>
+    <div class="flex justify-end gap-1 mt-2">
       {#if demo}
         <a
-          class="card__demo"
+          class="font-heading no-underline flex items-center gap-2 py-1 px-2 transition-[filter_ease-out_0.2s] text-slate-600 dark:text-slate-400 hover:text-slate-800 hover:dark:text-slate-200"
           href={demo ? demo : "#"}
           target="_blank"
           rel="norel noreferrer"
@@ -110,7 +35,7 @@
         </a>
       {/if}
       <a
-        class="card__source"
+        class="font-heading no-underline flex items-center gap-2 py-1 px-2 transition-[filter_ease-out_0.2s] text-slate-600 dark:text-slate-400 hover:text-slate-800 hover:dark:text-slate-200"
         href={source}
         target="_blank"
         rel="norel noreferrer"

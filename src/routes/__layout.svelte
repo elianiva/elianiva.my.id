@@ -1,15 +1,4 @@
 <style>
-main {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin-left: 6rem;
-}
-
-div {
-  flex: 1;
-}
-
 :global(html) {
   scroll-padding-top: 5rem;
 }
@@ -40,13 +29,15 @@ div {
   </script>
 </svelte:head>
 
-<Navbar {segment} />
-<main>
-  <Loading />
-  <div>
-    <slot />
+<Loading />
+<main class="grid grid-cols-1 md:grid-cols-[6rem,1fr] h-full max-w-screen-2xl mx-auto">
+  <Navbar {segment} />
+  <div class="w-full flex flex-col">
+    <div class="flex-1 pt-10">
+      <slot />
+    </div>
+    <Footer />
   </div>
-  <Footer />
 </main>
 
 <script lang="ts">
@@ -63,6 +54,9 @@ import "@fontsource/open-sans/400.css";
 import "@fontsource/open-sans/600.css";
 import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/400-italic.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/800.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/400-italic.css";
 
@@ -72,7 +66,7 @@ onMount(() => {
   const { matches: isDarkTheme } = window.matchMedia(
     "(prefers-color-scheme: dark)"
   );
-  
+
   let preference: Theme;
 
   // prettier-ignore

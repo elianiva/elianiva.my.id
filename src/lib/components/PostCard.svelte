@@ -1,93 +1,22 @@
-<style>
-.card {
-  overflow: hidden;
-  text-align: left;
-  background-color: var(--color-alt-bg);
-  z-index: 2;
-  border-radius: 0.25rem;
-  box-shadow: var(--card-shadow);
-}
-
-.card__details {
-  color: var(--color-main-text);
-  text-decoration: none;
-  padding: 1rem;
-  display: grid;
-  grid-template-rows: 3.5rem 2rem 5.5rem 1fr;
-}
-
-.card__title {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.5em;
-  text-transform: capitalize;
-  color: var(--color-main-text);
-  transition: color ease-out 0.1s;
-}
-
-.card__desc {
-  font-family: var(--font-sans);
-  line-height: 1.5em;
-  color: var(--color-alt-text);
-  margin-top: 0.25rem;
-  padding-top: 0.5rem;
-}
-
-.card__date {
-  font-family: var(--font-heading);
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-  justify-self: start;
-  font-size: 0.8rem;
-  color: var(--color-alt-text);
-}
-
-.card__date :global(.date__icon) {
-  width: 1rem;
-  height: 1rem;
-  display: block;
-  margin-top: -0.25rem;
-}
-
-.card__tags {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.card__tag {
-  background-color: var(--color-special-bg);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  color: var(--color-main-text);
-  font-size: 0.8rem;
-  text-decoration: none;
-  gap: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  margin-top: 0.5rem;
-  border-radius: 0.25rem;
-  transition: filter ease-out 0.2s;
-  text-transform: capitalize;
-}
-
-.card__tag::before {
-  content: "# ";
-  font-weight: 600;
-}
-
-@media only screen and (min-width: 480px) {
-  .card__details:hover .card__title {
-    color: var(--color-shine);
-  }
-}
-</style>
-
-<div class="card" in:fade={{ duration: 200 }}>
-  <a rel="prefetch" {href} class="card__details">
-    <span class="card__title" data-testid="title">{title}</span>
-    <div class="card__date">
-      <CalendarIcon className="date__icon" />
+<div
+  class="overflow-hidden text-left bg-white dark:bg-gray-800 z-[2] rounded-md shadow-md"
+  in:fade={{ duration: 200 }}
+>
+  <a
+    rel="prefetch"
+    {href}
+    class="grid grid-rows-[3.5rem,2rem,5.5rem,1fr] text-slate-600 dark:text-slate-400 no-underline p-4"
+  >
+    <span
+      class="md:hover:text-slate-800 dark:md:hover:text-slate-200 font-heading text-xl font-semibold leading-normal capitalize text-slate-600 dark:text-slate-400 transition-[color] duration-100 ease-out"
+      data-testid="title"
+    >
+      {title}
+    </span>
+    <div
+      class="font-heading flex gap-2 items-center justify-self-start text-sm text-slate-400 dark:text-slate-500"
+    >
+      <CalendarIcon className="w-4 h-4 block -mt-1" />
       <span class="date__label" data-testid="date">
         {new Date(date).toLocaleDateString("en-GB", {
           day: "numeric",
@@ -96,10 +25,20 @@
         })}
       </span>
     </div>
-    <p class="card__desc" data-testid="desc">{@html desc}</p>
-    <div class="card__tags">
+    <p
+      class="font-sans leading-normal text-slate-600 dark:text-slate-400 mb-1 pt-2"
+      data-testid="desc"
+    >
+      {@html desc}
+    </p>
+    <div class="flex gap-2">
       {#each tags as tag}
-        <span class="card__tag" data-testid="tag">{tag}</span>
+        <span
+          class="font-heading font-medium bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 text-sm no-underline gap-2 py-1 px-2 mt-2 rounded-md capitalize transition-[filter] duration-200 ease-out"
+          data-testid="tag"
+        >
+          # {tag}
+        </span>
       {/each}
     </div>
   </a>
