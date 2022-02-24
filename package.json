@@ -22,7 +22,9 @@
     "@testing-library/svelte": "^3.0.3",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
+    "@unocss/preset-typography": "^0.26.2",
     "@unocss/preset-uno": "^0.26.2",
+    "@unocss/preset-wind": "^0.26.2",
     "@unocss/transformer-variant-group": "^0.26.2",
     "autoprefixer": "^10.4.2",
     "eslint": "^7.19.0",
@@ -56,6 +58,7 @@
     "@fontsource/jetbrains-mono": "^4.5.0",
     "@fontsource/open-sans": "^4.5.3",
     "@fontsource/poppins": "^4.5.0",
+    "@unocss/reset": "^0.26.2",
     "gray-matter": "^4.0.3"
   }
 }

@@ -1,13 +1,48 @@
-import { presetUno, transformerVariantGroup } from "unocss";
+import { transformerVariantGroup, presetTypography } from "unocss";
 import { defineConfig } from "unocss/vite";
+import { colors, presetWind } from "@unocss/preset-wind";
 
 export default defineConfig({
-  presets: [presetUno()],
+  presets: [
+    presetWind(),
+    presetTypography({
+      cssExtend: {
+        ":root": {},
+        a: {
+          "text-decoration": "none",
+        },
+        "h1 a": {
+          "font-weight": "bold",
+        },
+        "h1::after": {
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: "0.125rem",
+        },
+      },
+    }),
+  ],
   transformers: [transformerVariantGroup()],
   rules: [
     [
       /^content-\[(.*)\]$/,
       ([, content]) => ({ content: JSON.stringify(content) }),
+    ],
+    [
+      /prose-custom/,
+      () => ({
+        "--un-prose-body": colors.slate[600],
+        "--un-prose-invert-body": colors.slate[400],
+        "--un-prose-links": colors.slate[800],
+        "--un-prose-invert-links": colors.slate[200],
+        "--un-prose-bold": colors.slate[700],
+        "--un-prose-invert-bold": colors.slate[300],
+        "--un-prose-headings": colors.slate[700],
+        "--un-prose-invert-headings": colors.slate[300],
+      }),
+      { layer: "typography" },
     ],
   ],
   theme: {
@@ -38,13 +73,9 @@ export default defineConfig({
         -0.875rem 0 0 currentColor,            /* west */
         -0.625rem -0.625rem 0 currentColor;  /* north west */`,
     },
-    backgroundImage: (t) => ({
-      "red-fading-line": `linear-gradient(to right, ${t(
-        "colors.red.500"
-      )}, rgba(0, 0, 0, 0))`,
-      "blue-fading-line": `linear-gradient(to right, ${t(
-        "colors.blue.600"
-      )}, rgba(0, 0, 0, 0))`,
-    }),
+    backgroundImage: {
+      "red-fading-line": `linear-gradient(to right, ${colors.red[500]}, rgba(0, 0, 0, 0))`,
+      "blue-fading-line": `linear-gradient(to right, ${colors.blue[600]}, rgba(0, 0, 0, 0))`,
+    },
   },
 });

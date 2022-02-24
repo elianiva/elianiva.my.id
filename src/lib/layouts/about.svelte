@@ -1,8 +1,10 @@
 <section class="max-w-screen-lg mx-auto pt-8 px-4 pb-0 ">
-  <section
-    class="
-    max-w-[80ch] mx-auto
-    prose dark:prose-invert 
+  <section class="max-w-[80ch] mx-auto prose prose-custom dark:prose-invert">
+    <slot />
+  </section>
+</section>
+
+<!--later
     prose-a:no-underline 
     prose-headings:relative 
     prose-a:prose-headings:font-heading 
@@ -20,8 +22,4 @@
     prose-p:prose-a:after:right-0
     prose-p:prose-a:after:h-[2px]
     prose-p:prose-a:after:-z-[1]
-    "
-  >
-    <slot />
-  </section>
-</section>
+-->
