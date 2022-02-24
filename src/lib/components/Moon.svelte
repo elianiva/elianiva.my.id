@@ -5,7 +5,7 @@
 
 .circle::after {
   content: "";
-  @apply absolute w-[0.4rem] h-[0.4rem] rounded-full shadow-sun-rays transition-[all] duration-300 ease-in-out;
+  @apply absolute w-[0.4rem] h-[0.4rem] rounded-full shadow-sun-rays transition-[transform] duration-300 ease-in-out;
 }
 
 .inner-circle {
@@ -43,12 +43,12 @@
 </style>
 
 <div
-  class="relative w-8 h-8 border-none outline-none flex items-center justify-center cursor-pointer z-10"
+  class="relative w-8 h-8 border-none outline-none flex items-center justify-center cursor-pointer z-10 text-slate-400 dark:text-slate-600 hover:text-slate-700 dark:hover:text-slate-300"
   on:click={toggleDarkMode}
 >
   <div class="circle {$theme}" id="icon">
     <div
-      class="inner-circle bg-slate-400 dark:bg-slate-600 before:bg-gray-50 before:dark:bg-gray-900"
+      class="inner-circle bg-current before:bg-gray-50 before:dark:bg-gray-900"
     />
   </div>
 </div>

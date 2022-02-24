@@ -1,5 +1,5 @@
 <footer
-  class="relative mt-12 text-center py-10 px-1 bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-800 transition-[filter_ease-out_0.2s] font-heading"
+  class="relative mt-12 text-center py-10 px-1 bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-800 transition-[filter] ease-out duration-200 font-heading"
 >
   <div class="grid grid-cols-4 max-w-[220px] mx-auto mb-6">
     {#each social as { icon, url }}
