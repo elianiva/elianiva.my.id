@@ -4,6 +4,7 @@ import adapterVercel from "@sveltejs/adapter-vercel"
 import sveltePreprocess from "svelte-preprocess"
 import Icons from 'unplugin-icons/vite'
 import path from "path"
+import Unocss from "unocss/vite"
 
 /** @type {import('@sveltejs/kit').Config} */
 export default {
@@ -12,7 +13,7 @@ export default {
   kit: {
     adapter: adapterVercel(),
     vite: {
-      plugins: [Icons({ compiler: "svelte" })],
+      plugins: [Icons({ compiler: "svelte" }), Unocss()],
       resolve: {
         alias: [
           { find: "#/", replacement: path.join(import.meta.url, "./src") },

@@ -1,5 +1,5 @@
 <nav
-  class="sticky bottom-0 left-0 right-0 md:static md:w-full h-6rem bg-gray-50 dark:bg-gray-900 z-30 border-r border-gray-300 dark:border-gray-800"
+  class="sticky bottom-0 left-0 right-0 md:w-full h-full bg-gray-50 dark:bg-gray-900 z-30 border-r border-gray-300 dark:border-gray-800"
 >
   <div
     class="fixed h-screen flex flex-col items-center justify-center max-w-screen-lg mx-auto px-4"

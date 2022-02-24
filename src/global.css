@@ -1,15 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.clip-circle {
+  clip-path: circle(50% at 50% 50%);
+}
 
-@layer components {
-  .clip-circle {
-    clip-path: circle(50% at 50% 50%);
-  }
-
-  .transparent-tap {
-    -webkit-tap-highlight-color: transparent;
-  }
+.transparent-tap {
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -147,14 +141,6 @@ body {
 
 html {
   scrollbar-color: var(--color-thin) var(--color-special-bg);
-}
-
-body {
-  @apply bg-gray-50 overflow-x-hidden;
-}
-
-html.dark body {
-  @apply bg-gray-900;
 }
 
 html::-webkit-scrollbar-thumb {

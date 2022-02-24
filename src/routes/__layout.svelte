@@ -30,7 +30,7 @@
 </svelte:head>
 
 <Loading />
-<main class="grid grid-cols-1 md:grid-cols-[5rem,1fr] max-w-screen-2xl mx-auto">
+<main class="grid grid-cols-1 md:grid-cols-[5rem_1fr] max-w-screen-2xl mx-auto">
   <Navbar {segment} />
   <div class="w-full flex flex-col">
     <div class="flex-1 pt-10">
@@ -41,6 +41,9 @@
 </main>
 
 <script lang="ts">
+import "uno.css";
+import "@unocss/reset/tailwind.css";
+
 import { onMount } from "svelte";
 import Navbar from "$lib/components/Navbar.svelte";
 import Footer from "$lib/components/Footer.svelte";

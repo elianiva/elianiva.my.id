@@ -8,7 +8,7 @@
     class="grid grid-rows-[3.5rem,2rem,5.5rem,1fr] text-slate-600 dark:text-slate-400 no-underline p-4"
   >
     <span
-      class="md:hover:text-slate-800 dark:md:hover:text-slate-200 font-heading text-xl font-semibold leading-normal capitalize text-slate-600 dark:text-slate-400 transition-[color] duration-100 ease-out"
+      class="md:hover:text-slate-800 dark:md:hover:text-slate-200 font-heading text-xl font-semibold leading-normal capitalize text-slate-600 dark:text-slate-400 transition-property-color duration-100 ease-out"
       data-testid="title"
     >
       {title}
@@ -34,7 +34,7 @@
     <div class="flex gap-2">
       {#each tags as tag}
         <span
-          class="font-heading font-medium bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 text-sm no-underline gap-2 py-1 px-2 mt-2 rounded-md capitalize transition-[filter] duration-200 ease-out"
+          class="font-heading font-medium bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 text-sm no-underline gap-2 py-1 px-2 mt-2 rounded-md capitalize transition-property-filter duration-200 ease-out"
           data-testid="tag"
         >
           # {tag}
