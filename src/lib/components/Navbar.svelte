@@ -8,8 +8,8 @@
       {#each routes as r}
         <li>
           <a
-            class="relative flex flex-col gap-1 items-center justify-center hover:text-slate-700 hover:dark:text-slate-300 text-lg leading-relaxed no-underline font-sans transition-[color] duration-100 ease-out {r.path ===
-            segment
+            class="relative flex flex-col gap-1 items-center justify-center hover:text-slate-700 hover:dark:text-slate-300 text-lg leading-relaxed no-underline font-sans transition-[color] duration-100 ease-out 
+            {r.path === $page.url.pathname
               ? 'text-slate-700 dark:text-slate-300'
               : 'text-slate-400 dark:text-slate-600'}"
             href={r.path}
@@ -30,13 +30,12 @@
 </nav>
 
 <script lang="ts">
+import { page } from "$app/stores";
 import Moon from "$lib/components/Moon.svelte";
 import HomeIcon from "~icons/ph/house-fill";
 import PostIcon from "~icons/ph/newspaper-fill";
 import AboutIcon from "~icons/ph/user-circle-fill";
 import ProjectIcon from "~icons/ph/browser-fill";
-
-export let segment: string;
 
 const routes = [
   { name: "Home", path: "/", icon: HomeIcon },

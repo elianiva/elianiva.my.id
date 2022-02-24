@@ -222,7 +222,7 @@
 >
   {#if !minimal}
     <h1
-      class="font-heading text-[2.5rem] uppercase max-w-[30ch] mt-12 mx-auto mb-0 font-semibold text-slate-800 dark:text-slate-200"
+      class="font-heading text-5xl uppercase max-w-[30ch] mt-12 mx-auto mb-0 font-semibold text-slate-700 dark:text-slate-300"
     >
       {title}
     </h1>
@@ -254,7 +254,7 @@
     </div>
   {/if}
   <main
-    class="font-sans max-w-[70ch] mx-auto text-base text-left prose prose-slate"
+    class="font-sans mx-auto text-base text-left prose prose-custom dark:prose-invert"
     bind:this={contentContainer}
   >
     <slot />

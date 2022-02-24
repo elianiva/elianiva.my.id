@@ -3,13 +3,13 @@
   in:fade={{ duration: 200 }}
 >
   <img
-    class="relative block w-full h-48 object-cover bg-white dark:bg-gray-800 z-[2]"
+    class="relative block w-full h-48 object-cover bg-white dark:(bg-gray-800 brightness-95) z-[2]"
     src={imgSrc}
     alt={title}
     loading="lazy"
     data-testid="img"
   />
-  <div class="grid grid-rows-[2rem,4.5rem,1fr] p-4">
+  <div class="grid grid-rows-[2rem_4.5rem_1fr] p-4">
     <a
       rel="prefetch"
       {href}

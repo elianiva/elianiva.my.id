@@ -2,7 +2,7 @@
 draft: false
 title: Utterances - Comment section that just works
 date: 2021-02-22
-desc: I've been wanting to add a comment section to my website because why not, and I've found the best solution for me
+desc: I've been wanting to add a comment section to my website because why not
 tags:
   - website
 ---

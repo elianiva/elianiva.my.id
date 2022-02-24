@@ -5,7 +5,7 @@
   <a
     rel="prefetch"
     {href}
-    class="grid grid-rows-[3.5rem_2rem_5.5rem_1fr] text-slate-600 dark:text-slate-400 no-underline p-4"
+    class="grid grid-rows-[2fr_2rem_5.5rem_1fr] text-slate-600 dark:text-slate-400 no-underline p-4 h-full"
   >
     <span
       class="md:hover:(text-slate-800 dark:text-slate-200) font-heading text-xl font-semibold leading-normal capitalize text-slate-600 dark:text-slate-400 transition-property-color duration-100 ease-out"
@@ -31,7 +31,7 @@
     >
       {@html desc}
     </p>
-    <div class="flex gap-2">
+    <div class="flex gap-2 self-end">
       {#each tags as tag}
         <span
           class="font-heading font-medium bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 text-sm no-underline gap-2 py-1 px-2 mt-2 rounded-md capitalize transition-property-filter duration-200 ease-out"

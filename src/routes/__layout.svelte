@@ -1,9 +1,3 @@
-<style>
-:global(html) {
-  scroll-padding-top: 5rem;
-}
-</style>
-
 <svelte:head>
   <script>
   // set dark mode correctly before everythings get rendered
@@ -13,16 +7,11 @@
     const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
 
     const theme = localStorage.getItem("theme");
-    let preference = theme || (isDarkMode ? "dark" : "light");
+    const current = theme || (isDarkMode ? "dark" : "light");
+    const opposite = current === "dark" ? "light" : "dark";
 
-    // prettier-ignore
-    if (preference === "dark") {
-      document.documentElement.classList.add("dark")
-      document.documentElement.classList.remove("light")
-    } else if (preference === "light") {
-      document.documentElement.classList.add("light")
-      document.documentElement.classList.remove("dark")
-    }
+    document.documentElement.classList.add(current);
+    document.documentElement.classList.remove(opposite);
   } catch (err) {
     console.error(err);
   }
@@ -30,8 +19,8 @@
 </svelte:head>
 
 <Loading />
-<main class="grid grid-cols-1 md:grid-cols-[5rem_1fr] max-w-screen-2xl mx-auto">
-  <Navbar {segment} />
+<main class="grid grid-cols-1 md:grid-cols-[5rem_1fr] max-w-[1920px] mx-auto">
+  <Navbar />
   <div class="w-full flex flex-col">
     <div class="flex-1 pt-10">
       <slot />
@@ -62,8 +51,6 @@ import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/800.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/400-italic.css";
-
-export let segment: string = "";
 
 onMount(() => {
   const { matches: isDarkTheme } = window.matchMedia(
