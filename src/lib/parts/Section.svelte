@@ -26,7 +26,7 @@
 >
   <Pattern className="section__pattern" />
   <h1
-    class="font-heading relative inline-block text-2xl font-semibold mb-8 before:content-[''] before:absolute before:-bottom-1 before:h-1 before:left-8 before:right-8 before:rounded-md before:bg-blue-600 before:dark:bg-red-500"
+    class="font-heading relative inline-block text-2xl font-semibold mb-8 before:(content-[] absolute -bottom-1 h-1 left-8 right-8 rounded-md bg-blue-600 dark:bg-red-500)"
   >
     {title}
   </h1>
@@ -56,9 +56,11 @@
   </div>
   <a
     href={url}
-    class="inline-block mt-8 px-5 py-2 text-white bg-blue-600 dark:bg-red-500 rounded-md shadow-md no-underline font-heading text-lg tracking-wide transition-[transform_ease-out_0.2s] hover:-translate-y-1 transform-gpu"
-    >{btnText}</a
+    role="button"
+    class="inline-block mt-8 px-5 py-2 text-white bg-blue-600 dark:bg-red-500 rounded-md shadow-md no-underline font-heading text-lg tracking-wide transition-property-transform ease-out duration-200 hover:-translate-y-1 transform-gpu"
   >
+    {btnText}
+  </a>
 </section>
 
 <script lang="ts">

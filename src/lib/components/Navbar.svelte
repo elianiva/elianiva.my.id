@@ -1,10 +1,10 @@
 <nav
-  class="sticky bottom-0 left-0 right-0 md:w-full h-full bg-gray-50 dark:bg-gray-900 z-30 border-r border-gray-300 dark:border-gray-800"
+  class="fixed bottom-0 left-0 right-0 h-20 md:sticky md:w-full md:h-full bg-gray-50 dark:bg-gray-900 z-30 border-t border-r-0 md:(border-t-0 border-r) border-gray-300 dark:border-gray-800"
 >
   <div
-    class="fixed h-screen flex flex-col items-center justify-center max-w-screen-lg mx-auto px-4"
+    class="h-full flex md:(fixed h-screen flex-col w-20) items-center justify-center max-w-screen-lg mx-auto px-4"
   >
-    <ul class="list-none flex flex-col gap-10 items-center justify-center">
+    <ul class="list-none flex md:flex-col gap-10 items-center justify-center">
       {#each routes as r}
         <li>
           <a
@@ -14,12 +14,14 @@
               : 'text-slate-400 dark:text-slate-600'}"
             href={r.path}
           >
-            <svelte:component this={r.icon} class="w-6 h-6" />
-            <span class="text-sm font-light">{r.name}</span>
+            <svelte:component this={r.icon} class="w-7 h-7" />
+            <span class="hidden md:visible text-sm font-light">{r.name}</span>
           </a>
         </li>
       {/each}
-      <hr class="border-gray-300 dark:border-gray-800 h-1 w-full" />
+      <hr
+        class="hidden md:visible border-gray-300 dark:border-gray-800 h-1 w-full"
+      />
       <li>
         <Moon />
       </li>

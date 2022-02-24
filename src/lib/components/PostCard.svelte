@@ -5,10 +5,10 @@
   <a
     rel="prefetch"
     {href}
-    class="grid grid-rows-[3.5rem,2rem,5.5rem,1fr] text-slate-600 dark:text-slate-400 no-underline p-4"
+    class="grid grid-rows-[3.5rem_2rem_5.5rem_1fr] text-slate-600 dark:text-slate-400 no-underline p-4"
   >
     <span
-      class="md:hover:text-slate-800 dark:md:hover:text-slate-200 font-heading text-xl font-semibold leading-normal capitalize text-slate-600 dark:text-slate-400 transition-property-color duration-100 ease-out"
+      class="md:hover:(text-slate-800 dark:text-slate-200) font-heading text-xl font-semibold leading-normal capitalize text-slate-600 dark:text-slate-400 transition-property-color duration-100 ease-out"
       data-testid="title"
     >
       {title}
