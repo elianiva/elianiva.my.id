@@ -1,8 +1,8 @@
 <nav
-  class="fixed bottom-0 left-0 right-0 md:relative md:w-full h-6rem md:h-screen bg-gray-50 dark:bg-gray-900 z-30 border-r border-gray-300 dark:border-gray-800 py-8"
+  class="sticky bottom-0 left-0 right-0 md:static md:w-full h-6rem bg-gray-50 dark:bg-gray-900 z-30 border-r border-gray-300 dark:border-gray-800"
 >
   <div
-    class="h-full flex flex-col items-center justify-center max-w-screen-lg mx-auto px-4"
+    class="fixed h-screen flex flex-col items-center justify-center max-w-screen-lg mx-auto px-4"
   >
     <ul class="list-none flex flex-col gap-10 items-center justify-center">
       {#each routes as r}
@@ -14,7 +14,7 @@
               : 'text-slate-400 dark:text-slate-600'}"
             href={r.path}
           >
-            <svelte:component this={r.icon} width="2rem" height="2rem" />
+            <svelte:component this={r.icon} class="w-6 h-6" />
             <span class="text-sm font-light">{r.name}</span>
           </a>
         </li>

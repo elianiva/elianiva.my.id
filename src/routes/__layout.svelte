@@ -30,7 +30,7 @@
 </svelte:head>
 
 <Loading />
-<main class="grid grid-cols-1 md:grid-cols-[6rem,1fr] h-full max-w-screen-2xl mx-auto">
+<main class="grid grid-cols-1 md:grid-cols-[5rem,1fr] max-w-screen-2xl mx-auto">
   <Navbar {segment} />
   <div class="w-full flex flex-col">
     <div class="flex-1 pt-10">
