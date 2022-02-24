@@ -1,5 +1,5 @@
 <section class="max-w-screen-lg mx-auto pt-8 px-4 pb-0 ">
-  <section class="max-w-[80ch] mx-auto prose prose-custom dark:prose-invert">
+  <section class="mx-auto prose prose-custom dark:prose-invert">
     <slot />
   </section>
 </section>

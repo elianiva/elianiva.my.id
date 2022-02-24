@@ -7,12 +7,26 @@ export default defineConfig({
     presetWind(),
     presetTypography({
       cssExtend: {
-        ":root": {},
         a: {
           "text-decoration": "none",
         },
-        "h1 a": {
-          "font-weight": "bold",
+        strong: {
+          color: "var(--un-prose-headings)",
+        },
+        p: {
+          "font-family": "var(--font-sans)",
+        },
+        h1: {
+          "font-size": "1.875rem",
+        },
+        h2: {
+          "font-size": "1.5rem",
+        },
+        "h1, h2, h3, h4, h5, h6": {
+          "font-family": "var(--font-heading)",
+        },
+        "h1 a, h2 a, h3 a, h4 a, h5 a": {
+          "font-weight": 600,
         },
         "h1::after": {
           position: "absolute",
@@ -33,12 +47,13 @@ export default defineConfig({
     [
       /prose-custom/,
       () => ({
+        "--font-heading": '"Poppins", sans-serif',
+        "--font-sans": '"Open Sans", sans-serif',
+        "--font-monospace": '"JetBrains Mono", monospace',
         "--un-prose-body": colors.slate[600],
         "--un-prose-invert-body": colors.slate[400],
-        "--un-prose-links": colors.slate[800],
+        "--un-prose-links": colors.slate[700],
         "--un-prose-invert-links": colors.slate[200],
-        "--un-prose-bold": colors.slate[700],
-        "--un-prose-invert-bold": colors.slate[300],
         "--un-prose-headings": colors.slate[700],
         "--un-prose-invert-headings": colors.slate[300],
       }),
