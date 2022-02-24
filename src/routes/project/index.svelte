@@ -59,7 +59,7 @@
     projects are here, quite proud on some of them.
   </p>
   <div class="projects__cards">
-    {#each projects.filter(p => p.type === "personal") as project}
+    {#each projects.filter((p) => p.type === "personal") as project}
       <ProjectCard
         title={project.title}
         imgSrc={`/assets/project/${project.slug}/cover.webp`}
@@ -79,7 +79,7 @@
     here anyway in case anyone needs them for reference or something.
   </p>
   <div class="projects__cards">
-    {#each projects.filter(p => p.type === "assignment") as project}
+    {#each projects.filter((p) => p.type === "assignment") as project}
       <ProjectCard
         title={project.title}
         imgSrc={`/assets/project/${project.slug}/cover.webp`}

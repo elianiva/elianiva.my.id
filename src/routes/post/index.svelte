@@ -140,7 +140,7 @@
         <Tag
           label={filter}
           onClick={() => {
-            tagFilter = tagFilter.filter(x => x !== filter);
+            tagFilter = tagFilter.filter((x) => x !== filter);
           }}
         />
       {/each}
@@ -187,18 +187,18 @@ let isCompletionVisible = false;
 
 // count available tags and insert it to an object
 // ex: [a, a, b, b, b] -> { a: 2, b: 3 }
-const tags = posts.map(post => post.tags).flat();
+const tags = posts.map((post) => post.tags).flat();
 const count = tags.reduce(
   (acc, curr) => ({ ...acc, [curr]: (acc[curr] || 0) + 1 }),
   {}
 );
 
-$: filteredPosts = posts.filter(post => {
+$: filteredPosts = posts.filter((post) => {
   const query = keyword.substr(1).toLowerCase();
 
   const title = post.title.toLowerCase().includes(query);
   const slug = post.slug.toLowerCase().includes(query);
-  const tags = tagFilter.every(x => post.tags.includes(x));
+  const tags = tagFilter.every((x) => post.tags.includes(x));
   return (title || slug) && tags;
 });
 

@@ -341,9 +341,9 @@
           href={source}
           target="_blank"
           rel="norel noreferrer"
-          >
-            <GithubIcon /> Source
-          </a>
+        >
+          <GithubIcon /> Source
+        </a>
       </div>
     </div>
     <hr class="project__divider" />
