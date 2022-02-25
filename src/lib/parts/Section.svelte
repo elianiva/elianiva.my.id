@@ -1,10 +1,4 @@
 <style>
-.section__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 1.25rem;
-}
-
 :global(.section__pattern) {
   color: var(--color-main-accent);
   position: absolute;
@@ -12,12 +6,6 @@
   left: -2rem;
   width: 14rem;
   height: 10rem;
-}
-
-@media only screen and (max-width: 480px) {
-  .section::after {
-    right: 0;
-  }
 }
 </style>
 
@@ -30,7 +18,7 @@
   >
     {title}
   </h1>
-  <div class="section__cards">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-5">
     {#if type === "posts"}
       {#each data as item}
         <PostCard
@@ -54,11 +42,7 @@
       {/each}
     {/if}
   </div>
-  <a
-    href={url}
-    role="button"
-    class="inline-block mt-8 px-5 py-2 text-white bg-blue-600 dark:bg-red-500 rounded-md shadow-md no-underline font-heading text-lg tracking-wide transition-property-transform ease-out duration-200 hover:-translate-y-1 transform-gpu"
-  >
+  <a href={url} role="button" class="btn-lg-blue-600 dark:btn-lg-red-500">
     {btnText}
   </a>
 </section>

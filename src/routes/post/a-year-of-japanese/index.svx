@@ -27,7 +27,9 @@ tags:
 # Table of Contents
 
 # Introduction
-Hello there! I'm actually writing this (mostly) as a memo to myself in case I learn a new language in the future, but you can read this if you want.
+Hello there! I've been learning Japanese for around a year or so and here's what I've been going through. 
+
+I'm actually writing this (mostly) as a memo to myself in case I learn a new language in the future.
 
 # Why Japanese?
 ## Main reason
