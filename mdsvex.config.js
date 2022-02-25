@@ -1,8 +1,9 @@
-import remarkTOC from "remark-toc";
+import { defineMDSveXConfig } from "mdsvex";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolink from "rehype-autolink-headings";
+import remarkTOC from "remark-toc";
 
-export default {
+export default defineMDSveXConfig({
   layout: {
     _: "./src/lib/layouts/post.svelte",
     post: "./src/lib/layouts/post.svelte",
@@ -15,7 +16,4 @@ export default {
   },
   remarkPlugins: [remarkTOC],
   rehypePlugins: [rehypeSlug, [rehypeAutolink, { behavior: "wrap" }]],
-  // highlight: {
-  //   highlighter,
-  // },
-};
+});

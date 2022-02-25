@@ -1,5 +1,4 @@
 ---
-title: Bruh
 layout: about
 ---
 
@@ -24,7 +23,7 @@ I started programming around 2018. My first language was actually Java, but
 then I got frustrated and went with the Web Developer route, which is what I'm
 mainly doing until now.
 
-## Programming / Markup Languages
+# Programming / Markup Languages
 I actually know more than these, but they're irrelevant as I don't use them
 that often compared to these ones.
 

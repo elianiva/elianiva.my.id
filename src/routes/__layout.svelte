@@ -1,19 +1,3 @@
-<style>
-main {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-div {
-  flex: 1;
-}
-
-:global(html) {
-  scroll-padding-top: 5rem;
-}
-</style>
-
 <svelte:head>
   <script>
   // set dark mode correctly before everythings get rendered
@@ -23,31 +7,38 @@ div {
     const { matches: isDarkMode } = window.matchMedia( "(prefers-color-scheme: dark)")
 
     const theme = localStorage.getItem("theme");
-    let preference = theme || (isDarkMode ? "dark" : "light");
+    const current = theme || (isDarkMode ? "dark" : "light");
+    const opposite = current === "dark" ? "light" : "dark";
 
-    // prettier-ignore
-    if (preference) document.documentElement.setAttribute("data-theme", preference)
+    document.documentElement.classList.add(current);
+    document.documentElement.classList.remove(opposite);
   } catch (err) {
     console.error(err);
   }
   </script>
 </svelte:head>
 
-<Navbar {segment} />
-<main>
-  <Loading />
-  <div>
-    <slot />
+<Loading />
+<main class="grid grid-cols-1 md:grid-cols-[5rem_1fr] max-w-[1920px] mx-auto">
+  <Navbar />
+  <div class="w-full flex flex-col">
+    <div class="flex-1 pt-10">
+      <slot />
+    </div>
+    <Footer />
   </div>
-  <Footer />
 </main>
 
 <script lang="ts">
+import "uno.css";
+import "@unocss/reset/tailwind.css";
+
 import { onMount } from "svelte";
 import Navbar from "$lib/components/Navbar.svelte";
 import Footer from "$lib/components/Footer.svelte";
 import Loading from "$lib/components/Loading.svelte";
-import { theme } from "$lib/utils/theme";
+import { toggleTheme } from "$lib/utils/theme";
+import { theme, Theme } from "$lib/store/theme";
 import "../global.css";
 
 // fonts
@@ -55,28 +46,31 @@ import "@fontsource/open-sans/400.css";
 import "@fontsource/open-sans/600.css";
 import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/400-italic.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/800.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/400-italic.css";
-
-export let segment: string = "";
 
 onMount(() => {
   const { matches: isDarkTheme } = window.matchMedia(
     "(prefers-color-scheme: dark)"
   );
 
-  type Theme = "dark" | "light";
   let preference: Theme;
 
   // prettier-ignore
-  if (localStorage.getItem("theme")) preference = localStorage.getItem("theme") as Theme
-  else preference = isDarkTheme ? "dark" : "light"
+  if (localStorage.getItem("theme")) { 
+    preference = localStorage.getItem("theme") as Theme
+  } else { 
+    preference = isDarkTheme ? Theme.DARK : Theme.LIGHT
+  }
 
   theme.set(preference);
 
-  theme.subscribe(current => {
+  theme.subscribe((current) => {
     localStorage.setItem("theme", current);
-    document.documentElement.setAttribute("data-theme", current);
+    toggleTheme(current);
   });
 });
 </script>

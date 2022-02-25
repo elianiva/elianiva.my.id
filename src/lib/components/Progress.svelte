@@ -1,39 +1,12 @@
-<style>
-.button {
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: var(--color-main-accent);
-  color: var(--color-light-alt-bg);
-  border-radius: 0.25rem;
-  box-shadow: var(--card-shadow);
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.button:hover {
-  filter: var(--filter-brightness);
-}
-
-:global(.button__icon) {
-  color: var(--color-main-text);
-}
-</style>
-
 <svelte:window bind:scrollY={currentPosition} />
 
 {#if currentPosition > 50}
   <div
-    class="button"
+    class="fixed right-8 bottom-8 w-10 h-10 bg-blue-600 dark:bg-red-500 text-white rounded-md shadow-md z-[5] flex items-center justify-center cursor-pointer hover:brightness-95"
     on:click={scrollToTop}
     transition:fade={{ duration: 100 }}
   >
-    <UpIcon className="button__icon" />
+    <UpIcon class="text-white" />
   </div>
 {/if}
 

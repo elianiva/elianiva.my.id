@@ -1,58 +1,29 @@
-<style>
-.moon {
-  position: relative;
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 0.15rem var(--color-alt-text) solid;
-  border-radius: 50%;
-  clip-path: circle(50% at 50% 50%);
-  z-index: 1;
-}
-
-.moon__small {
-  position: absolute;
-  bottom: 0.25rem;
-  left: 0.25rem;
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 0.15rem var(--color-alt-text) solid;
-  border-radius: 50%;
-  background-color: var(--color-main-bg);
-  z-index: 2;
-  transition: bottom ease-out 0.2s, left ease-out 0.2s;
-}
-
-.button {
-  border: none;
-  background: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  color: var(--color-main-text);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-</style>
-
-<button
-  class="button"
-  on:click={() => toggleDarkMode()}
-  aria-label="toggle darkmode"
+<div
+  class="relative w-8 h-8 border-none outline-none flex items-center justify-center cursor-pointer z-10 text-slate-400 dark:text-slate-600 hover:text-slate-700 dark:hover:text-slate-300"
+  on:click={toggleDarkMode}
 >
-  <div class="moon">
+  <div
+    class="flex items-center after:(content-[] absolute w-[0.3rem] h-[0.3rem] rounded-full shadow-sun-rays transition-property-transform duration-300 ease-in-out) justify-center 
+    {$theme === Theme.DARK
+      ? 'after:(transform-gpu scale-100)'
+      : 'after:(transform-gpu scale-0)'}"
+    id="icon"
+  >
     <div
-      class="moon__small"
-      style={`left: ${$theme === "dark" ? "0.25rem" : "0.75rem"}; bottom: ${
-        $theme === "dark" ? "0.25rem" : "0.75rem"
-      };`}
+      class="rounded-full w-5 h-5 transition-property-transform duration-300 ease-in-out bg-current before:bg-gray-50 before:dark:bg-gray-900 before:(content-[] absolute w-8 h-8 rounded-full transition-property-transform duration-200 ease-in-out) 
+      {$theme === Theme.DARK
+        ? 'before:(-top-8 -right-8) transform-gpu scale-50'
+        : 'before:(-top-4 -right-4) transform-gpu scale-100'}"
     />
   </div>
-</button>
+</div>
 
 <script>
-import { theme } from "$lib/utils/theme";
+import { Theme, theme } from "$lib/store/theme";
 
 const toggleDarkMode = () => {
-  theme.update(current => (current === "light" ? "dark" : "light"));
+  theme.update((current) =>
+    current === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+  );
 };
 </script>

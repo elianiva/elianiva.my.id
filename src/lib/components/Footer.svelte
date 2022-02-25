@@ -1,77 +1,51 @@
-<style>
-footer {
-  position: relative;
-  margin-top: 3rem;
-  font-family: var(--font-heading);
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: var(--color-main-bg);
-  filter: opacity(0.5);
-  transition: filter ease-out 0.2s;
-  border-top: 1px var(--color-borders) solid;
-}
-
-footer:hover {
-  filter: opacity(1);
-}
-
-p {
-  line-height: 1.5em;
-  color: var(--color-main-text);
-}
-
-a {
-  text-decoration: none;
-}
-
-.hl {
-  color: var(--color-shine);
-}
-
-.icons {
-  margin: 0 auto 0.5rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 220px;
-}
-
-.icons a {
-  color: var(--color-shine);
-  transition: color ease-out 0.2s;
-}
-.icons a:hover {
-  color: var(--color-main-accent);
-}
-</style>
-
-<footer>
-  <div class="icons">
-    <!-- prettier-ignore -->
-    <a href="mailto:{email}" target="_blank" rel="norel noreferrer" aria-label="email">
-      <EnvelopeIcon height="24" width="24" />
-    </a>
-    <!-- prettier-ignore -->
-    <a href="{github}" target="_blank" rel="norel noreferrer" aria-label="github">
-      <GithubIcon height="24" width="24" />
-    </a>
-    <!-- prettier-ignore -->
-    <a href={twitter} target="_blank" rel="norel noreferrer" aria-label="twitter" >
-      <TwitterIcon height="24" width="24" />
-    </a>
-    <!-- prettier-ignore -->
-    <a href="/rss.xml" rel="alternate" type="application/rss+xml" aria-label="rss">
-      <RSSIcon height="24" width="24" />
-    </a>
+<footer
+  class="relative mt-12 text-center pt-10 pb-30 md:pb-10 px-1 bg-gray-50 dark:bg-gray-900 border-t border-gray-300 dark:border-gray-800 transition-property-filter ease-out duration-200 font-heading"
+>
+  <div class="grid grid-cols-4 max-w-[220px] mx-auto mb-6">
+    {#each social as { icon, url }}
+      <a
+        class="text-slate-600 dark:text-slate-400 hover:text-slate-800 hover:dark:text-slate-200"
+        href={url}
+        target="_blank"
+        rel="norel noreferrer"
+        aria-label={url}
+      >
+        <svelte:component this={icon} class="w-8 h-8 text-current" />
+      </a>
+    {/each}
   </div>
-  <p>
+  <p class="leading-relaxed text-slate-600 dark:text-slate-400">
     Powered by
-    <a class="hl" href="https://kit.svelte.dev">Svelte-Kit</a>
+    <a
+      class="no-underline text-slate-800 dark:text-slate-200"
+      href="https://kit.svelte.dev"
+    >
+      Svelte-Kit
+    </a>
     and
-    <a class="hl" href="https://vercel.app">Vercel</a>
+    <a
+      class="no-underline text-slate-800 dark:text-slate-200"
+      href="https://vercel.app"
+    >
+      Vercel
+    </a>
     • Source code is available on
-    <a class="hl" href="{github}/elianiva.my.id">Github</a>
+    <a
+      class="no-underline text-slate-800 dark:text-slate-200"
+      href="{data.github}/elianiva.my.id"
+    >
+      Github
+    </a>
   </p>
-  <p>Copyright &copy; {new Date().getFullYear()} <a class="hl" href={github}>Elianiva</a></p>
+  <p class="leading-relaxed text-slate-600 dark:text-slate-400">
+    Copyright &copy; {new Date().getFullYear()}
+    <a
+      class="no-underline text-slate-800 dark:text-slate-200"
+      href={data.github}
+    >
+      Elianiva
+    </a>
+  </p>
 </footer>
 
 <script>
@@ -81,5 +55,10 @@ import GithubIcon from "~icons/ph/github-logo";
 import TwitterIcon from "~icons/ph/twitter-logo";
 import RSSIcon from "~icons/ph/rss";
 
-const { github, twitter, email } = data;
+const social = [
+  { url: data.github, icon: GithubIcon },
+  { url: data.twitter, icon: TwitterIcon },
+  { url: `mailto:${data.email}`, icon: EnvelopeIcon },
+  { url: "/rss.xml", icon: RSSIcon },
+];
 </script>

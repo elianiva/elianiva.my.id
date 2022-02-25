@@ -1,5 +1,7 @@
-import { writable } from "svelte/store"
-import type { Writable } from "svelte/store"
+import { Theme } from "$lib/store/theme";
 
-type Themes = "dark" | "light"
-export const theme: Writable<Themes> = writable<Themes>("light")
+export function toggleTheme(current: Theme) {
+  const opposite = current === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+  document.documentElement.classList.add(current);
+  document.documentElement.classList.remove(opposite);
+}

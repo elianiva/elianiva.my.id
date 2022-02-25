@@ -1,18 +1,8 @@
-<style>
-.loading {
-  position: fixed;
-  top: 4rem;
-  left: 0;
-  height: 0.25rem;
-  background-color: var(--color-main-accent);
-  z-index: 50;
-  transition: width ease-out 0.5s;
-  width: 0;
-}
-</style>
-
 {#if $navigating}
-  <div class="loading" style="width: {width}%" />
+  <div
+    class="fixed left-0 w-0 h-1 z-50 bg-blue-600 dark:bg-red-500 z-50 transition-property-width ease-out duration-500"
+    style="width: {width}%"
+  />
 {/if}
 
 <script>

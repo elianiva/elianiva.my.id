@@ -1,78 +1,15 @@
-<style>
-.section {
-  position: relative;
-  margin-top: 4rem;
-  font-family: var(--font-sans);
-  color: var(--color-shine);
-  text-align: center;
-  z-index: 2;
-}
-
-.section__title {
-  font-family: var(--font-heading);
-  position: relative;
-  display: inline-block;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-
-.section__title::before {
-  content: "";
-  position: absolute;
-  bottom: -0.25rem;
-  height: 0.25rem;
-  left: 2rem;
-  right: 2rem;
-  border-radius: 0.25rem;
-  background-color: var(--color-main-accent);
-}
-
-.section__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 1.25rem;
-}
-
-.section__button {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.5rem 1.25rem;
-  color: var(--color-light-alt-bg);
-  background-color: var(--color-main-accent);
-  border-radius: 0.25rem;
-  box-shadow: var(--card-shadow);
-  text-decoration: none;
-  font-family: var(--font-heading);
-  font-size: 1.125rem;
-  letter-spacing: 0.02em;
-  transition: transform ease-out 0.2s;
-}
-
-.section__button:hover {
-  transform: translate3d(0, -0.25rem, 0);
-}
-
-:global(.section__pattern) {
-  color: var(--color-main-accent);
-  position: absolute;
-  top: 0;
-  left: -2rem;
-  width: 14rem;
-  height: 10rem;
-}
-
-@media only screen and (max-width: 480px) {
-  .section::after {
-    right: 0;
-  }
-}
-</style>
-
-<section class="section">
-  <Pattern className="section__pattern" />
-  <h1 class="section__title">{title}</h1>
-  <div class="section__cards">
+<section
+  class="relative mt-16 font-sans text-slate-800 dark:text-slate-200 text-center z-[2]"
+>
+  <Pattern
+    className="text-blue-600 dark:text-red-500 absolute top-0 -left-8 w-56 h-40"
+  />
+  <h1
+    class="font-heading relative inline-block text-2xl font-semibold mb-8 before:(content-[] absolute -bottom-1 h-1 left-8 right-8 rounded-md bg-blue-600 dark:bg-red-500)"
+  >
+    {title}
+  </h1>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-5">
     {#if type === "posts"}
       {#each data as item}
         <PostCard
@@ -96,7 +33,9 @@
       {/each}
     {/if}
   </div>
-  <a href={url} class="section__button">{btnText}</a>
+  <a href={url} role="button" class="btn-lg-blue-600 dark:btn-lg-red-500">
+    {btnText}
+  </a>
 </section>
 
 <script lang="ts">
