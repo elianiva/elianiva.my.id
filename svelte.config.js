@@ -3,7 +3,6 @@ import mdsvexConfig from "./mdsvex.config.js"
 import adapterVercel from "@sveltejs/adapter-vercel"
 import sveltePreprocess from "svelte-preprocess"
 import Icons from 'unplugin-icons/vite'
-import path from "path"
 import Unocss from "unocss/vite"
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -12,13 +11,9 @@ export default {
   preprocess: [mdsvex(mdsvexConfig), sveltePreprocess()],
   kit: {
     adapter: adapterVercel(),
+    inlineStyleThreshold: 1024,
     vite: {
-      plugins: [Icons({ compiler: "svelte" }), Unocss()],
-      resolve: {
-        alias: [
-          { find: "#/", replacement: path.join(import.meta.url, "./src") },
-        ],
-      },
+      plugins: [Icons({ compiler: "svelte" }), Unocss()]
     },
   },
 }

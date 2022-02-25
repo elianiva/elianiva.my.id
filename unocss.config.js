@@ -161,7 +161,8 @@ export default defineConfig({
     ],
     [
       /^custom-scrollbar$/,
-      (_, { theme }) => `
+      (_, { theme }) =>
+        `
       html {
         scrollbar-color: ${theme.colors.gray[200]} ${theme.colors.blue[600]};
       }
@@ -185,7 +186,7 @@ export default defineConfig({
       
       html.dark::-webkit-scrollbar {
         background-color: ${theme.colors.gray[800]};
-      }`,
+      }`.replace(/(\s)/g, ""),
       { layer: "default" },
     ],
   ],
