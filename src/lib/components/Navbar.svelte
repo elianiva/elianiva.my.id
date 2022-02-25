@@ -15,12 +15,12 @@
             href={r.path}
           >
             <svelte:component this={r.icon} class="w-7 h-7" />
-            <span class="hidden md:visible text-sm font-light">{r.name}</span>
+            <span class="hidden md:block text-sm font-light">{r.name}</span>
           </a>
         </li>
       {/each}
       <hr
-        class="hidden md:visible border-gray-300 dark:border-gray-800 h-1 w-full"
+        class="hidden md:block border-gray-300 dark:border-gray-800 h-1 w-full"
       />
       <li>
         <Moon />
