@@ -131,7 +131,7 @@ export default defineConfig({
       ([, content]) => ({ content: JSON.stringify(content) }),
     ],
     [
-      /prose-custom/,
+      /^prose-custom$/,
       (_, { theme }) => ({
         "--font-heading": '"Poppins", sans-serif',
         "--font-sans": '"Open Sans", sans-serif',
@@ -150,7 +150,7 @@ export default defineConfig({
       { layer: "typography" },
     ],
     [
-      /prose-custom-invert/,
+      /^prose-custom-invert$/,
       (_, { theme }) => ({
         "--c-prose-accent": theme.colors.red[500],
         "--c-prose-alt-bg": theme.colors.gray[800],
@@ -158,6 +158,35 @@ export default defineConfig({
         "--c-prose-thumb-bg": theme.colors.gray[600],
       }),
       { layer: "typography" },
+    ],
+    [
+      /^custom-scrollbar$/,
+      (_, { theme }) => `
+      html {
+        scrollbar-color: ${theme.colors.gray[200]} ${theme.colors.blue[600]};
+      }
+      
+      html::-webkit-scrollbar-thumb {
+        background-color: ${theme.colors.blue[600]};
+      }
+      
+      html::-webkit-scrollbar {
+        background-color: ${theme.colors.gray[200]};
+        width: 0.5rem;
+      }
+
+      html.dark {
+        scrollbar-color: ${theme.colors.gray[800]} ${theme.colors.red[500]};
+      }
+      
+      html.dark::-webkit-scrollbar-thumb {
+        background-color:  ${theme.colors.red[500]};
+      }
+      
+      html.dark::-webkit-scrollbar {
+        background-color: ${theme.colors.gray[800]};
+      }`,
+      { layer: "default" },
     ],
   ],
   shortcuts: [

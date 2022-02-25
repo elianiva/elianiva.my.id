@@ -1,3 +1,17 @@
+<style global>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  height: 100%;
+}
+</style>
+
 <svelte:head>
   <script>
   // set dark mode correctly before everythings get rendered
@@ -19,7 +33,7 @@
 </svelte:head>
 
 <Loading />
-<main class="grid grid-cols-1 md:grid-cols-[5rem_1fr] max-w-[1920px] mx-auto">
+<main class="custom-scrollbar grid grid-cols-1 md:grid-cols-[5rem_1fr] max-w-[1920px] mx-auto">
   <Navbar />
   <div class="w-full flex flex-col">
     <div class="flex-1 pt-10">
@@ -39,34 +53,25 @@ import Footer from "$lib/components/Footer.svelte";
 import Loading from "$lib/components/Loading.svelte";
 import { toggleTheme } from "$lib/utils/theme";
 import { theme, Theme } from "$lib/store/theme";
-import "../global.css";
 
 // fonts
 import "@fontsource/open-sans/400.css";
-import "@fontsource/open-sans/600.css";
+import "@fontsource/open-sans/400-italic.css";
 import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/400-italic.css";
 import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
-import "@fontsource/poppins/800.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/400-italic.css";
 
 onMount(() => {
-  const { matches: isDarkTheme } = window.matchMedia(
+  const { matches: isDarkMode } = window.matchMedia(
     "(prefers-color-scheme: dark)"
   );
 
-  let preference: Theme;
-
-  // prettier-ignore
-  if (localStorage.getItem("theme")) { 
-    preference = localStorage.getItem("theme") as Theme
-  } else { 
-    preference = isDarkTheme ? Theme.DARK : Theme.LIGHT
-  }
-
-  theme.set(preference);
+  const current =
+    (localStorage.getItem("theme") as Theme) ||
+    (isDarkMode ? Theme.DARK : Theme.LIGHT);
+    
+  theme.set(current);
 
   theme.subscribe((current) => {
     localStorage.setItem("theme", current);
