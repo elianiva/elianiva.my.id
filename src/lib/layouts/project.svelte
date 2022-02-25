@@ -1,46 +1,12 @@
-<style>
-.project__content {
-  grid-column: 1/2;
-  font-family: var(--font-sans);
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-@media only screen and (max-width: 480px) {
-  .project__content :global(pre) {
-    margin-left: -1rem !important;
-    margin-right: -1rem !important;
-    border-radius: 0;
-  }
-}
-
-@media only screen and (max-width: 880px) {
-  .project__cover {
-    grid-column: 1/3;
-  }
-
-  .project__content {
-    grid-column: 1/3;
-  }
-
-  .project__stack {
-    grid-row: 2/3;
-    grid-column: 1/3;
-  }
-
-  .project__header {
-    flex-direction: column;
-  }
-}
-</style>
-
 <SEO {title} {desc} thumbnail={`${data.siteUrl}${currentSlug}/cover.webp`} />
 
 <section
   class="max-w-screen-lg grid grid-cols-[2fr_1fr] grid-rows-[repeat(3,minmax(min-content,max-content))] grid-flow-row-dense items-start my-8 mx-auto px-4 gap-4"
 >
-  <div class="col-start-1 col-end-2 w-full">
-    <div class="overflow-hidden border border-gray-300 dark:border-gray-700">
+  <div class="col-start-1 col-end-3 md:col-start-1 md:col-end-2 w-full">
+    <div
+      class="overflow-hidden rounded-md border border-gray-300 dark:border-gray-700"
+    >
       <img
         src={`/assets${currentSlug}/cover.webp`}
         alt={title}
@@ -49,8 +15,12 @@
       />
     </div>
   </div>
-  <div class="col-start-1 col-end-2 font-sans text-lg leading-relaxed">
-    <div class="flex gap-4 items-center justify-between mb-4">
+  <div
+    class="col-start-1 col-end-3 md:col-start-1 md:col-end-2 font-sans text-lg leading-relaxed"
+  >
+    <div
+      class="flex flex-col md:flex-row gap-4 items-center justify-between mb-4"
+    >
       <h1
         class="text-slate-700 dark:text-slate-300 font-heading text-3xl font-semibold"
       >
@@ -83,7 +53,7 @@
     </main>
   </div>
   <div
-    class="col-start-2 col-end-3 row-start-1 -row-end-1 w-full p-4 border border-gray-300 dark:border-gray-700"
+    class="col-start-1 md:col-start-2 col-end-3 row-start-2 md:row-start-1 row-end-3 md:-row-end-1 w-full p-4 rounded-md border border-gray-300 dark:border-gray-700"
   >
     <span
       class="text-slate-700 dark:text-slate-300 font-semibold font-heading text-2xl"

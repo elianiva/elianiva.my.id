@@ -1,18 +1,9 @@
-<style>
-:global(.section__pattern) {
-  color: var(--color-main-accent);
-  position: absolute;
-  top: 0;
-  left: -2rem;
-  width: 14rem;
-  height: 10rem;
-}
-</style>
-
 <section
   class="relative mt-16 font-sans text-slate-800 dark:text-slate-200 text-center z-[2]"
 >
-  <Pattern className="section__pattern" />
+  <Pattern
+    className="text-blue-600 dark:text-red-500 absolute top-0 -left-8 w-56 h-40"
+  />
   <h1
     class="font-heading relative inline-block text-2xl font-semibold mb-8 before:(content-[] absolute -bottom-1 h-1 left-8 right-8 rounded-md bg-blue-600 dark:bg-red-500)"
   >
