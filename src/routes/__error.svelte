@@ -1,69 +1,22 @@
-<style>
-.err {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-main-text);
-  text-align: center;
-  padding: 0 1rem;
-}
-
-.err__status {
-  font-size: 4rem;
-  font-family: var(--font-heading);
-  margin-top: 4rem;
-}
-
-.err__msg {
-  font-size: 2rem;
-  font-family: var(--font-sans);
-}
-
-.err__url {
-  font-weight: 600;
-  position: relative;
-  display: inline-block;
-  color: var(--color-main-accent);
-  text-decoration: none;
-  transition: all ease-out 0.2s;
-}
-
-.err__url::before {
-  position: absolute;
-  content: "";
-  bottom: -0.25rem;
-  left: -0.25rem;
-  right: -0.25rem;
-  top: 0.25rem;
-  transform: scale3d(0, 0.1, 1);
-  transform-origin: 0 100%;
-  background-image: linear-gradient(
-    to right,
-    var(--color-main-accent),
-    rgba(0, 0, 0, 0)
-  );
-  z-index: -1;
-  transition: transform ease-out 0.2s;
-}
-
-.err__url:hover::before {
-  transform: scale3d(1, 0.1, 1);
-}
-</style>
-
 <svelte:head>
   <title>{status} | Elianiva's Site</title>
 </svelte:head>
 
-<div class="err">
+<div
+  class="h-full flex flex-col items-center justify-center text-slate-600 dark:text-slate-400 text-center px-4"
+>
   {#if status === 404}
-    <h1 class="err__status">{status}</h1>
-    <span class="err__msg">
+    <h1 class="text-6xl font-heading mt-8">{status}</h1>
+    <span class="text-3xl font-sans">
       Sorry, you might have entered the wrong URL.
       <br />
       Wanna go back
-      <a class="err__url" href="/">home?</a>
+      <a
+        class="relative inline-block text-blue-600 dark:text-red-500 no-underline hover:underline transition-property-all ease-out duration-200"
+        href="/"
+      >
+        home?
+      </a>
     </span>
   {:else}
     <span class="err__msg"> Something went wrong. </span>

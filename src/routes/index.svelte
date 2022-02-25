@@ -1,15 +1,6 @@
-<style>
-.main {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 2rem 1rem 0;
-  z-index: 2;
-}
-</style>
-
 <SEO title="Home" />
 
-<main class="main">
+<main class="max-w-[1080px] my-0 mx-auto pt-8 px-4 pb-0 z-[2]">
   <Header />
   <Section
     title="Recent Posts"

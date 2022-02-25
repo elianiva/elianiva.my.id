@@ -6,7 +6,8 @@
 }
 
 html,
-body {
+body,
+#svelte {
   height: 100%;
   height: 100%;
 }
@@ -33,9 +34,9 @@ body {
 </svelte:head>
 
 <Loading />
-<main class="custom-scrollbar grid grid-cols-1 md:grid-cols-[5rem_1fr] max-w-[1920px] mx-auto">
+<main class="custom-scrollbar h-full grid grid-cols-1 md:grid-cols-[5rem_1fr] max-w-[1920px] mx-auto">
   <Navbar />
-  <div class="w-full flex flex-col">
+  <div class="w-full h-full flex flex-col">
     <div class="flex-1 pt-10">
       <slot />
     </div>
