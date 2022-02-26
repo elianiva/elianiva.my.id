@@ -1,6 +1,4 @@
-import { promises as fs } from "fs";
 import matter from "gray-matter";
-import { resolve } from "path";
 
 export interface ResourceMetadata {
   title: string;
@@ -17,8 +15,6 @@ export interface ResourceMetadata {
 }
 
 export type ResourceKind = "post" | "project";
-
-const HAS_EXTENSION = /\.[^/.]+$/;
 
 const POSTS = import.meta.globEager("/src/routes/post/**/index.svx", {
   assert: { type: "raw" },
