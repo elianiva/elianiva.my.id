@@ -27,6 +27,6 @@ export async function get({
 
   return {
     status: 404,
-    body: "Not Found",
+    body: [],
   };
 }

@@ -19,28 +19,32 @@ export interface ResourceMetadata {
 export type ResourceKind = "post" | "project";
 
 const HAS_EXTENSION = /\.[^/.]+$/;
-const resolveFilepath = (kind: string) => resolve(`./src/routes/${kind}`);
+
+const POSTS = import.meta.globEager("/src/routes/post/**/index.svx", {
+  assert: { type: "raw" },
+});
+const PROJECTS = import.meta.globEager("/src/routes/project/**/index.svx", {
+  assert: { type: "raw" },
+});
 
 export const getResourcesAsync = async (
   kind: ResourceKind
 ): Promise<ResourceMetadata[]> => {
   if (!kind) throw new Error("KIND IS REQUIRED!");
-  const files = await fs.readdir(resolveFilepath(kind));
-  const validFiles = files.filter(
-    (file) => !HAS_EXTENSION.test(file) && `${file}/index.svx`
-  );
-  const fileMetadata = validFiles.map(
-    async (fileName): Promise<ResourceMetadata> => {
-      const postContent = await fs.readFile(
-        `${resolveFilepath(kind)}/${fileName}/index.svx`,
-        { encoding: "utf8" }
-      );
 
+  const validFiles = kind === "post" ? POSTS : PROJECTS;
+  const fileMetadata = Object.keys(validFiles).map(
+    async (fileName): Promise<ResourceMetadata> => {
+      const postContent = validFiles[fileName] as unknown as string;
       const { data } = matter(postContent);
+      const slug = fileName.replace(
+        new RegExp(`/src/routes/${kind}/(.*)/index.svx`),
+        "$1"
+      );
 
       return {
         ...(data as ResourceMetadata),
-        slug: fileName.replace(HAS_EXTENSION, ""),
+        slug,
       };
     }
   );

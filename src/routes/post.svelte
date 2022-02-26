@@ -68,14 +68,6 @@
 </section>
 <Progress />
 
-<script context="module">
-export const prerender = true;
-export async function load({ fetch }) {
-  const posts = await (await fetch(`/api/post.json`)).json();
-  return { props: { posts } };
-}
-</script>
-
 <script lang="ts">
 import type { ResourceMetadata } from "$lib/utils/fetch-data";
 import { fly } from "svelte/transition";
