@@ -56,18 +56,11 @@
 </section>
 <Progress />
 
-<script context="module">
-export const prerender = true;
-export async function load({ fetch }) {
-  const projects = await (await fetch(`/api/project.json`)).json();
-  return { props: { projects } };
-}
-</script>
-
 <script lang="ts">
 import SEO from "$lib/components/SEO.svelte";
 import ProjectCard from "$lib/components/ProjectCard.svelte";
 import Progress from "$lib/components/Progress.svelte";
+import type { ResourceMetadata } from "$lib/utils/fetch-data";
 
-export let projects: Array<any>;
+export let projects: Array<ResourceMetadata>;
 </script>
