@@ -25,9 +25,9 @@
     and
     <a
       class="no-underline text-slate-800 dark:text-slate-200"
-      href="https://vercel.app"
+      href="https://pages.cloudflare.com/"
     >
-      Vercel
+      Cloudflare Pages
     </a>
     • Source code is available on
     <a

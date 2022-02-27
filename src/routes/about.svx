@@ -22,7 +22,7 @@ I was born and raised in Indonesia up until now, though I'd love to be able to l
 
 Originally, I made this website as a place to keep my "notes", but I thought that wouldn't be useful unless I share it with other people. I also think it's cool to have your own website where you can do _whatever_ you want with it. If you want to check _all_ of my personal works, you can check the [project](/project) page or [my Github profile](https://github.com/elianiva/).
 
-I use [Svete-Kit](https://kit.svelte.dev) and [MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on Vercel. If you want more detail about my website then you might want to read [this post]({data.siteUrl}/post/i-rebuild-my-site-using-sapper) or [this updated post]({data.siteUrl}/post/from-sapper-to-kit) where I explain the process of making (or rather, _rebuilding_) this site.
+I use [Svete-Kit](https://kit.svelte.dev) with [UnoCSS](https://github.com/unocss/unocss) and [MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on Cloudflare Pages.
 
 # Programming / Markup Languages
 

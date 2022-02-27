@@ -62,5 +62,5 @@ import ProjectCard from "$lib/components/ProjectCard.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import type { ResourceMetadata } from "$lib/utils/fetch-data";
 
-export let projects: Array<ResourceMetadata>;
+export let projects: ResourceMetadata[];
 </script>
