@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { page } from "$app/stores";
-import Moon from "$lib/components/Moon.svelte";
+import Moon from "$lib/components/ThemeToggle.svelte";
 import HomeIcon from "~icons/ph/house-fill";
 import PostIcon from "~icons/ph/newspaper-fill";
 import AboutIcon from "~icons/ph/user-circle-fill";
