@@ -1,0 +1,158 @@
+---
+draft: false
+title: Path Alias in Javascript and Typescript
+date: 2022-03-04
+desc: Have you ever got tired of writing relative paths that look like ../../../ ? No worries, path alias to the rescue!
+tags:
+  - javascript
+  - typescript
+---
+
+# Table of Contents
+
+# Introduction
+
+I'm working on Javascript / Typescript code most of the time. One of the things I hate is having to import a file using a relative path. I mean, it's not a problem when you only have `../path/to/file.js`, but it starts to become a headache when you have a deeply nested file the import statements are just full of `../../../path/to/file.js` nonsense. Not to mention the pain when you move the file and having to update the import path. Fortunately, we can avoid this by using a path alias!
+
+# Path Alias
+
+Path Alias, as its name implies, is an alias to a path. Basically, it allows us to define an alias for a path so we don't need to write relative paths anymore. There are multiple ways of achieving this depending on our setup. I will explain how I usually do it.
+
+# jsconfig.json and tsconfig.json
+
+This is one of the simplest ways of doing it. This will be picked up by the intellisense so you can get the suggestions when you type the path, which is nice!
+
+You can define a path alias by setting the `compilerOptions.paths` field. Here's an example:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+We want to set the `baseUrl` to `.` because we want to resolve any non-absolute import to our current directory, which is the root of the project. The `paths` field is used to define the aliases.
+
+I usually like to just use `@/*` as an alias to `./src/*` because I like to import files relative to the `src` directory. Setting a single alias won't be that useful when you have a deeply nested file that you import multiple times. For example, what if you have a file that lives inside `./src/deeply/nested/module/called/foo`? You don't want to write `@/deeply/nested/module/called/foo` every time, right? Well, you can add multiple aliases in this field. You can just add a new one only for this module.
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "#foo": ["./src/deeply/nested/module/called/foo"]
+    }
+  }
+}
+```
+
+and then you can use it like this.
+
+```javascript
+// you can now do this
+import { foo } from "#foo";
+
+// instead of this nonsense
+import { foo } from "../../deeply/nested/module/called/foo";
+```
+
+Although if you have a deeply nested module like that, I think you should try to re-structure your project a bit differently ;)
+
+You can read more about these options in [Typescript TSConfig Reference](https://www.typescriptlang.org/tsconfig)
+
+# esbuild
+
+esbuild is a performant module bundler written in Go. It is used by Vite under the hood to pre-bundle the dependencies. esbuild will pick up the path alias defined in jsconfig.json or tsconfig.json so you don't need to do anything which is very convenient.
+
+# Vite and Rollup
+
+Vite is probably one of the most popular bundlers out there. It's great, I use it all the time to bundle my frontend projects. Honestly, you should try to use this if you haven't.
+
+You can define your alias by setting the `resolve.path` field in `vite.config.js`. Since this is a regular Javascript/Typescript file, unlike JSON, you can use a function to resolve the path! Here's an example from one of my projects:
+
+```javascript
+// vite.config.js
+import { defineConfig } from "vite";
+import path from "path";
+
+export default defineConfig({
+  /* the rest of the config is omitted for brevity */
+  resolve: {
+    alias: {
+      "#": path.resolve("src"),
+    },
+  },
+});
+```
+
+So every time you import a file, the `#` symbol will be resolved to whatever `path.resolve("src")` returns.
+
+Vite uses Rollup under the hood, in fact, Vite will pass the `resolve.alias` options to `@rollup/plugin-alias`! So, setting the option in Rollup is going to be very similar. Here's how to do it in Rollup:
+
+```javascript
+// rollup.config.js
+import alias from "@rollup/plugin-alias";
+import path from "path";
+
+export default {
+  /* the rest of the config is omitted for brevity */
+  plugins: [
+    alias({
+      entries: {
+        "#": path.resolve("src"),
+      },
+    }),
+  ],
+};
+```
+
+You can read more about the available options on [its official documentation](https://github.com/rollup/plugins/tree/master/packages/alias)
+
+# Webpack
+
+Webpack configuration is also very similar to Vite alias. You'd add an alias by setting the `resolve.alias` field in `webpack.config.js`. Example:
+
+```javascript
+const path = require("path");
+
+module.exports = {
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src");
+    }
+  }
+}
+```
+
+There are several other options like using a `$` suffix to indicate an exact match. You can read more about those on [the official webpack documentation](https://webpack.js.org/configuration/resolve/)
+
+# NodeJS
+
+Starting from v12.19.0 and v14.6.0, you can also define path alias without any pre-processing tool like a bundler. Although, you will be limited to using string only to resolve the path and any path alias must begin with a `#` symbol.
+
+The way to do it is by defining the path alias inside the `imports` field in `package.json` file. Here's an example:
+
+```json
+{
+  // other fields are omitted for  brevity
+  "imports": {
+    "#services/*": "./src/services/*",
+    "#utils/*": "./src/utils/*"
+  }
+}
+```
+
+# Other
+
+There are other frameworks that I didn't cover here but some frameworks (NextJS, Astro, etc) respect the aliases defined in jsconfig.json or tsconfig.json. Some other ones, such as Nuxt, has [its own field](https://nuxtjs.org/docs/configuration-glossary/configuration-alias/) to define aliases.
+
+# Closing Note
+
+Since I discovered this feature I immediately apply it to every project that I'm working on because honestly, I don't want to write `../../../` nonsense anymore.
+
+Hopefully, you found something useful from this post and have a nice day! ;)
