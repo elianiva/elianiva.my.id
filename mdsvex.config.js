@@ -1,7 +1,10 @@
-import { defineMDSveXConfig } from "mdsvex";
+import { defineMDSveXConfig, escapeSvelte } from "mdsvex";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolink from "rehype-autolink-headings";
 import remarkTOC from "remark-toc";
+import { getHighlighter } from "shiki";
+
+const highlighter = await getHighlighter({ theme: "github-dark-dimmed" });
 
 export default defineMDSveXConfig({
   layout: {
@@ -16,4 +19,12 @@ export default defineMDSveXConfig({
   },
   remarkPlugins: [remarkTOC],
   rehypePlugins: [rehypeSlug, [rehypeAutolink, { behavior: "wrap" }]],
+  highlight: {
+    highlighter: async (code, lang = "text") => {
+      const highlightedCode = escapeSvelte(
+        highlighter.codeToHtml(code, { lang })
+      );
+      return `{@html \`${highlightedCode}\` }`;
+    },
+  },
 });

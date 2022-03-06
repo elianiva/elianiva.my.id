@@ -57,20 +57,18 @@ export default defineConfig({
         },
         "p > code": {
           color: "var(--un-prose-links)",
-        },
-        "pre, code": {
           "font-family": "var(--font-monospace)",
           "background-color": "var(--c-prose-alt-bg)",
           "font-weight": "normal",
           border: "none",
         },
         pre: {
+          "font-family": "var(--font-monospace)",
           padding: "1rem",
           "margin-top": "1.25rem",
           "overflow-x": "auto",
           "scrollbar-color": "var(--un-font-)",
           "border-radius": "0.375rem",
-          color: "var(--un-prose-body)",
         },
         "pre::-webkit-scrollbar": {
           "background-color": "var(--c-prose-alt-bg)",

@@ -64,8 +64,6 @@ import SEO from "$lib/components/SEO.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import { Theme, theme } from "$lib/store/theme";
 
-import "../../prism-night-owl.css";
-
 export let title = "";
 export let date = Date.now();
 export let desc = "";

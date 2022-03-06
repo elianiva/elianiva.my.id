@@ -3,9 +3,9 @@ layout: about
 ---
 
 <script>
-  import data from "$lib/data/site"; import SEO from
-  "$lib/components/SEO.svelte"; import Progress from
-  "$lib/components/Progress.svelte";
+  import data from "$lib/data/site"; 
+  import SEO from "$lib/components/SEO.svelte"; 
+  import Progress from "$lib/components/Progress.svelte";
 </script>
 
 <Progress />

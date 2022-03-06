@@ -97,8 +97,6 @@ import SEO from "$lib/components/SEO.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import data from "$lib/data/site";
 
-import "../../prism-night-owl.css";
-
 export let title;
 export let desc;
 export let demo;
