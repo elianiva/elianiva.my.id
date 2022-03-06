@@ -4,7 +4,7 @@ import rehypeAutolink from "rehype-autolink-headings";
 import remarkTOC from "remark-toc";
 import { getHighlighter } from "shiki";
 
-const highlighter = await getHighlighter({ theme: "github-dark-dimmed" });
+const highlighter = await getHighlighter({ theme: "github-dark" });
 
 export default defineMDSveXConfig({
   layout: {

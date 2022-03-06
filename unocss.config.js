@@ -56,7 +56,7 @@ export default defineConfig({
           "font-weight": 600,
         },
         "p > code": {
-          color: "var(--un-prose-links)",
+          color: "var(--un-prose-headings)",
           "font-family": "var(--font-monospace)",
           "background-color": "var(--c-prose-alt-bg)",
           "font-weight": "normal",
@@ -125,7 +125,7 @@ export default defineConfig({
         "--font-monospace": '"JetBrains Mono", monospace',
         "--un-prose-body": theme.colors.slate[600],
         "--un-prose-invert-body": theme.colors.slate[400],
-        "--un-prose-links": theme.colors.slate[700],
+        "--un-prose-links": theme.colors.slate[800],
         "--un-prose-invert-links": theme.colors.slate[300],
         "--un-prose-headings": theme.colors.slate[700],
         "--un-prose-invert-headings": theme.colors.slate[300],
