@@ -10,7 +10,7 @@ export default defineConfig({
         a: {
           "text-decoration": "none",
         },
-        "p > a": {
+        "p > a, li > a": {
           position: "relative",
           display: "inline-block",
           "z-index": 5,
@@ -18,10 +18,10 @@ export default defineConfig({
             "linear-gradient(var(--c-prose-accent), var(--c-prose-accent))",
           "background-size": "0 2px",
           "background-repeat": "no-repeat",
-          "background-position": "bottom",
-          transition: "background-size ease-out 100ms",
+          "background-position": "bottom left",
+          transition: "background-size ease-out 200ms",
         },
-        "p > a:hover": {
+        "p > a:hover, li > a:hover": {
           "background-size": "100% 2px",
         },
         strong: {
