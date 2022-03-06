@@ -14,21 +14,15 @@ export default defineConfig({
           position: "relative",
           display: "inline-block",
           "z-index": 5,
+          "background-image":
+            "linear-gradient(var(--c-prose-accent), var(--c-prose-accent))",
+          "background-size": "0 2px",
+          "background-repeat": "no-repeat",
+          "background-position": "bottom",
+          transition: "background-size ease-out 100ms",
         },
-        "p > a::after": {
-          content: '""',
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          transform: "scale3d(0, 0, 0)",
-          height: "2px",
-          "z-index": "-1",
-          "background-color": "var(--c-prose-accent)",
-          transition: "transform ease-out 200ms",
-        },
-        "p > a:hover::after": {
-          transform: "scale3d(1, 1, 1)",
+        "p > a:hover": {
+          "background-size": "100% 2px",
         },
         strong: {
           color: "var(--un-prose-headings)",
@@ -39,6 +33,14 @@ export default defineConfig({
         },
         h1: {
           "font-size": "1.875rem",
+          "background-image": `linear-gradient(
+            to right,
+            var(--c-prose-accent),
+            rgba(0, 0, 0, 0)
+          )`,
+          "background-size": "100% 0.125rem",
+          "background-repeat": "no-repeat",
+          "background-position": "bottom"
         },
         h2: {
           "font-size": "1.5rem",
@@ -52,19 +54,6 @@ export default defineConfig({
         },
         "h1 a, h2 a, h3 a, h4 a, h5 a": {
           "font-weight": 600,
-        },
-        "h1::after": {
-          content: '""',
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: "0.125rem",
-          "background-image": `linear-gradient(
-            to right,
-            var(--c-prose-accent),
-            rgba(0, 0, 0, 0)
-          )`,
         },
         "p > code": {
           color: "var(--un-prose-links)",
