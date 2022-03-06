@@ -12,6 +12,9 @@ export default {
   kit: {
     adapter: adapter(),
     inlineStyleThreshold: 1024,
+    prerender: {
+      default: true
+    },
     vite: {
       plugins: [Icons({ compiler: "svelte" }), Unocss()],
     },

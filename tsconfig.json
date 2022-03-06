@@ -3,12 +3,7 @@
     "module": "es2020",
     "moduleResolution": "node",
     "target": "es2018",
-    "lib": [
-      "es2019",
-      "es6",
-      "dom",
-      "webworker"
-    ],
+    "lib": ["es2019", "es6", "dom", "webworker"],
     /**
       svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
       to enforce using \`import type\` instead of \`import\` for Types.
@@ -27,22 +22,12 @@
     "allowJs": true,
     "checkJs": true,
     "paths": {
-      "$app/*": [
-        ".svelte/dev/runtime/app/*",
-        ".svelte/build/runtime/app/*"
-      ],
-      "$lib/*": [
-        "src/lib/*"
-      ],
-      "#/": [
-        "src/*"
-      ]
+      "$app/*": [".svelte/dev/runtime/app/*", ".svelte/build/runtime/app/*"],
+      "$lib": ["src/lib"],
+      "$lib/*": ["src/lib/*"],
+      "#/": ["src/*"]
     }
   },
-  "include": [
-    "src/**/*.d.ts",
-    "src/**/*.js",
-    "src/**/*.ts",
-    "src/**/*.svelte"
-  ]
+  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],
+  "extends": "./.svelte-kit/tsconfig.json"
 }
