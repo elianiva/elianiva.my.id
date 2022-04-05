@@ -50,7 +50,7 @@ I use a variable to persist the last state because I couldn't find a way to "get
 I made a Subject to change the route. The way it works is actually pretty simple. Whenever I want to navigate to another page, I just need to emit a path as a string to the Subject and it will change the route using `history.pushState`.
 
 ## Chart
-I decided to build the chart myself instead of using a library since I only need two; which are lines and bars. I decided to make a smooth curved line and it wasn't since I never made a smooth curved line chart before. Thanks to [this post](https://francoisromain.medium.com/smooth-a-svg-path-with-cubic-bezier-curves-e37b49d46c74) that I found I was able to make the chart.
+I decided to build the chart myself instead of using a library since I only need two; which are lines and bars. I decided to make a smooth curved line. Thanks to [this post](https://francoisromain.medium.com/smooth-a-svg-path-with-cubic-bezier-curves-e37b49d46c74) that I found, I was able to make the chart.
 
 ## History and Countdown
 I used RxJS `interval` and `timer` for the countdown timer and just re-render every second. I used css transition for the top bar instead of re-rendering every time because I want it to animate smoothly when it gets shorter.
