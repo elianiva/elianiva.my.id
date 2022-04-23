@@ -12,58 +12,28 @@ layout: about
 
 <SEO title="About" />
 
-# About Me
+# Who am I?
 
-Hi there! I'm Elianiva. I love building software and contribute to open source projects! I've been programming since 2019, mainly about web development.
+Hi there! I'm Elianiva. I love building software and contributing to open source projects! I've been programming since 2019, mainly about web development.
 
 I was born and raised in Indonesia up until now, though I'd love to be able to live abroad. I've been always interested in technology ever since I could remember. I tried to learn programming in 2018 but it didn't work out very well because I didn't understand anything and then gave up, but I tried to learn it again in 2019 and now here I am, working on a bunch of open source projects almost every day (mainly for [Teknologi Umum](https://github.com/teknologi-umum)).
 
-# About This Website
+# What is this website?
 
-Originally, I made this website as a place to keep my "notes", but I thought that wouldn't be useful unless I share it with other people. I also think it's cool to have your own website where you can do _whatever_ you want with it. If you want to check _all_ of my personal works, you can check the [project](/project) page or [my Github profile](https://github.com/elianiva/).
+This is my personal website where I put some of my posts and showcase some of my projects. Originally, I made this website as a place to keep my "notes", but I thought that wouldn't be useful unless I share them with other people. I also think it's cool to have your own website where you can do _whatever_ you want with it.
 
-I use [Svete-Kit](https://kit.svelte.dev) with [UnoCSS](https://github.com/unocss/unocss) and [MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on Cloudflare Pages.
+I use [Svete-Kit](https://kit.svelte.dev) with [UnoCSS](https://github.com/unocss/unocss) and [MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
 
-# Programming / Markup Languages
+# What I Do
 
-Here are some languages that I know or interested in. I try not to be too attached to certain languages. I think each language have their own pros and cons so it's better to choose the best tool for the job.
+I'm a college student who codes as a hobby. I mainly code for web-related things such as frontend using React / Next, Svelte(Kit), or Solid, and occasionally backend using NodeJS with a little bit of Go and C#. You can see some of my works on the [project page](/project) on my website or [my Github profile](https://github.com/elianiva).
 
-- **HTML/CSS**
+I love contributing to open source. I'm currently one of the active maintainers for [Teknologi Umum](https://github.com/teknologi-umum) organisation on Github. It's an Indonesian community that was made because there was no community that is 'general' enough, most of them are limited to a certain topic. I was also actively contributing to the Neovim ecosystem, seems like most people know me because of that. Although I'm not using it as my main editor anymore, hence the word "was".
 
-  It's basically a requirement for an web developer. It's one of the first things I learned back then.
-
-  If you want to see one of my work that relies heavily on HTML and CSS then check out [Svelteception](https://svelteception.vercel.app). I basically took random UI designs that I found on the internet (mostly from Dribbble) and implemented them. It was initially some kind of challenge that I do with my friends, but we got busy along the way and no longer have time for it. Quite proud of it to be honest.
-
-- **LaTeX**
-
-  I'm trying to get used to LaTeX because it's a very interesting concept to me. I don't really like Rich Text Editor like Microsoft Word, Google Docs, etc. Being able to create an article, CV, etc, without ever touching those editors is great.
-
-- **Javascript/Typescript**
-
-  Javascript is the first programming language I learned when I was introduced to programming. Nowadays I prefer Typescript because working with dynamically typed language in a mid-sized project is a bit painful. <br/>
-
-  I mostly work on frontend and my go-to framework/library are Svelte and React (preferably using NextJS). Though I'm currently exploring SolidJS and RxJS.
-
-- **Rust**
-
-  I like Rust because it feels like a high-level language but provides low-level features. I also like Rust's ownership and borrow system, though I haven't mastered it yet. I did several simple experiments with Rust like [nyaa.si scraper]({data.siteUrl}/project/nyaa-si-scraper) just for fun. I really want to spend more time with it, but I don't have that many use cases for Rust (yet) and its compile-time is just awful on my current machine.
-
-- **Go**
-
-  I think Go is a nice language because of its simplicity and it has quite a bunch of standard libraries. It's very easy to get going with Go and make a simple API, in fact, I made [this simple API](https://github.com/elianiva/random-jp-api) for my custom startpage when I learned Go for the first time. Obviously the code doesn't look great, but hey, I made that in like a day or something, mostly spent for scraping the data.
-
-- **Lua**
-
-  Lua is a language that I thought I would've never learned. I used it for my text editor that I'm using called [Neovim](https://neovim.io) and my window manager called [AwesomeWM](https://awesomewm.org/). I think it's a nice, small, and very simple language, it's meant to be easily embeddable, so it doesn't have a big stdlib like Python. Also, LuaJIT is crazy fast for a scripting language.
-
-  Although I don't use it that often anymore because I'm no longer using AwesomeWM and I don't use Neovim that often anymore.
-
-- **Others**
-
-  There are languages that I'm interested in but didn't mention like C#, Kotlin, Clojure, etc because I don't have much experience with them. Though I would love to use them if I have the chance.
+I write [posts](/post) about different topics, though I can't say that I write them regularly. Hope you find a thing or two that's useful from them!
 
 # Social
 
 If you want to reach me then feel free to hit me up on [Twitter](https://twitter.com/@elianiva_) or Discord [@elianiva#7886](javascript:void). You can also [email me](mailto:dicha.arkana03@gmail.com) if you prefer that.
 
-Well, I guess that's about it. Thanks for visiting my website and I hope you found something useful from my site. Have a wonderful day! ツ
+Well, I guess that's about it. Thanks for visiting my website and I hope you found something useful on my site. Have a wonderful day! ツ
