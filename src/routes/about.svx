@@ -12,19 +12,19 @@ layout: about
 
 <SEO title="About" />
 
-# Who am I?
+# About me
 
 Hi there! I'm Elianiva. I love building software and contributing to open source projects! I've been programming since 2019, mainly about web development.
 
 I was born and raised in Indonesia up until now, though I'd love to be able to live abroad. I've been always interested in technology ever since I could remember. I tried to learn programming in 2018 but it didn't work out very well because I didn't understand anything and then gave up, but I tried to learn it again in 2019 and now here I am, working on a bunch of open source projects almost every day (mainly for [Teknologi Umum](https://github.com/teknologi-umum)).
 
-# What is this website?
+# About this website
 
 This is my personal website where I put some of my posts and showcase some of my projects. Originally, I made this website as a place to keep my "notes", but I thought that wouldn't be useful unless I share them with other people. I also think it's cool to have your own website where you can do _whatever_ you want with it.
 
 I use [Svete-Kit](https://kit.svelte.dev) with [UnoCSS](https://github.com/unocss/unocss) and [MDSveX](https://mdsvex.pngwn.io/) to build this website and it's hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
 
-# What I Do
+# Things I do
 
 I'm a college student who codes as a hobby. I mainly code for web-related things such as frontend using React / Next, Svelte(Kit), or Solid, and occasionally backend using NodeJS with a little bit of Go and C#. You can see some of my works on the [project page](/project) on my website or [my Github profile](https://github.com/elianiva).
 
@@ -32,8 +32,8 @@ I love contributing to open source. I'm currently one of the active maintainers 
 
 I write [posts](/post) about different topics, though I can't say that I write them regularly. Hope you find a thing or two that's useful from them!
 
-# Social
+# Contact
 
 If you want to reach me then feel free to hit me up on [Twitter](https://twitter.com/@elianiva_) or Discord [@elianiva#7886](javascript:void). You can also [email me](mailto:dicha.arkana03@gmail.com) if you prefer that.
 
-Well, I guess that's about it. Thanks for visiting my website and I hope you found something useful on my site. Have a wonderful day! ツ
+Well, I guess that's about it. Thanks for visiting my website and I hope you found something useful here. Have a wonderful day! ツ
