@@ -17,10 +17,10 @@ export interface ResourceMetadata {
 export type ResourceKind = "post" | "project";
 
 const POSTS = import.meta.globEager("/src/routes/post/**/index.svx", {
-  assert: { type: "raw" },
+  as: "raw",
 });
 const PROJECTS = import.meta.globEager("/src/routes/project/**/index.svx", {
-  assert: { type: "raw" },
+  as: "raw",
 });
 
 export const getResourcesAsync = async (
