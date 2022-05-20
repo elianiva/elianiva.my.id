@@ -19,7 +19,7 @@ export default defineMDSveXConfig({
       const highlightedCode = escapeSvelte(
         highlighter.codeToHtml(code, { lang })
       );
-      return `{@html \`${highlightedCode}\` }`;
+      return highlightedCode;
     },
   },
 });
