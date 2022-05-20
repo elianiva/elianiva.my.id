@@ -47,7 +47,15 @@ export const getResourcesAsync = async (
       );
       const headings = postContent
         .split("\n")
-        .filter((line) => /^#{1,5}\s([A-Z]*)$/.test(line))
+        .filter((line) => {
+          const startsWithHash = line.startsWith("#");
+          if (!startsWithHash) return false;
+
+          const startsWithCapitalLetter = /^[A-Z]/.test(line.split(" ")[1]);
+          if (startsWithCapitalLetter) return true;
+
+          return false;
+        })
         .map((line) => {
           const level = line.match(/^#{1,5}/)[0].length;
           const value = line.replace(/^#{1,5}\s/, "");
@@ -61,7 +69,7 @@ export const getResourcesAsync = async (
         ...(data as ResourceMetadata),
         slug,
         headings,
-        content: postContent
+        content: postContent,
       };
     }
   );

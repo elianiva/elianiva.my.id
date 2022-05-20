@@ -17,6 +17,9 @@ export default {
     },
     vite: {
       plugins: [Icons({ compiler: "svelte" }), Unocss()],
+      build: {
+        target: "esnext"
+      }
     },
   },
 };
