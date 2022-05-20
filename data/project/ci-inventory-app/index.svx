@@ -4,7 +4,6 @@ date: 2021-03-26
 desc: An Inventory App made with CodeIgniter v4
 demo: false
 source: https://github.com/elianiva/ci-inventaris
-layout: project
 type: assignment
 stack:
   - ['PHP', 'https://www.php.net/']

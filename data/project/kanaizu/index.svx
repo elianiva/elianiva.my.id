@@ -4,7 +4,6 @@ date: 2020-09-29
 desc: A japanese kana quiz app built using Routify and TailwindCSS
 demo: https://kanaizu.vercel.app
 source: https://github.com/elianiva/kanaizu
-layout: project
 type: personal
 stack:
   - ['Routify', 'https://routify.dev']

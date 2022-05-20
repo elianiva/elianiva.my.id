@@ -4,7 +4,6 @@ date: 2020-05-02
 desc: My old website made with Gatsby
 demo: https://elianiva-github-io.vercel.app
 source: https://github.com/elianiva/elianiva.github.io
-layout: project
 type: personal
 stack:
   - ['Gatsby', 'https://gatsbyjs.org']

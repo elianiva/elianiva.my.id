@@ -4,7 +4,6 @@ date: 2020-09-12
 desc: A tiny (~2KB) library to scrape data from brainly written in Typescript.
 demo: false
 source: https://github.com/elianiva/brainly-scraper-ts
-layout: project
 type: personal
 stack:
   - ['Typescript', 'https://typescriptlang.org']

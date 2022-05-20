@@ -4,7 +4,6 @@ date: 2020-04-22
 desc: A simple app to get current covid data.
 demo: https://covid-info.now.sh
 source: https://github.com/elianiva/covid-info
-layout: project
 type: personal
 stack:
   - ['ReactJS', 'https://reactjs.org']

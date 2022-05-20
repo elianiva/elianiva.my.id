@@ -4,7 +4,6 @@ date: 2022-02-19
 desc: A Pauli Test Simulation app made with Web Component and RxJS
 demo: https://prawf.vercel.app
 source: https://github.com/elianiva/prawf
-layout: project
 type: personal
 stack:
   - ['Web Component', 'https://developer.mozilla.org/en-US/docs/Web/Web_Components']
