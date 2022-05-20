@@ -8,8 +8,6 @@ const highlighter = await getHighlighter({ theme: "github-dark" });
 export default defineMDSveXConfig({
   layout: {
     _: "./src/lib/layouts/post.svelte",
-    post: "./src/lib/layouts/post.svelte",
-    project: "./src/lib/layouts/project.svelte",
     about: "./src/lib/layouts/about.svelte",
   },
   extensions: [".svx", ".md"],
