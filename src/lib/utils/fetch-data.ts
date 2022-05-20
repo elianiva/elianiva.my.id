@@ -1,5 +1,10 @@
 import matter from "gray-matter";
 
+export interface Heading {
+  level: number;
+  value: string;
+}
+
 export interface ResourceMetadata {
   title: string;
   date: string;
@@ -10,16 +15,19 @@ export interface ResourceMetadata {
   layout: string;
   stack: [string, string][];
   slug: string;
+  headings: Heading[];
+  content: string;
   draft: boolean;
+  minimal: boolean;
   type: string;
 }
 
 export type ResourceKind = "post" | "project";
 
-const POSTS = import.meta.globEager("/src/routes/post/**/index.svx", {
+const POSTS = import.meta.globEager("/data/post/**/index.svx", {
   as: "raw",
 });
-const PROJECTS = import.meta.globEager("/src/routes/project/**/index.svx", {
+const PROJECTS = import.meta.globEager("/data/project/**/index.svx", {
   as: "raw",
 });
 
@@ -34,13 +42,26 @@ export const getResourcesAsync = async (
       const postContent = validFiles[fileName] as unknown as string;
       const { data } = matter(postContent);
       const slug = fileName.replace(
-        new RegExp(`/src/routes/${kind}/(.*)/index.svx`),
+        new RegExp(`/data/${kind}/(.*)/index.svx`),
         "$1"
       );
+      const headings = postContent
+        .split("\n")
+        .filter((line) => /^#{1,5}\s([A-Z]*)$/.test(line))
+        .map((line) => {
+          const level = line.match(/^#{1,5}/)[0].length;
+          const value = line.replace(/^#{1,5}\s/, "");
+          return {
+            level: level,
+            value: value,
+          };
+        });
 
       return {
         ...(data as ResourceMetadata),
         slug,
+        headings,
+        content: postContent
       };
     }
   );

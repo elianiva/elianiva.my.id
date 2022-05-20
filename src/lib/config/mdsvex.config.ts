@@ -5,7 +5,7 @@ import { getHighlighter } from "shiki";
 
 const highlighter = await getHighlighter({ theme: "github-dark" });
 
-export default defineMDSveXConfig({
+export const MDSVEX_CONFIG = defineMDSveXConfig({
   layout: {
     _: "./src/lib/layouts/post.svelte",
     post: "./src/lib/layouts/post.svelte",
@@ -22,7 +22,7 @@ export default defineMDSveXConfig({
       const highlightedCode = escapeSvelte(
         highlighter.codeToHtml(code, { lang })
       );
-      return `{@html \`${highlightedCode}\` }`;
+      return highlightedCode;
     },
   },
 });

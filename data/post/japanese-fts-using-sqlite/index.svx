@@ -9,8 +9,6 @@ tags:
   - csharp
 ---
 
-# Table of Contents
-
 # Introduction
 
 Recently I have been working on an android app that uses SQLite. The app has a feature where you can find an entry of a Japanese word with some details attached using a keyword that you typed in the search bar.

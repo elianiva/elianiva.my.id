@@ -152,6 +152,7 @@ export default defineConfig({
         `
       html {
         scrollbar-color: ${theme.colors.gray[200]} ${theme.colors.blue[600]};
+        scroll-padding-top: 2rem;
       }
       
       html::-webkit-scrollbar-thumb {

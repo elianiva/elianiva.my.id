@@ -37,10 +37,22 @@
     </div>
   {/if}
   <main
-    class="font-sans mx-auto text-base text-left max-w-[80ch] prose prose-custom dark:prose-invert dark:prose-custom-invert"
+    class="font-sans mx-auto text-base text-left max-w-screen-sm prose prose-custom dark:prose-invert dark:prose-custom-invert"
     bind:this={contentContainer}
   >
-    <slot />
+    <div>
+      <h1>Table of Contents</h1>
+      <ul class="!pl-0">
+        {#each headings as item}
+          <li class="list-none list-outside {getLevelIndent(item.level)} my-1">
+            <a href="#{slugify(item.value)}">
+              {item.value}
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </div>
+    {@html content}
     {#if !minimal}
       <h1>Comments</h1>
       {#if $theme === Theme.DARK}
@@ -57,18 +69,22 @@
 </section>
 <Progress />
 
-<script>
+<script lang="ts">
 import { onMount } from "svelte";
 import { page } from "$app/stores";
 import SEO from "$lib/components/SEO.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import { Theme, theme } from "$lib/store/theme";
+import type { Heading, ResourceMetadata } from "$lib/utils/fetch-data";
+import { slugify } from "$lib/utils/slugify";
 
 export let title = "";
 export let date = Date.now();
 export let desc = "";
-export let tags = [];
+export let tags: string[] = [];
 export let minimal = false;
+export let content = "";
+export let headings: Heading[] = [];
 
 const currentSlug = $page.url.pathname;
 
@@ -87,12 +103,24 @@ onMount(() => {
 
       link.addEventListener("click", (/** @type {MouseEvent} */ e) => {
         e.preventDefault();
-        window.location.hash = /** @type {HTMLAnchorElement} */ (
-          e.target
-        ).getAttribute("href");
+        window.location.hash =
+          /** @type {HTMLAnchorElement} */ e.target.getAttribute("href");
       });
     });
 });
+
+// since unocss can't do substring interpolation
+function getLevelIndent(level: number) {
+  // prettier-ignore
+  switch (level) {
+    case 1: return "";
+    case 2: return "pl-4";
+    case 3: return "pl-8";
+    case 4: return "pl-16";
+    case 5: return "pl-24";
+    default: return "";
+  }
+}
 
 const getCommentOptions = (/** @type {boolean} */ isDark) => ({
   src: "https://utteranc.es/client.js",

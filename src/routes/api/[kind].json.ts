@@ -1,21 +1,25 @@
-import { getResourcesAsync, ResourceKind } from "$lib/utils/fetch-data";
-import type { RequestEvent } from "@sveltejs/kit";
+import { getResourcesAsync } from "$lib/utils/fetch-data";
 
-export async function get({
-  params,
-  url: { searchParams: q },
-}: RequestEvent<{ kind: ResourceKind }>) {
-  const limit = parseInt(q.get("limit"));
-  const title = q.get("title");
+export async function get({ params, url: { searchParams: q } }) {
+  const slug = q.get("slug");
   const type = q.get("type");
+  const limit = parseInt(q.get("limit"));
 
   let items = await getResourcesAsync(params.kind);
 
-  if (type) items = items.filter((item) => item.type === type);
-  if (title) items = items.filter((item) => item.title === title);
-  if (limit) items = items.slice(0, limit);
+  if (type !== null && type !== "") {
+    items = items.filter((item) => item.type === type);
+  }
 
-  if (items.length > 1) {
+  if (slug !== null && slug !== "") {
+    items = items.filter((item) => item.slug === slug);
+  }
+
+  if (limit !== null && !isNaN(limit)) {
+    items = items.slice(0, limit);
+  }
+
+  if (items.length >= 1) {
     return {
       status: 200,
       headers: {
