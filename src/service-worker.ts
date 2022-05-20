@@ -1,6 +1,6 @@
-import { timestamp, build } from "$service-worker"
+import { version, build } from "$service-worker"
 
-const CACHE_NAME = `cache-${timestamp}`
+const CACHE_NAME = `cache-${version}`
 
 // dont' cache images on initial load
 const ASSETS = build.filter(file => !/.*\.(png|webp|jpg|)/.test(file))
@@ -13,7 +13,7 @@ self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(async keys => {
       for (const key of keys) {
-        if (!key.includes(timestamp.toString())) caches.delete(key)
+        if (!key.includes(version.toString())) caches.delete(key)
       }
     })
   )
