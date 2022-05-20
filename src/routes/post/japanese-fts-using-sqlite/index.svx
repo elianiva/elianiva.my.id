@@ -1,0 +1,414 @@
+---
+draft: false
+title: Japanese Full-Text Search in SQLite
+date: 2022-05-19
+desc: A simple example of how you can make Japanese full-text-search in SQLite.
+tags:
+  - japanese
+  - sqlite
+  - csharp
+---
+
+# Table of Contents
+
+# Introduction
+
+Recently I have been working on an android app that uses SQLite. The app has a feature where you can find an entry of a Japanese word with some details attached using a keyword that you typed in the search bar.
+
+When building this feature, I found almost zero results on how to do it. There are some full-text search tutorials for Latin words, but I couldn't find any for Japanese. It needs a special tokenizer called ICU from [the ICU project](http://site.icu-project.org/). Since it's not enabled by default in SQLite on my Linux machine or the one bundled with `Microsoft.Data.Sqlite`, I had to download the source code and compile it with some build flags to make it work. This is where the tricky part comes in. I spent a lot of time trying to figure out how to do it, but because I don't really familiar with C, I missed things that would be obvious to someone with a fair amount of C experience.
+
+Hopefully, by the end of this post, you'll know how to do the exact same thing without spending hours of your life trying to figure out how to do it.
+
+This article assumes that you're somewhat familiar with SQLite and .NET Core so I will not go into much detail about the basics. I will also be using Linux so some parts of the compilation step will be Linux specific.
+
+# What is Full-Text Search
+
+Full-text Search is a technique that allows you to search for a text in a database by providing only parts of them. For example, if I have a text that says "Never gonna give you up" and I type "give" in the search bar, I can find a row containing that text despite the fact that the word `give` is only in the middle of the text.
+
+This is different from an exact search that usually looks like this:
+
+```sql
+SELECT text FROM rickroll WHERE text = 'give';
+```
+
+Using that query, you will only find a row that contains `give`, nothing more, nothing less.
+
+Full-text search is similar to a wildcard search where you can use `%` to search for a text that contains a part of it. For example, if I type `%give%` in the search bar, I can find a row that contains `give` in it.
+
+```sql
+SELECT text FROM rickroll WHERE text LIKE '%give%';
+```
+
+If wildcard works then why bother with a full-text search? Well, they have some differences. Not only that wildcard is abysmally slow on a large dataset, they're also less accurate. Wildcard only searches for a pattern while full-text-search will search based on the tokenised text. full-text search is also **very** fast compared to wildcard search because it already has an index of our data.
+
+With wildcard, for example, if you have a pattern `LIKE '%run%'`, not only that it will return any rows that have the word `run`, but it will also return any rows that have the word `running`, `crunch`, `prune`, etc. This is because wildcard search is based on the pattern, not the tokenised text. With full-text search, it will only return rows that have the word `run` and also `running` depending on the tokenizer that you use.
+
+# Why SQLite
+
+> Well, you don't really have that much of an option on android, do you?
+
+I found this tweet the other day...
+
+<div>
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Also SQLite3’s full-text Search combined with triggers is absolutely mind blowing.<br><br>Indexed 50GB of data in 10 lines of SQL and it queries under 20ms…<br><br>This technology exists literally running on our toasters and we still throw Postgres and Elasticsearch at trivial problems.</p>&mdash; Sebastian Szturo (@SebastianSzturo) <a href="https://twitter.com/SebastianSzturo/status/1515297367335247877?ref_src=twsrc%5Etfw">April 16, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+...which inspired me to use the full-text search feature of SQLite. Initially, I was just thinking of a key-value pair database like a dictionary, but I realized that SQLite is a good fit for this because I can do so much more with it, including full-text search.
+
+Although, the default SQLite tokenizer, which is "simple" and "porter", doesn't support Japanese. The one that works with CJK characters is the ICU tokenizer from the [ICU Project](https://icu-project.org/) as I mentioned earlier.
+
+# Simple Example
+
+## Setting up the project
+
+We're going to make a simple console app using .NET Core and SQLite to store the data. The app will have a database that contains a list of Japanese sentences and we can search through them using a prompt.
+
+First, we need to set up the project. I will use the `dotnet` CLI for the entire process. We can run this simple command to get started.
+
+```bash
+dotnet new console -o ProjectName
+```
+
+That should give us a starting point to work with.
+
+## Disabling implicit using statements
+
+Here's a thing that I like to do when I start a new project. Open up the `.csproj` file and remove the `<ImplicitUsings>` line, our `.csproj` file should end up like this:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
+```
+
+We will get a warning from the compiler because our current `Program.cs` file doesn't have any `using` statements. Let's just ignore that for now.
+
+The reason why I like to do this is that I don't like the implicit `using` that was introduced in .NET 6. I prefer to be explicit with what I use.
+
+## Building SQLite with ICU support
+
+To build SQLite with ICU support, we need to download the source code of SQLite and compile it with certain compilation flags. You can download the source code of SQLite from [their download page](https://www.sqlite.org/download.html). We want to extract it to a folder inside our project so it'll be easier to find. You can name it whatever you want, but I'll put it inside a directory and call it `./External/sqlite/`.
+
+We can then compile it using the following commands.
+
+```bash
+# configure the build
+CFLAGS="-O3 -DSQLITE_ENABLE_ICU" CPPFLAGS=`icu-config --cppflags` LDFLAGS=`icu-config --ldflags` ./configure
+
+# build the binary
+make
+```
+
+The `-DSQLITE_ENABLE_ICU` is the flag that enables ICU support. You can see the full list of flags from [this page](https://www.sqlite.org/compile.html). We use `icu-config --ldflags` to get the linker flags for ICU.
+
+After compiling that, our directory should have the compiled binary called `sqlite3`. That's not what we want for our application, though. We want to use the `sqlite3` as a library, not a standalone executable. This is where it got me the first time, I didn't know there was a directory called `.libs` inside the `sqlite` directory because it was hidden. That's where the libraries are stored. I waste quite some time trying to make the binding in .NET works only to realise that I'm using the wrong binary. There should be an `sqlite3.so` file inside the `.libs` directory. This is what we're going to be using for our application.
+
+Since we put the `sqlite` directory inside our project, there will be a small issue. The `sqlite` directory contains a file called `Replace.cs`. This will cause the compiler to freak out because it's trying to analyse a file called `Replace.cs`. We can ignore this file by adding the following block to the end of our `.csproj` file just before the closing tag `</Project>`.
+
+```xml
+<ItemGroup>
+  <!-- adjust the path to suit your needs -->
+  <Compile Remove="./External/sqlite/Replace.cs" />
+</ItemGroup>
+```
+
+Of course, if you don't put the `sqlite` directory inside your project, you don't need to do this.
+
+## Preparing the database
+
+We're going to build a simple console app that lets us search for an example sentence containing a word that we typed in. To do that, we will need a table with three columns, `Id`, `EnglishText`, and `JapaneseText`. The `Id` column will be the primary key and will be auto-incremented. The `EnglishText` column will contain the English version of the text and the `JapaneseText` column will be the Japanese version.
+
+In our project directory, we will create a `Data` directory where our database will be stored. After doing that, we will run the `sqlite3` CLI to create the database. Make sure you use the `sqlite3` CLI that we just compiled because the one that comes by default might not be compiled with ICU support. We can use our `sqlite3` binary by typing the relative path instead of just `sqlite3`, in my case that would look like this:
+
+```bash
+./External/sqlite/sqlite3 ./Data/dictionary.db
+```
+
+It will put us in a prompt where we can create the table. I write this in multiline form so it would be easier to read, but we want to make it a single line when we're typing it in the prompt to avoid weird things happening.
+
+```sql
+CREATE TABLE Dictionary (
+  Id INTEGER PRIMARY KEY AUTOINCREMENT,
+  EnglishText TEXT,
+  JapaneseText TEXT
+);
+```
+
+In order to use the full-text search feature of SQLite, we're going to need a virtual table. It's a different type of table, but how you create the table is quite similar.
+
+```sql
+CREATE VIRTUAL TABLE DictionaryFTS
+USING fts4(
+  JapaneseText,
+  content='Dictionary',
+  tokenize=icu ja_JP
+);
+```
+
+The reason why I'm using `FTS4` and not `FTS3` or `FTS5` is because `FTS3` is slower and `FTS5` has several improvements but it's not available on android. For more detail on this, see [the documentation for FTS3/4](https://www.sqlite.org/fts3.html) and [FTS5](https://www.sqlite.org/fts5.html).
+
+The `tokenize` parameter is the tokenizer that we're going to use. We specify `icu` tokenizer and we use `ja_JP` as the locale because we're working with the Japanese language.
+
+Since we're going to use the data from the regular `Dictionary` table by specifying the `content` column, we need to create a trigger that will update the `DictionaryFTS` table whenever the `Dictionary` table is updated. We can add a trigger using this SQL statement:
+
+```sql
+CREATE TRIGGER Dictionary_Update_FTS
+AFTER INSERT ON Dictionary
+BEGIN
+  INSERT INTO DictionaryFTS(rowid, JapaneseText)
+  VALUES (new.rowid, new.JapaneseText);
+END;
+```
+
+This way, whenever we insert a new row in the `Dictionary` table, the `DictionaryFTS` table will be updated as well, which is exactly what we want. If you don't add this trigger you can still query the `DictionaryFTS` table but you won't be able to use the full-text search functionality.
+
+Now, let's add a few data to the `Dictionary` table. We can do that by running this statement:
+
+```sql
+INSERT INTO Dictionary (EnglishText, JapaneseText)
+VALUES ("I woke up in the morning", "朝に起きた"),
+       ("I was singing that song", "その歌を歌っていた"),
+       ("The food was good", "食べ物はうまかった"),
+       ("What time is it now?", "今何時？"),
+       ("This is Japanese", "これは日本語です"),
+       ("That car went too fast", "あの車が速すぎた"),
+       ("It smells like spring", "春の匂いがする"),
+       ("It's very cold outside", "外には寒いよ"),
+       ("Today is Saturday", "今日は土曜日です"),
+       ("Please tell me", "教えてくれ"),
+       ("Sorry I don't understand Japanese", "日本語分からなくてごめん"),
+       ("This is not an apple", "これはりんごじゃないよ"),
+       ("This book is mine", "この本は私のものです"),
+       ("I usually sleep around this time", "こんな時ごろに寝る"),
+       ("Your Japanese is good", "日本語上手ですね"),
+       ("I like cats", "私は猫が好き"),
+       ("My cat is white", "私の猫が白です");
+```
+
+<small>pardon my japanese :p</small>
+
+You can, of course, add a lot more data, but these should be enough for our purpose.
+
+We can test if the full-text search works by typing this statement:
+
+```sql
+SELECT * FROM DictionaryFTS WHERE JapaneseText MATCH 'です';
+```
+
+You should see any rows that have the word `です` in it. In this example the result should be these rows:
+
+```
+これは日本語です
+今日は土曜日です
+この本は私のものです
+日本語上手ですね
+```
+
+If you're having difficulties with typing Japanese characters in SQLite prompt, you can type all of the commands in a file and then do this
+
+```bash
+# where `file.sql` is a file that contains SQLite statements
+./External/sqlite/sqlite3 ./Data/dictionary.db < file.sql
+
+# you can also do it directly by passing a string to the `sqlite3` command
+./External/sqlite/sqlite3 ./Data/dictionary.db "SELECT * FROM table;"
+```
+
+## Installing SQLite client
+
+Since we're going to work on a simple app, we don't really need a full-fledged package like Entity Framework. We're going to use `Microsoft.Data.Sqlite` package which is a lightweight ADO.NET provider for SQLite, but since we want to use our own version of sqlite3 that we've compiled earlier, we want `Microsoft.Data.Sqlite.Core` instead.
+
+Make sure that you **DON'T** have `Microsoft.Data.Sqlite` installed in your project, otherwise, this wouldn't work. The `Microsoft.Data.Sqlite` package bundles its own sqlite to provide a wider range of compatibility. I also spent quite some time on this step because I didn't realise that. I missed a part of the documentation where it says that `Microsoft.Data.Sqlite` is a package that bundles sqlite.
+
+The package that we're using is built on top of `SQLitePCLRaw` package, which is a thin wrapper around sqlite. According to [the documentation](https://docs.microsoft.com/en-us/dotnet/standard/data/sqlite/custom-versions), we will need other packages to be installed as well if we want to use a custom version of sqlite.
+
+```bash
+dotnet add package Microsoft.Data.Sqlite.Core
+dotnet add package SQLitePCLRaw.core
+dotnet add package SQLitePCLRaw.provider.dynamic_cdecl
+```
+
+We should be done with the preparation.
+
+## Using a custom SQlite versionReplace.cs
+
+Before using any of the `Microsoft.Data.Sqlite` functionality, we need to register our custom sqlite version.
+First, we need to add a native library adapter class that implements `IGetFunctionPointer` from `SQLitePCL` namespace. This class will be used to get the pointer to the native sqlite library. I will put this inside a file called `NativeLibraryAdapter.cs` at the root of our project.
+
+```csharp
+using System;
+using System.Runtime.InteropServices;
+using SQLitePCL;
+
+class NativeLibraryAdapter : IGetFunctionPointer
+{
+    readonly IntPtr _library;
+
+    public NativeLibraryAdapter(string name)
+        => _library = NativeLibrary.Load(name);
+
+    public IntPtr GetFunctionPointer(string name)
+        => NativeLibrary.TryGetExport(_library, name, out var address)
+            ? address
+            : IntPtr.Zero;
+}
+```
+
+Next, we want to register our custom sqlite version. We can do that by adding a few lines of code to our `Program.cs` file.
+
+```csharp
+using System.IO;
+using SQLitePCL;
+
+// adjust this path to where your sqlite3.so is stored
+string sqliteLibPath = Path.GetFullPath("./External/sqlite/.libs/libsqlite3.so");
+
+SQLite3Provider_dynamic_cdecl.Setup("sqlite3", new NativeLibraryAdapter(sqliteLibPath));
+SQLitePCL.raw.SetProvider(new SQLite3Provider_dynamic_cdecl());
+```
+
+Make sure that we do this right at the beginning before doing anything with the database connection.
+
+## Connecting to the database
+
+We should try to connect to the database. To do that, we can instantiate the `SqliteConnection` class and provide it with the path to the database. We can add this code to our `Program.cs` file. Bare in mind that you should put all `using` statements at the top of the file.
+
+```csharp
+using Microsoft.Data.Sqlite;
+
+string databasePath = Path.GetFullPath("./Data/dictionary.db");
+using var connection = new SqliteConnection($"Data Source={databasePath}");
+
+// open the database connection
+connection.Open();
+```
+
+We would want to use the keyword `using` to make sure that the connection is disposed when we're done with it.
+
+## Main logic of the app
+
+What I want to build for this simple example is a simple search console app where the user is going to be given a prompt that ask for a word and then the app will search the database for the word and display the results.
+I won't be going into the details of how to do this because the main focus is the full-text search functionality.
+
+```csharp
+// close the database connection when we quit the app using Ctrl+C
+Console.CancelKeyPress += delegate
+{
+    connection.Close();
+    Environment.Exit(0);
+};
+
+// ask the user for a word to look up until they quit the app
+while (true)
+{
+    Console.Write("== Enter a word (ctrl+c to cancel): ");
+    var word = Console.ReadLine();
+
+    // ask again if the word is empty
+    if (string.IsNullOrEmpty(word))
+    {
+        Console.WriteLine("Word can't be empty!");
+        continue;
+    }
+
+    // create a command to search the database and bind the user input
+    // to the `@word` parameter
+    var command = connection.CreateCommand();
+    command.CommandText = $@"
+    SELECT
+      Dictionary.EnglishText,
+      Dictionary.JapaneseText
+    FROM Dictionary
+    WHERE Dictionary.JapaneseText IN (
+        SELECT DictionaryFTS.JapaneseText FROM DictionaryFTS
+        WHERE DictionaryFTS MATCH @word
+    );";
+    command.Parameters.Add(new SqliteParameter("@word", word));
+
+    using var reader = command.ExecuteReader();
+
+    // prints a message when no result was found
+    if (!reader.HasRows)
+    {
+        Console.WriteLine("No result was found!");
+        continue;
+    }
+
+    // print the results in a list
+    while (reader.Read())
+    {
+        Console.WriteLine($"- {reader["EnglishText"]} => {reader["JapaneseText"]}");
+    }
+}
+```
+
+When you run the app by typing `dotnet run`, you should see something like this:
+
+<div style="width:100%;height:0px;position:relative;padding-bottom:46.256%;"><iframe title="demo video" src="https://streamable.com/e/9gyjj3" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+
+As you can see, when I search for `です`, I get every rows that has `です` in the `JapaneseText` field.
+
+## Highlighting the matched word
+
+We can highlight the matched word in the result by using the `snippet` function. To do that, we need to change our query a bit.
+
+```sql
+SELECT
+    Dictionary.EnglishText,
+    JapaneseTextSnippet
+FROM Dictionary
+JOIN (
+    SELECT
+        snippet(DictionaryFTS, '[', ']') AS JapaneseTextSnippet,
+        rowid
+    FROM DictionaryFTS
+    WHERE DictionaryFTS MATCH @word
+) AS ResultFTS
+    ON Dictionary.Id = ResultFTS.rowid;
+```
+
+I'm not sure about the performance of this query compared to using `WHERE IN`. If you have any suggestions, please let me know :)
+
+This query will now select the `JapaneseTextSnippet` column that comes from the `snippet` function. The matched word should be surrounded by `[` and `]`. If you're using the result for the web, you can wrap it with an html tag instead of square brackets, but since we're making a console app, we don't have the luxury of that and have to rely on ANSI escape sequence. You can see [this gist](https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797) for the ANSI escape sequence reference.
+
+The reason why I don't put the escape sequence inside the `snippet` function is because I had weird things happening when I tried to do that. So, I decided to wrap it in a bracket and then replace the bracket with the escape sequence using C# like this.
+
+```csharp
+// print the results in a list
+while (reader.Read())
+{
+  var englishText = reader.GetString(0);
+  var japaneseTextSnippet = reader.GetString(1).Replace("[", "[1;31m").Replace("]", "[0m");
+  Console.WriteLine($"- {englishText} => {japaneseTextSnippet}");
+}
+```
+
+The end result should now look like this:
+
+![result with highlight](https://i.ibb.co/ym9QcW3/image-2022-05-20-16-11-29.png)
+
+# References
+
+Here are some useful resources that helped me that might also be useful to you:
+
+- [SQLite Virtual Table](https://www.sqlite.org/vtab.html)
+- [SQLite FTS3 Module](https://www.sqlite.org/fts3.html)
+- [kemsereylam.com: FTS with SQLite](https://kimsereylam.com/sqlite/2020/03/06/full-text-search-with-sqlite.html)
+- [abdus.dev: Quick FTS using SQLite](https://abdus.dev/posts/quick-full-text-search-using-sqlite/)
+
+If you want the full code, you can find the repository at [elianiva/foo-dictionary](https://github.com/elianiva/foo-dictionary)
+
+# Conclusion
+
+Doing a full-text search is actually quite easy. Initially, I thought full-text search requires a fancy technology like Elasticsearch, Algolia, or something like that, but I found that I can do it with SQLite.
+Most of the pain I had to go through came from trying to make the SQLite binding work.
+
+I hope this article helped you to implement full-text search for the Japanese language in your SQLite database. If you have any questions or suggestions, feel free to leave a comment :)
+
+Have a nice day!
