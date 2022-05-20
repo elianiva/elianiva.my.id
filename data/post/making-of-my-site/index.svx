@@ -8,8 +8,6 @@ tags:
   - website
 ---
 
-# Table of Contents
-
 # Introduction
 Hi everyone, welcome to my first post. So for the last few weeks I've been interested on this new stack called JAMstack. Many people use it to make their own personal blog by utilizing Static Site Generator (SSG) such as Hugo, Hexo, Eleventy, Gatsby, Jekyll, you name it. They usually hosted it on github pages, netlify, or other headless CMS. As a curious person that likes to tinker around with new stuff (also because I have no life), I decided to make my own personal blog.
 

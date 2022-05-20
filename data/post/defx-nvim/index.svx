@@ -7,8 +7,6 @@ tags:
   - neovim
 ---
 
-# Table of Contents
-
 # Introduction
 Hi everyone! This time I will talk about a (Neo)vim plugin called [Defx](https://github.com/airblade/defx.nvim). I've been looking for an alternative to [NERDTree](https://github.com/preservim/nerdtree) for quite a while now. I came across this plugin from a telegram channel called "Vim Indonesia". Since I have no project that I'm currently working on, why don't I give it a shot?
 

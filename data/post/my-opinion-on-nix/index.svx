@@ -22,8 +22,6 @@ tags:
   import Update from "$lib/components/Update.svelte"
 </script>
 
-# Table Of Contents
-
 # Introduction
 
 I've been trying to dive into Nix recently and it has been pleasant. The reason is, let's say [*someone*][mj-link] mentioned it a little bit *too* much and got me interested.

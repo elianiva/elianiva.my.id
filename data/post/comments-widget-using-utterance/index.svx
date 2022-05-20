@@ -17,8 +17,6 @@ tags:
 [utterances-web]: https://utteranc.es/
 [issue-link]: https://github.com/utterance/utterances/issues/427
 
-# Table Of Contents
-
 # Introduction
 If you've been following my website long enough, you might have known that I remake my website quite a while ago. I went from [Gatsby][gatsby-link] which uses [React][react-link] + MD to [Sapper][sapper-link] which uses [Svelte][svelte-link] + [MDsveX][mdsvex-link].
 

@@ -15,7 +15,6 @@ tags:
 [svelte-loader-link]: https://github.com/sveltejs/svelte-loader
 [svelte-preprocess-link]: https://github.com/sveltejs/svelte-preprocess
 
-# Table of Contents
 
 # Introduction
 These days web apps are usually built with a separate backend and frontend. They communicate through REST API, GraphQL, etc. This is because a SPA framework/library like React, Svelte, or Vue provides a *much* better DX *and* UX compared to the old school templating languages like EJS, HBS, Blade, etc.

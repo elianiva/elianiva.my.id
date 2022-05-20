@@ -32,8 +32,6 @@ tags:
   import Update from "$lib/components/Update.svelte"
 </script>
 
-# Table of Contents
-
 # What is LSP and Why?
 
 > **20-08-2021**: This post is no longer maintained because I've changed my config quite a bit since I wrote this and I don't feel like updating it :p

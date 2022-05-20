@@ -11,8 +11,6 @@ tags:
   import Update from "$lib/components/Update.svelte"
 </script>
 
-# Table of Contents
-
 # Introduction
 Hi everyone! In this post, I will talk about making your own custom statusline in vim. There are a lot of plugins out there that makes vim statusline looks way better and works out of the box. But, if you make your own, that means you lose one dependency and it feels good to make your own custom one. That makes it unique compared to anyone else.
 

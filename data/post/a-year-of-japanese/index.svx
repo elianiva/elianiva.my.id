@@ -24,8 +24,6 @@ tags:
 [newliberties-site]: https://newliberties.com/
 [discord-link]: https://discord.com/invite/a9Cz4JKV
 
-# Table of Contents
-
 # Introduction
 Hello there! I've been learning Japanese for around a year or so and here's what I've been going through. 
 

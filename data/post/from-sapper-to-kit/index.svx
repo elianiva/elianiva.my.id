@@ -16,8 +16,6 @@ tags:
 [svg-link]: https://github.com/vitejs/vite/issues/1204
 [endpoint-link]: https://kit.svelte.dev/docs#routing-endpoints
 
-# Table Of Contents
-
 # Introduction
 Svelte-Kit has been hyping me up this last couple of months. You *might* want to read my [previous post][pre-link] where I write about my very first experience of trying Svelte-Kit. I think it's *good enough* for me to migrate my website using Sapper to Svelte-Kit.
 

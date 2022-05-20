@@ -8,8 +8,6 @@ tags:
   - typescript
 ---
 
-# Table of Contents
-
 # Introduction
 
 I'm working on Javascript / Typescript code most of the time. One of the things I hate is having to import a file using a relative path. I mean, it's not a problem when you only have `../path/to/file.js`, but it starts to become a headache when you have a deeply nested file the import statements are just full of `../../../path/to/file.js` nonsense. Not to mention the pain when you move the file and having to update the import path. Fortunately, we can avoid this by using a path alias!

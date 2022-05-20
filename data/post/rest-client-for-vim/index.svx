@@ -7,8 +7,6 @@ tags:
   - neovim
 ---
 
-# Table of Contents
-
 # Introduction
 I've been learning backend web development stuff lately to create an API and whatnot. We all know that a popular REST client to test API is [Postman](https://postman.com). I like it but it is using Electron which means that it is quite heavy. Well, to be honest it is not that heavy but if I can save more RAM then why won't I find an alternative for it.
 
