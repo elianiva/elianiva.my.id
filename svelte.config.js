@@ -13,7 +13,7 @@ export default {
     adapter: adapter(),
     inlineStyleThreshold: 1024,
     prerender: {
-      enabled: true
+      default: true
     },
     vite: {
       plugins: [Icons({ compiler: "svelte" }), Unocss()],
