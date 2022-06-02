@@ -5,7 +5,6 @@ import { compile } from "mdsvex";
 export const get = async ({ params }) => {
   const resources = await getResourcesAsync("post");
   const slug = params.slug;
-  // const slug = "japanese-fts-using-sqlite";
   const post = resources.find((item) => item.slug === slug);
 
   if (post === undefined) {

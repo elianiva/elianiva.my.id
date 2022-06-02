@@ -22,7 +22,7 @@
     </span>
     <a
       class="relative block font-heading text-center text-lg leading-loose no-underline mb-4 text-blue-600 dark:text-red-500 hover:underline"
-      href="https://github.com/elianiva/elianiva.my.id/blob/master/src/routes/post{currentSlug}/index.svx"
+      href="https://github.com/elianiva/elianiva.my.id/blob/master/data/post{currentSlug}/index.svx"
       target="_blank"
       rel="norel noreferrer">Suggest An Edit</a
     >
