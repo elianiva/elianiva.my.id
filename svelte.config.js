@@ -6,7 +6,7 @@ import Icons from "unplugin-icons/vite";
 import Unocss from "unocss/vite";
 
 /** @type {import('@sveltejs/kit').Config} */
-export default {
+const config = {
   extensions: [".svelte", ...mdsvexConfig.extensions],
   preprocess: [mdsvex(mdsvexConfig), sveltePreprocess()],
   kit: {
@@ -18,8 +18,10 @@ export default {
     vite: {
       plugins: [Icons({ compiler: "svelte" }), Unocss()],
       build: {
-        target: "esnext"
-      }
+        target: "esnext",
+      },
     },
   },
 };
+
+export default config;
