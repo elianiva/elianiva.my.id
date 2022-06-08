@@ -1,0 +1,94 @@
+---
+title: Jisho Lens
+date: 2022-06-8
+desc: An Android app that allows you to scan Japanese words from a picture and search for its meaning from a dictionary.
+demo:
+source: https://github.com/elianiva/jisho-lens
+type: personal
+stack:
+  - ["Flutter", "https://flutter.dev"]
+  - ["Riverpod", "https://riverpod.dev"]
+  - ["Google ML Kit", "https://developers.google.com/ml-kit"]
+---
+
+**Jisho Lens** is an android app to help you learn Japanese. It basically works like Yomichan. I also took the idea of Googe Lens, hence the name Jisho _Lens_. It works by scanning your screen and tries to find any Japanese text and make it clickable. After you click the word, there will be a pop-up about the detail of the word.
+
+I made the app using Flutter and Riverpod as the state manager. I didn’t choose BLoC because that looks a bit too complicated for me who just want a simple state manager. I didn’t choose GetX either because it has too much stuff, I just want a state manager, not a mini-framework that sits on top of Flutter. The reason why I chose Riverpod specifically instead of Provider which is made by the same author is because Riverpod tries to address some issues with Provider, at least that’s what it said on its website. Also, I prefer how Riverpod works since it doesn’t require the `BuildContext` or other Flutter specific things to run.
+
+## Features
+
+### Google Lens-like feature
+
+As I said previously, I made this app to mimic Google Lens. It scans through your screen to find any Japanese text.
+
+### Dictionary
+
+Since this app has an overlap with a dictionary, I decided to make a dictionary feature with a search bar as well. Nothing really fancy going on, it’s just a dictionary like how you would expect.
+
+## Challenges
+
+While making this app, I encountered a bunch of challenges. Thankfully I managed to tackle them all and I’m quite happy with the solution. Here are some of the challenges along with the solution that I came up with.
+
+### Data source
+
+Initially, I want to use [jisho.org](http://jisho.org) API since they’re one of the best Japanese dictionary out there, but then I realised that it doesn’t have a stable API and I want a full offline support. So I ditched that idea and used SQLite populated with the data from JMdict and KANJIDIC instead.
+
+Besides providing full offline support, another advantage of this approach is I get a full control of the raw data and manipulate them however I want. Although this method has a drawback, having a full control also means that I have to parse the raw data by myself, which was quite fun, actually.
+
+### Populating data
+
+Since I took Yomichan as an inspiration for this app, I tried to do the same thing as they do, which is letting the user to import the dictionary and populate the database by them-self. This didn’t end very well.
+
+The dictionary file is pretty big and inserting hundreds of thousands of data in a single transaction will cause Out of Memory error. I tried to chunk so it became 5k rows per transaction but then it was too slow.
+
+I ended up ditching this idea and decided to pre-populate the database and import the database file instead.
+
+### Furigana distribution
+
+If you don’t know yet, Furigana are those small kana that you see on top/bottom/side of a kanji, like this for example: <ruby>偽<rp>(</rp><rt>にせ</rt><rp>)</rp>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>. Since Japanese has certain rules to read a kanji, meaning that a kanji has multiple readings based on its usage, it’s a bit hard to decide where are these Furigana should be placed using simple conditions. If you know Japanese, of course you can do this manually since you know how to read the individual kanji.
+
+At first, I thought of making an algorithm to distribute _most_ of them correctly, I thought that would be enough, but then I realised there are just _too many_ edge cases that needs to be handled. I’m pretty sure Yomichan also uses this method, but I’m not going to port their code into Dart.
+
+I was about to give up and just distribute the Furigana as a single continuous word, but then I found [Doubleevil/JmdictFurigana](https://github.com/Doublevil/JmdictFurigana) which basically provides the correct position of the Furigana. You should check it out if you want to know how it works, I think it’s pretty smart and it’s definitely better than my original algorithm.
+
+### Manipulating data source
+
+I use Flutter to make the app so I thought of using Dart to parse the data and insert it into SQLite. I quickly realised it was not a good idea. I then decided to switch to use C#. Why? You might ask. Well, I _really_ like C# but I don’t get that much opportunity of using it. Since this is just a personal project, I thought it would be fun to use it. Plus, .NET has a lot of stuff builtin that can help me interact with json, xml, and gzip. The only dependency I need to install is `Microsoft.Data.Sqlite` which is used to interact with the database.
+
+The source file is quite big (the JMdict-English is around 8mb and the JmdictFurigana attachment is around 28mb). Loading the entire file into a string and then parse it is definitely not a good idea. I’m glad that I chose .NET to do this because it has a builtin way to parse a json and xml file from a stream. Parsing the json stream is as simple as feeding a stream into `JsonSerializer.Deserialize`, but parsing the xml isn’t as simple.
+
+The way `XmlReader` works is it walks through the file stream line by line. It’s a forward-only reader, meaning that you can’t go back to look at the previous tag. The rest of the process is left to the end user. I’ve never done this before so this is new to me, but it’s quite fun to do because I get to use LINQ. It’s just not as easy as doing a simple `JsonSerializer.Deserialize.`
+
+The other challenge is the way I would structure the data in the database. It’s challenging because I need to combine two massive data and I want it to be relatively fast to insert and easy to work with. It took me quite a while, but I got there eventually after a bunch of head scratching.
+
+### Splitting words and lemmatisation
+
+Unfortunately, Google ML Kit Text Recognizer doesn’t split the recognised Japanes texts into individual words. As we all know, Japanese don’t really have spaces to separate words unlike most other languages. Splitting between them isn’t as easy as doing `words.Split(" ")`. Thankfully, there’s already a tool that can help me do this called [MeCab](<[https://taku910.github.io/mecab/](https://taku910.github.io/mecab/)>) and someone made a binding for Dart, neat. It also handles lemmatisation, which is basically extracting the root form of the word. For example, 残した became 残す. This is necessary because the dictionary only has the root form for each word.
+
+All that was left to do for me is calculating which word should I use when someone pressed a certain area on the screen, just like Google Lens, I thought. As it turned out, it wasn’t that easy. There are too many edge cases to handle because the character width aren’t always the same and sometimes Google ML Kit gives an incorrect `boundingBox` coordinate so they’re slightly misaligned. I ended up doing the alternative, which is when you press a line it will give you several options to choose from. Not exactly ideal but this is better than handling many edge cases and possibly getting false positive results.
+
+### Quick Screen Scan
+
+Recently I discovered that you can add your own custom quicksettings tile by providing your custom `TileService` and setting up some stuff in `AndroidManifest.xml`. I was so excited, this means that I can add a quick scan shortcut without having to screenshot manually. Unfortunately, I need to code some Kotlin code and my laptop just gave up the moment I open Android Studio or Intellij Idea. I was a bit sad to be honest, but oh well, guess I have to delay this feature ¯\\_(ツ)\_/¯
+
+## What I learned
+
+This is my first Flutter app so I learned _a lot_. I learned how Flutter works fundamentally, which is pretty much the same as any other MVVM framework, state management, and a bunch of other Flutter specific knowledge.
+
+I learned how to use SQLite and utilised its full-text search feature. I learned a lot about SQL while making this app, especially about index. My query went from ~3s to ~300ms just by adding an index. Since I populate the database from .NET and the bundled sqlite doesn’t come with ICU support, I need to compile it myself to enable ICU support (the Android version comes with ICU support). I don’t really have any experience with C so the entire process was quite painful.
+
+I also learned how to use `IEnumerable` more efficiently, how to parse an XML stream with LINQ, and some other LINQ queries when I’m writing the db generator using C#.
+
+All in all, I’m glad that I decided to make this app. Not only that my daily mild frustration disappear, I learned a lot of stuff that I wasn’t even expecting.
+
+## Credits
+
+These are some other cool projects that helped me a lot during the process of making this app. Definitely check them out!
+
+- [The JMDict project](https://www.edrdg.org/jmdict/j_jmdict.html) - The main data source
+- [jisho.org](http://jisho.org) - Great online Japanese dictionary website
+- [FooSoft/yomichan](https://github.com/FooSoft/yomichan) - One of the reason why I made this app
+- [Doublevil/JmdictFurigana](https://github.com/Doublevil/JmdictFurigana) - Furigana distribution data
+- [MeCab](https://taku910.github.io/mecab/) and [dttvn0010/mecab_dart](https://github.com/dttvn0010/mecab_dart) - Japanese word segmentation and Japanese word segmentation binding for Dart
+- [lrorpilla/Jidoujisho](https://github.com/lrorpilla/jidoujisho) - Similar app with more features
+- [WeDontPanic/Jotoba](https://github.com/WeDontPanic/Jotoba) - Online Japanese dictionary similar to Jisho
