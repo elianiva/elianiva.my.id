@@ -1,32 +1,15 @@
 {
   "compilerOptions": {
-    "module": "es2022",
+    // Enable top-level await, and other modern ESM features.
+    "target": "ESNext",
+    "module": "ESNext",
+    // Enable node-style module resolution, for things like npm package imports.
     "moduleResolution": "node",
-    "target": "es2017",
-    "lib": ["es2019", "es6", "dom", "webworker"],
-    /**
-      svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
-      to enforce using \`import type\` instead of \`import\` for Types.
-      */
-    "importsNotUsedAsValues": "error",
+    // Enable JSON imports.
+    "resolveJsonModule": true,
+    // Enable stricter transpilation for better output.
     "isolatedModules": true,
-    /**
-      To have warnings/errors of the Svelte compiler at the correct position,
-      enable source maps by default.
-      */
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "allowJs": true,
-    "checkJs": true,
-    "paths": {
-      "$app/*": [".svelte/dev/runtime/app/*", ".svelte/build/runtime/app/*"],
-      "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"]
-    }
-  },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],
-  "extends": "./.svelte-kit/tsconfig.json"
+    // Add type definitions for our Vite runtime.
+    "types": ["vite/client"]
+  }
 }
