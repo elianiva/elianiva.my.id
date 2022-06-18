@@ -1,6 +1,8 @@
 <nav class="nav">
 	<div class="container">
-		<h1 class="site-name">elianiva.my.id</h1>
+		<a href="/">
+			<h1 class="site-name">elianiva.my.id</h1>
+		</a>
 		<ul class="menu">
 			<li class="item"><a href="/posts">Posts</a></li>
 			<li class="item"><a href="/projects">Projects</a></li>
@@ -16,7 +18,7 @@
 		position: sticky;
 		top: 0;
 		left: 0;
-		height: 8rem;
+		height: 10rem;
 		.white-glass();
 
 		.container {
@@ -32,9 +34,13 @@
 	}
 
 	.site-name {
+		padding: 1rem 2rem;
+		background-color: @black;
+		border-radius: 1rem;
 		font-size: 1.8rem;
 		font-weight: 400;
 		font-family: @sans;
+		color: @white;
 	}
 
 	.menu {
@@ -45,10 +51,28 @@
 
 		.item {
 			a {
+				position: relative;
 				color: @grey;
 
 				&:hover {
 					color: @black;
+
+					&::before {
+						transform: scale(1);
+					}
+				}
+
+				&::before {
+					content: "";
+					position: absolute;
+					display: block;
+					background-color: @grey;
+					width: 100%;
+					height: 2px;
+					transform: scale(0);
+					bottom: -0.5rem;
+					transition: transform 0.2s ease-out, color 0.2s ease-out;
+					transform-origin: center;
 				}
 			}
 		}
