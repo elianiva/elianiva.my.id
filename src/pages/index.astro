@@ -9,8 +9,8 @@ import MainLayout from "~/layouts/MainLayout.astro";
 				Hello there! I'm <strong class="name">Elianiva</strong>
 			</h1>
 			<p class="subheading">
-				I'm a self-taught fullstack web developer mainly working on frontend world using Typescript, React, Svelte, and
-				Solid.
+				I'm a fullstack web developer mainly working on the frontend world using Typescript, React,
+				Svelte, and Solid. I also like to write articles every now and then.
 			</p>
 		</header>
 	</Fragment>
@@ -20,7 +20,7 @@ import MainLayout from "~/layouts/MainLayout.astro";
 	@import "../styles/variables.less";
 
 	.header {
-		padding-top: 10rem;
+		padding-top: 6.4rem;
 	}
 
 	.heading {
@@ -28,20 +28,20 @@ import MainLayout from "~/layouts/MainLayout.astro";
 		font-weight: 600;
 		font-family: @sans;
 		margin-bottom: 1rem;
-	}
 
-	.heading .name {
-		background: linear-gradient(45deg, #46fc92 0%, #3f5efb 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		text-shadow: @thin-shadow;
+		.name {
+			background: linear-gradient(45deg, #46fc92 0%, #3f5efb 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-shadow: @thin-shadow;
+		}
 	}
 
 	.subheading {
 		font-family: @sans;
-		font-size: 2.2rem;
-		line-height: 1.5em;
+		font-size: 1.8rem;
+		line-height: 1.625em;
 		color: @grey;
-		max-width: 42ch;
+		max-width: 60ch;
 	}
 </style>

@@ -6,6 +6,12 @@
 	margin: 0;
 }
 
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
 html {
 	font-size: 62.5%;
 }
@@ -15,12 +21,6 @@ body {
 	background-color: @white;
 }
 
-.wrapped {
-	max-width: 1080px;
-	margin: 0 auto;
-	padding: 0 2rem;
-}
-
 h1,
 h2,
 h3,
@@ -28,4 +28,10 @@ h4,
 span,
 p {
 	color: @black;
+}
+
+a {
+	color: @black;
+	text-decoration: none;
+	font-family: @sans;
 }

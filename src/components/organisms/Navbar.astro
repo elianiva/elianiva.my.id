@@ -1,0 +1,56 @@
+<nav class="nav">
+	<div class="container">
+		<h1 class="site-name">elianiva.my.id</h1>
+		<ul class="menu">
+			<li class="item"><a href="/posts">Posts</a></li>
+			<li class="item"><a href="/projects">Projects</a></li>
+			<li class="item"><a href="/about">About</a></li>
+		</ul>
+	</div>
+</nav>
+
+<style lang="less">
+	@import "../../styles/variables.less";
+
+	.nav {
+		position: sticky;
+		top: 0;
+		left: 0;
+		height: 8rem;
+		.white-glass();
+
+		.container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			height: 100%;
+			padding: 0 2rem;
+			max-width: @wrapper-width;
+			margin: 0 auto;
+		}
+	}
+
+	.site-name {
+		font-size: 1.8rem;
+		font-weight: 400;
+		font-family: @sans;
+	}
+
+	.menu {
+		list-style: none;
+		display: flex;
+		align-items: center;
+		gap: 4.8rem;
+
+		.item {
+			a {
+				color: @grey;
+
+				&:hover {
+					color: @black;
+				}
+			}
+		}
+	}
+</style>

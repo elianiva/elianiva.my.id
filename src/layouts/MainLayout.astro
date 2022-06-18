@@ -1,5 +1,6 @@
 ---
 import SEO from "~/components/atoms/SEO.astro";
+import Navbar from "~/components/organisms/Navbar.astro";
 import "~/styles/global.less";
 
 export interface Props {
@@ -15,12 +16,56 @@ const { title } = Astro.props as Props;
 		<SEO title={title} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;&display=swap" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
+		<div class="gradient teal"></div>
+		<div class="gradient blue"></div>
+		<Navbar />
 		<slot />
 		<main class="wrapped">
 			<slot name="wrapped" />
 		</main>
 	</body>
 </html>
+
+<style lang="less">
+	@import "../styles/variables.less";
+
+	.wrapped {
+		max-width: @wrapper-width;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.gradient {
+		position: fixed;
+		border-radius: 50%;
+		z-index: -1;
+		width: 16rem;
+		height: 16rem;
+		mix-blend-mode: multiply;
+		filter: blur(12rem);
+
+		&.teal {
+			background-color: rgb(25, 255, 159);
+			top: 8rem;
+			left: 10rem;
+			width: 40rem;
+			height: 40rem;
+			opacity: 0.2;
+		}
+
+		&.blue {
+			background-color: rgb(0, 119, 255);
+			bottom: 2rem;
+			right: 4rem;
+			width: 40rem;
+			height: 40rem;
+			opacity: 0.2;
+		}
+	}
+</style>
