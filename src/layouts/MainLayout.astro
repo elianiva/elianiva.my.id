@@ -22,11 +22,11 @@ const { title } = Astro.props as Props;
 		/>
 	</head>
 	<body>
-		<div class="gradient teal"></div>
-		<div class="gradient blue"></div>
 		<Navbar />
 		<slot />
 		<main class="wrapped">
+			<div class="gradient teal"></div>
+			<div class="gradient blue"></div>
 			<slot name="wrapped" />
 		</main>
 	</body>
@@ -39,10 +39,11 @@ const { title } = Astro.props as Props;
 		max-width: @wrapper-width;
 		margin: 0 auto;
 		padding: 0 2rem;
+		position: relative;
 	}
 
 	.gradient {
-		position: fixed;
+		position: absolute;
 		border-radius: 50%;
 		z-index: -1;
 		width: 16rem;
@@ -51,21 +52,19 @@ const { title } = Astro.props as Props;
 		filter: blur(12rem);
 
 		&.teal {
-			background-color: @teal;
+			background-color: fade(@teal, 10%);
 			top: 8rem;
-			left: 10rem;
+			left: -10rem;
 			width: 40rem;
 			height: 40rem;
-			opacity: 0.2;
 		}
 
 		&.blue {
-			background-color: @blue;
-			bottom: 2rem;
-			right: 4rem;
+			background-color: fade(@blue, 10%);
+			top: 20rem;
+			right: -8rem;
 			width: 40rem;
 			height: 40rem;
-			opacity: 0.2;
 		}
 	}
 </style>
