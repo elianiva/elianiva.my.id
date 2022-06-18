@@ -1,0 +1,38 @@
+---
+import { config, type SiteConfig } from "~/config/site.config";
+
+export interface Props {
+	title: string;
+	site?: SiteConfig["site"];
+	description?: SiteConfig["description"];
+	keywords?: SiteConfig["keywords"];
+	type?: "post" | "website";
+	thumbnail?: string;
+}
+
+const { title, site, description, keywords, type, thumbnail } = Object.assign(config, Astro.props as Props);
+const { pathname } = new URL(Astro.request.url);
+const hasThumbnail = thumbnail !== undefined && thumbnail !== "";
+---
+
+<title>{title} | {site.name}</title>
+<link rel="canonical" href={`${site.url}${pathname}`} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords.join(",").toLowerCase()} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={`${site.url}${pathname}`} />
+<meta property="og:title" content={title || site.name} />
+<meta property="og:description" content={description} />
+<meta
+	property="og:image"
+	content={hasThumbnail ? thumbnail : "https://avatars3.githubusercontent.com/u/51877647?s=240&v=4"}
+/>
+
+<!-- Twitter -->
+<meta property="twitter:card" content={thumbnail ? "summary_large_image" : "summary"} />
+<meta property="twitter:url" content="{siteUrl}{$page.url.pathname}" />
+<meta property="twitter:title" content={title || site.name} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={hasThumbnail ? thumbnail : ""} />

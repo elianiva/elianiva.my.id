@@ -1,14 +1,14 @@
 ---
-import Layout from "~/layouts/Layout.astro";
+import MainLayout from "~/layouts/MainLayout.astro";
 ---
 
-<style lang='less'>
-.heading {
-	font-size: 4rem;
-	color: red;
-}
-</style>
-
-<Layout title="Some random title">
+<MainLayout title="Home">
 	<h1 class="heading">Hello World</h1>
-</Layout>
+</MainLayout>
+
+<style lang="less">
+	.heading {
+		font-size: 4rem;
+		color: red;
+	}
+</style>
