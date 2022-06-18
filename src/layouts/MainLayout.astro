@@ -15,6 +15,9 @@ const { title } = Astro.props as Props;
 	</head>
 	<body>
 		<slot />
+		<main class="wrapped">
+			<slot name="wrapped" />
+		</main>
 	</body>
 </html>
 
@@ -23,5 +26,11 @@ const { title } = Astro.props as Props;
 		box-sizing: border-box;
 		padding: 0;
 		margin: 0;
+	}
+
+	.wrapped {
+		max-width: 1080px;
+		margin: 0 auto;
+		padding: 0 2rem;
 	}
 </style>

@@ -3,7 +3,9 @@ import MainLayout from "~/layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Home">
-	<h1 class="heading">Hello World</h1>
+	<Fragment slot="wrapped">
+		<h1 class="heading">Hello World</h1>
+	</Fragment>
 </MainLayout>
 
 <style lang="less">
