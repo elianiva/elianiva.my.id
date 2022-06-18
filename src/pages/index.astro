@@ -4,13 +4,44 @@ import MainLayout from "~/layouts/MainLayout.astro";
 
 <MainLayout title="Home">
 	<Fragment slot="wrapped">
-		<h1 class="heading">Hello World</h1>
+		<header class="header">
+			<h1 class="heading">
+				Hello there! I'm <strong class="name">Elianiva</strong>
+			</h1>
+			<p class="subheading">
+				I'm a self-taught fullstack web developer mainly working on frontend world using Typescript, React, Svelte, and
+				Solid.
+			</p>
+		</header>
 	</Fragment>
 </MainLayout>
 
 <style lang="less">
+	@import "../styles/variables.less";
+
+	.header {
+		padding-top: 10rem;
+	}
+
 	.heading {
-		font-size: 4rem;
-		color: red;
+		font-size: 6.4rem;
+		font-weight: 600;
+		font-family: @sans;
+		margin-bottom: 1rem;
+	}
+
+	.heading .name {
+		background: linear-gradient(45deg, #46fc92 0%, #3f5efb 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-shadow: @thin-shadow;
+	}
+
+	.subheading {
+		font-family: @sans;
+		font-size: 2.2rem;
+		line-height: 1.5em;
+		color: @grey;
+		max-width: 42ch;
 	}
 </style>

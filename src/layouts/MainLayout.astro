@@ -1,5 +1,6 @@
 ---
 import SEO from "~/components/atoms/SEO.astro";
+import "~/styles/global.less";
 
 export interface Props {
 	title: string;
@@ -12,6 +13,9 @@ const { title } = Astro.props as Props;
 <html lang="en">
 	<head>
 		<SEO title={title} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;&display=swap" rel="stylesheet" />
 	</head>
 	<body>
 		<slot />
@@ -20,17 +24,3 @@ const { title } = Astro.props as Props;
 		</main>
 	</body>
 </html>
-
-<style lang="less" is:global>
-	* {
-		box-sizing: border-box;
-		padding: 0;
-		margin: 0;
-	}
-
-	.wrapped {
-		max-width: 1080px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
-</style>
