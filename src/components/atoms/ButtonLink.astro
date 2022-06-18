@@ -1,0 +1,26 @@
+---
+export interface Props {
+	href: string;
+	text: string;
+}
+
+const { text, href } = Astro.props as Props;
+---
+
+<a href={href} class="button-link">
+	{text}
+</a>
+
+<style lang="less">
+	@import "../../styles/variables.less";
+
+	.button-link {
+		display: inline-block;
+		padding: 1rem 2rem;
+		border-radius: 10rem;
+		background-color: fade(@blue, 25%);
+		color: darken(@blue, 20%);
+		font-family: @sans;
+		font-weight: 500;
+	}
+</style>

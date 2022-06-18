@@ -1,4 +1,5 @@
 ---
+import ButtonLink from "~/components/atoms/ButtonLink.astro";
 import MainLayout from "~/layouts/MainLayout.astro";
 ---
 
@@ -12,6 +13,7 @@ import MainLayout from "~/layouts/MainLayout.astro";
 				I'm a fullstack web developer mainly working on the frontend world using Typescript, React,
 				Svelte, and Solid. I also like to write articles every now and then.
 			</p>
+			<ButtonLink text="About Me" href="/about" />
 		</header>
 	</Fragment>
 </MainLayout>
@@ -43,5 +45,6 @@ import MainLayout from "~/layouts/MainLayout.astro";
 		line-height: 1.625em;
 		color: @grey;
 		max-width: 60ch;
+		margin-bottom: 4rem;
 	}
 </style>

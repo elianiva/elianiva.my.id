@@ -51,7 +51,7 @@ const { title } = Astro.props as Props;
 		filter: blur(12rem);
 
 		&.teal {
-			background-color: rgb(25, 255, 159);
+			background-color: @teal;
 			top: 8rem;
 			left: 10rem;
 			width: 40rem;
@@ -60,7 +60,7 @@ const { title } = Astro.props as Props;
 		}
 
 		&.blue {
-			background-color: rgb(0, 119, 255);
+			background-color: @blue;
 			bottom: 2rem;
 			right: 4rem;
 			width: 40rem;
