@@ -16,10 +16,9 @@ const { title } = Astro.props as Props;
 		<SEO title={title} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;&display=swap"
-			rel="stylesheet"
-		/>
+		<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet" />
 	</head>
 	<body>
 		<Navbar />
@@ -40,31 +39,5 @@ const { title } = Astro.props as Props;
 		margin: 0 auto;
 		padding: 0 2rem;
 		position: relative;
-	}
-
-	.gradient {
-		position: absolute;
-		border-radius: 50%;
-		z-index: -1;
-		width: 16rem;
-		height: 16rem;
-		mix-blend-mode: multiply;
-		filter: blur(12rem);
-
-		&.teal {
-			background-color: fade(@teal, 10%);
-			top: 8rem;
-			left: -10rem;
-			width: 40rem;
-			height: 40rem;
-		}
-
-		&.blue {
-			background-color: fade(@blue, 10%);
-			top: 20rem;
-			right: -8rem;
-			width: 40rem;
-			height: 40rem;
-		}
 	}
 </style>

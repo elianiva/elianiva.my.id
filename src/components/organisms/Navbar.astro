@@ -19,7 +19,26 @@
 		top: 0;
 		left: 0;
 		height: 10rem;
-		.white-glass();
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			border-bottom: 2px @black solid;
+			// I don't know what I'm doing with these values
+			border-radius: 255px 15px 180px 32px / 48px 240px 24px 255px;
+		}
+
+		&::before {
+			transform: rotateZ(0.3deg);
+		}
+
+		&::after {
+			transform: rotateZ(-0.2deg);
+		}
 
 		.container {
 			display: flex;
@@ -34,13 +53,11 @@
 	}
 
 	.site-name {
-		padding: 1rem 2rem;
-		background-color: @black;
 		border-radius: 1rem;
-		font-size: 1.8rem;
+		font-size: 2.8rem;
 		font-weight: 400;
-		font-family: @sans;
-		color: @white;
+		font-family: @display;
+		color: @black;
 	}
 
 	.menu {
@@ -49,31 +66,30 @@
 		align-items: center;
 		gap: 4.8rem;
 
-		.item {
-			a {
-				position: relative;
-				color: @grey;
+		.item a {
+			font-size: 1.8rem;
+			position: relative;
+			color: @grey;
 
-				&:hover {
-					color: @black;
-
-					&::before {
-						transform: scale(1);
-					}
-				}
+			&:hover {
+				color: @black;
 
 				&::before {
-					content: "";
-					position: absolute;
-					display: block;
-					background-color: @grey;
-					width: 100%;
-					height: 2px;
-					transform: scale(0);
-					bottom: -0.5rem;
-					transition: transform 0.2s ease-out, color 0.2s ease-out;
-					transform-origin: center;
+					transform: scale(1);
 				}
+			}
+
+			&::before {
+				content: "";
+				position: absolute;
+				display: block;
+				background-color: @grey;
+				width: 100%;
+				height: 2px;
+				transform: scale(0);
+				bottom: -0.5rem;
+				transition: transform 0.2s ease-out, color 0.2s ease-out;
+				transform-origin: center;
 			}
 		}
 	}

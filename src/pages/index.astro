@@ -9,7 +9,7 @@ import MainLayout from "~/layouts/MainLayout.astro";
 			<h1 class="heading">
 				Hello there! I'm <strong class="name">Elianiva</strong>
 			</h1>
-			<p class="subheading">
+			<p class="detail">
 				I'm a fullstack web developer mainly working on the frontend world using Typescript, React,
 				Svelte, and Solid. I also like to write articles every now and then.
 			</p>
@@ -28,23 +28,20 @@ import MainLayout from "~/layouts/MainLayout.astro";
 	.heading {
 		font-size: 6.4rem;
 		font-weight: 600;
-		font-family: @sans;
+		font-family: @display;
 		margin-bottom: 1rem;
 
 		.name {
-			background: linear-gradient(45deg, #46fc92 0%, #3f5efb 100%);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			text-shadow: @thin-shadow;
 		}
 	}
 
-	.subheading {
+	.detail {
 		font-family: @sans;
-		font-size: 1.8rem;
+		font-size: 2rem;
 		line-height: 1.625em;
 		color: @grey;
 		max-width: 60ch;
 		margin-bottom: 4rem;
+		font-weight: 500;
 	}
 </style>

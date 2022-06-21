@@ -17,10 +17,10 @@ const { text, href } = Astro.props as Props;
 	.button-link {
 		display: inline-block;
 		padding: 1rem 2rem;
-		border-radius: 10rem;
-		background-color: fade(@blue, 25%);
-		color: darken(@blue, 20%);
+		border: 2px @black solid;
+		border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+		color: @black;
 		font-family: @sans;
-		font-weight: 500;
+		font-weight: 600;
 	}
 </style>
