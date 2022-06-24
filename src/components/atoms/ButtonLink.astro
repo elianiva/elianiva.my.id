@@ -11,16 +11,16 @@ const { text, href } = Astro.props as Props;
 	{text}
 </a>
 
-<style lang="less">
-	@import "../../styles/variables.less";
+<style lang="scss">
+	@use "../../styles/variables" as v;
 
 	.button-link {
 		display: inline-block;
 		padding: 1rem 2rem;
-		border: 2px @black solid;
+		border: 2px v.$black solid;
 		border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-		color: @black;
-		font-family: @sans;
+		color: v.$black;
+		font-family: v.$font-sans;
 		font-weight: 600;
 	}
 </style>

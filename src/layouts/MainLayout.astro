@@ -1,7 +1,7 @@
 ---
 import SEO from "~/components/atoms/SEO.astro";
 import Navbar from "~/components/organisms/Navbar.astro";
-import "~/styles/global.less";
+import "~/styles/global.scss";
 
 export interface Props {
 	title: string;
@@ -31,11 +31,11 @@ const { title } = Astro.props as Props;
 	</body>
 </html>
 
-<style lang="less">
-	@import "../styles/variables.less";
+<style lang="scss">
+	@use "../styles/variables" as v;
 
 	.wrapped {
-		max-width: @wrapper-width;
+		max-width: v.$wrapper-width;
 		margin: 0 auto;
 		padding: 0 2rem;
 		position: relative;

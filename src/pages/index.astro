@@ -1,5 +1,6 @@
 ---
 import ButtonLink from "~/components/atoms/ButtonLink.astro";
+import PostCard from "~/components/molecules/PostCard.astro";
 import MainLayout from "~/layouts/MainLayout.astro";
 ---
 
@@ -10,38 +11,70 @@ import MainLayout from "~/layouts/MainLayout.astro";
 				Hello there! I'm <strong class="name">Elianiva</strong>
 			</h1>
 			<p class="detail">
-				I'm a fullstack web developer mainly working on the frontend world using Typescript, React,
-				Svelte, and Solid. I also like to write articles every now and then.
+				I'm a fullstack web developer mainly working on the frontend world using Typescript, React, Svelte, and
+				Solid. I also like to write articles every now and then.
 			</p>
 			<ButtonLink text="About Me" href="/about" />
 		</header>
+		<section class="posts">
+			<h2 class="posts-title">Recent Posts</h2>
+			<div class="card-list">
+				<PostCard
+					url="/posts/japanese-full-text-search"
+					title="Japanese Full-Text Search in SQLite"
+					description="A simple example of how you can make Japanese full-text-search in SQLite."
+				/>
+				<PostCard
+					url="/posts/js-ts-path-alias"
+					title="Path alias in Javascript and Typescript"
+					description="Have you ever got tired of writing relative paths that look like ../../../ ? No worries, path alias to the rescue!"
+				/>
+				<PostCard
+					url="/posts/a-year-of-japanese"
+					title="A year of Japanese... Well, kinda"
+					description="A post where I write my journey on learning Japanese. Man, I forgot how did I learn a foreign language."
+				/>
+			</div>
+		</section>
 	</Fragment>
 </MainLayout>
 
-<style lang="less">
-	@import "../styles/variables.less";
+<style lang="scss">
+	@use "../styles/variables" as v;
 
 	.header {
 		padding-top: 6.4rem;
+		height: 48rem;
 	}
 
 	.heading {
 		font-size: 6.4rem;
 		font-weight: 600;
-		font-family: @display;
+		font-family: v.$font-display;
 		margin-bottom: 1rem;
-
-		.name {
-		}
 	}
 
 	.detail {
-		font-family: @sans;
+		font-family: v.$font-sans;
 		font-size: 2rem;
 		line-height: 1.625em;
-		color: @grey;
+		color: v.$grey;
 		max-width: 60ch;
 		margin-bottom: 4rem;
 		font-weight: 500;
+	}
+
+	.posts {
+		padding: 4rem 0;
+
+		&-title {
+			font-family: v.$font-display;
+			font-size: 4.2rem;
+		}
+
+		.card-list {
+			display: grid;
+			row-gap: 2rem;
+		}
 	}
 </style>

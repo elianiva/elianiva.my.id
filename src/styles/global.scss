@@ -1,4 +1,4 @@
-@import "./variables.less";
+@use "./variables" as v;
 
 * {
 	box-sizing: border-box;
@@ -18,7 +18,7 @@ html {
 
 body {
 	font-size: 1.6rem;
-	background-color: @white;
+	background-color: v.$white;
 }
 
 h1,
@@ -27,11 +27,11 @@ h3,
 h4,
 span,
 p {
-	color: @black;
+	color: v.$black;
 }
 
 a {
-	color: @black;
+	color: v.$black;
 	text-decoration: none;
-	font-family: @sans;
+	font-family: v.$font-sans;
 }

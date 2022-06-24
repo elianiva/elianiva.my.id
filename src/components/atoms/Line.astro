@@ -1,0 +1,33 @@
+<div class="line"></div>
+
+<style lang="scss">
+	@use "../../styles/variables.scss" as v;
+
+	.line {
+		position: relative;
+		width: 100%;
+		height: 0.2rem;
+		margin: 1rem 0;
+		// background-color: v.$black;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			border-bottom: 2px v.$black solid;
+			// I don't know what I'm doing with these values
+			border-radius: 255px 15px 180px 32px / 48px 240px 24px 255px;
+		}
+
+		&::before {
+			transform: rotateZ(1deg);
+		}
+
+		&::after {
+			transform: rotateZ(-0.5deg);
+		}
+	}
+</style>

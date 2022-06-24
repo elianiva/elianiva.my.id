@@ -1,0 +1,45 @@
+---
+import Line from "../atoms/Line.astro";
+
+export interface Props {
+	title: string;
+	description: string;
+	url: string;
+}
+
+const props = Astro.props as Props;
+---
+
+<div class="card">
+	<a href={props.url} class="title">
+		<span>{props.title}</span>
+		<Line />
+	</a>
+	<p class="description">{props.description}</p>
+</div>
+
+<style lang="scss">
+	@use "../../styles/variables" as v;
+
+	.card {
+		position: relative;
+		padding: 2rem 2rem;
+		width: fit-content;
+		background-color: rgba($color: #000000, $alpha: 0.1);
+
+		.title {
+			display: block;
+			font-size: 2.4rem;
+			font-family: v.$font-sans;
+			font-weight: 600;
+			width: fit-content;
+		}
+	}
+
+	.description {
+		padding: 1rem 0;
+		font-family: v.$font-sans;
+		font-size: 1.8rem;
+		line-height: 1.5em;
+	}
+</style>
