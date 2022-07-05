@@ -29,7 +29,7 @@
       class="relative block font-sans text-clamped-sm leading-normal mb-4 text-slate-700 dark:text-slate-400"
     >
       I like to write code and contribute to open source projects, and sometimes
-      write something in this blog. I speak Indonesia, English, and a little bit
+      write something in this blog. I speak Indonesian, English, and a little bit
       of Japanese. Feel free to hit me up!
     </p>
   </div>
