@@ -11,16 +11,26 @@ const { title } = Astro.props as Props;
 
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<SEO title={title} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
 
-<head>
-	<SEO title={title} />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-	<slot />
-</body>
-
+	<body>
+		<slot></slot>
+		<div class="bg"></div>
+		<style>
+			.bg {
+				position: fixed;
+				z-index: -1;
+				inset: 0;
+				background-image: linear-gradient(to bottom, #f1f2f7, #ffffff, #f1f2f7);
+			}
+		</style>
+	</body>
 </html>

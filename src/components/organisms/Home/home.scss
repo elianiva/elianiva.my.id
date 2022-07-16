@@ -1,12 +1,13 @@
 @use "../../../styles/variables.scss" as v;
 
 .home {
+	position: relative;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 6.4rem;
-	background-image: linear-gradient(to bottom, #f1f2f7, #ffffff, #f1f2f7);
+	scroll-snap-align: start;
 }
 
 .content {
@@ -20,7 +21,7 @@
 	font-weight: 600;
 	font-family: v.$font-sans;
 	text-transform: uppercase;
-	margin-bottom: 2rem;
+	color: v.$color-black;
 
 	&-letter {
 		display: inline-block;
@@ -29,19 +30,26 @@
 
 .heading {
 	display: flex;
-	flex-wrap: wrap;
 	gap: 3.2rem;
+	color: v.$color-black;
+	margin: 2rem 0;
 
-	.username {
-		color: v.$black;
-	}
-
-	.lastname {
-		display: block;
+	path {
+		backdrop-filter: blur(1rem);
 	}
 }
 
-.middle-name-wrapper {
-	display: flex;
-	gap: 0.4rem;
+.summary {
+	font-family: v.$font-sans;
+	color: v.$color-black;
+	font-weight: 600;
+	font-size: 2.4rem;
+	opacity: 0,
+}
+
+.scroll-indicator {
+	width: 3.2rem;
+	height: 6.4rem;
+	border-radius: 10rem;
+	border: 0.4rem v.$color-black solid;
 }

@@ -7,7 +7,7 @@ specifiers:
   animejs: ^3.2.1
   astro: 1.0.0-beta.61
   prettier: ^2.7.1
-  prettier-plugin-astro: ^0.1.1
+  prettier-plugin-astro: 0.1.0-next.5
   sass: ^1.53.0
   solid-js: ^1.4.5
 
@@ -20,7 +20,7 @@ devDependencies:
   '@types/animejs': 3.1.5
   astro: 1.0.0-beta.61_sass@1.53.0
   prettier: 2.7.1
-  prettier-plugin-astro: 0.1.1
+  prettier-plugin-astro: 0.1.0-next.5
   sass: 1.53.0
   solid-js: 1.4.5
 
@@ -2853,8 +2853,8 @@ packages:
       which-pm: 2.0.0
     dev: true
 
-  /prettier-plugin-astro/0.1.1:
-    resolution: {integrity: sha512-587zFbgQoZm13jjGukkW0xMDKLwuMw6RlSuvsjdjRr43JWUFTJVxwFnw44pLYLVRwGQLOCDBwBKiZEJ10ghBlQ==}
+  /prettier-plugin-astro/0.1.0-next.5:
+    resolution: {integrity: sha512-ivHtn0eY7agaOtiHFxoNbrILtH1Us5VA9OauUZoHyKH3R2OzbL+sLf4sBwiOLYan9blmBz2E2AkvDI2fxEN+Lw==}
     engines: {node: ^14.13.1 || >=16.0.0, npm: '>=6.14.0'}
     dependencies:
       '@astrojs/compiler': 0.15.2
