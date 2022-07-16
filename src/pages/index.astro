@@ -1,10 +1,8 @@
 ---
+import { Home } from "~/components/organisms/Home";
 import MainLayout from "~/layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Home">
+	<Home client:load />
 </MainLayout>
-
-<style lang="scss">
-	@use "../styles/variables.scss" as v;
-</style>

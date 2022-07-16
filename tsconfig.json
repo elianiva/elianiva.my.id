@@ -7,6 +7,8 @@
 		"moduleResolution": "node",
 		// Enable JSON imports.
 		"resolveJsonModule": true,
+		// allow importing cjs file as esm
+		"allowSyntheticDefaultImports": true,
 		// Enable stricter transpilation for better output.
 		"isolatedModules": true,
 		// Add type definitions for our Vite runtime.

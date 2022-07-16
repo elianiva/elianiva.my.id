@@ -1,20 +1,26 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@astrojs/solid-js': ^0.1.4
-  '@babel/core': ^7
-  astro: ^1.0.0-beta.47
+  '@astrojs/solid-js': ^0.2.0
+  '@babel/core': ^7.18.6
+  '@types/animejs': ^3.1.5
+  animejs: ^3.2.1
+  astro: 1.0.0-beta.61
   prettier: ^2.7.1
-  prettier-plugin-astro: ^0.0.12
-  sass: ^1.52.3
+  prettier-plugin-astro: ^0.1.1
+  sass: ^1.53.0
   solid-js: ^1.4.5
 
+dependencies:
+  animejs: 3.2.1
+
 devDependencies:
-  '@astrojs/solid-js': 0.1.4_wl4l5sb62af6mlu4nrwkekf7ea
+  '@astrojs/solid-js': 0.2.0_wl4l5sb62af6mlu4nrwkekf7ea
   '@babel/core': 7.18.6
-  astro: 1.0.0-beta.60_sass@1.53.0
+  '@types/animejs': 3.1.5
+  astro: 1.0.0-beta.61_sass@1.53.0
   prettier: 2.7.1
-  prettier-plugin-astro: 0.0.12
+  prettier-plugin-astro: 0.1.1
   sass: 1.53.0
   solid-js: 1.4.5
 
@@ -26,6 +32,13 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.14
+    dev: true
+
+  /@astrojs/compiler/0.15.2:
+    resolution: {integrity: sha512-YsxIyx026zPWbxv3wYrudr1jh8u6oSnhP6MW+9OAgiFuICHjSX4Rw+qm8wJj1D5IkJ3HsDtE+kFMMYIozZ5bvQ==}
+    dependencies:
+      tsm: 2.2.1
+      uvu: 0.5.4
     dev: true
 
   /@astrojs/compiler/0.17.1:
@@ -95,24 +108,13 @@ packages:
       vfile-message: 3.1.2
     dev: true
 
-  /@astrojs/parser/0.22.2:
-    resolution: {integrity: sha512-j4p5a1BXDObVsrNyDvooJQPWoomb0WZk63rKeE3MaZcqq4g9x50sqq+EPMkesgDvCcWFgHSo07i4y1Do3Qj69A==}
-    engines: {node: ^14.15.0 || >=16.0.0, npm: '>=6.14.0'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-    dependencies:
-      '@types/node': 14.18.21
-      acorn: 8.7.1
-      locate-character: 2.0.5
-      magic-string: 0.25.9
-    dev: true
-
   /@astrojs/prism/0.4.1:
     resolution: {integrity: sha512-JxkrXFiFhfunOFBI2Xxwru9t4IzrLw+nfA7RkNnV8qP65BLidrwWS+NfZhOSVGTrbf+cQfF8QNe6O4gAX8wQHw==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dev: true
 
-  /@astrojs/solid-js/0.1.4_wl4l5sb62af6mlu4nrwkekf7ea:
-    resolution: {integrity: sha512-S1zwugChY0aZFJZc4D3HsEFqhDeOAnAt4MT6876JkPVoCRWne6ZrBZ7B8tZhUYeN5NfQ+Q+CwchODKjvysO6Ww==}
+  /@astrojs/solid-js/0.2.0_wl4l5sb62af6mlu4nrwkekf7ea:
+    resolution: {integrity: sha512-gsRP5Ng3M3goYH6djTE9dL+/7FYHH5I3NvLSLrPAM/S8TwTLT+Vqcc9yiWlQ4/6lSDgEbeVpwNvW8lOWXkrM0Q==}
     engines: {node: ^14.15.0 || >=16.0.0}
     peerDependencies:
       solid-js: ^1.3.6
@@ -464,6 +466,18 @@ packages:
       fastq: 1.13.0
     dev: true
 
+  /@pkgr/utils/2.2.0:
+    resolution: {integrity: sha512-/+EeY/T/NLCfF4rvgUetl7ERNwoPz5q/p+8CYeAIFblsKSQbVJjmMccs/Y7CsOPv47hXcBrhk5IqOf9AqRNfhg==}
+    engines: {node: '>=12'}
+    dependencies:
+      cross-spawn: 7.0.3
+      is-glob: 4.0.3
+      open: 8.4.0
+      picocolors: 1.0.0
+      tiny-glob: 0.2.9
+      tslib: 2.4.0
+    dev: true
+
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
@@ -488,6 +502,10 @@ packages:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
     dependencies:
       '@types/estree': 0.0.52
+    dev: true
+
+  /@types/animejs/3.1.5:
+    resolution: {integrity: sha512-4i3i1YuNaNEPoHBJY78uzYu8qKIwyx96G04tnVtNhRMQC9I1Xhg6fY9GeWmZAzudaesKKrPkQgTCthT1zSGYyg==}
     dev: true
 
   /@types/debug/4.1.7:
@@ -540,10 +558,6 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
-  /@types/node/14.18.21:
-    resolution: {integrity: sha512-x5W9s+8P4XteaxT/jKF0PSb7XEvo5VmqEWgsMlyeY4ZlLK8I6aH6g5TPPyDlLAep+GYf4kefb7HFyc7PAO3m+Q==}
-    dev: true
-
   /@types/parse5/6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: true
@@ -580,6 +594,10 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
+
+  /animejs/3.2.1:
+    resolution: {integrity: sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==}
+    dev: false
 
   /ansi-align/3.0.1:
     resolution: {integrity: sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w==}
@@ -650,8 +668,8 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /astro/1.0.0-beta.60_sass@1.53.0:
-    resolution: {integrity: sha512-XkWqDXBNM3HGiPzDMXVNRYDomCicELjfwY5xJ4ZDejh6Xug9NBEsUSL2NONpjqtjEBXcSczipRXRAFLI2vZm2Q==}
+  /astro/1.0.0-beta.61_sass@1.53.0:
+    resolution: {integrity: sha512-xQ1+RIumqRe4M4woVRHl9PVp1kVEG5BN28ySmsZ2xKwoTalQcCwaRA+JV6/yNiJ5G+em9lJEyoJORR2YVB751w==}
     engines: {node: ^14.15.0 || >=16.0.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -986,6 +1004,11 @@ packages:
     resolution: {integrity: sha512-s82itHOnYrN0Ib8r+z7laQz3sdE+4FP3d9Q7VLO7U+KRT+CR0GsWuyHxzdAY82I7cXv0G/twrqomTJLOssO5HA==}
     dependencies:
       clone: 1.0.4
+    dev: true
+
+  /define-lazy-prop/2.0.0:
+    resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
+    engines: {node: '>=8'}
     dev: true
 
   /define-properties/1.1.4:
@@ -1506,6 +1529,14 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /globalyzer/0.1.0:
+    resolution: {integrity: sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==}
+    dev: true
+
+  /globrex/0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
+    dev: true
+
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
     dev: true
@@ -1984,10 +2015,6 @@ packages:
       js-yaml: 3.14.1
       pify: 4.0.1
       strip-bom: 3.0.0
-    dev: true
-
-  /locate-character/2.0.5:
-    resolution: {integrity: sha512-n2GmejDXtOPBAZdIiEFy5dJ5N38xBCXLNOtw2WpB9kGh6pnrEuKlwYI+Tkpofc4wDtVXHtoAOJaMRlYG/oYaxg==}
     dev: true
 
   /locate-path/5.0.0:
@@ -2635,6 +2662,15 @@ packages:
       mimic-fn: 4.0.0
     dev: true
 
+  /open/8.4.0:
+    resolution: {integrity: sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==}
+    engines: {node: '>=12'}
+    dependencies:
+      define-lazy-prop: 2.0.0
+      is-docker: 2.2.1
+      is-wsl: 2.2.0
+    dev: true
+
   /ora/6.1.2:
     resolution: {integrity: sha512-EJQ3NiP5Xo94wJXIzAyOtSb0QEIAUu7m8t6UZ9krbz0vAJqr92JpcK/lEXg91q6B9pEGqrykkd2EQplnifDSBw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -2817,13 +2853,14 @@ packages:
       which-pm: 2.0.0
     dev: true
 
-  /prettier-plugin-astro/0.0.12:
-    resolution: {integrity: sha512-ZSNvHuyQ+fxgqA4qoiOf2FvN8FdWcBrAmnik3gPL466TFtMcOV2hVNVVErBcnG/qMyPf7WLwPvBLtTyWpDEUHg==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0, npm: '>=6.14.0'}
+  /prettier-plugin-astro/0.1.1:
+    resolution: {integrity: sha512-587zFbgQoZm13jjGukkW0xMDKLwuMw6RlSuvsjdjRr43JWUFTJVxwFnw44pLYLVRwGQLOCDBwBKiZEJ10ghBlQ==}
+    engines: {node: ^14.13.1 || >=16.0.0, npm: '>=6.14.0'}
     dependencies:
-      '@astrojs/parser': 0.22.2
+      '@astrojs/compiler': 0.15.2
       prettier: 2.7.1
       sass-formatter: 0.7.4
+      synckit: 0.7.1
     dev: true
 
   /prettier/2.7.1:
@@ -3319,6 +3356,21 @@ packages:
       pascal-case: 3.1.2
       svelte: 3.48.0
       typescript: 4.6.4
+    dev: true
+
+  /synckit/0.7.1:
+    resolution: {integrity: sha512-Cvv0Nzgs4Z0V6761qp4CU2+C15HRmnHaDd+sAtisbOnzIZ5wgl3ne076k28cHo+oY6eN/w0RNzRrf7CJz8dWJg==}
+    engines: {node: '>=12.20'}
+    dependencies:
+      '@pkgr/utils': 2.2.0
+      tslib: 2.4.0
+    dev: true
+
+  /tiny-glob/0.2.9:
+    resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==}
+    dependencies:
+      globalyzer: 0.1.0
+      globrex: 0.1.2
     dev: true
 
   /to-fast-properties/2.0.0:

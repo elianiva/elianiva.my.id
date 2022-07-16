@@ -1,0 +1,47 @@
+@use "../../../styles/variables.scss" as v;
+
+.home {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6.4rem;
+	background-image: linear-gradient(to bottom, #f1f2f7, #ffffff, #f1f2f7);
+}
+
+.content {
+	max-width: 80%;
+	margin: 0 auto;
+}
+
+.greeting {
+	display: block;
+	font-size: 4.8rem;
+	font-weight: 600;
+	font-family: v.$font-sans;
+	text-transform: uppercase;
+	margin-bottom: 2rem;
+
+	&-letter {
+		display: inline-block;
+	}
+}
+
+.heading {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 3.2rem;
+
+	.username {
+		color: v.$black;
+	}
+
+	.lastname {
+		display: block;
+	}
+}
+
+.middle-name-wrapper {
+	display: flex;
+	gap: 0.4rem;
+}
