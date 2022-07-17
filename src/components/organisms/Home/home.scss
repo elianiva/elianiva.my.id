@@ -11,6 +11,8 @@
 }
 
 .content {
+	position: relative;
+	z-index: 1;
 	max-width: 80%;
 	margin: 0 auto;
 }
@@ -44,7 +46,7 @@
 	color: v.$color-black;
 	font-weight: 600;
 	font-size: 2.4rem;
-	opacity: 0,
+	opacity: 0;
 }
 
 .scroll-indicator {
@@ -52,4 +54,67 @@
 	height: 6.4rem;
 	border-radius: 10rem;
 	border: 0.4rem v.$color-black solid;
+}
+
+.particles-bg {
+	position: fixed;
+	inset: 0;
+
+	.crossed-box {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		border: 0.8rem v.$color-black solid;
+		width: 8rem;
+		height: 8rem;
+		opacity: 0.75;
+		transform: translateX(-50%) translateY(-50%) rotateZ(30deg) scale(0);
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			width: 10rem;
+			height: 0.8rem;
+			left: 50%;
+			top: 50%;
+			background-color: v.$color-black;
+		}
+
+		&::before {
+			transform: translateX(-50%) translateY(-50%) rotateZ(45deg);
+		}
+
+		&::after {
+			transform: translateX(-50%) translateY(-50%) rotateZ(-45deg);
+		}
+	}
+
+	.lines-box {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		opacity: 0.75;
+		transform: translateX(-50%) translateY(-50%) rotateZ(30deg) scale(0);
+		width: 12rem;
+		height: 1.5rem;
+		background-color: v.$color-black;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: v.$color-black;
+		}
+
+		&::before {
+			top: 3rem;
+		}
+
+		&::after {
+			top: 6rem;
+		}
+	}
 }
