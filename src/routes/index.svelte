@@ -21,16 +21,6 @@
 
 <script context="module" lang="ts">
 export const prerender = true;
-export async function load({ fetch }) {
-  const [posts, projects] = await Promise.all([
-    fetch(`/api/post.json?limit=3`).then((x) => x.json()),
-    fetch(`/api/project.json?limit=3&type=personal`).then((x) => x.json()),
-  ]);
-
-  return {
-    props: { posts, projects },
-  };
-}
 </script>
 
 <script lang="ts">

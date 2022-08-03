@@ -1,8 +1,9 @@
-import MDSVEX_CONFIG from "../../../mdsvex.config";
+import type { RequestHandler } from "@sveltejs/kit";
 import { getResourcesAsync } from "$lib/utils/fetch-data";
 import { compile } from "mdsvex";
+import MDSVEX_CONFIG from "../../../mdsvex.config";
 
-export const get = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
   const resources = await getResourcesAsync("project");
   const slug = params.slug;
   const post = resources.find((item) => item.slug === slug);

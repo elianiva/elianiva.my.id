@@ -1,6 +1,6 @@
 import { getResourcesAsync } from "$lib/utils/fetch-data";
 
-export const get = async () => {
+export const GET = async () => {
   const resources = await getResourcesAsync("project");
 
   return {

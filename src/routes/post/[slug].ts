@@ -2,7 +2,7 @@ import MDSVEX_CONFIG from "../../../mdsvex.config";
 import { getResourcesAsync } from "$lib/utils/fetch-data";
 import { compile } from "mdsvex";
 
-export const get = async ({ params }) => {
+export const GET = async ({ params }) => {
   const resources = await getResourcesAsync("post");
   const slug = params.slug;
   const post = resources.find((item) => item.slug === slug);
