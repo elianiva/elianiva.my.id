@@ -1,4 +1,4 @@
-<div class="overflow-hidden text-left bg-white dark:bg-gray-800 z-[2] rounded-md shadow-md" in:fade={{ duration: 200 }}>
+<div class="overflow-hidden text-left bg-white dark:bg-gray-800 z-[2] rounded-md shadow-md">
 	<a
 		rel="prefetch"
 		{href}
@@ -37,7 +37,6 @@
 </div>
 
 <script lang="ts">
-import { fade } from "svelte/transition";
 import CalendarIcon from "~icons/ph/calendar-blank-bold";
 
 export let title: string;

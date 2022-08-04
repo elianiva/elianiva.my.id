@@ -1,4 +1,4 @@
-<div class="overflow-hidden text-left bg-white dark:bg-gray-800 shadow-md rounded-md" in:fade={{ duration: 200 }}>
+<div class="overflow-hidden text-left bg-white dark:bg-gray-800 shadow-md rounded-md">
 	<img
 		class="relative block w-full h-48 object-cover bg-white dark:(bg-gray-800 brightness-95) z-[2]"
 		src={imgSrc}
@@ -42,7 +42,6 @@
 </div>
 
 <script lang="ts">
-import { fade } from "svelte/transition";
 import GlobeIcon from "~icons/ph/globe";
 import GithubIcon from "~icons/fe/github";
 

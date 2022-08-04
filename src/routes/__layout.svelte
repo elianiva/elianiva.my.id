@@ -65,11 +65,8 @@ import "@fontsource/jetbrains-mono/400-italic.css";
 
 onMount(() => {
 	const { matches: isDarkMode } = window.matchMedia("(prefers-color-scheme: dark)");
-
 	const current = (localStorage.getItem("theme") as Theme) || (isDarkMode ? Theme.DARK : Theme.LIGHT);
-
 	theme.set(current);
-
 	theme.subscribe((current) => {
 		localStorage.setItem("theme", current);
 		toggleTheme(current);
