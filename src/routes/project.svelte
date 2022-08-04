@@ -5,15 +5,11 @@
 		<a href="/project#personal-projects">
 			<h1
 				id="personal-projects"
-				class="font-heading relative inline-block text-3xl font-semibold mb-4 text-slate-700 dark:text-slate-300 before:(content-[] absolute -bottom-1 left-8 right-8 h-1 rounded-md bg-blue-600 dark:bg-red-500)"
+				class="font-heading relative inline-block mb-8 text-3xl font-semibold mb-4 text-slate-700 dark:text-slate-300 before:(content-[] absolute -bottom-1 left-8 right-8 h-1 rounded-md bg-blue-600 dark:bg-red-500)"
 			>
 				Personal Projects
 			</h1>
 		</a>
-		<p class="font-sans text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-4 text-left">
-			These are some projects that I do on my free time. Almost all of my Github projects are here, quite proud on
-			some of them.
-		</p>
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-5 mb-10">
 			{#each projects.filter((p) => p.type === "personal") as project}
 				<ProjectCard
@@ -28,15 +24,15 @@
 		</div>
 		<a href="/project#school-projects">
 			<h1
-				class="font-heading relative inline-block text-3xl font-semibold mb-4 text-slate-700 dark:text-slate-300 before:(content-[] absolute -bottom-1 left-8 right-8 h-1 rounded-md bg-blue-600 dark:bg-red-500)"
+				class="font-heading relative inline-block text-3xl font-semibold text-slate-700 dark:text-slate-300 before:(content-[] absolute -bottom-1 left-8 right-8 h-1 rounded-md bg-blue-600 dark:bg-red-500)"
 			>
 				School Projects
 			</h1>
 		</a>
-		<p class="font-sans text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-4 text-left">
-			These are some projects that I do for school assignments, not exactly proud of them since I don't like to
-			make these kind of thing. Guess I'd put them here anyway in case anyone needs them for reference or
-			something.
+		<p class="font-sans text-slate-600 dark:text-slate-400 text-lg leading-relaxed my-4 text-left">
+			These are some projects that I did when I was in high school, not exactly proud of them since I don't like
+			to make these kind of things, they're all just beta software that I don't really care. Guess I'd put them
+			here anyway in case anyone needs them for reference or something.
 		</p>
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-5">
 			{#each projects.filter((p) => p.type === "assignment") as project}
