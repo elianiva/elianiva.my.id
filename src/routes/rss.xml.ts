@@ -1,5 +1,6 @@
 import data from "$lib/data/site";
 import { getResourcesAsync } from "$lib/utils/fetch-data";
+import type { RequestHandler } from "@sveltejs/kit";
 
 const feedItem = (item: any) => `
     <item>
@@ -26,8 +27,9 @@ const renderXmlRssFeed = (items: any) => `<?xml version="1.0" encoding="UTF-8" ?
   </channel>
 </rss>`;
 
-export async function get() {
-	const feed = renderXmlRssFeed(await getResourcesAsync("post"));
+export const GET: RequestHandler = async () => {
+	const posts = await getResourcesAsync("post");
+	const feed = renderXmlRssFeed(posts);
 
 	return {
 		headers: {
@@ -36,4 +38,4 @@ export async function get() {
 		},
 		body: feed,
 	};
-}
+};
