@@ -1,21 +1,9 @@
 <SEO title="Home" />
 
 <main class="max-w-[1080px] my-0 mx-auto pt-8 px-4 pb-0 z-[2]">
-  <Header />
-  <Section
-    title="Recent Posts"
-    data={posts}
-    btnText="More Posts"
-    url="/post"
-    type="posts"
-  />
-  <Section
-    title="Recent Projects"
-    data={projects}
-    btnText="More Projects"
-    url="/project"
-    type="projects"
-  />
+	<Header />
+	<Section title="Recent Posts" data={posts} btnText="More Posts" url="/post" type="posts" />
+	<Section title="Recent Projects" data={projects} btnText="More Projects" url="/project" type="projects" />
 </main>
 <Progress />
 

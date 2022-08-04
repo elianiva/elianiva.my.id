@@ -1,28 +1,24 @@
 <div
-  class="relative w-8 h-8 border-none outline-none flex items-center justify-center cursor-pointer z-10 text-slate-400 dark:text-slate-600 hover:text-slate-700 dark:hover:text-slate-300"
-  on:click={toggleDarkMode}
+	class="relative w-8 h-8 border-none outline-none flex items-center justify-center cursor-pointer z-10 text-slate-400 dark:text-slate-600 hover:text-slate-700 dark:hover:text-slate-300"
+	on:click={toggleDarkMode}
 >
-  <div
-    class="flex items-center justify-center after:(content-[] absolute w-[0.3rem] h-[0.3rem] rounded-full shadow-sun-rays transition-property-transform duration-300 ease-in-out) 
-    {$theme === Theme.DARK
-      ? 'after:(transform-gpu scale-100)'
-      : 'after:(transform-gpu scale-0)'}"
-    id="icon"
-  >
-    <div
-      class="rounded-full w-5 h-5 transition-property-transform duration-300 ease-in-out bg-current before:(content-[] absolute w-8 h-8 rounded-full transition-property-transform duration-200 ease-in-out bg-gray-50 dark:bg-gray-900 ) 
+	<div
+		class="flex items-center justify-center after:(content-[] absolute w-[0.3rem] h-[0.3rem] rounded-full shadow-sun-rays transition-property-transform duration-300 ease-in-out) 
+    {$theme === Theme.DARK ? 'after:(transform-gpu scale-100)' : 'after:(transform-gpu scale-0)'}"
+		id="icon"
+	>
+		<div
+			class="rounded-full w-5 h-5 transition-property-transform duration-300 ease-in-out bg-current before:(content-[] absolute w-8 h-8 rounded-full transition-property-transform duration-200 ease-in-out bg-gray-50 dark:bg-gray-900 ) 
       {$theme === Theme.DARK
-        ? 'before:(-top-8 -right-8) transform-gpu scale-50'
-        : 'before:(-top-4 -right-4) transform-gpu scale-100'}"
-    />
-  </div>
+				? 'before:(-top-8 -right-8) transform-gpu scale-50'
+				: 'before:(-top-4 -right-4) transform-gpu scale-100'}"
+		/>
+	</div>
 </div>
 
 <script>
 import { Theme, theme } from "$lib/store/theme";
 const toggleDarkMode = () => {
-  theme.update((current) =>
-    current === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
-  );
+	theme.update((current) => (current === Theme.LIGHT ? Theme.DARK : Theme.LIGHT));
 };
 </script>

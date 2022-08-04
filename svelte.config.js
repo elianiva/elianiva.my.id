@@ -5,15 +5,15 @@ import mdsvexConfig from "./mdsvex.config.js";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  extensions: [".svelte", ...mdsvexConfig.extensions],
-  preprocess: [mdsvex(mdsvexConfig), sveltePreprocess()],
-  kit: {
-    adapter: adapter(),
-    inlineStyleThreshold: 1024,
-    prerender: {
-      default: true
-    },
-  },
+	extensions: [".svelte", ...mdsvexConfig.extensions],
+	preprocess: [mdsvex(mdsvexConfig), sveltePreprocess()],
+	kit: {
+		adapter: adapter(),
+		inlineStyleThreshold: 1024,
+		prerender: {
+			default: true,
+		},
+	},
 };
 
 export default config;

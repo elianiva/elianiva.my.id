@@ -7,7 +7,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "start": "vite preview",
-    "format": "prettier --write --plugin-search-dir=. ./**/*.svelte",
+    "format": "prettier --write --ignore-path .gitignore \"./**/*.(ts|svelte)\"",
     "lint": "eslint --fix ./**/*.svelte",
     "test": "vitest run"
   },
