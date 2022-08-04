@@ -1,5 +1,6 @@
 <div class="overflow-hidden text-left bg-white dark:bg-gray-800 z-[2] rounded-md shadow-md">
 	<a
+		sveltekit:prefetch
 		rel="prefetch"
 		{href}
 		class="grid grid-rows-[2fr_2rem_5.5rem_1fr] text-slate-600 dark:text-slate-400 no-underline p-4 h-full"

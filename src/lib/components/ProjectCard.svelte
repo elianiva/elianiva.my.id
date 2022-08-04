@@ -8,6 +8,7 @@
 	/>
 	<div class="grid grid-rows-[2rem_4.5rem_1fr] p-4">
 		<a
+			sveltekit:prefetch
 			rel="prefetch"
 			{href}
 			class="no-underline text-slate-600 hover:text-slate-800 dark:text-slate-400 hover:dark:text-slate-200 text-lg font-heading font-semibold leading-normal transition-[all_ease-out_0.2s]"
