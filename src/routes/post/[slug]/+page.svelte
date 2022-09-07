@@ -74,18 +74,12 @@ import { page } from "$app/stores";
 import { Theme, theme } from "$lib/store/theme";
 import SEO from "$lib/components/SEO.svelte";
 import Progress from "$lib/components/Progress.svelte";
-import type { Heading } from "$lib/utils/fetch-data";
 import { slugify } from "$lib/utils/slugify";
 import Transition from "$lib/components/Transition.svelte";
+import type { PageServerData } from "./$types";
 
-export let url: string;
-export let title: string;
-export let date: number;
-export let desc: string;
-export let tags: string[];
-export let minimal: boolean;
-export let content: string;
-export let headings: Heading[];
+export let data: PageServerData;
+$: ({ url, title, date, desc, tags, minimal, content, headings } = data);
 
 const currentSlug = $page.url.pathname;
 
@@ -117,7 +111,7 @@ function getLevelIndent(level: number) {
   }
 }
 
-const getCommentOptions = (/** @type {boolean} */ isDark) => ({
+const getCommentOptions = (isDark: boolean) => ({
 	src: "https://utteranc.es/client.js",
 	repo: "elianiva/elianiva.my.id",
 	"issue-term": "pathname",

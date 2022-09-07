@@ -1,6 +1,6 @@
 <SEO title="Posts" />
 
-<Transition {url}>
+<Transition url={data.url}>
 	<section class="max-w-[1080px] mx-auto pt-8 px-4 text-center">
 		<h1
 			class="font-heading relative inline-block text-3xl font-semibold text-slate-700 dark:text-slate-200 mb-10 before:(content-[] absolute -bottom-1 left-8 right-8 h-1 rounded-sm bg-blue-600 dark:bg-red-500)"
@@ -76,9 +76,7 @@ import PostCard from "$lib/components/PostCard.svelte";
 import Progress from "$lib/components/Progress.svelte";
 import Tag from "$lib/components/Tag.svelte";
 import Transition from "$lib/components/Transition.svelte";
-
-export let posts: ResourceMetadata[];
-export let url: string;
+import type { PageData } from "./$types";
 
 let inputBox = null;
 let keyword = "";
@@ -87,13 +85,15 @@ let filteredPosts = [];
 let tagFilter = [];
 let isCompletionVisible = false;
 
+export let data: PageData;
+
 // count available tags and insert it to an object
 // ex: [a, a, b, b, b] -> { a: 2, b: 3 }
-const tags = posts.map((post) => post.tags).flat();
+const tags = data.posts.map((post) => post.tags).flat();
 const count = tags.reduce((acc, curr) => ({ ...acc, [curr]: (acc[curr] || 0) + 1 }), {});
 
-$: filteredPosts = posts.filter((post) => {
-	const query = keyword.substr(1).toLowerCase();
+$: filteredPosts = data.posts.filter((post) => {
+	const query = keyword.substring(1).toLowerCase();
 
 	const title = post.title.toLowerCase().includes(query);
 	const slug = post.slug.toLowerCase().includes(query);

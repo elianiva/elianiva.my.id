@@ -1,4 +1,4 @@
-<SEO {title} {desc} thumbnail={`${data.siteUrl}${currentSlug}/cover.webp`} />
+<SEO {title} {desc} thumbnail={`${siteData.siteUrl}${currentSlug}/cover.webp`} />
 
 <Transition {url}>
 	<section
@@ -50,7 +50,7 @@
 						<img
 							class="w-full"
 							src="/assets/logo/{item[0].toLowerCase().replace(/\s+/g, '-')}.png"
-							alt={item}
+							alt={item[0]}
 							style="filter: {item[0].toLowerCase() === 'nextjs' ? 'var(--filter-invert)' : ''} "
 						/>
 					</div>
@@ -68,22 +68,17 @@
 
 <Progress />
 
-<script>
+<script lang="ts">
 import { page } from "$app/stores";
 import GlobeIcon from "~icons/ph/globe";
 import GithubIcon from "~icons/fe/github";
 import SEO from "$lib/components/SEO.svelte";
 import Progress from "$lib/components/Progress.svelte";
-import data from "$lib/data/site";
+import siteData from "$lib/data/site";
 import Transition from "$lib/components/Transition.svelte";
+import type { PageServerData } from "./$types";
 
-export let title = "";
-export let desc = "";
-export let demo = "";
-export let source = "";
-export let stack = [];
-export let content = "";
-export let url = "";
-
+export let data: PageServerData;
+$: ({ title, desc, demo, source, stack, content, url } = data);
 const currentSlug = $page.url.pathname;
 </script>

@@ -1,6 +1,6 @@
 <SEO title="Projects" />
 
-<Transition {url}>
+<Transition url={data.url}>
 	<section class="max-w-[1080px] mx-auto pt-8 px-4 pb-0 text-center">
 		<a href="/project#personal-projects">
 			<h1
@@ -11,7 +11,7 @@
 			</h1>
 		</a>
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-5 mb-10">
-			{#each projects.filter((p) => p.type === "personal") as project}
+			{#each data.projects.filter((p) => p.type === "personal") as project}
 				<ProjectCard
 					title={project.title}
 					imgSrc={`/assets/project/${project.slug}/cover.webp`}
@@ -35,7 +35,7 @@
 			here anyway in case anyone needs them for reference or something.
 		</p>
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-5">
-			{#each projects.filter((p) => p.type === "assignment") as project}
+			{#each data.projects.filter((p) => p.type === "assignment") as project}
 				<ProjectCard
 					title={project.title}
 					imgSrc={`/assets/project/${project.slug}/cover.webp`}
@@ -54,9 +54,8 @@
 import SEO from "$lib/components/SEO.svelte";
 import ProjectCard from "$lib/components/ProjectCard.svelte";
 import Progress from "$lib/components/Progress.svelte";
-import type { ResourceMetadata } from "$lib/utils/fetch-data";
 import Transition from "$lib/components/Transition.svelte";
+import type { PageServerData } from "./$types";
 
-export let projects: ResourceMetadata[];
-export let url: string;
+export let data: PageServerData;
 </script>

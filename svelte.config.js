@@ -10,9 +10,6 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		inlineStyleThreshold: 1024,
-		prerender: {
-			default: true,
-		},
 	},
 };
 

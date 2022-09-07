@@ -5,11 +5,11 @@
 	/>
 {/if}
 
-<script>
+<script lang="ts">
 import { onMount, onDestroy } from "svelte";
 import { navigating } from "$app/stores";
 
-let counter;
+let counter: NodeJS.Timer;
 let width = 0;
 let speed = 10;
 

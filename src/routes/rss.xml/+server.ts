@@ -1,8 +1,15 @@
 import data from "$lib/data/site";
 import { getResourcesAsync } from "$lib/utils/fetch-data";
-import type { RequestHandler } from "@sveltejs/kit";
+import type { RequestHandler } from "./$types";
 
-const feedItem = (item: any) => `
+type FeedItem = {
+	title: string;
+	desc: string;
+	slug: string;
+	date: string;
+};
+
+const feedItem = (item: FeedItem) => `
     <item>
       <title>${item.title}</title>
       <description><![CDATA[${item.desc}]]></description>
@@ -12,7 +19,7 @@ const feedItem = (item: any) => `
     </item>
 `;
 
-const renderXmlRssFeed = (items: any) => `<?xml version="1.0" encoding="UTF-8" ?>
+const renderXmlRssFeed = (items: FeedItem[]) => `<?xml version="1.0" encoding="UTF-8" ?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
   xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
@@ -27,15 +34,14 @@ const renderXmlRssFeed = (items: any) => `<?xml version="1.0" encoding="UTF-8" ?
   </channel>
 </rss>`;
 
-export const GET: RequestHandler = async () => {
+export const load: RequestHandler = async () => {
 	const posts = await getResourcesAsync("post");
 	const feed = renderXmlRssFeed(posts);
 
-	return {
+	return new Response(JSON.stringify(feed), {
 		headers: {
 			"Cache-Control": `max-age=0, s-max-age=${600}`, // 10 minutes
 			"Content-Type": "application/rss+xml",
 		},
-		body: feed,
-	};
+	});
 };
