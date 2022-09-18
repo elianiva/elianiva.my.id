@@ -24,11 +24,13 @@ export interface ResourceMetadata {
 
 export type ResourceKind = "post" | "project";
 
-const POSTS = import.meta.globEager("/data/post/**/index.svx", {
+const POSTS = import.meta.glob("/data/post/**/index.svx", {
 	as: "raw",
+	eager: true
 });
-const PROJECTS = import.meta.globEager("/data/project/**/index.svx", {
+const PROJECTS = import.meta.glob("/data/project/**/index.svx", {
 	as: "raw",
+	eager: true
 });
 
 export const getResourcesAsync = async (kind: ResourceKind): Promise<ResourceMetadata[]> => {
