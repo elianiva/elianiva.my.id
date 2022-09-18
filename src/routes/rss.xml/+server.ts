@@ -34,7 +34,7 @@ const renderXmlRssFeed = (items: FeedItem[]) => `<?xml version="1.0" encoding="U
   </channel>
 </rss>`;
 
-export const load: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
 	const posts = await getResourcesAsync("post");
 	const feed = renderXmlRssFeed(posts);
 
