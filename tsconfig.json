@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "es2022",
     "moduleResolution": "node",
-    "target": "es2017",
+    "target": "ESNext",
     "lib": ["es2019", "es6", "dom", "webworker"],
     /**
       svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
