@@ -1,7 +1,7 @@
 <footer
 	class="relative mt-12 text-center pt-10 pb-30 md:pb-10 px-1 bg-gray-50 dark:bg-gray-900 border-t border-gray-300 dark:border-gray-800 transition-property-filter ease-out duration-200 font-heading"
 >
-	<div class="grid grid-cols-4 max-w-[220px] mx-auto mb-6">
+	<div class="grid grid-cols-3 max-w-[220px] mx-auto mb-6">
 		{#each social as { icon, url }}
 			<a
 				class="text-slate-600 dark:text-slate-400 hover:text-slate-800 hover:dark:text-slate-200"
