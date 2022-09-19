@@ -35,12 +35,10 @@ import data from "$lib/data/site";
 import EnvelopeIcon from "~icons/ph/envelope";
 import GithubIcon from "~icons/ph/github-logo";
 import TwitterIcon from "~icons/ph/twitter-logo";
-import RSSIcon from "~icons/ph/rss";
 
 const social = [
 	{ url: data.github, icon: GithubIcon },
 	{ url: data.twitter, icon: TwitterIcon },
 	{ url: `mailto:${data.email}`, icon: EnvelopeIcon },
-	{ url: "/rss.xml", icon: RSSIcon },
 ];
 </script>
