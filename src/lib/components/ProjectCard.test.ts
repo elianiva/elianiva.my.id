@@ -15,29 +15,31 @@ describe("PostCard.svelte", () => {
 	};
 
 	it("renders a card with all props", () => {
-		const { container, getByTestId } = render(ProjectCard, props);
+		const { container, getByAltText, getByText, queryByText } = render(ProjectCard, props);
 
 		expect(container).toBeTruthy();
-		expect(getByTestId("title").innerHTML).toBe(props.title);
-		expect(getByTestId("title").getAttribute("href")).toBe(props.href);
-		expect(getByTestId("img").getAttribute("src")).toBe(props.imgSrc);
-		expect(getByTestId("desc").innerHTML).toBe(props.desc);
-		expect(getByTestId("demo")).toBeTruthy();
-		expect(getByTestId("source")).toBeTruthy();
+		expect(getByText(props.title)).toBeTruthy();
+		expect(getByText(props.title).getAttribute("href")).toBe(props.href);
+		expect(getByAltText(props.title)).toBeTruthy();
+		expect(getByAltText(props.title).getAttribute("src")).toBe(props.imgSrc);
+		expect(getByText(props.desc)).toBeTruthy();
+		expect(queryByText("Visit")).toBeTruthy();
+		expect(queryByText("Source")).toBeTruthy();
 	});
 
 	it("renders a card without demo url", () => {
-		const { container, queryByTestId, getByTestId } = render(ProjectCard, {
+		const { container, getByText, getByAltText, queryByText } = render(ProjectCard, {
 			...props,
 			demo: null,
 		});
 
 		expect(container).toBeTruthy();
-		expect(getByTestId("title").innerHTML).toBe(props.title);
-		expect(getByTestId("title").getAttribute("href")).toBe(props.href);
-		expect(getByTestId("img").getAttribute("src")).toBe(props.imgSrc);
-		expect(getByTestId("desc").innerHTML).toBe(props.desc);
-		expect(queryByTestId("demo")).toBeNull();
-		expect(getByTestId("source")).toBeTruthy();
+		expect(getByText(props.title)).toBeTruthy();
+		expect(getByText(props.title).getAttribute("href")).toBe(props.href);
+		expect(getByAltText(props.title)).toBeTruthy();
+		expect(getByAltText(props.title).getAttribute("src")).toBe(props.imgSrc);
+		expect(getByText(props.desc)).toBeTruthy();
+		expect(queryByText("Visit")).toBeNull();
+		expect(queryByText("Source")).toBeTruthy();
 	});
 });

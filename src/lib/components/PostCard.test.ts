@@ -17,18 +17,19 @@ describe("PostCard.svelte", () => {
 		desc: "A post used for testing purpose. Please don't read this",
 		href: "/some-random-post",
 		tags: ["random", "bruh", "sheesh"],
-		date: date,
+		date: new Date(date).toLocaleDateString("en-CA"), // YYYY-MM-DD
 	};
 
 	it("renders a card with a given props", () => {
-		const { container, getByTestId, getAllByTestId } = render(PostCard, props);
+		const { container, getByText, getAllByTestId } = render(PostCard, props);
 
 		expect(container).toBeTruthy();
-		expect(getByTestId("title").innerHTML).toBe(props.title);
-		expect(getByTestId("date").innerHTML).toBe(formattedDate);
-		expect(getByTestId("desc").innerHTML).toBe(props.desc);
+		expect(getByText(props.title)).toBeTruthy();
+		expect(getByText(formattedDate)).toBeTruthy();
+		expect(getByText(props.desc)).toBeTruthy();
+		expect(getAllByTestId("tag")).toHaveLength(props.tags.length);
 		getAllByTestId("tag").forEach((el, idx) => {
-			expect(el.innerHTML).toBe(props.tags[idx]);
+			expect(el.innerHTML).toBe(`# ${props.tags[idx]} `);
 		});
 	});
 });

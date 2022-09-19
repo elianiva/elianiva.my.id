@@ -4,7 +4,6 @@
 		src={imgSrc}
 		alt={title}
 		loading="lazy"
-		data-testid="img"
 	/>
 	<div class="grid grid-rows-[2rem_4.5rem_1fr] p-4">
 		<a
@@ -12,9 +11,10 @@
 			rel="prefetch"
 			{href}
 			class="no-underline text-slate-600 hover:text-slate-800 dark:text-slate-400 hover:dark:text-slate-200 text-lg font-heading font-semibold leading-normal transition-[all_ease-out_0.2s]"
-			data-testid="title">{title}</a
 		>
-		<p class="font-sans leading-normal text-slate-600 dark:text-slate-400" data-testid="desc">
+			{title}
+		</a>
+		<p class="font-sans leading-normal text-slate-600 dark:text-slate-400">
 			{desc}
 		</p>
 		<div class="flex justify-end gap-1 mt-2">
@@ -24,7 +24,6 @@
 					href={demo ? demo : "#"}
 					target="_blank"
 					rel="norel noreferrer"
-					data-testid="demo"
 				>
 					<GlobeIcon /> Visit
 				</a>
@@ -34,7 +33,6 @@
 				href={source}
 				target="_blank"
 				rel="norel noreferrer"
-				data-testid="source"
 			>
 				<GithubIcon /> Source
 			</a>
