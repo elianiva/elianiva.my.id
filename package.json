@@ -14,7 +14,7 @@
   "devDependencies": {
     "@iconify-json/fe": "^1.1.2",
     "@iconify-json/ph": "^1.1.2",
-    "@sveltejs/adapter-cloudflare": "1.0.0-next.34",
+    "@sveltejs/adapter-static": "1.0.0-next.43",
     "@sveltejs/kit": "next",
     "@sveltejs/vite-plugin-svelte": "^1.0.6",
     "@testing-library/svelte": "^3.2.1",
