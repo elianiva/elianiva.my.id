@@ -9,7 +9,7 @@ type FeedItem = {
 	date: string;
 };
 
-const feedItem = (item: FeedItem) => `
+const toFeedItem = (item: FeedItem) => `
     <item>
       <title>${item.title}</title>
       <description><![CDATA[${item.desc}]]></description>
@@ -30,7 +30,7 @@ const renderXmlRssFeed = (items: FeedItem[]) => `<?xml version="1.0" encoding="U
     <atom:link href="${data.siteUrl}/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Svelte-Kit</generator>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    ${items.map(feedItem).join("\n")}
+    ${items.map(toFeedItem).join("\n")}
   </channel>
 </rss>`;
 
