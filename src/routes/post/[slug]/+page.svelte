@@ -52,15 +52,11 @@
 			{@html content}
 			{#if !minimal}
 				<h1>Comments</h1>
-				{#if $theme === Theme.DARK}
+				{#key $theme}
 					<div>
-						<script {...getCommentOptions(true)}></script>
+						<script {...commentOptions} data-theme={$theme === Theme.DARK ? "dark" : "lightS"}></script>
 					</div>
-				{:else}
-					<div>
-						<script {...getCommentOptions(false)}></script>
-					</div>
-				{/if}
+				{/key}
 			{/if}
 		</main>
 	</section>
@@ -111,13 +107,19 @@ function getLevelIndent(level: number) {
   }
 }
 
-const getCommentOptions = (isDark: boolean) => ({
-	src: "https://utteranc.es/client.js",
-	repo: "elianiva/elianiva.my.id",
-	"issue-term": "pathname",
-	label: "Comments",
-	theme: `${isDark ? "dark-blue" : "github-light"}`,
+const commentOptions = {
+	src: "https://giscus.app/client.js",
+	"data-repo": "elianiva/elianiva.my.id",
+	"data-repo-id": "MDEwOlJlcG9zaXRvcnkzMDE0NjE4NDU=",
+	"data-category": "General",
+	"data-category-id": "DIC_kwDOEffxVc4CRq7s",
+	"data-mapping": "pathname",
+	"data-strict": "0",
+	"data-reactions-enabled": "1",
+	"data-emit-metadata": "0",
+	"data-input-position": "bottom",
+	"data-lang": "en",
 	crossorigin: "anonymous",
 	async: true,
-});
+};
 </script>
