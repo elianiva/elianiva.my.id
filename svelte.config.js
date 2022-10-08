@@ -1,5 +1,5 @@
 import { mdsvex } from "mdsvex";
-import adapter from "@sveltejs/adapter-static";
+import adapter from "@sveltejs/adapter-auto";
 import sveltePreprocess from "svelte-preprocess";
 import mdsvexConfig from "./mdsvex.config.js";
 
@@ -10,6 +10,9 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		inlineStyleThreshold: 1024,
+		serviceWorker: {
+			register: false
+		},
 	},
 };
 

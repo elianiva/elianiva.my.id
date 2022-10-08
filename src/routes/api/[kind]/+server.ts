@@ -2,8 +2,6 @@ import { getResourcesAsync, type ResourceKind } from "$lib/utils/fetch-data";
 import { error } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 
-export const prerender = true;
-
 export const GET: RequestHandler = async ({ params, url }) => {
 	const slug = url.searchParams.get("slug");
 	const type = url.searchParams.get("type");

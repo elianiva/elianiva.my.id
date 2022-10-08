@@ -1,7 +1,6 @@
+import { compileContent } from "$lib/utils/compile-content";
 import { getResourcesAsync } from "$lib/utils/fetch-data";
 import { error } from "@sveltejs/kit";
-import { compile } from "mdsvex";
-import MDSVEX_CONFIG from "../../../../mdsvex.config";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ params, url }) => {
@@ -11,7 +10,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 
 	if (post === undefined) throw error(404, "Not found");
 
-	const compiledContent = await compile(post.content, MDSVEX_CONFIG);
+	const compiledContent = await compileContent(post.content);
 
 	return {
 		title: post.title,
@@ -19,7 +18,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 		desc: post.desc,
 		tags: post.tags,
 		minimal: post.minimal,
-		content: compiledContent.code,
+		content: compiledContent,
 		headings: post.headings,
 		url: url.pathname,
 	};

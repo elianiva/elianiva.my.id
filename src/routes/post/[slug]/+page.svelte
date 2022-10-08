@@ -1,3 +1,10 @@
+<style>
+	:global(div[data-rehype-pretty-code-fragment]) {
+		background-color: #0d1117;
+		border-radius: 0.5rem;
+	}
+</style>
+
 <SEO {desc} {title} />
 
 <Transition {url}>
@@ -54,7 +61,7 @@
 				<h1>Comments</h1>
 				{#key $theme}
 					<div>
-						<script {...commentOptions} data-theme={$theme === Theme.DARK ? "dark" : "lightS"}></script>
+						<script {...commentOptions} data-theme={$theme === Theme.DARK ? "dark" : "light"}></script>
 					</div>
 				{/key}
 			{/if}
