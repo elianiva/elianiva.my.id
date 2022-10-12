@@ -1,17 +1,17 @@
-<div class="overflow-hidden text-left bg-white dark:bg-gray-800 z-[2] rounded-md shadow-md">
+<div class="overflow-hidden text-left bg-white z-[2] border-2 border-rose-900 shadow-sharp">
 	<a
 		data-sveltekit-prefetch
 		rel="prefetch"
 		{href}
-		class="grid grid-rows-[2fr_2rem_5.5rem_1fr] text-slate-600 dark:text-slate-400 no-underline p-4 h-full"
+		class="grid grid-rows-[auto_2rem_8rem_1fr] text-zinc-600 no-underline p-4 h-full"
 	>
 		<span
-			class="md:hover:(text-slate-800 dark:text-slate-200) font-heading text-xl font-semibold leading-normal capitalize text-slate-600 dark:text-slate-400 transition-property-color duration-100 ease-out"
+			class="md:hover:(text-rose-700) font-heading text-xl font-semibold leading-normal capitalize text-zinc-800 transition-property-color duration-100 ease-out"
 		>
 			{title}
 		</span>
-		<div class="font-heading flex gap-2 items-center justify-self-start text-sm text-slate-400 dark:text-slate-500">
-			<CalendarIcon className="w-4 h-4 block -mt-1"/>
+		<div class="font-heading flex gap-1 items-center justify-self-start text-sm text-zinc-700">
+			<CalendarIcon className="w-5 h-5 block -mt-1"/>
 			<span class="date__label">
 				{new Date(date).toLocaleDateString("en-GB", {
 					day: "numeric",
@@ -20,17 +20,12 @@
 				})}
 			</span>
 		</div>
-		<p class="font-sans leading-normal text-slate-600 dark:text-slate-400 mb-1 pt-2">
+		<p class="font-serif leading-normal text-zinc-700 mb-2 mb-4 text-lg">
 			{@html description}
 		</p>
 		<div class="flex gap-2 self-end">
 			{#each tags as tag}
-				<span
-					class="font-heading font-medium bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 text-sm no-underline gap-2 py-1 px-2 mt-2 rounded-md capitalize transition-property-filter duration-200 ease-out"
-					data-testid="tag"
-				>
-					# {tag}
-				</span>
+				<Tag># {tag}</Tag>
 			{/each}
 		</div>
 	</a>
@@ -38,6 +33,7 @@
 
 <script lang="ts">
 import CalendarIcon from "~/icons/CalendarIcon.svelte";
+import Tag from "~/components/Tag.svelte";
 
 export let title: string;
 export let description: string;

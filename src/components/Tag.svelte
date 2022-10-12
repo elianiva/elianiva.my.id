@@ -1,11 +1,11 @@
-<div
-	class="shadow-md text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 font-sans text-lg inline px-1 cursor-pointer"
-	on:click={onClick}
+<span
+	class={`font-heading font-medium ${variant === "ghost" ? "bg-rose-100 text-rose-700" : "shadow-sharp border-2 border-rose-900 bg-white text-zinc-900"} text-sm no-underline gap-2 py-1 px-2 mt-2 uppercase transition-property-filter duration-200 ease-out cursor-pointer`}
+	on:click={() => onClick?.()}
 >
-	<div class="p-2">#{label}</div>
-</div>
+	<slot />
+</span>
 
 <script lang="ts">
-export let label: string;
-export let onClick: () => void;
+export let onClick: (() => void) | undefined = undefined;
+export let variant: "ghost" | "solid" = "ghost"
 </script>

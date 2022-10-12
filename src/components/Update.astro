@@ -13,15 +13,15 @@ const formattedDate = new Date(props.date).toLocaleDateString("en-GB", {
 ---
 
 <section
-	class="bg-white dark:bg-gray-800 border-1 border-gray-200 dark:border-gray-700 border-l-3 border-l-blue-600 dark:border-l-red-500"
+	class="bg-white border-1 border-gray-200 border-l-3 border-l-rose-600"
 >
 	<div
-		class="py-2 px-4 bg-gray-200 dark:bg-gray-900 text-slate-600 dark:text-slate-400 font-heading flex items-center justify-between"
+		class="py-2 px-4 bg-gray-200 text-slate-600 font-heading flex items-center justify-between"
 	>
 		<span class="font-semibold">UPDATE</span>
 		<span class="text-slate-500">{formattedDate}</span>
 	</div>
-	<div class="p-4 text-slate-600 dark:text-slate-400 bg-white dark:bg-gray-800 font-lg leading-relaxed">
+	<div class="p-4 text-slate-600 bg-white font-lg leading-relaxed">
 		<slot />
 	</div>
 </section>

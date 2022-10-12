@@ -27,19 +27,18 @@ export default defineConfig({
 					color: "var(--un-prose-headings)",
 				},
 				p: {
-					"font-family": "var(--font-sans)",
+					"font-family": "var(--font-serif)",
 					"line-height": "1.625",
 				},
 				h1: {
+					"text-transform": "uppercase",
+					"font-weight": 700,
 					"font-size": "1.875rem",
-					"background-image": `linear-gradient(
-            to right,
-            var(--c-prose-accent),
-            rgba(0, 0, 0, 0)
-          )`,
+					"background-image": `linear-gradient(to right, var(--c-prose-accent), rgba(0, 0, 0, 0))`,
 					"background-size": "100% 0.125rem",
 					"background-repeat": "no-repeat",
 					"background-position": "bottom",
+					"padding-bottom": "0.5rem",
 				},
 				h2: {
 					"font-size": "1.5rem",
@@ -58,7 +57,7 @@ export default defineConfig({
 					color: "var(--un-prose-headings)",
 					"font-family": "var(--font-monospace)",
 					"background-color": "var(--c-prose-alt-bg)",
-					"font-weight": "normal",
+					"font-weight": 500,
 					border: "none",
 				},
 				pre: {
@@ -116,29 +115,16 @@ export default defineConfig({
 		[
 			/^prose-custom$/,
 			(_, { theme }) => ({
-				"--font-heading": '"Poppins", sans-serif',
-				"--font-sans": '"Open Sans", sans-serif',
-				"--font-monospace": '"JetBrains Mono", monospace',
-				"--un-prose-body": theme.colors.slate[600],
-				"--un-prose-invert-body": theme.colors.slate[400],
-				"--un-prose-links": theme.colors.slate[800],
-				"--un-prose-invert-links": theme.colors.slate[300],
-				"--un-prose-headings": theme.colors.slate[700],
-				"--un-prose-invert-headings": theme.colors.slate[300],
-				"--c-prose-accent": theme.colors.blue[600],
-				"--c-prose-alt-bg": colors.white,
+				"--font-heading": '"Space Grotesk", sans-serif',
+				"--font-serif": '"IBM Plex Serif", serif',
+				"--font-monospace": '"IBM Plex Mono", monospace',
+				"--un-prose-body": theme.colors.zinc[800],
+				"--un-prose-links": theme.colors.rose[700],
+				"--un-prose-headings": theme.colors.zinc[800],
+				"--c-prose-accent": theme.colors.rose[600],
+				"--c-prose-alt-bg": theme.colors.rose[200],
 				"--c-prose-scrollbar-bg": theme.colors.gray[200],
 				"--c-prose-thumb-bg": theme.colors.gray[300],
-			}),
-			{ layer: "typography" },
-		],
-		[
-			/^prose-custom-invert$/,
-			(_, { theme }) => ({
-				"--c-prose-accent": theme.colors.red[500],
-				"--c-prose-alt-bg": theme.colors.gray[800],
-				"--c-prose-scrollbar-bg": theme.colors.gray[700],
-				"--c-prose-thumb-bg": theme.colors.gray[600],
 			}),
 			{ layer: "typography" },
 		],
@@ -147,12 +133,12 @@ export default defineConfig({
 			(_, { theme }) =>
 				`
       html {
-        scrollbar-color: ${theme.colors.gray[200]} ${theme.colors.blue[600]};
+        scrollbar-color: ${theme.colors.gray[200]} ${theme.colors.rose[600]};
         scroll-padding-top: 2rem;
       }
       
       html::-webkit-scrollbar-thumb {
-        background-color: ${theme.colors.blue[600]};
+        background-color: ${theme.colors.rose[600]};
       }
       
       html::-webkit-scrollbar {
@@ -162,14 +148,6 @@ export default defineConfig({
 
       html.dark {
         scrollbar-color: ${theme.colors.gray[800]} ${theme.colors.red[500]};
-      }
-      
-      html.dark::-webkit-scrollbar-thumb {
-        background-color:  ${theme.colors.red[500]};
-      }
-      
-      html.dark::-webkit-scrollbar {
-        background-color: ${theme.colors.gray[800]};
       }`.replace(/(\s)/g, ""),
 			{ layer: "default" },
 		],
@@ -178,25 +156,28 @@ export default defineConfig({
 		[
 			/^btn-lg-(.*)$/,
 			([, c]) => {
-				return `bg-${c} inline-block mt-8 px-5 py-2 text-white rounded-md shadow-md no-underline font-heading text-lg tracking-wide transition-property-transform ease-out duration-200 hover:-translate-y-1 transform-gpu`;
+				return `bg-${c} inline-block
+					mt-8 px-5 py-2
+					text-white no-underline font-heading text-lg tracking-wide
+					transition-property-transform ease-out duration-200 transform-gpu
+					shadow-sharp border-2 border-rose-900
+					hover:(-translate-y-1.5)
+				`;
 			},
 		],
 		[
 			/^btn-(source|demo)$/,
 			([, kind]) => {
-				const colour =
-					kind === "demo"
-						? "bg-blue-600 dark:bg-red-500 text-white"
-						: "bg-gray-200 dark:bg-gray-700 text-slate-600 dark:text-slate-300";
-				return `${colour} font-sans no-underline flex items-center gap-2 py-1 px-3 rounded-md transition-property-filter ease-out duration-200 hover:brightness-90`;
+				const colour = kind === "demo" ? "bg-rose-600 text-white" : "bg-white text-zinc-900";
+				return `${colour} border-2 border-rose-900 shadow-sharp font-heading no-underline flex items-center gap-2 py-1 px-3 transition-property-filter ease-out duration-200 hover:brightness-90`;
 			},
 		],
 	],
 	theme: {
 		fontFamily: {
-			heading: ["Poppins", "sans-serif"],
-			sans: ["Open Sans", "sans-serif"],
-			monospace: ["JetBrains Mono", "monospace"],
+			heading: ["Space Grotesk", "sans-serif"],
+			serif: ["IBM Plex Serif", "serif"],
+			monospace: ["IBM Plex Mono", "monospace"],
 		},
 		fontSize: {
 			"clamped-lg": "clamp(1.25rem, calc(5vw + 1.25rem), 3rem)",
@@ -210,19 +191,20 @@ export default defineConfig({
 			clamped: "clamp(12rem, calc(20vw + 4rem), 16rem)",
 		},
 		boxShadow: {
-			"sun-rays": `
-        0 -0.875rem 0 currentColor,            /* north */
-        0.625rem -0.625rem 0 currentColor,   /* north east */
-        0.875rem 0 0 currentColor,             /* east */
-        0.625rem 0.625rem 0 currentColor,    /* south east */
-        0 0.875rem 0 currentColor,             /* south */
-        -0.625rem 0.625rem 0 currentColor,   /* south west */
-        -0.875rem 0 0 currentColor,            /* west */
-        -0.625rem -0.625rem 0 currentColor;  /* north west */`,
+			sharp: `0.25rem 0.25rem 0 0 ${colors.rose[900]}`,
 		},
 		backgroundImage: {
 			"red-fading-line": `linear-gradient(to right, ${colors.red[500]}, rgba(0, 0, 0, 0))`,
-			"blue-fading-line": `linear-gradient(to right, ${colors.blue[600]}, rgba(0, 0, 0, 0))`,
+			"blue-fading-line": `linear-gradient(to right, ${colors.rose[600]}, rgba(0, 0, 0, 0))`,
 		},
 	},
+	preflights: [
+		{
+			getCSS: ({ theme }) => `
+			*::selection {
+				background-color: ${theme.colors.zinc[800]};
+				color: ${theme.colors.white};
+			}`,
+		},
+	],
 });

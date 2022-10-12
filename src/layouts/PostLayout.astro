@@ -2,15 +2,16 @@
 import type { Post } from "~/models/post";
 import type { MarkdownLayoutProps } from "astro";
 import MainLayout from "./MainLayout.astro";
+import Tag from "~/components/Tag.svelte";
 
 export type Props = MarkdownLayoutProps<Post>;
 const { frontmatter, ...props } = Astro.props as Props;
 const currentSlug = props.url?.split("/").at(-1);
 
 // since unocss can't do substring interpolation
-function getLevelIndent(level: number) {
+function getIndentPadding(depth: number) {
 	// prettier-ignore
-	switch (level) {
+	switch (depth) {
 		case 1: return "";
 		case 2: return "pl-4";
 		case 3: return "pl-8";
@@ -45,13 +46,13 @@ const commentOptions = {
 </style>
 
 <MainLayout seo={{ title: frontmatter.title }}>
-	<section class="max-w-screen-lg py-4 px-8 mx-auto text-center text-slate-600 dark:text-slate-400">
+	<section class="max-w-screen-lg py-4 px-8 mx-auto text-center text-zinc-600">
 		<h1
-			class="font-heading text-5xl uppercase max-w-[30ch] mt-12 mx-auto mb-0 font-semibold text-slate-700 dark:text-slate-300 leading-snug"
+			class="font-heading text-5xl uppercase max-w-[30ch] mt-12 mx-auto mb-0 font-semibold text-zinc-800 leading-snug"
 		>
 			{frontmatter.title}
 		</h1>
-		<span class="font-heading block text-center text-lg leading-loose text-slate-500 dark:text-slate-600">
+		<span class="font-heading block text-center text-lg leading-loose text-zinc-600">
 			Posted on
 			{
 				new Date(frontmatter.date).toLocaleDateString("en-GB", {
@@ -63,29 +64,27 @@ const commentOptions = {
 			}
 		</span>
 		<a
-			class="relative block font-heading text-center text-lg leading-loose no-underline mb-4 text-blue-600 dark:text-red-500 hover:underline"
+			class="relative block font-heading text-center text-lg leading-loose no-underline text-rose-600 hover:underline"
 			href={`https://github.com/elianiva/elianiva.my.id/blob/master/data/post/${currentSlug}/index.svx`}
 			target="_blank"
 			rel="norel noreferrer">Suggest An Edit</a
 		>
-		<div class="flex gap-2 justify-center">
+		<div class="flex gap-2 justify-center mb-6">
 			{
 				frontmatter.tags.map((tag) => (
-					<div class="py-1 px-2 bg-gray-200 dark:bg-gray-800 text-slate-800 dark:text-slate-200 rounded-md font-heading font-medium">
-						# {tag}
-					</div>
+					<Tag># {tag}</Tag>
 				))
 			}
 		</div>
 		<main
-			class="font-sans mx-auto text-base text-left max-w-screen-sm prose prose-custom dark:prose-invert dark:prose-custom-invert"
+			class="font-serif mx-auto text-base text-justify text-lg max-w-screen-md prose prose-custom"
 		>
-			<div>
+			<div class="text-left">
 				<h1>Table of Contents</h1>
 				<ul class="!pl-0">
 					{
 						props.headings.map((heading) => (
-							<li class={`list-none list-outside ${getLevelIndent(heading.depth)} my-1`}>
+							<li class={`list-none list-outside ${getIndentPadding(heading.depth)} my-1`}>
 								<a href={`#${heading.slug}`}>{heading.text}</a>
 							</li>
 						))

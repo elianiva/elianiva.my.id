@@ -27,10 +27,10 @@ export type Props = SectionProps;
 const props = Astro.props as Props;
 ---
 
-<section class="relative mt-16 font-sans text-slate-800 dark:text-slate-200 text-center z-[2]">
-	<Pattern class="text-blue-600 dark:text-red-500 absolute top-0 -left-8 w-56 h-40" />
+<section class="relative mt-16 font-serif text-slate-800 text-center z-[2]">
+	<Pattern class="text-rose-600 absolute top-0 -left-8 w-56 h-40" />
 	<h1
-		class="font-heading relative inline-block text-2xl font-semibold mb-8 before:(content-[] absolute -bottom-1 h-1 left-8 right-8 rounded-md bg-blue-600 dark:bg-red-500)"
+		class="uppercase font-heading relative inline-block text-2xl font-semibold mb-8 before:(content-[] absolute -bottom-1 h-1 left-8 right-8 rounded-md bg-rose-600)"
 	>
 		{props.title}
 	</h1>
@@ -61,7 +61,7 @@ const props = Astro.props as Props;
 				))
 		}
 	</div>
-	<a href={props.url} role="button" class="btn-lg-blue-600 dark:btn-lg-red-500">
+	<a href={props.url} role="button" class="btn-lg-rose-500">
 		{props.buttonText}
 	</a>
 </section>
