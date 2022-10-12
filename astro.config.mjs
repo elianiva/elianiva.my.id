@@ -8,6 +8,7 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
 	integrations: [Unocss(), svelte(), mdx()],
 	site: 'https://elianiva.my.id',
+	trailingSlash: "always",
 	vite: {
 		resolve: {
 			alias: {
