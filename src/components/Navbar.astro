@@ -60,6 +60,7 @@ const routes: Route[] = [
 								class={`relative flex flex-col gap-1 items-center justify-center hover:text-rose-600 text-lg leading-relaxed no-underline font-serif transition-[color] duration-100 ease-out ${
 									isRouteActive ? "text-rose-600" : "text-zinc-700"
 								}`}
+								aria-label={route.name}
 								href={route.path}
 							>
 								<Icon name={isRouteActive ? route.icon.active : route.icon.inactive} class="w-6 h-6" />

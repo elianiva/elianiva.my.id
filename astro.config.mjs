@@ -3,11 +3,12 @@ import Unocss from "unocss/astro";
 import path from "node:path";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [Unocss(), svelte(), mdx()],
-	site: 'https://elianiva.my.id',
+	integrations: [Unocss(), svelte(), mdx(), image({ serviceEntryPoint: "@astrojs/image/sharp" })],
+	site: "https://elianiva.my.id",
 	vite: {
 		resolve: {
 			alias: {
