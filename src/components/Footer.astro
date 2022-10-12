@@ -1,0 +1,49 @@
+---
+import Icon from "astro-icon";
+import data from "~/data/sites";
+
+type Social = {
+	url: string;
+	icon: string;
+};
+
+const socials: Social[] = [
+	{ url: data.github, icon: "ph:envelope" },
+	{ url: data.twitter, icon: "ph:github-logo" },
+	{ url: `mailto:${data.email}`, icon: "ph:twitter-logo" },
+];
+---
+
+<footer
+	class="relative mt-12 text-center pt-10 pb-30 md:pb-10 px-1 bg-gray-50 dark:bg-gray-900 border-t border-gray-300 dark:border-gray-800 transition-property-filter ease-out duration-200 font-heading"
+>
+	<div class="grid grid-cols-3 max-w-[220px] mx-auto mb-6">
+		{
+			socials.map((s) => (
+				<a
+					class="text-slate-600 dark:text-slate-400 hover:text-slate-800 hover:dark:text-slate-200"
+					href={s.url}
+					target="_blank"
+					rel="norel noreferrer"
+					aria-label={s.url}
+				>
+					<Icon class="w-8 h-8 text-current" name={s.icon} />
+				</a>
+			))
+		}
+	</div>
+	<p class="leading-relaxed text-slate-600 dark:text-slate-400">
+		Powered by
+		<a class="no-underline text-slate-800 dark:text-slate-200" href="https://kit.svelte.dev"> Svelte-Kit</a>
+		and
+		<a class="no-underline text-slate-800 dark:text-slate-200" href="https://pages.cloudflare.com/">
+			Cloudflare Pages
+		</a>
+		&bull; Source code is available on
+		<a class="no-underline text-slate-800 dark:text-slate-200" href="{data.github}/elianiva.my.id"> Github</a>
+	</p>
+	<p class="leading-relaxed text-slate-600 dark:text-slate-400">
+		Copyright &copy; {new Date().getFullYear()}
+		<a class="no-underline text-slate-800 dark:text-slate-200" href={data.github}> Elianiva</a>
+	</p>
+</footer>

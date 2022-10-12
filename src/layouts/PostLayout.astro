@@ -1,0 +1,102 @@
+---
+import type { Post } from "~/models/post";
+import type { MarkdownLayoutProps } from "astro";
+import MainLayout from "./MainLayout.astro";
+
+export type Props = MarkdownLayoutProps<Post>;
+const { frontmatter, ...props } = Astro.props as Props;
+const currentSlug = props.url?.split("/").at(-1);
+
+// since unocss can't do substring interpolation
+function getLevelIndent(level: number) {
+	// prettier-ignore
+	switch (level) {
+		case 1: return "";
+		case 2: return "pl-4";
+		case 3: return "pl-8";
+		case 4: return "pl-16";
+		case 5: return "pl-24";
+		default: return "";
+	  }
+}
+
+const commentOptions = {
+	src: "https://giscus.app/client.js",
+	"data-repo": "elianiva/elianiva.my.id",
+	"data-repo-id": "MDEwOlJlcG9zaXRvcnkzMDE0NjE4NDU=",
+	"data-category": "General",
+	"data-category-id": "DIC_kwDOEffxVc4CRq7s",
+	"data-mapping": "pathname",
+	"data-strict": "0",
+	"data-reactions-enabled": "1",
+	"data-emit-metadata": "0",
+	"data-input-position": "bottom",
+	"data-lang": "en",
+	crossorigin: "anonymous",
+	async: true,
+};
+---
+
+<style>
+	:global(div[data-rehype-pretty-code-fragment]) {
+		background-color: #0d1117;
+		border-radius: 0.5rem;
+	}
+</style>
+
+<MainLayout seo={{ title: frontmatter.title }}>
+	<section class="max-w-screen-lg py-4 px-8 mx-auto text-center text-slate-600 dark:text-slate-400">
+		<h1
+			class="font-heading text-5xl uppercase max-w-[30ch] mt-12 mx-auto mb-0 font-semibold text-slate-700 dark:text-slate-300 leading-snug"
+		>
+			{frontmatter.title}
+		</h1>
+		<span class="font-heading block text-center text-lg leading-loose text-slate-500 dark:text-slate-600">
+			Posted on
+			{
+				new Date(frontmatter.date).toLocaleDateString("en-GB", {
+					weekday: "long",
+					day: "numeric",
+					month: "long",
+					year: "numeric",
+				})
+			}
+		</span>
+		<a
+			class="relative block font-heading text-center text-lg leading-loose no-underline mb-4 text-blue-600 dark:text-red-500 hover:underline"
+			href={`https://github.com/elianiva/elianiva.my.id/blob/master/data/post/${currentSlug}/index.svx`}
+			target="_blank"
+			rel="norel noreferrer">Suggest An Edit</a
+		>
+		<div class="flex gap-2 justify-center">
+			{
+				frontmatter.tags.map((tag) => (
+					<div class="py-1 px-2 bg-gray-200 dark:bg-gray-800 text-slate-800 dark:text-slate-200 rounded-md font-heading font-medium">
+						# {tag}
+					</div>
+				))
+			}
+		</div>
+		<main
+			class="font-sans mx-auto text-base text-left max-w-screen-sm prose prose-custom dark:prose-invert dark:prose-custom-invert"
+		>
+			<div>
+				<h1>Table of Contents</h1>
+				<ul class="!pl-0">
+					{
+						props.headings.map((heading) => (
+							<li class={`list-none list-outside ${getLevelIndent(heading.depth)} my-1`}>
+								<a href={`#${heading.slug}`}>{heading.text}</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<slot />
+			<h1>Comments</h1>
+			<div>
+				<script is:inline {...commentOptions} data-theme="light"></script>
+			</div>
+		</main>
+	</section>
+</MainLayout>

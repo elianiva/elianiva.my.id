@@ -1,0 +1,82 @@
+---
+layout: ~/layouts/PostLayout.astro
+draft: false
+title: Utterances - Comment section that just works
+date: 2021-02-22
+description: I've been wanting to add a comment section to my website because why not
+tags:
+    - website
+---
+
+[gatsby-link]: https://www.gatsbyjs.com/
+[react-link]: https://reactjs.org/
+[svelte-link]: https://svelte.dev/
+[sapper-link]: https://sapper.svelte.dev/
+[mdsvex-link]: https://mdsvex.com/
+[disqus-link]: https://disqus.com/
+[utterances-link]: https://github.com/utterance/utterances
+[utterances-web]: https://utteranc.es/
+[giscus-web]: https://giscus.app/
+[issue-link]: https://github.com/utterance/utterances/issues/427
+
+# Introduction
+
+If you've been following my website long enough, you might have known that I remake my website quite a while ago. I went from [Gatsby][gatsby-link] which uses [React][react-link] + MD to [Sapper][sapper-link] which uses [Svelte][svelte-link] + [MDsveX][mdsvex-link].
+
+I had a comment section on my old website using [Disqus][disqus-link]. I want to add that to my new website but I think that's not really what I want because it requires a Disqus Account. While I was browsing through Github, I found [Utterances][utterances-link]. It uses Github issues to store the comments, I think this is great! I'm pretty sure most people who visit my website already have a Github account, they wouldn't need to create a new account.
+
+# Installation
+
+Adding **utterances** is really straightforward, you just need to go to [their website][utterances-web], fill the configuration, and grab the snippet. The next step is putting it where you want it to appear. In my case, it's below every post. Here's a short snippet to illustrate what I meant.
+
+```html
+<section>
+	<main>
+		<!-- This is the main content -->
+		<h1>Comments</h1>
+		{#if $theme === "dark"}
+		<div>
+			<script
+				src="https://utteranc.es/client.js"
+				repo="elianiva/elianiva.my.id"
+				issue-term="pathname"
+				label="Comments"
+				theme="dark-blue"
+				crossorigin="anonymous"
+				async
+			></script>
+		</div>
+		{:else}
+		<div>
+			<script
+				src="https://utteranc.es/client.js"
+				repo="elianiva/elianiva.my.id"
+				issue-term="pathname"
+				label="Comments"
+				theme="github-light"
+				crossorigin="anonymous"
+				async
+			></script>
+		</div>
+		{/if}
+	</main>
+</section>
+```
+
+I added an `if-statement` because my website has light-theme and dark-theme and **utterances** doesn't support changing the theme on-the-fly, at least _yet_. It's an [open issue][issue-link]. You could do something similar with CSS where you hide one of the comment sections depending on the active theme.
+
+# Closing Note
+
+I wasn't thinking about making this post but ended up making it so I can test the comment section XD
+
+It's a lot shorter than usual, but still, thank you if you've read this far. Have a wonderful day! :)
+
+<script>
+  import Update from "$lib/components/Update.svelte";
+</script>
+
+<Update date="2022-09-29">
+
+As of now, I updated my website to use [Giscus][giscus-web] because I realised that if I use the issues page for comments, it's harder for me to keep track of the actual issues :p
+
+</Update>

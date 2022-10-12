@@ -1,0 +1,123 @@
+---
+layout: ~/layouts/PostLayout.astro
+draft: false
+title: Setting up Japanese input method on Linux
+date: 2020-06-05
+description: Installing fcitx and mozc for Japanese input method so you can type 日本語 on Linux
+tags:
+  - linux
+  - japanese
+---
+
+<script>
+  import Update from "$lib/components/Update.svelte"
+</script>
+
+# Introduction
+So I've been learning Japanese lately then I came across this question, "How do I input a japanese character on my laptop?" I use a 12-keys layout to insert japanese characters on my phone. It takes time to adapt but eventually I got comfortable enough with it.
+
+At first, I tried to change the keyboard layout but it doesn't work. I then came across this combination, **Fcitx** and **Mozc**. It's been a great experience using them, it's also very easy to set up and use.
+
+# Fcitx
+## What Is Fcitx?
+According to [Wikipedia](https://en.wikipedia.org/wiki/Fcitx), **Fcitx** is an input method framework with extension support for the X Window System that supports multiple input method engines.
+
+It supports multiple input engines like `fcitx-hangul` for Korean, `fcitx-mozc` for Japanese, `fcitx-googlepinyin` for Chinese, and more.
+
+It also has a lot of addons that you can use like `clipboard` for clipboard management, `spell` for spellchecking, and many more.
+
+## Installation
+Installing Fcitx is pretty simple. It's available on most Linux distro official repository. I use Archlinux so mine will looks like this, you might use another distro but it's basically the same.
+
+``` bash
+# Arch
+$ sudo pacman -S fcitx5 fcitx5-gtk fcitx5-qt fcitx5-configtool
+
+# Fedora
+$ sudo dnf install fcitx5 fcitx5-gtk fcitx5-qt fcitx5-configtool
+```
+
+> We're using Fcitx5 since it's the newer version of fcitx
+
+After installing it, we need to set some variables for it to work.
+
+## Configuration
+To set our input method to `fcitx`, we need to change our environment variable.
+I set it on `~/.profile`, but you can set it on `~/.xprofile`, `~/.pam_environment`, `~/.xinitrc` or anything that gets sourced on login. You ned to set these variables
+
+- `~/.pam_environment`
+    ```bash
+    GTK_IM_MODULE DEFAULT=fcitx
+    QT_IM_MODULE  DEFAULT=fcitx
+    XMODIFIERS    DEFAULT=\@im=fcitx
+    SDL_IM_MODULE DEFAULT=fcitx
+    IBUS_USE_PORTAL=1
+    ```
+
+- `~/.profile` or anything that uses shell syntax
+    ```bash
+    export GLFW_IM_MODULE="ibus"
+    export GTK_IM_MODULE="fcitx"
+    export QT_IM_MODULE="fcitx"
+    export XMODIFIERS="@im=fcitx"
+    export SDL_IM_MODULE="fcitx"
+    export IBUS_USE_PORTAL=1
+    ```
+
+# Mozc
+## What Is Mozc?
+According to the project [home page](https://github.com/google/mozc) itself, Mozc is a Japanese input method editor (IME) designed for multi-platform such as Android OS, Apple OS X, Chromium OS, GNU/Linux and Microsoft Windows. This OpenSource project originates from [Google Japanese Input](http://www.google.com/intl/ja/ime/).
+
+We need this for `fcitx` that we've installed previously to be able to input Japanese characters.
+
+## Installation
+We are using Fcitx as our input method framework so what we need to install is `fcitx5-mozc`. It's also available on most Linux distro official repository.
+
+``` bash
+# Archlinux
+$ sudo pacman -S fcitx5-mozc
+
+# Fedora
+$ sudo dnf install fcitx5-mozc
+```
+
+After installing it, it will be available to Fcitx as an input method.
+
+## Configuration
+Now what we need to do is set Mozc as Fcitx input method. To do that, open up the `fcitx5-configtool`. It will roughly look like this, it may look different because of your theme.
+
+![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-1.png)
+
+Make sure the checkbox for `Only Show Current Language` is unchecked, otherwise you won't find mozc.
+
+![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-2.png)
+
+Find mozc, click it, then press the top button. Not sure why the icon is missing, probably some weird QT and GTK compatibility issue.
+
+After clicking apply, execute `fcitx5` on startup depending on your DE/WM. I put it in `~/.xinitrc` like so.
+
+``` bash
+fcitx5 --replace -d &
+```
+
+If you put it on `~/.xinitrc`, it will get executed when you log in into xorg.
+
+Fcitx is toggleable using a keybind that you can change from the `fcitx5-confgitool` which looks like this.
+
+![fcitx configtool](/assets/post/japanese-input-method-on-linux/configtool-3.png)
+
+You can change the `Trigger Input Method` to whatever key you like. I personally use `alt+space`.
+
+## Usage
+If you've done configuring it, try to activate it by pressing the keybind that you've defined before then try to type on something. It will look like this.
+
+![fcitx completion preview](/assets/post/japanese-input-method-on-linux/preview.png)
+
+It looks like an autocomplete from a text editor. The way it works is if you write `romaji`, it auto converts it to `hiragana` which you can then press `TAB` to scroll the options.
+
+For example, if you write `watashi` then it will show `わたし` and if you continue pressing `TAB` it will be the kanji form of it which is `私`. This also applies to `katakana`.
+
+# Closing Note
+All in all, I'm pretty satisfied with this setup. I don't have to learn a new keyboard layout to insert Japanese characters. I can just write romaji and it will turn into hiragana, katakana, or kanji.
+
+Anyway, thanks for reading this post. I hope you find this post useful and have a good day!

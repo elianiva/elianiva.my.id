@@ -1,0 +1,168 @@
+---
+layout: ~/layouts/PostLayout.astro
+draft: true
+title: My opinion on Nix, The package Manager
+date: 2021-05-13
+description: I really like Nix, it's great and all, but I don't think I'm going to use it, <em>yet</em>.
+tags:
+  - linux
+  - other
+---
+
+[mj-link]: https://github.com/mjlbach
+[nix-website]: https://nixos.org/
+[fhs-wiki]: https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+[nix-basic]: https://nixos.org/guides/nix-pills/basics-of-language.html
+[shell-intro]: https://ghedam.at/15978/an-introduction-to-nix-shell
+[direnv-link]: https://direnv.net/
+[lorri-link]: https://github.com/target/lorri
+[hm-link]: https://github.com/nix-community/home-manager
+[nixgl-link]: https://github.com/guibou/nixGL
+
+<script>
+  import Update from "$lib/components/Update.svelte"
+</script>
+
+# Introduction
+
+I've been trying to dive into Nix recently and it has been pleasant. The reason is, let's say [*someone*][mj-link] mentioned it a little bit *too* much and got me interested.
+
+If you don't know about Nix, it's a declarative, purely functional lazily evaluated language *and* a package manager, and there's also NixOS which is a distribution entirely based on Nix. I won't explain what they are in this post, so please refer to their [official website][nix-website].
+
+This post is going to be focused on my opinion about it so please take it with a grain of salt ;)
+
+<Update date="2021-08-15">
+
+~~I've decided to use Nix to manage my dotfiles and most of my packages since I moved to Fedora. I still use `dnf` for GUI packages since they don't play nicely when installed through Nix.~~
+
+I'm back to Arch, but I kept using Nix.
+
+Here's my [flake.nix](https://github.com/elianiva/dotfiles/blob/master/flake.nix) in case you want it ;)
+
+</Update>
+
+<Update date="2021-11-24">
+
+I stopped using Nix
+
+</Update>
+
+# NixOS
+
+My very first introduction to Nix is actually using it from NixOS. It's a very unique Linux distribution, it doesn't use [FHS][fhs-wiki] which has its pros and cons.
+
+Imagine, your entire system is like a git repo. You configure the system declaratively using a file in `/etc/configuration.nix`. It's super easy to configure services, packages, etc. You can also *rollback* to a previous *generation*. Similar to how you'd do `git revert`.
+
+Because you can configure everything from `/etc/configuration.nix`, there is *too* much abstraction. I think it's good because it simplifies things and makes it easier because everything is centralised, but it's also not good because you no longer know which configuration goes to where.
+
+Also, you lose the ability to run a normal binary because Nix uses a non-standard filesystem structure. You can *patch* them, but that seems like a bit of a chore to me.
+
+# Nix, The Language
+
+## Purely Functional
+
+The language is purely functional and lazily evaluated. Some people say that its syntax is quirky, but I don't really think it is. Its syntax is quite similar to Haskell.
+
+Quick and (overly) simplified explanation is, it adheres to the concept of functional programming which I really like. In Nix, everything (well, *mostly*. You still have a primitive data type) is basically a function with exactly one argument. If you want to insert multiple arguments, you'd need to use currying. It looks something like this.
+
+```nix
+# define the function
+sum = x: y: x + y;
+
+# call the function
+sum 2 5
+```
+
+..and here's an equivalent in Javascript
+
+```javascript
+// define the function
+const sum = x => y => x + y
+
+// call the function
+sum(2)(5)
+```
+
+It feels easier on the eyes than the traditional `foo()` function invocation but it can also be a bit confusing at times. Learning Nix made me understand this concept, I used to be so confused why would anyone need currying and now I understand why :)
+
+## Lazy Evaluation
+
+The code won't be evaluated if it's not being used. I personally think this is a cool concept. You can create an infinite list but you only take 20 of them, then it's going to be evaluated as if it's a list with a length of 20.
+
+This concept also exists in Haskell (and probably *most* functional language). Might be a bit confusing for someone who never used a lazily evaluated language, though.
+
+## Overall
+
+I don't think the syntax is quirky, it's unique in my opinion and I like it. If you want to know more about its syntax, please refer to [this page][nix-basic] as it's the official page and it explains them very well and thoroughly!
+
+# Nix, The Package Manager
+
+## The Good
+
+One of the nicest thing out of many things about Nix package manager is you can execute an isolated shell and it can be easily reproduced. You can use `shell.nix` or `default.nix` and execute `nix-shell` on that directory. You can read [this article][shell-intro] or the [official wiki](https://nixos.wiki/wiki/Development_environment_with_nix-shell) to understand what it does
+
+You can also execute a package temporarily using `nix-shell -p <pkgname>` without installing it. It's super cool!
+
+It's also cross-platform, you can install it on MacOS or any GNU/Linux distribution, though I'm not sure about the non-systemd distribution. This makes it easy reproducibility on any OS -- Except Windows, that is. You can use WSL2 on Windows, however.
+
+## The Not-So-Good
+
+Now, the problem with this is since every package is 'isolated', *some* of them like `telegram-desktop` won't work properly. It couldn't pick up the system theme, resulting in an ugly cursor. I know this is a minor issue, but it bothers me more than it should lol.
+
+Another example is `fcitx5` which is an IME that I use to type 日本語. I don't know if it's my setup, but it doesn't seem to be able to find its addons like `mozc` -- I can switch my input method, but it has no effect when I'm typing.
+
+The absolute deal-breaker for me though, is any package that uses OpenGL can't be used outside of NixOS without some sort of [wrapper][nixgl-link]. I don't really like adding a wrapper just to achieve this.
+
+They work flawlessly on NixOS when I tried it, but I guess it's because the entire system is *designed* for them.
+
+Also, when it's downloading something, there is no progress bar which makes it seems like it doesn't do anything when it's downloading a big package. I have a slow connection and I got confused when it's trying to download something big.
+
+## Overall
+
+I actually enjoy writing Nix build files, it's really exciting to write them. It's also pretty satisfying when it successfully built the package.
+
+# Other Nix-Related Tools
+
+## Lorri and Direnv
+
+Other than plain Nix, I also tried [direnv][direnv-link] and [lorri][lorri-link] briefly. I think it's super useful if you have multiple projects using Nix.
+
+Though, since I don't have a project using Nix and most of my stuff is using Node or Rust and all of them are a one-man-project -- meaning that I'm the only one who works on it, I don't think using Nix is going to bring any advantage.
+
+## Home Manager
+
+I used [home-manager][hm-link] for a few days and it has been great!  It's almost like `configuration.nix` for your current user instead of system-wide.
+
+I stopped using it though because I don't use Nix *that* often (yet) and I don't have multiple machines so using it's probably a bit overkill.
+
+# TL;DR
+
+So, here's a summary of what I think about Nix. Again, please take them with a grain of salt as this is my personal opinion and I might be completely wrong ;)
+
+## Why Nix is good
+
+- The language is good. Yes, there are some quirks but every language have their own quirks.
+- The package manager is great! It provides a hermetic build environment. It's super useful when you're working with many people.
+- It can be used on multiple operating systems. This is great if you're working with someone who uses a different operating system.
+- You became more nerdy than most people around you :p
+
+## Why I won't use it
+
+- I'm not going to use it for now since I don't work collaboratively with several people (yet ;) and most of the time I code in NodeJS related stuff, Rust, and Lua, so using it won't bring any significant benefit. I think it would be beneficial when I do some serious low level programming that requires a bunch of system dependencies that needs to be easily reproducible.
+- I already have a package manager; which is Pacman. Using both Pacman and Nix seems like a weird setup to me. If I use MacOS, I would definitely use Nix.
+- I have a slow connection and low storage. Some packages from Pacman get duplicated in Nix; I know this is necessary for reproducibility but I'm not trying to reproduce it anywhere at the moment.
+- I don't want to fall *too* deep into yet another rabbit hole ;)
+
+# Conclusion
+
+Overall, I like Nix. I can't wait to be able to use it for a real-world situation -- As you may or may not know, I'm still in High School when I write this and there's almost no high-schooler who thinks Nix is worth investing your time into :p
+
+Also, here's some good articles that I've read about Nix that you *might* want to read if you're interested.
+
+- [nix-shell with ZSH](https://msitko.pl/blog/2020/04/22/isolated-ennvironments-with-nix-shell-and-zsh.html)
+- [How to learn Nix](https://ianthehenry.com/posts/how-to-learn-nix/)
+- [Nix by example](https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
+- [How to get started with Nix](http://alessandromarrella.com/fed7de08.html)
+- [Using Nix in my development environment](https://ejpcmac.net/blog/about-using-nix-in-my-development-workflow/)
+
+Anyway, thanks for reading my post, and have a wonderful day! :)

@@ -1,7 +1,9 @@
 {
   "name": "elianiva.my.id",
+  "description": "Elianiva's personal site",
+  "version": "3.0.0",
+  "license": "MIT",
   "type": "module",
-  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -11,6 +13,31 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.4.6"
+    "@astrojs/cloudflare": "^3.0.0",
+    "@astrojs/mdx": "^0.11.4",
+    "@astrojs/svelte": "^1.0.1",
+    "@fontsource/jetbrains-mono": "^4.5.11",
+    "@fontsource/open-sans": "^4.5.12",
+    "@fontsource/poppins": "^4.5.10",
+    "astro": "^1.4.6",
+    "gray-matter": "^4.0.3",
+    "svelte": "^3.46.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "@unocss/reset": "^0.45.28",
+    "astro-icon": "^0.7.3",
+    "eslint": "^8.25.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.5",
+    "typescript": "^4.8.4",
+    "unocss": "^0.45.28",
+    "vite": "^3.1.6"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/parser": "^5.39.0",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.6"
   }
 }

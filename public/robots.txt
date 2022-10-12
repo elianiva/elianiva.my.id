@@ -1,0 +1,3 @@
+User-agent: *
+
+sitemap: https://elianiva.my.id/sitemap.xml
