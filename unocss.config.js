@@ -132,23 +132,19 @@ export default defineConfig({
 			/^custom-scrollbar$/,
 			(_, { theme }) =>
 				`
-      html {
-        scrollbar-color: ${theme.colors.gray[200]} ${theme.colors.rose[600]};
-        scroll-padding-top: 2rem;
-      }
-      
-      html::-webkit-scrollbar-thumb {
-        background-color: ${theme.colors.rose[600]};
-      }
-      
-      html::-webkit-scrollbar {
-        background-color: ${theme.colors.gray[200]};
-        width: 0.5rem;
-      }
+				html {
+					color: ${theme.colors.rose[200]} ${theme.colors.rose[600]};
+					scroll-padding-top: 2rem;
+				}
 
-      html.dark {
-        scrollbar-color: ${theme.colors.gray[800]} ${theme.colors.red[500]};
-      }`.replace(/(\s)/g, ""),
+				html::-webkit-scrollbar-thumb {
+					background-color: ${theme.colors.rose[600]};
+				}
+
+				html::-webkit-scrollbar {
+					background-color: ${theme.colors.rose[200]};
+					width: 0.5rem;
+				}`.replace(/(\s)/g, ""),
 			{ layer: "default" },
 		],
 	],
@@ -158,7 +154,7 @@ export default defineConfig({
 			([, c]) => {
 				return `bg-${c} inline-block
 					mt-8 px-5 py-2
-					text-white no-underline font-heading text-lg tracking-wide
+					text-white font-semibold no-underline font-heading text-lg tracking-wide
 					transition-property-transform ease-out duration-200 transform-gpu
 					shadow-sharp border-2 border-rose-900
 					hover:(-translate-y-1.5)
