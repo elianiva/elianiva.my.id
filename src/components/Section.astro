@@ -1,0 +1,67 @@
+---
+import Pattern from "~/icons/Pattern.astro";
+import PostCard from "~/components/PostCard.svelte";
+import ProjectCard from "~/components/ProjectCard.astro";
+import type { Post } from "~/models/post";
+import type { Project } from "~/models/project";
+
+type PostSectionProps = {
+	type: "post";
+	data: Post[];
+};
+
+type ProjectSectionProps = {
+	type: "project";
+	data: Project[];
+};
+
+// need to add this alias because Astro can't handle intersection type
+type SectionProps = {
+	title: string;
+	buttonText: string;
+	url: string;
+} & (PostSectionProps | ProjectSectionProps);
+
+export type Props = SectionProps;
+
+const props = Astro.props as Props;
+---
+
+<section class="relative mt-16 font-serif text-slate-800 text-center z-[2]">
+	<Pattern class="text-rose-600 absolute top-0 -left-8 w-56 h-40" />
+	<h1
+		class="uppercase font-heading relative inline-block text-2xl font-semibold mb-8 before:(content-[] absolute -bottom-1 h-1 left-8 right-8 rounded-md bg-rose-600)"
+	>
+		{props.title}
+	</h1>
+	<div class="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-5">
+		{
+			props.type === "post" &&
+				props.data.map((item) => (
+					<PostCard
+						title={item.title}
+						href={`/post/${item.slug}`}
+						description={item.description}
+						date={item.date}
+						tags={item.tags}
+					/>
+				))
+		}
+		{
+			props.type === "project" &&
+				props.data.map((item) => (
+					<ProjectCard
+						title={item.title}
+						imageSource={`/assets/project/${item.slug}/cover.webp`}
+						href={`/project/${item.slug}`}
+						description={item.description}
+						demo={item.demo}
+						source={item.source}
+					/>
+				))
+		}
+	</div>
+	<a href={props.url} role="button" class="btn-lg-rose-600 uppercase">
+		{props.buttonText}
+	</a>
+</section>

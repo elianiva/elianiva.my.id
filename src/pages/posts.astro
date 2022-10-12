@@ -1,0 +1,18 @@
+---
+import Posts from "~/components/Posts.svelte";
+import MainLayout from "~/layouts/MainLayout.astro";
+import { Post } from "~/models/post";
+
+const posts = await Post.fromGlob(Astro.glob("./post/*.mdx"));
+---
+
+<MainLayout seo={{ title: "Posts" }}>
+	<section class="max-w-[1080px] mx-auto pt-8 px-4 text-center">
+		<h1
+			class="font-heading uppercase relative inline-block text-3xl font-semibold text-slate-700 mb-10 before:(content-[] absolute -bottom-1 left-8 right-8 h-1 rounded-sm bg-rose-600)"
+		>
+			All Posts
+		</h1>
+		<Posts client:visible posts={posts} />
+	</section>
+</MainLayout>

@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon";
+
+type Route = {
+	name: string;
+	path: string;
+	icon: {
+		inactive: string;
+		active: string;
+	};
+};
+
+const routes: Route[] = [
+	{
+		name: "Home",
+		path: "/",
+		icon: {
+			active: "fluent:home-16-filled",
+			inactive: "fluent:home-16-regular",
+		},
+	},
+	{
+		name: "Post",
+		path: "/posts/",
+		icon: {
+			active: "fluent:book-20-filled",
+			inactive: "fluent:book-20-regular",
+		},
+	},
+	{
+		name: "Project",
+		path: "/projects/",
+		icon: {
+			active: "fluent:clipboard-code-16-filled",
+			inactive: "fluent:clipboard-code-16-regular",
+		},
+	},
+	{
+		name: "About",
+		path: "/about/",
+		icon: {
+			active: "fluent:info-16-filled",
+			inactive: "fluent:info-16-regular",
+		},
+	},
+];
+---
+
+<nav
+	class="fixed bottom-4 left-10 right-10 h-14 md:(top-4 h-14 w-72 left-1/2 -translate-x-1/2) bg-white shadow-sharp border-2 border-rose-900 z-30"
+>
+	<div class="h-full flex md:w-full items-center justify-center max-w-screen-lg mx-auto">
+		<ul class="list-none flex gap-10 items-center justify-center">
+			{
+				routes.map((route) => {
+					const isRouteActive = Astro.url.pathname === route.path;
+					return (
+						<li>
+							<a
+								class={`relative flex flex-col gap-1 items-center justify-center hover:text-rose-600 text-lg leading-relaxed no-underline font-serif transition-[color] duration-100 ease-out ${
+									isRouteActive ? "text-rose-600" : "text-zinc-700"
+								}`}
+								aria-label={route.name}
+								href={route.path}
+							>
+								<Icon name={isRouteActive ? route.icon.active : route.icon.inactive} class="w-6 h-6" />
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</div>
+</nav>

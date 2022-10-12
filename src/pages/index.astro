@@ -1,0 +1,18 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro";
+import Section from "~/components/Section.astro";
+import Header from "~/components/Header.astro";
+import { Post } from "~/models/post";
+import { Project } from "~/models/project";
+
+const posts = await Post.fromGlob(Astro.glob("./post/*.mdx"), 3);
+const projects = await Project.fromGlob(Astro.glob("./project/*.mdx"), 3);
+---
+
+<MainLayout seo={{ title: "Home" }}>
+	<main class="max-w-[1080px] my-0 mx-auto pt-8 px-4 pb-0 z-[2]">
+		<Header />
+		<Section title="Recent Posts" data={posts} buttonText="More Posts" url="/posts/" type="post" />
+		<Section title="Recent Projects" data={projects} buttonText="More Projects" url="/projects/" type="project" />
+	</main>
+</MainLayout>

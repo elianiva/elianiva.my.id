@@ -1,0 +1,28 @@
+---
+layout: ~/layouts/ProjectLayout.astro
+title: P
+date: 2022-06-1
+description: A website to paste your text with syntax highlighting support.
+demo: https://p.elianiva.my.id
+source: https://github.com/elianiva/p
+type: personal
+stack:
+  - ['Typescript', 'https://typescriptlang.org']
+  - ['Cloudflare Workers', 'https://www.cloudflare.com/workers/']
+  - ['Cloudflare KV', 'https://developers.cloudflare.com/workers/runtime-apis/kv/']
+---
+
+**P** (very creative name, I know) is a website where you can paste your text with syntax highlighting support.
+
+This was made using [Cloudflare Workers](https://www.cloudflare.com/workers/) and [Cloudflare KV](https://developers.cloudflare.com/workers/runtime-apis/kv/) as its storage. I made this because I wanted to learn how to use Cloudflare Workers and Cloudflare KV. Previously I use [Polarite](https://github.com/teknologi-umum/polarite) to paste my text but it suddenly broke because of distributed database is hard or something like that.
+
+I initially thought of using Rust, but I didn't end up using it because I realised that the Rust adapter for Cloudflare KV is just wrapping the JavaScript adapter so there's a bunch of data type conversion back and forth, so in the end I chose Typescript instead.
+
+I also use this to learn how to apply Clean Architecture after reading a book by Robert C. Martin called [Clean Architecture: A Craftsman's Guide to Software Structure](https://www.amazon.co.uk/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164), it was a good book.
+It might be a bit overkill for this kind of simple project but I found it pretty enjoyable. I like the idea of separating your project into layers, it keeps the project clean and maintainable in my opinion.
+
+There was a part on that book which discuss why you should depend on an abstraction instead of a concrete implementation. If you do this, you can defer the choice of how you would implement that abstraction later down the road and you can focus more about the core logic at the start. You can also have multiple implementations and choose which one to use at runtime.
+
+In this project, I used `IStorage` and `IHighlighter` to abstract the storage and the syntax highlighting. I have a `MemoryStorage` class which implements the `IStorage` interface that I use at the start before actually implementing the Cloudflare KV storage. I also have a `DumbHighlighter` that implements `IHighlighter` so that I can test how it handles highlighting for different language without actually implementing the real logic, it just adds a prefix based on the language parameter. It's very nice to work this way.
+
+I added a bunch of `Response` object wrapper because I like AspNetCore style of returning a response. You'd just need to return `Ok("response text")` for 200 response instead of doing `Response("response", { status: 200 })`. They also handle JSON serialisation with proper headers automatically.

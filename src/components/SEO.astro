@@ -1,0 +1,49 @@
+---
+import data from "~/data/sites";
+
+export type Props = {
+	title: string;
+	isPost?: boolean;
+	description?: string;
+	keywords?: string[];
+	thumbnail?: string;
+};
+
+const {
+	isPost = false,
+	thumbnail = "",
+	description = data.description,
+	keywords = data.keywords,
+	...props
+} = Astro.props as Props;
+const { siteName, siteUrl } = data;
+---
+
+<title>{props.title} | {siteName}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="theme-color" content="#fff1f2" />
+<link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords.join(",").toLowerCase()} />
+
+<!-- favicon -->
+<link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={isPost ? "blog" : "website"} />
+<meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
+<meta property="og:title" content={props.title || siteName} />
+<meta property="og:description" content={description} />
+<meta
+	property="og:image"
+	content={thumbnail ? thumbnail.toString() : "https://avatars3.githubusercontent.com/u/51877647?s=240&v=4"}
+/>
+
+<!-- Twitter -->
+<meta property="twitter:card" content={thumbnail ? "summary_large_image" : "summary"} />
+<meta property="twitter:url" content={`${siteUrl}${Astro.url.pathname}`} />
+<meta property="twitter:title" content={props.title || siteName} />
+<meta property="twitter:description" content={description} />
+{thumbnail !== "" && <meta property="twitter:image" content={thumbnail ? thumbnail.toString() : ""} />}

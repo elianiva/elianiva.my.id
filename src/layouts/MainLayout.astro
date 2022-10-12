@@ -1,0 +1,38 @@
+---
+import Footer from "~/components/Footer.astro";
+import Navbar from "~/components/Navbar.astro";
+import SEO, { type Props as SEOProps } from "~/components/SEO.astro";
+
+// fonts
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/600.css";
+import "@fontsource/space-grotesk/700.css";
+import "@fontsource/ibm-plex-serif/400.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "@fontsource/ibm-plex-mono/400-italic.css";
+
+export interface Props {
+	seo: SEOProps;
+}
+
+const { seo } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<SEO {...seo} />
+	</head>
+	<body class="bg-rose-50">
+		<main class="custom-scrollbar h-full max-w-[1920px] mx-auto">
+			<Navbar />
+			<div class="w-full h-full flex flex-col">
+				<div class="flex-1 pt-0 md:pt-20">
+					<slot />
+				</div>
+				<Footer />
+			</div>
+		</main>
+	</body>
+</html>

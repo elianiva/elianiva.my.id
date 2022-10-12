@@ -1,0 +1,101 @@
+---
+import type { Post } from "~/models/post";
+import type { MarkdownLayoutProps } from "astro";
+import MainLayout from "./MainLayout.astro";
+import Tag from "~/components/Tag.svelte";
+
+export type Props = MarkdownLayoutProps<Post>;
+const { frontmatter, ...props } = Astro.props as Props;
+const currentSlug = props.url?.split("/").at(-1);
+
+// since unocss can't do substring interpolation
+function getIndentPadding(depth: number) {
+	// prettier-ignore
+	switch (depth) {
+		case 1: return "";
+		case 2: return "pl-4";
+		case 3: return "pl-8";
+		case 4: return "pl-16";
+		case 5: return "pl-24";
+		default: return "";
+	  }
+}
+
+const commentOptions = {
+	src: "https://giscus.app/client.js",
+	"data-repo": "elianiva/elianiva.my.id",
+	"data-repo-id": "MDEwOlJlcG9zaXRvcnkzMDE0NjE4NDU=",
+	"data-category": "General",
+	"data-category-id": "DIC_kwDOEffxVc4CRq7s",
+	"data-mapping": "pathname",
+	"data-strict": "0",
+	"data-reactions-enabled": "1",
+	"data-emit-metadata": "0",
+	"data-input-position": "bottom",
+	"data-lang": "en",
+	crossorigin: "anonymous",
+	async: true,
+};
+---
+
+<style>
+	:global(div[data-rehype-pretty-code-fragment]) {
+		background-color: #0d1117;
+		border-radius: 0.5rem;
+	}
+</style>
+
+<MainLayout seo={{ title: frontmatter.title }}>
+	<section class="max-w-screen-lg py-4 px-8 mx-auto text-center text-zinc-600">
+		<h1
+			class="font-heading text-5xl uppercase max-w-[30ch] mt-12 mx-auto mb-0 font-semibold text-zinc-800 leading-snug"
+		>
+			{frontmatter.title}
+		</h1>
+		<span class="font-heading block text-center text-lg leading-loose text-zinc-600">
+			Posted on
+			{
+				new Date(frontmatter.date).toLocaleDateString("en-GB", {
+					weekday: "long",
+					day: "numeric",
+					month: "long",
+					year: "numeric",
+				})
+			}
+		</span>
+		<a
+			class="relative block font-heading text-center text-lg leading-loose no-underline text-rose-600 hover:underline"
+			href={`https://github.com/elianiva/elianiva.my.id/blob/master/data/post/${currentSlug}/index.svx`}
+			target="_blank"
+			rel="norel noreferrer">Suggest An Edit</a
+		>
+		<div class="flex gap-2 justify-center mb-6">
+			{
+				frontmatter.tags.map((tag) => (
+					<Tag># {tag}</Tag>
+				))
+			}
+		</div>
+		<main
+			class="font-serif mx-auto text-base text-justify text-lg max-w-screen-md prose prose-custom"
+		>
+			<div class="text-left">
+				<h1>Table of Contents</h1>
+				<ul class="!pl-0">
+					{
+						props.headings.map((heading) => (
+							<li class={`list-none list-outside ${getIndentPadding(heading.depth)} my-1`}>
+								<a href={`#${heading.slug}`}>{heading.text}</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<slot />
+			<h1>Comments</h1>
+			<div>
+				<script is:inline {...commentOptions} data-theme="light"></script>
+			</div>
+		</main>
+	</section>
+</MainLayout>

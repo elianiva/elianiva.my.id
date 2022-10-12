@@ -1,0 +1,27 @@
+---
+export type Props = {
+	date: string;
+};
+
+const props = Astro.props as Props;
+const formattedDate = new Date(props.date).toLocaleDateString("en-GB", {
+	weekday: "short",
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+---
+
+<section
+	class="bg-white border-1 border-gray-200 border-l-3 border-l-rose-600"
+>
+	<div
+		class="py-2 px-4 bg-gray-200 text-slate-600 font-heading flex items-center justify-between"
+	>
+		<span class="font-semibold">UPDATE</span>
+		<span class="text-slate-500">{formattedDate}</span>
+	</div>
+	<div class="p-4 text-slate-600 bg-white font-lg leading-relaxed">
+		<slot />
+	</div>
+</section>

@@ -1,0 +1,83 @@
+---
+import Icon from "astro-icon";
+import MainLayout from "./MainLayout.astro";
+import siteData from "~/data/sites";
+import type { MarkdownLayoutProps } from "astro";
+import type { Project } from "~/models/project";
+
+export type Props = MarkdownLayoutProps<Project>;
+const { frontmatter, ...props } = Astro.props as Props;
+const currentSlug = props.url?.split("/").at(-1);
+---
+
+<MainLayout
+	seo={{
+		title: frontmatter.title,
+		description: frontmatter.description,
+		thumbnail: `${siteData.siteUrl}/${currentSlug}/cover.webp`,
+	}}
+>
+	<section
+		class="max-w-screen-lg grid grid-cols-[2fr_1fr] grid-rows-[repeat(3,minmax(min-content,max-content))] grid-flow-row-dense items-start my-8 mx-auto px-4 gap-4"
+	>
+		<div class="col-start-1 col-end-3 md:col-start-1 md:col-end-2 w-full">
+			<div class="overflow-hidden border-2 border-rose-900 shadow-sharp">
+				<img
+					src={`/assets/project/${currentSlug}/cover.webp`}
+					alt={frontmatter.title}
+					class="block w-full h-full"
+					loading="lazy"
+				/>
+			</div>
+		</div>
+		<div class="col-start-1 col-end-3 md:col-start-1 md:col-end-2 font-serif text-lg leading-relaxed">
+			<div class="flex flex-col md:flex-row gap-4 items-center justify-between mt-2 mb-4">
+				<h1 class="text-zinc-900 font-heading text-3xl font-semibold">
+					{frontmatter.title}
+				</h1>
+				<div class="flex gap-2">
+					{
+						frontmatter.demo !== null && (
+							<a class="btn-demo" href={frontmatter.demo} target="_blank" rel="norel noreferrer">
+								<Icon name="ph:globe" class="w-6 h-6" /> Demo
+							</a>
+						)
+					}
+					<a class="btn-source" href={frontmatter.source} target="_blank" rel="norel noreferrer">
+						<Icon name="fe:github" class="w-6 h-6" /> Source
+					</a>
+				</div>
+			</div>
+			<hr class="border-none h-1px mt-2 mx-0 mb-4 bg-gray-300" />
+			<main class="prose prose-custom">
+				<slot />
+			</main>
+		</div>
+		<div
+			class="col-start-1 md:col-start-2 col-end-3 row-start-2 md:row-start-1 row-end-3 md:-row-end-1 w-full p-4 border-2 border-rose-900 shadow-sharp"
+		>
+			<span class="block text-zinc-800 font-semibold font-heading text-2xl border-b-2 border-rose-900 pb-3">Tech Stack</span>
+			{
+				frontmatter.stack.map(([stackName, stackHomepage]) => (
+					<div class="grid grid-cols-[3.5rem_1fr] gap-4 items-center py-4 border-b-2 border-rose-900">
+						<div class="flex items-center justify-center p-2 border-2 border-rose-900 shadow-sharp bg-white overflow-hidden aspect-1">
+							<img
+								class={`w-full ${stackName.toLowerCase() === "nextjs" ? "filter-invert" : ""}`}
+								src={`/assets/logo/${stackName.toLowerCase().replace(/\s+/g, "-")}.png`}
+								alt={stackName}
+							/>
+						</div>
+						<a
+							href={stackHomepage}
+							class="text-zinc-800 font-heading text-xl no-underline hover:text-rose-600"
+							target="_blank"
+							rel="norel noreferrer"
+						>
+							{stackName}
+						</a>
+					</div>
+				))
+			}
+		</div>
+	</section>
+</MainLayout>

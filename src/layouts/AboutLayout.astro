@@ -1,0 +1,11 @@
+---
+import MainLayout from "./MainLayout.astro";
+---
+
+<MainLayout seo={{ title: "About" }}>
+	<section class="max-w-screen-lg mx-auto pt-8 px-4 pb-0 text-justify">
+		<section class="mx-auto prose prose-custom text-lg">
+			<slot />
+		</section>
+	</section>
+</MainLayout>
