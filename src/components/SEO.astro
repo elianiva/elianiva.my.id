@@ -12,7 +12,7 @@ export type Props = {
 const {
 	isPost = false,
 	thumbnail = "",
-	description = data.desc,
+	description = data.description,
 	keywords = data.keywords,
 	...props
 } = Astro.props as Props;
@@ -20,6 +20,8 @@ const { siteName, siteUrl } = data;
 ---
 
 <title>{props.title} | {siteName}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
 <meta name="description" content={description} />
 <meta name="keywords" content={keywords.join(",").toLowerCase()} />

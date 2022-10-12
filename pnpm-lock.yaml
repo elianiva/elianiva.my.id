@@ -16,14 +16,16 @@ specifiers:
   gray-matter: ^4.0.3
   prettier: ^2.7.1
   prettier-plugin-astro: ^0.5.5
+  rollup: ^3.0.0
   svelte: ^3.46.4
+  svgo: ^2.8.0
   typescript: ^4.8.4
   unocss: ^0.45.28
   vite: ^3.1.6
 
 dependencies:
   '@astrojs/cloudflare': 3.0.0
-  '@astrojs/mdx': 0.11.4
+  '@astrojs/mdx': 0.11.4_rollup@3.0.0
   '@astrojs/svelte': 1.0.1_h4fexqkxxbqhlktvals7hne3n4
   '@fontsource/jetbrains-mono': 4.5.11
   '@fontsource/open-sans': 4.5.12
@@ -40,6 +42,8 @@ devDependencies:
   eslint: 8.25.0
   prettier: 2.7.1
   prettier-plugin-astro: 0.5.5
+  rollup: 3.0.0
+  svgo: 2.8.0
   typescript: 4.8.4
   unocss: 0.45.28_vite@3.1.6
   vite: 3.1.6
@@ -126,13 +130,13 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.11.4:
+  /@astrojs/mdx/0.11.4_rollup@3.0.0:
     resolution: {integrity: sha512-b86Fzd87OCuYUGk7O59mwq0URqLdH40wUJC5UCkFmSquIrk8QNrZ7tdjriBfF+Wq3+2UT5JO4ahxIuP6N3cczQ==}
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       '@astrojs/prism': 1.0.1
       '@mdx-js/mdx': 2.1.4
-      '@mdx-js/rollup': 2.1.4
+      '@mdx-js/rollup': 2.1.4_rollup@3.0.0
       acorn: 8.8.0
       es-module-lexer: 0.10.5
       estree-util-visit: 1.2.0
@@ -620,13 +624,14 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/rollup/2.1.4:
+  /@mdx-js/rollup/2.1.4_rollup@3.0.0:
     resolution: {integrity: sha512-iBGsXMVuX96o5ux+/5BC393ugbZbdzEUd6OuHyTXfWisgstdf6U4onTGfpW5LpZ3PoNMDs3oniewPxuydHd1QQ==}
     peerDependencies:
       rollup: '>=2'
     dependencies:
       '@mdx-js/mdx': 2.1.4
       '@rollup/pluginutils': 4.2.1
+      rollup: 3.0.0
       source-map: 0.7.4
       vfile: 5.3.5
     transitivePeerDependencies:
@@ -4317,6 +4322,13 @@ packages:
   /rollup/2.78.1:
     resolution: {integrity: sha512-VeeCgtGi4P+o9hIg+xz4qQpRl6R401LWEXBmxYKOV4zlF82lyhgh2hTZnheFUbANE8l2A41F458iwj2vEYaXJg==}
     engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+
+  /rollup/3.0.0:
+    resolution: {integrity: sha512-iVomS2lySi4BM2QJb7lGZBjSndUEs6Ip+VDl25jcbM99VI5vWeEitvUSiNQkQkwqEiI4515m5shjyuwPcXS5Dg==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
