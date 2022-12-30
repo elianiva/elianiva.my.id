@@ -46,6 +46,9 @@ export default defineConfig({
 				h3: {
 					"font-size": "1.25rem",
 				},
+				h4: {
+					"font-size": "1.125rem",
+				},
 				"h1, h2, h3, h4, h5, h6": {
 					"font-family": "var(--font-heading)",
 					position: "relative",
@@ -106,6 +109,9 @@ export default defineConfig({
 					"font-size": "1.125rem",
 					"text-transform": "uppercase",
 				},
+				"table td": {
+					"text-align": "left",
+				},
 			},
 		}),
 	],
@@ -122,7 +128,7 @@ export default defineConfig({
 				"--un-prose-links": theme.colors.rose[700],
 				"--un-prose-headings": theme.colors.zinc[800],
 				"--c-prose-accent": theme.colors.rose[600],
-				"--c-prose-alt-bg": theme.colors.rose[200],
+				"--c-prose-alt-bg": theme.colors.rose[100],
 				"--c-prose-scrollbar-bg": theme.colors.gray[200],
 				"--c-prose-thumb-bg": theme.colors.gray[300],
 			}),
