@@ -1,0 +1,123 @@
+---
+title: I tried Svelte-Kit and here's what I think
+date: 2021-02-13
+description: I've run out of my patience waiting for the stable release and got too hyped for it
+tags:
+  - svelte
+  - website
+---
+
+[snowpack-v3-link]: https://www.snowpack.dev/posts/2021-01-13-snowpack-3-0
+[snowpack-link]: https://www.snowpack.dev
+[vite-link]: https://vitejs.dev
+[esbuild-link]: https://github.com/evanw/esbuild
+[adapter-node]: https://npmjs.com/package/@sveltejs/adapter-node
+[adapter-static]: https://npmjs.com/package/@sveltejs/adapter-static
+[adapter-vercel]: https://npmjs.com/package/@sveltejs/adapter-vercel
+[frontend-mentor]: https://www.frontendmentor.io/challenges/github-jobs-api-93L-NL6rP
+[spinner-link]: https://icons8.com/cssload/en/horizontal-bars
+[gh-job-repo]: https://github.com/elianiva/gh-job
+[telescope-nvim]: https://github.com/nvim-telescope/telescope.nvim
+[nvim-tree-lua]: https://github.com/kyazdani42/nvim-tree.lua
+[underscore-pr-link]: https://github.com/sveltejs/kit/pull/1370
+
+# Introduction
+As you may or may not know, I love Svelte. I think it's a really good Framework (technically a language but whatever) for building a single page application. Long story short, in October 2020 there's a Svelte Summit in which Rich Harris teased us about Svelte-Kit. It is a new way of building a website using Svelte, it's meant to replace Sapper.
+
+It has been a few months since that summit and it still hasn't been released yet. So, I've run out of my patience, I want to try this cool and new stuff, and so I did. I made a simple website to try it out.
+
+# My Experience
+## Project Setup
+Since I never tried it out myself nor do I watch someone else try it, I was quite surprised. It broke from the start. I mean, that's what you get from experimental software. It turns out it was caused by the new release of [Snowpack v3][snowpack-v3-link].
+
+Thankfully, the Svelte team is super responsive and fixed it in a couple of days or so. I tried it out and it works.
+
+I was expecting it to be this good but I didn't know that it's *this* good. So yeah, I'm quite surprised.
+
+By the way, upon installing I was also surprised by this huge message.
+
+![stop](/assets/posts/trying-out-sveltekit/stop.webp)
+
+## I am Speeeeedd
+I never used Snowpack before, man, it is *super fast*. I saw it in action from a video and I know it's fast, but trying it out myself is a different feeling. Starting the dev server is near instant, it only took like 1-2 seconds on my old laptop. I like the direction that we're going with this. [Snowpack][snowpack-link], [Vite][vite-link], and [ESbuild][esbuild-link], they're the future of Web Development ;)
+
+## Hot Module Reloading
+This is one of the best features in my opinion. When you change some part of your website, it doesn't do a full reload. It also keeps the state of your application which is great.
+
+When I make my website, I need to give the error message a styling. Without HMR, I would need to either trigger the error every time I changed the CSS or make it to an error state temporarily. Thanks to HMR, I only need to trigger it once and change the style as many times as I want.
+
+## Adapters
+Svelte-Kit use this new concept called **adapter**. There are a number of adapters available like [@sveltejs/adapter-node][adapter-node], [@sveltejs/adapter-static][adapter-static], [@sveltejs/adapter-vercel][adapter-vercel], etc.
+
+As their name suggests, they *adapt* your code to a specific environment. For example, if you use **adapter-node** then it will spit out a code that could be run on a server using Node for SSR. If you use **adapter-static**, it will spit out a static build, similar to `sapper export` if you've used Sapper before.
+
+## Issues
+While trying out Svelte-Kit, I found out that Svelte's ESlint plugin doesn't work with Typescript so I couldn't use ESlint for this project. That's just a minor issue though.
+
+# Making A Simple App
+## Github Job
+I decided to make a simple app that utilises Github Job API. You can view available jobs in form of a card and you can filter based on its name, location, or whether or not it's a full-time job. Here's some screenshot
+
+![preview](/assets/posts/trying-out-sveltekit/preview.webp)
+![preview-2](/assets/posts/trying-out-sveltekit/preview-2.webp)
+
+I took the design from [frontendmentor.io][frontend-mentor] and over-simplify it. It's just an experiment so I wouldn't care that much about the design.
+
+It also has a dark mode, by the way, I only took the screenshot of the light mode version.
+
+## I Don't Really Like The Reserved Filename
+Right now, Svelte-Kit uses `$layout.svelte` for its layout. I don't like this name, it conflicts with the shell variable. I prefer the old one on sapper which uses `_` instead of `$`.
+
+I thought I was editing a `$layout.svelte` file but I was editing a `.svelte` file instead because ZSH thought `$layout` is a variable name. I need to escape it so it would open a `\$layout.svelte` instead.
+
+Two plugins that I use for my editor which are [telescope.nvim][telescope-nvim] and [nvim-tree.lua][nvim-tree-lua] has an issue with this filename, it doesn't escape it before opening it. So I fixed them both which then made me distracted and doing other stuff instead of finishing this app :p
+
+import Update from "~/components/Update.astro"
+
+<Update date="2021-04-10">
+
+Good news! Since [#1370][underscore-pr-link], SvelteKit uses `__layout.svelte` instead of `$layout.svelte` -- This also applies to the error page.
+
+</Update>
+
+## Server Routes
+Github API has CORS protection so I had to make my own proxy server. Thankfully, Svelte-Kit did a great job with this one. I only need to create a file with a suffix of `.json.ts` or `.json.js`.
+
+It's actually the first time I made a server route, but I already knew how it works so it's easy. Though I had to go to Svelte's Discord to find out how to do this in Svelte-Kit.
+
+## Pre-rendering
+To load your data before rendering it to a user, you need to export a `preload` function with a `module` context in Sapper. It's pretty much the same in Svelte-Kit. The only difference is the function signature is changed a bit. It's similar to `getInitialProps` or `getServerSideProps` in NextJS.
+
+## Path Alias
+At first, I don't know how Snowpack works at all. After a little bit of reading through its documentation, turns out you can make an alias for an import path. I use `#` as my prefix for the import path so I could just do something like `#components/SEO.svelte` instead of typing in the full relative path.
+
+I also did this to `tsconfig.json` so I get that sweet path completion from tsserver.
+
+## Dynamic Pages
+For the job detail page, I use the Svelte-Kit dynamic page feature. You would make a file with `[slug].svelte` as its name and you'll have access to the `slug` variable which you can then use to fetch specific data for that page.
+
+The `slug` page could be whatever you want. So if you have `pages/job/[id]`. So if you have `pages/job/[id].svelte` and you go to `/job/foobar`, you'll have `foobar` as the `id` value. In my case, it's a long random ID that I can use to fetch a specific job detail.
+
+Github Job API gave me an HTML string that I could directly use using `@html` in Svelte, I don't think this is harmful since it's Github API after all, but you need to be really careful when using `@html` since it opens a possibility for XSS.
+
+## Loading Feedback
+I couldn't figure out how to get the current loading state in Svelte-Kit. I used Sapper `preloading` state in the past for my website but I don't know how to do the same thing in Svelte-Kit.
+
+I added a loading animation when you try to find a job using the search bar but that's it. I took it from [here][spinner-link] and convert it to a Svelte component.
+
+## Dark Mode
+The original design has a dark mode, and I'm a big fan of dark mode so, why not implement this just for fun. I've implemented this feature before for my website so it's smooth sailing ;)
+
+I use `localStorage` to store the current theme data and load the state to Svelte's store *before* the user sees the page so they won't see Flash Of Incorrect Theme or whatever you want to call it by putting the loading mechanism *before* the HTML body.
+
+## Deployment
+I was trying to deploy this app to Vercel but it keeps changing constantly so stuff breaks easily. I decided not to deploy this in the end.
+
+<Update date="2021-03-21">
+
+I managed to deploy this app [here](https://svlt.elianiva.my.id) using `@sveltejs/adapter-vercel`. ~~Though I'm using a temporary fork of mine to make it work~~ It's been fixed. It's *really* satisfying knowing that it finally works!
+
+</Update>
+
+# Closing Note
+So far, Svelte-Kit lives up to my expectation. I'm really excited to wait for its final stable release. Anyway, [here][gh-job-repo] is the repo if you want to check it out yourself, and thanks for reading this post. Have a wonderful day! ;)

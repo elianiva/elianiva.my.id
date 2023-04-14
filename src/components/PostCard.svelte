@@ -1,6 +1,5 @@
 <div class="overflow-hidden text-left bg-white z-[2] border-2 border-rose-900 shadow-sharp">
 	<a
-		data-sveltekit-prefetch
 		rel="prefetch"
 		{href}
 		class="grid grid-rows-[auto_2rem_8rem_1fr] text-zinc-600 no-underline p-4 h-full"
@@ -13,7 +12,7 @@
 		<div class="font-heading flex gap-1 items-center justify-self-start text-sm text-zinc-700">
 			<CalendarIcon className="w-5 h-5 block -mt-1"/>
 			<span class="date__label">
-				{new Date(date).toLocaleDateString("en-GB", {
+				{date.toLocaleDateString("en-GB", {
 					day: "numeric",
 					month: "long",
 					year: "numeric",
@@ -38,6 +37,6 @@ import Tag from "~/components/Tag.svelte";
 export let title: string;
 export let description: string;
 export let href: string;
-export let date: string;
+export let date: Date;
 export let tags: string[];
 </script>

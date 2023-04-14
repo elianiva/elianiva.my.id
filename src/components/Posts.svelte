@@ -24,6 +24,7 @@
 							tagKeyword = "";
 							isCompletionVisible = false;
 						}}
+						on:keydown={() => void 0}
 					>
 						{tag.toUpperCase()} • {count[tag]} result{(count[tag] ?? 0) > 1 ? "s" : ""}
 					</span>
@@ -51,7 +52,7 @@
 	{#each filteredPosts as post}
 		<PostCard
 			title={post.title}
-			href={`/post/${post.slug}`}
+			href={`/posts/${post.slug}`}
 			description={post.description}
 			date={post.date}
 			tags={post.tags}
@@ -63,7 +64,7 @@
 <script lang="ts">
 	import Tag from "~/components/Tag.svelte";
 	import { fly } from "svelte/transition";
-	import type { Post } from "~/models/post";
+	import type { PostMeta } from "~/models/post";
 	import PostCard from "./PostCard.svelte";
 
 	let inputBox: HTMLInputElement| null = null;
@@ -72,8 +73,10 @@
 	let tagFilter: string[] = [];
 	let isCompletionVisible = false;
 	
-	let filteredPosts: Post[] = [];
-	export let posts: Post[] = [];
+	type PostMetaWithSlug = PostMeta & {slug: string}
+
+	let filteredPosts: PostMetaWithSlug[] = [];
+	export let posts: PostMetaWithSlug[] = [];
 
 	// count available tags and insert it to an object
 	// ex: [a, a, b, b, b] -> { a: 2, b: 3 }
