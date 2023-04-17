@@ -36,7 +36,7 @@
     "prettier": "^2.8.7",
     "prettier-plugin-astro": "^0.8.0",
     "rollup": "^3.20.2",
-    "svgo": "^3.0.2",
+    "svgo": "^2.8.0",
     "typescript": "^5.0.4",
     "unocss": "^0.51.4",
     "vite": "^4.2.1"
