@@ -162,7 +162,7 @@ export default defineConfig({
 					mt-8 px-5 py-2
 					text-white font-semibold no-underline font-heading text-lg tracking-wide
 					transition-property-transform ease-out duration-200 transform-gpu
-					shadow-sharp border-2 border-rose-900
+					shadow-sharp border-solid border-2 border-rose-900
 					hover:(-translate-y-1.5)
 				`;
 			},
@@ -171,7 +171,7 @@ export default defineConfig({
 			/^btn-(source|demo)$/,
 			([, kind]) => {
 				const colour = kind === "demo" ? "bg-rose-600 text-white" : "bg-white text-zinc-900";
-				return `${colour} border-2 border-rose-900 shadow-sharp font-heading no-underline flex items-center gap-2 py-1 px-3 transition-property-filter ease-out duration-200 hover:brightness-90`;
+				return `${colour} border-solid border-2 border-rose-900 shadow-sharp font-heading no-underline flex items-center gap-2 py-1 px-3 transition-property-filter ease-out duration-200 hover:brightness-90`;
 			},
 		],
 	],

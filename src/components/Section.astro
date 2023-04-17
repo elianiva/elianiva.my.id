@@ -2,17 +2,16 @@
 import Pattern from "~/icons/Pattern.astro";
 import PostCard from "~/components/PostCard.svelte";
 import ProjectCard from "~/components/ProjectCard.astro";
-import type { Post } from "~/models/post";
-import type { Project } from "~/models/project";
+import type { CollectionEntry } from "astro:content";
 
 type PostSectionProps = {
 	type: "post";
-	data: Post[];
+	data: CollectionEntry<"posts">[];
 };
 
 type ProjectSectionProps = {
 	type: "project";
-	data: Project[];
+	data: CollectionEntry<"projects">[];
 };
 
 // need to add this alias because Astro can't handle intersection type
@@ -37,26 +36,26 @@ const props = Astro.props as Props;
 	<div class="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-5">
 		{
 			props.type === "post" &&
-				props.data.map((item) => (
+				props.data.map(({ data, slug }) => (
 					<PostCard
-						title={item.title}
-						href={`/post/${item.slug}`}
-						description={item.description}
-						date={item.date}
-						tags={item.tags}
+						title={data.title}
+						href={`/posts/${slug}`}
+						description={data.description}
+						date={data.date}
+						tags={data.tags}
 					/>
 				))
 		}
 		{
 			props.type === "project" &&
-				props.data.map((item) => (
+				props.data.map(({ data, slug }) => (
 					<ProjectCard
-						title={item.title}
-						imageSource={`/assets/project/${item.slug}/cover.webp`}
-						href={`/project/${item.slug}`}
-						description={item.description}
-						demo={item.demo}
-						source={item.source}
+						title={data.title}
+						imageSource={`/assets/projects/${slug}/cover.webp`}
+						href={`/projects/${slug}`}
+						description={data.description}
+						demo={data.demo}
+						source={data.source}
 					/>
 				))
 		}

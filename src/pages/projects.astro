@@ -1,12 +1,16 @@
 ---
+import { getCollection } from "astro:content";
 import ProjectCard from "~/components/ProjectCard.astro";
 import MainLayout from "~/layouts/MainLayout.astro";
-import { Project } from "~/models/project";
 
-const projects = await Project.fromGlob(Astro.glob("./project/*.mdx"));
+const personalProjects = await getCollection("projects", ({ data }) => data.type === "personal");
+const sortedPersonalProjects = personalProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+
+const assignmentProjects = await getCollection("projects", ({ data }) => data.type === "assignment");
+const sortedAssignmentProjects = assignmentProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 ---
 
-<MainLayout seo={{title: "Projects"}}>
+<MainLayout seo={{ title: "Projects" }}>
 	<section class="max-w-[1080px] mx-auto pt-8 px-4 pb-0 text-center">
 		<a href="/project#personal-projects">
 			<h1
@@ -17,16 +21,18 @@ const projects = await Project.fromGlob(Astro.glob("./project/*.mdx"));
 			</h1>
 		</a>
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-5 mb-10">
-			{projects.filter((project) => project.type === "personal").map((project) => (
-				<ProjectCard
-					title={project.title}
-					imageSource={`/assets/project/${project.slug}/cover.webp`}
-					href={`/project/${project.slug}`}
-					description={project.description}
-					demo={project.demo}
-					source={project.source}
-				/>
-			))}
+			{
+				sortedPersonalProjects.map(({ data: project, slug }) => (
+					<ProjectCard
+						title={project.title}
+						imageSource={`/assets/projects/${slug}/cover.webp`}
+						href={`/projects/${slug}`}
+						description={project.description}
+						demo={project.demo}
+						source={project.source}
+					/>
+				))
+			}
 		</div>
 		<a href="/project#school-projects">
 			<h1
@@ -41,17 +47,18 @@ const projects = await Project.fromGlob(Astro.glob("./project/*.mdx"));
 			here anyway in case anyone needs them for reference or something.
 		</p>
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-5">
-			{projects.filter((project) => project.type === "assignment").map((project) => (
-				<ProjectCard
-					title={project.title}
-					imageSource={`/assets/project/${project.slug}/cover.webp`}
-					href={`/project/${project.slug}`}
-					description={project.description}
-					demo={project.demo}
-					source={project.source}
-				/>
-			))}
+			{
+				sortedAssignmentProjects.map(({ data: project, slug }) => (
+					<ProjectCard
+						title={project.title}
+						imageSource={`/assets/projects/${slug}/cover.webp`}
+						href={`/projects/${slug}`}
+						description={project.description}
+						demo={project.demo}
+						source={project.source}
+					/>
+				))
+			}
 		</div>
 	</section>
 </MainLayout>
-

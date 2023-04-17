@@ -1,9 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import Posts from "~/components/Posts.svelte";
 import MainLayout from "~/layouts/MainLayout.astro";
-import { Post } from "~/models/post";
 
-const posts = await Post.fromGlob(Astro.glob("./post/*.mdx"));
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 ---
 
 <MainLayout seo={{ title: "Posts" }}>
@@ -13,6 +14,6 @@ const posts = await Post.fromGlob(Astro.glob("./post/*.mdx"));
 		>
 			All Posts
 		</h1>
-		<Posts client:visible posts={posts} />
+		<Posts client:visible posts={sortedPosts.map(({ data, slug }) => ({ ...data, slug }))} />
 	</section>
 </MainLayout>

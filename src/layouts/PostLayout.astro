@@ -1,12 +1,16 @@
 ---
-import type { Post } from "~/models/post";
-import type { MarkdownLayoutProps } from "astro";
 import MainLayout from "./MainLayout.astro";
 import Tag from "~/components/Tag.svelte";
+import type { PostMeta } from "~/models/post";
+import type { MarkdownHeading } from "astro";
 
-export type Props = MarkdownLayoutProps<Post>;
-const { frontmatter, ...props } = Astro.props as Props;
-const currentSlug = props.url?.split("/").at(-1);
+export type Props = {
+	frontmatter: PostMeta;
+	headings: MarkdownHeading[];
+	slug: string;
+};
+
+const { frontmatter, slug, ...props } = Astro.props as Props;
 
 // since unocss can't do substring interpolation
 function getIndentPadding(depth: number) {
@@ -65,20 +69,14 @@ const commentOptions = {
 		</span>
 		<a
 			class="relative block font-heading text-center text-lg leading-loose no-underline text-rose-600 hover:underline"
-			href={`https://github.com/elianiva/elianiva.my.id/blob/master/src/pages/post/${currentSlug}.mdx`}
+			href={`https://github.com/elianiva/elianiva.my.id/blob/master/src/content/posts/${slug}.mdx`}
 			target="_blank"
 			rel="norel noreferrer">Suggest An Edit</a
 		>
 		<div class="flex gap-2 justify-center mb-6">
-			{
-				frontmatter.tags.map((tag) => (
-					<Tag># {tag}</Tag>
-				))
-			}
+			{frontmatter.tags.map((tag) => <Tag># {tag}</Tag>)}
 		</div>
-		<main
-			class="font-serif mx-auto text-base text-justify text-lg max-w-screen-md prose prose-custom"
-		>
+		<main class="font-serif mx-auto text-base text-justify text-lg max-w-screen-md prose prose-custom">
 			<div class="text-left">
 				<h1>Table of Contents</h1>
 				<ul class="!pl-0">

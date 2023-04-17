@@ -47,10 +47,10 @@ const routes: Route[] = [
 ---
 
 <nav
-	class="fixed bottom-4 left-10 right-10 h-14 md:(top-4 h-14 w-72 left-1/2 -translate-x-1/2) bg-white shadow-sharp border-2 border-rose-900 z-30"
+	class="fixed bottom-4 left-10 right-10 h-14 md:(top-4 h-14 w-72 left-1/2 -translate-x-1/2) bg-white shadow-sharp border-solid border-2 border-rose-900 z-30"
 >
 	<div class="h-full flex md:w-full items-center justify-center max-w-screen-lg mx-auto">
-		<ul class="list-none flex gap-10 items-center justify-center">
+		<ul class="p-0 list-none flex gap-10 items-center justify-center">
 			{
 				routes.map((route) => {
 					const isRouteActive = Astro.url.pathname === route.path;

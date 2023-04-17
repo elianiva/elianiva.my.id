@@ -1,6 +1,6 @@
 <div class="relative">
 	<input
-		class="block mx-auto my-0 w-full p-3 text-lg border-2 border-rose-900 shadow-sharp bg-white outline-none font-heading text-rose-900 placeholder:text-zinc-500"
+		class="block mx-auto my-0 w-full p-3 text-lg border-solid border-2 border-rose-900 shadow-sharp bg-white outline-none font-heading text-rose-900 placeholder:text-zinc-500"
 		id="posts__input"
 		type="text"
 		placeholder="Find post... (start with # to find tags)"
@@ -12,7 +12,7 @@
 	{#if isCompletionVisible}
 		<div
 			transition:fly={{ duration: 100, y: -50 }}
-			class="absolute top-16 left-0 right-0 z-[5] text-rose-900 bg-white p-2 border-2 border-rose-900 shadow-sharp"
+			class="absolute top-16 left-0 right-0 z-[5] text-rose-900 bg-white p-2 border-solid border-2 border-rose-900 shadow-sharp"
 		>
 			{#if uniqueTags.length > 0}
 				{#each uniqueTags as tag}
@@ -24,6 +24,7 @@
 							tagKeyword = "";
 							isCompletionVisible = false;
 						}}
+						on:keydown={() => void 0}
 					>
 						{tag.toUpperCase()} • {count[tag]} result{(count[tag] ?? 0) > 1 ? "s" : ""}
 					</span>
@@ -51,7 +52,7 @@
 	{#each filteredPosts as post}
 		<PostCard
 			title={post.title}
-			href={`/post/${post.slug}`}
+			href={`/posts/${post.slug}`}
 			description={post.description}
 			date={post.date}
 			tags={post.tags}
@@ -63,7 +64,7 @@
 <script lang="ts">
 	import Tag from "~/components/Tag.svelte";
 	import { fly } from "svelte/transition";
-	import type { Post } from "~/models/post";
+	import type { PostMeta } from "~/models/post";
 	import PostCard from "./PostCard.svelte";
 
 	let inputBox: HTMLInputElement| null = null;
@@ -72,8 +73,10 @@
 	let tagFilter: string[] = [];
 	let isCompletionVisible = false;
 	
-	let filteredPosts: Post[] = [];
-	export let posts: Post[] = [];
+	type PostMetaWithSlug = PostMeta & {slug: string}
+
+	let filteredPosts: PostMetaWithSlug[] = [];
+	export let posts: PostMetaWithSlug[] = [];
 
 	// count available tags and insert it to an object
 	// ex: [a, a, b, b, b] -> { a: 2, b: 3 }
