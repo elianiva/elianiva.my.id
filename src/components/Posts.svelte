@@ -1,6 +1,6 @@
 <div class="relative">
 	<input
-		class="block mx-auto my-0 w-full p-3 text-lg border-2 border-rose-900 shadow-sharp bg-white outline-none font-heading text-rose-900 placeholder:text-zinc-500"
+		class="block mx-auto my-0 w-full p-3 text-lg border-solid border-2 border-rose-900 shadow-sharp bg-white outline-none font-heading text-rose-900 placeholder:text-zinc-500"
 		id="posts__input"
 		type="text"
 		placeholder="Find post... (start with # to find tags)"
@@ -12,7 +12,7 @@
 	{#if isCompletionVisible}
 		<div
 			transition:fly={{ duration: 100, y: -50 }}
-			class="absolute top-16 left-0 right-0 z-[5] text-rose-900 bg-white p-2 border-2 border-rose-900 shadow-sharp"
+			class="absolute top-16 left-0 right-0 z-[5] text-rose-900 bg-white p-2 border-solid border-2 border-rose-900 shadow-sharp"
 		>
 			{#if uniqueTags.length > 0}
 				{#each uniqueTags as tag}
