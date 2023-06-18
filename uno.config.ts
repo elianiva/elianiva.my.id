@@ -139,16 +139,15 @@ export default defineConfig({
 			(_, { theme }) =>
 				`
 				html {
-					color: ${theme.colors.rose[200]} ${theme.colors.rose[600]};
 					scroll-padding-top: 2rem;
 				}
 
 				html::-webkit-scrollbar-thumb {
-					background-color: ${theme.colors.rose[600]};
+					background-color: ${theme.colors.slate[600]};
 				}
 
 				html::-webkit-scrollbar {
-					background-color: ${theme.colors.rose[200]};
+					background-color: ${theme.colors.slate[200]};
 					width: 0.5rem;
 				}`.replace(/(\s)/g, ""),
 			{ layer: "default" },
