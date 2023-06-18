@@ -1,6 +1,5 @@
 ---
 import Footer from "~/components/Footer.astro";
-import Navbar from "~/components/Navbar.astro";
 import SEO, { type Props as SEOProps } from "~/components/SEO.astro";
 
 // fonts
@@ -24,9 +23,8 @@ const { seo } = Astro.props;
 	<head>
 		<SEO {...seo} />
 	</head>
-	<body class="bg-rose-50">
+	<body class="bg-white">
 		<main class="custom-scrollbar h-full max-w-[1920px] mx-auto">
-			<Navbar />
 			<div class="w-full h-full flex flex-col">
 				<div class="flex-1 pt-0 md:pt-20">
 					<slot />

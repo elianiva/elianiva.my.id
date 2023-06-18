@@ -1,37 +1,11 @@
 ---
 import Icon from "astro-icon";
 import data from "~/data/sites";
-
-type Social = {
-	url: string;
-	icon: string;
-};
-
-const socials: Social[] = [
-	{ url: data.github, icon: "mdi:github" },
-	{ url: data.twitter, icon: "mdi:twitter" },
-	{ url: `mailto:${data.email}`, icon: "mdi:mail" },
-];
 ---
 
 <footer
 	class="relative mt-12 text-center pt-8 pb-30 md:pb-10 px-1 bg-white border-t-2 border-rose-200 transition-property-filter ease-out duration-200 font-heading"
 >
-	<div class="grid grid-cols-3 items-center justify-items-center max-w-[220px] mx-auto mb-8">
-		{
-			socials.map((s) => (
-				<a
-					class="text-zinc-600 hover:text-rose-600"
-					href={s.url}
-					target="_blank"
-					rel="norel noreferrer"
-					aria-label={s.url}
-				>
-					<Icon class="w-8 h-8 text-current" name={s.icon} />
-				</a>
-			))
-		}
-	</div>
 	<p class="leading-relaxed text-zinc-800 text-xl align-middle">
 		Powered by
 		<a class="text-rose-700 underline decoration-dashed decoration-offset-4" href="https://astro.build">
@@ -43,8 +17,7 @@ const socials: Social[] = [
 			<Icon name="vscode-icons:file-type-svelte" class="inline w-6 h-6" />
 			Svelte
 		</a>
-		&bull;
-		Deployed at
+		&bull; Deployed at
 		<a class="text-rose-700 underline decoration-dashed decoration-offset-4" href="https://pages.cloudflare.com/">
 			<Icon name="simple-icons:cloudflare" class="inline w-6 h-6 color-[#f4811f]" />
 			Cloudflare Pages
@@ -53,7 +26,7 @@ const socials: Social[] = [
 		Source code is available on
 		<a class="text-rose-700 underline decoration-dashed decoration-offset-4" href={`${data.github}/elianiva.my.id`}>
 			<Icon name="simple-icons:github" class="inline w-5 h-5 color-zinc-800" />
-			 Github
+			Github
 		</a>
 	</p>
 	<p class="leading-relaxed text-zinc-800 text-xl">

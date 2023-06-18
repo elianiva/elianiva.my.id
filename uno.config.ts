@@ -1,4 +1,4 @@
-import { transformerVariantGroup, presetTypography } from "unocss";
+import { transformerVariantGroup, presetTypography, transformerDirectives } from "unocss";
 import { defineConfig } from "unocss/vite";
 import { colors, presetWind } from "@unocss/preset-wind";
 
@@ -115,7 +115,7 @@ export default defineConfig({
 			},
 		}),
 	],
-	transformers: [transformerVariantGroup()],
+	transformers: [transformerVariantGroup(), transformerDirectives()],
 	rules: [
 		[/^content-\[(.*)\]$/, ([, content]) => ({ content: JSON.stringify(content) })],
 		[
@@ -177,14 +177,15 @@ export default defineConfig({
 	],
 	theme: {
 		fontFamily: {
-			heading: ["Space Grotesk", "sans-serif"],
-			serif: ["IBM Plex Serif", "serif"],
-			monospace: ["IBM Plex Mono", "monospace"],
+			heading: '"Space Grotesk", sans-serif',
+			sans: '"IBM Plex Sans", sans',
+			serif: '"IBM Plex Serif", "serif"',
+			monospace: '"IBM Plex Mono", "monospace"',
 		},
 		fontSize: {
-			"clamped-lg": "clamp(1.25rem, calc(5vw + 1.25rem), 3rem)",
+			"clamped-lg": "clamp(1.25rem, calc(5vw + 1.25rem), 4rem)",
 			"clamped-md": "clamp(1rem, calc(5vw + 0.5rem), 1.625rem)",
-			"clamped-sm": "clamp(0.8rem, calc(2vw + 0.5rem), 1.125rem)",
+			"clamped-sm": "clamp(1rem, calc(2vw + 0.5rem), 1.25rem)",
 		},
 		width: {
 			clamped: "clamp(12rem, calc(20vw + 4rem), 16rem)",
@@ -194,10 +195,6 @@ export default defineConfig({
 		},
 		boxShadow: {
 			sharp: `0.25rem 0.25rem 0 0 ${colors.rose[900]}`,
-		},
-		backgroundImage: {
-			"red-fading-line": `linear-gradient(to right, ${colors.red[500]}, rgba(0, 0, 0, 0))`,
-			"blue-fading-line": `linear-gradient(to right, ${colors.rose[600]}, rgba(0, 0, 0, 0))`,
 		},
 	},
 	preflights: [

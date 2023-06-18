@@ -1,36 +1,46 @@
 ---
+import Icon from "astro-icon";
 import data from "~/data/sites";
-import { Image } from "@astrojs/image/components";
+
+type Social = {
+	url: string;
+	icon: string;
+};
+
+const socials: Social[] = [
+	{ url: data.github, icon: "codicon:github" },
+	{ url: data.twitter, icon: "ph:twitter-logo-fill" },
+	{ url: `mailto:${data.email}`, icon: "ic:round-mail" },
+];
 ---
 
 <section
-	class="relative grid grid-cols-1 text-center justify-items-center md:text-left md:grid-cols-[20rem_1fr] grid-rows-[14rem_1fr] md:grid-rows-none gap-8 md:gap-4 items-center justify-center text-slate-700 max-w-screen-lg mx-auto"
+	class="relative text-center justify-items-center grid-rows-[14rem_1fr] md:grid-rows-none gap-8 md:gap-4 items-center justify-center max-w-screen-lg mx-auto py-40"
 >
-	<div class="header__left">
-		<a href={data.github}>
-			<Image
-				width={400}
-				height={400}
-				class="w-clamped h-clamped rounded-[10rem] border-solid border-2 border-rose-900 shadow-sharp"
-				src="https://avatars3.githubusercontent.com/u/51877647?s=240&v=4"
-				alt="github profile"
-				loading="eager"
-			/>
-		</a>
-	</div>
 	<div class="relative">
-		<span class="text-xl font-heading font-medium text-rose-700">Hi there!</span>
-		<span
-			class="relative block font-heading text-clamped-lg font-semibold leading-relaxed text-zinc-900 leading-[1em]"
-		>
-			I'm Elianiva.
+		<span class="text-2xl font-serif font-semibold text-zinc-700">Hi there! I'm..</span>
+		<span class="relative block font-heading text-clamped-lg font-bold leading-relaxed text-zinc-800">
+			Dicha Zelianivan Arkana
 		</span>
-		<span class="block text-clamped-md font-heading leading-relaxed text-slate-700 text-2xl">
-			A Software Developer and I love Open Source!
-		</span>
-		<p class="relative block font-serif text-clamped-sm leading-normal mb-4 text-slate-700 text-xl">
-			I like to write code and contribute to open source projects, and sometimes write something in this blog. I
-			speak Indonesian, English, and a little bit of Japanese. Feel free to hit me up!
+		<p class="m-0 relative block font-serif text-clamped-sm mb-4 text-zinc-600 leading-loose">
+			I'm currently an undergrad studying Informatics Engineering, and I do some freelance gigs on the side. I'm
+			all about contributing to open source projects and learning something new every day. I speak Bahasa
+			Indonesia and English fluently, currently learning Japanese. Nice to meet ya! ツ
 		</p>
+		<div class="grid grid-cols-3 items-center justify-items-center max-w-[180px] mx-auto mb-8">
+			{
+				socials.map((s) => (
+					<a
+						class="text-slate-600 hover:text-slate-800"
+						href={s.url}
+						target="_blank"
+						rel="norel noreferrer"
+						aria-label={s.url}
+					>
+						<Icon class="w-7 h-7 text-current" name={s.icon} />
+					</a>
+				))
+			}
+		</div>
 	</div>
 </section>

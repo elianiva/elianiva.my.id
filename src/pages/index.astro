@@ -1,27 +1,18 @@
 ---
 import MainLayout from "~/layouts/MainLayout.astro";
-import Section from "~/components/Section.astro";
 import Header from "~/components/Header.astro";
 import { getCollection } from "astro:content";
+import ExperienceSection from "~/components/section/ExperienceSection.astro";
+import EducationSection from "~/components/section/EducationSection.astro";
 
 const posts = await getCollection("posts", ({ data }) => !data.draft);
 const projects = await getCollection("projects");
-
-const LIMIT = 3;
-const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1)).slice(0, LIMIT);
-const sortedProjects = projects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1)).slice(0, LIMIT);
 ---
 
 <MainLayout seo={{ title: "Home" }}>
 	<main class="max-w-[1080px] my-0 mx-auto pt-8 px-4 pb-0 z-[2]">
 		<Header />
-		<Section title="Recent Posts" data={sortedPosts} buttonText="More Posts" url="/posts/" type="post" />
-		<Section
-			title="Recent Projects"
-			data={sortedProjects}
-			buttonText="More Projects"
-			url="/projects/"
-			type="project"
-		/>
+		<ExperienceSection />
+		<EducationSection />
 	</main>
 </MainLayout>
