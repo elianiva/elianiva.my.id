@@ -1,0 +1,77 @@
+---
+import type { Experience } from "~/types/experience";
+import BaseSection from "./BaseSection.astro";
+import ExperienceCard from "../card/ExperienceCard.astro";
+
+const PAST_EXPERIENCES: Experience[] = [
+	{
+		title: "Fullstack Web Developer",
+		time: [new Date(2023, 1), new Date(2023, 4)],
+		company: "PT Healstation Indonesia",
+		tasks: [
+			"Building Content Management System for a South Korean mobile app that accommodates car, camp car, and camping site rent in one app. ",
+			"Designed the database schema along with other developer",
+			"Uses Next.js with Typescript, tRPC, Prisma, and Tailwind to maximise the development speed and user experience of the CMS",
+			"Utilises MySQL as the database and MinIO/S3 as the object storage",
+			"Using Docker for both local development setup and easy deployment solution",
+		],
+		images: [],
+		technologies: ["nextjs", "typescript", "docker"],
+		type: "freelance",
+	},
+	{
+		title: "Frontend Web Developer",
+		time: [new Date(2022, 5), new Date(2023, 2)],
+		company: "Cubix Branding Agency",
+		tasks: [
+			"Developed three responsive websites for Artajasa, ATMBersama, and Bersama respectively based on the provided design on Figma",
+			"Worked in team with 3 other developers using Github",
+			"Uses NextJS with Typescript to provide type-safety when developing the website. Also uses SCSS, Stitches, and SCSS Module to style each of the websites",
+			"Applied ISR pattern to improve performance and uses SWR for easier data fetching on the client",
+			"Integrate the data that comes from Laravel with Voyager CMS to the website to provide dynamic content",
+			"Helped refactoring and fixing any bugs that occured on both the frontend and backend",
+		],
+		images: [],
+		technologies: ["nextjs", "typescript", "scss"],
+		type: "freelance",
+	},
+	{
+		title: "Fullstack Web Developer",
+		time: [new Date(2021, 11), new Date(2022, 9)],
+		company: "<hidden>",
+		tasks: [
+			"Built a platform to do programming test similar to Codewars and HackerRank with multilingual support that also tracks the user activity such as mouse clicks, mouse movements, keystroke events, etc. since its main purpose is to collect data to be then used for research. Now published as teknologi-umum/spectator",
+			"Collaborate with various developers using Git and Github",
+			"Uses React with Typescript, Redux Toolkit, ChakraUI to build the frontend and utilised SignalR to send activity data to the ASP.NET Core backend. Used Vitest and React Testing Library to do unit test",
+			"Helped developing the data calculation worker along with its unit test. The worker is written in Go and uses gRPC to communicate with the ASP.NET Core backend. It queries the data from InfluxDB and write the result to MinIO bucket as CSV and JSON.",
+			"Made a video stream feature which streams video output from the webcam to ASP.NET Core backend through HTTP",
+			"Assisted with developing the Remote Code Execution engine written in Typescript that uses gRPC to communicate with other services which then got open sourced as teknologi-umum/pesto",
+			"Helped developing a dummy data generator using Python to generate thousand of fake user interaction activity data along with the unit test",
+			"Used Docker to make it easier to develop and deploy each services",
+		],
+		images: [],
+		technologies: ["typescript", "react", "docker", "react", "nodejs", "dotnet", "go"],
+		type: "freelance",
+	},
+	{
+		title: "Frontend Web Developer",
+		time: [new Date(2022, 5), new Date(2022, 8)],
+		company: "PT EnamDua Indonesia",
+		tasks: [
+			"Developed a Task Management System for J99 Corp. Holding similar to Jira using React, React Hook Form, React Query, Typescript, and ChakraUI",
+			"Applied Render-as-you-fetch pattern using Suspense to improve the User Experience of the app",
+			"Applied Atomic Design in React to make sharing components easier",
+			"Collaborate with other frontend and backend developers to build a task management system",
+			"Implemented Figma UI design into an interactive React UI",
+			"Uses SSE to implement notification feature",
+		],
+		images: [],
+		technologies: ["typescript", "react"],
+		type: "freelance",
+	},
+];
+---
+
+<BaseSection title="experience">
+	{PAST_EXPERIENCES.map((experience) => <ExperienceCard {...experience} />)}
+</BaseSection>

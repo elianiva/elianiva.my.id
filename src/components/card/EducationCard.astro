@@ -1,0 +1,29 @@
+---
+import type { Education } from "~/types/education";
+
+export type Props = Education;
+
+const {
+	institution,
+	degree,
+	fieldOfStudy,
+	gpa,
+	time: [start, finish],
+} = Astro.props as Education;
+
+const startDate = new Date(start).toLocaleDateString("en-GB", {
+	year: "numeric",
+});
+const finishDate = new Date(finish).toLocaleDateString("en-GB", {
+	year: "numeric",
+});
+---
+
+<div class="relative mb-8">
+	<div class="flex justify-between items-center">
+		<span class="text-xl font-bold font-heading text-zinc-800">{institution}</span>
+		<span class="text-lg font-medium font-heading text-zinc-600">{startDate} - {finishDate}</span>
+	</div>
+	<span class="text-base text-zinc-600 font-sans block">GPA: {gpa} (current)</span>
+	<span class="text-base text-zinc-600 font-sans capitalize">{degree} - {fieldOfStudy}</span>
+</div>

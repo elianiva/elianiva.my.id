@@ -1,0 +1,14 @@
+---
+type Props = {
+	title: string;
+};
+
+const { title } = Astro.props as Props;
+---
+
+<section class="py-10 grid grid-cols-[1fr_2fr]">
+	<h1 class="text-2xl text-zinc-800 font-heading uppercase justify-self-start m-0">{title}</h1>
+	<div>
+		<slot />
+	</div>
+</section>
