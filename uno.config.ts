@@ -176,7 +176,7 @@ export default defineConfig({
 	],
 	theme: {
 		fontFamily: {
-			heading: '"Space Grotesk", sans-serif',
+			heading: '"Jost", sans-serif',
 			sans: '"IBM Plex Sans", sans',
 			serif: '"IBM Plex Serif", "serif"',
 			monospace: '"IBM Plex Mono", "monospace"',

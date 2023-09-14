@@ -1,0 +1,33 @@
+---
+type Menu = {
+	name: string;
+	link: string;
+};
+const MENU_ITEMS: Menu[] = [
+	{ name: "Home", link: "/" },
+	{ name: "Articles", link: "/articles" },
+	{ name: "Projects", link: "/projects" },
+	{ name: "About", link: "/about" },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<aside class="border-r-4 border-slate-900 sticky">
+	<div class="w-20 h-20 flex items-center justify-center border-b-4 border-slate-900">L</div>
+	<div class="menu">
+		<ul class="flex gap-2 -rotate-90 transform-gpu mt-74">
+			{
+				MENU_ITEMS.map((menu) => (
+					<li
+						class={`py-1 px-3 font-heading text-slate-900 ${
+							menu.link === pathname ? "bg-slate-900 text-white font-semibold" : ""
+						}`}
+					>
+						<a href={menu.link}>{menu.name}</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</aside>

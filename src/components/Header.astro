@@ -1,6 +1,7 @@
 ---
 import Icon from "astro-icon";
 import data from "~/data/sites";
+import HandIcon from "~/icons/HandIcon.svelte";
 
 type Social = {
 	url: string;
@@ -8,39 +9,31 @@ type Social = {
 };
 
 const socials: Social[] = [
-	{ url: data.github, icon: "codicon:github" },
-	{ url: data.twitter, icon: "ph:twitter-logo-fill" },
-	{ url: `mailto:${data.email}`, icon: "ic:round-mail" },
+	{ url: data.github, icon: "mdi:github" },
+	{ url: data.twitter, icon: "mdi:twitter" },
+	{ url: `mailto:${data.email}`, icon: "mdi:mail" },
 ];
 ---
 
-<section
-	class="relative text-center justify-items-center grid-rows-[14rem_1fr] md:grid-rows-none gap-8 md:gap-4 items-center justify-center max-w-screen-lg mx-auto py-40"
->
-	<div class="relative">
-		<span class="text-2xl font-serif font-semibold text-zinc-700">Hi there! I'm..</span>
-		<span class="relative block font-heading text-clamped-lg font-bold leading-relaxed text-zinc-800">
-			Dicha Zelianivan Arkana
-		</span>
-		<p class="m-0 relative block font-serif text-clamped-sm mb-4 text-zinc-600 leading-loose">
-			I'm currently an undergrad studying Informatics Engineering, and I do some freelance gigs on the side. I'm
-			all about contributing to open source projects and learning something new every day. I speak Bahasa
-			Indonesia and English fluently, currently learning Japanese. Nice to meet ya! ツ
-		</p>
-		<div class="grid grid-cols-3 items-center justify-items-center max-w-[180px] mx-auto mb-8">
+<section class="h-full relative p-20">
+	<div class="font-heading flex items-center gap-2 text-slate-900">
+		<HandIcon className="" />
+		<span class="text-5xl font-medium">Hey there! I am</span>
+	</div>
+	<span class="font-heading text-7xl font-bold block py-4 text-slate-900">Dicha Zelianivan Arkana</span>
+	<div class="bg-slate-900 text-white inline-block px-6 py-3 mt-4">
+		<span class="font-heading text-2xl font-bold block">Frontend Web Developer</span>
+	</div>
+	<div class="fixed right-8 bottom-0 flex flex-col items-center gap-6">
+		<div class="flex flex-col gap-6">
 			{
-				socials.map((s) => (
-					<a
-						class="text-slate-600 hover:text-slate-800"
-						href={s.url}
-						target="_blank"
-						rel="norel noreferrer"
-						aria-label={s.url}
-					>
-						<Icon class="w-7 h-7 text-current" name={s.icon} />
+				socials.map((social) => (
+					<a href={social.url}>
+						<Icon name={social.icon} class="w-8 h-8 text-slate-900" />
 					</a>
 				))
 			}
 		</div>
+		<div class="h-28 w-1 bg-slate-900"></div>
 	</div>
 </section>

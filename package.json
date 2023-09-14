@@ -18,6 +18,7 @@
     "@astrojs/svelte": "^4.0.2",
     "@fontsource/ibm-plex-mono": "^5.0.8",
     "@fontsource/ibm-plex-serif": "^5.0.8",
+    "@fontsource/jost": "^5.0.8",
     "@fontsource/open-sans": "^5.0.12",
     "@fontsource/poppins": "^5.0.8",
     "@fontsource/space-grotesk": "^5.0.8",
