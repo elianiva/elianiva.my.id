@@ -4,7 +4,7 @@ title: My setup for Neovim's builtin LSP client
 date: 2020-12-18
 description: A post where I explain about my setup for Neovim's builtin LSP
 tags:
-  - neovim
+    - neovim
 ---
 
 [lsp-guide-vscode]: https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
@@ -27,8 +27,7 @@ tags:
 [diagnostic-nvim]: https://github.com/nvim-lua/diagnostic-nvim
 [big-pr]: https://github.com/neovim/neovim/pull/12655
 
-
-import Update from "~/components/Update.astro"
+import Update from "~/components/Update.astro";
 
 # What is LSP and Why?
 
@@ -36,21 +35,25 @@ import Update from "~/components/Update.astro"
 
 If you don't already know what LSP is, well, LSP is a Language Server Protocol and it was created by Microsoft. It's a better implementation of language support for a text editor. Instead of having to implement it for every language on every text editor, we only need a server for a specific language and a client for a text editor that can speak to the server.
 
-Imagine the editor as `X` and language feature as `Y`, the first solution would take `X*Y` to implement because it needs to implements *every* language features for *every* editor. The second solution which is the LSP way would only take `X+Y` because it would only take a server for the language and a client that can speak to that server. The server can be used for any text editor that has a client and the client can speak to any LSP server. No more reinventing the wheel, great!
+Imagine the editor as `X` and language feature as `Y`, the first solution would take `X*Y` to implement because it needs to implements _every_ language features for _every_ editor. The second solution which is the LSP way would only take `X+Y` because it would only take a server for the language and a client that can speak to that server. The server can be used for any text editor that has a client and the client can speak to any LSP server. No more reinventing the wheel, great!
 
-Here are some resources that explain LSP *way better* and in more detail.
-- [LSP guide for VScode][lsp-guide-vscode]
-- [Official page for LSP][lsp-website]
-- [TJ's talk about LSP on Vimconf 2020][tj-vimconf]
+Here are some resources that explain LSP _way better_ and in more detail.
+
+-   [LSP guide for VScode][lsp-guide-vscode]
+-   [Official page for LSP][lsp-website]
+-   [TJ's talk about LSP on Vimconf 2020][tj-vimconf]
 
 # Neovim builtin LSP client
+
 I use Neovim's built-in LSP client which only available on the `master` branch of Neovim at the time of writing this. I was using [coc.nvim][coc-nvim] but it was slow on my machine because it uses node and it's a remote plugin which adds some overhead. It still works great nonetheless, it's just slow on my machine.
 
 The new neovim's built-in LSP client is written in Lua and Neovim ships with LuaJIT which makes it super fast.
 
 # Configuration
+
 ## nvim-lspconfig
-Neovim has a repo with LSP configuration for a various language called [nvim-lspconfig][nvim-lspconfig], this is *NOT* where the LSP client lives, the client already ships with Neovim. It's just a repo that holds the configuration for the client.
+
+Neovim has a repo with LSP configuration for a various language called [nvim-lspconfig][nvim-lspconfig], this is _NOT_ where the LSP client lives, the client already ships with Neovim. It's just a repo that holds the configuration for the client.
 
 I have this piece of code on my config to install it. I use [packer.nvim][packer-nvim]
 
@@ -59,6 +62,7 @@ use {'neovim/nvim-lspconfig', opt = true} -- builtin lsp config
 ```
 
 ## Setup
+
 I have a directory filled with LSP related config. Here's some snippet that sets up the LSP.
 
 ```lua
@@ -85,13 +89,14 @@ I made a `custom_on_attach` function to attach LSP specific mappings. I also mad
 
 <Update date="2021-02-04">
 
-I've updated my config to use a *better* way to set them up. Basically, I have a key-value pair table, each item is a table with the server name as its key. This way, I wouldn't need to copy and paste `nvim_lsp.lsp_name.setup{...}`.
+I've updated my config to use a _better_ way to set them up. Basically, I have a key-value pair table, each item is a table with the server name as its key. This way, I wouldn't need to copy and paste `nvim_lsp.lsp_name.setup{...}`.
 
 </Update>
 
 You can find the full content of this file [here][lsp-init-lua]
 
 ## Mappings
+
 Here are some of my LSP related mappings which you can find in the file [here][lsp-mappings]
 
 ```lua
@@ -115,14 +120,15 @@ end
 return M
 ```
 
-
 ## Language-specific config
+
 I have most of my LSP config to be default but I gave several LSP an option like `tsserver`, `svelteserver`, or `sumneko_lua`.
 
 ### tsserver
+
 I have my `tsserver` to be started on every JS/TS file regardless of its directory. The default config will only start when it found `package.json` or `.git`.
 
-```lua
+````lua
 nvim_lsp.tsserver.setup{
 =======
 I have my `tsserver` to be started on every JS/TS file regardless of its directory. With the default config, it will only start when it found `package.json` or `.git` which marks the root directory for the LSP.
@@ -136,9 +142,10 @@ tsserver = {
   on_init = custom_on_init,
   root_dir = function() return vim.loop.cwd() end
 }
-```
+````
 
 ### svelteserver
+
 I disabled its HTML emmet suggestion and removed `>` and `<` from `triggerCharacters`. They're so annoying to me.
 
 ```lua
@@ -168,6 +175,7 @@ svelteserver = {
 ```
 
 ### sumneko_lua
+
 [lua-language-server][lua-ls] is a bit different because I compiled it from source so it needs some extra setup.
 
 ```lua
@@ -201,6 +209,7 @@ sumneko_lua = {
 ```
 
 ## Diagnostic
+
 I was using [diagnostic-nvim][diagnostic-nvim] before [this big PR][big-pr] got merged which makes diagnostic-nvim redundant. Here's some of my diagnostic config.
 
 ```lua
@@ -223,12 +232,11 @@ vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagno
 
 I set the prefix for `virtual_text` to be `»` because I don't really like the default one and enabled `signs` for the diagnostic hint. I also made it to only update the diagnostic when I switch between insert mode and normal mode because it's quite annoying when I haven't finished typing and get yelled at by LSP because it expects me to put `=` after a variable name that I haven't even finished typing yet.
 
-
 ## Linting and Formatting
+
 I recently started using [null-ls][efm-ls] to run [eslint](https://eslint.org) and formatters like [prettier](https://prettier.io) and [stylua](https://github.com/johnnymorganz/stylua).
 
 You can get my full config for `null-ls` [here][null-config]
-
 
 ## Diagnostic Conflict
 
@@ -253,6 +261,7 @@ end
 I've overridden the `vim.lsp.handlers["textDocument/publishDiagnostics"]` anyway so reusing it would also works and it looks way cleaner.
 
 ## Completion and Snippets
+
 I use a completion and snippet plugin to make my life easier. For completion, I use [nvim-compe][nvim-compe], previously I was using [completion-nvim][completion-nvim] but I had some issues with it such as path completion sometimes not showing up and flickering.
 
 Snippet wise, I use [vim-vsnip][vim-vsnip]. I was going to use [snippets.nvim][snippets-nvim] but it doesn't integrate well enough with LSP's snippet.
@@ -336,11 +345,12 @@ remap(
 You can get the full config for my completion setup [here](https://github.com/elianiva/dotfiles/blob/5f813d893ff5a5928bac52995d6b4f806a8b3d2a/nvim/.config/nvim/lua/plugins/_completion.lua)
 
 # Closing Note
+
 I'm pretty pleased with my current setup. Kudos to Neovim's developer that brings LSP client to be a built-in feature! These are of course some other great LSP client alternatives for (Neo)vim, definitely check them out!
 
-- [coc.nvim](https://github.com/neoclide/coc.nvim) (highly recommend this if you're just getting started)
-- [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
-- [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
-- [ALE](https://github.com/dense-analysis/ale)
+-   [coc.nvim](https://github.com/neoclide/coc.nvim) (highly recommend this if you're just getting started)
+-   [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
+-   [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+-   [ALE](https://github.com/dense-analysis/ale)
 
 Here's my [whole LSP config](https://github.com/elianiva/dotfiles/tree/master/nvim/.config/nvim/lua/modules/lsp) if you want them. If you've read this far then thank you and have a wonderful day :)

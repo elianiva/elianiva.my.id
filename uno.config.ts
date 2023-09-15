@@ -14,7 +14,7 @@ export default defineConfig({
 					position: "relative",
 					display: "inline-block",
 					"z-index": 5,
-					"background-image": "linear-gradient(var(--c-prose-accent), var(--c-prose-accent))",
+					"background-image": "linear-gradient(var(--c-pslate-accent), var(--c-pslate-accent))",
 					"background-size": "0 2px",
 					"background-repeat": "no-repeat",
 					"background-position": "bottom left",
@@ -24,21 +24,18 @@ export default defineConfig({
 					"background-size": "100% 2px",
 				},
 				strong: {
-					color: "var(--un-prose-headings)",
+					color: "var(--un-pslate-headings)",
 				},
 				p: {
-					"font-family": "var(--font-serif)",
+					"font-family": "var(--font-sans)",
 					"line-height": "1.625",
 				},
 				h1: {
 					"text-transform": "uppercase",
-					"font-weight": 700,
+					"font-weight": 600,
 					"font-size": "1.875rem",
-					"background-image": `linear-gradient(to right, var(--c-prose-accent), rgba(0, 0, 0, 0))`,
-					"background-size": "100% 0.125rem",
-					"background-repeat": "no-repeat",
-					"background-position": "bottom",
 					"padding-bottom": "0.5rem",
+					"border-bottom": "0.125rem solid var(--c-pslate-accent)",
 				},
 				h2: {
 					"font-size": "1.5rem",
@@ -57,9 +54,9 @@ export default defineConfig({
 					"font-weight": 600,
 				},
 				"p > code": {
-					color: "var(--un-prose-headings)",
+					color: "var(--un-pslate-headings)",
 					"font-family": "var(--font-monospace)",
-					"background-color": "var(--c-prose-alt-bg)",
+					"background-color": "var(--c-pslate-alt-bg)",
 					"font-weight": 500,
 					border: "none",
 				},
@@ -72,14 +69,14 @@ export default defineConfig({
 					"border-radius": "0.375rem",
 				},
 				"pre::-webkit-scrollbar": {
-					"background-color": "var(--c-prose-alt-bg)",
+					"background-color": "var(--c-pslate-alt-bg)",
 					height: "0.5rem",
 					"border-bottom-right-radius": "0.375rem",
 					"border-bottom-left-radius": "0.375rem",
 					cursor: "pointer",
 				},
 				"pre:hover::-webkit-scrollbar": {
-					"background-color": "var(--c-prose-scrollbar-bg)",
+					"background-color": "var(--c-pslate-scrollbar-bg)",
 					height: "0.5rem",
 				},
 				"pre::-webkit-scrollbar-thumb": {
@@ -87,7 +84,7 @@ export default defineConfig({
 					cursor: "pointer",
 				},
 				"pre:hover::-webkit-scrollbar-thumb": {
-					"background-color": "var(--c-prose-thumb-bg)",
+					"background-color": "var(--c-pslate-thumb-bg)",
 				},
 				"del, del *": {
 					"font-style": "italic",
@@ -96,7 +93,7 @@ export default defineConfig({
 				table: {
 					width: "100%",
 					"border-radius": "0.375rem",
-					"background-color": "var(--c-prose-alt-bg)",
+					"background-color": "var(--c-pslate-alt-bg)",
 				},
 				"table a": {
 					transition: "all ease-out 200ms",
@@ -105,7 +102,7 @@ export default defineConfig({
 					"font-style": "italic",
 				},
 				"table th": {
-					color: "var(--un-prose-links)",
+					color: "var(--un-pslate-links)",
 					"font-size": "1.125rem",
 					"text-transform": "uppercase",
 				},
@@ -119,18 +116,19 @@ export default defineConfig({
 	rules: [
 		[/^content-\[(.*)\]$/, ([, content]) => ({ content: JSON.stringify(content) })],
 		[
-			/^prose-custom$/,
+			/^pslate-custom$/,
 			(_, { theme }) => ({
-				"--font-heading": '"Space Grotesk", sans-serif',
+				"--font-heading": '"Jost", sans-serif',
 				"--font-serif": '"IBM Plex Serif", serif',
+				"--font-sans": '"Rubik", sans-serif',
 				"--font-monospace": '"IBM Plex Mono", monospace',
-				"--un-prose-body": theme.colors.zinc[800],
-				"--un-prose-links": theme.colors.rose[700],
-				"--un-prose-headings": theme.colors.zinc[800],
-				"--c-prose-accent": theme.colors.rose[600],
-				"--c-prose-alt-bg": theme.colors.rose[100],
-				"--c-prose-scrollbar-bg": theme.colors.gray[200],
-				"--c-prose-thumb-bg": theme.colors.gray[300],
+				"--un-pslate-body": theme.colors.slate[900],
+				"--un-pslate-links": theme.colors.blue[700],
+				"--un-pslate-headings": theme.colors.slate[900],
+				"--c-pslate-accent": theme.colors.blue[600],
+				"--c-pslate-alt-bg": theme.colors.blue[100],
+				"--c-pslate-scrollbar-bg": theme.colors.gray[200],
+				"--c-pslate-thumb-bg": theme.colors.gray[300],
 			}),
 			{ layer: "typography" },
 		],
@@ -161,7 +159,7 @@ export default defineConfig({
 					mt-8 px-5 py-2
 					text-white font-semibold no-underline font-heading text-lg tracking-wide
 					transition-property-transform ease-out duration-200 transform-gpu
-					shadow-sharp border-solid border-2 border-rose-900
+					shadow-sharp border-solid border-2 border-slate-900
 					hover:(-translate-y-1.5)
 				`;
 			},
@@ -169,15 +167,15 @@ export default defineConfig({
 		[
 			/^btn-(source|demo)$/,
 			([, kind]) => {
-				const colour = kind === "demo" ? "bg-rose-600 text-white" : "bg-white text-zinc-900";
-				return `${colour} border-solid border-2 border-rose-900 shadow-sharp font-heading no-underline flex items-center gap-2 py-1 px-3 transition-property-filter ease-out duration-200 hover:brightness-90`;
+				const colour = kind === "demo" ? "bg-slate-600 text-white" : "bg-white text-slate-900";
+				return `${colour} border-solid border-2 border-slate-900 shadow-sharp font-heading no-underline flex items-center gap-2 py-1 px-3 transition-property-filter ease-out duration-200 hover:brightness-90`;
 			},
 		],
 	],
 	theme: {
 		fontFamily: {
 			heading: '"Jost", sans-serif',
-			sans: '"IBM Plex Sans", sans',
+			sans: '"Rubik", sans',
 			serif: '"IBM Plex Serif", "serif"',
 			monospace: '"IBM Plex Mono", "monospace"',
 		},
@@ -193,14 +191,14 @@ export default defineConfig({
 			clamped: "clamp(12rem, calc(20vw + 4rem), 16rem)",
 		},
 		boxShadow: {
-			sharp: `0.25rem 0.25rem 0 0 ${colors.rose[900]}`,
+			sharp: `0.25rem 0.25rem 0 0 ${colors.slate[900]}`,
 		},
 	},
 	preflights: [
 		{
 			getCSS: ({ theme }) => `
 			*::selection {
-				background-color: ${theme.colors.zinc[800]};
+				background-color: ${theme.colors.slate[900]};
 				color: ${theme.colors.white};
 			}`,
 		},

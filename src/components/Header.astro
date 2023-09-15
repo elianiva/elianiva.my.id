@@ -2,6 +2,7 @@
 import Icon from "astro-icon";
 import data from "~/data/sites";
 import HandIcon from "~/icons/HandIcon.svelte";
+import ChangingText from "~/components/ChangingText.svelte";
 
 type Social = {
 	url: string;
@@ -20,10 +21,10 @@ const socials: Social[] = [
 		<HandIcon className="" />
 		<span class="text-5xl font-medium">Hey there! I am</span>
 	</div>
-	<span class="font-heading text-7xl font-bold block py-4 text-slate-900">Dicha Zelianivan Arkana</span>
-	<div class="bg-slate-900 text-white inline-block px-6 py-3 mt-4">
-		<span class="font-heading text-2xl font-bold block">Frontend Web Developer</span>
-	</div>
+	<span class="font-heading text-7xl font-bold block leading-relaxed text-slate-900">
+		Dicha Z<span class="bg-white">elianiva</span>n Arkana
+	</span>
+	<ChangingText client:load />
 	<div class="fixed right-8 bottom-0 flex flex-col items-center gap-6">
 		<div class="flex flex-col gap-6">
 			{

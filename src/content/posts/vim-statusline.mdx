@@ -3,12 +3,13 @@ title: Making your own statusline in (Neo)vim
 date: 2020-02-15
 description: A post where I made my own statusline to make my vim looks more personalised
 tags:
-  - neovim
+    - neovim
 ---
 
-import Update from "~/components/Update.astro"
+import Update from "~/components/Update.astro";
 
 # Introduction
+
 Hi everyone! In this post, I will talk about making your own custom statusline in vim. There are a lot of plugins out there that makes vim statusline looks way better and works out of the box. But, if you make your own, that means you lose one dependency and it feels good to make your own custom one. That makes it unique compared to anyone else.
 
 The reason why I made this post is also because I want to change my statusline. While my current statusline looks eye candy (to me at least), it takes a whole lot of space. So, I want to simplifiy it and why not make that process as a post. Let's get into it!
@@ -22,16 +23,20 @@ Disclaimer: I don't know if the code here still works or not.
 </Update>
 
 # Prerequisite
+
 First of all, we need to prepare a few things :
-- (Neo)Vim Text Editor (Duh, isn't that obvious?).
-- Terminal that is capable of true colours
-- Patience
-- Googling skills incase something doesn't work correctly
+
+-   (Neo)Vim Text Editor (Duh, isn't that obvious?).
+-   Terminal that is capable of true colours
+-   Patience
+-   Googling skills incase something doesn't work correctly
 
 All is set, let's actually make the statusline!
 
 # Creating the statusline
+
 ## Deprecating the old one
+
 First thing first, I removed my old statusline. You don't need to do it if you don't have it already. If you are curious how my statusline looks, let me show you.
 
 ![old statusline](/assets/posts/vim-statusline/old.png)
@@ -39,9 +44,10 @@ First thing first, I removed my old statusline. You don't need to do it if you d
 As you can see, it looks like a capsule for each module. I took the design from a reddit post that I've found the other day. [Here it is](https://www.reddit.com/r/vimporn/comments/efjcv0/gruvboxxx/?utm_source=share&utm_medium=web2x). It looks sick when I saw it for the first time. But, as time passes I started to think that it wasted quite a lot of space. So I decided to change it
 
 ## Making the structure
+
 Let's start with the structure of the statusline. Create 2 functions for your statusline as so.
 
-``` vim
+```vim
 " We'll use this for the active statusline
 function! ActiveLine()
   let statusline = ""
@@ -56,15 +62,16 @@ endfunction
 ```
 
 ## Base colour
+
 Next, we'll define the base colour for the background. I chose a lighter colour for the background so it stands out. To add a base colour, you need to add `%#Base#` where `Base` is the name of the color highlight. To set a colour highlight, you'd do:
 
-``` vim
+```vim
   hi Base guibg=#212333 guifg=#212333
 ```
 
 You can freely change the colours as you like. The colour are set, let's apply it to our statusline. To apply it, you'd do:
 
-``` vim
+```vim
 " We'll use this for the active statusline
 function! ActiveLine()
   let statusline = ""
@@ -74,9 +81,10 @@ endfunction
 ```
 
 ## Modes indicator
+
 Let's make a module for out statusline because so far, what we did is just setting the background colour. The most importan part for me is the indicator for the mode that you're currently in. To do that, you'd add:
 
-``` vim
+```vim
   let g:currentmode={
       \'n' : 'Normal ',
       \'no' : 'N·Operator Pending ',
@@ -112,13 +120,13 @@ Just calm down, don't get intimidated by the code. It looks like much, but it's 
 
 Let's add some colours for that module. It's the same like before, you add `%#Mode#` where `Mode` is the name for highlight group. Set the colour for the highlight as so:
 
-``` vim
+```vim
 hi Mode guibg=#82aaff guifg=#181824 gui=bold
 ```
 
 It will give the `Mode` module a blue background and a dark colour for the text. It will also make the text bold. Let's ppply it to our statusline once again.
 
-``` vim
+```vim
 " We'll use this for the active statusline
 function! ActiveLine()
   let statusline = ""
@@ -131,12 +139,12 @@ endfunction
 ```
 
 ## Git integration
-Being able to see your git branch on your statusline is great. So, let's do that! First thing first, you'll need some kind of git plugin to show the git status (I think it's possible without it, but I'm not sure). I'll use a vim plugin called [vim-fugitive](https://github.com/tpope/vim-fugitive). It's not only for this reason, it has a lot of useful command too!
 
+Being able to see your git branch on your statusline is great. So, let's do that! First thing first, you'll need some kind of git plugin to show the git status (I think it's possible without it, but I'm not sure). I'll use a vim plugin called [vim-fugitive](https://github.com/tpope/vim-fugitive). It's not only for this reason, it has a lot of useful command too!
 
 Let's create the module for that. First thing first, the branch name that you're currently in.
 
-``` vim
+```vim
 " Get current git branch
 function! GitBranch(git)
   if a:git == ""
@@ -149,7 +157,7 @@ endfunction
 
 Create the colours for that module and apply it by doing so:
 
-``` vim
+```vim
 hi Git guibg=#292d3e guifg=#929dcb
 
 function! ActiveLine()
@@ -166,22 +174,25 @@ endfunction
 ```
 
 ## Right Section
+
 After creating the left section, let's move to the right part. To move to the right part of the statusline, what you'd do is to add:
 
-``` vim
+```vim
 " Make the colour highlight normal
 let statusline .= "%#Base#"
 let statusline .= "%="
 ```
 
 What that block code is doing is:
-- It normalize the colour of the background
-- Move the next module to the right
+
+-   It normalize the colour of the background
+-   Move the next module to the right
 
 ## Filename
+
 I want to make the filename module as the first module for the right section. I also added the feature where if your file isn't saved yet, it'll give a star symbol at the end of the filename, change the colour to white and make it bold.
 
-``` vim
+```vim
 " Check modified status
 function! CheckMod(modi)
   if a:modi == 1
@@ -198,7 +209,7 @@ endfunction
 
 Then we'll add it to our previous statusline like we did for the other modules.
 
-``` vim
+```vim
 function! ActiveLine()
   let statusline = ""
   let statusline .= "%#Base#"
@@ -220,6 +231,7 @@ endfunction
 ```
 
 ## Filetype
+
 Similar to `filename`, filetype module only display a filetype from that file. You know, like `javascript`, `html`, `markdown`, etc. Let's make that module.
 
 ```vim
@@ -238,7 +250,7 @@ endfunction
 
 After making it, let's apply it to our statusline.
 
-``` vim
+```vim
 function! ActiveLine()
   let statusline = ""
   let statusline .= "%#Base#"
@@ -265,9 +277,10 @@ endfunction
 The reason why I use a function just to display a filetype is to make all of the letter lowercase and display `-` when the filetype is unidentified.
 
 ## Line Number
+
 Last but not least, it's the line number and line column module. It's used to display the line number that you're currently in. It's a really simple module. Let's make that!
 
-``` vim
+```vim
 " Colour for line number module
 hi LineCol guibg=#82aaff guifg=#181824 gui=bold
 
@@ -276,9 +289,10 @@ let statusline .= "%#LineCol# Ln %l, Col %c "
 ```
 
 ## Inactive Line
+
 We've made the statusline for the active window, let's make one for the inactive window. It's simple.
 
-``` vim
+```vim
 function! InactiveLine()
   " Set empty statusline and colors
   let statusline = ""
@@ -292,9 +306,10 @@ endfunction
 ```
 
 # Apply the statusline
+
 Let's see what we've made so far.
 
-``` vim
+```vim
 " Statusline colors
 hi Base guibg=#212333 guifg=#212333
 hi Mode guibg=#82aaff guifg=#181824 gui=bold
@@ -405,7 +420,7 @@ endfunction
 
 As you can see, currently we didn't do anything to our current statusline because we haven't apply it yet. So, let's apply it!
 
-``` vim
+```vim
 " Change statusline automatically
 augroup Statusline
   autocmd!
@@ -416,9 +431,11 @@ augroup END
 ```
 
 We use autocmd to make the statusline changed automatically based of the current window status. Make sure you've set `laststatus` to 2 so your vim will always display the statusline. If you don't know what I mean, add
-``` vim
+
+```vim
 set laststatus=2
 ```
+
 to your .vimrc or init.vim
 
 Here's what it looks like when it's finished
@@ -435,4 +452,5 @@ Welp, I accidentally lost my old statusline because I `git push --force` the oth
 </Update>
 
 # Conclusion
+
 Making a custom statusline of your own is quite a lengthy process. But, I think it's a fun process nonetheless. If you want to tinker with it even more, just do it! It's a repetitive process once you know the basic. I'm not a vim expert myself, so sorry if I've missed something in this post. Alright then, I'm gonna end this post right here. If you have any question regarding to this post, feel free to hit me up! See ya!
