@@ -3,6 +3,7 @@ import Icon from "astro-icon";
 import data from "~/data/sites";
 import HandIcon from "~/icons/HandIcon.svelte";
 import ChangingText from "~/components/ChangingText.svelte";
+import MovingCircle from "./MovingCircle.svelte";
 
 type Social = {
 	url: string;
@@ -16,13 +17,15 @@ const socials: Social[] = [
 ];
 ---
 
-<section class="h-full relative p-20">
-	<div class="font-heading flex items-center gap-2 text-slate-900">
+<MovingCircle client:only />
+
+<section class="h-full relative p-20 bg-white">
+	<div class="font-heading flex items-center gap-2 text-black">
 		<HandIcon className="" />
 		<span class="text-5xl font-medium">Hey there! I am</span>
 	</div>
-	<span class="font-heading text-7xl font-bold block leading-relaxed text-slate-900">
-		Dicha Z<span class="bg-white">elianiva</span>n Arkana
+	<span class="font-heading text-7xl font-bold block leading-relaxed text-black">
+		Dicha Zelianivan Arkana
 	</span>
 	<ChangingText client:load />
 	<div class="fixed right-8 bottom-0 flex flex-col items-center gap-6">
@@ -30,11 +33,11 @@ const socials: Social[] = [
 			{
 				socials.map((social) => (
 					<a href={social.url}>
-						<Icon name={social.icon} class="w-8 h-8 text-slate-900" />
+						<Icon name={social.icon} class="w-8 h-8 text-black" />
 					</a>
 				))
 			}
 		</div>
-		<div class="h-28 w-1 bg-slate-900"></div>
+		<div class="h-28 w-1 bg-black"></div>
 	</div>
 </section>

@@ -42,7 +42,7 @@
 {#if tagFilter.length > 0}
 	<div class="flex items-center gap-4 mt-2 text-slate-700">
 		{#each tagFilter as filter}
-			<Tag onClick={() => { tagFilter = tagFilter.filter((x) => x !== filter); }} variant="solid">
+			<Tag onClick={() => (tagFilter = tagFilter.filter((x) => x !== filter))} variant="solid">
 				{filter}
 			</Tag>
 		{/each}

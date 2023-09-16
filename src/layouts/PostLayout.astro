@@ -68,21 +68,21 @@ const commentOptions = {
 			}
 		</span>
 		<a
-			class="relative block font-heading text-center text-lg leading-loose no-underline text-slate-600 hover:underline"
+			class="relative block font-heading text-center text-lg leading-loose no-underline text-slate-800 hover:underline"
 			href={`https://github.com/elianiva/elianiva.my.id/blob/master/src/content/posts/${slug}.mdx`}
 			target="_blank"
 			rel="norel noreferrer">Suggest An Edit</a
 		>
-		<div class="flex gap-2 justify-center mb-6">
-			{frontmatter.tags.map((tag) => <Tag># {tag}</Tag>)}
+		<div class="flex gap-2 justify-center my-2">
+			{frontmatter.tags.map((tag) => <Tag variant="solid"># {tag}</Tag>)}
 		</div>
-		<main class="font-serif mx-auto text-base text-justify text-lg max-w-screen-md prose pslate-custom">
+		<main class="font-sans mx-auto text-base text-justify text-lg max-w-screen-md prose pslate-custom">
 			<div class="text-left">
-				<h1>Table of Contents</h1>
+				<h1 class="text-slate-800">Table of Contents</h1>
 				<ul class="!pl-0">
 					{
 						props.headings.map((heading) => (
-							<li class={`list-none list-outside ${getIndentPadding(heading.depth)} my-1`}>
+							<li class={`font-heading list-none list-outside ${getIndentPadding(heading.depth)} my-1`}>
 								<a href={`#${heading.slug}`}>{heading.text}</a>
 							</li>
 						))

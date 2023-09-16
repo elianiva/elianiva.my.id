@@ -34,8 +34,11 @@ export default defineConfig({
 					"text-transform": "uppercase",
 					"font-weight": 600,
 					"font-size": "1.875rem",
-					"padding-bottom": "0.5rem",
-					"border-bottom": "0.125rem solid var(--c-pslate-accent)",
+					"padding": "0.5rem 1rem",
+					"background-color": "black",
+					"display": "inline-block",
+					"color": "white",
+					"margin": "0.5rem 0",
 				},
 				h2: {
 					"font-size": "1.5rem",
@@ -66,7 +69,6 @@ export default defineConfig({
 					"margin-top": "1.25rem",
 					"overflow-x": "auto",
 					"scrollbar-color": "var(--un-font-)",
-					"border-radius": "0.375rem",
 				},
 				"pre::-webkit-scrollbar": {
 					"background-color": "var(--c-pslate-alt-bg)",
@@ -92,7 +94,6 @@ export default defineConfig({
 				},
 				table: {
 					width: "100%",
-					"border-radius": "0.375rem",
 					"background-color": "var(--c-pslate-alt-bg)",
 				},
 				"table a": {
@@ -120,13 +121,13 @@ export default defineConfig({
 			(_, { theme }) => ({
 				"--font-heading": '"Jost", sans-serif',
 				"--font-serif": '"IBM Plex Serif", serif',
-				"--font-sans": '"Rubik", sans-serif',
+				"--font-sans": '"Inter", sans-serif',
 				"--font-monospace": '"IBM Plex Mono", monospace',
 				"--un-pslate-body": theme.colors.slate[900],
-				"--un-pslate-links": theme.colors.blue[700],
+				"--un-pslate-links": theme.colors.slate[700],
 				"--un-pslate-headings": theme.colors.slate[900],
-				"--c-pslate-accent": theme.colors.blue[600],
-				"--c-pslate-alt-bg": theme.colors.blue[100],
+				"--c-pslate-accent": theme.colors.slate[600],
+				"--c-pslate-alt-bg": theme.colors.slate[100],
 				"--c-pslate-scrollbar-bg": theme.colors.gray[200],
 				"--c-pslate-thumb-bg": theme.colors.gray[300],
 			}),
@@ -175,7 +176,7 @@ export default defineConfig({
 	theme: {
 		fontFamily: {
 			heading: '"Jost", sans-serif',
-			sans: '"Rubik", sans',
+			sans: '"Inter", sans',
 			serif: '"IBM Plex Serif", "serif"',
 			monospace: '"IBM Plex Mono", "monospace"',
 		},

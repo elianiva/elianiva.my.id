@@ -1,5 +1,5 @@
 <button
-	class="font-sans text-sm font-medium border-none text-slate-800 {variant === "solid" ? "px-3 py-1 border-2 border-slate-900" : ""}"
+	class="font-sans text-sm font-medium text-black {variant === "solid" ? "px-3 py-1 border-2 border-slate-900" : "border-none"}"
 	tabindex="0"
 	on:click={() => onClick?.()}
 	on:keydown={(e) => e.key === "Enter" && onClick?.()}

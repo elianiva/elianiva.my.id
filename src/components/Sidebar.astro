@@ -14,8 +14,8 @@ const MENU_ITEMS: Menu[] = [
 const pathname = Astro.url.pathname;
 ---
 
-<aside class="border-r-4 border-slate-900 sticky bg-white">
-	<div class="relative w-20 h-20 flex items-center justify-center border-b-4 border-slate-900">
+<aside class="border-r-4 border-black sticky bg-white">
+	<div class="relative w-20 h-20 flex items-center justify-center border-b-4 border-black">
 		<Clock client:load />
 	</div>
 	<div class="menu">
@@ -23,8 +23,8 @@ const pathname = Astro.url.pathname;
 			{
 				MENU_ITEMS.map((menu) => (
 					<li
-						class={`py-1 px-3 font-heading text-slate-900 ${
-							menu.link === pathname ? "bg-slate-900 text-white font-semibold" : ""
+						class={`py-1 px-3 font-heading text-black hover:(bg-black text-white) transition-all ease-out ${
+							menu.link === pathname ? "bg-black text-white font-semibold" : ""
 						}`}
 					>
 						<a href={menu.link}>{menu.name}</a>
