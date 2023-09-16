@@ -47,6 +47,9 @@
 		{ duration: 500, easing: (t) => t * (2 - t) }
 	);
 	function updateCursorPosition(event: MouseEvent) {
+		if (event.clientX !== 0 && event.clientY !== 0) {
+			isCursorInside = true;
+		}
 		cursorPosition.set({ x: event.clientX, y: event.clientY });
 	}
 	onMount(() => (blobAnimationInterval = setInterval(animateBlob, 1000)));
