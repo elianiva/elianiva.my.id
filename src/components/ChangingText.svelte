@@ -53,6 +53,6 @@
 	});
 </script>
 
-<div class="bg-black text-white inline-block px-6 py-3 mt-4">
-	<span class="font-heading text-2xl font-bold block">{displayedText}</span>
+<div class="bg-black text-white inline-block px-3 py-1 lg:px-6 lg:py-3 mt-4">
+	<span class="font-heading text-lg lg:text-2xl font-bold block whitespace-nowrap">{displayedText}</span>
 </div>
