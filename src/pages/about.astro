@@ -1,11 +1,13 @@
 ---
-import MainLayout from "./MainLayout.astro";
+import MainLayout from "~/layouts/MainLayout.astro";
+import AboutContent from "~/data/about.mdx";
 ---
 
 <MainLayout seo={{ title: "About" }}>
 	<section class="max-w-screen-lg mx-auto pt-8 px-4 pb-0 text-justify">
 		<section class="mx-auto prose pslate-custom text-lg">
-			<slot />
+			<AboutContent />
 		</section>
 	</section>
 </MainLayout>
+

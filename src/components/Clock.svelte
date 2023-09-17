@@ -27,7 +27,7 @@
 	})
 </script>
 
-<div class="relative">
+<div class="relative -rotate-90">
 	<div class="absolute transition-all ease-out w-4 h-[2px] bg-slate-900 origin-left" style="transform: {angleRotation.hour}" id="hour-arm" />
 	<div class="absolute transition-all ease-out w-8 h-[2px] bg-slate-900 origin-left" style="transform: {angleRotation.minute}" id="minute-arm" />
 	<div class="absolute transition-all ease-out w-9 h-[2px] bg-red-500 origin-left" style="transform: {angleRotation.second}" id="second-arm" />

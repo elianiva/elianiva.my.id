@@ -42,7 +42,7 @@
 
 	let blobAnimationInterval: NodeJS.Timeout;
 	let cursorPosition = tweened<{ x: number; y: number }>(
-		{ x: 0, y: 0 },
+		{ x: 0, y:0 },
 		// bounce out easing
 		{ duration: 500, easing: (t) => t * (2 - t) }
 	);
