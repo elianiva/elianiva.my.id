@@ -1,6 +1,6 @@
 <div class="relative">
 	<input
-		class="block mx-auto my-0 w-full p-3 text-lg border-solid border-2 border-rose-900 shadow-sharp bg-white outline-none font-heading text-rose-900 placeholder:text-zinc-500"
+		class="block mx-auto my-0 w-full p-3 text-lg border-solid border-2 border-slate-900 shadow-sharp bg-white outline-none font-heading text-slate-900 placeholder:text-slate-500"
 		id="posts__input"
 		type="text"
 		placeholder="Find post... (start with # to find tags)"
@@ -12,12 +12,12 @@
 	{#if isCompletionVisible}
 		<div
 			transition:fly={{ duration: 100, y: -50 }}
-			class="absolute top-16 left-0 right-0 z-[5] text-rose-900 bg-white p-2 border-solid border-2 border-rose-900 shadow-sharp"
+			class="absolute top-16 left-0 right-0 z-[5] text-slate-900 bg-white p-2 border-solid border-2 border-slate-900 shadow-sharp"
 		>
 			{#if uniqueTags.length > 0}
 				{#each uniqueTags as tag}
-					<span
-						class="block text-left font-heading text-lg p-2 cursor-pointer transition-property-all ease-out duration-100 hover:(text-white bg-rose-900)"
+					<button
+						class="block text-left font-heading text-lg p-2 cursor-pointer transition-property-all ease-out duration-100 hover:(text-white bg-slate-900)"
 						on:click={() => {
 							tagFilter = [...tagFilter, tag]; // cant use push here
 							if (inputBox !== null) inputBox.value = "";
@@ -27,7 +27,7 @@
 						on:keydown={() => void 0}
 					>
 						{tag.toUpperCase()} • {count[tag]} result{(count[tag] ?? 0) > 1 ? "s" : ""}
-					</span>
+					</button>
 				{/each}
 			{:else}
 				<span
@@ -40,9 +40,9 @@
 	{/if}
 </div>
 {#if tagFilter.length > 0}
-	<div class="flex items-center gap-4 mt-2 text-zinc-700">
+	<div class="flex items-center gap-4 mt-2 text-slate-700">
 		{#each tagFilter as filter}
-			<Tag onClick={() => { tagFilter = tagFilter.filter((x) => x !== filter); }} variant="solid">
+			<Tag onClick={() => (tagFilter = tagFilter.filter((x) => x !== filter))} variant="solid">
 				{filter}
 			</Tag>
 		{/each}

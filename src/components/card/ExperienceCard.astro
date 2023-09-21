@@ -27,11 +27,11 @@ const finishDate =
 
 <div class="relative mb-8">
 	<div class="flex justify-between items-center">
-		<span class="text-xl font-bold font-heading text-zinc-800">{title}</span>
-		<span class="text-lg font-medium font-heading text-zinc-600">{startDate} - {finishDate}</span>
+		<span class="text-xl font-bold font-heading text-slate-800">{title}</span>
+		<span class="text-lg font-medium font-heading text-slate-600">{startDate} - {finishDate}</span>
 	</div>
-	<span class="text-base text-zinc-600 font-sans"><span class="capitalize">{type}</span> - {company}</span>
-	<ul class="font-sans list-outside leading-relaxed pl-0 text-zinc-600 text-base">
+	<span class="text-base text-slate-600 font-sans"><span class="capitalize">{type}</span> - {company}</span>
+	<ul class="font-sans list-outside leading-relaxed pl-0 text-slate-600 text-base">
 		{tasks.map((task) => <li>{task}</li>)}
 	</ul>
 </div>

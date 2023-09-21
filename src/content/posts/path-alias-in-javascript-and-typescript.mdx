@@ -3,8 +3,8 @@ title: Path Alias in Javascript and Typescript
 date: 2022-03-04
 description: Have you ever got tired of writing relative paths that look like ../../../ ? No worries, path alias to the rescue!
 tags:
-  - javascript
-  - typescript
+    - javascript
+    - typescript
 ---
 
 # Introduction
@@ -23,12 +23,12 @@ You can define a path alias by setting the `compilerOptions.paths` field. Here's
 
 ```json
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	}
 }
 ```
 
@@ -38,13 +38,13 @@ I usually like to just use `@/*` as an alias to `./src/*` because I like to impo
 
 ```json
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "#foo": ["./src/deeply/nested/module/called/foo"]
-    }
-  }
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"#foo": ["./src/deeply/nested/module/called/foo"]
+		}
+	}
 }
 ```
 
@@ -78,12 +78,12 @@ import { defineConfig } from "vite";
 import path from "path";
 
 export default defineConfig({
-  /* the rest of the config is omitted for brevity */
-  resolve: {
-    alias: {
-      "#": path.resolve("src"),
-    },
-  },
+	/* the rest of the config is omitted for brevity */
+	resolve: {
+		alias: {
+			"#": path.resolve("src"),
+		},
+	},
 });
 ```
 
@@ -97,14 +97,14 @@ import alias from "@rollup/plugin-alias";
 import path from "path";
 
 export default {
-  /* the rest of the config is omitted for brevity */
-  plugins: [
-    alias({
-      entries: {
-        "#": path.resolve("src"),
-      },
-    }),
-  ],
+	/* the rest of the config is omitted for brevity */
+	plugins: [
+		alias({
+			entries: {
+				"#": path.resolve("src"),
+			},
+		}),
+	],
 };
 ```
 
@@ -136,11 +136,11 @@ The way to do it is by defining the path alias inside the `imports` field in `pa
 
 ```json
 {
-  // other fields are omitted for  brevity
-  "imports": {
-    "#services/*": "./src/services/*",
-    "#utils/*": "./src/utils/*"
-  }
+	// other fields are omitted for  brevity
+	"imports": {
+		"#services/*": "./src/services/*",
+		"#utils/*": "./src/utils/*"
+	}
 }
 ```
 

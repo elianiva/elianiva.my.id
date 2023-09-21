@@ -1,0 +1,36 @@
+---
+import Clock from "./Clock.svelte";
+type Menu = {
+	name: string;
+	link: string;
+};
+const MENU_ITEMS: Menu[] = [
+	{ name: "Home", link: "/" },
+	{ name: "Posts", link: "/posts" },
+	{ name: "Projects", link: "/projects" },
+	{ name: "About", link: "/about" },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<aside class="flex lg:flex-col border-t-4 lg:border-t-none lg:border-r-4 border-black sticky bg-white order-2 lg:order-1">
+	<div class="relative w-19 h-19 lg:w-20 lg:h-20 flex items-center justify-center border-r-4 lg:border-r-none lg:border-b-4 border-black">
+		<Clock client:load />
+	</div>
+	<div>
+		<ul class="flex items-center px-4 lg:px-0 lg:items-start h-full lg:h-auto lg:gap-2 lg:-rotate-90 transform-gpu lg:mt-74">
+			{
+				MENU_ITEMS.map((menu) => (
+					<li
+						class={`py-1 px-3 font-heading text-black hover:(bg-black text-white) transition-all ease-out ${
+							menu.link === pathname ? "bg-black text-white font-semibold" : ""
+						}`}
+					>
+						<a href={menu.link}>{menu.name}</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</aside>
