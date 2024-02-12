@@ -1,6 +1,6 @@
 ---
+import Icon from "astro-icon";
 import MainLayout from "./MainLayout.astro";
-import Tag from "~/components/Tag.svelte";
 import type { PostMeta } from "~/models/post";
 import type { MarkdownHeading } from "astro";
 
@@ -16,13 +16,19 @@ const { frontmatter, slug, ...props } = Astro.props as Props;
 function getIndentPadding(depth: number) {
 	// prettier-ignore
 	switch (depth) {
-		case 1: return "";
-		case 2: return "pl-4";
-		case 3: return "pl-8";
-		case 4: return "pl-12";
-		case 5: return "pl-16";
-		default: return "";
-	  }
+		case 1:
+			return "";
+		case 2:
+			return "pl-4";
+		case 3:
+			return "pl-8";
+		case 4:
+			return "pl-12";
+		case 5:
+			return "pl-16";
+		default:
+			return "";
+	}
 }
 
 const commentOptions = {
@@ -50,14 +56,15 @@ const commentOptions = {
 </style>
 
 <MainLayout seo={{ title: frontmatter.title }}>
-	<section class="max-w-screen-lg py-4 px-8 mx-auto text-center text-slate-600">
+	<main class="mx-auto max-w-[800px] px-4 py-10">
 		<h1
-			class="font-heading text-5xl uppercase max-w-[30ch] mt-12 mx-auto mb-0 font-semibold text-slate-800 leading-snug"
+			class="font-serif text-3xl uppercase mt-12 mb-0 font-semibold text-pink-950 whitespace-nowrap"
 		>
 			{frontmatter.title}
 		</h1>
-		<span class="font-heading block text-center text-lg leading-loose text-slate-600">
+		<div class="flex items-center gap-2 font-serif block text-lg leading-loose text-pink-950/70">
 			Posted on
+			<span class="text-pink-950">
 			{
 				new Date(frontmatter.date).toLocaleDateString("en-GB", {
 					weekday: "long",
@@ -66,34 +73,40 @@ const commentOptions = {
 					year: "numeric",
 				})
 			}
-		</span>
-		<a
-			class="relative block font-heading text-center text-lg leading-loose no-underline text-slate-800 hover:underline"
-			href={`https://github.com/elianiva/elianiva.my.id/blob/master/src/content/posts/${slug}.mdx`}
-			target="_blank"
-			rel="norel noreferrer">Suggest An Edit</a
-		>
-		<div class="flex gap-2 justify-center my-2">
-			{frontmatter.tags.map((tag) => <Tag variant="solid"># {tag}</Tag>)}
+			</span>
+			-
+			<a
+				class="relative leading-loose no-underline hover:underline"
+				href={`https://github.com/elianiva/elianiva.my.id/blob/master/src/content/posts/${slug}.mdx`}
+				target="_blank"
+				rel="norel noreferrer"
+			>
+				Suggest An Edit
+				<Icon name="ph:note-pencil" class="inline-block w-4 h-4" />
+			</a>
 		</div>
-		<main class="font-sans mx-auto text-base text-justify text-lg max-w-screen-md prose pslate-custom">
-			<div class="text-left">
-				<h1 class="text-slate-800">Table of Contents</h1>
-				<ul class="!pl-0">
-					{
-						props.headings.map((heading) => (
-							<li class={`font-heading list-none list-outside ${getIndentPadding(heading.depth)} my-1`}>
-								<a href={`#${heading.slug}`}>{heading.text}</a>
-							</li>
-						))
-					}
-				</ul>
-			</div>
+		<div class="flex gap-2">
+			{frontmatter.tags.map((tag) => <span class="font-mono text-pink-950 text-sm">#{tag}</span>)}
+		</div>
+		<main class="font-serif mx-auto text-base text-justify max-w-[920px] prose text-pink-950 py-8">
+			<!-- TODO(elianiva): table of contents with scrollspy -->
+			<!--<div class="text-left my-8 border border-dashed border-pink-300 p-4 rounded-md">-->
+			<!--	<h1 class="text-pink-950 text-2xl my-0">Table of Contents</h1>-->
+			<!--	<ul class="!pl-0 !mt-0">-->
+			<!--		{-->
+			<!--			props.headings.map((heading) => (-->
+			<!--				<li class={`list-none list-outside text-base ${getIndentPadding(heading.depth)} my-1`}>-->
+			<!--					<a href={`#${heading.slug}`}>{heading.text}</a>-->
+			<!--				</li>-->
+			<!--			))-->
+			<!--		}-->
+			<!--	</ul>-->
+			<!--</div>-->
 			<slot />
 			<h1>Comments</h1>
 			<div>
 				<script is:inline {...commentOptions} data-theme="light"></script>
 			</div>
 		</main>
-	</section>
+	</main>
 </MainLayout>
