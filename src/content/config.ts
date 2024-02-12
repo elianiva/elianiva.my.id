@@ -17,8 +17,9 @@ const projectCollection = defineCollection({
 		description: z.string(),
 		demo: z.string().nullable().default(null),
 		source: z.string(),
-		type: z.enum(["personal", "assignment"]),
+		type: z.enum(["personal", "assignment", "open-source"]),
 		stack: z.array(z.tuple([z.string(), z.string()])),
+		featured: z.boolean().default(false),
 	}),
 });
 

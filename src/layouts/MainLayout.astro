@@ -7,15 +7,14 @@ import "@fontsource/jost/400.css";
 import "@fontsource/jost/500.css";
 import "@fontsource/jost/600.css";
 import "@fontsource/jost/700.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
+import "@fontsource/lora/400.css";
+import "@fontsource/lora/500.css";
+import "@fontsource/lora/600.css";
+import "@fontsource/lora/700.css";
 import "@fontsource/ibm-plex-serif/400.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "@fontsource/ibm-plex-mono/400-italic.css";
-import Sidebar from "~/components/Sidebar.astro";
 import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
@@ -31,14 +30,7 @@ const { seo } = Astro.props;
 		<SEO {...seo} />
 		<ViewTransitions />
 	</head>
-	<body class="h-full bg-white">
-		<main class="custom-scrollbar h-full grid grid-rows-[1fr_5rem] lg:grid-rows-1 lg:grid-cols-[5rem_1fr]">
-			<Sidebar />
-			<div class="w-full h-full flex flex-col overflow-y-auto order-1 lg:order-2">
-				<div class="flex-1 pt-0">
-					<slot />
-				</div>
-			</div>
-		</main>
+	<body class="h-full bg-white p-10">
+		<slot />
 	</body>
 </html>

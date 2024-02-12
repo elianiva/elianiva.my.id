@@ -21,6 +21,7 @@
     "@fontsource/ibm-plex-serif": "^5.0.8",
     "@fontsource/inter": "^5.0.16",
     "@fontsource/jost": "^5.0.16",
+    "@fontsource/lora": "^5.0.12",
     "@fontsource/space-grotesk": "^5.0.16",
     "astro": "^4.0.6",
     "sharp": "^0.33.1",
@@ -40,6 +41,7 @@
     "svgo": "2.8.0",
     "typescript": "^5.3.3",
     "unocss": "^0.58.0",
+    "unocss-preset-scrollbar": "^0.3.0",
     "vite": "^5.0.10"
   },
   "peerDependencies": {

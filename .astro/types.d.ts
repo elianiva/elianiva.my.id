@@ -439,6 +439,13 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".mdx"] };
+"gitgram.mdx": {
+	id: "gitgram.mdx";
+  slug: "gitgram";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdx"] };
 "graphene.mdx": {
 	id: "graphene.mdx";
   slug: "graphene";
@@ -502,6 +509,13 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".mdx"] };
+"pesto.mdx": {
+	id: "pesto.mdx";
+  slug: "pesto";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdx"] };
 "prawf.mdx": {
 	id: "prawf.mdx";
   slug: "prawf";
@@ -526,6 +540,27 @@ declare module 'astro:content' {
 "svelteception.mdx": {
 	id: "svelteception.mdx";
   slug: "svelteception";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdx"] };
+"teknum-blog.mdx": {
+	id: "teknum-blog.mdx";
+  slug: "teknum-blog";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdx"] };
+"teknum-bot.mdx": {
+	id: "teknum-bot.mdx";
+  slug: "teknum-bot";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdx"] };
+"tgif.mdx": {
+	id: "tgif.mdx";
+  slug: "tgif";
   body: string;
   collection: "projects";
   data: InferEntrySchema<"projects">
