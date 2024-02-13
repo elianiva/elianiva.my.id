@@ -1,6 +1,6 @@
 <div class="relative">
 	<input
-		class="block mx-auto my-0 w-full p-3 text-lg border-solid border-2 border-slate-900 shadow-sharp bg-white outline-none font-heading text-slate-900 placeholder:text-slate-500"
+		class="block font-serif mx-auto my-0 w-full p-3 bg-transparent border-dashed border border-pink-300 outline-none text-pink-950 placeholder:text-pink-950/70"
 		id="posts__input"
 		type="text"
 		placeholder="Find post... (start with # to find tags)"
@@ -12,12 +12,12 @@
 	{#if isCompletionVisible}
 		<div
 			transition:fly={{ duration: 100, y: -50 }}
-			class="absolute top-16 left-0 right-0 z-[5] text-slate-900 bg-white p-2 border-solid border-2 border-slate-900 shadow-sharp"
+			class="absolute top-16 left-0 right-0 z-[5] text-pink-950 bg-white p-2 border-dashed border border-pink-300"
 		>
 			{#if uniqueTags.length > 0}
 				{#each uniqueTags as tag}
 					<button
-						class="block text-left font-heading text-lg p-2 cursor-pointer transition-property-all ease-out duration-100 hover:(text-white bg-slate-900)"
+						class="block text-left text-sm w-full font-mono p-2 cursor-pointer transition-property-all ease-out duration-100 hover:bg-pink-100"
 						on:click={() => {
 							tagFilter = [...tagFilter, tag]; // cant use push here
 							if (inputBox !== null) inputBox.value = "";
@@ -40,32 +40,25 @@
 	{/if}
 </div>
 {#if tagFilter.length > 0}
-	<div class="flex items-center gap-4 mt-2 text-slate-700">
+	<div class="flex items-center gap-4 mt-2">
 		{#each tagFilter as filter}
-			<Tag onClick={() => (tagFilter = tagFilter.filter((x) => x !== filter))} variant="solid">
-				{filter}
-			</Tag>
+			<button class="py-2 px-4 text-sm font-mono text-pink-950 border border-dashed border-pink-300" on:click={() => (tagFilter = tagFilter.filter((x) => x !== filter))}>
+				#{filter}
+			</button>
 		{/each}
 	</div>
 {/if}
 <div class="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-5 mt-4">
 	{#each filteredPosts as post}
-		<PostCard
-			title={post.title}
-			href={`/posts/${post.slug}`}
-			description={post.description}
-			date={post.date}
-			tags={post.tags}
-		/>
+		<PostCard {...post} href="/posts/{post.slug}" />
 	{/each}
 </div>
 
 
 <script lang="ts">
-	import Tag from "~/components/Tag.svelte";
 	import { fly } from "svelte/transition";
 	import type { PostMeta } from "~/models/post";
-	import PostCard from "./PostCard.svelte";
+	import PostCard from "~/components/card/PostCard.svelte";
 
 	let inputBox: HTMLInputElement| null = null;
 	let keyword = "";

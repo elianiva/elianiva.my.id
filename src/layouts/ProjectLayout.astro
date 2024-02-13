@@ -1,8 +1,9 @@
 ---
-import Icon from "astro-icon";
-import MainLayout from "./MainLayout.astro";
+import GlobeIcon from "~icons/ph/globe-hemisphere-west-duotone";
+import GithubIcon from "~icons/ph/github-logo-duotone";
 import siteData from "~/data/sites";
 import type { ProjectMeta } from "~/models/project";
+import MainLayout from "./MainLayout.astro";
 
 export type Props = {
 	frontmatter: ProjectMeta;
@@ -22,48 +23,69 @@ const { frontmatter, slug } = Astro.props as Props;
 		class="max-w-screen-lg grid grid-cols-[2fr_1fr] grid-rows-[repeat(3,minmax(min-content,max-content))] grid-flow-row-dense items-start my-8 mx-auto px-4 gap-4"
 	>
 		<div class="col-start-1 col-end-3 md:col-start-1 md:col-end-2 w-full">
-			<div class="overflow-hidden border-solid border-2 border-slate-900 shadow-sharp">
-				<img
-					src={`/assets/projects/${slug}/cover.webp`}
-					alt={frontmatter.title}
-					class="block w-full h-full"
-					loading="lazy"
-				/>
+			<div class="overflow-hidden border border-dashed border-pink-300 rounded-md overflow-hidden">
+				{frontmatter.hasImage ? (
+					<img
+						src={`/assets/projects/${slug}/cover.jpg`}
+						alt={frontmatter.title}
+						class="block w-full h-full bg-pink-100"
+						loading="lazy"
+					/>
+				) : (
+					<div
+						class="flex items-center justify-center w-full min-h-xs bg-pink-100"
+					>
+						<span class="text-pink-500 font-serif text-2xl font-semibold">
+							{frontmatter.title}
+						</span>
+					</div>
+				)}
 			</div>
 		</div>
 		<div class="col-start-1 col-end-3 md:col-start-1 md:col-end-2 font-serif text-lg leading-relaxed">
-			<div class="flex flex-col md:flex-row gap-4 items-center justify-between mt-2 mb-4">
-				<h1 class="text-slate-900 font-heading text-3xl font-semibold">
+			<div class="flex flex-col md:flex-row gap-4 items-center justify-between mt-2 pb-4 border-b border-dashed border-pink-300">
+				<h1 class="text-pink-950 font-heading text-2xl font-semibold">
 					{frontmatter.title}
 				</h1>
 				<div class="flex gap-2">
+					<a
+						class="flex gap-1 items-center border border-dashed border-pink-300 py-1 px-2 text-pink-950  hover:text-pink-800 rounded-md"
+						href={frontmatter.source} target="_blank" rel="norel noreferrer"
+					>
+						<GithubIcon class="w-6 h-6" />
+						Source
+					</a>
 					{
 						frontmatter.demo !== null && (
-							<a class="btn-demo" href={frontmatter.demo} target="_blank" rel="norel noreferrer">
-								<Icon name="ph:globe" class="w-6 h-6" /> Demo
+							<a
+								class="flex gap-1 items-center border border-dashed border-pink-300 py-1 px-2 text-pink-950 hover:text-pink-800 rounded-md"
+								href={frontmatter.demo} target="_blank" rel="norel noreferrer"
+							>
+								<GlobeIcon class="w-6 h-6" />
+								Visit
 							</a>
 						)
 					}
-					<a class="btn-source" href={frontmatter.source} target="_blank" rel="norel noreferrer">
-						<Icon name="fe:github" class="w-6 h-6" /> Source
-					</a>
 				</div>
 			</div>
-			<hr class="border-none h-1px mt-2 mx-0 mb-4 bg-gray-300" />
 			<main class="prose pslate-custom">
 				<slot />
 			</main>
 		</div>
 		<div
-			class="col-start-1 md:col-start-2 col-end-3 row-start-2 md:row-start-1 row-end-3 md:-row-end-1 w-full p-4 border-solid border-2 border-slate-900 shadow-sharp"
+			class="col-start-1 md:col-start-2 col-end-3 row-start-2 md:row-start-1 row-end-3 md:-row-end-1 w-full p-4 border-dashed border border-pink-300 rounded-md"
 		>
-			<span class="block text-slate-800 font-semibold font-heading text-2xl border-b-2 border-slate-900 pb-3"
-				>Tech Stack</span
+			<span
+				class="block text-pink-950 font-semibold font-serif text-xl border-dashed border-b border-pink-300 pb-2"
 			>
+				Tech Stack
+			</span>
 			{
 				frontmatter.stack.map(([stackName, stackHomepage]) => (
-					<div class="grid grid-cols-[3.5rem_1fr] gap-4 items-center py-4 border-b-2 border-slate-900">
-						<div class="flex items-center justify-center p-2 border-solid border-2 border-slate-900 shadow-sharp bg-white overflow-hidden aspect-1">
+					<div class="grid grid-cols-[3rem_1fr] gap-2 items-center pt-3">
+						<div
+							class="flex items-center justify-center p-2 border-dashed border border-pink-300 rounded-md bg-white overflow-hidden aspect-1"
+						>
 							<img
 								class={`w-full ${stackName.toLowerCase() === "nextjs" ? "filter-invert" : ""}`}
 								src={`/assets/logo/${stackName.toLowerCase().replace(/\s+/g, "-")}.png`}
@@ -72,7 +94,7 @@ const { frontmatter, slug } = Astro.props as Props;
 						</div>
 						<a
 							href={stackHomepage}
-							class="text-slate-800 font-heading text-xl no-underline hover:text-slate-600"
+							class="text-pink-950 hover:text-pink-800 font-serif text-lg no-underline"
 							target="_blank"
 							rel="norel noreferrer"
 						>
