@@ -10,7 +10,7 @@ export default defineConfig({
 	site: "https://elianiva.my.id",
 	markdown: {
 		shikiConfig: {
-			theme: "catppuccin-latte"
+			theme: "light-plus"
 		}
 	},
 	vite: {

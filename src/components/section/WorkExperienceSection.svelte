@@ -5,9 +5,9 @@
 	export let workExperiences: WorkExperience[];
 </script>
 
-<section class="pt-10">
-	<h2 class="text-2xl font-bold font-serif text-pink-950 pb-4">Work Experience</h2>
-	<div class="relative flex flex-col gap-10 pb-8">
+<section class="pt-6 md:pt-10">
+	<h2 class="text-xl md:text-2xl font-bold font-serif text-pink-950 pb-4">Work Experience</h2>
+	<div class="relative flex flex-col gap-4 md:gap-10 pb-4 md:pb-8">
 		{#each workExperiences as experience (experience.company)}
 			<WorkExperienceCard {...experience} />
 		{/each}

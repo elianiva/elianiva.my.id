@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import PostList from "~/components/Posts.svelte";
+import PostList from "../components/PostList.svelte";
 import MainLayout from "~/layouts/MainLayout.astro";
 
 const posts = await getCollection("posts", ({ data }) => !data.draft);

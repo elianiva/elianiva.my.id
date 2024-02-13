@@ -30,13 +30,11 @@ const { seo } = Astro.props;
 		<SEO {...seo} />
 		<ViewTransitions />
 	</head>
-	<body class="h-full bg-white p-10">
-		<div class="fixed z-50 top-2 left-7 bg-pink-300 w-4 h-4 rounded-lg"></div>
-		<div class="fixed z-50 top-2 left-2 bg-sky-300 w-4 h-4 rounded-lg"></div>
-		<div class="fixed z-50 top-7 left-2 bg-yellow-300 w-4 h-4 rounded-lg"></div>
-		<div class="fixed rounded-full bg-pink-500/5 blur-3xl w-120 h-120 top-24 right-64 -z-1"></div>
-		<div class="fixed rounded-full bg-pink-500/5 blur-3xl w-120 h-120 top-240 left-120 -z-1"></div>
-		<div class="fixed rounded-full bg-pink-500/5 blur-3xl w-120 h-120 top-40 left-40 -z-1"></div>
+	<body class="h-full bg-white p-4 md:p-10">
+		<div class="fixed z-50 top-0 left-0 w-full h-2 bg-pink-300"></div>
+		<div class="fixed z-50 top-0 left-0 w-40 h-4 bg-sky-300"></div>
+		<div class="fixed z-50 top-0 left-0 w-20 h-6 bg-yellow-300"></div>
+		<div class="fixed bg-gradient-to-t from-pink-300/10 to-transparent inset-0 -z-1"></div>
 		<slot />
 	</body>
 </html>

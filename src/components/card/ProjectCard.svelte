@@ -30,7 +30,7 @@
 					href={url}
 					target="_blank"
 					rel="norel noreferrer"
-					class="no-underline text-xs text-pink-900/70 hover:text-pink-900/90 bg-pink-50 py-1 px-2 rounded-md"
+					class="no-underline text-xs text-pink-900/70 hover:text-pink-900/90 bg-pink-50 py-1 px-3 rounded-md"
 				>
 					{name}
 				</a>

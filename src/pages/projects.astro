@@ -1,64 +1,36 @@
 ---
 import { getCollection } from "astro:content";
-import ProjectCard from "~/components/ProjectCard.astro";
 import MainLayout from "~/layouts/MainLayout.astro";
+import ProjectSection from "~/components/section/ProjectSection.svelte";
+import BackButton from "~/components/BackButton.astro";
 
 const personalProjects = await getCollection("projects", ({ data }) => data.type === "personal");
 const sortedPersonalProjects = personalProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+
+const openSourceProjects = await getCollection("projects", ({ data }) => data.type === "open-source");
+const sortedOpenSourceProjects = openSourceProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
 const assignmentProjects = await getCollection("projects", ({ data }) => data.type === "assignment");
 const sortedAssignmentProjects = assignmentProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 ---
 
 <MainLayout seo={{ title: "Projects" }}>
-	<section class="max-w-[1080px] mx-auto py-8 px-4 text-center">
-		<a href="/project#personal-projects">
-			<h1
-				id="personal-projects"
-				class="font-heading relative inline-block mb-8 text-3xl font-semibold mb-4 text-slate-800 border-b-4 border-slate-800"
-			>
-				Personal Projects
-			</h1>
-		</a>
-		<div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-5 mb-10">
-			{
-				sortedPersonalProjects.map(({ data: project, slug }) => (
-					<ProjectCard
-						title={project.title}
-						imageSource={`/assets/projects/${slug}/cover.webp`}
-						href={`/projects/${slug}`}
-						description={project.description}
-						demo={project.demo}
-						source={project.source}
-					/>
-				))
-			}
-		</div>
-		<a href="/project#school-projects">
-			<h1
-				class="font-heading relative inline-block text-3xl font-semibold text-slate-800 border-b-4 border-slate-800"
-			>
-				School Projects
-			</h1>
-		</a>
-		<p class="font-sans text-slate-700 leading-relaxed my-4 text-justify">
-			These are some projects that I did when I was in high school, not exactly proud of them since I don't like
-			to make these kind of things, they're all just beta software that I don't really care. Guess I'd put them
-			here anyway in case anyone needs them for reference or something.
-		</p>
-		<div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-5">
-			{
-				sortedAssignmentProjects.map(({ data: project, slug }) => (
-					<ProjectCard
-						title={project.title}
-						imageSource={`/assets/projects/${slug}/cover.webp`}
-						href={`/projects/${slug}`}
-						description={project.description}
-						demo={project.demo}
-						source={project.source}
-					/>
-				))
-			}
-		</div>
+	<section class="mx-auto max-w-[920px] px-4 py-10">
+		<BackButton />
+		<ProjectSection
+			title="Personal Projects"
+			description="These are some of my personal projects that I made in the past. Some of them are still in use, some are not. Mostly made them just for fun and to learn new things."
+			projects={sortedPersonalProjects}
+		/>
+		<ProjectSection
+			title="Open Source Projects"
+			description="These are some open source projects that I actively help maintain. Most of them are from Teknologi Umum, a community that I'm part of."
+			projects={sortedOpenSourceProjects}
+		/>
+		<ProjectSection
+			title="Assignment Projects"
+			description="These are some projects that I did as an assignment whether it's from when I was in high school or college. Guess I'd put them here anyway in case someone find them useful."
+			projects={sortedAssignmentProjects}
+		/>
 	</section>
 </MainLayout>

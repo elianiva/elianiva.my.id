@@ -13,6 +13,7 @@ const postCollection = defineCollection({
 const projectCollection = defineCollection({
 	schema: z.object({
 		title: z.string(),
+		hasImage: z.boolean().default(true),
 		date: z.coerce.date(),
 		description: z.string(),
 		demo: z.string().nullable().default(null),

@@ -29,13 +29,13 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 ---
 
 <MainLayout seo={{ title: "Home" }}>
-	<main class="mx-auto max-w-[920px] px-4 py-10">
-		<header class="flex gap-24 border-b border-pink-800 border-dashed border-spacing-lg pb-6">
+	<main class="mx-auto max-w-[920px] px-2 md:px-4 py-10">
+		<header class="flex border-b border-pink-800 border-dashed border-spacing-lg pb-6">
 			<div class="flex-1">
-				<h1 class="text-2xl font-bold font-serif text-pink-950">
+				<h1 class="text-xl md:text-2xl font-bold font-serif text-pink-950">
 					Dicha Zelianivan Arkana
 				</h1>
-				<p class="leading-relaxed font-serif text-pink-950/80 py-2">
+				<p class="text-sm md:text-base leading-relaxed font-serif text-pink-950/80 py-2 max-w-60ch">
 					A software engineer focusing on delivering high-quality software that helps people to solve their
 					problems.
 				</p>
@@ -50,26 +50,27 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 					))}
 				</div>
 			</div>
-			<div class="w-36 h-36 bg-pink-100 rounded-lg"></div>
+			<div class="w-24 h-24 md:w-36 md:h-36 bg-pink-100 rounded-lg"></div>
 		</header>
-		<section class="pt-10">
-			<h2 class="text-2xl font-bold font-serif text-pink-950 pb-4">About Me</h2>
-			<p class="leading-relaxed font-serif text-pink-950/80">
+		<section class="pt-6 md:pt-10">
+			<h2 class="text-xl md:text-2xl font-bold font-serif text-pink-950 pb-4">About Me</h2>
+			<p class="text-sm md:text-base leading-relaxed font-serif text-pink-950/80">
 				A software engineer with over 4 years of experience in software development. My experience mostly
 				consists of web development, but I'm open to other platforms as long as it helps people solve their
 				problems. I work mostly with Typescript, React, Svelte, and Node.js. Currently an undergraduate studying
-				Informatics Engineering at State Polytechnic of Malang.
+				Informatics Engineering at State Polytechnic of Malang. Speaks Indonesian and English fluently, currently
+				learning Japanese.
 			</p>
 		</section>
 		<WorkExperienceSection client:visible workExperiences={workExperiences} />
 		<ProjectSection
-			client:visible title="Personal Projects"
+			title="Personal Projects"
 			description="These are some of my personal projects that I made in the past. Some of them are still in use, some are not. Mostly made them just for fun and to learn new things."
 			projects={sortedPersonalProjects}
 			seeMoreUrl="/projects"
 		/>
 		<ProjectSection
-			client:visible title="Open Source Projects"
+			title="Open Source Projects"
 			description="These are some open source projects that I actively help maintain. Most of them are from Teknologi Umum, a community that I'm part of."
 			projects={sortedOpenSourceProjects}
 		/>
