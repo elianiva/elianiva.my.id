@@ -1,8 +1,8 @@
 ---
-import Icon from "astro-icon";
-import MainLayout from "./MainLayout.astro";
-import type { PostMeta } from "~/models/post";
+import PencilIcon from "~icons/ph/note-pencil";
 import type { MarkdownHeading } from "astro";
+import type { PostMeta } from "~/models/post";
+import MainLayout from "./MainLayout.astro";
 
 export type Props = {
 	frontmatter: PostMeta;
@@ -58,7 +58,7 @@ const commentOptions = {
 <MainLayout seo={{ title: frontmatter.title }}>
 	<main class="mx-auto max-w-[800px] px-4 py-10">
 		<h1
-			class="font-serif text-3xl uppercase mt-12 mb-0 font-semibold text-pink-950 whitespace-nowrap"
+			class="font-serif text-4xl uppercase mt-12 mb-0 font-semibold text-pink-950 whitespace-nowrap"
 		>
 			{frontmatter.title}
 		</h1>
@@ -82,7 +82,7 @@ const commentOptions = {
 				rel="norel noreferrer"
 			>
 				Suggest An Edit
-				<Icon name="ph:note-pencil" class="inline-block w-4 h-4" />
+				<PencilIcon class="inline-block w-4 h-4" />
 			</a>
 		</div>
 		<div class="flex gap-2">

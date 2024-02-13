@@ -12,8 +12,11 @@
 		them useful!
 	</p>
 	<div class="relative grid grid-cols-3 gap-3 pb-4">
-		{#each posts as post (post.data.title)}
+		{#each posts.slice(0, 6) as post (post.data.title)}
 			<PostCard {...post.data} href="/posts/{post.slug}" />
 		{/each}
 	</div>
+	<a href="/posts" class="uppercase font-mono text-pink-950 hover:text-pink-800 transition-colors text-sm">
+		&#8213 See more
+	</a>
 </section>
