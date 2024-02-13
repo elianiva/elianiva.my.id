@@ -1,7 +1,4 @@
 <script lang="ts">
-	import GithubIcon from "~/icons/GithubIcon.svelte";
-	import ArrowRightUpIcon from "~/icons/ArrowRightUpIcon.svelte";
-
 	export let title: string;
 	export let description: string;
 	export let href: string;

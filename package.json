@@ -35,6 +35,7 @@
     "@unocss/preset-wind": "^0.58.5",
     "@unocss/reset": "^0.58.5",
     "eslint": "^8.56.0",
+    "eslint-plugin-svelte": "^2.35.1",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-svelte": "^3.1.2",

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CalendarIcon from "~/icons/CalendarIcon.svelte";
+	import CalendarIcon from "~icons/ph/calendar-blank";
 
 	export let title: string;
 	export let description: string;

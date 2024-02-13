@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ArrowDownIcon from "~/icons/ArrowDownIcon.svelte";
+	import ArrowDownIcon from "~icons/ph/arrow-circle-down";
 
 	export let expanded: boolean;
 	export let onClick: () => void;
