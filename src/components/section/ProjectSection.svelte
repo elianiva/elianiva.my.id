@@ -13,7 +13,7 @@
 	<p class="text-xs md:text-base font-serif text-pink-950/70 pt-2 pb-4">
 		{description}
 	</p>
-	<div class="relative grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-3 pb-4">
+	<div class="relative grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-3 pb-4">
 		{#each projects as project (project.data.title)}
 			<ProjectCard
 				title={project.data.title}

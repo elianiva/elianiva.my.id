@@ -12,16 +12,16 @@
 	<a
 		rel="prefetch"
 		{href}
-		class="grid grid-rows-[auto_2rem_5rem_2rem] no-underline h-full"
+		class="grid grid-rows-[auto_2rem_auto_2rem] no-underline h-full"
 	>
 		<h3
-			class="font-serif text-lg font-bold capitalize text-pink-950 hover:text-pink-800 transition-property-color duration-100 ease-out"
+			class="font-serif md:text-lg font-bold capitalize text-pink-950 hover:text-pink-800 transition-property-color duration-100 ease-out"
 		>
 			{title}
 		</h3>
-		<div class="font-mono flex gap-2 items-center text-pink-950/70 border-b border-dashed border-pink-300">
+		<div class="text-xs md:text-sm font-mono flex gap-2 items-center text-pink-950/70 border-b border-dashed border-pink-300">
 			<CalendarIcon className="w-4 h-4 block"/>
-			<span class="text-[0.8rem]">
+			<span>
 				{date.toLocaleDateString("en-GB", {
 					day: "numeric",
 					month: "long",
@@ -34,7 +34,7 @@
 		</p>
 		<div class="flex gap-2 self-end">
 			{#each tags as tag}
-				<div class="text-sm font-mono text-pink-950/70">#{tag}</div>
+				<div class="text-xs md:text-sm font-mono text-pink-950/70">#{tag}</div>
 			{/each}
 		</div>
 	</a>

@@ -11,7 +11,7 @@
 		Even though I don't write often, I try to share my thoughts and experiences from time to time. Hope you find
 		them useful!
 	</p>
-	<div class="relative grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-3 pb-4">
+	<div class="relative grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-3 pb-4">
 		{#each posts.slice(0, 6) as post (post.data.title)}
 			<PostCard {...post.data} href="/posts/{post.slug}" />
 		{/each}
