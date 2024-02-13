@@ -50,7 +50,19 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 					))}
 				</div>
 			</div>
-			<div class="w-24 h-24 md:w-36 md:h-36 bg-pink-100 rounded-lg"></div>
+			<a
+				href={siteData.github}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="relative w-24 h-24 md:w-36 md:h-36 bg-pink-100 border border-pink-300 rounded-lg"
+			>
+				<img
+					src="https://avatars.githubusercontent.com/u/51877647?v=4"
+					alt="@elianiva"
+					class="w-full h-full object-cover rounded-lg"
+				/>
+				<div class="absolute inset-0 bg-pink-300/25 rounded-lg" />
+			</a>
 		</header>
 		<section class="pt-6 md:pt-10">
 			<h2 class="text-xl md:text-2xl font-bold font-serif text-pink-950 pb-4">About Me</h2>
@@ -58,7 +70,8 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 				A software engineer with over 4 years of experience in software development. My experience mostly
 				consists of web development, but I'm open to other platforms as long as it helps people solve their
 				problems. I work mostly with Typescript, React, Svelte, and Node.js. Currently an undergraduate studying
-				Informatics Engineering at State Polytechnic of Malang. Speaks Indonesian and English fluently, currently
+				Informatics Engineering at State Polytechnic of Malang. Speaks Indonesian and English fluently,
+				currently
 				learning Japanese.
 			</p>
 		</section>
