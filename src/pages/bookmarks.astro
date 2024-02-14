@@ -15,11 +15,11 @@ const renderedBookmarks = await Promise.all(sortedBookmarks.map(async (bookmark)
 	<section class="mx-auto max-w-[920px] px-4 py-10">
 		<BackButton />
 		<h1
-			class="font-serif relative inline-block text-3xl font-bold text-pink-950 mt-4"
+			class="font-serif relative inline-block text-xl md:text-3xl font-bold text-pink-950 mt-4"
 		>
 			Bookmarks / Today I Learned
 		</h1>
-		<p class="text-xs md:text-base font-serif text-pink-950/70 pt-2 pb-4">
+		<p class="text-sm md:text-base font-serif text-pink-950/70 pt-2 pb-4">
 			Well, seems like you've found this not-so-secret page :) <br> This is where I keep my bookmarks or things
 			that I learned. It's meant to be a public archive of things that I find interesting and useful whether it be
 			an article, random thoughts, videos, literally anything. I hope you find something useful here too!
@@ -28,13 +28,13 @@ const renderedBookmarks = await Promise.all(sortedBookmarks.map(async (bookmark)
 			{renderedBookmarks.map((bookmark) => (
 				<div>
 					<div
-						class="relative flex items-center h-9 px-2 font-serif text-xl font-bold text-pink-950 leading-none bg-pink-300/30 rounded-sm"
+						class="relative flex items-center min-h-9 p-2 leading-none bg-pink-300/30 rounded-sm"
 					>
 						<div class="absolute top-0 -left-5 w-4 h-4 bg-sky-300/50 rounded-sm" />
 						<div class="absolute top-5 -left-5 w-4 h-4 bg-yellow-300/50 rounded-sm" />
-						<h2>{bookmark.title}</h2>
+						<h2 class="text-lg md:text-xl font-bold font-serif text-pink-950">{bookmark.title}</h2>
 					</div>
-					<div class="font-serif text-pink-950 prose -my-2 max-w-full">
+					<div class="text-sm md:text-base font-serif text-pink-950 prose -my-2 max-w-full">
 						<bookmark.Content />
 					</div>
 					{bookmark.url !== null && (
@@ -42,7 +42,7 @@ const renderedBookmarks = await Promise.all(sortedBookmarks.map(async (bookmark)
 							href={bookmark.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="font-mono text-pink-950 text-sm underline"
+							class="font-mono text-pink-950 text-xs md:text-sm underline"
 						>
 							{bookmark.url}
 						</a>
