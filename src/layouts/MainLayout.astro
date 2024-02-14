@@ -33,7 +33,11 @@ const { seo } = Astro.props;
 	<body class="h-full bg-white p-4 md:p-10">
 		<div class="fixed z-50 top-0 left-0 w-full h-2 bg-pink-300"></div>
 		<div class="fixed z-50 top-0 left-0 w-40 h-4 bg-sky-300"></div>
-		<div class="fixed z-50 top-0 left-0 w-20 h-6 bg-yellow-300"></div>
+		<div
+			class="fixed z-50 top-0 left-0 w-20 h-6 bg-yellow-300 group cursor-pointer flex items-center justify-center"
+		>
+			<a href="/bookmarks" class="invisible group-hover:visible text-xs text-yellow-700">bookmarks</a>
+		</div>
 		<div class="fixed bg-gradient-to-t from-pink-300/10 to-transparent inset-0 -z-1"></div>
 		<slot />
 	</body>

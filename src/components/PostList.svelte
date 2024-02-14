@@ -48,7 +48,7 @@
 		{/each}
 	</div>
 {/if}
-<div class="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-5 mt-4">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-5 mt-4">
 	{#each filteredPosts as post}
 		<PostCard {...post} href="/posts/{post.slug}" />
 	{/each}

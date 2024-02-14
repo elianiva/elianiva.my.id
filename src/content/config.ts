@@ -24,7 +24,16 @@ const projectCollection = defineCollection({
 	}),
 });
 
+const bookmarkCollection = defineCollection({
+	schema: z.object({
+		title: z.string(),
+		url: z.string().nullable().default(null),
+		date: z.coerce.date(),
+	}),
+})
+
 export const collections = {
 	projects: projectCollection,
 	posts: postCollection,
+	bookmarks: bookmarkCollection,
 };

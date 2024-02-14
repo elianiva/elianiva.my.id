@@ -135,7 +135,44 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"posts": {
+		"bookmarks": {
+"3d-game-shaders.mdx": {
+	id: "3d-game-shaders.mdx";
+  slug: "3d-game-shaders";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"book-of-shaders.mdx": {
+	id: "book-of-shaders.mdx";
+  slug: "book-of-shaders";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"distributed-system-reading-list.mdx": {
+	id: "distributed-system-reading-list.mdx";
+  slug: "distributed-system-reading-list";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"how-to-read-papers.mdx": {
+	id: "how-to-read-papers.mdx";
+  slug: "how-to-read-papers";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"intro-to-sql.mdx": {
+	id: "intro-to-sql.mdx";
+  slug: "intro-to-sql";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+};
+"posts": {
 "2bwm.mdx": {
 	id: "2bwm.mdx";
   slug: "2bwm";

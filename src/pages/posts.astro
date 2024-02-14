@@ -2,15 +2,17 @@
 import { getCollection } from "astro:content";
 import PostList from "../components/PostList.svelte";
 import MainLayout from "~/layouts/MainLayout.astro";
+import BackButton from "../components/BackButton.astro";
 
 const posts = await getCollection("posts", ({ data }) => !data.draft);
 const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 ---
 
 <MainLayout seo={{ title: "Posts" }}>
-	<section class="max-w-[1080px] mx-auto py-8 px-4 text-center">
+	<section class="mx-auto max-w-[920px] px-4 py-10">
+		<BackButton />
 		<h1
-			class="font-serif uppercase relative inline-block text-3xl font-bold text-pink-950 mb-10 "
+			class="font-serif uppercase relative inline-block text-3xl font-bold text-pink-950 my-6"
 		>
 			All Posts
 		</h1>
