@@ -4,6 +4,7 @@ import EnvelopeIcon from "~icons/ph/envelope-duotone";
 import GithubLogoIcon from "~icons/ph/github-logo-duotone";
 import LinkedinLogoIcon from "~icons/ph/linkedin-logo-duotone";
 import TwitterLogoIcon from "~icons/ph/twitter-logo-duotone";
+import CvLogoIcon from '~icons/ph/read-cv-logo-duotone'
 import MainLayout from "~/layouts/MainLayout.astro";
 import siteData from "~/data/sites";
 import WorkExperienceSection from "~/components/section/WorkExperienceSection.svelte";
@@ -12,10 +13,11 @@ import BlogSection from "~/components/section/BlogSection.svelte";
 import { workExperiences } from "~/data/work-experience";
 
 const socials = [
-	{ icon: EnvelopeIcon, link: siteData.email },
-	{ icon: GithubLogoIcon, link: siteData.github },
-	{ icon: LinkedinLogoIcon, link: siteData.linkedin },
-	{ icon: TwitterLogoIcon, link: siteData.twitter },
+	{ icon: EnvelopeIcon, link: siteData.email, label: "Email" },
+	{ icon: GithubLogoIcon, link: siteData.github, label: "Github" },
+	{ icon: LinkedinLogoIcon, link: siteData.linkedin, label: "LinkedIn" },
+	{ icon: TwitterLogoIcon, link: siteData.twitter, label: "Twitter" },
+	{ icon: CvLogoIcon, link: siteData.cv, label: "Read my CV" },
 ]
 
 const personalProjects = await getCollection("projects", ({ data }) => data.type === "personal" && data.featured);
@@ -44,6 +46,8 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 						<a
 							href={social.link}
 							class="text-pink-950/80 hover:text-pink-950 p-1 rounded-md border border-pink-300"
+							target="_blank"
+							rel="noopener noreferrer"
 						>
 							<social.icon />
 						</a>
