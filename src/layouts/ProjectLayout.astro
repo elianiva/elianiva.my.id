@@ -30,7 +30,7 @@ const { frontmatter, slug } = Astro.props as Props;
 			<div class="overflow-hidden border border-dashed border-pink-300 rounded-md overflow-hidden">
 				{frontmatter.hasImage ? (
 					<img
-						src={`/assets/projects/${slug}/cover.jpg`}
+						src={`/assets/projects/${slug}/cover.webp`}
 						alt={frontmatter.title}
 						class="block w-full h-full bg-pink-100"
 						loading="lazy"
