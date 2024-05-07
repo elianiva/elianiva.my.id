@@ -143,6 +143,13 @@ declare module 'astro:content' {
   collection: "bookmarks";
   data: InferEntrySchema<"bookmarks">
 } & { render(): Render[".mdx"] };
+"bloom-filters.mdx": {
+	id: "bloom-filters.mdx";
+  slug: "bloom-filters";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
 "book-of-shaders.mdx": {
 	id: "book-of-shaders.mdx";
   slug: "book-of-shaders";
@@ -150,9 +157,44 @@ declare module 'astro:content' {
   collection: "bookmarks";
   data: InferEntrySchema<"bookmarks">
 } & { render(): Render[".mdx"] };
+"clean-code-summary.mdx": {
+	id: "clean-code-summary.mdx";
+  slug: "clean-code-summary";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
 "distributed-system-reading-list.mdx": {
 	id: "distributed-system-reading-list.mdx";
   slug: "distributed-system-reading-list";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"fix-fedora-deep-sleep.mdx": {
+	id: "fix-fedora-deep-sleep.mdx";
+  slug: "fix-fedora-deep-sleep";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"go-http-service.mdx": {
+	id: "go-http-service.mdx";
+  slug: "go-http-service";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"google-sre-book.mdx": {
+	id: "google-sre-book.mdx";
+  slug: "google-sre-book";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"hashing.mdx": {
+	id: "hashing.mdx";
+  slug: "hashing";
   body: string;
   collection: "bookmarks";
   data: InferEntrySchema<"bookmarks">
@@ -167,6 +209,27 @@ declare module 'astro:content' {
 "intro-to-sql.mdx": {
 	id: "intro-to-sql.mdx";
   slug: "intro-to-sql";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"java-vs-go-gc.mdx": {
+	id: "java-vs-go-gc.mdx";
+  slug: "java-vs-go-gc";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"mastering-programming.mdx": {
+	id: "mastering-programming.mdx";
+  slug: "mastering-programming";
+  body: string;
+  collection: "bookmarks";
+  data: InferEntrySchema<"bookmarks">
+} & { render(): Render[".mdx"] };
+"ruangguru-engineering-academy.mdx": {
+	id: "ruangguru-engineering-academy.mdx";
+  slug: "ruangguru-engineering-academy";
   body: string;
   collection: "bookmarks";
   data: InferEntrySchema<"bookmarks">
