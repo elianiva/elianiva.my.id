@@ -5,6 +5,7 @@ export const workExperiences: WorkExperience[] = [
 		company: "PT Global Scholarship Services Indonesia (IPBTraining)",
 		position: "Fullstack Web Developer",
 		type: "remote",
+		time: "full-time",
 		period: [new Date(2024, 3), null],
 		details: [
 			"Initiated the use of Github Action for CI/CD pipeline",
@@ -24,6 +25,7 @@ export const workExperiences: WorkExperience[] = [
 		company: "PT Healstation Indonesia",
 		position: "Fullstack Web Developer",
 		type: "remote",
+		time: "freelance",
 		period: [new Date(2023, 0), new Date(2023, 3)],
 		details: [
 			"Building Content Management System for a South Korean mobile app that accommodates car, camp car, and camping site rent in one app",
@@ -45,6 +47,7 @@ export const workExperiences: WorkExperience[] = [
 		company: "Cubix Branding Agency",
 		position: "Fullstack Web Developer",
 		type: "remote",
+		time: "contract",
 		period: [new Date(2022, 5), new Date(2023, 2)],
 		details: [
 			"Developed three responsive websites for Artajasa, ATMBersama, and Bersama respectively based on the provided design on Figma",
@@ -67,6 +70,7 @@ export const workExperiences: WorkExperience[] = [
 		company: "<Undisclosed>",
 		position: "Fullstack Web Developer",
 		type: "remote",
+		time: "freelance",
 		period: [new Date(2021, 11), new Date(2022, 8)],
 		details: [
 			"Built a platform to do programming test similar to Codewars and HackerRank with multilingual support that also tracks the user activity such as mouse clicks, mouse movements, keystroke events, etc. since its main purpose is to collect data to be then used for research. Now published as teknologi-umum/spectator",
@@ -97,6 +101,7 @@ export const workExperiences: WorkExperience[] = [
 		company: "Enam Dua Teknologi",
 		position: "Frontend Web Developer",
 		type: "remote",
+		time: "freelance",
 		period: [new Date(2022, 5), new Date(2022, 7)],
 		details: [
 			"Developed a Task Management System for J99 Corp. Holding similar to Jira using React, React Hook Form, React Query, Typescript, and ChakraUI",

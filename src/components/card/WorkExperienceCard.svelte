@@ -3,6 +3,7 @@
 
 	export let company: string;
 	export let type: string;
+	export let time: string;
 	export let position: string;
 	export let period: [start: Date, end: Date];
 	export let details: string[];
@@ -12,21 +13,24 @@
 <div transition:fade>
 	<div class="flex flex-col md:flex-row items-start justify-between">
 		<div>
-			<div class="flex items-center gap-2">
+			<div class="flex flex-col md:flex-row items-start md:items-center md:gap-2 py-2 md:py-0">
 				<h3 class="font-bold font-serif md:text-lg text-pink-950">
 					{company}
 				</h3>
-				<span class="text-xs px-2 py-1 rounded-sm bg-pink-100 font-mono uppercase">{type}</span>
+				<div class="flex items-center gap-2 pt-1 md:pt-0">
+					<span class="text-xs px-2 py-1 rounded-sm bg-pink-100 font-mono uppercase">{type}</span>
+					<span class="text-xs px-2 py-1 rounded-sm bg-pink-100 font-mono uppercase">{time}</span>
+				</div>
 			</div>
 			<span class="text-sm md:text-base font-mono text-pink-950">{position}</span>
 		</div>
 		<span class="text-pink-950/80 font-mono text-sm md:text-base">
-			{period[0].toLocaleDateString("en-GB", {month: "short", year: "numeric"})}
+			{period[0].toLocaleDateString("en-GB", { month: "short", year: "numeric" })}
 			-
 			{#if period[1] === null}
 				Present
 			{:else}
-				{period[1].toLocaleDateString("en-GB", {month: "short", year: "numeric"})}
+				{period[1].toLocaleDateString("en-GB", { month: "short", year: "numeric" })}
 			{/if}
 		</span>
 	</div>
