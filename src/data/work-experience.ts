@@ -2,6 +2,25 @@ import type { WorkExperience } from "~/models/work-experience.ts";
 
 export const workExperiences: WorkExperience[] = [
 	{
+		company: "PT Global Scholarship Services Indonesia (IPBTraining)",
+		position: "Fullstack Web Developer",
+		type: "remote",
+		period: [new Date(2024, 3), null],
+		details: [
+			"Initiated the use of Github Action for CI/CD pipeline",
+			"Used Javascript and Typescript to build and maintain learning platform",
+			"Instrumented Sentry for better tracing and better error reporting to improve bug fixing downtime.",
+		],
+		technologies: [
+			"typescript",
+			"nodejs",
+			"nextjs",
+			"laravel",
+			"mysql",
+			"docker"
+		]
+	},
+	{
 		company: "PT Healstation Indonesia",
 		position: "Fullstack Web Developer",
 		type: "remote",

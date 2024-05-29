@@ -23,7 +23,11 @@
 		<span class="text-pink-950/80 font-mono text-sm md:text-base">
 			{period[0].toLocaleDateString("en-GB", {month: "short", year: "numeric"})}
 			-
-			{period[1].toLocaleDateString("en-GB", {month: "short", year: "numeric"})}
+			{#if period[1] === null}
+				Present
+			{:else}
+				{period[1].toLocaleDateString("en-GB", {month: "short", year: "numeric"})}
+			{/if}
 		</span>
 	</div>
 	<ul class="pt-2 list-disc list-outside pl-4">
