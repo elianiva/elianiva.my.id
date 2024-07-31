@@ -10,7 +10,8 @@ export const workExperiences: WorkExperience[] = [
 		details: [
 			"Initiated the use of Github Action for CI/CD pipeline",
 			"Used Javascript and Typescript to build and maintain learning platform",
-			"Instrumented Sentry for better tracing and better error reporting to improve bug fixing downtime.",
+			"Instrumented Sentry for better tracing and better error reporting to improve bug fixing downtime",
+			"Developed a multi-tenant CMS similar to SkillAcademy by RuangGuru using Laravel",
 		],
 		technologies: [
 			"typescript",
