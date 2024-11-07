@@ -35,11 +35,12 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 		<header class="flex border-b border-pink-800 border-dashed border-spacing-lg pb-6">
 			<div class="flex-1">
 				<h1 class="text-xl md:text-2xl font-bold font-serif text-pink-950">
-          Dicha Z<span class="text-pink-700" title="Yes, this is where the username comes from">elianiva</span>n Arkana
-        </h1>
+					Dicha Z<span class="text-pink-700" title="Yes, this is where the username comes from">elianiva</span
+					>n Arkana
+				</h1>
 				<p class="text-sm md:text-base leading-relaxed font-serif text-pink-950/80 py-2 max-w-60ch">
 					Software Engineer, Open Source Enthusiast, and a lifetime learner. I love to build things that
-          solves problems and make people's life easier. Great to see you here! :)
+					solves problems and make people's life easier. Great to see you here! :)
 				</p>
 				<div class="flex items-center gap-2 pt-2">
 					{
@@ -73,23 +74,23 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 		<section class="pt-6 md:pt-10">
 			<h2 class="text-xl md:text-2xl font-bold font-serif text-pink-950 pb-4">About Me</h2>
 			<p class="text-sm md:text-base leading-relaxed font-serif text-pink-950/80">
-				A software engineer with over 4 years of experience in software development. My experience mostly
-				consists of web development, but I'm open to other platforms as long as it helps people solve their
-				problems. I work mostly with Typescript, React, Svelte, and Node.js. Currently an undergraduate studying
-				Informatics Engineering at State Polytechnic of Malang. Speaks Indonesian and English fluently,
-				currently learning Japanese.
+				I'm a software engineer based in Indonesia with over 4 years of experience in software development. Most
+				of the things I built are web applications, but I'm open to other platforms as long as it helps people
+				solve their problems. I usually use Typescript along with whatever today's frameworks are (I've lost
+				count), though I'm currently exploring low-level stuff and functional programming. I speak Indonesian
+				and English fluently and currently learning 日本語.
 			</p>
 		</section>
 		<WorkExperienceSection client:visible workExperiences={workExperiences} />
 		<ProjectSection
 			title="Personal Projects"
-			description="These are some of my personal projects that I made in the past. Some of them are still in use, some are not. Mostly made them just for fun and to learn new things."
+			description="These are some of my personal projects that I made in the past. Some of them are still in use, some are not. Mostly made them just for fun and to learn new things!"
 			projects={sortedPersonalProjects}
 			seeMoreUrl="/projects"
 		/>
 		<ProjectSection
 			title="Open Source Projects"
-			description="These are some open source projects that I actively help maintain. Most of them are from Teknologi Umum, a community that I'm part of."
+			description="These are some open source projects that I actively help to maintain."
 			projects={sortedOpenSourceProjects}
 		/>
 		<BlogSection client:visible posts={sortedPosts} />
