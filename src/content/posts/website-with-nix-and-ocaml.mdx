@@ -1,0 +1,57 @@
+---
+title: Building a website using Nix and OCaml
+date: 2024-11-05
+description: Exploring OCaml and Nix to build a website
+tags:
+    - nix
+    - ocaml
+    - website
+---
+
+Hey!
+
+It has been a while since I've written anything on this blog hahah. It's been about
+2 years since my last post, I've been really busy with college and work so I
+haven't got much time to write anything (or do anything besides work and college, really).
+
+It's been quite stressful recently since I can't really do what I want to do anymore.
+It's just an endless cycle of work and college (which is doing stuff I already know, it gets boring quite fast).
+I don't get to write anything interesting, just a bunch of boring stuff and I don't feel like I'm learning something new.
+So, I decided to take a break from it and do different things to learn something new.
+
+A while ago, I started to use [Nix](https://nixos.org/) (again) to manage my dependencies. I
+like the fact that Nix is declarative and being able to define dependencies, config, etc in a file
+making it reproducible. Overall I like Nix a lot, minus the fact that it's using a lot of
+storage space since each package (or derivation in Nix lingo) is stored in a separate
+directory.
+
+I've used Nix before but I didn't really use it for development environment, I just used it
+to manage my dotfiles and packages. This time though, I want to try using it to manage my development
+environment. I've also been wanting to try out [OCaml](https://ocaml.org) for a while, so I thought
+why not use Nix to manage my OCaml environment, that shouldn't be too hard right?
+(inb4 I spent several hours configuring things due to lack of documentation lol)
+
+> **DISCLAIMER**:
+> I would assume you already somewhat familiar with Nix, if not, here's a few resources to get you started:
+> - [Nix in 100 Seconds](https://youtu.be/FJVFXsNzYZQ?si=rfHV_4I8hVG0QaJf)
+> - [Zero to Nix](https://zero-to-nix.com/)
+
+# Why Nix for development?
+
+> Why can't I just do `sudo dnf install nodejs` and go on with my life? Why this esoteric thing?
+> Why can't I just use `docker` and use it to run my development environment?
+
+Well, there are several reasons for that, I'm not going to go into detail about them, but basically,
+using Nix to manage your development environment makes it reproducible.
+What I mean by that is, if there's someone who wants to contribute, or you want to continue
+the development in another machine, you can just do `nix develop` and it will give you
+a shell with everything you need to start developing.
+
+For now let's just stick with that, I don't want to go into details about Nix, there's already
+a lot of articles and videos out there that explains it much better than me. I've listed
+few of them below:
+
+- [Per-Project Development Environments with Nix](https://mtlynch.io/notes/nix-dev-environment/)
+- [devenv.sh](https://devenv.sh/) - A wrapper around Nix to make it easier to manage your dev environment
+- [Managing development environments with Nix](https://jeffkreeftmeijer.com/nix-devshells/)
+- [Explore Nix development environments](https://zero-to-nix.com/start/nix-develop)

@@ -3,8 +3,8 @@ import { getCollection } from "astro:content";
 import EnvelopeIcon from "~icons/ph/envelope-duotone";
 import GithubLogoIcon from "~icons/ph/github-logo-duotone";
 import LinkedinLogoIcon from "~icons/ph/linkedin-logo-duotone";
-import TwitterLogoIcon from "~icons/ph/twitter-logo-duotone";
-import CvLogoIcon from '~icons/ph/read-cv-logo-duotone'
+import ButterflyIcon from "~icons/ph/butterfly-duotone";
+import CvLogoIcon from "~icons/ph/read-cv-logo-duotone";
 import MainLayout from "~/layouts/MainLayout.astro";
 import siteData from "~/data/sites";
 import WorkExperienceSection from "~/components/section/WorkExperienceSection.svelte";
@@ -16,9 +16,9 @@ const socials = [
 	{ icon: EnvelopeIcon, link: siteData.email, label: "Email" },
 	{ icon: GithubLogoIcon, link: siteData.github, label: "Github" },
 	{ icon: LinkedinLogoIcon, link: siteData.linkedin, label: "LinkedIn" },
-	{ icon: TwitterLogoIcon, link: siteData.twitter, label: "Twitter" },
+	{ icon: ButterflyIcon, link: siteData.bluesky, label: "Bluesky" },
 	{ icon: CvLogoIcon, link: siteData.cv, label: "Read my CV" },
-]
+];
 
 const personalProjects = await getCollection("projects", ({ data }) => data.type === "personal" && data.featured);
 const sortedPersonalProjects = personalProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
@@ -35,23 +35,25 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 		<header class="flex border-b border-pink-800 border-dashed border-spacing-lg pb-6">
 			<div class="flex-1">
 				<h1 class="text-xl md:text-2xl font-bold font-serif text-pink-950">
-					Dicha Zelianivan Arkana
-				</h1>
+          Dicha Z<span class="text-pink-700" title="Yes, this is where the username comes from">elianiva</span>n Arkana
+        </h1>
 				<p class="text-sm md:text-base leading-relaxed font-serif text-pink-950/80 py-2 max-w-60ch">
-					A software engineer focusing on delivering high-quality software that helps people to solve their
-					problems.
+					Software Engineer, Open Source Enthusiast, and a lifetime learner. I love to build things that
+          solves problems and make people's life easier. Great to see you here! :)
 				</p>
 				<div class="flex items-center gap-2 pt-2">
-					{socials.map((social) => (
-						<a
-							href={social.link}
-							class="text-pink-950/80 hover:text-pink-950 p-1 rounded-md border border-pink-300"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<social.icon />
-						</a>
-					))}
+					{
+						socials.map((social) => (
+							<a
+								href={social.link}
+								class="text-pink-950/80 hover:text-pink-950 p-1 rounded-md border border-pink-300"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<social.icon />
+							</a>
+						))
+					}
 				</div>
 			</div>
 			<a
@@ -65,7 +67,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 					alt="@elianiva"
 					class="w-full h-full object-cover rounded-lg"
 				/>
-				<div class="absolute inset-0 bg-pink-300/25 rounded-lg" />
+				<div class="absolute inset-0 bg-pink-300/25 rounded-lg"></div>
 			</a>
 		</header>
 		<section class="pt-6 md:pt-10">
@@ -75,8 +77,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 				consists of web development, but I'm open to other platforms as long as it helps people solve their
 				problems. I work mostly with Typescript, React, Svelte, and Node.js. Currently an undergraduate studying
 				Informatics Engineering at State Polytechnic of Malang. Speaks Indonesian and English fluently,
-				currently
-				learning Japanese.
+				currently learning Japanese.
 			</p>
 		</section>
 		<WorkExperienceSection client:visible workExperiences={workExperiences} />
