@@ -1,5 +1,5 @@
 {
-  description = "Skilly - IPB Training";
+  description = "elianiva.my.id";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
