@@ -1,17 +1,32 @@
 ---
 import { getCollection } from "astro:content";
-import MainLayout from "~/layouts/MainLayout.astro";
-import ProjectSection from "~/components/section/ProjectSection.svelte";
 import BackButton from "~/components/BackButton.astro";
+import ProjectSection from "~/components/section/ProjectSection.svelte";
+import MainLayout from "~/layouts/MainLayout.astro";
 
-const personalProjects = await getCollection("projects", ({ data }) => data.type === "personal");
-const sortedPersonalProjects = personalProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+const personalProjects = await getCollection(
+	"projects",
+	({ data }) => data.type === "personal",
+);
+const sortedPersonalProjects = personalProjects.sort((a, b) =>
+	a.data.date > b.data.date ? -1 : 1,
+);
 
-const openSourceProjects = await getCollection("projects", ({ data }) => data.type === "open-source");
-const sortedOpenSourceProjects = openSourceProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+const openSourceProjects = await getCollection(
+	"projects",
+	({ data }) => data.type === "open-source",
+);
+const sortedOpenSourceProjects = openSourceProjects.sort((a, b) =>
+	a.data.date > b.data.date ? -1 : 1,
+);
 
-const assignmentProjects = await getCollection("projects", ({ data }) => data.type === "assignment");
-const sortedAssignmentProjects = assignmentProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+const assignmentProjects = await getCollection(
+	"projects",
+	({ data }) => data.type === "assignment",
+);
+const sortedAssignmentProjects = assignmentProjects.sort((a, b) =>
+	a.data.date > b.data.date ? -1 : 1,
+);
 ---
 
 <MainLayout seo={{ title: "Projects" }}>

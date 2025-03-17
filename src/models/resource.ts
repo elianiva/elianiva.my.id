@@ -6,16 +6,22 @@ export class ResourceBase {
 	public readonly description: string;
 	public readonly date: string;
 
-	public constructor(data: MDXInstance<Record<string, any>>) {
+	public constructor(data: MDXInstance<Record<string, string>>) {
 		if (!("url" in data) || data.url === undefined || data.url?.length === 0) {
 			throw new Error("url is required");
 		}
 
-		if (!("title" in data.frontmatter) || data.frontmatter.title?.length === 0) {
+		if (
+			!("title" in data.frontmatter) ||
+			data.frontmatter.title?.length === 0
+		) {
 			throw new Error("title is required");
 		}
 
-		if (!("description" in data.frontmatter) || data.frontmatter.description?.length === 0) {
+		if (
+			!("description" in data.frontmatter) ||
+			data.frontmatter.description?.length === 0
+		) {
 			throw new Error("description is required");
 		}
 
@@ -30,7 +36,9 @@ export class ResourceBase {
 	}
 
 	public static sortByDate<T extends ResourceBase>(resources: T[]): T[] {
-		return resources.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+		return resources.sort((a, b) =>
+			new Date(a.date) < new Date(b.date) ? 1 : -1,
+		);
 	}
 
 	private transformUrlToSlug(url: string): string {

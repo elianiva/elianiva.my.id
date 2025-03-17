@@ -4,11 +4,15 @@ import MainLayout from "~/layouts/MainLayout.astro";
 import BackButton from "../components/BackButton.astro";
 
 const bookmarks = await getCollection("bookmarks");
-const sortedBookmarks = bookmarks.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
-const renderedBookmarks = await Promise.all(sortedBookmarks.map(async (bookmark) => {
-	const { Content } = await bookmark.render();
-	return { ...bookmark.data, Content };
-}));
+const sortedBookmarks = bookmarks.sort((a, b) =>
+	a.data.date > b.data.date ? -1 : 1,
+);
+const renderedBookmarks = await Promise.all(
+	sortedBookmarks.map(async (bookmark) => {
+		const { Content } = await bookmark.render();
+		return { ...bookmark.data, Content };
+	}),
+);
 ---
 
 <MainLayout seo={{ title: "Bookmarks" }}>

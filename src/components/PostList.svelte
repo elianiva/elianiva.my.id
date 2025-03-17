@@ -1,3 +1,58 @@
+<script lang="ts">
+import { fly } from "svelte/transition";
+import PostCard from "~/components/card/PostCard.svelte";
+import type { PostMeta } from "~/models/post";
+
+const inputBox: HTMLInputElement | null = null;
+let keyword = "";
+let tagKeyword = "";
+const tagFilter: string[] = [];
+let isCompletionVisible = false;
+
+type PostMetaWithSlug = PostMeta & { slug: string };
+
+let filteredPosts: PostMetaWithSlug[] = [];
+export const posts: PostMetaWithSlug[] = [];
+
+// count available tags and insert it to an object
+// ex: [a, a, b, b, b] -> { a: 2, b: 3 }
+const tags = posts.flatMap((post) => post.tags);
+const count = tags.reduce(
+	(acc, curr) => {
+		acc[curr] = (acc[curr] || 0) + 1;
+		return acc;
+	},
+	{} as Record<string, number>,
+);
+
+$: filteredPosts = posts.filter((post) => {
+	const query = keyword.substring(1).toLowerCase();
+
+	const title = post.title.toLowerCase().includes(query);
+	const slug = post.slug.toLowerCase().includes(query);
+	const tags = tagFilter.every((x) => post.tags.includes(x));
+	return (title || slug) && tags;
+});
+$: uniqueTags = [...new Set(tags)].filter((tag) =>
+	tag.match(new RegExp(tagKeyword.substring(1))),
+);
+
+function filterPost(event: Event) {
+	const inputValue = (event.currentTarget as HTMLInputElement).value;
+
+	// always reset the completion visibility
+	isCompletionVisible = false;
+
+	if (!inputValue.match(/^#/)) {
+		keyword = inputValue;
+		return;
+	}
+
+	tagKeyword = inputValue;
+	isCompletionVisible = true;
+}
+</script>
+
 <div class="relative">
 	<input
 		class="block font-serif mx-auto my-0 w-full p-3 bg-transparent border-dashed border border-pink-300 outline-none text-pink-950 placeholder:text-pink-950/70"
@@ -42,7 +97,10 @@
 {#if tagFilter.length > 0}
 	<div class="flex items-center gap-4 mt-2">
 		{#each tagFilter as filter}
-			<button class="py-2 px-4 text-sm font-mono text-pink-950 border border-dashed border-pink-300" on:click={() => (tagFilter = tagFilter.filter((x) => x !== filter))}>
+			<button
+				class="py-2 px-4 text-sm font-mono text-pink-950 border border-dashed border-pink-300"
+				on:click={() => (tagFilter = tagFilter.filter((x) => x !== filter))}
+			>
 				#{filter}
 			</button>
 		{/each}
@@ -53,51 +111,3 @@
 		<PostCard {...post} href="/posts/{post.slug}" />
 	{/each}
 </div>
-
-
-<script lang="ts">
-	import { fly } from "svelte/transition";
-	import type { PostMeta } from "~/models/post";
-	import PostCard from "~/components/card/PostCard.svelte";
-
-	let inputBox: HTMLInputElement| null = null;
-	let keyword = "";
-	let tagKeyword = "";
-	let tagFilter: string[] = [];
-	let isCompletionVisible = false;
-	
-	type PostMetaWithSlug = PostMeta & {slug: string}
-
-	let filteredPosts: PostMetaWithSlug[] = [];
-	export let posts: PostMetaWithSlug[] = [];
-
-	// count available tags and insert it to an object
-	// ex: [a, a, b, b, b] -> { a: 2, b: 3 }
-	const tags = posts.map((post) => post.tags).flat();
-	const count = tags.reduce((acc, curr) => ({ ...acc, [curr]: (acc[curr] || 0) + 1 }), {} as Record<string, number>);
-	
-	$: filteredPosts = posts.filter((post) => {
-		const query = keyword.substring(1).toLowerCase();
-	
-		const title = post.title.toLowerCase().includes(query);
-		const slug = post.slug.toLowerCase().includes(query);
-		const tags = tagFilter.every((x) => post.tags.includes(x));
-		return (title || slug) && tags;
-	});
-	$: uniqueTags = [...new Set(tags)].filter((tag) => tag.match(new RegExp(tagKeyword.substring(1))))
-	
-	function filterPost(event: Event) {
-		const inputValue = (event.currentTarget as HTMLInputElement).value
-		
-		// always reset the completion visibility
-		isCompletionVisible = false;
-	
-		if (!inputValue.match(/^#/)) {
-			keyword = inputValue;
-			return;
-		}
-	
-		tagKeyword = inputValue;
-		isCompletionVisible = true;
-	}
-	</script>

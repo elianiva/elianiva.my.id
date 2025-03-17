@@ -1,8 +1,8 @@
 <script lang="ts">
-	import ArrowDownIcon from "~icons/ph/arrow-circle-down";
+import ArrowDownIcon from "~icons/ph/arrow-circle-down";
 
-	export let expanded: boolean;
-	export let onClick: () => void;
+export let expanded: boolean;
+export let onClick: () => void;
 </script>
 
 <div class="absolute inset-0 bg-gradient-to-t {expanded ? 'from-transparent' : 'from-white'} to-transparent z-50">

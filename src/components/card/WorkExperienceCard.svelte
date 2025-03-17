@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { fade } from "svelte/transition"
+import { fade } from "svelte/transition";
 
-	export let company: string;
-	export let type: string;
-	export let time: string;
-	export let position: string;
-	export let period: [start: Date, end: Date];
-	export let details: string[];
-	export let technologies: string[];
+export let company: string;
+export let type: string;
+export let time: string;
+export let position: string;
+export let period: [start: Date, end: Date];
+export let details: string[];
+export let technologies: string[];
 </script>
 
 <div transition:fade>

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import ProjectCard from "~/components/card/ProjectCard.svelte";
-	import type { Project } from "~/models/project.ts";
+import ProjectCard from "~/components/card/ProjectCard.svelte";
+import type { Project } from "~/models/project.ts";
 
-	export let projects: Project[];
-	export let title: string;
-	export let description: string;
-	export let seeMoreUrl: string | null = null;
+export let projects: Project[];
+export let title: string;
+export let description: string;
+export const seeMoreUrl: string | null = null;
 </script>
 
 <section class="pt-6 md:pt-10">

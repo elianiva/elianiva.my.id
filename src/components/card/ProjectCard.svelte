@@ -1,8 +1,8 @@
 <script lang="ts">
-	export let title: string;
-	export let description: string;
-	export let href: string;
-	export let stack: [stack: string, url: string][];
+export let title: string;
+export let description: string;
+export let href: string;
+export let stack: [stack: string, url: string][];
 </script>
 
 <div class="overflow-hidden text-left p-3 rounded-sm border border-dashed border-pink-300">

@@ -19,8 +19,8 @@ export const workExperiences: WorkExperience[] = [
 			"nextjs",
 			"laravel",
 			"mysql",
-			"docker"
-		]
+			"docker",
+		],
 	},
 	{
 		company: "PT Healstation Indonesia",
@@ -33,16 +33,9 @@ export const workExperiences: WorkExperience[] = [
 			"Designed the database schema along with other developer",
 			"Uses Next.js with Typescript, tRPC, Prisma, and Tailwind to maximise the development speed and user experience of the CMS",
 			"Utilises MySQL as the database and MinIO/S3 as the object storage",
-			"Using Docker for both local development setup and easy deployment solution"
+			"Using Docker for both local development setup and easy deployment solution",
 		],
-		technologies: [
-			"typescript",
-			"nextjs",
-			"trpc",
-			"mysql",
-			"minio",
-			"docker"
-		]
+		technologies: ["typescript", "nextjs", "trpc", "mysql", "minio", "docker"],
 	},
 	{
 		company: "Cubix Branding Agency",
@@ -56,16 +49,9 @@ export const workExperiences: WorkExperience[] = [
 			"Uses NextJS with Typescript to provide type-safety when developing the website. Also uses SCSS, Stitches, and SCSS Module to style each of the websites.",
 			"Applied ISR pattern to improve performance and uses SWR for easier data fetching on the client",
 			"Integrate the data that comes from Laravel with Voyager CMS to the website to provide dynamic content",
-			"Helped refactoring and fixing any bugs that occured on both the frontend and backend"
+			"Helped refactoring and fixing any bugs that occured on both the frontend and backend",
 		],
-		technologies: [
-			"typescript",
-			"nextjs",
-			"scss",
-			"php",
-			"laravel",
-			"voyager",
-		]
+		technologies: ["typescript", "nextjs", "scss", "php", "laravel", "voyager"],
 	},
 	{
 		company: "<Undisclosed>",
@@ -95,8 +81,8 @@ export const workExperiences: WorkExperience[] = [
 			"influxdb",
 			"minio",
 			"python",
-			"docker"
-		]
+			"docker",
+		],
 	},
 	{
 		company: "Enam Dua Teknologi",
@@ -110,7 +96,7 @@ export const workExperiences: WorkExperience[] = [
 			"Applied Atomic Design in React to make sharing components easier",
 			"Collaborate with other frontend and backend developers to build a task management system",
 			"Implemented Figma UI design into an interactive React UI",
-			"Uses SSE to implement notification feature"
+			"Uses SSE to implement notification feature",
 		],
 		technologies: [
 			"typescript",
@@ -118,6 +104,6 @@ export const workExperiences: WorkExperience[] = [
 			"react-hook-form",
 			"react-query",
 			"chakra-ui",
-		]
-	}
+		],
+	},
 ];

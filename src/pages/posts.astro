@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import PostList from "../components/PostList.svelte";
 import MainLayout from "~/layouts/MainLayout.astro";
 import BackButton from "../components/BackButton.astro";
+import PostList from "../components/PostList.svelte";
 
 const posts = await getCollection("posts", ({ data }) => !data.draft);
 const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));

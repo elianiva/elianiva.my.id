@@ -1,11 +1,11 @@
 <script lang="ts">
-	import CalendarIcon from "~icons/ph/calendar-blank";
+import CalendarIcon from "~icons/ph/calendar-blank";
 
-	export let title: string;
-	export let description: string;
-	export let href: string;
-	export let date: Date;
-	export let tags: string[];
+export let title: string;
+export let description: string;
+export let href: string;
+export let date: Date;
+export let tags: string[];
 </script>
 
 <div class="overflow-hidden text-left border border-dashed border-pink-300 rounded-sm p-3">

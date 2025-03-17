@@ -30,7 +30,7 @@ const bookmarkCollection = defineCollection({
 		url: z.string().nullable().default(null),
 		date: z.coerce.date(),
 	}),
-})
+});
 
 export const collections = {
 	projects: projectCollection,

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import WorkExperienceCard from "~/components/card/WorkExperienceCard.svelte";
-	import type { WorkExperience } from "~/models/work-experience.ts";
+import WorkExperienceCard from "~/components/card/WorkExperienceCard.svelte";
+import type { WorkExperience } from "~/models/work-experience.ts";
 
-	export let workExperiences: WorkExperience[];
+export let workExperiences: WorkExperience[];
 </script>
 
 <section class="pt-6 md:pt-10">
