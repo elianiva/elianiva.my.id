@@ -6,7 +6,7 @@ import type { PostMeta } from "~/models/post";
 let inputBox: HTMLInputElement | null = null;
 let keyword = "";
 let tagKeyword = "";
-const tagFilter: string[] = [];
+let tagFilter: string[] = [];
 let isCompletionVisible = false;
 
 type PostMetaWithSlug = PostMeta & { slug: string };
