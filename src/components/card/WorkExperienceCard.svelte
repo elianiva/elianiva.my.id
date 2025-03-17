@@ -43,7 +43,7 @@ export let technologies: string[];
 	</ul>
 	<ul class="flex flex-wrap items-center pt-2 gap-2">
 		{#each technologies as technology (technology)}
-			<li class="flex gap-2 items-center font-mono uppercase text-pink-950 gap-1 text-xs rounded-sm border border-dashed border-pink-400 p-1">
+			<li class="flex gap-2 items-center font-mono uppercase text-pink-950 gap-1 text-xs rounded-sm border border-dashed border-pink-400 py-1 px-2">
 				{technology}
 			</li>
 		{/each}
