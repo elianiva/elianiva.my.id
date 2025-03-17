@@ -11,39 +11,33 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ."
+    "fmt": "biome check --write ./src/*"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.2.3",
-    "@astrojs/mdx": "^4.1.0",
-    "@astrojs/svelte": "^7.0.5",
+    "@astrojs/cloudflare": "^12.2.4",
+    "@astrojs/mdx": "^4.2.0",
+    "@astrojs/svelte": "^7.0.6",
+    "@biomejs/biome": "^1.9.4",
     "@fontsource/ibm-plex-mono": "^5.2.5",
     "@fontsource/ibm-plex-serif": "^5.2.5",
     "@fontsource/inter": "^5.2.5",
     "@fontsource/jost": "^5.2.5",
     "@fontsource/lora": "^5.2.5",
-    "@fontsource/space-grotesk": "^5.2.5",
-    "astro": "^5.4.2",
+    "@fontsource/space-grotesk": "^5.2.6",
+    "astro": "^5.5.2",
     "sharp": "^0.33.5",
-    "svelte": "^5.22.6",
+    "svelte": "^5.23.1",
     "unplugin-icons": "^22.1.0"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.2",
-    "@typescript-eslint/eslint-plugin": "^8.26.0",
-    "@typescript-eslint/parser": "^8.26.0",
-    "@unocss/preset-wind": "^66.1.0-beta.3",
-    "@unocss/reset": "^66.1.0-beta.3",
-    "eslint": "^9.22.0",
-    "eslint-plugin-svelte": "^3.0.3",
-    "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-svelte": "^3.3.3",
-    "rollup": "^4.35.0",
+    "@unocss/preset-wind": "^66.1.0-beta.5",
+    "@unocss/reset": "^66.1.0-beta.5",
+    "rollup": "^4.36.0",
     "svgo": "3.3.2",
     "typescript": "^5.8.2",
-    "unocss": "^66.1.0-beta.3",
+    "unocss": "^66.1.0-beta.5",
     "unocss-preset-scrollbar": "^3.2.0",
-    "vite": "^6.2.1"
+    "vite": "^6.2.2"
   }
 }
