@@ -3,7 +3,7 @@ import { fly } from "svelte/transition";
 import PostCard from "~/components/card/PostCard.svelte";
 import type { PostMeta } from "~/models/post";
 
-const inputBox: HTMLInputElement | null = null;
+let inputBox: HTMLInputElement | null = null;
 let keyword = "";
 let tagKeyword = "";
 const tagFilter: string[] = [];
