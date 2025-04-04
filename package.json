@@ -14,27 +14,27 @@
     "fmt": "biome check --write ./src/*"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.2.4",
-    "@astrojs/mdx": "^4.2.0",
-    "@astrojs/svelte": "^7.0.6",
+    "@astrojs/cloudflare": "^12.4.0",
+    "@astrojs/mdx": "^4.2.3",
+    "@astrojs/svelte": "^7.0.9",
     "@biomejs/biome": "^1.9.4",
     "@fontsource/ibm-plex-mono": "^5.2.5",
     "@fontsource/ibm-plex-serif": "^5.2.5",
     "@fontsource/jost": "^5.2.5",
     "@fontsource/lora": "^5.2.5",
-    "astro": "^5.5.2",
+    "astro": "^5.6.1",
     "sharp": "^0.33.5",
-    "svelte": "^5.23.1",
+    "svelte": "^5.25.6",
     "unplugin-icons": "^22.1.0"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.2",
-    "@unocss/preset-wind": "^66.1.0-beta.5",
-    "@unocss/reset": "^66.1.0-beta.5",
-    "rollup": "^4.36.0",
+    "@unocss/preset-wind": "^66.1.0-beta.8",
+    "@unocss/reset": "^66.1.0-beta.8",
+    "rollup": "^4.39.0",
     "svgo": "3.3.2",
     "typescript": "^5.8.2",
-    "unocss": "^66.1.0-beta.5",
-    "vite": "^6.2.2"
+    "unocss": "^66.1.0-beta.8",
+    "vite": "^6.2.5"
   }
 }
