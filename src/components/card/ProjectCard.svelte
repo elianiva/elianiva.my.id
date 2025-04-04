@@ -1,17 +1,15 @@
 <script lang="ts">
-export let title: string;
-export let description: string;
-export let href: string;
-export let stack: [stack: string, url: string][];
+type Props = {
+	title: string;
+	description: string;
+	href: string;
+	stack: [stack: string, url: string][];
+};
+
+const { title, description, href, stack }: Props = $props();
 </script>
 
 <div class="overflow-hidden text-left p-3 rounded-sm border border-dashed border-pink-300">
-	<!--	<img-->
-	<!--		class="relative block w-full h-48 object-cover bg-white z-[2]"-->
-	<!--		src={imageSource}-->
-	<!--		alt={title}-->
-	<!--		loading="lazy"-->
-	<!--	/>-->
 	<div class="grid grid-rows-[auto_auto_auto]">
 		<a
 			data-sveltekit-prefetch

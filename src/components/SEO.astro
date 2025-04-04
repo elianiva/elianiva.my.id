@@ -9,21 +9,35 @@ export type Props = {
 	thumbnail?: string;
 };
 
+const defaultThumbnail = "https://avatars3.githubusercontent.com/u/51877647?s=240&v=4";
+
+function getThumbnailUrl(thumbnail: string | undefined): string {
+	if (!thumbnail) return defaultThumbnail;
+	return thumbnail.toString();
+}
+
+function getTwitterCardType(thumbnail: string | undefined): string {
+	return thumbnail ? "summary_large_image" : "summary";
+}
+
 const {
 	isPost = false,
-	thumbnail = "",
+	thumbnail,
 	description = data.description,
 	keywords = data.keywords,
 	...props
 } = Astro.props as Props;
 const { siteName, siteUrl } = data;
+const currentUrl = `${siteUrl}${Astro.url.pathname}`;
+const thumbnailUrl = getThumbnailUrl(thumbnail);
+const twitterCard = getTwitterCardType(thumbnail);
 ---
 
 <title>{props.title} | {siteName}</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <meta name="theme-color" content="#fff1f2" />
-<link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
+<link rel="canonical" href={currentUrl} />
 <meta name="description" content={description} />
 <meta name="keywords" content={keywords.join(",").toLowerCase()} />
 
@@ -31,18 +45,15 @@ const { siteName, siteUrl } = data;
 <link rel="icon" type="image/png" href="/favicon.png" />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content={isPost ? "blog" : "website"} />
-<meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
+<meta property="og:type" content={isPost ? "article" : "website"} />
+<meta property="og:url" content={currentUrl} />
 <meta property="og:title" content={props.title || siteName} />
 <meta property="og:description" content={description} />
-<meta
-	property="og:image"
-	content={thumbnail ? thumbnail.toString() : "https://avatars3.githubusercontent.com/u/51877647?s=240&v=4"}
-/>
+<meta property="og:image" content={thumbnailUrl} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content={thumbnail ? "summary_large_image" : "summary"} />
-<meta property="twitter:url" content={`${siteUrl}${Astro.url.pathname}`} />
+<meta property="twitter:card" content={twitterCard} />
+<meta property="twitter:url" content={currentUrl} />
 <meta property="twitter:title" content={props.title || siteName} />
 <meta property="twitter:description" content={description} />
-{thumbnail !== "" && <meta property="twitter:image" content={thumbnail ? thumbnail.toString() : ""} />}
+<meta property="twitter:image" content={thumbnailUrl} />

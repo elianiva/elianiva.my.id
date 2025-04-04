@@ -1,13 +1,18 @@
 <script lang="ts">
 import { fade } from "svelte/transition";
 
-export let company: string;
-export let type: string;
-export let time: string;
-export let position: string;
-export let period: [start: Date, end: Date];
-export let details: string[];
-export let technologies: string[];
+type Props = {
+	company: string;
+	type: string;
+	time: string;
+	position: string;
+	period: [start: Date, end: Date | null];
+	details: string[];
+	technologies: string[];
+};
+
+const { company, type, time, position, period, details, technologies }: Props =
+	$props();
 </script>
 
 <div transition:fade>

@@ -5,7 +5,9 @@ import BackButton from "../components/BackButton.astro";
 import PostList from "../components/PostList.svelte";
 
 const posts = await getCollection("posts", ({ data }) => !data.draft);
-const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+
+// sort from latest to oldest
+posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 ---
 
 <MainLayout seo={{ title: "Posts" }}>
@@ -16,6 +18,6 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 		>
 			All Posts
 		</h1>
-		<PostList client:visible posts={sortedPosts.map(({ data, slug }) => ({ ...data, slug }))} />
+		<PostList client:load posts={posts.map(({ data, slug }) => ({ ...data, slug }))} />
 	</section>
 </MainLayout>

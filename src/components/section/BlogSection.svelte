@@ -2,7 +2,11 @@
 import PostCard from "~/components/card/PostCard.svelte";
 import type { Post } from "~/models/post.ts";
 
-export let posts: Post[];
+type Props = {
+	posts: Post[];
+};
+
+const { posts }: Props = $props();
 </script>
 
 <section class="relative pt-10">

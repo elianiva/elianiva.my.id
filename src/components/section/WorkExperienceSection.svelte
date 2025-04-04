@@ -2,7 +2,11 @@
 import WorkExperienceCard from "~/components/card/WorkExperienceCard.svelte";
 import type { WorkExperience } from "~/models/work-experience.ts";
 
-export let workExperiences: WorkExperience[];
+type Props = {
+	workExperiences: WorkExperience[];
+};
+
+const { workExperiences }: Props = $props();
 </script>
 
 <section class="pt-6 md:pt-10">

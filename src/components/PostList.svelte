@@ -3,21 +3,22 @@ import { fly } from "svelte/transition";
 import PostCard from "~/components/card/PostCard.svelte";
 import type { PostMeta } from "~/models/post";
 
-let inputBox: HTMLInputElement | null = null;
-let keyword = "";
-let tagKeyword = "";
-let tagFilter: string[] = [];
-let isCompletionVisible = false;
-
 type PostMetaWithSlug = PostMeta & { slug: string };
+type Props = {
+	posts: PostMetaWithSlug[];
+};
 
-let filteredPosts: PostMetaWithSlug[] = [];
-export const posts: PostMetaWithSlug[] = [];
+const { posts }: Props = $props();
 
-// count available tags and insert it to an object
-// ex: [a, a, b, b, b] -> { a: 2, b: 3 }
-const tags = posts.flatMap((post) => post.tags);
-const count = tags.reduce(
+// biome-ignore lint/style/useConst: this is a ref
+let inputBox: HTMLInputElement | null = null;
+let searchQuery = $state("");
+let tagSearchQuery = $state("");
+const selectedTags = $state<string[]>([]);
+let isCompletionVisible = $state(false);
+
+const allPostTags = posts.flatMap((post) => post.tags);
+const tagCounts = allPostTags.reduce(
 	(acc, curr) => {
 		acc[curr] = (acc[curr] || 0) + 1;
 		return acc;
@@ -25,31 +26,46 @@ const count = tags.reduce(
 	{} as Record<string, number>,
 );
 
-$: filteredPosts = posts.filter((post) => {
-	const query = keyword.substring(1).toLowerCase();
-
-	const title = post.title.toLowerCase().includes(query);
-	const slug = post.slug.toLowerCase().includes(query);
-	const tags = tagFilter.every((x) => post.tags.includes(x));
-	return (title || slug) && tags;
-});
-$: uniqueTags = [...new Set(tags)].filter((tag) =>
-	tag.match(new RegExp(tagKeyword.substring(1))),
+const filteredPosts = $derived(
+	posts.filter((post) => {
+		const query = searchQuery.toLowerCase();
+		const matchesSearch =
+			searchQuery === "" ||
+			post.title.toLowerCase().includes(query) ||
+			post.slug.toLowerCase().includes(query);
+		const matchesTags =
+			selectedTags.length === 0 ||
+			selectedTags.every((tag) => post.tags.includes(tag));
+		console.log({
+			matchesSearch,
+			matchesTags,
+		});
+		return matchesSearch && matchesTags;
+	}),
 );
 
-function filterPost(event: Event) {
+const availableTags = $derived(
+	tagSearchQuery
+		? [...new Set(allPostTags)].filter((tag) =>
+				// remove # before filtering
+				tag
+					.toLowerCase()
+					.includes(tagSearchQuery.substring(1).toLowerCase()),
+			)
+		: [],
+);
+
+function handleInput(event: Event) {
 	const inputValue = (event.currentTarget as HTMLInputElement).value;
-
-	// always reset the completion visibility
-	isCompletionVisible = false;
-
-	if (!inputValue.match(/^#/)) {
-		keyword = inputValue;
-		return;
+	if (inputValue.startsWith("#")) {
+		tagSearchQuery = inputValue;
+		searchQuery = "";
+		isCompletionVisible = true;
+	} else {
+		searchQuery = inputValue;
+		tagSearchQuery = "";
+		isCompletionVisible = false;
 	}
-
-	tagKeyword = inputValue;
-	isCompletionVisible = true;
 }
 </script>
 
@@ -61,27 +77,27 @@ function filterPost(event: Event) {
 		placeholder="Find post... (start with # to find tags)"
 		autocomplete="off"
 		aria-label="search post"
-		on:input={filterPost}
+		oninput={handleInput}
 		bind:this={inputBox}
 	/>
-	{#if isCompletionVisible}
+	{#if isCompletionVisible && tagSearchQuery}
 		<div
 			transition:fly={{ duration: 100, y: -50 }}
 			class="absolute top-16 left-0 right-0 z-[5] text-pink-950 bg-white p-2 border-dashed border border-pink-300"
 		>
-			{#if uniqueTags.length > 0}
-				{#each uniqueTags as tag}
+			{#if availableTags.length > 0}
+				{#each availableTags as tag}
 					<button
 						class="block text-left text-sm w-full font-mono p-2 cursor-pointer transition-property-all ease-out duration-100 hover:bg-pink-100"
-						on:click={() => {
-							tagFilter = [...tagFilter, tag]; // cant use push here
-							if (inputBox !== null) inputBox.value = "";
-							tagKeyword = "";
+						onclick={() => {
+							selectedTags.push(tag);
+							if (inputBox) inputBox.value = "";
+							tagSearchQuery = "";
 							isCompletionVisible = false;
 						}}
-						on:keydown={() => void 0}
+						onkeydown={() => void 0}
 					>
-						{tag.toUpperCase()} • {count[tag]} result{(count[tag] ?? 0) > 1 ? "s" : ""}
+						{tag.toUpperCase()} • {tagCounts[tag]} result{(tagCounts[tag] ?? 0) > 1 ? "s" : ""}
 					</button>
 				{/each}
 			{:else}
@@ -94,14 +110,16 @@ function filterPost(event: Event) {
 		</div>
 	{/if}
 </div>
-{#if tagFilter.length > 0}
+{#if selectedTags.length > 0}
 	<div class="flex items-center gap-4 mt-2">
-		{#each tagFilter as filter}
+		{#each selectedTags as tag}
 			<button
 				class="py-2 px-4 text-sm font-mono text-pink-950 border border-dashed border-pink-300"
-				on:click={() => (tagFilter = tagFilter.filter((x) => x !== filter))}
+				onclick={() => {
+					selectedTags.splice(selectedTags.indexOf(tag), 1);
+				}}
 			>
-				#{filter}
+				#{tag}
 			</button>
 		{/each}
 	</div>

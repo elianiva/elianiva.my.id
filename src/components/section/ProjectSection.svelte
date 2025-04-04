@@ -2,10 +2,14 @@
 import ProjectCard from "~/components/card/ProjectCard.svelte";
 import type { Project } from "~/models/project.ts";
 
-export let projects: Project[];
-export let title: string;
-export let description: string;
-export const seeMoreUrl: string | null = null;
+type Props = {
+	projects: Project[];
+	title: string;
+	description: string;
+	seeMoreUrl: string | null;
+};
+
+const { projects, title, description, seeMoreUrl }: Props = $props();
 </script>
 
 <section class="pt-6 md:pt-10">
