@@ -11,7 +11,7 @@ type Props = {
 const { title, description, href, date, tags }: Props = $props();
 </script>
 
-<div class="overflow-hidden text-left border border-dashed border-pink-300 rounded-sm p-3">
+<div class="overflow-hidden text-left border border-dashed border-pink-300 rounded-sm p-3 bg-white">
 	<a
 		rel="prefetch"
 		{href}

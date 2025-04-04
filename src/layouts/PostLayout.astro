@@ -65,10 +65,10 @@ const commentOptions = {
 				<PencilIcon class="inline-block w-4 h-4" />
 			</a>
 		</div>
-		<div class="flex gap-2 pb-4 border-b border-dashed border-pink-300">
+		<div class="flex gap-2 pb-4 mb-4 border-b border-dashed border-pink-300">
 			{frontmatter.tags.map((tag) => <span class="font-mono text-pink-700/60 text-sm">#{tag}</span>)}
 		</div>
-		<main class="font-serif mx-auto max-w-[64ch] prose prose-sm">
+		<main class="font-serif mx-auto max-w-[64ch] prose">
 			<slot />
 			<h1>Comments</h1>
 			<div>

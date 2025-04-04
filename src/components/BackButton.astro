@@ -1,7 +1,13 @@
 ---
 import ArrowCircleLeftIcon from "~icons/ph/arrow-circle-left";
+import HouseSimpleIcon from "~icons/ph/house-simple";
 ---
 
-<a href="/" class="flex items-center gap-2 text-sm text-pink-600 font-serif">
-	<ArrowCircleLeftIcon /> Back to Home
-</a>
+<div class="flex items-center justify-center gap-2 w-full">
+	<a href="/" class="flex items-center gap-1 text-sm text-pink-600 font-serif" onclick="history.back()">
+		<ArrowCircleLeftIcon class="w-4 h-4" /> Back
+	</a>
+	<a href="/" class="flex items-center gap-1 text-sm text-pink-600 font-serif">
+		<HouseSimpleIcon class="w-4 h-4" /> Home
+	</a>
+</div>

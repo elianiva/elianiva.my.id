@@ -1,7 +1,56 @@
 @import "tailwindcss";
-/* @import "@tailwindcss/typography"; Import the typography plugin */
+@plugin "@tailwindcss/typography";
 
 @theme {
-  --font-serif: 'Lora', serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+	--font-serif: "Lora", serif;
+	--font-mono: "IBM Plex Mono", monospace;
+}
+
+@layer utilities {
+	.prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-950/80 text-justify mt-0 mb-6;
+	}
+
+	.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-500 no-underline border-b border-dashed border-pink-500;
+	}
+
+	.prose
+		:where(strong):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-600;
+	}
+
+	.prose
+		:where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-500 font-normal;
+	}
+
+	.prose
+		:where(pre code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-[#575279];
+	}
+
+	.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply border border-pink-300 border-dashed rounded-none bg-white!;
+	}
+
+	.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-3xl;
+	}
+
+	.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-2xl;
+	}
+
+	.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-xl;
+	}
+
+	.prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-lg;
+	}
+
+	.prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-base;
+	}
 }
