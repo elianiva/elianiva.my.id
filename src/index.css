@@ -35,7 +35,7 @@
 	}
 
 	.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply border border-pink-300 border-dashed rounded-none bg-white!;
+		@apply border border-pink-300 border-dashed bg-white!;
 	}
 
 	.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {

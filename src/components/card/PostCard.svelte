@@ -23,7 +23,7 @@ const { title, description, href, date, tags }: Props = $props();
 			{title}
 		</h3>
 		<div class="text-xs md:text-sm font-mono flex gap-2 items-center text-pink-950/70 border-b border-dashed border-pink-300">
-			<CalendarIcon className="w-4 h-4 block"/>
+			<CalendarIcon class="w-4 h-4 block" />
 			<span>
 				{date.toLocaleDateString("en-GB", {
 					day: "numeric",

@@ -22,13 +22,13 @@ const { title, description, href, stack }: Props = $props();
 		<p class="font-serif text-sm text-pink-950/70 pt-1 pb-3">
 			{description}
 		</p>
-		<div class="flex flex-wrap items-end gap-2">
+		<div class="flex flex-wrap items-end gap-2 font-mono uppercase">
 			{#each stack as [name, url]}
 				<a
 					href={url}
 					target="_blank"
 					rel="norel noreferrer"
-					class="no-underline text-xs text-pink-900/70 hover:text-pink-900/90 bg-pink-50 py-1 px-3 rounded-md"
+					class="no-underline text-xs text-pink-900/70 hover:text-pink-900/90 bg-pink-50 px-2 py-1 rounded-md"
 				>
 					{name}
 				</a>
