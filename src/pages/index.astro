@@ -111,6 +111,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 			client:visible
 			workExperiences={workExperiences}
 		/>
+		<BlogSection client:visible posts={sortedPosts} />
 		<ProjectSection
 			title="Personal Projects"
 			description="These are some of my personal projects that I made in the past. Some of them are still in use, some are not. Mostly made them just for fun and to learn new things!"
@@ -118,10 +119,9 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 			seeMoreUrl="/projects"
 		/>
 		<ProjectSection
-			title="Open Source Projects"
-			description="These are some open source projects that I actively help to maintain."
-			projects={sortedOpenSourceProjects}
+		title="Open Source Projects"
+		description="These are some open source projects that I actively help to maintain."
+		projects={sortedOpenSourceProjects}
 		/>
-		<BlogSection client:visible posts={sortedPosts} />
 	</main>
 </MainLayout>

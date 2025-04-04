@@ -4,27 +4,30 @@ import { theme } from "@unocss/preset-wind4";
 export default defineConfig({
 	presets: [
 		presetWind4(),
+		// @ts-expect-error: mismatch between wind4 and mini preset
 		presetTypography({
 			cssExtend: {
 				h1: {
 					"font-size": "clamp(1.5rem, 5vw, 2rem)",
-					"line-height": "1.2em",
-					"text-align": "left",
+					color: theme.colors.pink[950],
 				},
 				h2: {
 					"font-size": "clamp(1.25rem, 5vw, 1.75rem)",
-					"line-height": "1.2em",
-					"text-align": "left",
+					"margin-block": "1rem",
+					color: theme.colors.pink[950],
 				},
 				h3: {
 					"font-size": "clamp(1.125rem, 5vw, 1.5rem)",
-					"line-height": "1.2em",
-					"text-align": "left",
+					color: theme.colors.pink[950],
 				},
 				h4: {
 					"font-size": "clamp(1rem, 5vw, 1.25rem)",
-					"line-height": "1.2em",
-					"text-align": "left",
+					color: theme.colors.pink[950],
+				},
+				p: {
+					"text-align": "justify",
+					"margin-block": "1rem",
+					color: theme.colors.pink[950],
 				},
 				pre: {
 					"border-radius": "0.25rem",
