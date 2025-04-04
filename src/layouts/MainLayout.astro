@@ -1,5 +1,4 @@
 ---
-import "@unocss/reset/tailwind.css";
 import SEO, { type Props as SEOProps } from "~/components/SEO.astro";
 
 // fonts
@@ -15,7 +14,8 @@ import "@fontsource/ibm-plex-serif/400.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "@fontsource/ibm-plex-mono/400-italic.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
+import "../index.css";
 
 export interface Props {
 	seo: SEOProps;
@@ -28,7 +28,7 @@ const { seo } = Astro.props;
 <html lang="en" class="h-full">
 	<head>
 		<SEO {...seo} />
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
 	<body class="h-full bg-white p-4 md:p-10">
 		<div class="fixed z-50 top-0 left-0 w-full h-2 bg-pink-300"></div>
@@ -38,7 +38,7 @@ const { seo } = Astro.props;
 		>
 			<a href="/bookmarks" class="invisible group-hover:visible text-xs text-yellow-700">bookmarks</a>
 		</div>
-		<div class="fixed bg-gradient-to-t from-pink-300/10 to-transparent inset-0 -z-1"></div>
+		<div class="fixed bg-gradient-to-t from-pink-50/50 to-transparent inset-0 -z-1"></div>
 		<slot />
 	</body>
 </html>

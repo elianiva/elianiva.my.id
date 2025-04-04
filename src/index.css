@@ -1,0 +1,7 @@
+@import "tailwindcss";
+/* @import "@tailwindcss/typography"; Import the typography plugin */
+
+@theme {
+  --font-serif: 'Lora', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}

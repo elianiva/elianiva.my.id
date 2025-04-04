@@ -1,20 +1,20 @@
 import { defineConfig } from "astro/config";
-import Unocss from "unocss/astro";
 import path from "node:path";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
-import Icons from 'unplugin-icons/vite'
+import Icons from "unplugin-icons/vite";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-	integrations: [Unocss(), svelte(), mdx()],
+	integrations: [svelte(), mdx()],
 	site: "https://elianiva.my.id",
 	markdown: {
 		shikiConfig: {
-			theme: "light-plus"
-		}
+			theme: "light-plus",
+		},
 	},
 	vite: {
-		plugins: [Icons({ compiler: "svelte" })],
+		plugins: [Icons({ compiler: "svelte" }), tailwindcss()],
 		resolve: {
 			alias: {
 				"~/*": path.resolve("src"),
