@@ -87,10 +87,12 @@ const ogImageParams = new URLSearchParams({
 		</div>
 		<main class="font-serif mx-auto max-w-[64ch] prose">
 			<slot />
-			<h1>Comments</h1>
 			<div>
 				<script is:inline {...commentOptions} data-theme="light"></script>
 			</div>
+			<p class="mt-4! text-sm text-pink-950/70">
+				If you don't see any comment section, please turn off your adblocker :)
+			</p>
 		</main>
 	</main>
 </MainLayout>
