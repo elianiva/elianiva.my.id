@@ -1,6 +1,6 @@
 import { Resvg } from "@cf-wasm/resvg";
 import type { APIRoute } from "astro";
-import satori, { type SatoriOptions } from "satori";
+import { satori, type SatoriOptions } from "@cf-wasm/satori";
 import { html } from "satori-html";
 import sites from "~/data/sites";
 
