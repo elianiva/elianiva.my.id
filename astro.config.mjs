@@ -8,7 +8,9 @@ import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
 	output: "server",
-	adapter: cloudflare(),
+	adapter: cloudflare({
+		imageService: "compile",
+	}),
 	integrations: [svelte(), mdx()],
 	site: "https://elianiva.my.id",
 	markdown: {

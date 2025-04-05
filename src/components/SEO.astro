@@ -9,7 +9,8 @@ export type Props = {
 	thumbnail?: string;
 };
 
-const defaultThumbnail = "https://avatars3.githubusercontent.com/u/51877647?s=240&v=4";
+const defaultThumbnail =
+	"https://avatars3.githubusercontent.com/u/51877647?s=240&v=4";
 
 function getThumbnailUrl(thumbnail: string | undefined): string {
 	if (!thumbnail) return defaultThumbnail;
