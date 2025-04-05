@@ -47,6 +47,7 @@ const ogImageParams = new URLSearchParams({
 	seo={{
 		isPost: true,
 		title: frontmatter.title,
+		description: frontmatter.description,
 		keywords: frontmatter.tags,
 		thumbnail: `${sites.siteUrl}/api/og-image?${ogImageParams.toString()}`,
 		publishedAt: frontmatter.date.toISOString(),
