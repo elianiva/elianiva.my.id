@@ -1,6 +1,8 @@
 export default {
 	siteName: "Elianiva",
-	siteUrl: "https://elianiva.my.id",
+	siteUrl: import.meta.env.DEV
+		? "http://localhost:4321"
+		: "https://elianiva.my.id",
 	github: "https://github.com/elianiva",
 	bluesky: "https://bsky.app/profile/elianiva.my.id",
 	twitter: "https://x.com/elianiva_",

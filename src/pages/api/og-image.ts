@@ -2,7 +2,6 @@ import type { APIRoute } from "astro";
 import { Resvg } from "@cf-wasm/resvg";
 import satori, { type SatoriOptions } from "satori";
 import { html } from "satori-html";
-import * as fs from "node:fs/promises";
 import sites from "~/data/sites";
 
 const domainName = new URL(sites.siteUrl).hostname;
@@ -50,13 +49,12 @@ export const GET: APIRoute = async ({ url }) => {
 	const decodedDescription = decodeURIComponent(description);
 
 	// satori options with SatoriOptions type
-	const loraRegularPath = new URL(
-		"../../fonts/Lora-Regular.ttf",
-		import.meta.url,
-	);
-	const loraBoldPath = new URL("../../fonts/Lora-Bold.ttf", import.meta.url);
-	const loraRegular = await fs.readFile(loraRegularPath);
-	const loraBold = await fs.readFile(loraBoldPath);
+	const loraRegular = await (
+		await fetch(`${sites.siteUrl}/assets/fonts/Lora-Regular.ttf`)
+	).arrayBuffer();
+	const loraBold = await (
+		await fetch(`${sites.siteUrl}/assets/fonts/Lora-Bold.ttf`)
+	).arrayBuffer();
 	const options: SatoriOptions = {
 		width: CARD_WIDTH,
 		height: CARD_HEIGHT,
