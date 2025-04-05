@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import path from "node:path";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
@@ -9,8 +9,11 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
 	output: "server",
 	adapter: cloudflare({
-		imageService: "compile",
+		imageService: "passthrough",
 	}),
+	image: {
+		service: passthroughImageService(),
+	},
 	integrations: [svelte(), mdx()],
 	site: "https://elianiva.my.id",
 	markdown: {
