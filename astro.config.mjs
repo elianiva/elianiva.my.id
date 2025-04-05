@@ -4,8 +4,11 @@ import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import Icons from "unplugin-icons/vite";
 import tailwindcss from "@tailwindcss/vite";
+import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
+	output: "server",
+	adapter: cloudflare(),
 	integrations: [svelte(), mdx()],
 	site: "https://elianiva.my.id",
 	markdown: {

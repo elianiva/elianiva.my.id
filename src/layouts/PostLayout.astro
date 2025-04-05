@@ -3,6 +3,7 @@ import type { PostMeta } from "~/models/post";
 import PencilIcon from "~icons/ph/note-pencil";
 import BackButton from "../components/BackButton.astro";
 import MainLayout from "./MainLayout.astro";
+import sites from "~/data/sites";
 
 export type Props = {
 	frontmatter: PostMeta;
@@ -26,6 +27,13 @@ const commentOptions = {
 	crossorigin: "anonymous",
 	async: true,
 };
+
+const ogImageParams = new URLSearchParams({
+	title: frontmatter.title,
+	date: frontmatter.date.toISOString(),
+	tags: frontmatter.tags.join(","),
+	description: frontmatter.description,
+});
 ---
 
 <style>
@@ -35,7 +43,12 @@ const commentOptions = {
 	}
 </style>
 
-<MainLayout seo={{ title: frontmatter.title }}>
+<MainLayout
+	seo={{
+		title: frontmatter.title,
+		thumbnail: `${sites.siteUrl}/api/og-image?${ogImageParams.toString()}`,
+	}}
+>
 	<main class="mx-auto max-w-[800px] px-4 py-10">
 		<BackButton />
 		<h1

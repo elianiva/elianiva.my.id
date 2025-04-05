@@ -22,9 +22,9 @@
     "@fontsource/ibm-plex-serif": "^5.2.5",
     "@fontsource/jost": "^5.2.5",
     "@fontsource/lora": "^5.2.5",
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.1.2",
     "astro": "^5.6.1",
-    "sharp": "^0.33.5",
     "svelte": "^5.25.6",
     "tailwind": "^4.0.0",
     "unplugin-icons": "^22.1.0"
@@ -32,6 +32,7 @@
   "devDependencies": {
     "@iconify-json/ph": "^1.2.2",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
     "rollup": "^4.39.0",
