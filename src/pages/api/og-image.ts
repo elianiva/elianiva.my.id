@@ -10,13 +10,7 @@ const domainName = new URL(sites.siteUrl).hostname;
 const CARD_WIDTH = 1200;
 const CARD_HEIGHT = 630;
 
-// this endpoint is only valid in development mode because it writes stuff to the filesystem
-// a bit of a hack but i can't be bothered to do it properly
 export const GET: APIRoute = async ({ url }) => {
-	if (import.meta.env.PROD) {
-		return new Response("Not found", { status: 404 });
-	}
-
 	const title = url.searchParams.get("title");
 	const date = url.searchParams.get("date");
 	const tags = url.searchParams.get("tags");
