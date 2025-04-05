@@ -1,10 +1,9 @@
 import type { APIRoute } from "astro";
-import { Resvg } from "@resvg/resvg-js";
+import { Resvg } from "@cf-wasm/resvg";
 import satori, { type SatoriOptions } from "satori";
 import { html } from "satori-html";
 import * as fs from "node:fs/promises";
 import sites from "~/data/sites";
-import { join } from "node:path";
 
 const domainName = new URL(sites.siteUrl).hostname;
 
