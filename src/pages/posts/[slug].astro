@@ -18,8 +18,11 @@ type Props = {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const contentWithoutHeaders = entry.body.replace(/^(#+\s*)/gm, "");
+const wordCount = contentWithoutHeaders.split(/\s+/).length;
 ---
 
-<PostLayout frontmatter={entry.data} slug={entry.slug}>
+<PostLayout frontmatter={entry.data} slug={entry.slug} wordCount={wordCount}>
 	<Content />
 </PostLayout>

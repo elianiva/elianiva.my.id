@@ -8,9 +8,10 @@ import MainLayout from "./MainLayout.astro";
 export type Props = {
 	frontmatter: PostMeta;
 	slug: string;
+	wordCount: number;
 };
 
-const { frontmatter, slug }: Props = Astro.props;
+const { frontmatter, slug, wordCount }: Props = Astro.props;
 
 const commentOptions = {
 	src: "https://giscus.app/client.js",
@@ -53,14 +54,14 @@ const ogImageParams = new URLSearchParams({
 		publishedAt: frontmatter.date.toISOString(),
 	}}
 >
-	<main class="mx-auto max-w-[800px] px-4 py-10">
+	<main class="mx-auto max-w-[64ch] px-4 lg:px-0 py-10">
 		<BackButton />
 		<h1
-			class="font-serif text-2xl md:text-3xl uppercase mt-12 mb-0 font-semibold text-pink-950"
+			class="text-center font-serif text-2xl md:text-3xl uppercase mt-12 mb-0 font-semibold text-pink-950"
 		>
 			{frontmatter.title}
 		</h1>
-		<div class="flex flex-col md:flex-row md:items-center md:gap-2 font-serif text-sm md:text-base md:leading-loose text-pink-950/70">
+		<div class="flex flex-col justify-center md:flex-row md:items-center md:gap-2 font-serif text-sm md:text-base md:leading-loose text-pink-950/70">
 			Posted on
 			<span class="text-pink-600 font-medium">
 			{
@@ -72,18 +73,21 @@ const ogImageParams = new URLSearchParams({
 				})
 			}
 			</span>
+			<span class="font-medium">
+				- {wordCount.toLocaleString("en-GB")} words -{" "}
+			</span>
 			<a
-				class="relative leading-loose no-underline hover:underline"
+				class="relative leading-loose no-underline hover:underline hover:text-pink-400"
 				href={`https://github.com/elianiva/elianiva.my.id/blob/master/src/content/posts/${slug}.mdx`}
 				target="_blank"
 				rel="norel noreferrer"
 			>
-				- Suggest An Edit
+				Suggest An Edit
 				<PencilIcon class="inline-block w-4 h-4" />
 			</a>
 		</div>
-		<div class="flex gap-2 pb-4 mb-10 border-b border-dashed border-pink-300">
-			{frontmatter.tags.map((tag) => <span class="font-mono text-pink-700/60 text-sm">#{tag}</span>)}
+		<div class="justify-center flex gap-2 pb-4 mb-8 border-b border-dashed border-pink-300">
+			{frontmatter.tags.map((tag) => <span class="font-mono text-pink-700/80 text-sm font-medium">#{tag}</span>)}
 		</div>
 		<main class="font-serif mx-auto max-w-[64ch] prose">
 			<slot />
