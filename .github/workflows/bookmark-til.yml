@@ -20,19 +20,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
       - name: Create TIL markdown file from issue
         uses: actions/github-script@v7
         id: create-til
         with:
           retries: 3
           script: |
-            const script = require('.github/workflows/write.js')
-            await script({ github, context, core, require })
+            const write = require('${{ github.workspace }}/.github/workflows/write.js')
+            await write({ github, context, core, require })
 
       - name: Commit and push TIL file
         run: |
