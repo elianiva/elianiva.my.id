@@ -8,6 +8,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
 	output: "server",
+	prefetch: true,
 	adapter: cloudflare({
 		imageService: "passthrough",
 	}),
