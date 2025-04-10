@@ -1,0 +1,328 @@
+---
+title: Turning issues into posts
+date: 2025-05-10
+description: Github issues combined with a simple workflow script to manage contents
+tags:
+    - website
+---
+
+If you don't know already, I'm using [Astro](https://astro.build/) to build this website. The code is hosted publicly at [elianiva/elianiva.my.id](https://github.com/elianiva/elianiva.my.id) if you want to check it out.
+
+The posts are written in [markdown (.mdx) files](https://github.com/elianiva/elianiva.my.id/blob/master/src/content/posts/) so if I want to add a new post, I have to create a new file, make a commit, and then push it to trigger the deployment. Unlike a traditional CMS where you have this fancy dashboard that you can use, this one is pretty barebones, and I like it this way. It allows me to use any text editors I want to edit the contents--oh, I use [Neovim](https://neovim.io), btw.
+
+Now, the problem is that not all of my posts are long-form. I have a few bookmarks / TILs. They're basically just small notes that don't warrant a full blog post.
+
+In case you don't know what that is, here are a few examples from other people:
+
+- https://www.visualmode.dev/a-decade-of-tils
+- https://simonwillison.net/2021/May/2/one-year-of-tils/
+- https://github.com/jbranchaud/til
+- https://blog.reinaldyrafli.com/til
+
+Oh, wanna see mine? Try hitting the yellow square at the top left corner ;)
+
+## When it starts to get painful
+
+Like I said before, the contents of this website are all in markdown files and it involves me going through several steps to publish contents in it. If I'm using my laptop then sure it's easy to do, but when I'm on mobile it's such a hassle. I have to set up Termux, git clone--not to mention having to set up my git credentials as well--write the markdown file, make a commit, and then push. That's too much work for my lazy ass.
+
+Sometimes, I just want to jot down a quick note and save it. I'm not always in front of my laptop, so I need some easy way to do this from my phone without having to make a dedicated platform myself--which, I almost did.
+
+## Down into the rabbit hole
+
+I've been trying several note-taking apps in the past. I tried [Notion](https://notion.so), but it didn't end very well because I ended up overengineering how it works instead of just taking notes. I also tried [Obsidian](https://obsidian.md), which is a bit better, but again, I got sucked into tweaking it too much.
+
+I mean, Neovim itself is already a rabbit hole, but I've come to a point where I no longer do too many things with it. I've had my fair share of going through that rabbit hole already in the past. Now I just have a solid config and _actually use_ the editor.
+
+## The solution
+
+I had a discussion on Discord the other day on how should we approach this. I was thinking of just using a separate platform that has the feature built-in, such as Obsidian which has [Obsidian Publish](https://obsidian.md/publish). There's also Notion.
+
+Although they are simple to use, they're still too overkill for this simple task. Each TIL item is just a short-form text, mostly 1-2 paragraphs, maybe a few links here and there. If you're already using Obsidian or Notion then yeah, this is the easiest option. For those who prefer rolling stuff out by themself, it's too much.
+
+Another option is to use email. You can just send an email to a dedicated account which will then get picked up, do the thing, and so on and so forth. It could work, but email? Really? Nah, that ain't zoomer enough.
+
+Finally, there's Github issues. This is great because for one, it's free and it's integrated into the platform that I'm already using to host the code, and two, it's relatively easy to automate stuff on Github. You can just _do_ things.
+
+## Github Issues came in clutch
+
+The idea is to use Github Issues to manage the content. Since the contents are markdown files and Github supports markdown syntax, it's pretty easy to start writing, press submit, and let the Github Action take over and do the tedious thing for you.
+
+I didn't come up with this solution, it was [aldy505](https://github.com/aldy505) who did it first and I just adjusted it to fit my use case better. My version is a bit different because I need to also handle `bookmark` which is basically just some links I found useful.
+
+Here's a simple workflow that he uses, which might fit your use case better because it's simple and you can build upon it.
+
+```yaml
+name: Issue to TIL
+
+on:
+  issues:
+    types: [opened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:                # Job-level permissions configuration starts here
+      contents: write           # 'write' access to repository contents
+      pull-requests: write      # 'write' access to pull requests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Install ULID
+        run: npm install ulid
+      - name: Grab the issue content body
+        uses: actions/github-script@v7
+        with:
+          retries: 3
+          script: |
+            const { ulid } = require('ulid');
+            const fs = require('fs');
+
+            const issue = {
+              body: "${{ github.event.issue.body }}",
+            };
+
+            const id = ulid();
+            const date = new Date().toISOString();
+
+            fs.writeFileSync(`./src/content/tils/${id}.md`, `---
+            id: ${id}
+            date: '${date}'
+            ---
+            ${issue.body}`);
+      - name: Create a commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Add TIL from #${{ github.event.issue.number }}"
+      - name: Push to repository
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ github.token }}
+          branch: master
+      - name: Close Issue
+        run: gh issue close --comment "Auto-closing issue" "${{ github.event.issue.number }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+```
+<small class="block opacity-70 -mt-4 mb-4">Yeah, he vibe coded this, that's why it looks a bit dodgy, he probably improved it or something in his repo but this is the one I took</small>
+
+Basically, it does the following:
+
+1. Grab the issue content
+2. Write the content in `src/content/tils` with a unique ID as the filename
+3. Create a commit with the new file
+4. Push the commit to the repository
+5. Close the issue
+
+I basically just stole it :p -- and adjusted it to also handle a few different things.
+
+### Checks for author
+
+Since his repository is private, he doesn't have to care about people creating issues and then accidentally publish it. My repo, on the other hand, is public. So I need a way to limit it to myself.
+
+It's pretty simple to do, I just have to add this one line for the job section.
+
+```yaml
+if: github.actor == github.repository_owner
+````
+
+It checks if the actor--the person who created this issue--is the same as the owner of the repository. If it's the same, then it will run the job. Otherwise, it won't. Pretty straight forward.
+
+### Handling different types
+
+My version needs to handle both TIL and bookmark, so I need to adjust it a bit. I finally came up with this.
+
+```javascript
+const issue = context.payload.issue;
+if (!issue) {
+  core.setFailed("Could not get issue details");
+  return;
+}
+
+const date = new Date().toISOString().split("T")[0];
+const title = issue.title;
+const body = issue.body || "";
+const type = issue.labels?.find(label => label.name.startsWith("type:"))?.name.split(":")[1] || "";
+
+if (body.length === 0) {
+  core.setFailed("Issue body is empty");
+  return;
+}
+
+if (type.length === 0) {
+  core.setFailed("Issue labels do not contain a type");
+  return;
+}
+```
+
+This part prepares the issue information that I need. I mark the issue as TIL or bookmark based on the issue label. If it has a label that starts with `type:` then it will be used. The rest are just handling some edge cases
+
+```javascript
+const [content, links] = body.split("---").map(part => part.trim());
+const linksArray = links ? links.split("\n").map(link => link.trim()) : [];
+
+const markdown = `---\n` +
+  `title: ${title}\n` +
+  `date: ${date}\n` +
+  `type: ${type}\n` +
+  (linksArray.length > 0 ? `links:\n${linksArray.map(link => `  - url: ${link}`).join("\n")}\n` : '') +
+  `---\n\n${content}\n`;
+```
+
+This part just prepares the markdown file. The reason why I split the content by `---` is because I have a dedicated `links` field so that I can display them on their own container.
+
+An example issue content would look something like this:
+
+```markdown
+This is the content body, nothing too special about it.
+---
+https://elianiva.my.id/posts/today-i-learned
+```
+
+It will take the first part as the content body and parse the second part as an array of links.
+
+```javascript
+const snakeCasedTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+const filePath = path.join('${{ github.workspace }}', "src", "content", "bookmarks", `${snakeCasedTitle}.mdx`);
+
+fs.writeFileSync(filePath, markdown);
+console.log(`Successfully created TIL file: ${filePath}`);
+```
+
+This last part is basically writing the issue content to the file. I converted the issue title into snake-case and then used it for the file name to match the other files I already have.
+
+That's pretty much the adjustment I made, the rest is just changing the file name, commit message, etc.
+
+### Putting it all together
+
+Now, putting them all together, it should look something like this:
+
+```yaml
+name: Create TIL/Bookmark from Issue
+
+on:
+  issues:
+    types: [opened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.actor == github.repository_owner
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create TIL markdown file from issue
+        uses: actions/github-script@v7
+        id: create-til
+        with:
+          retries: 3
+          script: |
+            const fs = require("fs");
+            const path = require("path");
+
+            const issue = context.payload.issue;
+            if (!issue) {
+              core.setFailed("Could not get issue details");
+              return;
+            }
+
+            const date = new Date().toISOString().split("T")[0];
+            const title = issue.title;
+            const body = issue.body || "";
+            const type = issue.labels?.find(label => label.name.startsWith("type:"))?.name.split(":")[1] || "";
+
+            if (body.length === 0) {
+              core.setFailed("Issue body is empty");
+              return;
+            }
+
+            if (type.length === 0) {
+              core.setFailed("Issue labels do not contain a type");
+              return;
+            }
+
+            const [content, links] = body.split("---").map(part => part.trim());
+            const linksArray = links ? links.split("\n").map(link => link.trim()) : [];
+
+            const markdown = `---\n` +
+              `title: ${title}\n` +
+              `date: ${date}\n` +
+              `type: ${type}\n` +
+              (linksArray.length > 0 ? `links:\n${linksArray.map(link => `  - url: ${link}`).join("\n")}\n` : '') +
+              `---\n\n${content}\n`;
+
+            const snakeCasedTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+            const filePath = path.join('${{ github.workspace }}', "src", "content", "bookmarks", `${snakeCasedTitle}.mdx`);
+
+            fs.writeFileSync(filePath, markdown);
+            console.log(`Successfully created TIL file: ${filePath}`);
+
+      - name: Commit and push TIL file
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add ./src/content/bookmarks/*.mdx
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "bookmark/til: add content from #${{ github.event.issue.number }} [automated]"
+            echo "Commit created."
+          fi
+
+      - name: Push changes to repository
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}
+
+      - name: Close Issue
+        if: success()
+        run: gh issue close "${{ github.event.issue.number }}" --comment "Bookmark/TIL created and pushed. Auto-closing issue."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+Honestly, I don't really like the way it looks because there's a piece of Javascript code shoved _inside_ YAML file. That's such a nightmare to work with.
+
+Initially, I wanted to separate it into its own file--docs says you can--but kept getting errors about `module is not defined` or something like that :p
+
+[fail-1]: https://github.com/elianiva/elianiva.my.id/issues/42
+[fail-2]: https://github.com/elianiva/elianiva.my.id/issues/43
+[fail-3]: https://github.com/elianiva/elianiva.my.id/issues/44
+[fail-4]: https://github.com/elianiva/elianiva.my.id/issues/45
+[fail-5]: https://github.com/elianiva/elianiva.my.id/issues/46
+
+It actually [took][fail-1] [me][fail-2] [5][fail-3] [failed][fail-4] [attempts][fail-5] before finally got it working. I just gave up and inline the script to the YAML file. It works, and I'm not going to touch it anyway once I get it working.
+
+## Called it a wrap
+
+There's not much to it, really. It's pretty simple and it works really well. Now I can just submit contents from my phone by creating a Github issue.
+
+I didn't handle a lot of edge cases. For example, what would happen when I re-open the issue or something like that. I find it useless because I'm the only one who's going to use it, and if I ever needed something like that I can just do it manually :p
+
+Anyway, if you want to do something similar, here are some links that might help you get there.
+
+- [Github Actions Documentation](https://docs.github.com/en/actions)
+- [Github Actions Script Documentation](https://github.com/actions/github-script)
+- [My Workflow File](https://github.com/elianiva/elianiva.my.id/blob/master/.github/workflows/bookmark-til.yml)
+
+There are maybe a few missing stuff that I don't really talk about in this post, in that case, feel free to leave a comment :)
+
+Until next time! 👋
