@@ -2,27 +2,21 @@
 import { getCollection } from "astro:content";
 import MainLayout from "~/layouts/MainLayout.astro";
 import BackButton from "../components/BackButton.astro";
-
-type RenderedBookmark = {
-	title: string;
-	url: string | null;
-	date: Date;
-	type: "til" | "bookmark";
-	Content: (props: Record<string, unknown>) => unknown;
-};
+import type { BookmarkMeta } from "~/models/bookmark";
+import LinkSimpleIcon from "~icons/ph/link-simple";
 
 const bookmarks = await getCollection("bookmarks");
 const sortedBookmarks = bookmarks.sort((a, b) =>
 	a.data.date > b.data.date ? -1 : 1,
 );
-const renderedBookmarks = await Promise.all(
+const renderedBookmarks = (await Promise.all(
 	sortedBookmarks.map(async (bookmark) => {
 		const { Content } = await bookmark.render();
 		return { ...bookmark.data, Content };
 	}),
-) as RenderedBookmark[];
+)) as BookmarkMeta[];
 
-const bookmarksByMonth = new Map<string, RenderedBookmark[]>();
+const bookmarksByMonth = new Map<string, BookmarkMeta[]>();
 for (const bookmark of renderedBookmarks) {
 	const date = new Date(bookmark.date);
 	const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
@@ -53,65 +47,88 @@ const formatMonthYear = (monthKey: string) => {
 			Bookmarks / Today I Learned
 		</h1>
 		<p class="text-sm md:text-base font-serif text-pink-950/70 pt-2 pb-4">
-			Well, seems like you've found this not-so-secret page :) <br> This is where I keep my bookmarks or things
-			that I learned. It's meant to be a public archive of things that I find interesting and useful whether it be
-			an article, random thoughts, videos, literally anything. I hope you find something useful here too!
+			Well, seems like you've found this not-so-secret page :) <br /> This
+			is where I keep my bookmarks or things that I learned. It's meant to
+			be a public archive of things that I find interesting and useful whether
+			it be an article, random thoughts, videos, literally anything. I hope
+			you find something useful here too!
 		</p>
-		<div class="py-4 border-t border-pink-300 border-dashed flex flex-col gap-8">
-			{sortedMonths.map((monthKey, index) => {
-				const monthBookmarks = bookmarksByMonth.get(monthKey);
-				if (!monthBookmarks) return null;
-				
-				return (
-					<details open={index === 0} class="group">
-						<summary class="cursor-pointer list-none">
-							<div class="relative flex items-center min-h-10 px-2 leading-none bg-pink-300/30 rounded-sm mb-2">
-								<div class="absolute top-0 -left-5 w-4 h-4 bg-sky-300/50 rounded-sm" />
-								<div class="absolute top-5 -left-5 w-4 h-4 bg-yellow-300/50 rounded-sm" />
-								<h2 class="text-lg font-bold font-serif text-pink-950 flex items-center gap-2">
-									{formatMonthYear(monthKey)}
-									<span class="text-sm font-normal text-pink-950/70">({monthBookmarks.length} items)</span>
-								</h2>
-							</div>
-						</summary>
-						<div class="flex flex-col gap-8 mt-8 pl-2">
-							{monthBookmarks.map((bookmark) => (
-								<div>
-									<div class:list={[
-										"relative flex items-center min-h-10 px-2 leading-none rounded-sm mb-2",
-										bookmark.type === "til" ? "bg-pink-300/10 border-l-2 border-sky-300" : "bg-pink-200/10 border-l-2 border-yellow-300"
-									]}>
-										<div class="absolute top-0 -left-5 w-3 h-3 bg-sky-300/30 rounded-sm" />
-										<div class="absolute top-4 -left-5 w-3 h-3 bg-yellow-300/30 rounded-sm" />
-										<div class="flex items-center justify-between w-full">
-											<h3 class="text-base font-medium font-serif text-pink-950">{bookmark.title}</h3>
-											<span class:list={[
-												"text-xs font-mono px-2 py-0.5 rounded",
-												bookmark.type === "til" ? "bg-sky-300/20 text-sky-950" : "bg-yellow-300/20 text-yellow-950"
-											]}>
-												{bookmark.type === "til" ? "TIL" : "Bookmark"}
-											</span>
+		<div
+			class="py-4 border-t border-pink-300 border-dashed flex flex-col gap-2"
+		>
+			{
+				sortedMonths.map((monthKey, index) => {
+					const monthBookmarks = bookmarksByMonth.get(monthKey);
+					if (!monthBookmarks) return null;
+
+					return (
+						<details open={index === 0} class="group">
+							<summary class="cursor-pointer list-none">
+								<div class="relative flex items-center min-h-10 px-2 leading-none bg-pink-300/30 rounded-sm mb-2">
+									<div class="absolute top-0 -left-5 w-4 h-4 bg-sky-300/50 rounded-sm" />
+									<div class="absolute top-5 -left-5 w-4 h-4 bg-yellow-300/50 rounded-sm" />
+									<div class="flex items-center justify-between w-full font-serif">
+										<h2 class="text-lg font-bold text-pink-950 flex-1">
+											{formatMonthYear(monthKey)}
+										</h2>
+										<span class="text-sm font-normal text-pink-950/70">
+											({monthBookmarks.length} items)
+										</span>
+									</div>
+								</div>
+							</summary>
+							<div class="flex flex-col gap-2 mt-4">
+								{monthBookmarks.map((bookmark) => (
+									<div class="flex flex-col gap-2">
+										<div
+											class:list={[
+												"relative flex items-center min-h-10 px-2 leading-none rounded-sm bg-pink-300/10 border-l-2",
+												bookmark.type === "til"
+													? "border-sky-300"
+													: "border-yellow-300",
+											]}
+										>
+											<div class="flex items-center justify-between w-full">
+												<h3 class="text-base font-medium font-serif text-pink-950">
+													{bookmark.title}
+												</h3>
+												<span
+													class:list={[
+														"text-xs font-mono px-2 py-0.5 rounded",
+														bookmark.type === "til"
+															? "bg-sky-300/20 text-sky-950"
+															: "bg-yellow-300/20 text-yellow-950",
+													]}
+												>
+													{bookmark.type === "til"
+														? "TIL"
+														: "Bookmark"}
+												</span>
+											</div>
+										</div>
+										<div>
+											{bookmark.links?.map((link) => (
+												<a
+													href={link.url}
+													target="_blank"
+													rel="noopener noreferrer"
+													class="inline-flex items-center gap-1 text-xs font-medium text-pink-950/70 font-serif bg-pink-300/20 rounded-full px-2 py-1"
+												>
+													<LinkSimpleIcon class="size-3" />
+													{link.title ?? new URL(link.url).hostname}
+												</a>
+											))}
+										</div>
+										<div class="text-sm md:text-base font-serif text-pink-950 prose min-h-0 max-w-full">
+											<bookmark.Content />
 										</div>
 									</div>
-									<div class="text-sm md:text-base font-serif text-pink-950 prose -my-2 max-w-full pl-2">
-										<bookmark.Content />
-									</div>
-									{bookmark.url !== null && (
-										<a
-											href={bookmark.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="font-mono text-pink-950 text-xs md:text-sm underline pl-2 mt-1 inline-block opacity-70 hover:opacity-100 transition-opacity"
-										>
-											{bookmark.url}
-										</a>
-									)}
-								</div>
-							))}
-						</div>
-					</details>
-				);
-			})}
+								))}
+							</div>
+						</details>
+					);
+				})
+			}
 		</div>
 	</section>
 </MainLayout>
