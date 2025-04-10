@@ -1,7 +1,7 @@
-const fs = require("node:fs");
-const path = require("node:path");
-
 module.exports = async ({ github, context, core }) => {
+	const fs = require("node:fs");
+	const path = require("node:path");
+
 	const issue = await github.rest.issues.get({
 		issue_number: context.issue.number,
 		owner: context.repo.owner,
