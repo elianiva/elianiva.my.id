@@ -29,14 +29,9 @@ jobs:
             const fs = require("fs");
             const path = require("path");
 
-            const issue = await github.rest.issues.get({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            });
-
+            const issue = context.payload.issue;
             if (!issue) {
-              core.setFailed("Could not get issue details from github.event");
+              core.setFailed("Could not get issue details");
               return;
             }
 
