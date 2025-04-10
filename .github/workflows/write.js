@@ -28,15 +28,13 @@ module.exports = async ({ github, context, core }) => {
 	}
 
 	const [content, links] = body.split("---").map((part) => part.trim());
+	const linksArray = links.split("\n").map((link) => link.trim());
 	const markdown = `---
 title: ${title}
 date: ${date}
 type: ${type}
-links:
-${links
-	.split("\n")
-	.map((link) => `    - url: ${link}`)
-	.join("\n")}
+${linksArray.length > 0 ? `links:
+${linksArray.map((link) => `    - url: ${link}`).join("\n")}` : ""}
 ---
 
 ${content}`;
