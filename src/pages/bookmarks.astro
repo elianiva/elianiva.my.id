@@ -3,6 +3,13 @@ import { getCollection } from "astro:content";
 import MainLayout from "~/layouts/MainLayout.astro";
 import BackButton from "../components/BackButton.astro";
 
+type RenderedBookmark = {
+	title: string;
+	url: string | null;
+	date: Date;
+	Content: (props: Record<string, unknown>) => unknown;
+};
+
 const bookmarks = await getCollection("bookmarks");
 const sortedBookmarks = bookmarks.sort((a, b) =>
 	a.data.date > b.data.date ? -1 : 1,
@@ -12,7 +19,28 @@ const renderedBookmarks = await Promise.all(
 		const { Content } = await bookmark.render();
 		return { ...bookmark.data, Content };
 	}),
-);
+) as RenderedBookmark[];
+
+const bookmarksByMonth = new Map<string, RenderedBookmark[]>();
+for (const bookmark of renderedBookmarks) {
+	const date = new Date(bookmark.date);
+	const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+	if (!bookmarksByMonth.has(monthKey)) {
+		bookmarksByMonth.set(monthKey, []);
+	}
+	const monthBookmarks = bookmarksByMonth.get(monthKey);
+	if (monthBookmarks) {
+		monthBookmarks.push(bookmark);
+	}
+}
+
+const sortedMonths = Array.from(bookmarksByMonth.keys()).sort().reverse();
+
+const formatMonthYear = (monthKey: string) => {
+	const [year, month] = monthKey.split("-");
+	const date = new Date(Number(year), Number(month) - 1);
+	return date.toLocaleDateString("en-US", { year: "numeric", month: "long" });
+};
 ---
 
 <MainLayout seo={{ title: "Bookmarks" }}>
@@ -29,30 +57,57 @@ const renderedBookmarks = await Promise.all(
 			an article, random thoughts, videos, literally anything. I hope you find something useful here too!
 		</p>
 		<div class="py-4 border-t border-pink-300 border-dashed flex flex-col gap-8">
-			{renderedBookmarks.map((bookmark) => (
-				<div>
-					<div
-						class="relative flex items-center min-h-9 p-2 leading-none bg-pink-300/30 rounded-sm"
-					>
-						<div class="absolute top-0 -left-5 w-4 h-4 bg-sky-300/50 rounded-sm" />
-						<div class="absolute top-5 -left-5 w-4 h-4 bg-yellow-300/50 rounded-sm" />
-						<h2 class="text-lg md:text-xl font-bold font-serif text-pink-950">{bookmark.title}</h2>
-					</div>
-					<div class="text-sm md:text-base font-serif text-pink-950 prose -my-2 max-w-full">
-						<bookmark.Content />
-					</div>
-					{bookmark.url !== null && (
-						<a
-							href={bookmark.url}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="font-mono text-pink-950 text-xs md:text-sm underline"
-						>
-							{bookmark.url}
-						</a>
-					)}
-				</div>
-			))}
+			{sortedMonths.map((monthKey, index) => {
+				const monthBookmarks = bookmarksByMonth.get(monthKey);
+				if (!monthBookmarks) return null;
+				
+				return (
+					<details open={index === 0} class="group">
+						<summary class="cursor-pointer list-none">
+							<div class="relative flex items-center min-h-10 px-2 leading-none bg-pink-300/30 rounded-sm mb-2">
+								<div class="absolute top-0 -left-5 w-4 h-4 bg-sky-300/50 rounded-sm" />
+								<div class="absolute top-5 -left-5 w-4 h-4 bg-yellow-300/50 rounded-sm" />
+								<h2 class="text-lg font-bold font-serif text-pink-950 flex items-center gap-2">
+									{formatMonthYear(monthKey)}
+									<span class="text-sm font-normal text-pink-950/70">({monthBookmarks.length} items)</span>
+								</h2>
+							</div>
+						</summary>
+						<div class="flex flex-col gap-8 mt-8 pl-2">
+							{monthBookmarks.map((bookmark) => (
+								<div>
+									<div class="relative flex items-center min-h-10 px-2 leading-none bg-pink-300/10 rounded-sm mb-2">
+										<div class="absolute top-0 -left-5 w-3 h-3 bg-sky-300/30 rounded-sm" />
+										<div class="absolute top-4 -left-5 w-3 h-3 bg-yellow-300/30 rounded-sm" />
+										<h3 class="text-base font-medium font-serif text-pink-950">{bookmark.title}</h3>
+									</div>
+									<div class="text-sm md:text-base font-serif text-pink-950 prose -my-2 max-w-full pl-2">
+										<bookmark.Content />
+									</div>
+									{bookmark.url !== null && (
+										<a
+											href={bookmark.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="font-mono text-pink-950 text-xs md:text-sm underline pl-2 mt-1 inline-block opacity-70 hover:opacity-100 transition-opacity"
+										>
+											{bookmark.url}
+										</a>
+									)}
+								</div>
+							))}
+						</div>
+					</details>
+				);
+			})}
 		</div>
 	</section>
 </MainLayout>
+
+<style>
+	/* Remove default details marker */
+	details > summary::-webkit-details-marker,
+	details > summary::marker {
+		display: none;
+	}
+</style>

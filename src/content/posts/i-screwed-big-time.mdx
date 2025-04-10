@@ -1,0 +1,28 @@
+---
+title: I think I Screwed Up, Big Time
+date: 2025-04-03
+draft: true
+description: I screwed up, but hey! I managed to survive and here's what I learned
+tags:
+    - database
+    - tech
+---
+
+A few weeks ago, I was working on this project that has been running for quite a while--not going to go into too many details here--and
+I accidentally nuked the entire production database because I forgot to change the environment variable and ran the tests. I didn't check if the database contains the word `test` either so that's me being dumb.
+
+So, here's a post about what happened, how I recovered it, and what I learned from this (quite scary) experience!
+
+## What happened
+
+I was working on this project which uses [MySQL](https://www.mysql.com) as the database. It's basically just a simple internal app that is used daily. It's not that complicated, it was quite simple actually.
+
+I was adding this feature to the app, so naturally I would write some tests for it to make sure things are working the way they are supposed to. Now, stay with me here, I know this is bad practice, but because this is an internal app, I was so used to work in production environment because basically people who are using it aren't that many to begin with. It was fine to move fast and break things because this thing is internal.
+
+I wrote the unit tests as usual and tried to run them. This feature is the first feature that has tests integrated with the database. Bare in mind, this is a legacy project that I'm working on, there were no test cases at all.
+
+## How I realised
+
+## Mitigations
+
+The most important thing to do in this situation is to not panic, it will only make it worse.
