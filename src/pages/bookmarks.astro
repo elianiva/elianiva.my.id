@@ -106,18 +106,22 @@ const formatMonthYear = (monthKey: string) => {
 												</span>
 											</div>
 										</div>
-										<div>
-											{bookmark.links?.map((link) => (
-												<a
-													href={link.url}
-													target="_blank"
-													rel="noopener noreferrer"
-													class="inline-flex items-center gap-1 text-xs font-medium text-pink-950/70 font-serif bg-pink-300/20 rounded-full px-2 py-1"
-												>
-													<LinkSimpleIcon class="size-3" />
-													{link.title ?? new URL(link.url).hostname}
-												</a>
-											))}
+										<div class="flex items-center gap-2">
+											{bookmark.links?.map((link) => {
+												const url = new URL(link.url);
+												return (
+													<a
+														href={link.url}
+														target="_blank"
+														title={link.title ?? url.href}
+														rel="noopener noreferrer"
+														class="inline-flex items-center gap-1 text-xs font-medium text-pink-950/70 font-serif bg-pink-300/20 rounded-full px-2 py-1"
+													>
+														<LinkSimpleIcon class="size-3" />
+														{link.title ?? url.hostname}
+													</a>
+												);
+											})}
 										</div>
 										<div class="text-sm md:text-base font-serif text-pink-950 prose min-h-0 max-w-full">
 											<bookmark.Content />
