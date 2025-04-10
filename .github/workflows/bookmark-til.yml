@@ -36,9 +36,9 @@ jobs:
             }
 
             const date = new Date().toISOString().split("T")[0];
-            const title = issue.data.title;
-            const body = issue.data.body || "";
-            const type = issue.data.labels?.find(label => label.name.startsWith("type:"))?.name.split(":")[1] || "";
+            const title = issue.title;
+            const body = issue.body || "";
+            const type = issue.labels?.find(label => label.name.startsWith("type:"))?.name.split(":")[1] || "";
 
             if (body.length === 0) {
               core.setFailed("Issue body is empty");
