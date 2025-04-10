@@ -32,7 +32,7 @@ jobs:
           retries: 3
           script: |
             const script = require('.github/workflows/write.js')
-            await script({ github, context, core })
+            await script({ github, context, core, require })
 
       - name: Commit and push TIL file
         run: |

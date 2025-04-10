@@ -1,4 +1,4 @@
-module.exports = async ({ github, context, core }) => {
+module.exports = async ({ github, context, core, require }) => {
 	const fs = require("node:fs");
 	const path = require("node:path");
 
