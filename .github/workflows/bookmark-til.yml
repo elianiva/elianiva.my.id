@@ -66,7 +66,7 @@ jobs:
               `---\n\n${content}\n`;
 
             const snakeCasedTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-            const filePath = path.join(process.env.GITHUB_WORKSPACE, "src", "content", "bookmarks", `${snakeCasedTitle}.mdx`);
+            const filePath = path.join('${{ github.workspace }}', "src", "content", "bookmarks", `${snakeCasedTitle}.mdx`);
 
             fs.writeFileSync(filePath, markdown);
             console.log(`Successfully created TIL file: ${filePath}`);
