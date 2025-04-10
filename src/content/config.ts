@@ -29,6 +29,7 @@ const bookmarkCollection = defineCollection({
 		title: z.string(),
 		url: z.string().nullable().default(null),
 		date: z.coerce.date(),
+		type: z.enum(["til", "bookmark"]).default("bookmark"),
 	}),
 });
 

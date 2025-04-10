@@ -7,6 +7,7 @@ type RenderedBookmark = {
 	title: string;
 	url: string | null;
 	date: Date;
+	type: "til" | "bookmark";
 	Content: (props: Record<string, unknown>) => unknown;
 };
 
@@ -76,10 +77,21 @@ const formatMonthYear = (monthKey: string) => {
 						<div class="flex flex-col gap-8 mt-8 pl-2">
 							{monthBookmarks.map((bookmark) => (
 								<div>
-									<div class="relative flex items-center min-h-10 px-2 leading-none bg-pink-300/10 rounded-sm mb-2">
+									<div class:list={[
+										"relative flex items-center min-h-10 px-2 leading-none rounded-sm mb-2",
+										bookmark.type === "til" ? "bg-pink-300/10 border-l-2 border-sky-300" : "bg-pink-200/10 border-l-2 border-yellow-300"
+									]}>
 										<div class="absolute top-0 -left-5 w-3 h-3 bg-sky-300/30 rounded-sm" />
 										<div class="absolute top-4 -left-5 w-3 h-3 bg-yellow-300/30 rounded-sm" />
-										<h3 class="text-base font-medium font-serif text-pink-950">{bookmark.title}</h3>
+										<div class="flex items-center justify-between w-full">
+											<h3 class="text-base font-medium font-serif text-pink-950">{bookmark.title}</h3>
+											<span class:list={[
+												"text-xs font-mono px-2 py-0.5 rounded",
+												bookmark.type === "til" ? "bg-sky-300/20 text-sky-950" : "bg-yellow-300/20 text-yellow-950"
+											]}>
+												{bookmark.type === "til" ? "TIL" : "Bookmark"}
+											</span>
+										</div>
 									</div>
 									<div class="text-sm md:text-base font-serif text-pink-950 prose -my-2 max-w-full pl-2">
 										<bookmark.Content />
