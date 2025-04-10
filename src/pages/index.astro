@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import BlogSection from "~/components/section/BlogSection.svelte";
-import ProjectSection from "~/components/section/ProjectSection.svelte";
-import WorkExperienceSection from "~/components/section/WorkExperienceSection.svelte";
+import BlogSection from "~/components/section/BlogSection.astro";
+import ProjectSection from "~/components/section/ProjectSection.astro";
+import WorkExperienceSection from "~/components/section/WorkExperienceSection.astro";
 import siteData from "~/data/sites";
 import { workExperiences } from "~/data/work-experience";
 import MainLayout from "~/layouts/MainLayout.astro";
@@ -146,6 +146,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 			title="Open Source Projects"
 			description="These are some open source projects that I actively help to maintain."
 			projects={sortedOpenSourceProjects}
+			seeMoreUrl="#"
 		/>
 	</main>
 </MainLayout>

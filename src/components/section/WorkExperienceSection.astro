@@ -1,0 +1,19 @@
+---
+import WorkExperienceCard from "~/components/card/WorkExperienceCard.astro";
+import type { WorkExperience } from "~/models/work-experience.ts";
+
+interface Props {
+  workExperiences: WorkExperience[];
+}
+
+const { workExperiences } = Astro.props;
+---
+
+<section class="pt-6 md:pt-10">
+  <h2 class="text-xl md:text-2xl font-bold font-serif text-pink-950 pb-4">Work Experience</h2>
+  <div class="relative flex flex-col gap-4 md:gap-10 pb-4 md:pb-8">
+    {workExperiences.map((experience) => (
+      <WorkExperienceCard {...experience} />
+    ))}
+  </div>
+</section>
