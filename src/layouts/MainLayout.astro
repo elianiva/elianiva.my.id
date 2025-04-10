@@ -29,7 +29,9 @@ const { seo } = Astro.props;
 	<head>
 		<SEO {...seo} />
 		<ClientRouter />
-		<script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="09fb4ce5-10bb-467c-9aee-2c95241715dc"></script>
+		{!import.meta.env.DEV && (
+			<script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="09fb4ce5-10bb-467c-9aee-2c95241715dc"></script>
+		)}
 	</head>
 	<body class="h-full bg-white p-4 md:p-10">
 		<div class="fixed z-50 top-0 left-0 w-full h-2 bg-pink-300"></div>
