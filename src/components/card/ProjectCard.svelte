@@ -9,12 +9,14 @@ type Props = {
 const { title, description, href, stack }: Props = $props();
 </script>
 
-<div class="overflow-hidden text-left p-3 rounded-sm border border-dashed border-pink-300 bg-white">
+<div
+	class="overflow-hidden text-left p-3 rounded-sm border border-dashed border-pink-300 bg-white"
+>
 	<div class="grid grid-rows-[auto_auto_auto]">
 		<a
-			data-sveltekit-prefetch
+			data-astro-prefetch
 			rel="prefetch"
-			href={href}
+			{href}
 			class="text-lg font-bold font-serif text-pink-950"
 		>
 			{title}

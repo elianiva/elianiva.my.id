@@ -11,8 +11,11 @@ type Props = {
 const { title, description, href, date, tags }: Props = $props();
 </script>
 
-<div class="overflow-hidden text-left border border-dashed border-pink-300 rounded-sm p-3 bg-white">
+<div
+	class="overflow-hidden text-left border border-dashed border-pink-300 rounded-sm p-3 bg-white"
+>
 	<a
+		data-astro-prefetch
 		rel="prefetch"
 		{href}
 		class="grid grid-rows-[auto_2rem_auto_2rem] no-underline h-full"
@@ -22,7 +25,9 @@ const { title, description, href, date, tags }: Props = $props();
 		>
 			{title}
 		</h3>
-		<div class="text-xs md:text-sm font-mono flex gap-2 items-center text-pink-950/70 border-b border-dashed border-pink-300">
+		<div
+			class="text-xs md:text-sm font-mono flex gap-2 items-center text-pink-950/70 border-b border-dashed border-pink-300"
+		>
 			<CalendarIcon class="w-4 h-4 block" />
 			<span>
 				{date.toLocaleDateString("en-GB", {
@@ -37,7 +42,9 @@ const { title, description, href, date, tags }: Props = $props();
 		</p>
 		<div class="flex gap-2 self-end">
 			{#each tags as tag}
-				<div class="text-xs md:text-sm font-mono text-pink-950/70">#{tag}</div>
+				<div class="text-xs md:text-sm font-mono text-pink-950/70">
+					#{tag}
+				</div>
 			{/each}
 		</div>
 	</a>
