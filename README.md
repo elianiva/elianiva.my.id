@@ -2,5 +2,5 @@
 
 Always a WIP :)
 
-![homepage](https://github.com/elianiva/elianiva.my.id/assets/51877647/3aef7064-1e42-4d1a-8830-a68c79f89a85)
+![image](https://github.com/user-attachments/assets/cc246654-c66c-4076-b09a-51a0df370a14)
 
