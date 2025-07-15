@@ -1,0 +1,13 @@
+---
+export interface Props {
+	items: string[]
+}
+
+const { items } = Astro.props as Props;
+---
+
+<div class="bg-pink-50 p-2 rounded-sm not-prose">
+	<ul class="list-none ps-0 italic">
+		{items.map((item) => <li class="leading-loose">&gt; {item}</li>)}
+	</ul>
+</div>
