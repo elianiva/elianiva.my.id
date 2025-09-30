@@ -13,7 +13,6 @@ tags:
 [esbuild-link]: https://github.com/evanw/esbuild
 [adapter-node]: https://npmjs.com/package/@sveltejs/adapter-node
 [adapter-static]: https://npmjs.com/package/@sveltejs/adapter-static
-[adapter-vercel]: https://npmjs.com/package/@sveltejs/adapter-vercel
 [frontend-mentor]: https://www.frontendmentor.io/challenges/github-jobs-api-93L-NL6rP
 [spinner-link]: https://icons8.com/cssload/en/horizontal-bars
 [gh-job-repo]: https://github.com/elianiva/gh-job
@@ -53,7 +52,7 @@ When I make my website, I need to give the error message a styling. Without HMR,
 
 ## Adapters
 
-Svelte-Kit use this new concept called **adapter**. There are a number of adapters available like [@sveltejs/adapter-node][adapter-node], [@sveltejs/adapter-static][adapter-static], [@sveltejs/adapter-vercel][adapter-vercel], etc.
+Svelte-Kit use this new concept called **adapter**. There are a number of adapters available like [@sveltejs/adapter-node][adapter-node], [@sveltejs/adapter-static][adapter-static], etc.
 
 As their name suggests, they _adapt_ your code to a specific environment. For example, if you use **adapter-node** then it will spit out a code that could be run on a server using Node for SSR. If you use **adapter-static**, it will spit out a static build, similar to `sapper export` if you've used Sapper before.
 
@@ -125,16 +124,6 @@ I added a loading animation when you try to find a job using the search bar but 
 The original design has a dark mode, and I'm a big fan of dark mode so, why not implement this just for fun. I've implemented this feature before for my website so it's smooth sailing ;)
 
 I use `localStorage` to store the current theme data and load the state to Svelte's store _before_ the user sees the page so they won't see Flash Of Incorrect Theme or whatever you want to call it by putting the loading mechanism _before_ the HTML body.
-
-## Deployment
-
-I was trying to deploy this app to Vercel but it keeps changing constantly so stuff breaks easily. I decided not to deploy this in the end.
-
-<Update date="2021-03-21">
-
-I managed to deploy this app [here](https://svlt.elianiva.my.id) using `@sveltejs/adapter-vercel`. ~~Though I'm using a temporary fork of mine to make it work~~ It's been fixed. It's _really_ satisfying knowing that it finally works!
-
-</Update>
 
 # Closing Note
 
