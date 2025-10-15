@@ -26,6 +26,7 @@
 		"@fontsource/lora": "^5.2.5",
 		"@tailwindcss/vite": "^4.1.8",
 		"astro": "^5.8.1",
+		"motion": "^12.23.24",
 		"satori-html": "^0.3.2",
 		"svelte": "^5.33.10",
 		"tailwind": "^4.0.0",

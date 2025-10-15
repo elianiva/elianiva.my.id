@@ -1,18 +1,18 @@
 <script lang="ts">
-import CalendarIcon from "~icons/ph/calendar-blank";
+	import CalendarIcon from "~icons/ph/calendar-blank";
 
-type Props = {
-	title: string;
-	description: string;
-	href: string;
-	date: Date;
-	tags: string[];
-};
-const { title, description, href, date, tags }: Props = $props();
+	type Props = {
+		title: string;
+		description: string;
+		href: string;
+		date: Date;
+		tags: string[];
+	};
+	const { title, description, href, date, tags }: Props = $props();
 </script>
 
 <div
-	class="overflow-hidden text-left border border-dashed border-pink-300 rounded-sm p-3 bg-white"
+	class="blog-card overflow-hidden text-left border border-dashed border-pink-300 rounded-sm p-3 bg-white"
 >
 	<a
 		data-astro-prefetch
