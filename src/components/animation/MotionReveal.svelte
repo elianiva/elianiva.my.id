@@ -1,4 +1,4 @@
-<script context="module">
+<script context="module" lang="ts">
 	export type Variant = "reveal" | "fade" | "slide-up" | "blur-in" | "custom";
 </script>
 
@@ -29,6 +29,7 @@
 	export let className: string = "";
 
 	let el: HTMLElement;
+	let mounted = false;
 
 	function computeFrom() {
 		if (variant === "custom" && from) return from;
@@ -67,6 +68,8 @@
 	}
 
 	onMount(() => {
+		mounted = true;
+
 		const targets: HTMLElement[] = group
 			? Array.from(el.querySelectorAll<HTMLElement>(groupSelector))
 			: [el];
@@ -111,10 +114,18 @@
 			{ amount },
 		);
 
-		return stop;
+		return () => {
+			stop();
+		};
 	});
 </script>
 
-<svelte:element this={as} bind:this={el} class={className} {...$$restProps}>
+<svelte:element
+	this={as}
+	bind:this={el}
+	class={className}
+	style:opacity={mounted ? undefined : "0"}
+	{...$$restProps}
+>
 	<slot />
 </svelte:element>
