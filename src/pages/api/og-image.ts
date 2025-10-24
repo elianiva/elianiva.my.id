@@ -17,7 +17,9 @@ export const GET: APIRoute = async ({ url }) => {
 	const description = url.searchParams.get("description");
 
 	if (!title || !date || !tags || !description) {
-		return new Response("Missing required query parameters", { status: 400 });
+		return new Response("Missing required query parameters", {
+			status: 400,
+		});
 	}
 
 	const formattedDate = new Date(date).toLocaleDateString("en-GB", {
