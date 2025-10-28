@@ -17,18 +17,18 @@
 		"@astrojs/cloudflare": "^12.6.10",
 		"@astrojs/mdx": "4.3.8",
 		"@astrojs/svelte": "^7.2.0",
-		"@biomejs/biome": "^2.2.6",
+		"@biomejs/biome": "^2.3.1",
 		"@cf-wasm/resvg": "^0.1.24",
 		"@cf-wasm/satori": "^0.1.31",
 		"@fontsource/ibm-plex-mono": "^5.2.7",
 		"@fontsource/ibm-plex-serif": "^5.2.7",
 		"@fontsource/jost": "^5.2.8",
 		"@fontsource/lora": "^5.2.8",
-		"@tailwindcss/vite": "^4.1.14",
+		"@tailwindcss/vite": "^4.1.16",
 		"astro": "5.15.1",
 		"motion": "^12.23.24",
 		"satori-html": "^0.3.2",
-		"svelte": "^5.40.0",
+		"svelte": "^5.42.3",
 		"tailwind": "^4.0.0",
 		"unplugin-icons": "^22.4.2"
 	},
@@ -40,8 +40,8 @@
 		"postcss": "^8.5.6",
 		"rollup": "^4.52.4",
 		"svgo": "4.0.0",
-		"tailwindcss": "^4.1.14",
+		"tailwindcss": "^4.1.16",
 		"typescript": "^5.9.3",
-		"vite": "^6.4.0"
+		"vite": "^7.1.12"
 	}
 }

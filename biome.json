@@ -1,0 +1,23 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"overrides": [
+		{
+			"includes": [
+				"**/*.svelte",
+				"**/*.astro"
+			],
+			"linter": {
+				"rules": {
+					"style": {
+						"useConst": "off",
+						"useImportType": "off"
+					},
+					"correctness": {
+						"noUnusedVariables": "off",
+						"noUnusedImports": "off"
+					}
+				}
+			}
+		}
+	]
+}

@@ -28,6 +28,7 @@ const { projects, title, description, seeMoreUrl } = Astro.props;
 		{
 			projects.map((project) => (
 				<ProjectCard
+					slug={project.slug}
 					title={project.data.title}
 					description={project.data.description}
 					href={`/projects/${project.slug}`}
