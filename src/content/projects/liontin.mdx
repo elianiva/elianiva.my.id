@@ -1,0 +1,23 @@
+---
+title: Liontin
+date: 2025-08-01
+description: A mobile app that allows you to share pixel arts with your friends!
+source: https://github.com/elianiva/liontin
+type: personal
+featured: true
+stack:
+    - ["Typescript", "https://typescriptlang.org"]
+    - ["Expo", "https://expo.dev"]
+    - ["Convex", "https://www.convex.dev"]
+---
+
+**Liontin** (an Indonesian translation of Pendant) is a mobile app that was heavily inspired by the [Locket Widget App](https://play.google.com/store/apps/details?id=com.locket.Locket&hl=en&pli=1). Similar to the original app, it allows you to share a widget with your friends that updates whenever you "push" a new pixel art. 
+
+This was my first try at using [React Native](https://reactnative.dev/). I chose to use [Expo]("https://expo.dev") because it gives you a bunch of niceties, kinda like how meta-framework in React web world. One thing that I really appreciate is the live preview on an external devices that doesn't require you to fiddle around with ADB which is pretty cool.
+
+I chose [ConvexDB](https://www.convex.dev) due to its simplicity and realtime data support. It's basically a reactive DB. As for auth, I use [Clerk](https://clerk.com/) because I want something that just works without much tinkering. These tech are all chosen because I want to focus more on the mobile app rather than having to think about managing the backend myself.
+
+Most of the code are written by LLM, maybe close to 80% of it, I just decide the high level architecture and how it looks because LLM really sucks at deciding what's good and what's not.
+
+This app still has an issue though, I haven't figured out how to export React Native app so that it doesn't became a huge 100MB app. This was usually a trivial thing in Flutter world, but I tried a few things and I ended up with a non working app lol. I may try it again in the future, but for now as long as the app works it's fine, this was mostly made for personal use.
+
