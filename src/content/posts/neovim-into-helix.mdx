@@ -1,0 +1,291 @@
+---
+title: From Neovim to Helix
+date: 2025-10-28
+description: Reasons why I'm leaving Neovim in favour of Helix editor due to its simplicity
+tags:
+    - neovim
+    - editor
+    - helix
+---
+
+Sup! :)
+
+Text editors have been something that has made me obsessed for the past few years. It all started from this notion of _"Vim is hard to learn"_ as a lot of people have been saying, so out of pure egotistical view, I decided to learn it. Another reason was that my first laptop was so bad that I literally couldn't use any other editor but Vim. Long story short, ever since I discovered it, I became obsessed with text editors, how they're set up, how they work, tinkering with their components, and many other things.
+
+Text editors are... weirdly personal, as I found out. Everyone seems to have their own thing going on, apparently. For some, they're just a tool to edit some text, nothing more, nothing less. For others... It's half tool, and half identity, and they swear by it.
+
+# The (Neo)vim experience
+
+Initially, I was using Vim before I discovered Neovim not long after I started using it. Back then, Neovim was just a fork of Vim with architectural differences, the most notable one being `libuv` that enables non-blocking plugins and background tasks. It also introduced an RPC interface which allows you to write plugins in other languages (remember [coc.nvim](https://github.com/neoclide/coc.nvim)? It was _the shit_ that people talked about back then, before we finally have built-in LSP client support in Neovim).
+
+Neovim also splits the core and the UI, so people can make their own GUI with actual Neovim embedded instead of trying to make yet another sub-par emulation. There are probably many other differences that I didn't mention, but my point is that there was not that much of a difference between Neovim 0.4 and Vim 8.0, unlike how it is right now with Neovim 0.11.x and Vim 9.x. 
+
+I later found out that the master branch contained a bunch of good stuff, including Lua scripting support[^1], built-in LSP client, Treesitter integration, and many more! That's where the rabbit hole begins... I started exploring much of the not-yet-stable latest and greatest Neovim API. If you're using Neovim before 0.5 was released, you'll know how long it was before 0.5 finally gets merged, hahah. Not to mention the support for a first-class `init.lua` instead of `init.vim`, that one was quite a ride.
+
+[^1]: Technically, 0.4 already has Lua support; it just doesn't expose the API, so you can't really do much with it
+
+It was a pretty fun experience overall! Using these bare-bones editors made me realise the moving parts that most mainstream IDE-like editors give you out of the box. Although that comes at a cost, maintenance.
+
+## Freedom vs Fatigue
+
+Neovim gives you sooo much freedom, I can't exaggerate enough how much freedom it gives you. You can change almost every part of it with plugins, in whatever language you want. Each person will have their own unique configurations, their own setup, to a point where it becomes their identity.
+
+> It's just an editor bro it ain't that deep
+
+I've had my fair share of that; I had like dozens of Lua files just to configure my editor. It gets out of hand very quickly. What started out as a single `init.vim` became `init.lua` that imports a bunch of other files with abstractions all over the place, all that just to configure a text editor.
+
+While it's good at the start, like, you get excited over a lot of things. Each week, or even each day! People are coming up with new plugins that supposedly improve your _✨productivity✨_ and _✨Quality of Life✨_ in using the text editor. At the end of the day, it depends on how you actually use it. I believe people work differently, and you can't just force how other people use their editor on yourself.
+
+At one point, I felt like it was fatiguing. What's even the point of having a so-called perfect setup, like, what's the end goal here? I know, I know, sometimes it's just because it's fun! While I do agree on that, there's a point where it stopped becoming fun and became more fatiguing instead.
+
+Eventually, curiosity turned into obsession.
+
+## Rabbit Hole
+
+I went deep into this rabbit hole of configuration, or should I say, scripting. See, it's not a configuration anymore when you have a turing complete language to customise your editor. Most mainstream editors out there are using configuration languages like YAML, JSON, TOML, or some other variations of them.
+
+I have mixed feelings about this. Although I'm leaning towards configuration over scripting. While scripting gives you the freedom to extend the behaviour of your text editor, it gets messy quickly because you literally have no limits whatsoever.
+
+I met a guy years ago in Neovim's #matrix, and he was arguing that configuration is better than scripting. Configuration should be purely data, not some turing-complete code you can execute. He [wrote a good article](https://strongly-typed-thoughts.net/blog/editors-in-2021) about this topic; you should probably read it to get what I mean. I came to an agreement with most of what he's saying; I used to be on the other side of the argument.
+
+Trying to make Neovim work like an IDE was not a good idea in the slightest. I had a bunch of plugins that basically implement features you'd find in an IDE, like a debugger, database client, and a bunch of other things. There are quite a few problems with this, most notably [the stability of the plugins](https://strongly-typed-thoughts.net/blog/neovim-plugins-stability). Of course, the solution is to pin them and just never update them, but then you'll miss out on improvements and bug fixes that the author has added. To be fair, it was also due to my lack of self-control that I updated the plugins almost daily hahah.
+
+## The cost of chasing perfection
+
+I keep chasing this mythical ✨perfect setup✨ with a bunch of plugins and scripts I keep adding almost every day. It has become a well-known meme, so to speak, that people using these editors end up spending their time configuring their editors instead of actually being productive. This is a common issue with software that gives you a lot of flexibility, be it an editor, a window manager (which I also had my fair share of), or any type of software, really.
+
+> Just one more plugin, boss. Just one more line of config to make you more productive, boss
+
+I swear I'm finally done configuring my editor, like, this is it, this is the perfect setup, and every time I thought of that, a new idea came up, and I just _had_ to tinker around with it.
+
+## Communities
+
+In hindsight, going down that rabbit hole was not all that bad. I met a lot of people in the community thanks to that! I love interacting with people who share the same interests as I do.
+
+I never thought there would be a day when someone would recognise me because of the things I do with my editor. I had my contributions to the ecosystem, but I just never thought people would end up recognising me because of that.
+
+# That's enough, I gave up
+
+After using Neovim for years, crafting my own configurations, I finally had enough of it. I miss when something _Just Works™_ without having me tinker around with a bunch of configuration options and all.
+
+## I got burnt out
+
+I stopped using Neovim as I looked for other alternatives. I tried using "normal" editors or IDEs that most people use. I'm done with having my "own" text editor; it's just a text editor, mate, why over-complicate it, I said to myself.
+
+It's probably time to say goodbye to those years-old configurations and embrace the default.
+
+## Trying mainstream editors
+
+I said to myself, let's just try out what most people are using, let's just be normal this time, don't be obsessed with it.
+
+### Visual Studio Code
+
+I started using VSCode because I had to handle a Typescript project at the time. Back then, Typescript support outside of VSCode (and its forks) was just horrible because `tsserver` doesn't implement a full LSP interface [even until today](https://github.com/microsoft/TypeScript/issues/39459). Me trying to figure out how to make it work in Neovim can be a post on its own. I tried so many different things, different servers, but in the end, I just gave up and used VSCode.
+
+### JetBrains IDE
+
+Since I have a university account, I can claim JetBrains' student offer, so I decided to try the holy grail of the IDE world. I mean, it's an IDE, it does what you would expect an IDE would do.
+
+There's not much to say, really; it works, albeit taking up my entire computing resources. I used IntelliJ IDEA for everything, btw, and I tried disabling a lot of things to the point where what's supposed to be a Java IDE can't be used to code Java. I only use it for web things. Even with a lot of things disabled, it still consumed a lot of resources.
+
+Also, I don't like the fact that it makes me feel like I work for a boring corporation; that's just depressing.
+
+## Going back
+
+I was not satisfied with the options. Years of those muscle memories, I did not enjoy using the defaults. I decided to go back with Neovim, and reworked my config to be more minimal than before (though arguably it's still dozens of Lua files, it's just a bit more manageable).
+
+Here I am, back with Neovim for a few months. Thought I was over with it, but I guess not, aye.
+
+## AI sloppery slop
+
+Along with the advancement of Generative AI / LLM, there has been an influx of "AI text editors" popping up in recent years. You might be familiar with [Cursor](https://cursor.com/), which was the first time the concept of "AI-assisted IDE" was introduced. Since then, there have been countless companies trying to do the same, whether it be a new text editor, a new IDE, new extensions, and a lot of people are going all in with the hype.
+
+When I was still using Neovim, I felt like it lacked good support for AI chat. There are extensions like [codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim), [avante.nvim](https://github.com/yetone/avante.nvim), and probably others I failed to mention, but still, I wasn't quite satisfied.
+
+For this reason, I went back to VSCode, well, Cursor, actually. I looove its autocompletion, it's stupid fast and quite accurate too. There's one issue, though, I don't use AI enough to warrant a subscription for it, so I looked for alternatives that have a pay-as-you-go scheme, and I found two at the time, which are Cline and RooCode.
+
+Now, I won't go deep into them in this post because that's basically just reviewing AI coding tools. The point is, I liked RooCode enough that it makes me stay to use VSCode due to it being a VSCode extension. I even ended up [contributing a bunch of stuff to them](https://github.com/RooCodeInc/Roo-Code/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aopen+author%3Aelianiva)!
+
+I liked it for a while; it made me get things done quickly, and I used it quite frequently. I learned to navigate through the shortcomings of these models, context management, and all those new buzzwords that cool kids are talking about these days.
+
+# Into the post-modern era
+
+At this point, LLM writes more code than I do myself. I'll let you decide whether it's a good thing or not. I liked the fact that it makes me more productive in shipping things. 
+
+I have an issue with using LLM, though; it takes the fun out of programming, at least for me. I stopped editing the code manually, and I stopped navigating the code manually; all of it has been assisted by LLM.
+
+After editing my prompt more than I edit my code, I decided to step back a bit and try to find the joy in programming like I used to.
+
+## How I discovered Helix
+
+I discovered [Helix](https://helix-editor.com/) years ago when the project was still quite young, circa 2022, only a year after it was made. Someone mentioned it in Neovim's #matrix for it being a _post-modern text editor_.
+
+At first, it didn't really catch my attention to make me consider using it. Although it did catch my attention a little, the fact that it has first-class Treesitter support, [Rope data structure](https://en.wikipedia.org/wiki/Rope_(data_structure)) for the text, which should make things faster, _and_ an LSP client by default makes it quite interesting. 
+
+I decided to pay close attention to it because who knows, it might be the next new shiny thing for me (spoiler alert: yes it does).
+
+There are two things that really convinced me to try it. The first one is that someone shared their experience using it and how comfortable they are with the keybind, and that came from a former Vim user, albeit not heavily. The second reason is the fact that it's integrated in the [Zed Editor](https://zed.dev), and I've been trying it out for a few days.
+
+I thought to myself, I think this is it! This is the missing piece that I was looking for, after trying it out for a few minutes.
+
+## Adjusting mindset
+
+I used (Neo)vim for years, so the muscle memory has been ingrained in me. I didn't even know what my fingers were doing, I could just think what I wanted to do and they just did it for me. If the keypresses were visualised, I'd also get confused, wdym I pressed `ggVg=<C-o>` or `vipddjjjjjjp`, like, seriously, what is that nonsense.
+
+Helix has a flipped mindset. Instead of doing action->selection, kinda like how you'd do Verb->Object, in Helix, you'd do selection->action. At first, I thought this didn't make sense at all. Only after I realised that in Helix, you're always in select mode, each time you move using the navigation keys like `b` or `w`, you will always be selecting something, until you explicitly say not to. 
+
+This screwed my muscle memory at first because I'm so used to the action->selection mindset like `dw` for deleting words, now I had to adjust to using `wd`, but worry not! Since Helix is always in select mode, it ended up saving me some keystrokes because the things that I want to delete are sometimes already being selected, so I just simply need to press `d` to delete them, cool!
+
+The selection->action mindset makes more sense for text editing because you can clearly visualise the text that you want to operate on, as opposed to having to memorise what certain movements do, like we have in (Neo)vim.
+
+Some of the keybindings are also more consistent. Going to the start of a (non whitespace) line is `gs` instead of `^`, going to the end of a line is `gl` instead of `$`. I know, I know, the reason why Vim picked `^` and `$` is because it borrows the idea from regular expressions. Even though it's faster because it's only a single keypress as opposed to two, it can feel a bit cryptic to some people. I like that Helix favours a more consistent way of doing things, even if it sacrifices efficiency for a bit[^2]. 
+
+[^2]: I mean, let's be real here, it probably doesn't even matter when it's just a few keypresses of difference.
+
+## Appreciating minimalism
+
+Helix doesn't have the concept of plugins ([yet! It's still in the works](https://github.com/helix-editor/helix/discussions/3806)), so it has a few missing things for me coming from Neovim. Thankfully, though, it already has a bunch of features baked in by default! Treesitter, LSP client, pickers, popup menus, diagnostics, and a bunch of other things.
+
+This made me come to the realisation after using it for a while. Wow, I didn't actually use most of my custom configuration. A bunch of them are just there because I thought that'd be useful in the future.
+
+I also tried not to change the keybind to suit my personal needs. I don't want to maintain yet another gigantic config files with dozens of custom keybinds, no, no, no, I'm done with that.
+
+That being said, I still wrote some configurations that's just nice to have. You know what, here's my config, it's so short that I can fit it in this post as opposed to my [Neovim config](https://github.com/elianiva/dotfiles/tree/master/nvim), which is an entire folder of its own.
+
+```toml
+theme = "my_rose_pine"
+
+[editor]
+bufferline = "multiple"
+line-number = "relative"
+cursorline = true
+popup-border = "all"
+color-modes = true
+
+[editor.statusline]
+left = ["spacer", "separator", "spacer", "file-name", "read-only-indicator", "file-modification-indicator", "spacer"]
+right = ["version-control", "spacer", "diagnostics", "register", "position", "file-encoding", "file-line-ending", "file-type"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+separator = ""
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[editor.lsp]
+auto-signature-help = false
+display-messages = true
+
+[editor.indent-guides]
+render = true
+character = "▏"
+```
+
+I used a slightly customised rose pine colour because I want my statusline to be pink! Here's how it looks.
+
+```toml
+inherits = "rose_pine_dawn"
+
+"ui.virtual.indent-guide" = { fg = "overlay" }
+"ui.statusline" =  { fg = "love", bg = "love_10" }
+"ui.statusline.separator" = { fg = "love", bg = "" }
+```
+
+...aaand here's how the editor looks, I'm using Ghostty as my terminal emulator.
+
+![Helix Preview](/assets/posts/neovim-into-helix/preview.png)
+
+As for the language configuration, here it is. I configured a bunch of language servers for Typst, Biome, and Tailwind, so they work properly.
+
+```toml
+[language-server.tinymist]
+command = "tinymist"
+
+[language-server.tinymist.config]
+preview.background.enabled = true
+preview.background.args = ["--data-plane-host=127.0.0.1:9898", "--invert-colors=never"]
+
+[language-server.harper-ls]
+command = "harper-ls"
+args = [ "--stdio" ]
+
+[language-server.vtsls]
+command = "vtsls"
+args = [ "--stdio" ]
+
+[language-server.biome]
+command = "biome"
+args = ["lsp-proxy"]
+
+# ------------------
+ 
+[[language]]
+name = "html"
+language-servers = [ "vscode-html-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "css"
+language-servers = [ "vscode-css-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist", "harper-ls"]
+formatter.command = "typstyle"
+rulers = [80]
+auto-format = true
+soft-wrap.enable = true
+soft-wrap.wrap-at-text-width = true
+
+[[language]]
+name = "markdown"
+language-servers = ["harper-ls"]
+rulers = [80]
+soft-wrap.enable = true
+soft-wrap.wrap-at-text-width = true
+
+[[language]]
+name = "typescript"
+language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "tailwindcss-ls"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "index.astro"] }
+
+[[language]]
+name = "javascript"
+language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "tailwindcss-ls"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "index.astro"] }
+
+[[language]]
+name = "tsx"
+language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "tailwindcss-ls"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "index.astro"] }
+
+[[language]]
+name = "jsx"
+language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "tailwindcss-ls"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "index.astro"] }
+
+[[language]]
+name = "astro"
+language-servers = [{ name = "astro-ls", except-features = ["format"] }, "biome", "tailwindcss-ls"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "index.astro"] }
+```
+
+That's about it, really. I can achieve like 80% of my Neovim experience with those configs, I don't need anything else. I don't have to worry that some day some of these will break because those are just built-in features! It's not someone else's code that I attached to the editor. As long as I'm on the stable branch, I won't have to worry :)
+
+## Having fun!
+
+In the midst of the rise of AI slop, I can find joy in text editing again! I now look forward to editing text again, thanks to Helix.
+
+There are still some issues, though: I much prefer GUI to TUI, but there's gonna be some time for a Helix GUI to happen. The second best option is to just use Zed, which is what I'm doing now, but it doesn't have (or even try to) the same level of parity with Helix itself.
+
+For now, I'm just enjoying editing text again, with all these fancy pants AST movements, selections, and whatnot.
+
+# What I learned
+
+If there are one or two things that I learned from this, being productive isn't the same as feeling productive. You might feel like you're chasing one with the amount of how much you tinker around with your config, but at the end of the day, you're only productive if you've actually shipped what you've built!
+
+Don't be obsessed with this mythical "most productive workflows", just get shit done in the way that you enjoy the most! I'm not saying you shouldn't try to optimise your setup, just be careful before it takes over your life, hahah. And before you know it, you're eight hours deep into editing your configuration instead of actually building things.
+
+If you’re still in your config-tinkering era, enjoy it. Just know there’s peace on the other side ;)
