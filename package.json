@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "^12.6.10",
-		"@astrojs/mdx": "^4.3.7",
+		"@astrojs/mdx": "4.3.8",
 		"@astrojs/svelte": "^7.2.0",
 		"@biomejs/biome": "^2.2.6",
 		"@cf-wasm/resvg": "^0.1.24",
@@ -25,7 +25,7 @@
 		"@fontsource/jost": "^5.2.8",
 		"@fontsource/lora": "^5.2.8",
 		"@tailwindcss/vite": "^4.1.14",
-		"astro": "^5.14.5",
+		"astro": "5.15.1",
 		"motion": "^12.23.24",
 		"satori-html": "^0.3.2",
 		"svelte": "^5.40.0",
