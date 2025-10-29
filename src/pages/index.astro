@@ -7,7 +7,6 @@ import siteData from "~/data/sites";
 import { workExperiences } from "~/data/work-experience";
 import MainLayout from "~/layouts/MainLayout.astro";
 import MotionReveal from "~/components/animation/MotionReveal.svelte";
-import ButterflyIcon from "~icons/ph/butterfly-duotone";
 import EnvelopeIcon from "~icons/ph/envelope-duotone";
 import GithubLogoIcon from "~icons/ph/github-logo-duotone";
 import LinkedinLogoIcon from "~icons/ph/linkedin-logo-duotone";
@@ -110,7 +109,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 								title={social.label}
 							>
 								<social.icon />
-								<span class="text-xs">{social.label}</span>
+								<span class="text-xs font-mono uppercase">{social.label}</span>
 							</a>
 						))
 					}
