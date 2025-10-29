@@ -24,32 +24,27 @@ const socials: Social[] = [
 	{
 		icon: EnvelopeIcon,
 		link: `mailto:${siteData.email}`,
-		label: "If you want to contact me",
+		label: "Email",
 	},
 	{
 		icon: GithubLogoIcon,
 		link: siteData.github,
-		label: "If you want to see my works",
+		label: "Github",
 	},
 	{
 		icon: LinkedinLogoIcon,
 		link: siteData.linkedin,
-		label: "Not exactly a social media",
-	},
-	{
-		icon: ButterflyIcon,
-		link: siteData.bluesky,
-		label: "Experimenting with this",
+		label: "LinkedIn",
 	},
 	{
 		icon: XLogoIcon,
 		link: siteData.twitter,
-		label: "Place where I yap about random stuff",
+		label: "Twitter",
 	},
 	{
 		icon: CvLogoIcon,
 		link: siteData.cv,
-		label: "Read my CV here",
+		label: "Résumé",
 	},
 ];
 
@@ -103,18 +98,19 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 					group
 					groupSelector="a"
 					stagger={0.05}
-					class="flex items-center gap-2 pt-2"
+					class="flex items-center flex-wrap gap-2 pt-2 justify-center md:justify-start"
 				>
 					{
 						socials.map((social) => (
 							<a
 								href={social.link}
-								class="text-pink-950/80 hover:text-pink-950 p-1 rounded-md border border-pink-300"
+								class="text-pink-950/80 hover:text-pink-950 p-1 rounded-md border border-pink-300 flex items-center gap-1"
 								target="_blank"
 								rel="noopener noreferrer"
 								title={social.label}
 							>
 								<social.icon />
+								<span class="text-xs">{social.label}</span>
 							</a>
 						))
 					}
@@ -147,7 +143,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 			<p
 				class="text-sm md:text-base leading-relaxed font-serif text-pink-950/80"
 			>
-				Software engineer with 3+ years of experience building web
+				Software engineer with 4+ years of experience building web
 				apps—mostly frontend, but I tinker with the backend too. I love
 				solving problems and help people through code. When I’m not
 				coding, I’m probably geeking out over anime or mechanical
@@ -159,7 +155,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 			as="section"
 			group
 			groupSelector=".work-experience-card"
-			amount={0.15}
+			amount={0}
 			stagger={0.05}
 			delay={0.05}
 			client:idle
