@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from "astro/config";
+import { defineConfig, envField, passthroughImageService } from "astro/config";
 import path from "node:path";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
@@ -31,6 +31,14 @@ export default defineConfig({
 		},
 		ssr: {
 			external: ["svgo"],
+		},
+	},
+	env: {
+		schema: {
+			RAINDROP_API_KEY: envField.string({
+				context: "server",
+				access: "secret",
+			}),
 		},
 	},
 });

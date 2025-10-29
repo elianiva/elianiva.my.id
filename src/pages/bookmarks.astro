@@ -1,45 +1,15 @@
 ---
-import { getCollection } from "astro:content";
 import MainLayout from "~/layouts/MainLayout.astro";
 import BackButton from "../components/BackButton.astro";
-import type { BookmarkMeta } from "~/models/bookmark";
-import LinkSimpleIcon from "~icons/ph/link-simple";
+import { getRaindrops } from "~/data/raindrop";
 
-const bookmarks = await getCollection("bookmarks");
-const sortedBookmarks = bookmarks.sort((a, b) =>
-	a.data.date > b.data.date ? -1 : 1,
-);
-const renderedBookmarks = (await Promise.all(
-	sortedBookmarks.map(async (bookmark) => {
-		const { Content } = await bookmark.render();
-		return { ...bookmark.data, Content };
-	}),
-)) as BookmarkMeta[];
+export const prerender = false
 
-const bookmarksByMonth = new Map<string, BookmarkMeta[]>();
-for (const bookmark of renderedBookmarks) {
-	const date = new Date(bookmark.date);
-	const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
-	if (!bookmarksByMonth.has(monthKey)) {
-		bookmarksByMonth.set(monthKey, []);
-	}
-	const monthBookmarks = bookmarksByMonth.get(monthKey);
-	if (monthBookmarks) {
-		monthBookmarks.push(bookmark);
-	}
-}
-
-const sortedMonths = Array.from(bookmarksByMonth.keys()).sort().reverse();
-
-const formatMonthYear = (monthKey: string) => {
-	const [year, month] = monthKey.split("-");
-	const date = new Date(Number(year), Number(month) - 1);
-	return date.toLocaleDateString("en-US", { year: "numeric", month: "long" });
-};
+const raindrops = await getRaindrops();
 ---
 
 <MainLayout seo={{ title: "Bookmarks" }}>
-	<section class="mx-auto max-w-screen-md px-4 py-10">
+	<section class="mx-auto max-w-3xl px-4 py-10">
 		<BackButton />
 		<h1
 			class="font-serif relative inline-block text-xl md:text-3xl font-bold text-pink-950 mt-4"
@@ -47,84 +17,54 @@ const formatMonthYear = (monthKey: string) => {
 			Bookmarks / Today I Learned
 		</h1>
 		<p class="text-sm md:text-base font-serif text-pink-950/70 pt-2 pb-4">
-			Well, seems like you've found this not-so-secret page :) <br /> This
-			is where I keep my bookmarks or things that I learned. It's meant to
+			Well, seems like you've found this not-so-secret page :) <br /><br />
+			This is where I keep my bookmarks or things that I learned. It's meant to
 			be a public archive of things that I find interesting and useful whether
 			it be an article, random thoughts, videos, literally anything. I hope
-			you find something useful here too!
+			you find something useful here too! These are all coming from my
+			<a class="text-pink-400" href="https://raindrop.io">Raindrop.io</a> collections.
 		</p>
 		<div
 			class="py-4 border-t border-pink-300 border-dashed flex flex-col gap-2"
 		>
 			{
-				sortedMonths.map((monthKey, index) => {
-					const monthBookmarks = bookmarksByMonth.get(monthKey);
-					if (!monthBookmarks) return null;
-
+				raindrops.map((d) => {
 					return (
-						<details open={index === 0} class="group">
+						<details class="group">
 							<summary class="cursor-pointer list-none">
-								<div class="relative flex items-center min-h-10 px-2 leading-none bg-pink-300/30 rounded-sm mb-2">
+								<div class="relative flex items-center min-h-10 px-2 leading-none bg-pink-300/30 hover:bg-pink-300/50 transition-colors duration-100 rounded-sm">
 									<div class="absolute top-0 -left-5 w-4 h-4 bg-sky-300/50 rounded-sm" />
 									<div class="absolute top-5 -left-5 w-4 h-4 bg-yellow-300/50 rounded-sm" />
 									<div class="flex items-center justify-between w-full font-serif">
-										<h2 class="text-lg font-bold text-pink-950 flex-1">
-											{formatMonthYear(monthKey)}
+										<h2 class="text-base font-bold text-pink-950 flex-1">
+											{d.title}
 										</h2>
-										<span class="text-sm font-normal text-pink-950/70">
-											({monthBookmarks.length} items)
+										<span class="text-xs font-mono text-pink-950/70">
+											({d.items.length} items)
 										</span>
 									</div>
 								</div>
 							</summary>
-							<div class="flex flex-col gap-2 mt-4">
-								{monthBookmarks.map((bookmark) => (
-									<div class="flex flex-col gap-2">
-										<div
-											class:list={[
-												"relative flex items-center min-h-10 px-2 leading-none rounded-sm bg-pink-300/10 border-l-2",
-												bookmark.type === "til"
-													? "border-sky-300"
-													: "border-yellow-300",
-											]}
-										>
-											<div class="flex items-center justify-between w-full">
-												<h3 class="text-base font-medium font-serif text-pink-950">
-													{bookmark.title}
-												</h3>
-												<span
-													class:list={[
-														"text-xs font-mono px-2 py-0.5 rounded",
-														bookmark.type === "til"
-															? "bg-sky-300/20 text-sky-950"
-															: "bg-yellow-300/20 text-yellow-950",
-													]}
-												>
-													{bookmark.type === "til"
-														? "TIL"
-														: "Bookmark"}
-												</span>
-											</div>
-										</div>
-										<div class="flex items-center gap-2 flex-wrap">
-											{bookmark.links?.map((link) => {
-												const url = new URL(link.url);
-												return (
-													<a
-														href={link.url}
-														target="_blank"
-														title={link.title ?? url.href}
-														rel="noopener noreferrer"
-														class="inline-flex items-center gap-1 text-xs font-medium text-pink-950/70 font-serif bg-pink-300/20 rounded-full px-2 py-1"
-													>
-														<LinkSimpleIcon class="size-3" />
-														{link.title ?? url.hostname}
-													</a>
-												);
-											})}
-										</div>
-										<div class="text-sm md:text-base font-serif text-pink-950 prose min-h-0 max-w-full">
-											<bookmark.Content />
+							<div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+								{d.items.map((item) => (
+									<div class="flex flex-col h-full border border-pink-200 border-dashed rounded-md">
+										{item.cover !== ""
+											? (
+												<img
+													class="object-cover rounded-tl-md rounded-tr-md aspect-video h-auto w-auto bg-pink-100 alt:text-sm alt:font-mono"
+													src={item.cover}
+													alt={item.title}
+												 />
+											) : (
+												<div class="rounded-tl-md rounded-tr-md aspect-video h-auto w-auto bg-pink-100"></div>
+											)}
+										<div class="flex-1 relative flex flex-col gap-2 justify-between items-start p-2 rounded-bl-md rounded-br-md bg-pink-300/10">
+											<h3 class="text-xs font-medium font-serif text-pink-950 text-ellipsis line-clamp-2">
+												{item.title}
+											</h3>
+											<span class="text-[0.625rem] font-mono px-2 py-0.5 rounded bg-yellow-300/20 text-sky-950">
+												{item.domain}
+											</span>
 										</div>
 									</div>
 								))}
