@@ -161,10 +161,11 @@ line-number = "relative"
 cursorline = true
 popup-border = "all"
 color-modes = true
+default-yank-register = "+"
 
 [editor.statusline]
-left = ["spacer", "separator", "spacer", "file-name", "read-only-indicator", "file-modification-indicator", "spacer"]
-right = ["version-control", "spacer", "diagnostics", "register", "position", "file-encoding", "file-line-ending", "file-type"]
+left = ["spacer", "separator", "spacer", "file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["spinner", "spacer", "version-control", "spacer", "diagnostics", "register", "position", "file-encoding", "file-line-ending", "file-type"]
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
@@ -182,6 +183,17 @@ display-messages = true
 [editor.indent-guides]
 render = true
 character = "▏"
+
+[keys.normal.space]
+i = ":toggle lsp.display-inlay-hints"
+# replace <space>-e with yazi instead of default file manager
+e = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
 ```
 
 I used a slightly customised rose pine colour because I want my statusline to be pink! Here's how it looks.
