@@ -202,8 +202,15 @@ I used a slightly customised rose pine colour because I want my statusline to be
 inherits = "rose_pine_dawn"
 
 "ui.virtual.indent-guide" = { fg = "overlay" }
-"ui.statusline" =  { fg = "love", bg = "love_10" }
-"ui.statusline.separator" = { fg = "love", bg = "" }
+
+"ui.statusline" = { fg = "love", bg = "love_10" }
+"ui.statusline.separator" = { fg = "love" }
+
+"ui.popup" = {}
+"ui.popup.info" = {}
+
+"ui.menu" = { fg = "subtle" }
+"ui.help" = { fg = "subtle" }
 ```
 
 ...aaand here's how the editor looks, I'm using Ghostty as my terminal emulator.
@@ -293,6 +300,8 @@ formatter = { command = "biome", args = ["format", "--stdin-file-path", "index.a
 ```
 
 That's about it, really. I can achieve like 80% of my Neovim experience with those configs, I don't need anything else. I don't have to worry that some day some of these will break because those are just built-in features! It's not someone else's code that I attached to the editor. As long as I'm on the stable branch, I won't have to worry :)
+
+It will probably get outdated very quickly since I might have to change a thing or two as I'm adjusting to use it, so you can check it yourself in [my dotfiles repository](https://github.com/elianiva/dotfiles)
 
 ## Having fun!
 
