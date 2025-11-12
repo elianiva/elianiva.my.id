@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	export type Variant = "reveal" | "fade" | "slide-up" | "blur-in" | "custom";
+export type Variant = "reveal" | "fade" | "slide-up" | "blur-in" | "custom";
 </script>
 
 <script lang="ts">
@@ -83,7 +83,10 @@
 			return;
 		}
 
-		targets.forEach(applyInitialStyles);
+		// Only apply initial styles if JS is enabled
+		if (document.documentElement.hasAttribute('data-js-enabled')) {
+			targets.forEach(applyInitialStyles);
+		}
 
 		const endKeyframes = computeTo();
 		const stop = inView(
@@ -121,11 +124,11 @@
 </script>
 
 <svelte:element
-	this={as}
-	bind:this={el}
-	class={className}
-	style:opacity={mounted ? undefined : "0"}
-	{...$$restProps}
->
-	<slot />
-</svelte:element>
+		this={as}
+		bind:this={el}
+		class={className}
+		data-motion-reveal={mounted ? "true" : "false"}
+		{...$$restProps}
+	>
+		<slot />
+	</svelte:element>

@@ -58,3 +58,8 @@
 		@apply text-pink-800 my-2 leading-loose text-base;
 	}
 }
+
+/* Motion enhancement - only apply when JS is enabled */
+[data-js-enabled] [data-motion-reveal="true"] {
+	opacity: 0;
+}
