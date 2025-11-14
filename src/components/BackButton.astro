@@ -3,11 +3,21 @@ import ArrowCircleLeftIcon from "~icons/ph/arrow-circle-left";
 import HouseSimpleIcon from "~icons/ph/house-simple";
 ---
 
-<div class="flex items-center justify-center gap-4 w-full">
-	<a href="/" class="flex items-center gap-1 text-sm text-pink-600 font-serif" onclick="history.back()">
-		<ArrowCircleLeftIcon class="w-4 h-4" /> Back
+<nav aria-label="Navigation" class="flex items-center justify-center gap-4 w-full">
+	<button 
+		type="button" 
+		class="flex items-center gap-1 text-sm text-pink-600 font-serif bg-transparent border-none cursor-pointer hover:text-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded px-2 py-1"
+		onclick="history.back()"
+		aria-label="Go back to previous page"
+	>
+		<ArrowCircleLeftIcon width="16" height="16" /> Back
+	</button>
+	<a 
+		data-astro-prefetch 
+		href="/" 
+		class="flex items-center gap-1 text-sm text-pink-600 font-serif hover:text-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded px-2 py-1"
+		aria-label="Navigate to home page"
+	>
+		<HouseSimpleIcon width="16" height="16" /> Home
 	</a>
-	<a data-astro-prefetch href="/" class="flex items-center gap-1 text-sm text-pink-600 font-serif">
-		<HouseSimpleIcon class="w-4 h-4" /> Home
-	</a>
-</div>
+</nav>

@@ -18,7 +18,7 @@ const { title, description, href, slug, stack } = Astro.props;
 	<div class="">
 		<img
 			src={`/assets/projects/${slug}/cover.webp`}
-			alt={title}
+			alt={`Screenshot of ${title} project interface`}
 			class="block w-full h-full bg-pink-100 border-b border-pink-300 border-dashed!"
 			loading="lazy"
 		/>
@@ -27,7 +27,7 @@ const { title, description, href, slug, stack } = Astro.props;
 				data-astro-prefetch
 				rel="prefetch"
 				href={href}
-				class="text-lg font-bold font-serif text-pink-950"
+				class="text-lg font-bold font-serif text-pink-950 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded"
 			>
 				{title}
 			</a>
@@ -41,7 +41,7 @@ const { title, description, href, slug, stack } = Astro.props;
 							href={url}
 							target="_blank"
 							rel="norel noreferrer"
-							class="no-underline text-xs text-pink-900/70 hover:text-pink-900/90 bg-pink-50 px-2 py-1 rounded-md"
+							class="no-underline text-xs text-pink-900/70 hover:text-pink-900/90 bg-pink-50 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-1"
 						>
 							{name}
 						</a>

@@ -59,6 +59,42 @@
 	}
 }
 
+/* Focus indicators */
+@layer base {
+	/* Ensure focus indicators are visible */
+	*:focus {
+		outline: 2px solid #ec4899;
+		outline-offset: 2px;
+	}
+	
+	/* Better focus for interactive elements */
+	a:focus,
+	button:focus,
+	input:focus,
+	textarea:focus,
+	select:focus,
+	[tabindex]:focus {
+		outline: 2px solid #ec4899;
+		outline-offset: 2px;
+		box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
+	}
+	
+	/* High contrast focus for better visibility */
+	@media (prefers-contrast: high) {
+		*:focus {
+			outline: 3px solid #ec4899;
+			outline-offset: 3px;
+		}
+	}
+	
+	/* Reduce motion for focus indicators */
+	@media (prefers-reduced-motion: reduce) {
+		*:focus {
+			transition: none;
+		}
+	}
+}
+
 /* Motion enhancement - only apply when JS is enabled */
 [data-js-enabled] [data-motion-reveal="true"] {
 	opacity: 0;

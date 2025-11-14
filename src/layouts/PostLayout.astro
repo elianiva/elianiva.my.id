@@ -78,13 +78,14 @@ const ogImageParams = new URLSearchParams({
 			</span>
 		</div>
 		<a
-			class="block text-center relative no-underline hover:underline hover:text-pink-400 font-serif text-sm md:text-base text-pink-950/70 mb-2"
+			class="block text-center relative no-underline hover:underline hover:text-pink-400 font-serif text-sm md:text-base text-pink-950/70 mb-2 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded px-2 py-1"
 			href={`https://github.com/elianiva/elianiva.my.id/blob/master/src/content/posts/${slug}.mdx`}
 			target="_blank"
 			rel="norel noreferrer"
+			aria-label="Suggest an edit to this post on GitHub"
 		>
 			Suggest An Edit
-			<PencilIcon class="inline-block w-4 h-4" />
+			<PencilIcon width="16" height="16" class="inline-block" />
 		</a>
 		<div class="justify-center flex gap-2 pb-4 mb-8 border-b border-dashed border-pink-300">
 			{frontmatter.tags.map((tag) => <span class="font-mono text-pink-700/80 text-sm font-medium">#{tag}</span>)}

@@ -1,14 +1,14 @@
 <script lang="ts">
-	import CalendarIcon from "~icons/ph/calendar-blank";
+import CalendarIcon from "~icons/ph/calendar-blank";
 
-	type Props = {
-		title: string;
-		description: string;
-		href: string;
-		date: Date;
-		tags: string[];
-	};
-	const { title, description, href, date, tags }: Props = $props();
+type Props = {
+	title: string;
+	description: string;
+	href: string;
+	date: Date;
+	tags: string[];
+};
+const { title, description, href, date, tags }: Props = $props();
 </script>
 
 <div
@@ -18,7 +18,7 @@
 		data-astro-prefetch
 		rel="prefetch"
 		{href}
-		class="grid grid-rows-[auto_2rem_auto_2rem] no-underline h-full"
+		class="grid grid-rows-[auto_2rem_auto_2rem] no-underline h-full focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded-sm"
 	>
 		<h3
 			class="font-serif md:text-lg font-bold capitalize text-pink-950 hover:text-pink-800 transition-property-color duration-100 ease-out"

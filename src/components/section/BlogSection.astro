@@ -1,7 +1,7 @@
 ---
+import MotionReveal from "~/components/animation/MotionReveal.svelte";
 import PostCard from "~/components/card/PostCard.svelte";
 import type { Post } from "~/models/post.ts";
-import MotionReveal from "~/components/animation/MotionReveal.svelte";
 
 interface Props {
 	posts: Post[];
@@ -12,7 +12,7 @@ const { posts } = Astro.props;
 
 <section class="relative pt-10">
 	<MotionReveal amount={0.15} delay={0.05} client:idle>
-		<h2 class="text-xl md:text-2xl font-bold font-serif text-pink-950">
+		<h2 id="blog-heading" class="text-xl md:text-2xl font-bold font-serif text-pink-950">
 			Blog
 		</h2>
 		<p class="text-sm md:text-base font-serif text-pink-950/70 pt-2 pb-4">
@@ -34,7 +34,8 @@ const { posts } = Astro.props;
 	<a
 		data-astro-prefetch
 		href="/posts"
-		class="blog-card uppercase font-mono text-pink-950 hover:text-pink-800 transition-colors text-sm"
+		class="blog-card uppercase font-mono text-pink-950 hover:text-pink-800 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded"
+		aria-label="View all blog posts"
 	>
 		&#8213 See more
 	</a>

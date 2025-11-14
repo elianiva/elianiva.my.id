@@ -1,7 +1,7 @@
 ---
+import MotionReveal from "~/components/animation/MotionReveal.svelte";
 import ProjectCard from "~/components/card/ProjectCard.astro";
 import type { Project } from "~/models/project.ts";
-import MotionReveal from "~/components/animation/MotionReveal.svelte";
 
 interface Props {
 	projects: Project[];
@@ -15,7 +15,7 @@ const { projects, title, description, seeMoreUrl } = Astro.props;
 
 <section class="pt-6 md:pt-10">
 	<MotionReveal amount={0.15} delay={0.05} client:idle>
-		<h2 class="text-xl md:text-2xl font-bold font-serif text-pink-950">
+		<h2 id={title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-heading'} class="text-xl md:text-2xl font-bold font-serif text-pink-950">
 			{title}
 		</h2>
 		<p class="text-xs md:text-base font-serif text-pink-950/70 pt-2 pb-4">
@@ -42,7 +42,8 @@ const { projects, title, description, seeMoreUrl } = Astro.props;
 			<a
 				data-astro-prefetch
 				href={seeMoreUrl}
-				class="project-card uppercase font-mono text-pink-950 hover:text-pink-800 transition-colors text-sm"
+				class="project-card uppercase font-mono text-pink-950 hover:text-pink-800 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded"
+				aria-label="View all projects"
 			>
 				&#8213 See more
 			</a>

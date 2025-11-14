@@ -16,6 +16,9 @@ let searchQuery = $state("");
 let tagSearchQuery = $state("");
 const selectedTags = $state<string[]>([]);
 let isCompletionVisible = $state(false);
+let activeOptionIndex = $state(-1);
+let listboxId = "tag-listbox";
+let announcementText = $state("");
 
 const allPostTags = posts.flatMap((post) => post.tags);
 const tagCounts = allPostTags.reduce(
@@ -36,10 +39,6 @@ const filteredPosts = $derived(
 		const matchesTags =
 			selectedTags.length === 0 ||
 			selectedTags.every((tag) => post.tags.includes(tag));
-		console.log({
-			matchesSearch,
-			matchesTags,
-		});
 		return matchesSearch && matchesTags;
 	}),
 );
@@ -61,70 +60,154 @@ function handleInput(event: Event) {
 		tagSearchQuery = inputValue;
 		searchQuery = "";
 		isCompletionVisible = true;
+		activeOptionIndex = -1;
 	} else {
 		searchQuery = inputValue;
 		tagSearchQuery = "";
 		isCompletionVisible = false;
+		activeOptionIndex = -1;
 	}
+
+	// Announce search results
+	if (searchQuery || tagSearchQuery) {
+		announcementText = `${filteredPosts.length} post${filteredPosts.length !== 1 ? "s" : ""} found.`;
+		setTimeout(() => (announcementText = ""), 1000);
+	}
+}
+
+function handleKeydown(event: KeyboardEvent) {
+	if (!isCompletionVisible || availableTags.length === 0) return;
+
+	switch (event.key) {
+		case "ArrowDown":
+			event.preventDefault();
+			activeOptionIndex = Math.min(
+				activeOptionIndex + 1,
+				availableTags.length - 1,
+			);
+			break;
+		case "ArrowUp":
+			event.preventDefault();
+			activeOptionIndex = Math.max(activeOptionIndex - 1, 0);
+			break;
+		case "Enter":
+		case " ":
+			event.preventDefault();
+			if (activeOptionIndex >= 0) {
+				selectTag(availableTags[activeOptionIndex]);
+			}
+			break;
+		case "Escape":
+			event.preventDefault();
+			isCompletionVisible = false;
+			activeOptionIndex = -1;
+			break;
+	}
+}
+
+function selectTag(tag: string) {
+	selectedTags.push(tag);
+	if (inputBox) {
+		inputBox.value = "";
+		inputBox.focus();
+	}
+	tagSearchQuery = "";
+	isCompletionVisible = false;
+	activeOptionIndex = -1;
+	announcementText = `Added tag ${tag}. ${filteredPosts.length} post${filteredPosts.length !== 1 ? "s" : ""} found.`;
+	setTimeout(() => (announcementText = ""), 1000);
 }
 </script>
 
 <div class="relative">
-	<input
-		class="block font-serif mx-auto my-0 w-full p-3 bg-transparent border-dashed border border-pink-300 outline-none text-pink-950 placeholder:text-pink-950/70"
-		id="posts__input"
-		type="text"
-		placeholder="Find post... (start with # to find tags)"
-		autocomplete="off"
-		aria-label="search post"
-		oninput={handleInput}
-		bind:this={inputBox}
-	/>
+	<div class="relative">
+		<input
+			class="block font-serif mx-auto my-0 w-full p-3 bg-transparent border-dashed border border-pink-300 outline-none text-pink-950 placeholder:text-pink-950/70"
+			id="posts__input"
+			type="text"
+			placeholder="Find post... (start with # to find tags)"
+			autocomplete="off"
+			role="combobox"
+			aria-label="Search posts or tags"
+			aria-describedby="search-help"
+			aria-expanded={isCompletionVisible}
+			aria-autocomplete="list"
+			aria-owns={listboxId}
+			aria-activedescendant={activeOptionIndex >= 0 ? `${listboxId}-option-${activeOptionIndex}` : undefined}
+			oninput={handleInput}
+			onkeydown={handleKeydown}
+			bind:this={inputBox}
+		/>
+		<div id="search-help" class="sr-only">
+			Start typing to search posts, or type # to browse and select tags. Use arrow keys to navigate suggestions.
+		</div>
+	</div>
+	
 	{#if isCompletionVisible && tagSearchQuery}
 		<div
 			transition:fly={{ duration: 100, y: -50 }}
 			class="absolute top-16 left-0 right-0 z-[5] text-pink-950 bg-white p-2 border-dashed border border-pink-300"
+			role="listbox"
+			id={listboxId}
+			aria-label="Available tags"
 		>
 			{#if availableTags.length > 0}
-				{#each availableTags as tag}
+				{#each availableTags as tag, i}
 					<button
-						class="block text-left text-sm w-full font-mono p-2 cursor-pointer transition-property-all ease-out duration-100 hover:bg-pink-100"
-						onclick={() => {
-							selectedTags.push(tag);
-							if (inputBox) inputBox.value = "";
-							tagSearchQuery = "";
-							isCompletionVisible = false;
-						}}
+						id={`${listboxId}-option-${i}`}
+						role="option"
+						class="block text-left text-sm w-full font-mono p-2 cursor-pointer transition-property-all ease-out duration-100 hover:bg-pink-100 {i === activeOptionIndex ? 'bg-pink-100' : ''}"
+						aria-selected={i === activeOptionIndex}
+						onclick={() => selectTag(tag)}
 						onkeydown={() => void 0}
 					>
 						{tag.toUpperCase()} • {tagCounts[tag]} result{(tagCounts[tag] ?? 0) > 1 ? "s" : ""}
 					</button>
 				{/each}
 			{:else}
-				<span
+				<div
+					role="option"
+					aria-disabled="true"
 					class="block text-left font-heading text-lg p-2 cursor-not-allowed transition-property-all ease-out duration-100"
 				>
 					No result
-				</span>
+				</div>
 			{/if}
 		</div>
 	{/if}
 </div>
+
+<!-- Screen reader announcements -->
+<div 
+	aria-live="polite" 
+	aria-atomic="true" 
+	class="sr-only"
+>
+	{announcementText}
+</div>
+
 {#if selectedTags.length > 0}
-	<div class="flex items-center gap-4 mt-2">
+	<div class="flex items-center gap-4 mt-2" role="group" aria-label="Selected tags">
 		{#each selectedTags as tag}
 			<button
-				class="py-2 px-4 text-sm font-mono text-pink-950 border border-dashed border-pink-300"
+				class="py-2 px-4 text-sm font-mono text-pink-950 border border-dashed border-pink-300 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded"
+				aria-label={`Remove tag ${tag}`}
 				onclick={() => {
 					selectedTags.splice(selectedTags.indexOf(tag), 1);
 				}}
 			>
-				#{tag}
+				#{tag} ×
 			</button>
 		{/each}
 	</div>
 {/if}
-<div class="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-5 mt-4">
+
+<div 
+	role="region" 
+	aria-live="polite" 
+	aria-label={`Search results: ${filteredPosts.length} post${filteredPosts.length !== 1 ? 's' : ''} found`}
+	class="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-5 mt-4"
+>
 	{#each filteredPosts as post}
 		<PostCard {...post} href="/posts/{post.slug}" />
 	{/each}
