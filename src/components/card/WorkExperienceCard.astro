@@ -7,70 +7,100 @@ interface Props {
 	period: [start: Date, end: Date | null];
 	details: string[];
 	technologies: string[];
+	defaultOpen?: boolean;
 }
 
-const { company, type, time, position, period, details, technologies } =
-	Astro.props;
+const {
+	company,
+	type,
+	time,
+	position,
+	period,
+	details,
+	technologies,
+	defaultOpen = false,
+} = Astro.props;
+
+const cardId = `work-experience-${Math.random().toString(36).substring(2, 9)}`;
 ---
 
-<div class="work-experience-card">
-	<div class="flex flex-col md:flex-row items-start justify-between">
-		<div>
-			<div
-				class="flex flex-col md:flex-row items-start md:items-center md:gap-2 py-2 md:py-0"
-			>
-				<h3 class="font-bold font-serif md:text-lg text-pink-950">
-					{company}
-				</h3>
-				<div class="flex items-center gap-2 pt-1 md:pt-0">
-					<span
-						class="text-xs px-2 py-1 rounded-sm bg-pink-100 font-mono uppercase"
-						>{type}</span
+<details
+	id={cardId}
+	class="work-experience-card group -ml-6"
+	open={defaultOpen}
+>
+	<summary
+		class="list-none w-full cursor-pointer focus:outline-none"
+	>
+		<div class="flex flex-col md:gap-2 md:flex-row items-start justify-between">
+			<div class="flex items-start gap-3">
+				<div
+					class="text-pink-600 transition-transform duration-200 group-open:rotate-180 mt-1"
+				>
+					<svg class="inline-block size-4" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+					</svg>
+				</div>
+				<div>
+					<div
+						class="flex flex-col md:flex-row items-start md:items-center md:gap-2"
 					>
-					<span
-						class="text-xs px-2 py-1 rounded-sm bg-pink-100 font-mono uppercase"
-						>{time}</span
-					>
+						<h3 class="font-bold font-serif md:text-lg text-pink-950">
+							{company}
+						</h3>
+						<div class="flex items-center gap-2 pt-1 md:pt-0">
+							<span class="text-xs px-2 py-1 rounded-sm bg-pink-50 font-mono uppercase" >
+								{type}
+							</span>
+							<span class="text-xs px-2 py-1 rounded-sm bg-pink-50 font-mono uppercase" >
+								{time}
+							</span>
+						</div>
+					</div>
+					<span class="text-sm md:text-base font-mono text-pink-950">
+						{position}
+					</span>
 				</div>
 			</div>
-			<span class="text-sm md:text-base font-mono text-pink-950"
-				>{position}</span
-			>
+			<div class="flex-1 border-t border-dashed border-pink-300 mt-[0.5lh]" />
+			<span class="text-pink-950/80 font-mono text-sm md:text-base">
+				{
+					period[0].toLocaleDateString("en-GB", {
+						month: "short",
+						year: "numeric",
+					})
+				}
+				-
+				{
+					period[1] === null
+						? "Present"
+						: period[1].toLocaleDateString("en-GB", {
+								month: "short",
+								year: "numeric",
+							})
+				}
+			</span>
 		</div>
-		<span class="text-pink-950/80 font-mono text-sm md:text-base">
+	</summary>
+
+	<div>
+		<ul class="list-disc list-outside pl-11">
 			{
-				period[0].toLocaleDateString("en-GB", {
-					month: "short",
-					year: "numeric",
-				})
+				details.map((detail) => (
+					<li class="text-sm md:text-base leading-relaxed font-serif text-pink-950/80">
+						{detail}
+					</li>
+				))
 			}
-			-
+		</ul>
+		<ul class="flex flex-wrap items-center pt-1 gap-2 pl-7">
 			{
-				period[1] === null
-					? "Present"
-					: period[1].toLocaleDateString("en-GB", {
-							month: "short",
-							year: "numeric",
-						})
+				technologies.map((technology) => (
+					<li class="flex gap-2 items-center font-mono uppercase text-pink-950 gap-1 text-xs rounded-sm border border-dashed border-pink-400 py-1 px-2">
+						{technology}
+					</li>
+				))
 			}
-		</span>
+		</ul>
 	</div>
-	<ul class="pt-2 list-disc list-outside pl-4">
-		{
-			details.map((detail) => (
-				<li class="text-sm md:text-base font-serif text-pink-950/80">
-					{detail}
-				</li>
-			))
-		}
-	</ul>
-	<ul class="flex flex-wrap items-center pt-2 gap-2">
-		{
-			technologies.map((technology) => (
-				<li class="flex gap-2 items-center font-mono uppercase text-pink-950 gap-1 text-xs rounded-sm border border-dashed border-pink-400 py-1 px-2">
-					{technology}
-				</li>
-			))
-		}
-	</ul>
-</div>
+</details>

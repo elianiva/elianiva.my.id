@@ -16,10 +16,10 @@ const { workExperiences } = Astro.props;
 	>
 		Work Experience
 	</h2>
-	<div class="relative flex flex-col gap-4 md:gap-10 pb-4 md:pb-8">
+	<div class="relative flex flex-col gap-4">
 		{
-			workExperiences.map((experience) => (
-				<WorkExperienceCard {...experience} />
+			workExperiences.map((experience, index) => (
+				<WorkExperienceCard {...experience} defaultOpen={index === 0} />
 			))
 		}
 	</div>

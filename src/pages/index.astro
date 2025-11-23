@@ -160,11 +160,11 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 				<WorkExperienceSection workExperiences={workExperiences} />
 			</MotionReveal>
 		</section>
-		<section role="region" aria-labelledby="blog-heading">
-			<BlogSection posts={sortedPosts} />
-		</section>
 		<section role="region" aria-labelledby="open-source-contributions-heading">
 			<OpenSourceSection />
+		</section>
+		<section role="region" aria-labelledby="blog-heading">
+			<BlogSection posts={sortedPosts} />
 		</section>
 		<section role="region" aria-labelledby="personal-projects-heading">
 			<ProjectSection

@@ -35,7 +35,7 @@
 
 				<h3 class="text-left font-mono text-sm text-pink-800">
 					<a
-						class="border-b border-pink-300/70 border-dashed text-pink-500 inline-flex items-center"
+						class="text-pink-500 inline-flex items-center"
 						href="https://github.com/{repository.full_name}"
 						target="_blank"
 						rel="noopener noreferrer"
