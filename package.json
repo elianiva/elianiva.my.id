@@ -27,6 +27,7 @@
 		"@tailwindcss/vite": "^4.1.17",
 		"astro": "5.15.6",
 		"motion": "^12.23.24",
+		"octokit": "^5.0.5",
 		"satori-html": "^0.3.2",
 		"svelte": "^5.43.6",
 		"tailwind": "^4.0.0",

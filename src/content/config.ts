@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { githubLoader } from "./loaders/github.ts";
 
 const postCollection = defineCollection({
 	schema: z.object({
@@ -41,8 +42,16 @@ const bookmarkCollection = defineCollection({
 	}),
 });
 
+const githubCollection = defineCollection({
+	loader: githubLoader({
+		username: "elianiva",
+		minStars: 5000,
+	}),
+});
+
 export const collections = {
 	projects: projectCollection,
 	posts: postCollection,
 	bookmarks: bookmarkCollection,
+	github: githubCollection,
 };

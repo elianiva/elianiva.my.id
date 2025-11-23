@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import MotionReveal from "~/components/animation/MotionReveal.svelte";
+import PRDropdown from "~/components/opensource/PRDropdown.svelte";
+import type { GroupedPRs } from "~/types/github-pr.ts";
+
+const githubPRs = await getCollection("github");
+
+function groupPRsByRepository(prs: typeof githubPRs): GroupedPRs {
+	return prs.reduce((acc: GroupedPRs, pr) => {
+		const repoName = pr.data.repository.name;
+
+		if (!acc[repoName]) {
+			acc[repoName] = {
+				repository: pr.data.repository,
+				prs: [],
+				mergedCount: 0,
+			};
+		}
+
+		acc[repoName].prs.push(pr.data);
+		if (pr.data.state === "merged") {
+			acc[repoName].mergedCount++;
+		}
+
+		return acc;
+	}, {});
+}
+
+const groupedPRs = groupPRsByRepository(githubPRs);
+const sortedRepositories = Object.entries(groupedPRs).sort(
+	([, a], [, b]) => b.mergedCount - a.mergedCount,
+);
+---
+
+<section class="pt-6 md:pt-10">
+	<MotionReveal amount={0.15} delay={0.05} client:idle>
+		<h2 id="open-source-contributions-heading" class="text-xl md:text-2xl font-bold font-serif text-pink-950">
+			Open Source Contributions
+		</h2>
+		<p class="text-xs md:text-base font-serif text-pink-950/70 pt-2 pb-4">
+			Here are some of my merged pull requests across various open source projects.
+		</p>
+	</MotionReveal>
+
+	{sortedRepositories.length > 0 ? (
+		<MotionReveal amount={0.15} delay={0.1} client:idle>
+			<div>
+				{sortedRepositories.map(([, data]) => (
+					<PRDropdown
+						repository={data.repository}
+						prs={data.prs}
+						client:idle
+					/>
+				))}
+			</div>
+		</MotionReveal>
+	) : (
+		<MotionReveal amount={0.15} delay={0.1} client:idle>
+			<div class="text-center py-8 border border-pink-200 rounded-lg">
+				<p class="text-sm font-serif text-pink-950/60">
+					No open source contributions found or unable to fetch data.
+				</p>
+			</div>
+		</MotionReveal>
+	)}
+</section>

@@ -39,6 +39,10 @@ export default defineConfig({
 				context: "server",
 				access: "secret",
 			}),
+			GH_TOKEN: envField.string({
+				context: "server",
+				access: "secret",
+			}),
 		},
 	},
 });
