@@ -25,7 +25,7 @@
 	<summary
 		class="list-none w-full px-3 py-2 bg-white cursor-pointer focus:outline-none"
 	>
-		<div class="flex flex-col sm:flex-row items-center justify-between">
+		<div class="flex flex-row sm:items-center justify-between">
 			<div class="flex items-center gap-2">
 				<div
 					class="text-pink-600 transition-transform duration-200 group-open:rotate-180"
@@ -40,7 +40,13 @@
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						{repository.full_name} <ArrowUpRight class="inline-block size-3" />
+						<span class="hidden sm:inline">
+							{repository.full_name}
+						</span>
+						<span class="inline sm:hidden">
+							{repository.full_name.split("/").at(-1)}
+						</span>
+						<ArrowUpRight class="inline-block size-3" />
 					</a>
 					(<span class="inline-flex items-center gap-1">
 						<StarIcon
@@ -50,9 +56,9 @@
 				</h3>
 			</div>
 
-			<div class="flex sm:flex-col items-end">
+			<div class="flex-col items-end">
 				<div
-					class="flex items-center gap-2 font-mono text-xs text-pink-950/70"
+					class="flex items-center justify-end gap-2 font-mono text-xs text-pink-950/70"
 				>
 					<GitPullRequestIcon class="w-4 h-4 text-teal-500" />
 					<p>

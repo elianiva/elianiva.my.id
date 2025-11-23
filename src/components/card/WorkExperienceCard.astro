@@ -32,7 +32,7 @@ const cardId = `work-experience-${Math.random().toString(36).substring(2, 9)}`;
 	<summary
 		class="list-none w-full cursor-pointer focus:outline-none"
 	>
-		<div class="flex flex-col md:gap-2 md:flex-row items-start justify-between">
+		<div class="flex flex-col gap-0 md:gap-2 md:flex-row items-start md:justify-between">
 			<div class="flex items-start gap-3">
 				<div
 					class="text-pink-600 transition-transform duration-200 group-open:rotate-180 mt-1"
@@ -62,8 +62,8 @@ const cardId = `work-experience-${Math.random().toString(36).substring(2, 9)}`;
 					</span>
 				</div>
 			</div>
-			<div class="flex-1 border-t border-dashed border-pink-300 mt-[0.5lh]" />
-			<span class="text-pink-950/80 font-mono text-sm md:text-base">
+			<div class="hidden md:block md:flex-1 border-t border-dashed border-pink-300 mt-[0.5lh]" />
+			<span class="text-pink-950/80 font-mono text-sm md:text-base md:pl-0 pl-7">
 				{
 					period[0].toLocaleDateString("en-GB", {
 						month: "short",
