@@ -13,6 +13,7 @@ export const workExperiences: WorkExperience[] = [
 			"Refactored and resolved critical issues in the back-office application, such as fixing broken data synchronization, and optimizing workflow automation, improving staff efficiency due to reduced manual work.",
 			"Maintained 99% uptime during peak hours by optimizing server configurations and database queries.",
 			"Rewrote legacy finance system to a more robust system improving accuracy and reliability",
+			"Built a Quizziz-like realtime quiz system using Reverb to simplify pre-test and post-test operational flow"
 		],
 		technologies: [
 			"typescript",
