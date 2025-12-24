@@ -6,7 +6,7 @@ export const workExperiences: WorkExperience[] = [
 		position: "Fullstack Web Developer",
 		type: "remote",
 		time: "full-time",
-		period: [new Date(2024, 3), new Date(2025, 12)],
+		period: [new Date(2024, 3), new Date(2025, 11)],
 		details: [
 			"Designed and implemented a CI/CD pipeline using GitHub Actions, reducing deployment time by 50%.",
 			"Optimized website performance, increasing Lighthouse score from <70 to >95, enhancing user experience and SEO ranking.",
