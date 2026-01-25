@@ -1,22 +1,19 @@
 <script lang="ts">
-	import CaretDownIcon from "~icons/ph/caret-down";
-	import ArrowUpRight from "~icons/ph/arrow-up-right-duotone";
-	import StarIcon from "~icons/ph/star-duotone";
-	import GitPullRequestIcon from "~icons/ph/git-pull-request-duotone";
-	import type { GitHubPullRequest } from "../../types/github-pr.ts";
+import ArrowUpRight from "~icons/ph/arrow-up-right-duotone";
+import CaretDownIcon from "~icons/ph/caret-down";
+import GitPullRequestIcon from "~icons/ph/git-pull-request-duotone";
+import StarIcon from "~icons/ph/star-duotone";
+import type { GitHubPullRequest } from "../../types/github-pr.ts";
 
-	export let repository: {
-		name: string;
-		full_name: string;
-		url: string;
-		stargazerCount: number;
-	};
-	export let prs: GitHubPullRequest[];
+export let repository: {
+	name: string;
+	full_name: string;
+	url: string;
+	stargazerCount: number;
+};
+export let prs: GitHubPullRequest[];
 
-	$: totalChanges = prs.reduce(
-		(sum, pr) => sum + pr.additions + pr.deletions,
-		0,
-	);
+$: totalChanges = prs.reduce((sum, pr) => sum + pr.additions + pr.deletions, 0);
 </script>
 
 <details
