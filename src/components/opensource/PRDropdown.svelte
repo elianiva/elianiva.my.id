@@ -106,7 +106,7 @@ $effect(() => {
 
 				<h3 class="text-left font-mono text-sm text-pink-800">
 					<a
-						class="text-pink-500 inline-flex items-center hover:text-pink-700 transition-colors"
+						class="text-pink-800 inline-flex items-center hover:text-pink-500 transition-colors"
 						href="https://github.com/{repository.full_name}"
 						target="_blank"
 						rel="noopener noreferrer"

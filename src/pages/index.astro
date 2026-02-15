@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import MotionReveal from "~/components/animation/MotionReveal.svelte";
 import BlogSection from "~/components/section/BlogSection.astro";
 import OpenSourceSection from "~/components/section/OpenSourceSection.astro";
 import ProjectSection from "~/components/section/ProjectSection.astro";
@@ -64,9 +63,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 <MainLayout seo={{ title: "Home" }}>
 	<main class="mx-auto max-w-[920px] px-2 md:px-4 py-10">
 		<header role="banner">
-			<MotionReveal
-				as="div"
-				client:idle
+			<div
 				class="flex flex-col-reverse md:flex-row gap-6 border-b border-pink-200/50 pb-8"
 			>
 				<div class="flex-1">
@@ -86,13 +83,8 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 						learner. I love to build things that solves problems and
 						make people's life easier. Great to see you here! :)
 					</p>
-					<MotionReveal
-						as="div"
-						client:idle
-						group
-						groupSelector="a"
-						stagger={0.08}
-						class="flex items-center flex-wrap gap-2 pt-2 justify-center md:justify-start"
+					<div
+						class="flex items-center flex-wrap gap-1 pt-2 justify-center md:justify-start"
 					>
 						{
 							socials.map((social) => (
@@ -105,7 +97,7 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 									aria-label={`Visit ${social.label} profile`}
 								>
 									<div
-										class="rounded-lg group-hover:rounded-2xl transition-all py-2 px-4 text-pink-950 group-hover:text-pink-950 bg-white/50 hover:bg-pink-50 border border-pink-200/50 flex items-center gap-2 group-focus:outline-none group-focus:ring-2 group-focus:ring-pink-400 group-focus:ring-offset-2"
+										class="rounded-lg group-hover:rounded-2xl transition-all py-2 px-3 text-pink-950 group-hover:text-pink-950 bg-white/50 hover:bg-pink-50 border border-pink-200/50 flex items-center gap-2 group-focus:outline-none group-focus:ring-2 group-focus:ring-pink-400 group-focus:ring-offset-2"
 									>
 										<social.icon class="w-4 h-4" />
 										<span class="text-xs font-mono uppercase">{social.label}</span>
@@ -113,16 +105,9 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 								</a>
 							))
 						}
-					</MotionReveal>
+					</div>
 				</div>
-				<!-- Profile image with blob shape and floating animation -->
-				<MotionReveal
-					as="div"
-					client:idle
-					variant="float"
-					delay={0.1}
-					class="relative mb-4 md:mb-0 mx-auto"
-				>
+				<div class="relative mb-4 md:mb-0 mx-auto">
 					<a
 						href={siteData.github}
 						target="_blank"
@@ -130,10 +115,8 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 						class="relative block w-40 h-40 group"
 						aria-label="Visit GitHub profile"
 					>
-						<!-- Layered shadows -->
 						<div class="absolute inset-0 blob-shape bg-pink-200/50 translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3"></div>
 						<div class="absolute inset-0 blob-shape bg-pink-300/30 translate-x-1 translate-y-1 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
-						<!-- Image container with blob shape -->
 						<div class="relative w-full h-full blob-shape overflow-hidden border-2 border-pink-300 transition-transform duration-300 group-hover:-translate-y-1"
 						>
 							<img
@@ -144,14 +127,11 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 							/>
 						</div>
 					</a>
-				</MotionReveal>
-			</MotionReveal>
+				</div>
+			</div>
 		</header>
 		<section role="region" aria-labelledby="about-heading">
-			<MotionReveal
-				as="div"
-				delay={0.05}
-				client:idle
+			<div
 				class="pt-4 md:pt-8"
 			>
 				<h2 id="about-heading" class="text-xl md:text-2xl font-bold font-display text-pink-950 pb-4 tracking-wide">
@@ -166,33 +146,13 @@ const sortedPosts = posts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 					of learning Japanese and becoming a coffee snob (not actually, I just like coffee :)
 					Feel free to say hi!
 				</p>
-			</MotionReveal>
+			</div>
 		</section>
 		<section role="region" aria-labelledby="experience-heading">
-			<MotionReveal
-				as="div"
-				group
-				groupSelector=".work-experience-card"
-				amount={0}
-				stagger={0.08}
-				delay={0.05}
-				client:idle
-			>
-				<WorkExperienceSection workExperiences={workExperiences} />
-			</MotionReveal>
+			<WorkExperienceSection workExperiences={workExperiences} />
 		</section>
 		<section role="region" aria-labelledby="open-source-contributions-heading">
-			<MotionReveal
-				as="div"
-				group
-				groupSelector=".work-experience-card"
-				amount={0}
-				stagger={0.08}
-				delay={0.05}
-				client:idle
-			>
-				<OpenSourceSection />
-			</MotionReveal>
+			<OpenSourceSection />
 		</section>
 		<section role="region" aria-labelledby="blog-heading">
 			<BlogSection posts={sortedPosts} />

@@ -1,5 +1,4 @@
 ---
-import MotionReveal from "~/components/animation/MotionReveal.svelte";
 import siteData from "~/data/sites";
 import type { ProjectMeta } from "~/models/project";
 import GithubIcon from "~icons/ph/github-logo-duotone";
@@ -22,11 +21,11 @@ const { frontmatter, slug } = Astro.props as Props;
 	}}
 >
 	<main class="mx-auto max-w-[920px] px-2 md:px-4 py-10">
-		<MotionReveal as="div" client:idle delay={0.05}>
+		<div>
 			<BackButton />
-		</MotionReveal>
+		</div>
 
-		<MotionReveal as="div" client:idle delay={0.05} class="pt-6">
+		<div class="pt-6">
 			<section class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
 				<div class="space-y-6">
 					{frontmatter.hasImage && (
@@ -103,6 +102,6 @@ const { frontmatter, slug } = Astro.props as Props;
 					</div>
 				</aside>
 			</section>
-		</MotionReveal>
+		</div>
 	</main>
 </MainLayout>

@@ -140,8 +140,3 @@
 		}
 	}
 }
-
-/* Motion enhancement - only apply when JS is enabled */
-[data-js-enabled] [data-motion-reveal="true"] {
-	opacity: 0;
-}
