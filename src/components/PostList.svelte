@@ -10,7 +10,6 @@ type Props = {
 
 const { posts }: Props = $props();
 
-// biome-ignore lint/style/useConst: this is a ref
 let inputBox: HTMLInputElement | null = null;
 let searchQuery = $state("");
 let tagSearchQuery = $state("");
@@ -47,9 +46,7 @@ const availableTags = $derived(
 	tagSearchQuery
 		? [...new Set(allPostTags)].filter((tag) =>
 				// remove # before filtering
-				tag
-					.toLowerCase()
-					.includes(tagSearchQuery.substring(1).toLowerCase()),
+				tag.toLowerCase().includes(tagSearchQuery.substring(1).toLowerCase()),
 			)
 		: [],
 );
@@ -142,7 +139,7 @@ function selectTag(tag: string) {
 			Start typing to search posts, or type # to browse and select tags. Use arrow keys to navigate suggestions.
 		</div>
 	</div>
-	
+
 	{#if isCompletionVisible && tagSearchQuery}
 		<div
 			transition:fly={{ duration: 100, y: -50 }}
@@ -178,9 +175,9 @@ function selectTag(tag: string) {
 </div>
 
 <!-- Screen reader announcements -->
-<div 
-	aria-live="polite" 
-	aria-atomic="true" 
+<div
+	aria-live="polite"
+	aria-atomic="true"
 	class="sr-only"
 >
 	{announcementText}
@@ -202,9 +199,9 @@ function selectTag(tag: string) {
 	</div>
 {/if}
 
-<div 
-	role="region" 
-	aria-live="polite" 
+<div
+	role="region"
+	aria-live="polite"
 	aria-label={`Search results: ${filteredPosts.length} post${filteredPosts.length !== 1 ? 's' : ''} found`}
 	class="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-5 mt-4"
 >
