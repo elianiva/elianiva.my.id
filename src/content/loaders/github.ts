@@ -1,5 +1,7 @@
 import { z } from "astro:content";
 import { GH_TOKEN } from "astro:env/server";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import type { Loader } from "astro/loaders";
 import { Octokit } from "octokit";
 import type {
@@ -10,6 +12,43 @@ import type {
 } from "../../types/github-pr";
 
 const octokit = new Octokit({ auth: GH_TOKEN });
+
+const CACHE_DIR = join(process.cwd(), ".astro", "cache");
+const CACHE_FILE = join(CACHE_DIR, "github-prs.json");
+const CACHE_TTL_MS = 1000 * 60 * 60; // 1 hour
+
+interface CacheData {
+	timestamp: number;
+	data: GitHubPullRequest[];
+}
+
+function loadFromCache(): GitHubPullRequest[] | null {
+	if (!existsSync(CACHE_FILE)) return null;
+
+	try {
+		const cache: CacheData = JSON.parse(readFileSync(CACHE_FILE, "utf-8"));
+		const age = Date.now() - cache.timestamp;
+
+		if (age > CACHE_TTL_MS) return null;
+
+		return cache.data;
+	} catch {
+		return null;
+	}
+}
+
+function saveToCache(data: GitHubPullRequest[]) {
+	if (!existsSync(CACHE_DIR)) {
+		mkdirSync(CACHE_DIR, { recursive: true });
+	}
+
+	const cacheData: CacheData = {
+		timestamp: Date.now(),
+		data,
+	};
+
+	writeFileSync(CACHE_FILE, JSON.stringify(cacheData, null, 2));
+}
 
 const GET_PRS_QUERY = `
 	query GetPRs($username: String!, $endCursor: String) {
@@ -80,7 +119,33 @@ export function githubLoader(options: GitHubLoaderOptions): Loader {
 	return {
 		name: "github",
 		load: async ({ store, logger, parseData, generateDigest }) => {
+			const isDev = import.meta.env.DEV;
+
 			logger.info(`Loading GitHub PRs for user: ${options.username}`);
+
+			// In dev mode, try to load from cache first
+			if (isDev) {
+				const cached = loadFromCache();
+				if (cached) {
+					logger.info(
+						`Loaded ${cached.length} GitHub PRs from cache for user: ${options.username}`,
+					);
+					for (const pr of cached) {
+						const data = await parseData({
+							id: `${pr.repository.name}-${pr.number}`,
+							data: pr as unknown as Record<string, unknown>,
+						});
+						const digest = generateDigest(data);
+						store.set({
+							id: `${pr.repository.name}-${pr.number}`,
+							data,
+							digest,
+						});
+					}
+					return;
+				}
+				logger.info("Cache miss or expired, fetching from GitHub API");
+			}
 
 			try {
 				store.clear();
@@ -136,6 +201,11 @@ export function githubLoader(options: GitHubLoaderOptions): Loader {
 				logger.info(
 					`Loaded ${allPRs.length} GitHub PRs for user: ${options.username}`,
 				);
+
+				// Save to cache in dev mode
+				if (isDev) {
+					saveToCache(allPRs);
+				}
 			} catch (error) {
 				logger.error(`Error loading GitHub PRs: ${error}`);
 			}
