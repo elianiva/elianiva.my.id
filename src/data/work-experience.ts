@@ -15,7 +15,7 @@ export const workExperiences: WorkExperience[] = [
 		technologies: ["typescript", "react", "react-router"],
 	},
 	{
-		company: "PT Global Scholarship Services Indonesia",
+		company: "IPB Training",
 		position: "Fullstack Web Developer",
 		location: "indonesia",
 		time: "full-time",

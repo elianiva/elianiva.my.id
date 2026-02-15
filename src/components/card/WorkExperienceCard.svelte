@@ -102,7 +102,7 @@ $effect(() => {
 </script>
 
 <div
-	class="work-experience-card group -ml-6 rounded-2xl transition-colors hover:bg-pink-50/30"
+	class="work-experience-card group rounded-2xl transition-colors hover:bg-pink-50/30"
 	data-open={isOpen}
 >
 	<button
@@ -111,12 +111,67 @@ $effect(() => {
 		onclick={toggleOpen}
 		aria-expanded={isOpen}
 	>
+		<!-- Mobile Layout -->
+		<div class="flex items-start justify-between gap-3 md:hidden">
+			<div class="flex-1 min-w-0">
+				<h3 class="font-bold font-display text-pink-950 leading-tight">
+					{company}
+				</h3>
+				<p class="text-sm font-mono text-pink-950/90 mb-1">
+					{position}
+				</p>
+				<p class="text-xs font-mono text-pink-950/60">
+					{period[0].toLocaleDateString("en-GB", {
+						month: "short",
+						year: "numeric",
+					})}
+					-
+					{period[1] === null
+						? "Present"
+						: period[1].toLocaleDateString("en-GB", {
+								month: "short",
+								year: "numeric",
+							})}
+				</p>
+				<div class="flex flex-wrap items-center gap-1 py-1">
+					<span
+						class="text-[10px] px-2 py-0.5 rounded-full bg-pink-50 font-mono uppercase border border-pink-100 whitespace-nowrap text-pink-700"
+					>
+						{location}
+					</span>
+					<span
+						class="text-[10px] px-2 py-0.5 rounded-full bg-pink-50 font-mono uppercase border border-pink-100 whitespace-nowrap text-pink-700"
+					>
+						{time}
+					</span>
+				</div>
+			</div>
+			<!-- Expand icon on the right -->
+			<div
+				class="text-pink-600 transition-transform duration-200 shrink-0 mt-0.5"
+				class:rotate-180={isOpen}
+			>
+				<svg
+					class="size-5"
+					fill="currentColor"
+					viewBox="0 0 20 20"
+				>
+					<path
+						fill-rule="evenodd"
+						d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+						clip-rule="evenodd"
+					/>
+				</svg>
+			</div>
+		</div>
+
+		<!-- Desktop Layout (unchanged structure, refined) -->
 		<div
-			class="flex flex-col gap-0 md:gap-2 md:flex-row items-start md:justify-between"
+			class="hidden md:flex md:flex-row items-start md:justify-between gap-4 -ml-8"
 		>
-			<div class="flex items-start gap-3">
+			<div class="flex items-start gap-3 flex-1">
 				<div
-					class="text-pink-600 transition-transform duration-200"
+					class="text-pink-600 transition-transform duration-200 shrink-0"
 					class:rotate-180={isOpen}
 				>
 					<svg
@@ -131,39 +186,31 @@ $effect(() => {
 						/>
 					</svg>
 				</div>
-				<div>
-					<div
-						class="flex flex-col md:flex-row items-start md:items-center md:gap-2"
-					>
-						<h3
-							class="font-bold font-display md:text-lg text-pink-950"
-						>
+				<div class="min-w-0 flex-1">
+					<div class="flex flex-row items-center gap-3">
+						<h3 class="font-bold font-display md:text-lg text-pink-950 whitespace-nowrap">
 							{company}
 						</h3>
-						<div class="flex items-center gap-2 pt-1 md:pt-0">
+						<div class="flex items-center gap-2">
 							<span
-								class="text-xs px-3 py-1 rounded-full bg-pink-50 font-mono uppercase border border-pink-100"
+								class="text-xs px-3 py-1 rounded-full bg-pink-50 font-mono uppercase border border-pink-100 whitespace-nowrap"
 							>
 								{location}
 							</span>
 							<span
-								class="text-xs px-3 py-1 rounded-full bg-pink-50 font-mono uppercase border border-pink-100"
+								class="text-xs px-3 py-1 rounded-full bg-pink-50 font-mono uppercase border border-pink-100 whitespace-nowrap"
 							>
 								{time}
 							</span>
 						</div>
 					</div>
-					<span class="text-sm md:text-base font-mono text-pink-950">
+					<span class="text-sm md:text-base font-mono text-pink-950 block">
 						{position}
 					</span>
 				</div>
 			</div>
-			<div
-				class="hidden md:block md:flex-1 border-t border-pink-200/50 mt-[0.5lh]"
-			></div>
-			<span
-				class="text-pink-950/80 font-mono text-sm md:text-base md:pl-0 pl-7"
-			>
+			<div class="flex-1 border-t border-pink-200/50 mt-[0.5lh] mx-4"></div>
+			<span class="text-pink-950/80 font-mono text-sm md:text-base whitespace-nowrap shrink-0">
 				{period[0].toLocaleDateString("en-GB", {
 					month: "short",
 					year: "numeric",
@@ -177,8 +224,10 @@ $effect(() => {
 						})}
 			</span>
 		</div>
+
+		<!-- Details (shared) -->
 		<div bind:this={detailsEl} class="overflow-hidden">
-			<ul class="list-disc list-outside pl-11">
+			<ul class="list-disc list-outside pl-4 mt-2">
 				{#each details as detail}
 					<li
 						class="text-sm md:text-base leading-relaxed font-body text-pink-950/80"
@@ -187,7 +236,7 @@ $effect(() => {
 					</li>
 				{/each}
 			</ul>
-			<ul class="flex flex-wrap items-center pt-2 gap-2 pl-7">
+			<ul class="flex flex-wrap items-center pt-2 gap-1">
 				{#each technologies as technology}
 					<li
 						class="font-mono uppercase text-pink-950 text-xs rounded-full border border-dashed border-pink-400/60 py-1 px-3 stitch-border"
