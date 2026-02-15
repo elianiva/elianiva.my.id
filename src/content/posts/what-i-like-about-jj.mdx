@@ -1,0 +1,391 @@
+---
+title: What I like about Jujutsu
+date: 2026-02-20
+description: A powerful Git frontend CLI that I grew to like using
+tags:
+    - cli
+---
+
+import TermPopover from "~/components/TermPopover.svelte";
+
+export const revisionDef = "A revision is Jujutsu's equivalent of a commit, but unlike Git commits, they remain mutable until pushed to a remote.";
+export const bookmarkDef = "Bookmarks are Jujutsu's equivalent of Git branches. They're named pointers to revisions that move when you create new descendants.";
+export const parentDef = "A parent revision is the ancestor that a revision is based on. Revisions form a tree structure where each can have one or more parents.";
+export const descendantDef = "Descendants are revisions that come after a given revision in the tree. Changes to a parent automatically cascade to all its descendants.";
+export const changeDef = "In Jujutsu, changes represent your uncommitted modifications. Unlike Git's staging area, all changes are automatically tracked and snapshotted.";
+export const stagingAreaDef = "The staging area (or index) is Git's way of preparing changes before committing. Jujutsu removes this concept entirely. All changes are automatically tracked.";
+
+Recently I've been using [Jujutsu](https://github.com/jj-vcs/jj) for a while. It's a Git-compatible VCS that is both simple and powerful.
+
+I've been using it for a while now, and I've grown to like it a lot. I wasn't convinced at first, even now I'm having a hard time explaining to people why I like using it over a plain Git client. On a surface level it doesn't look as appealing, it's one of those things that you can only feel the benefit of after using it for a while, at least that's how I feel anyway.
+
+Some disclaimers, this post is not a tutorial on how to use Jujutsu since the docs cover those well enough and there's too much to cover (also because I'm too lazy to write them up :p). These are just some of the things I like about Jujutsu that made my development workflow much better and hopefully you understand Jujutsu a bit better.
+
+## Why Jujutsu
+
+Jujutsu emphasizes simplicity while still being powerful. The simplicity is what actually enables it to be so powerful yet so easy and intuitive to use. It picks inspirations from some of the most used version control systems out there.
+
+You can check their feature highlights in their [README](https://github.com/jj-vcs/jj#introduction) but for me it all boils down to "Git if it was written today". A lot of the design just makes more sense to me, and being Git-compatible it's super easy to adapt to existing repositories. The fact that Jujutsu assumes everything is a draft until you push to a remote resonates with me who's a bit messy when working. It enables me to have a clean history.
+
+I actually didn't have any strong reasons to switch to Jujutsu but I just happen to like to try new things, and people have been talking about it on Twitter, so that got me curious. I looked through their docs, watched some videos about it, and to be honest I still wasn't convinced at first. I thought it's just Git with a slightly different workflow, and boi was I wrong.
+
+## Revisions are GOATed
+
+When using Git, the flow I usually follow when working on something and want to create a commit is this:
+
+1. Make some changes
+2. Stage the changes
+3. Commit the changes with a message
+4. Push the changes to the remote repository
+5. Repeat
+
+This is a very simple flow, you make changes and then you commit the changes like you're saving progress.
+
+In Jujutsu, you don't have a staging area, everything is automatically snapshotted whenever you save a file automatically. It gives me the flexibility to move around between <TermPopover client:visible term="changes" definition={changeDef} /> and change things around. Here's how it usually looks like:
+
+1. Describe the changes on the current <TermPopover client:visible term="revision" definition={revisionDef} />
+2. Make some changes
+3. Make a new <TermPopover client:visible term="revision" definition={revisionDef} />
+4. Push to remote if satisfied, or repeat step 1-3 and move around between revisions
+
+It's a lot more flexible and allows me to play around with the history, especially when I use AI. I can just create a new <TermPopover client:visible term="revision" definition={revisionDef} />, play around with more <TermPopover client:visible term="changes" definition={changeDef} />, create another <TermPopover client:visible term="revision" definition={revisionDef} /> based on other <TermPopover client:visible term="parent" definition={parentDef} /> if I'm not satisfied. [This blog post](https://ianbull.com/posts/jj-vibes/) goes more in depth in this and should explain it better.
+
+The big difference here is that <TermPopover client:visible term="revisions" definition={revisionDef} /> are mutable while commits are not (well, if you haven't pushed them to remote, that is), so you can just move around between them and experiment. Jujutsu <TermPopover client:visible term="revision" definition={revisionDef} /> are built like a tree, and a <TermPopover client:visible term="revision" definition={revisionDef} /> can even have multiple <TermPopover client:visible term="parents" definition={parentDef} />. This mindset eliminates the need for branching (Jujutsu don't have branch, but it has <TermPopover client:visible term="bookmark" definition={bookmarkDef} /> which is similar, but much simpler). Also, the great thing about this is the changes *cascade* to all of its descendants so when you change a parent it automatically applies to all of its children, it's great!
+
+This flow also enables [Stacked](https://graphite.com/guides/stacked-diffs) [Diffs](https://newsletter.pragmaticengineer.com/p/stacked-diffs) because it relies on the ability to cascade changes, and Jujutsu supports that by default. I don't have to fiddle around with rebasing and whatnot, it does that for me automatically.
+
+There's no more detached HEAD state because you can just move around between <TermPopover client:visible term="revisions" definition={revisionDef} />! You don't have to worry about losing files because they always stick to a <TermPopover client:visible term="revision" definition={revisionDef} />. There's less things to worry about!
+
+## Branches Made Simple
+
+There's no concept of branch in Jujutsu, it's all just <TermPopover client:visible term="bookmarks" definition={bookmarkDef} />, which is just a pointer to a <TermPopover client:visible term="revision" definition={revisionDef} />! It's a lot simpler and I believe this is a better abstraction compared to branch. It's basically just a label of a revision.
+
+You don't have to worry about checking out to a branch, you just bookmark your revision and move to it. Moving between branches is literally the same as moving between <TermPopover client:visible term="revisions" definition={revisionDef} />. You can also move <TermPopover client:visible term="bookmarks" definition={bookmarkDef} /> around since they're just... bookmarks!
+
+One gotcha you might not be used to if you're used to Git is that you have to move the <TermPopover client:visible term="bookmark" definition={bookmarkDef} /> *with* you. Whenever you start a new <TermPopover client:visible term="revision" definition={revisionDef} />, that bookmark stays, unlike a Git branch which sticks to the latest commit.
+
+I honestly have no idea how can I explain this better, you should really try it yourself and see the difference. It took a while for me to click, but once I do, I can never imagine myself moving to branch anymore.
+
+## No Need to Stash!
+
+This is one of the biggest problems I've had with Git. Whenever I change between branches while working on something, I only have two options:
+
+1. Stash my changes, checkout to the branch, finish work, back to previous branch, pop the stash
+2. Commit my changes, checkout to the branch, finish work, back to previous branch
+
+Sounds simple enough, but here's the problem, I find myself switching between branches quite a lot, especially when there's something urgent that needs to be fixed while I'm still working on something. I ended up having a bunch of different stashes under different names, messy!
+
+Jujutsu solves this problem by _removing_ one of Git's feature, the <TermPopover client:visible term="staging area" definition={stagingAreaDef} />. Since everything is being snapshotted whenever you change something, it automatically becomes a <TermPopover client:visible term="revision" definition={revisionDef} /> and sticks with it. Also, since you don't have the concept of branch, you can just create a new <TermPopover client:visible term="descendant" definition={descendantDef} /> that has a <TermPopover client:visible term="parent" definition={parentDef} /> from the other <TermPopover client:visible term="revision" definition={revisionDef} />. Lots of lingo, I know, but trust me, it's so simple once it clicks and you start wondering why you've been stuck with Git this entire time :p
+
+So the flow now looks like this:
+
+1. Work on `feat/new-stuff`, we'll call this revision `abc`.
+2. Something broke on prod, need a quick fix, create a new <TermPopover client:visible term="revision" definition={revisionDef} /> from `staging`, we'll call this `def`
+3. Fix the issue, push to remote, be done with it.
+4. Continue working on `abc`.
+
+Since we don't have a <TermPopover client:visible term="staging area" definition={stagingAreaDef} />, all of my <TermPopover client:visible term="changes" definition={changeDef} /> are automatically saved as `abc`, and when I switch to `def`, none of those changes follow me, it's like switching to an alternate timeline. After I'm done with everything, I just go back to `abc` and continue working.
+
+This is why I think Jujutsu's <TermPopover client:visible term="revisions" definition={revisionDef} /> are superior than Git's commit, you can just move around between them without having to think about unstaged files. Now, you might wonder, what if I just want to split my <TermPopover client:visible term="changes" definition={changeDef} /> into multiple <TermPopover client:visible term="revision" definition={revisionDef} />? Usually you'd do this by adding things you want to commit, then commit, and then repeat until you've committed everything and you end up with a few different commits. Well, you can do that using `jj split` which basically splits your revision into multiple ones. You just select which files you want to put on another <TermPopover client:visible term="revision" definition={revisionDef} />, and keep doing that until you're satisfied. You can also do the opposite which is combining multiple <TermPopover client:visible term="revisions" definition={revisionDef} /> using `jj squash`.
+
+To simplify things, Git wants you to _commit_ your changes, once it's committed then it's done, it's a _commitment_. In Jujutsu, however, revisions are like lego tree where you can move things around, change things here and there, it's much more flexible when you want to have a clean history and experimenting with different things.
+
+## Time Travel
+
+### Messy Rebase
+
+Imagine this, you're working on a separate branch, you're 12 commits ahead, it drifts so far off from the main branch. So, you thought, it's time to catch up and rebase the main branch. As we all know, rebasing isn't that easy if the code you're updating overlaps with the other branch, which causes conflicts. You resolved 7 conflicts, you rebased 20 commits from the main branch, and you feel good... except, things went sideways. Now you're left with a broken state of the repo, none of them works anymore.
+
+After the rebase process exploded, you try to fix the issue by using `git reflog`, which is a chronological dump of every Git's internal state transition that has happened. Here's an example on how it looks:
+
+import RegexHighlighter from "~/components/RegexHighlighter.svelte";
+
+import Quiz from "~/components/Quiz.svelte";
+
+<RegexHighlighter patterns={[
+  { pattern: "\\b[0-9a-f]{7}\\b", color: "#2d9db0" },
+  { pattern: "HEAD@\\{\\d+\\}", color: "#8b5fbf" },
+  { pattern: "\\(.*?\\)", color: "#e06c75" },
+  { pattern: "rebase \\(finish\\)|rebase \\(pick\\)|rebase \\(start\\)", color: "#c94f6d" }
+]}
+text={`
+8b3458d (HEAD -> feature/auth-fix) HEAD@{0}: rebase (finish): returning to refs/heads/feature/auth-fix
+8b3458d (HEAD -> feature/auth-fix) HEAD@{1}: rebase (pick): feat: update src/api.ts feature-12
+f4c02c2 HEAD@{2}: rebase (pick): feat: update src/utils.ts feature-11
+ec84756 HEAD@{3}: rebase (pick): feat: update src/config.ts feature-10
+2034d37 HEAD@{4}: rebase (pick): feat: update src/user.ts feature-9
+d033fd7 HEAD@{5}: rebase (pick): feat: update src/auth.ts feature-8
+46958a0 HEAD@{6}: rebase (pick): feat: update src/logger.ts feature-7
+020fb29 HEAD@{7}: rebase (pick): feat: update src/db.ts feature-6
+b2bdf3a HEAD@{8}: rebase (pick): feat: update src/api.ts feature-5
+5ff5592 HEAD@{9}: rebase (pick): feat: update src/utils.ts feature-4
+59c5aad HEAD@{10}: rebase (pick): feat: update src/config.ts feature-3
+293e8e4 HEAD@{11}: rebase (pick): feat: update src/user.ts feature-2
+dbc5cd2 HEAD@{12}: rebase (pick): feat: update src/auth.ts feature-1
+3cfe6a9 (main) HEAD@{13}: rebase (start): checkout main
+c1805f1 HEAD@{14}: commit: feat: update src/api.ts feature-12
+`}
+/>
+
+If you look at the reflog, you'll notice that there's a lot of `rebase` commands. There's also `rebase (start)` and `rebase (finish)`, which is the marker for when the rebase has started and finished. There's too many noise in this log, we don't really care about all the details when we just want to go back to the previous state. Now you're here looking for which `HEAD` contains the safe state of your app before the broken rebase.
+
+<Quiz
+  client:visible
+  question="Let's do a little quiz and see if you can recover from this :)<br />Which <code>HEAD</code> contains the safe state of your app before the broken rebase?"
+  options={[
+    { id: "a", text: "HEAD@{0} - The most recent entry after rebase finished", isCorrect: false },
+    { id: "b", text: "HEAD@{13} - Where the rebase started, checkout to main", isCorrect: false },
+    { id: "c", text: "HEAD@{14} - The last commit before rebase operations began", isCorrect: true },
+    { id: "d", text: "HEAD@{7} - The middle of the rebase, seems balanced", isCorrect: false }
+  ]}
+  correctResponse={{
+    title: "Correct!",
+    message: "The reflog shows <code>HEAD@{14}</code> contains the last commit before the rebase started. The entry <code>c1805f1</code> represents the safe state of your feature branch before things went sideways."
+  }}
+  errorResponse={{
+    title: "Not quite!",
+    message: "While those entries look tempting, they contain the messy rebase operations. Look for the last entry before the rebase started, that's where your safe state lives."
+  }}
+/>
+
+Congratulations if you got it right! In all fairness, it's not *that* hard to begin with, there's just a lot of noise that needs to be filtered out to get where we want. Alright, so now we know the HEAD that we wanted, the next step is to do `git reset --hard HEAD@{N}` right? A destructive command that permanently discards everything. Let's just assume you get the number correct, problem solved, but what if you didn't? What if you did a typo and you didn't realise? What if you got the number wrong? Then you're left with an incorrect reset, back to the broken state we go! Oh, and as a bonus, all of your unstaged files are gone.
+
+Alright, alright, I know you can do the same thing again since Git keeps everything in the reflog. Technically you can keep doing `git reset --hard HEAD@{N}` to recover, but you're back to figuring out which HEAD contains the state you want. This is because each time we do any operations, the state changes, and the number shifted, HEAD@{14} now becomes HEAD@{15} because there's a new entry at the top from you doing a reset. See this new reflog after I tried to reset back to the incorrect HEAD, and finally reset to the correct state before the rebase.
+
+<RegexHighlighter patterns={[
+  { pattern: "\\b[0-9a-f]{7}\\b", color: "#2d9db0" },
+  { pattern: "HEAD@\\{\\d+\\}", color: "#8b5fbf" },
+  { pattern: "\\(.*?\\)", color: "#e06c75" },
+  { pattern: "rebase \\(finish\\)|rebase \\(pick\\)|rebase \\(start\\)", color: "#c94f6d" }
+]}
+text={`
+c1805f1 (HEAD -> feature/auth-fix) HEAD@{0}: reset: moving to HEAD@{15}
+3cfe6a9 (main) HEAD@{1}: reset: moving to HEAD@{13}
+8b3458d HEAD@{2}: rebase (finish): returning to refs/heads/feature/auth-fix
+8b3458d HEAD@{3}: rebase (pick): feat: update src/api.ts feature-12
+f4c02c2 HEAD@{4}: rebase (pick): feat: update src/utils.ts feature-11
+ec84756 HEAD@{5}: rebase (pick): feat: update src/config.ts feature-10
+2034d37 HEAD@{6}: rebase (pick): feat: update src/user.ts feature-9
+d033fd7 HEAD@{7}: rebase (pick): feat: update src/auth.ts feature-8
+46958a0 HEAD@{8}: rebase (pick): feat: update src/logger.ts feature-7
+020fb29 HEAD@{9}: rebase (pick): feat: update src/db.ts feature-6
+b2bdf3a HEAD@{10}: rebase (pick): feat: update src/api.ts feature-5
+5ff5592 HEAD@{11}: rebase (pick): feat: update src/utils.ts feature-4
+59c5aad HEAD@{12}: rebase (pick): feat: update src/config.ts feature-3
+293e8e4 HEAD@{13}: rebase (pick): feat: update src/user.ts feature-2
+dbc5cd2 HEAD@{14}: rebase (pick): feat: update src/auth.ts feature-1
+3cfe6a9 (main) HEAD@{15}: rebase (start): checkout main
+c1805f1 (HEAD -> feature/auth-fix) HEAD@{16}: commit: feat: update src/api.ts feature-12
+`}
+/>
+
+If you notice the first two entries, they're both `reset` entries from me doing a `git reset`, but something looks odd. Look at the second entry, it says `moving to HEAD@{13}`, and if you look at `HEAD@{13}` it's not even the correct state I was trying to go to. Now look at the first entry, I was trying to go to the actually correct state, which was `HEAD@{15}` but now it became `HEAD@{16}`! Just like I said earlier, the numbers have shifted, and now the history went out of sync. It has become a number puzzle game that's very unintuitive.
+
+I know it's probably not *that* big of a deal for some people, but it's just very annoying having to figure out all these numbers when all you want to do is just undo your last action. Also the fact that you have to rely on a destructive operation doesn't sound great to me, we're all bound to make some mistakes, it would be nice if there's a safeguard that catches me.
+
+### Ol' Trusty Ctrl+Z
+
+In Jujutsu, you can just do `jj undo` to undo your last action, and you can *undo* the *undo*! Instead of reflog that shows all the internal state transitions, we have `jj op log`, which is more intuitive and more human readable. Take a look at this:
+
+<RegexHighlighter patterns={[
+    { pattern: "^[ @○│]+", color: "#907aa9" },
+    { pattern: "\\b[0-9a-f]{12}\\b", color: "#2d9db0" },
+    { pattern: "\\b[0-9a-f]{40}\\b", color: "#8b5fbf" },
+    { pattern: "elianiva@melon", color: "#ea9d34" },
+    { pattern: "\\d+ (hours?|minutes?|seconds?) ago", color: "#797593" },
+    { pattern: "lasted \\d+ milliseconds", color: "#797593" },
+    { pattern: "^(│  )(new empty commit|describe commit|snapshot working copy|rebase commit|point bookmark)", color: "#618774" },
+    { pattern: "args: .*", color: "#b4637a" },
+]}
+text={`
+@  10ecfb140a84 elianiva@melon 1 minute ago, lasted 81 milliseconds
+│  rebase commit 06ac7f96a35a5f03bdbfbe9e4c8ec4a62cb331b4 and descendants
+│  args: jj rebase -s feature/auth-fix -d main
+○  1061dd503e96 elianiva@melon 1 minute ago, lasted 44 milliseconds
+│  describe commit b246ae11fda009bdcef1d60d2d2c90bf5969e448
+│  args: jj describe -m 'rebase feature onto main'
+○  2ff05e708103 elianiva@melon 1 minute ago, lasted 45 milliseconds
+│  new empty commit
+│  args: jj new
+○  700c2942566a elianiva@melon 1 minute ago, lasted 9 milliseconds
+│  point bookmark feature/auth-fix to commit 06ac7f96a35a5f03bdbfbe9e4c8ec4a62cb331b4
+│  args: jj bookmark set feature/auth-fix
+○  e433a0bd414e elianiva@melon 1 minute ago, lasted 49 milliseconds
+│  new empty commit
+│  args: jj new
+○  8a3afbb79105 elianiva@melon 1 minute ago, lasted 43 milliseconds
+│  describe commit 540c9b2d334d884707e0e9fd40b9a2cec0740682
+│  args: jj describe -m 'feat: update src/api.ts feature-12'
+○  31f2304af728 elianiva@melon 1 minute ago, lasted 41 milliseconds
+│  snapshot working copy
+│  args: jj describe -m 'feat: update src/api.ts feature-12'
+○  9461c4e14f1b elianiva@melon 1 minute ago, lasted 38 milliseconds
+│  new empty commit
+│  args: jj new
+○  e10206d50112 elianiva@melon 1 minute ago, lasted 41 milliseconds
+│  describe commit ccde03239baef8065f9026239814af8cefcee63f
+│  args: jj describe -m 'feat: update src/utils.ts feature-11'
+○  2c60502f0aa4 elianiva@melon 1 minute ago, lasted 40 milliseconds
+│  snapshot working copy
+│  args: jj describe -m 'feat: update src/utils.ts feature-11'
+`}
+/>
+
+As you can see, there's a lot less noise in the log, and it's much easier to find where the rebase happens. It is as if this history was designed for human to read! We actually don't even need to see this at all if all we want to do is undo our previous operation, we can just run `jj undo`! The graph is useful if you want to undo certain operations because it groups all operations that has been done by the user instead of the verbose history like Git. See the difference when I tried to undo, but then I changed my mind so I *undo* the *undo*.
+
+<RegexHighlighter patterns={[
+    { pattern: "^[ @○│]+", color: "#907aa9" },
+    { pattern: "\\b[0-9a-f]{12}\\b", color: "#2d9db0" },
+    { pattern: "\\b[0-9a-f]{40}\\b", color: "#8b5fbf" },
+    { pattern: "elianiva@melon", color: "#ea9d34" },
+    { pattern: "\\d+ (hours?|minutes?|seconds?) ago", color: "#797593" },
+    { pattern: "lasted \\d+ milliseconds", color: "#797593" },
+    { pattern: "^(│  )(new empty commit|describe commit|snapshot working copy|rebase commit|point bookmark)", color: "#618774" },
+    { pattern: "args: .*", color: "#b4637a" },
+]}
+text={`
+@  df5bed0d72ca elianiva@melon 22 seconds ago, lasted 8 milliseconds
+│  redo: restore to operation 10ecfb140a849c8fd725c153abe8cfae630ab1d1137d4b56c469e93fd0924116483051a431d04df457ae1a40bc877381d099bcc2c22e52e7b022e24d846f227f
+│  args: jj redo
+○  0d713cd1ce9f elianiva@melon 26 seconds ago, lasted 9 milliseconds
+│  undo: restore to operation 1061dd503e96482fa0d9ab8371d18533653863292c763033fa5f54f944576410a1a3bc16aba7aafc9a73d707c02468c14f97ce1a127468803b05cca16b7e32fc
+│  args: jj undo
+○  10ecfb140a84 elianiva@melon 1 minute ago, lasted 81 milliseconds
+│  rebase commit 06ac7f96a35a5f03bdbfbe9e4c8ec4a62cb331b4 and descendants
+│  args: jj rebase -s feature/auth-fix -d main
+○  1061dd503e96 elianiva@melon 1 minute ago, lasted 44 milliseconds
+│  describe commit b246ae11fda009bdcef1d60d2d2c90bf5969e448
+│  args: jj describe -m 'rebase feature onto main'
+○  2ff05e708103 elianiva@melon 1 minute ago, lasted 45 milliseconds
+│  new empty commit
+│  args: jj new
+○  700c2942566a elianiva@melon 1 minute ago, lasted 9 milliseconds
+│  point bookmark feature/auth-fix to commit 06ac7f96a35a5f03bdbfbe9e4c8ec4a62cb331b4
+│  args: jj bookmark set feature/auth-fix
+○  e433a0bd414e elianiva@melon 1 minute ago, lasted 49 milliseconds
+│  new empty commit
+│  args: jj new
+○  8a3afbb79105 elianiva@melon 1 minute ago, lasted 43 milliseconds
+│  describe commit 540c9b2d334d884707e0e9fd40b9a2cec0740682
+│  args: jj describe -m 'feat: update src/api.ts feature-12'
+○  31f2304af728 elianiva@melon 1 minute ago, lasted 41 milliseconds
+│  snapshot working copy
+│  args: jj describe -m 'feat: update src/api.ts feature-12'
+○  9461c4e14f1b elianiva@melon 1 minute ago, lasted 38 milliseconds
+│  new empty commit
+│  args: jj new
+`}
+/>
+
+As you can see, my first undo was restoring to the `1061dd503e96` state, which was describing the changes before executing rebase. this is the healthy state, I didn't have to figure out which one is the right one because jj does that for me! The second undo I did was undoing the previous undo, basically a redo, which reverts me back to the `10ecfb140a84` state, that is the broken rebase. You can also see the exact command that I ran on the `args:` field. This lets you identify what command did you run quite easily, unlike Git which requires you to parse the state transitions and figure out the correct HEAD numbers.
+
+From this alone we can see that Jujutsu is superior because it keeps a stable ID that doesn't change no matter how many times we add operation entries. It also gives us convenient commands to help navigate forward and backward between states. It's also safe! Remember how Jujutsu doesn't have <TermPopover client:visible term="staging area" definition={stagingAreaDef} />, so your files are always tracked, all of your files will stick to the <TermPopover client:visible term="revision" definition={revisionDef} />, you can treat them as true checkpoint that you can move back and forth safely. This allows you experiment more freely without having to worry about losing your files whenever you move between <TermPopover client:visible term="revisions" definition={revisionDef} />.
+
+It really feels like the design of Jujutsu treats recovery and experimentation as a first class rather than afterthought. This is so useful especially with coding agents these days where the cost of experimentation is getting cheaper and cheaper.
+
+## First-class Conflicts
+
+I mentioned that Jujutsu feels like it treats recovery and experimentation as a first class. This can also be seen by how it handles conflicts. Jujutsu treats conflict as data while Git treats conflict as if the world has stopped and you **HAVE** to resolve it to make it continue running.
+
+Since conflicts are just another data, you can just... commit them! This sounds odd when I first read about it, why would I want to commit conflicts, it breaks the code!!! That's before I used it myself and realise how convenient it is.
+
+I'm always annoyed whenever I catch up to the main branch and I see a conflict that I *have* to resolve, especially if I don't really care about the conflicted file at the moment. Jujutsu enables me to just ignore it and continue with my work and resolve it later when I have the time. This mindset also enables collaborative resolution, you can just ask your mate (or coding agents!) to resolve them for you if you're too busy dealing with a million of other things in the meantime, this isn't possible with Git.
+
+Remember how the <TermPopover client:visible term="changes" definition={changeDef} /> in Jujutsu gets cascaded to all of its <TermPopover client:visible term="descendants" definition={descendantDef} />? The same concept applies with conflicts! Once you resolve it, all of the <TermPopover client:visible term="descendant" definition={descendantDef} /> gets it, so you don't have to keep resolving them over and over because Jujutsu understands what a conflict is. It's not just random text markers, but it understands them as logical structure internally. This is pretty similar with Git's `rerere` option, which is an opt-in behaviour in Git, but Jujutsu gives you this by default!
+
+There's nothing special about how Jujutsu stores conflicts, you can still see the `<<<<<<<` marker just like you would in Git, the code is indeed still broken, but the flexibility of *when* to resolve them is a big win for me. Especially when paired with coding agents, the speed of things changing are really quick compared with handwriting everything, so sometimes a single commit or change consists of a bunch of files changed, and some of them will bound to have some conflicts if you work with other people or spawning a bunch of agents in their own branch. The ability to just say ehh whatever I'll solve this file later is great! It doesn't stop your velocity of working on things, a single conflict on `bun.lock` shouldn't require you to stop working and resolve it. You can simply ignore it, keep working, and resolve it when you're done.
+
+## Powerful Query Language
+
+Jujutsu has its own language to query the <TermPopover client:visible term="revisions" definition={revisionDef} /> and it's pretty powerful compared to Git. I don't use it as much but I sometimes need to query things like "what's the <TermPopover client:visible term="parent" definition={parentDef} /> of this <TermPopover client:visible term="revision" definition={revisionDef} />?", "what's my commits?", etc.
+
+My explanation won't do any justice, you should [read their docs](https://docs.jj-vcs.dev/latest/revsets/) to see its capabilities, it's pretty cool!
+
+## Minor Incompatibilities
+
+Since Jujutsu is still early compared to Git, we're talking about 7 years old vs 21 years old software! There's bound to be some minor imperfections here and there. These are some things that aren't supported yet in Jujutsu but present in Git:
+
+- No Sub-Module support, [see this issue](https://github.com/jj-vcs/jj/issues/494) and [this design docs](https://docs.jj-vcs.dev/latest/design/git-submodules/) for more information.
+- No Git hooks support. They are planning on something similar using `jj run`,  [see this design docs](https://docs.jj-vcs.dev/latest/design/run/) for more information.
+- ...and probably some other things that I didn't realise because I don't use it.
+
+Even though it has some gaps, I'm still very happy with Jujutsu. Its inconveniences aren't big enough to ruin my workflow.
+
+## My Workflows
+
+Here are some of my workflows that I've been using with Jujutsu so you know how I use it in practice.
+
+- **Making regular commits**
+
+    If I want to start working on something, I'd do `jj new` to move me to a fresh <TermPopover client:visible term="revision" definition={revisionDef} />, then I either work on the <TermPopover client:visible term="changes" definition={changeDef} />, or I would do `jj describe -m "some important message"` to set the commit message. After I'm satisfied, I would do `jj new` again, and the flow repeats. There's no "commit" so you just move to the next <TermPopover client:visible term="revision" definition={revisionDef} />. You can even edit that <TermPopover client:visible term="revision" definition={revisionDef} /> if you changed your mind about something as long as it hasn't been pushed to remote, it's a really flexible workflow.
+
+- **Making a branch**
+
+    There's no concept of branch in Jujutsu, it's all just <TermPopover client:visible term="bookmarks" definition={bookmarkDef} />, so whenever I want to make a branch, instead of having to create the branch ahead of time before I change anything, I can simply mark a <TermPopover client:visible term="revision" definition={revisionDef} /> to a certain branch using `jj bookmark set branch_name -r ID`. This is really useful when I decided that some of my <TermPopover client:visible term="revisions" definition={revisionDef} /> belongs to a different branch.
+
+- **Playing around with changes**
+
+    There's no need for `git commit` in Jujutsu, so it lets me play around with <TermPopover client:visible term="revisions" definition={revisionDef} />. I can move around between them, consider this scenario:
+    - I have a <TermPopover client:visible term="revision" definition={revisionDef} /> called `feat/auth` (it's a <TermPopover client:visible term="bookmark" definition={bookmarkDef} />)
+    - I want to try implementing an OAuth flow, so I do `jj new feat/auth` to create a child <TermPopover client:visible term="revision" definition={revisionDef} /> using `feat/auth` as its <TermPopover client:visible term="parents" definition={parentDef} />, do some changes, let's call this `auth-a`
+    - I then realise I can do things differently, so I just do `jj new feat/auth` again and create a child, which will be the sibling of `auth-b`
+    - Now `auth-b` has a bunch of changes, let's say they're `auth-b-1` and `auth-b-2`
+    - As I'm working on `auth-b-3`, I realise that if I do `auth-b-2` a bit different, things can be a lot simpler, so I can either do `jj new auth-b-1` to create a sibling to `auth-b-2` and continue working from there, or simply do `jj edit auth-b-2` to go back to `auth-b-2` and do things a bit different.
+    - After I'm satisfied, I can set the <TermPopover client:visible term="bookmark" definition={bookmarkDef} /> to `auth-b-4`, which is the final version after I play around with several solutions, and push it to remote
+    - I then do `jj abandon` a few times to remove the <TermPopover client:visible term="revisions" definition={revisionDef} /> that I no longer need.
+
+    You see, this is really, really flexible to experiment with. You can move wherever you want! You can't really do this using Git unless you want to have several branches, which is less flexible in my opinion.
+
+- **Deferring conflicts**
+
+    My mate and I like to do rapid changes a lot of the times, and sometimes we have conflicts whenever we try to sync the changes. The fact that I can leave that for later is great! I don't want to deal with `bun.lock` conflicts, `README.md` conflicts, or any of those things while I'm working on the core feature. I don't want to break my momentum. You can't do this in Git because you *have* to resolve the conflicts whether you want it or not.
+
+- **Moving between branches at ease**
+
+    Sometimes when I'm working on a feature, some urgent things happen that requires me to move to the other branch. Traditionally in Git, I have to either stash the <TermPopover client:visible term="changes" definition={changeDef} />, or make a WIP commit, which could easily get messy. In Jujutsu, however, none of that is needed. I can simply move to the other <TermPopover client:visible term="bookmark" definition={bookmarkDef} /> because all my <TermPopover client:visible term="changes" definition={changeDef} /> will stick to the <TermPopover client:visible term="revision" definition={revisionDef} /> I'm working on. I can simply do:
+    - Move to other <TermPopover client:visible term="bookmark" definition={bookmarkDef} /> that's urgent, i.e. `jj new staging`
+    - Do some fixes, `jj describe -m "fix broken stuff"` and move the <TermPopover client:visible term="bookmark" definition={bookmarkDef} /> using `jj b set fix/broken-stuff`, and then push to remote using `jj git push --bookmark feat/auth`
+    - Back to my main <TermPopover client:visible term="revision" definition={revisionDef} /> by doing `jj edit my-ongoing-work`.
+
+    This is really simple and easy to do, it's also fast because you worry about less things, you can just move around.
+
+- **Squashing and splitting changes**
+
+    My workflow is pretty messy, sometimes I don't do things in the right order, after committing my changes it's impossible to change using Git, but it's pretty flexible with Jujutsu. Let's use this post as an example :)
+
+    While I was working on this post, I realised that I can cache the PR loader that you see on the homepage of my website, so I just do that before I forgot. However, I'm still in the same <TermPopover client:visible term="revision" definition={revisionDef} /> as this post and I like to have a clean history. So, I split the <TermPopover client:visible term="changes" definition={changeDef} /> into multiple commits, and all is good!
+
+    Another messy things I do is when I've finished a feature, I do `jj new`, but then in the middle of doing things, I realise that this isn't worth a new commit/<TermPopover client:visible term="revision" definition={revisionDef} />, so I just squash this <TermPopover client:visible term="revision" definition={revisionDef} /> with its <TermPopover client:visible term="parent" definition={parentDef} />, and then continue with my work.
+
+- **Undoing my screw ups**
+
+    Like I said, I'm pretty messy when it comes to working on something, and I sometimes make mistakes. Incorrect amend, wrong rebase target, screwing up a rebase, accidentally removed untracked files because I didn't check before doing `git reset --hard`. I usually don't bother with fixing things up when I was using Git because it's so painful with the whole reflog thing. I just give up, accept that I've screwed up, and start over again. With Jujutsu, I actually recover from those mistakes. Any operation screw up that I did can be easily undone in a safe and incremental way. I can walk back one step at a time without having to worry about the pain of going through the reflog.
+
+These are just some of my workflows that hopefully give you an idea of how I use Jujutsu on my day to day work. Although, I don't do these things manually, I use [jjui](https://github.com/idursun/jjui) which is a TUI version of Jujutsu. It's very intuitive since you see all the <TermPopover client:visible term="changes" definition={changeDef} />, helps you move around easily. I won't cover it here since it's intuitive enough that once you understand how Jujutsu works fundamentally, you'll see why jjui is nice to have.
+
+## Closing Thoughts
+
+Honestly there's still a lot of things that I haven't explored in Jujutsu and haven't covered in this post, this is just scratching the surface. I thought it'd be fun to write some of them so I can give answer to people if they ask me why I prefer Jujutsu over plain Git.
+
+In general Jujutsu just feels like a better Git experience, everything makes more sense to me, a lot of commands just feel more intuitive to use and figure out.
+
+Bear in mind, I'm not trying to sell you Jujutsu, this is purely my personal opinion of using it. If anything I feel like it's impossible for me to convince you to use Jujutsu if you've been using Git for years and worry about compatibilities that ruins your workflow.
+
+It's one of those things that you *need* to try it yourself for quite some time for you to feel its benefit. I haven't used Git for a few months now, and whenever I get back I miss Jujutsu's working copy and <TermPopover client:visible term="revision" definition={revisionDef} /> abstraction.
+
+You can see all of my Jujutsu configs in my [dotfiles repo](https://github.com/elianiva/dotfiles/blob/master/modules/git.nix).
+
+## References
+
+There's A LOT in Jujutsu, here are some of the resources I found useful when exploring how it works. Hope it also helps you!
+
+- [Jujutsu Documentation](https://docs.jj-vcs.dev/latest/)
+- [Steve's Jujutsu Tutorial](https://steveklabnik.github.io/jujutsu-tutorial/)
+- [Towards an AI-Native Development Workflow (Using Jujutsu as the Backbone)
+](https://ianbull.com/posts/jj-vibes/)
+- [Jujutsu worktrees are very convenient!
+](https://news.ycombinator.com/item?id=46141731/)
+- [Jujutsu Bits and Booze by Gitbutler](https://www.youtube.com/watch?v=dwyMlLYIrPk)
+- [DevOps Toolbox Jujutsu Overview](https://www.youtube.com/watch?v=cZqFaMlufDY)
+- [Jujutsu: A Git-compatible VCS - GitMerge 2024](https://www.youtube.com/watch?v=LV0JzI8IcCY)
+- [Jujutsu, a Git compatible VCS - Tony Finn](https://tonyfinn.com/blog/jj/)
