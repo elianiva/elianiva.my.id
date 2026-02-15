@@ -20,13 +20,13 @@ const { frontmatter, slug } = Astro.props as Props;
 		thumbnail: `${siteData.siteUrl}/${slug}/cover.webp`,
 	}}
 >
-	<main class="mx-auto max-w-[920px] px-2 md:px-4 py-10">
+	<main class="mx-auto max-w-[920px] px-2 md:px-4 py-10" style={`view-transition-name: project-card-${slug}`}>
 		<div>
 			<BackButton />
 		</div>
 
 		<div class="pt-6">
-			<section class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
+			<section class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4" style={`view-transition-name: project-content-${slug}`}>
 				<div class="space-y-6">
 					{frontmatter.hasImage && (
 						<div class="rounded-2xl overflow-hidden border-[0.5px] border-pink-200/50">
@@ -41,9 +41,11 @@ const { frontmatter, slug } = Astro.props as Props;
 
 					<div>
 						<div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between pb-4 border-b border-pink-200/50">
-							<h1 class="text-2xl md:text-3xl font-bold font-display text-pink-950 tracking-wide">
-								{frontmatter.title}
-							</h1>
+						<h1
+							class="text-2xl md:text-3xl font-bold font-display text-pink-950 tracking-wide"
+						>
+							{frontmatter.title}
+						</h1>
 							<div class="flex gap-2">
 								<a
 									class="flex gap-2 items-center bg-white/50 hover:bg-pink-50 border-[0.5px] border-pink-200/50 hover:border-pink-200 py-2 px-4 text-pink-950 hover:text-pink-800 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2"

@@ -140,3 +140,43 @@
 		}
 	}
 }
+
+@layer utilities {
+	/* View Transitions - Ease In with Sequential Animation */
+
+	/* Card expansion - first phase (400ms) */
+	::view-transition-group([style*="post-card-"]),
+	::view-transition-group([style*="project-card-"]) {
+		animation-duration: 400ms;
+		animation-timing-function: ease-in;
+	}
+
+	::view-transition-old([style*="post-card-"]),
+	::view-transition-new([style*="post-card-"]),
+	::view-transition-old([style*="project-card-"]),
+	::view-transition-new([style*="project-card-"]) {
+		animation-timing-function: ease-in;
+	}
+
+	/* Content inside card - second phase (300ms, starts after card) */
+	::view-transition-group([style*="post-content-"]),
+	::view-transition-group([style*="project-content-"]) {
+		animation-duration: 300ms;
+		animation-timing-function: ease-in;
+		animation-delay: 300ms;
+	}
+
+	::view-transition-old([style*="post-content-"]),
+	::view-transition-new([style*="post-content-"]),
+	::view-transition-old([style*="project-content-"]),
+	::view-transition-new([style*="project-content-"]) {
+		animation-timing-function: ease-in;
+	}
+
+	/* Root background - subtle fade */
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 200ms;
+		animation-timing-function: ease-in;
+	}
+}

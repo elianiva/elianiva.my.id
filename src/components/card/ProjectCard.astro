@@ -15,6 +15,7 @@ const { title, description, href, slug, stack, hasImage = true } = Astro.props;
 
 <div
 	class="bg-white/50 rounded-xl text-left p-4 border-[0.5px] border-pink-200/50 transition-all hover:border-pink-200 group hover:bg-pink-50/50"
+	style={`view-transition-name: project-card-${slug}`}
 >
 	{
 		hasImage && (
@@ -34,11 +35,11 @@ const { title, description, href, slug, stack, hasImage = true } = Astro.props;
 		<a
 			data-astro-prefetch
 			rel="prefetch"
-			href={href}
-			class="text-base font-bold font-display text-pink-950 group-hover:text-pink-700 transition-property-color duration-100 ease-out focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded-lg"
-		>
-			{title}
-		</a>
+		href={href}
+		class="text-base font-bold font-display text-pink-950 group-hover:text-pink-700 transition-property-color duration-100 ease-out focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded-lg"
+	>
+		{title}
+	</a>
 		<p class="font-body text-sm text-pink-950/70 pt-1 pb-3">
 			{description}
 		</p>

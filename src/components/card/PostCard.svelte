@@ -16,6 +16,7 @@ const { title, description, href, date, tags }: Props = $props();
 	class="bg-white/50 rounded-xl text-left transition-all border-[0.5px] border-pink-200/50 hover:border-pink-200 group hover:bg-pink-50/50"
 	role="article"
 	aria-labelledby="post-title"
+	style="view-transition-name: post-card-{href.split('/').pop()}"
 >
 	<a
 		data-astro-prefetch
