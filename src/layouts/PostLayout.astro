@@ -1,4 +1,5 @@
 ---
+import CodeCopy from "~/components/CodeCopy.svelte";
 import sites from "~/data/sites";
 import type { PostMeta } from "~/models/post";
 import PencilIcon from "~icons/ph/note-pencil";
@@ -9,9 +10,10 @@ export type Props = {
 	frontmatter: PostMeta;
 	slug: string;
 	wordCount: number;
+	readingTime: number;
 };
 
-const { frontmatter, slug, wordCount }: Props = Astro.props;
+const { frontmatter, slug, wordCount, readingTime }: Props = Astro.props;
 
 const commentOptions = {
 	src: "https://giscus.app/client.js",
@@ -53,15 +55,16 @@ const ogImageParams = new URLSearchParams({
 		thumbnail: `${sites.siteUrl}/api/og-image?${ogImageParams.toString()}`,
 		publishedAt: frontmatter.date.toISOString(),
 	}}
+	isPost={true}
 >
 	<main class="mx-auto max-w-[64ch] px-4 lg:px-0 py-10">
 		<BackButton />
 		<h1
-			class="text-center font-serif text-3xl uppercase mt-12 mb-2 font-semibold text-pink-950"
+			class="text-center font-heading text-3xl uppercase mt-12 mb-2 font-semibold text-pink-950"
 		>
 			{frontmatter.title}
 		</h1>
-		<div class="flex flex-row justify-center md:items-center gap-2 font-serif text-sm md:text-base md:leading-loose text-pink-950/70">
+		<div class="flex flex-row justify-center md:items-center gap-2 font-body text-sm md:text-base md:leading-loose text-pink-950/70">
 			Posted on
 			<span class="text-pink-600 font-medium">
 			{
@@ -74,11 +77,11 @@ const ogImageParams = new URLSearchParams({
 			}
 			</span>
 			<span class="font-medium">
-				- {wordCount.toLocaleString("en-GB")} words
+				- {readingTime} min read · {wordCount.toLocaleString("en-GB")} words
 			</span>
 		</div>
 		<a
-			class="block text-center relative no-underline hover:underline hover:text-pink-400 font-serif text-sm md:text-base text-pink-950/70 mb-2 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded px-2 py-1"
+			class="block text-center relative no-underline hover:underline hover:text-pink-400 font-body text-sm md:text-base text-pink-950/70 mb-2 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded px-2 py-1"
 			href={`https://github.com/elianiva/elianiva.my.id/blob/master/src/content/posts/${slug}.mdx`}
 			target="_blank"
 			rel="norel noreferrer"
@@ -90,7 +93,7 @@ const ogImageParams = new URLSearchParams({
 		<div class="justify-center flex gap-2 pb-4 mb-8 border-b border-dashed border-pink-300">
 			{frontmatter.tags.map((tag) => <span class="font-mono text-pink-700/80 text-sm font-medium">#{tag}</span>)}
 		</div>
-		<main class="font-serif mx-auto max-w-[64ch] prose">
+		<main class="font-body mx-auto max-w-[64ch] prose">
 			<slot />
 			<div>
 				<script is:inline {...commentOptions} data-theme="light"></script>
@@ -100,4 +103,5 @@ const ogImageParams = new URLSearchParams({
 			</p>
 		</main>
 	</main>
+	<CodeCopy client:load />
 </MainLayout>

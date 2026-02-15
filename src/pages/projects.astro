@@ -33,19 +33,22 @@ const sortedAssignmentProjects = assignmentProjects.sort((a, b) =>
 	<section class="mx-auto max-w-[920px] px-4 py-10">
 		<BackButton />
 		<ProjectSection
+			title="Open Source Projects"
+			description="These are some open source projects I've helped building"
+			projects={sortedOpenSourceProjects}
+			seeMoreUrl={null}
+		/>
+		<ProjectSection
 			title="Personal Projects"
 			description="These are some of my personal projects that I made in the past. Some of them are still in use, some are not. Mostly made them just for fun and to learn new things."
 			projects={sortedPersonalProjects}
-		/>
-		<ProjectSection
-			title="Open Source Projects"
-			description="These are some open source projects that I actively help maintain. Most of them are from Teknologi Umum, a community that I'm part of."
-			projects={sortedOpenSourceProjects}
+			seeMoreUrl={null}
 		/>
 		<ProjectSection
 			title="Assignment Projects"
-			description="These are some projects that I did as an assignment whether it's from when I was in high school or college. Guess I'd put them here anyway in case someone find them useful."
+			description="These are some projects that I did as an assignment whether it's from when I was in high school or university. Guess I'd put them here anyway in case someone find them useful."
 			projects={sortedAssignmentProjects}
+			seeMoreUrl={null}
 		/>
 	</section>
 </MainLayout>

@@ -11,10 +11,9 @@
         "@biomejs/biome": "^2.3.15",
         "@cf-wasm/resvg": "^0.3.3",
         "@cf-wasm/satori": "^0.3.5",
+        "@fontsource/chonburi": "^5.2.8",
         "@fontsource/ibm-plex-mono": "^5.2.7",
-        "@fontsource/ibm-plex-serif": "^5.2.7",
-        "@fontsource/jost": "^5.2.8",
-        "@fontsource/lora": "^5.2.8",
+        "@fontsource/varela-round": "^5.2.8",
         "@tailwindcss/vite": "^4.1.18",
         "astro": "5.17.2",
         "motion": "^12.34.0",
@@ -166,13 +165,11 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.27.3", "", { "os": "win32", "cpu": "x64" }, "sha512-4uJGhsxuptu3OcpVAzli+/gWusVGwZZHTlS63hh++ehExkVT8SgiEf7/uC/PclrPPkLhZqGgCTjd0VWLo6xMqA=="],
 
+    "@fontsource/chonburi": ["@fontsource/chonburi@5.2.8", "", {}, "sha512-OvX1VUtrMKhiuU17LDAb6ztMsZbZp3AJ725o4ADp7kFoUjtFWFoknnDyPuNiPDLarOEExhdjeneTtl8BqiQurg=="],
+
     "@fontsource/ibm-plex-mono": ["@fontsource/ibm-plex-mono@5.2.7", "", {}, "sha512-MKAb8qV+CaiMQn2B0dIi1OV3565NYzp3WN5b4oT6LTkk+F0jR6j0ZN+5BKJiIhffDC3rtBULsYZE65+0018z9w=="],
 
-    "@fontsource/ibm-plex-serif": ["@fontsource/ibm-plex-serif@5.2.7", "", {}, "sha512-04owmc2OQQ/DAMjXjEMJc+7V4dBVmR01aIFOg4cuqS8pQ4HbvtlYs/u6+O0vCt21EMx5M/azIbgx43iKyisEOA=="],
-
-    "@fontsource/jost": ["@fontsource/jost@5.2.8", "", {}, "sha512-PEK7oGJL8r+YZm6BriWhmCql9DhVYTMt0iEQbZHo8mqfIPIZo67Tm68xEIaRA0yB3wsHA7Tm66yMQDIxq3Bjqw=="],
-
-    "@fontsource/lora": ["@fontsource/lora@5.2.8", "", {}, "sha512-AQlfsHw4TP1x/eb2IZ6VjQ70ctKa39m9JN9A4zlvDOeKYLrCs+GaYIEQ86Y6YfSPGHn01bErXkRcyktOW0LOPQ=="],
+    "@fontsource/varela-round": ["@fontsource/varela-round@5.2.8", "", {}, "sha512-9jati7lFSnJlz95e8nxTDFqvKNs3XY9fqYb6f8bUXCLa0iDGp0cvdkwRaTNYjYtrpB+ymrHMeNoVo5oEd/ubcg=="],
 
     "@iconify-json/ph": ["@iconify-json/ph@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw=="],
 

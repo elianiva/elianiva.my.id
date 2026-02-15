@@ -1,13 +1,14 @@
 ---
 import MotionReveal from "~/components/animation/MotionReveal.svelte";
 import ProjectCard from "~/components/card/ProjectCard.astro";
+import ViewAllButton from "~/components/ViewAllButton.astro";
 import type { Project } from "~/models/project.ts";
 
 interface Props {
 	projects: Project[];
 	title: string;
 	description: string;
-	seeMoreUrl: string | null;
+	seeMoreUrl?: string | null | undefined;
 }
 
 const { projects, title, description, seeMoreUrl } = Astro.props;
@@ -15,15 +16,15 @@ const { projects, title, description, seeMoreUrl } = Astro.props;
 
 <section class="pt-6 md:pt-10">
 	<MotionReveal amount={0.15} delay={0.05} client:idle>
-		<h2 id={title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-heading'} class="text-xl md:text-2xl font-bold font-serif text-pink-950">
+		<h2 id={title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-heading'} class="text-2xl md:text-3xl font-bold font-display text-pink-950 tracking-wide pt-2">
 			{title}
 		</h2>
-		<p class="text-xs md:text-base font-serif text-pink-950/70 pt-2 pb-4">
+		<p class="text-xs md:text-base font-body text-pink-950/70 pt-2 pb-4">
 			{description}
 		</p>
 	</MotionReveal>
 	<div
-		class="relative grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-3 pb-4"
+		class="relative grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-3 pb-4 card-tilt-odd"
 	>
 		{
 			projects.map((project) => (
@@ -33,20 +34,18 @@ const { projects, title, description, seeMoreUrl } = Astro.props;
 					description={project.data.description}
 					href={`/projects/${project.slug}`}
 					stack={project.data.stack}
+					hasImage={project.data.hasImage}
 				/>
 			))
 		}
 	</div>
 	{
-		seeMoreUrl !== null && (
-			<a
-				data-astro-prefetch
+		typeof seeMoreUrl === "string" && (
+			<ViewAllButton
 				href={seeMoreUrl}
-				class="project-card uppercase font-mono text-pink-950 hover:text-pink-800 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded"
-				aria-label="View all projects"
-			>
-				&#8213 See more
-			</a>
+				label="View all projects"
+				ariaLabel="View all projects"
+			/>
 		)
 	}
 </section>

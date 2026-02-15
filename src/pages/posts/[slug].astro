@@ -21,8 +21,9 @@ const { Content } = await entry.render();
 
 const contentWithoutHeaders = entry.body.replace(/^(#+\s*)/gm, "");
 const wordCount = contentWithoutHeaders.split(/\s+/).length;
+const readingTime = Math.ceil(wordCount / 200);
 ---
 
-<PostLayout frontmatter={entry.data} slug={entry.slug} wordCount={wordCount}>
+<PostLayout frontmatter={entry.data} slug={entry.slug} wordCount={wordCount} readingTime={readingTime}>
 	<Content />
 </PostLayout>

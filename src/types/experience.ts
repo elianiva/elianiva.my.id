@@ -7,5 +7,5 @@ export type Experience = {
 	tasks: string[];
 	images: string[];
 	technologies: Technology[];
-	type: "freelance" | "full-time";
+	location: "indonesia";
 };

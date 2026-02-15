@@ -7,47 +7,54 @@ interface Props {
 	description: string;
 	href: string;
 	stack: Stack[];
+	hasImage?: boolean;
 }
 
-const { title, description, href, slug, stack } = Astro.props;
+const { title, description, href, slug, stack, hasImage = true } = Astro.props;
 ---
 
 <div
-	class="project-card overflow-hidden text-left rounded-sm border border-dashed border-pink-300 bg-white"
+	class="bg-white/50 rounded-xl text-left p-4 border-[0.5px] border-pink-200/50 transition-all hover:border-pink-200 group hover:bg-pink-50/50"
 >
-	<div class="">
-		<img
-			src={`/assets/projects/${slug}/cover.webp`}
-			alt={`Screenshot of ${title} project interface`}
-			class="block w-full h-full bg-pink-100 border-b border-pink-300 border-dashed!"
-			loading="lazy"
-		/>
-		<div class="grid grid-rows-[auto_auto_auto] p-3">
-			<a
-				data-astro-prefetch
-				rel="prefetch"
-				href={href}
-				class="text-lg font-bold font-serif text-pink-950 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded"
-			>
-				{title}
-			</a>
-			<p class="font-serif text-sm text-pink-950/70 pt-1 pb-3">
-				{description}
-			</p>
-			<div class="flex flex-wrap items-end gap-2 font-mono uppercase">
-				{
-					stack.map(([name, url]) => (
-						<a
-							href={url}
-							target="_blank"
-							rel="norel noreferrer"
-							class="no-underline text-xs text-pink-900/70 hover:text-pink-900/90 bg-pink-50 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-1"
-						>
-							{name}
-						</a>
-					))
-				}
+	{
+		hasImage && (
+			<div class="rounded-2xl overflow-hidden border-[0.5px] border-pink-200/50">
+				<img
+					src={`/assets/projects/${slug}/cover.webp`}
+					alt={`Screenshot of ${title} project interface`}
+					class="block w-full h-full bg-pink-100 transition-transform duration-300"
+					loading="lazy"
+				/>
 			</div>
+		)
+	}
+	<div
+		class={`grid grid-rows-[auto_auto_auto] ${hasImage ? 'pt-4' : ''}`}
+	>
+		<a
+			data-astro-prefetch
+			rel="prefetch"
+			href={href}
+			class="text-base font-bold font-display text-pink-950 group-hover:text-pink-700 transition-property-color duration-100 ease-out focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded-lg"
+		>
+			{title}
+		</a>
+		<p class="font-body text-sm text-pink-950/70 pt-1 pb-3">
+			{description}
+		</p>
+		<div class="flex flex-wrap items-end gap-1 font-mono uppercase">
+			{
+				stack.map(([name, url]) => (
+					<a
+						href={url}
+						target="_blank"
+						rel="norel noreferrer"
+						class="text-xs text-pink-800 bg-pink-50/80 px-3 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-1 transition-colors"
+					>
+						{name}
+					</a>
+				))
+			}
 		</div>
 	</div>
 </div>

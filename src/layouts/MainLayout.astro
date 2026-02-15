@@ -1,16 +1,11 @@
 ---
 import SEO, { type Props as SEOProps } from "~/components/SEO.astro";
+import TopBar from "~/components/TopBar.svelte";
 
 // fonts
-import "@fontsource/jost/400.css";
-import "@fontsource/jost/500.css";
-import "@fontsource/jost/600.css";
-import "@fontsource/jost/700.css";
-import "@fontsource/lora/400.css";
-import "@fontsource/lora/500.css";
-import "@fontsource/lora/600.css";
-import "@fontsource/lora/700.css";
-import "@fontsource/ibm-plex-serif/400.css";
+import "@fontsource/chonburi";
+import "@fontsource/varela-round";
+import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "@fontsource/ibm-plex-mono/400-italic.css";
@@ -19,9 +14,10 @@ import "../index.css";
 
 export interface Props {
 	seo: SEOProps;
+	isPost?: boolean;
 }
 
-const { seo } = Astro.props;
+const { seo, isPost = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,7 +31,7 @@ const { seo } = Astro.props;
 			<script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="09fb4ce5-10bb-467c-9aee-2c95241715dc"></script>
 		)}
 	</head>
-	<body class="h-full bg-white p-4 md:p-10">
+	<body class="h-full p-4 md:p-10">
 		<!-- Skip Navigation Link -->
 		<a
 			href="#main-content"
@@ -44,14 +40,15 @@ const { seo } = Astro.props;
 			Skip to main content
 		</a>
 
-		<div class="fixed z-50 top-0 left-0 w-full h-2 bg-pink-300"></div>
-		<div class="fixed z-50 top-0 left-0 w-40 h-4 bg-sky-300"></div>
-		<div
-			class="fixed z-50 top-0 left-0 w-20 h-6 bg-yellow-300 group cursor-pointer flex items-center justify-center"
-		>
-			<a href="/bookmarks" class="invisible group-hover:visible text-xs text-yellow-700">bookmarks</a>
+		<!-- Floating Gradient Orbs -->
+		<div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+			<div class="absolute -top-20 -right-20 w-96 h-96 bg-[#FFD4BC] rounded-full blur-3xl opacity-40"></div>
+			<div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#FFE4E1] rounded-full blur-3xl opacity-30"></div>
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E6E6FA] rounded-full blur-3xl opacity-20"></div>
 		</div>
-		<div class="fixed bg-gradient-to-t from-pink-50/50 to-transparent inset-0 -z-1"></div>
+
+		<TopBar isPost={isPost} client:load />
+
 		<main id="main-content" role="main">
 			<slot />
 		</main>

@@ -91,7 +91,10 @@ function handleKeydown(event: KeyboardEvent) {
 		case " ":
 			event.preventDefault();
 			if (activeOptionIndex >= 0) {
-				selectTag(availableTags[activeOptionIndex]);
+				const tag = availableTags[activeOptionIndex];
+				if (tag) {
+					selectTag(tag);
+				}
 			}
 			break;
 		case "Escape":
@@ -119,7 +122,7 @@ function selectTag(tag: string) {
 <div class="relative">
 	<div class="relative">
 		<input
-			class="block font-serif mx-auto my-0 w-full p-3 bg-transparent border-dashed border border-pink-300 outline-none text-pink-950 placeholder:text-pink-950/70"
+			class="block font-body mx-auto my-0 w-full p-3 bg-white/50 rounded-xl border-[0.5px] border-pink-200/50 outline-none text-pink-950 placeholder:text-pink-950/70 focus:border-pink-200 focus:bg-pink-50/50 transition-all"
 			id="posts__input"
 			type="text"
 			placeholder="Find post... (start with # to find tags)"
@@ -143,7 +146,7 @@ function selectTag(tag: string) {
 	{#if isCompletionVisible && tagSearchQuery}
 		<div
 			transition:fly={{ duration: 100, y: -50 }}
-			class="absolute top-16 left-0 right-0 z-[5] text-pink-950 bg-white p-2 border-dashed border border-pink-300"
+			class="absolute top-16 left-0 right-0 z-5 text-pink-950 bg-white/50 backdrop-blur-xl p-2 rounded-xl border-[0.5px] border-pink-200/50 transition-all"
 			role="listbox"
 			id={listboxId}
 			aria-label="Available tags"
@@ -153,19 +156,20 @@ function selectTag(tag: string) {
 					<button
 						id={`${listboxId}-option-${i}`}
 						role="option"
-						class="block text-left text-sm w-full font-mono p-2 cursor-pointer transition-property-all ease-out duration-100 hover:bg-pink-100 {i === activeOptionIndex ? 'bg-pink-100' : ''}"
+						class="flex justify-between items-center text-left text-sm w-full font-mono p-2 cursor-pointer transition-property-all ease-out duration-100 rounded-lg hover:bg-pink-200/80 focus:border-pink-200 focus:bg-pink-200/80"
 						aria-selected={i === activeOptionIndex}
 						onclick={() => selectTag(tag)}
 						onkeydown={() => void 0}
 					>
-						{tag.toUpperCase()} • {tagCounts[tag]} result{(tagCounts[tag] ?? 0) > 1 ? "s" : ""}
+						<span>{tag.toUpperCase()}{#if i === activeOptionIndex} <span aria-hidden="true">←</span>{/if}</span>
+						<span class="text-pink-950/60">{tagCounts[tag]} result{(tagCounts[tag] ?? 0) > 1 ? "s" : ""}</span>
 					</button>
 				{/each}
 			{:else}
 				<div
 					role="option"
 					aria-disabled="true"
-					class="block text-left font-heading text-lg p-2 cursor-not-allowed transition-property-all ease-out duration-100"
+					class="block text-left font-heading text-lg p-2 cursor-not-allowed transition-property-all ease-out duration-100 rounded-lg"
 				>
 					No result
 				</div>
@@ -187,7 +191,7 @@ function selectTag(tag: string) {
 	<div class="flex items-center gap-4 mt-2" role="group" aria-label="Selected tags">
 		{#each selectedTags as tag}
 			<button
-				class="py-2 px-4 text-sm font-mono text-pink-950 border border-dashed border-pink-300 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded"
+				class="text-xs font-mono text-pink-950/70 bg-pink-50/80 px-2 py-0.5 rounded-full hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2"
 				aria-label={`Remove tag ${tag}`}
 				onclick={() => {
 					selectedTags.splice(selectedTags.indexOf(tag), 1);
@@ -203,7 +207,7 @@ function selectTag(tag: string) {
 	role="region"
 	aria-live="polite"
 	aria-label={`Search results: ${filteredPosts.length} post${filteredPosts.length !== 1 ? 's' : ''} found`}
-	class="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-5 mt-4"
+	class="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-3 mt-4"
 >
 	{#each filteredPosts as post}
 		<PostCard {...post} href="/posts/{post.slug}" />

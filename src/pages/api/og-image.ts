@@ -45,25 +45,17 @@ export const GET: APIRoute = async ({ url }) => {
 	const decodedDescription = decodeURIComponent(description);
 
 	// satori options with SatoriOptions type
-	const loraRegular = await (
-		await fetch(`${sites.siteUrl}/assets/fonts/Lora-Regular.ttf`)
-	).arrayBuffer();
-	const loraBold = await (
-		await fetch(`${sites.siteUrl}/assets/fonts/Lora-Bold.ttf`)
+	const varelaRegular = await (
+		await fetch(`${sites.siteUrl}/assets/fonts/VarelaRound-Regular.ttf`)
 	).arrayBuffer();
 	const options: SatoriOptions = {
 		width: CARD_WIDTH,
 		height: CARD_HEIGHT,
 		fonts: [
 			{
-				name: "Lora",
-				data: loraRegular,
+				name: "Varela Round",
+				data: varelaRegular,
 				weight: 400,
-			},
-			{
-				name: "Lora",
-				data: loraBold,
-				weight: 700,
 			},
 		],
 	};
@@ -71,7 +63,7 @@ export const GET: APIRoute = async ({ url }) => {
 	const markup = html(`
 	<div style="display: flex; flex-direction: column; width: 100%; height: 100%; background-image: linear-gradient(to bottom right, #fdf2f8, #faf5ff); padding: 20px;">
 		<div
-			style="display: flex; flex-direction: column; width: 100%; height: 100%; border: 4px dashed #f9a8d4; border-radius: 20px; font-family: 'Lora', serif;"
+			style="display: flex; flex-direction: column; width: 100%; height: 100%; border: 4px dashed #f9a8d4; border-radius: 20px; font-family: 'Varela Round', sans-serif;"
 		>
 			<div
 				style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 0 20px; font-size: 32px; color: #8f2042;"
@@ -111,7 +103,7 @@ export const GET: APIRoute = async ({ url }) => {
 	const resvg = new Resvg(svg, {
 		font: {
 			loadSystemFonts: false,
-			defaultFontFamily: "Lora",
+			defaultFontFamily: "Varela Round",
 		},
 		fitTo: {
 			mode: "width",

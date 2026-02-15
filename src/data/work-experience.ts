@@ -2,9 +2,22 @@ import type { WorkExperience } from "~/models/work-experience.ts";
 
 export const workExperiences: WorkExperience[] = [
 	{
+		company: "Aerotalon",
+		position: "Frontend Web Developer",
+		location: "australia",
+		time: "contract",
+		period: [new Date(2026, 0), null],
+		details: [
+			"Developed and maintained Aviation information system using React and TypeScript.",
+			"Optimized application performance and ensured cross-browser compatibility.",
+			"Improved role-based authorisation for better granularity",
+		],
+		technologies: ["typescript", "react", "react-router"],
+	},
+	{
 		company: "PT Global Scholarship Services Indonesia",
 		position: "Fullstack Web Developer",
-		type: "remote",
+		location: "indonesia",
 		time: "full-time",
 		period: [new Date(2024, 3), new Date(2025, 11)],
 		details: [
@@ -27,7 +40,7 @@ export const workExperiences: WorkExperience[] = [
 	{
 		company: "PT Healstation Indonesia",
 		position: "Fullstack Web Developer",
-		type: "remote",
+		location: "indonesia",
 		time: "freelance",
 		period: [new Date(2023, 0), new Date(2023, 3)],
 		details: [
@@ -41,7 +54,7 @@ export const workExperiences: WorkExperience[] = [
 	{
 		company: "Cubix Branding Agency",
 		position: "Fullstack Web Developer",
-		type: "remote",
+		location: "indonesia",
 		time: "contract",
 		period: [new Date(2022, 5), new Date(2023, 2)],
 		details: [
@@ -57,7 +70,7 @@ export const workExperiences: WorkExperience[] = [
 	{
 		company: "<Undisclosed>",
 		position: "Fullstack Web Developer",
-		type: "remote",
+		location: "indonesia",
 		time: "freelance",
 		period: [new Date(2021, 11), new Date(2022, 8)],
 		details: [
@@ -88,7 +101,7 @@ export const workExperiences: WorkExperience[] = [
 	{
 		company: "Enam Dua Teknologi",
 		position: "Frontend Web Developer",
-		type: "remote",
+		location: "indonesia",
 		time: "freelance",
 		period: [new Date(2022, 5), new Date(2022, 7)],
 		details: [

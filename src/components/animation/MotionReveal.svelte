@@ -1,5 +1,11 @@
 <script context="module" lang="ts">
-export type Variant = "reveal" | "fade" | "slide-up" | "blur-in" | "custom";
+export type Variant =
+	| "reveal"
+	| "fade"
+	| "slide-up"
+	| "blur-in"
+	| "custom"
+	| "float";
 </script>
 
 <script lang="ts">
@@ -11,20 +17,20 @@ export type Variant = "reveal" | "fade" | "slide-up" | "blur-in" | "custom";
 	export let as: keyof HTMLElementTagNameMap = "section";
 
 	export let variant: Variant = "reveal";
-	export let from: Record<string, CSSProperty> | undefined;
-	export let to: Record<string, CSSProperty> | undefined;
+	export let from: Record<string, CSSProperty> | undefined = undefined;
+	export let to: Record<string, CSSProperty> | undefined = undefined;
 
 	export let y = 16;
 	export let blur = 8;
 	export let duration = 0.7;
-	export let ease: any = [0.22, 1, 0.36, 1];
+	export let ease: any = [0.34, 1.8, 0.64, 1]; // squishSpring for bouncy feel
 	export let delay: number = 0;
 
 	export let amount: number | "some" | "all" = 0.5;
 
 	export let group = false;
 	export let groupSelector = ":scope > *";
-	export let stagger = 0.06;
+	export let stagger = 0.08; // Increased for more playful timing
 
 	export let className: string = "";
 
@@ -33,6 +39,13 @@ export type Variant = "reveal" | "fade" | "slide-up" | "blur-in" | "custom";
 
 	function computeFrom() {
 		if (variant === "custom" && from) return from;
+
+		if (variant === "float") {
+			return {
+				opacity: 0,
+				transform: "translateY(20px)",
+			};
+		}
 
 		return {
 			opacity: 0,
@@ -43,6 +56,14 @@ export type Variant = "reveal" | "fade" | "slide-up" | "blur-in" | "custom";
 
 	function computeTo() {
 		if (variant === "custom" && to) return to;
+
+		if (variant === "float") {
+			return {
+				opacity: 1,
+				y: 0,
+			};
+		}
+
 		return { opacity: 1, y: 0, filter: "blur(0px)" };
 	}
 

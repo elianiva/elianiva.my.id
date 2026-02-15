@@ -1,32 +1,37 @@
 <script lang="ts">
 import CalendarIcon from "~icons/ph/calendar-blank";
 
-type Props = {
+interface Props {
 	title: string;
 	description: string;
 	href: string;
 	date: Date;
 	tags: string[];
-};
+}
+
 const { title, description, href, date, tags }: Props = $props();
 </script>
 
 <div
-	class="blog-card overflow-hidden text-left border border-dashed border-pink-300 rounded-sm p-3 bg-white"
+	class="bg-white/50 rounded-xl text-left transition-all border-[0.5px] border-pink-200/50 hover:border-pink-200 group hover:bg-pink-50/50"
+	role="article"
+	aria-labelledby="post-title"
 >
 	<a
 		data-astro-prefetch
 		rel="prefetch"
 		{href}
-		class="grid grid-rows-[auto_2rem_auto_2rem] no-underline h-full focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded-sm"
+		class="grid grid-rows-[auto_2rem_auto_2rem] p-4 h-full focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded-lg"
+		aria-labelledby="post-title"
 	>
 		<h3
-			class="font-serif md:text-lg font-bold capitalize text-pink-950 hover:text-pink-800 transition-property-color duration-100 ease-out"
+			id="post-title"
+			class="font-display md:text-base font-bold capitalize text-pink-950 group-hover:text-pink-700 transition-property-color duration-100 ease-out"
 		>
 			{title}
 		</h3>
 		<div
-			class="text-xs md:text-sm font-mono flex gap-2 items-center text-pink-950/70 border-b border-dashed border-pink-300"
+			class="text-xs flex gap-1 items-center text-pink-950/70 border-b border-pink-200/50"
 		>
 			<CalendarIcon class="w-4 h-4 block" />
 			<span>
@@ -37,14 +42,14 @@ const { title, description, href, date, tags }: Props = $props();
 				})}
 			</span>
 		</div>
-		<p class="font-serif leading-normal text-pink-950/70 py-2 text-sm">
+		<p class="font-body leading-normal text-pink-950/70 pt-2 text-sm">
 			{@html description}
 		</p>
-		<div class="flex gap-2 self-end">
+		<div class="flex gap-1 self-end flex-wrap">
 			{#each tags as tag}
-				<div class="text-xs md:text-sm font-mono text-pink-950/70">
+				<span class="text-xs font-mono text-pink-950/70 bg-pink-50/80 px-2 py-0.5 rounded-full">
 					#{tag}
-				</div>
+				</span>
 			{/each}
 		</div>
 	</a>

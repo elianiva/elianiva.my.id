@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import MotionReveal from "~/components/animation/MotionReveal.svelte";
 import PRDropdown from "~/components/opensource/PRDropdown.svelte";
 import type { GroupedPRs } from "~/types/github-pr.ts";
 
@@ -33,35 +32,33 @@ const sortedRepositories = Object.entries(groupedPRs).sort(
 );
 ---
 
-<section class="pt-6 md:pt-10">
-	<MotionReveal amount={0.15} delay={0.05} client:idle>
-		<h2 id="open-source-contributions-heading" class="text-xl md:text-2xl font-bold font-serif text-pink-950">
-			Open Source Contributions
-		</h2>
-		<p class="text-xs md:text-base font-serif text-pink-950/70 pt-2 pb-4">
-			Here are some of my merged pull requests across various open source projects.
-		</p>
-	</MotionReveal>
+<section class="pt-8 md:pt-12">
+	<h2
+		id="open-source-contributions-heading"
+		class="work-experience-card text-2xl md:text-3xl font-bold font-display text-pink-950 tracking-wide pb-4 pt-2"
+	>
+		Open Source Contributions
+	</h2>
+	<p class="text-xs md:text-base font-body text-pink-950/70 pt-2 pb-4">
+		Here are some of my merged pull requests across various open source projects.
+	</p>
 
-	{sortedRepositories.length > 0 ? (
-		<MotionReveal amount={0.15} delay={0.1} client:idle>
-			<div>
-				{sortedRepositories.map(([, data]) => (
-					<PRDropdown
-						repository={data.repository}
-						prs={data.prs}
-						client:idle
-					/>
-				))}
+	<div class="relative flex flex-col gap-2">
+		{sortedRepositories.map(([, data]) => (
+			<div class="work-experience-card">
+				<PRDropdown
+					repository={data.repository}
+					prs={data.prs}
+					client:idle
+				/>
 			</div>
-		</MotionReveal>
-	) : (
-		<MotionReveal amount={0.15} delay={0.1} client:idle>
-			<div class="text-center py-8 border border-pink-200 rounded-lg">
-				<p class="text-sm font-serif text-pink-950/60">
-					No open source contributions found or unable to fetch data.
-				</p>
-			</div>
-		</MotionReveal>
+		))}
+	</div>
+	{sortedRepositories.length === 0 && (
+		<div class="text-center py-8 border border-pink-200 rounded-lg">
+			<p class="text-sm font-body text-pink-950/60">
+				No open source contributions found or unable to fetch data.
+			</p>
+		</div>
 	)}
 </section>

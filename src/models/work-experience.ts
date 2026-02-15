@@ -1,7 +1,7 @@
 export type WorkExperience = {
 	company: string;
 	position: string;
-	type: "remote" | "onsite";
+	location: string;
 	time: "full-time" | "contract" | "freelance";
 	period: [Date, Date | null];
 	details: string[];

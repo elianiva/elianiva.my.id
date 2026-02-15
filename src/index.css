@@ -2,11 +2,32 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-	--font-serif: "Lora", serif;
+	--font-sans: "Varela Round", sans-serif;
+	--font-display: "Chonburi", serif;
+	--font-heading: "Chonburi", serif;
+	--font-body: "Varela Round", sans-serif;
 	--font-mono: "IBM Plex Mono", monospace;
+
+	/* Custom colors */
+	--color-peach: #ffd4bc;
+	--color-lavender: #e6e6fa;
+	--color-cream: #fff9f5;
+	--color-blush: #fff0f5;
+
+	/* Custom shadows - reduced intensity */
+	--shadow-soft: 0 4px 16px rgba(255, 182, 193, 0.15);
+	--shadow-lift: 0 6px 20px rgba(255, 182, 193, 0.2);
+	--shadow-card:
+		0 2px 8px rgba(255, 182, 193, 0.12), 0 4px 12px rgba(255, 182, 193, 0.08);
 }
 
 @layer utilities {
+	/* Blob shape utility */
+	.blob-shape {
+		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+
+	/* Prose overrides */
 	.prose {
 		@apply text-pink-950/80;
 	}
@@ -39,32 +60,57 @@
 	}
 
 	.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-3xl;
+		@apply text-pink-800 my-2 leading-loose text-3xl font-heading;
 	}
 
 	.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-2xl;
+		@apply text-pink-800 my-2 leading-loose text-2xl font-heading;
 	}
 
 	.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-xl;
+		@apply text-pink-800 my-2 leading-loose text-xl font-heading;
 	}
 
 	.prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-lg;
+		@apply text-pink-800 my-2 leading-loose text-lg font-heading;
 	}
 
 	.prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-base;
+		@apply text-pink-800 my-2 leading-loose text-base font-heading;
 	}
 }
 
-/* Focus indicators */
 @layer base {
+	html,
+	body {
+		@apply overscroll-none;
+	}
+
+	body {
+		background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 50%, #fff0f5 100%);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		position: relative;
+	}
+
+	/* Vignette effect */
+	body::after {
+		content: "";
+		position: fixed;
+		inset: 0;
+		background: radial-gradient(
+			ellipse at center,
+			transparent 50%,
+			rgba(255, 245, 240, 0.5) 100%
+		);
+		pointer-events: none;
+		z-index: -1;
+	}
+
 	/* Ensure focus indicators are visible */
 	*:focus {
-		outline: 2px solid #ec4899;
-		outline-offset: 2px;
+		outline: 3px solid #db2777;
+		outline-offset: 3px;
 	}
 
 	/* Better focus for interactive elements */
@@ -74,15 +120,15 @@
 	textarea:focus,
 	select:focus,
 	[tabindex]:focus {
-		outline: 2px solid #ec4899;
-		outline-offset: 2px;
-		box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
+		outline: 3px solid #db2777;
+		outline-offset: 3px;
+		box-shadow: 0 0 0 4px rgba(219, 39, 119, 0.15);
 	}
 
 	/* High contrast focus for better visibility */
 	@media (prefers-contrast: high) {
 		*:focus {
-			outline: 3px solid #ec4899;
+			outline: 3px solid #db2777;
 			outline-offset: 3px;
 		}
 	}

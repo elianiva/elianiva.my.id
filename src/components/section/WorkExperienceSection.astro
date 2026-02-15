@@ -1,5 +1,5 @@
 ---
-import WorkExperienceCard from "~/components/card/WorkExperienceCard.astro";
+import WorkExperienceCard from "~/components/card/WorkExperienceCard.svelte";
 import type { WorkExperience } from "~/models/work-experience.ts";
 
 interface Props {
@@ -9,17 +9,17 @@ interface Props {
 const { workExperiences } = Astro.props;
 ---
 
-<section class="pt-6 md:pt-10">
+<section class="pt-8 md:pt-12">
 	<h2
 		id="experience-heading"
-		class="work-experience-card text-xl md:text-2xl font-bold font-serif text-pink-950 pb-4"
+		class="work-experience-card text-2xl md:text-3xl font-bold font-display text-pink-950 tracking-wide pb-4 pt-2"
 	>
 		Work Experience
 	</h2>
 	<div class="relative flex flex-col gap-4">
 		{
 			workExperiences.map((experience, index) => (
-				<WorkExperienceCard {...experience} defaultOpen={index === 0} />
+				<WorkExperienceCard {...experience} defaultOpen={index === 0} client:visible />
 			))
 		}
 	</div>
