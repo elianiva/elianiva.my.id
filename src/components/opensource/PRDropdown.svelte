@@ -4,7 +4,7 @@ import { untrack } from "svelte";
 import ArrowUpRight from "~icons/ph/arrow-up-right-duotone";
 import CaretDownIcon from "~icons/ph/caret-down";
 import GitPullRequestIcon from "~icons/ph/git-pull-request-duotone";
-import StarIcon from "~icons/ph/star-duotone";
+import StarIcon from "~icons/ph/star-fill";
 import type { GitHubPullRequest } from "../../types/github-pr.ts";
 
 interface Props {
@@ -13,12 +13,19 @@ interface Props {
 		full_name: string;
 		url: string;
 		stargazerCount: number;
+		owner: string;
 	};
 	prs: GitHubPullRequest[];
 	defaultOpen?: boolean;
 }
 
 const { repository, prs, defaultOpen = false }: Props = $props();
+
+function abbreviateNumber(num: number): string {
+	if (num >= 1_000_000) return `${(num / 1_000_000).toFixed(1)}M`;
+	if (num >= 1_000) return `${Math.round(num / 1_000)}k`;
+	return num.toString();
+}
 
 // svelte-ignore state_referenced_locally: intentional
 let isOpen = $state(defaultOpen);
@@ -89,7 +96,7 @@ $effect(() => {
 >
 	<button
 		type="button"
-		class="list-none w-full px-4 py-3 cursor-pointer focus:outline-none rounded-xl text-left"
+		class="list-none w-full px-4 py-3 cursor-pointer focus:outline-none rounded-lg text-left"
 		onclick={toggleOpen}
 		aria-expanded={isOpen}
 	>
@@ -120,26 +127,28 @@ $effect(() => {
 						</span>
 						<ArrowUpRight class="inline-block size-3" />
 					</a>
-					(<span class="inline-flex items-center gap-1">
-						<StarIcon
-							class="inline size-3"
-						/>{repository.stargazerCount}
-					</span>)
 				</h3>
 			</div>
 
 			<div class="flex-col items-end">
-				<div
-					class="flex items-center justify-end gap-1 font-mono text-xs text-pink-950/70"
-				>
-					<GitPullRequestIcon class="w-4 h-4 text-teal-500" />
-					<p>
+				<div class="flex items-center justify-end gap-2">
+					<div
+						class="flex items-center justify-end gap-1 font-mono text-xs text-pink-950/70"
+					>
+						<GitPullRequestIcon class="size-4 text-teal-500" />
 						<span class="font-bold">{prs.length}</span>
-						PR{prs.length !== 1 ? "s" : ""}
-					</p>
+					</div>
+					<div
+						class="flex items-center justify-end gap-1 font-mono text-xs text-pink-950/70"
+					>
+						<StarIcon class="size-3 text-yellow-400" />
+						<span class="font-bold">
+							{abbreviateNumber(repository.stargazerCount)}
+						</span>
+					</div>
 				</div>
-				<p class="font-mono text-xs text-pink-950/50">
-					{totalChanges.toLocaleString()} changes
+				<p class="font-mono text-xs text-pink-950/50 mt-1 text-right">
+					±{totalChanges.toLocaleString()} changes
 				</p>
 			</div>
 		</div>
