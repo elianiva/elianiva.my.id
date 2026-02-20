@@ -5,6 +5,7 @@ import mdx from "@astrojs/mdx";
 import Icons from "unplugin-icons/vite";
 import tailwindcss from "@tailwindcss/vite";
 import cloudflare from "@astrojs/cloudflare";
+import remarkGfm from "remark-gfm";
 
 export default defineConfig({
 	output: "server",
@@ -15,7 +16,12 @@ export default defineConfig({
 	image: {
 		service: passthroughImageService(),
 	},
-	integrations: [svelte(), mdx()],
+	integrations: [
+		svelte(),
+		mdx({
+			remarkPlugins: [remarkGfm],
+		}),
+	],
 	site: "https://elianiva.my.id",
 	markdown: {
 		shikiConfig: {
