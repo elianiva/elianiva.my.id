@@ -29,7 +29,7 @@ onMount(() => {
 </script>
 
 <div
-	class="fixed z-50 top-0 left-0 w-full h-10"
+	class="fixed z-50 top-0 left-0 right-0 h-10"
 	style="clip-path: inset(0 calc(100% - {progress}%) 0 0)"
 >
 	<div class="fixed top-0 left-0 w-full h-2 bg-pink-300"></div>
@@ -48,7 +48,7 @@ onMount(() => {
 
 <!-- Fake top bar for posts to show the 'shadow' of the actual top bar while it reveals -->
 {#if isPost}
-	<div class="fixed z-40 top-0 left-0 w-full h-10">
+	<div class="fixed z-40 top-0 left-0 right-0 h-10">
 		<div class="fixed top-0 left-0 w-full h-2 bg-pink-200"></div>
 		<div class="fixed top-0 left-0 w-40 h-4 bg-pink-200"></div>
 		<div
