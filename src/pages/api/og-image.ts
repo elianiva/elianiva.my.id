@@ -45,16 +45,16 @@ export const GET: APIRoute = async ({ url }) => {
 	const decodedDescription = decodeURIComponent(description);
 
 	// satori options with SatoriOptions type
-	const varelaRegular = await (
-		await fetch(`${sites.siteUrl}/assets/fonts/VarelaRound-Regular.ttf`)
+	const loraRegular = await (
+		await fetch(`${sites.siteUrl}/assets/fonts/Lora-Regular.ttf`)
 	).arrayBuffer();
 	const options: SatoriOptions = {
 		width: CARD_WIDTH,
 		height: CARD_HEIGHT,
 		fonts: [
 			{
-				name: "Varela Round",
-				data: varelaRegular,
+				name: "Lora Regular",
+				data: loraRegular,
 				weight: 400,
 			},
 		],
@@ -103,7 +103,7 @@ export const GET: APIRoute = async ({ url }) => {
 	const resvg = new Resvg(svg, {
 		font: {
 			loadSystemFonts: false,
-			defaultFontFamily: "Varela Round",
+			defaultFontFamily: "Lora Regular",
 		},
 		fitTo: {
 			mode: "width",
