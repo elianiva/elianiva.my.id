@@ -91,7 +91,6 @@ export const GET: APIRoute = async ({ url }) => {
 			background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 240, 245, 0.5) 50%, rgba(255, 245, 240, 0.6) 100%);
 			backdrop-filter: blur(20px);
 			position: relative;
-			z-index: 1;
 			border: 2px solid rgba(249, 168, 212, 0.6);
 		">
 			<!-- Header with domain and date -->
