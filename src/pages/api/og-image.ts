@@ -10,6 +10,23 @@ const domainName = new URL(sites.siteUrl).hostname;
 const CARD_WIDTH = 1200;
 const CARD_HEIGHT = 630;
 
+// Soft peachy-pink color palette matching the site
+const COLORS = {
+	bgGradientStart: "#fff5f0",
+	bgGradientMid: "#fff9f5",
+	bgGradientEnd: "#fff0f5",
+	peach: "#ffd4bc",
+	lavender: "#e6e6fa",
+	blush: "#fff0f5",
+	pinkLight: "#fce7f3",
+	pinkMedium: "#f9a8d4",
+	pinkDark: "#db2777",
+	roseDeep: "#be185d",
+	textPrimary: "#831843",
+	textSecondary: "#9d174d",
+	textMuted: "#be185d",
+};
+
 export const GET: APIRoute = async ({ url }) => {
 	const title = url.searchParams.get("title");
 	const date = url.searchParams.get("date");
@@ -29,69 +46,128 @@ export const GET: APIRoute = async ({ url }) => {
 		weekday: "long",
 	});
 
-	// add comma after weekday
-	const weekday = formattedDate.split(" ").at(0);
-	const formattedDateWithoutWeekday = formattedDate
-		.split(" ")
-		.slice(1)
-		.join(" ");
-	const formattedDateWithComma = `${weekday}, ${formattedDateWithoutWeekday}`;
-
 	const decodedTitle = decodeURIComponent(title);
-	const decodedDate = decodeURIComponent(formattedDateWithComma);
+	const decodedDate = decodeURIComponent(formattedDate);
 	const decodedTags = decodeURIComponent(tags)
 		.split(",")
 		.map((tag) => tag.trim());
 	const decodedDescription = decodeURIComponent(description);
 
-	// satori options with SatoriOptions type
-	const loraRegular = await (
-		await fetch(`${sites.siteUrl}/assets/fonts/Lora-Regular.ttf`)
+	// Load Chonburi font for that soft, fun aesthetic
+	const chonburiFont = await (
+		await fetch(`${sites.siteUrl}/assets/fonts/Chonburi.ttf`)
 	).arrayBuffer();
+
 	const options: SatoriOptions = {
 		width: CARD_WIDTH,
 		height: CARD_HEIGHT,
 		fonts: [
 			{
-				name: "Lora Regular",
-				data: loraRegular,
+				name: "Chonburi",
+				data: chonburiFont,
 				weight: 400,
 			},
 		],
 	};
 
 	const markup = html(`
-	<div style="display: flex; flex-direction: column; width: 100%; height: 100%; background-image: linear-gradient(to bottom right, #fdf2f8, #faf5ff); padding: 20px;">
-		<div
-			style="display: flex; flex-direction: column; width: 100%; height: 100%; border: 4px dashed #f9a8d4; border-radius: 20px; font-family: 'Varela Round', sans-serif;"
-		>
-			<div
-				style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 0 20px; font-size: 32px; color: #8f2042;"
-			>
-				<span>${domainName}</span>
-				<span>${decodedDate}</span>
+	<div style="
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, ${COLORS.bgGradientStart} 0%, ${COLORS.bgGradientMid} 50%, ${COLORS.bgGradientEnd} 100%);
+		padding: 24px;
+		position: relative;
+		overflow: hidden;
+	">
+		<div style="
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			border-radius: 32px;
+			font-family: 'Chonburi', serif;
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 240, 245, 0.5) 50%, rgba(255, 245, 240, 0.6) 100%);
+			backdrop-filter: blur(20px);
+			position: relative;
+			z-index: 1;
+			border: 2px solid rgba(249, 168, 212, 0.6);
+		">
+			<!-- Header with domain and date -->
+			<div style="
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 28px 32px 0 32px;
+				font-size: 22px;
+				color: ${COLORS.textSecondary};
+				letter-spacing: 0.5px;
+			">
+				<span style="font-weight: 600;">${domainName}</span>
+				<span style="opacity: 0.8;">${decodedDate}</span>
 			</div>
-			<div
-				style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; flex-grow: 1; padding: 0 40px;"
-			>
-				<span
-					style="font-size: 48px; font-weight: 900; color: #881337; margin-bottom: 20px;"
-				>
+
+			<!-- Content area -->
+			<div style="
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				flex-grow: 1;
+				padding: 20px 48px;
+				gap: 16px;
+			">
+				<!-- Title with soft styling -->
+				<h1 style="
+					font-size: 52px;
+					font-weight: 400;
+					color: ${COLORS.textPrimary};
+					line-height: 1.2;
+					margin: 0;
+					letter-spacing: -0.5px;
+					text-shadow: 2px 2px 0px rgba(255, 212, 188, 0.5);
+				">
 					${decodedTitle}
-				</span>
-				<span
-					style="font-size: 36px; color: #881337; opacity: 0.6; font-style: italic; max-width: 90%;"
-				>
+				</h1>
+
+				<!-- Description -->
+				<p style="
+					font-size: 28px;
+					color: ${COLORS.textMuted};
+					line-height: 1.4;
+					margin: 0;
+					max-width: 85%;
+					opacity: 0.85;
+				">
 					${decodedDescription}
-				</span>
+				</p>
 			</div>
-			<div
-				style="display: flex; justify-content: center; align-items: center; gap: 16px; padding: 0 20px 20px 20px;"
-			>
+
+			<!-- Tags footer -->
+			<div style="
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 12px;
+				padding: 0 32px 28px 32px;
+				flex-wrap: wrap;
+			">
 				${decodedTags
 					.map(
 						(tag) =>
-							`<div style="display: flex; align-items: center; background-color: #f9a8d455; border-radius: 16px; padding: 10px 20px; font-size: 30px; color: #881337;">#${tag.trim()}</div>`,
+							`<span style="
+								display: flex;
+								align-items: center;
+								background: linear-gradient(135deg, rgba(255, 212, 188, 0.6) 0%, rgba(252, 231, 243, 0.7) 100%);
+								border-radius: 20px;
+								padding: 10px 20px;
+								font-size: 22px;
+								color: ${COLORS.roseDeep};
+								box-shadow: 0 2px 8px rgba(255, 182, 193, 0.2);
+								border: 1px solid rgba(249, 168, 212, 0.6);
+							">#${tag.trim()}</span>`,
 					)
 					.join("")}
 			</div>
@@ -103,7 +179,7 @@ export const GET: APIRoute = async ({ url }) => {
 	const resvg = new Resvg(svg, {
 		font: {
 			loadSystemFonts: false,
-			defaultFontFamily: "Lora Regular",
+			defaultFontFamily: "Chonburi",
 		},
 		fitTo: {
 			mode: "width",
