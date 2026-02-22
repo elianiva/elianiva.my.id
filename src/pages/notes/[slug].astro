@@ -35,7 +35,7 @@ const modifiedDate = new Date(modified_at).toLocaleDateString("en-US", {
 ---
 
 <MainLayout seo={{ title: title }}>
-	<article class="mx-auto max-w-3xl px-4 py-10">
+	<article class="mx-auto max-w-3xl px-4 py-10" transition:name={`note-card-${slug}`}>
 		{/* Breadcrumb */}
 		<nav class="text-sm text-pink-950/50 mb-6">
 			<a href="/notes" class="hover:text-pink-700 transition-colors">Notes</a>

@@ -15,7 +15,7 @@ const { title, description, href, slug, stack, hasImage = true } = Astro.props;
 
 <div
 	class="bg-white/50 rounded-xl text-left p-4 border-[0.5px] border-pink-200/50 transition-all hover:border-pink-200 group hover:bg-pink-50/50"
-	style={`view-transition-name: project-card-${slug}`}
+	transition:name={`project-card-${slug}`}
 >
 	{
 		hasImage && (

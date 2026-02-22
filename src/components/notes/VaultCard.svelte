@@ -22,7 +22,7 @@ const displayTags = tags
 	.slice(0, 4);
 </script>
 
-<article class="group">
+<article class="group" style="view-transition-name: note-card-{id}">
 	<a
 		href={`/notes/${id}`}
 		class="relative block p-4 rounded-xl border border-dashed border-sky-200 bg-white/40 hover:bg-white/60 transition-colors duration-200 overflow-hidden"

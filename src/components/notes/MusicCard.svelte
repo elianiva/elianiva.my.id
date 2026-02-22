@@ -17,7 +17,7 @@
 		year.length > 1 ? `${year[0]}-${year[year.length - 1]}` : year[0];
 </script>
 
-<article class="group">
+<article class="group" style="view-transition-name: note-card-{id}">
 	<a
 		href={`/notes/${id}`}
 		class="flex items-center gap-3 p-3 rounded-xl border border-dashed border-purple-200 bg-white/40 hover:bg-white/60 transition-colors duration-200"

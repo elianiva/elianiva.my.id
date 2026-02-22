@@ -57,7 +57,7 @@ const ogImageParams = new URLSearchParams({
 	}}
 	isPost={true}
 >
-	<main class="mx-auto max-w-[64ch] px-4 lg:px-0 py-10" style={`view-transition-name: post-card-${slug}`}>
+	<main class="mx-auto max-w-[64ch] px-4 lg:px-0 py-10" transition:name={`post-card-${slug}`}>
 		<BackButton />
 		<h1
 			class="text-center font-heading text-3xl uppercase mt-12 mb-2 font-semibold text-pink-950"
@@ -93,7 +93,7 @@ const ogImageParams = new URLSearchParams({
 		<div class="justify-center flex gap-2 pb-4 mb-8 border-b border-dashed border-pink-300">
 			{frontmatter.tags.map((tag) => <span class="font-mono text-pink-700/80 text-sm font-medium">#{tag}</span>)}
 		</div>
-		<div style={`view-transition-name: post-content-${slug}`}>
+		<div transition:name={`post-content-${slug}`}>
 			<main class="font-body mx-auto max-w-[64ch] prose">
 				<slot />
 				<div>

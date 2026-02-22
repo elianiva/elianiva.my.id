@@ -25,7 +25,7 @@
 		.slice(0, 3);
 </script>
 
-<article class="group">
+<article class="group" style="view-transition-name: note-card-{id}">
 	<a
 		href={`/notes/${id}`}
 		class="flex gap-2 rounded-xl border-[0.5px] border-pink-200 bg-white/40 hover:bg-white/60 transition-colors duration-200 overflow-hidden"

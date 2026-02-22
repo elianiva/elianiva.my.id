@@ -20,13 +20,13 @@ const { frontmatter, slug } = Astro.props as Props;
 		thumbnail: `${siteData.siteUrl}/${slug}/cover.webp`,
 	}}
 >
-	<main class="mx-auto max-w-[920px] px-2 md:px-4 py-10" style={`view-transition-name: project-card-${slug}`}>
+	<main class="mx-auto max-w-[920px] px-2 md:px-4 py-10" transition:name={`project-card-${slug}`}>
 		<div>
 			<BackButton />
 		</div>
 
 		<div class="pt-6">
-			<section class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4" style={`view-transition-name: project-content-${slug}`}>
+			<section class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4" transition:name={`project-content-${slug}`}>
 				<div class="space-y-6">
 					{frontmatter.hasImage && (
 						<div class="rounded-2xl overflow-hidden border-[0.5px] border-pink-200/50">

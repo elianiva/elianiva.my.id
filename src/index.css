@@ -155,7 +155,8 @@
 
 	/* Card expansion - first phase (400ms) */
 	::view-transition-group([style*="post-card-"]),
-	::view-transition-group([style*="project-card-"]) {
+	::view-transition-group([style*="project-card-"]),
+	::view-transition-group([style*="note-card-"]) {
 		animation-duration: 400ms;
 		animation-timing-function: ease-in;
 	}
@@ -163,7 +164,9 @@
 	::view-transition-old([style*="post-card-"]),
 	::view-transition-new([style*="post-card-"]),
 	::view-transition-old([style*="project-card-"]),
-	::view-transition-new([style*="project-card-"]) {
+	::view-transition-new([style*="project-card-"]),
+	::view-transition-old([style*="note-card-"]),
+	::view-transition-new([style*="note-card-"]) {
 		animation-timing-function: ease-in;
 	}
 
