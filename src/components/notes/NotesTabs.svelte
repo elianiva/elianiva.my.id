@@ -97,26 +97,25 @@ onMount(() => {
 </script>
 
 <div class="space-y-6">
-	<!-- Tab buttons -->
-	<div class="flex flex-wrap gap-2 border-b border-dashed border-pink-200 pb-4">
+	<!-- Tab bar -->
+	<div class="relative flex flex-wrap gap-6 border-b border-dashed border-pink-200 pb-4">
+		<!-- floating indicator -->
+		<span class="tab-indicator"></span>
 		{#each categories as cat}
 			{@const count = categoryCounts[cat]}
 			{@const isActive = activeTab === cat}
-			{@const hasNotes = count > 0}
 			<button
 				onclick={() => setTab(cat)}
-				class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors
-					{isActive
-					? 'bg-pink-500 text-white shadow-sm'
-					: 'bg-white/40 text-pink-950/70 hover:bg-white/60'}
-					{!hasNotes ? 'opacity-50 cursor-not-allowed' : ''}"
-				disabled={!hasNotes}
+				class="tab-btn relative flex items-center gap-2 text-sm font-medium transition-colors pb-1 cursor-pointer
+					outline-none focus-visible:ring-2 focus-visible:ring-pink-400/40 rounded px-2 py-1
+					{isActive ? 'text-pink-600' : 'text-pink-950/50 hover:text-pink-950/80'}"
 				aria-pressed={isActive}
+				style={isActive ? 'anchor-name: --active-tab' : ''}
 			>
 				{categoryLabels[cat]}
 				<span
-					class="text-xs px-2 py-0.5 rounded-full
-						{isActive ? 'bg-white/20 text-white' : 'bg-pink-100/50 text-pink-900'}"
+					class="text-xs px-1.5 py-0.5 rounded
+						{isActive ? 'bg-pink-100 text-pink-600' : 'bg-pink-50 text-pink-400'}"
 				>
 					{count}
 				</span>
@@ -185,3 +184,18 @@ onMount(() => {
 		</div>
 	{/if}
 </div>
+
+<style>
+	.tab-indicator {
+		position: absolute;
+		position-anchor: --active-tab;
+		bottom: -1px;
+		left: anchor(left);
+		width: anchor-size(width);
+		height: 2px;
+		background-color: var(--color-pink-500);
+		transition:
+			left 0.2s ease,
+			width 0.2s ease;
+	}
+</style>
