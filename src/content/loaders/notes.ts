@@ -115,7 +115,7 @@ function getCategoryFromPath(filePath: string): Note["category"] {
 
 type SyncContext = Pick<
 	Parameters<Loader["load"]>[0],
-	"store" | "logger" | "parseData" | "generateDigest"
+	"store" | "logger" | "parseData" | "generateDigest" | "renderMarkdown"
 >;
 
 async function syncNotes({
@@ -123,6 +123,7 @@ async function syncNotes({
 	logger,
 	parseData,
 	generateDigest,
+	renderMarkdown,
 }: SyncContext) {
 	const patterns = [
 		"Articles/**/*.md",
@@ -249,6 +250,7 @@ async function syncNotes({
 			id: slug,
 			data,
 			digest,
+			rendered: await renderMarkdown(note.body),
 		});
 	}
 
@@ -258,16 +260,16 @@ async function syncNotes({
 export function notesLoader(): Loader {
 	return {
 		name: "notes",
-		load: async ({ store, logger, parseData, generateDigest, watcher }) => {
+		load: async ({ store, logger, parseData, generateDigest, renderMarkdown, watcher }) => {
 			logger.info(`Loading notes from: ${NOTES_DIR}`);
 
-			await syncNotes({ store, logger, parseData, generateDigest });
+			await syncNotes({ store, logger, parseData, generateDigest, renderMarkdown });
 
 			watcher?.add(NOTES_DIR);
 			watcher?.on("change", async (changedPath) => {
 				if (changedPath.startsWith(NOTES_DIR) && changedPath.endsWith(".md")) {
 					logger.info(`Reloading notes, changed: ${changedPath}`);
-					await syncNotes({ store, logger, parseData, generateDigest });
+					await syncNotes({ store, logger, parseData, generateDigest, renderMarkdown });
 				}
 			});
 		},

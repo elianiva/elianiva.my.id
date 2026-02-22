@@ -41,7 +41,17 @@ export default defineConfig({
 		shikiConfig: {
 			theme: "rose-pine-dawn",
 		},
-		remarkPlugins: [remarkGfm, [remarkWikiLink, { wikiLinkClassName: "wiki-link" }]],
+		remarkPlugins: [
+			remarkGfm,
+			[
+				remarkWikiLink,
+				{
+					wikiLinkClassName: "wiki-link",
+					pageResolver: (name) => [name.toLowerCase().replace(/\s+/g, "-")],
+					hrefTemplate: (slug) => `/notes/${slug}`,
+				},
+			],
+		],
 	},
 	vite: {
 		plugins: [Icons({ compiler: "svelte" }), tailwindcss()],
