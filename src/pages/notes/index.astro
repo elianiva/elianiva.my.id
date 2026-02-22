@@ -15,7 +15,29 @@ const notesData = notes.map((n) => ({
 	tags: n.data.tags,
 	created_at: n.data.created_at.toISOString(),
 	modified_at: n.data.modified_at.toISOString(),
+	// article
+	url: n.data.url ?? "",
+	author: n.data.author ?? "",
+	// music
+	artist: n.data.artist ?? "",
+	album: n.data.album ?? "",
+	year: n.data.year ?? [],
+	// people
+	links: n.data.links ?? [],
+	backlinks: [], // will be enriched below
+	backlink_count: 0,
 }));
+
+// Enrich backlink counts
+const backlinkCounts = new Map<string, number>();
+for (const n of notes) {
+	for (const target of n.data.outgoing_links) {
+		backlinkCounts.set(target, (backlinkCounts.get(target) ?? 0) + 1);
+	}
+}
+for (const d of notesData) {
+	d.backlink_count = backlinkCounts.get(d.id) ?? 0;
+}
 
 const graphNodes = notes.map((n) => ({
 	id: n.id,
