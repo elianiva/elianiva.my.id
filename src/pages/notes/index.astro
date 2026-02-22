@@ -76,17 +76,6 @@ const hasGraphData = notes.some(
 					client:load
 					notes={notesData}
 				/>
-				{hasGraphData && (
-					<button
-						id="graph-toggle"
-						class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-pink-950/70 hover:text-pink-950 bg-white/40 hover:bg-white/60 rounded-lg border border-dashed border-pink-200 transition-colors"
-					>
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-						</svg>
-						View Graph
-					</button>
-				)}
 			</div>
 		)}
 
