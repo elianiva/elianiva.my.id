@@ -263,8 +263,8 @@ export function notesLoader(): Loader {
 
 			await syncNotes({ store, logger, parseData, generateDigest });
 
+			watcher?.add(NOTES_DIR);
 			watcher?.on("change", async (changedPath) => {
-				logger.info(`Watcher detected change: ${changedPath}`);
 				if (changedPath.startsWith(NOTES_DIR) && changedPath.endsWith(".md")) {
 					logger.info(`Reloading notes, changed: ${changedPath}`);
 					await syncNotes({ store, logger, parseData, generateDigest });
