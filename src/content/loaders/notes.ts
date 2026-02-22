@@ -23,9 +23,7 @@ const frontmatterSchema = z.object({
 	links: z.array(z.string()).optional(),
 	artist: z.string().optional(),
 	album: z.string().optional(),
-	year: z.number().optional(),
-	rating: z.number().optional(),
-	listened: z.string().optional(),
+	year: z.array(z.coerce.string()).default([]),
 });
 
 type NoteFrontmatter = z.infer<typeof frontmatterSchema>;
@@ -42,6 +40,7 @@ const noteSchema = frontmatterSchema.extend({
 	description: z.string().optional(),
 	backlinks: z.array(z.string()).default([]),
 	outgoing_links: z.array(z.string()).default([]),
+	year: z.array(z.coerce.string()).default([]),
 });
 
 type Note = z.infer<typeof noteSchema>;
@@ -186,9 +185,11 @@ async function syncNotes({
 				links: frontmatter.links ?? [],
 				artist: frontmatter.artist ?? "",
 				album: frontmatter.album ?? "",
-				year: frontmatter.year ?? 0,
-				rating: frontmatter.rating ?? 0,
-				listened: frontmatter.listened ?? "",
+				year: frontmatter.year
+					? Array.isArray(frontmatter.year)
+						? frontmatter.year
+						: [frontmatter.year]
+					: [],
 			} satisfies Note;
 
 			return { slug: note.id, title: note.title, note };
@@ -260,16 +261,35 @@ async function syncNotes({
 export function notesLoader(): Loader {
 	return {
 		name: "notes",
-		load: async ({ store, logger, parseData, generateDigest, renderMarkdown, watcher }) => {
+		load: async ({
+			store,
+			logger,
+			parseData,
+			generateDigest,
+			renderMarkdown,
+			watcher,
+		}) => {
 			logger.info(`Loading notes from: ${NOTES_DIR}`);
 
-			await syncNotes({ store, logger, parseData, generateDigest, renderMarkdown });
+			await syncNotes({
+				store,
+				logger,
+				parseData,
+				generateDigest,
+				renderMarkdown,
+			});
 
 			watcher?.add(NOTES_DIR);
 			watcher?.on("change", async (changedPath) => {
 				if (changedPath.startsWith(NOTES_DIR) && changedPath.endsWith(".md")) {
 					logger.info(`Reloading notes, changed: ${changedPath}`);
-					await syncNotes({ store, logger, parseData, generateDigest, renderMarkdown });
+					await syncNotes({
+						store,
+						logger,
+						parseData,
+						generateDigest,
+						renderMarkdown,
+					});
 				}
 			});
 		},
