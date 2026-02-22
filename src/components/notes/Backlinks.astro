@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+interface Props {
+	note: CollectionEntry<"notes">;
+}
+
+const { note } = Astro.props;
+
+// Get all notes to resolve backlink titles
+const allNotes = await getCollection("notes");
+const noteMap = new Map(allNotes.map((n) => [n.id, n]));
+
+const backlinkNotes = note.data.backlinks
+	.map((id) => noteMap.get(id))
+	.filter((n): n is CollectionEntry<"notes"> => n !== undefined);
+---
+
+{backlinkNotes.length > 0 && (
+	<aside class="mt-12 pt-8 border-t border-dashed border-pink-200">
+		<h2 class="font-display text-lg font-semibold text-pink-950 mb-4">
+			Linked from
+		</h2>
+		<ul class="space-y-3">
+			{backlinkNotes.map((backlink) => (
+				<li>
+					<a
+						href={`/notes/${backlink.id}`}
+						class="group block p-3 rounded-lg border border-dashed border-pink-200 bg-white/40 hover:bg-white/60 transition-colors"
+					>
+						<span class="font-medium text-pink-950 group-hover:text-pink-700 transition-colors">
+							{backlink.data.title}
+						</span>
+						{backlink.data.description && (
+							<p class="text-sm text-pink-950/50 mt-1 line-clamp-2">
+								{backlink.data.description}
+							</p>
+						)}
+					</a>
+				</li>
+			))}
+		</ul>
+	</aside>
+)}

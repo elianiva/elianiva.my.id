@@ -80,6 +80,15 @@
 	}
 }
 
+/* Wiki-link styling */
+.wiki-link {
+	@apply text-pink-600 border-b border-dashed border-pink-400 no-underline;
+}
+
+.wiki-link:hover {
+	@apply text-pink-800 border-pink-600;
+}
+
 @layer base {
 	html,
 	body {

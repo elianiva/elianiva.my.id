@@ -6,8 +6,12 @@ import Icons from "unplugin-icons/vite";
 import tailwindcss from "@tailwindcss/vite";
 import cloudflare from "@astrojs/cloudflare";
 import remarkGfm from "remark-gfm";
+import remarkWikiLink from "@flowershow/remark-wiki-link";
 
 export default defineConfig({
+	experimental: {
+		liveContentCollections: true,
+	},
 	output: "server",
 	prefetch: true,
 	adapter: cloudflare({
@@ -19,7 +23,17 @@ export default defineConfig({
 	integrations: [
 		svelte(),
 		mdx({
-			remarkPlugins: [remarkGfm],
+			remarkPlugins: [
+				remarkGfm,
+				[
+					remarkWikiLink,
+					{
+						wikiLinkClassName: "wiki-link",
+						pageResolver: (name) => [name.toLowerCase().replace(/\s+/g, "-")],
+						hrefTemplate: (slug) => `/notes/${slug}`,
+					},
+				],
+			],
 		}),
 	],
 	site: "https://elianiva.my.id",
@@ -27,6 +41,7 @@ export default defineConfig({
 		shikiConfig: {
 			theme: "rose-pine-dawn",
 		},
+		remarkPlugins: [remarkGfm, [remarkWikiLink, { wikiLinkClassName: "wiki-link" }]],
 	},
 	vite: {
 		plugins: [Icons({ compiler: "svelte" }), tailwindcss()],

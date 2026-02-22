@@ -1,0 +1,144 @@
+---
+import { getCollection } from "astro:content";
+import GraphView from "~/components/notes/GraphView.svelte";
+import NotesTabs from "~/components/notes/NotesTabs.svelte";
+import Search from "~/components/notes/Search.svelte";
+import MainLayout from "~/layouts/MainLayout.astro";
+
+const notes = await getCollection("notes");
+
+const notesData = notes.map((n) => ({
+	id: n.id,
+	title: n.data.title,
+	description: n.data.description ?? "",
+	category: n.data.category,
+	tags: n.data.tags,
+	created_at: n.data.created_at.toISOString(),
+	modified_at: n.data.modified_at.toISOString(),
+}));
+
+const graphNodes = notes.map((n) => ({
+	id: n.id,
+	title: n.data.title,
+	category: n.data.category,
+	val: Math.max(4, n.data.backlinks.length + 2),
+}));
+
+const graphLinks = notes.flatMap((n) =>
+	n.data.outgoing_links
+		.filter((targetId) => notes.some((note) => note.id === targetId))
+		.map((targetId) => ({ source: n.id, target: targetId })),
+);
+
+const hasGraphData = notes.some(
+	(n) => n.data.outgoing_links.length > 0 || n.data.backlinks.length > 0,
+);
+---
+
+<MainLayout seo={{ title: "Notes / Digital Garden" }}>
+	<section class="mx-auto max-w-4xl px-4 py-10">
+		<div class="mb-8">
+			<h1 class="font-display text-3xl md:text-4xl font-bold text-pink-950 tracking-wide">
+				Personal Notes Vault
+			</h1>
+			<p class="text-pink-950/70 mt-2 font-body">
+				A collection of notes, articles, and thoughts. These are pulled from my personal obsidian vault.
+				<br />
+				There are <span class="text-pink-500">{notes.length}</span> public notes.
+			</p>
+		</div>
+
+		{notes.length > 0 && (
+			<div class="mb-6 space-y-4">
+				<Search
+					client:load
+					notes={notesData}
+				/>
+				{hasGraphData && (
+					<button
+						id="graph-toggle"
+						class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-pink-950/70 hover:text-pink-950 bg-white/40 hover:bg-white/60 rounded-lg border border-dashed border-pink-200 transition-colors"
+					>
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+						</svg>
+						View Graph
+					</button>
+				)}
+			</div>
+		)}
+
+		{notes.length === 0 ? (
+			<div class="text-center py-20 text-pink-950/50">
+				<p>No public notes yet.</p>
+				<p class="text-sm mt-2">Add the <code>public</code> tag to notes to publish them.</p>
+			</div>
+		) : (
+			<NotesTabs
+				client:load
+				notes={notesData}
+			/>
+		)}
+	</section>
+
+	{hasGraphData && (
+		<div
+			id="graph-modal"
+			class="fixed inset-0 z-50 bg-pink-950/30 backdrop-blur-sm hidden items-center justify-center p-4"
+		>
+			<div class="w-full max-w-5xl h-[80vh] bg-white/95 rounded-2xl border border-dashed border-pink-200 shadow-2xl flex flex-col overflow-hidden">
+				<div class="flex items-center justify-between px-6 py-4 border-b border-dashed border-pink-200">
+					<h2 class="font-display text-xl font-bold text-pink-950">Notes Graph</h2>
+					<button
+						id="graph-close"
+						class="p-2 rounded-lg text-pink-950/60 hover:text-pink-950 hover:bg-pink-100/50 transition-colors"
+					>
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+						</svg>
+					</button>
+				</div>
+				<div class="flex-1 relative">
+					<GraphView
+						client:visible
+						nodes={graphNodes}
+						links={graphLinks}
+					/>
+				</div>
+			</div>
+		</div>
+	)}
+</MainLayout>
+
+<script>
+const toggleBtn = document.getElementById('graph-toggle');
+const modal = document.getElementById('graph-modal');
+const closeBtn = document.getElementById('graph-close');
+
+function openModal() {
+	if (modal) {
+		modal.classList.remove('hidden');
+		modal.classList.add('flex');
+		document.body.style.overflow = 'hidden';
+	}
+}
+
+function closeModal() {
+	if (modal) {
+		modal.classList.add('hidden');
+		modal.classList.remove('flex');
+		document.body.style.overflow = '';
+	}
+}
+
+toggleBtn?.addEventListener('click', openModal);
+closeBtn?.addEventListener('click', closeModal);
+modal?.addEventListener('click', (e) => {
+	if (e.target === modal) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+	if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+		closeModal();
+	}
+});
+</script>

@@ -38,10 +38,10 @@ onMount(() => {
 		class="fixed top-0 left-0 w-20 h-6 bg-yellow-300 group cursor-pointer flex items-center justify-center transition-transform"
 	>
 		<a
-			href="/bookmarks"
+			href="/notes"
 			class="invisible group-hover:visible text-xs text-yellow-700"
 		>
-			bookmarks
+			notes
 		</a>
 	</div>
 </div>
