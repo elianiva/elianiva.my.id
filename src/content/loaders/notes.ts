@@ -1,16 +1,31 @@
 import { z } from "astro:content";
+import { GH_TOKEN } from "astro:env/server";
 import { readFile, stat } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
 import type { Loader } from "astro/loaders";
 import { glob } from "glob";
 import matter from "gray-matter";
 
-const NOTES_DIR = join(
-	process.env.HOME || "",
+const LOCAL_NOTES_DIR = join(
+	process.env.HOME ?? "",
 	"Development",
 	"personal",
 	"notes",
 );
+
+const REPO_OWNER = "elianiva";
+const REPO_NAME = "notes";
+const BRANCH = "main";
+const INDEX_PATH = "notes-index.json";
+
+const PATTERNS = [
+	"Articles/**/*.md",
+	"Vault/**/*.md",
+	"Music/*.md",
+	"People/*.md",
+];
+
+const EXCLUDE_PATTERNS = ["**/Archive/**", "**/Daily/**", "**/Inbox/**"];
 
 const frontmatterSchema = z.object({
 	tags: z.array(z.string()).optional(),
@@ -26,9 +41,7 @@ const frontmatterSchema = z.object({
 	year: z.array(z.coerce.string()).default([]),
 });
 
-type NoteFrontmatter = z.infer<typeof frontmatterSchema>;
-
-const noteSchema = frontmatterSchema.extend({
+export const noteSchema = frontmatterSchema.extend({
 	id: z.string(),
 	title: z.string(),
 	slug: z.string(),
@@ -43,6 +56,7 @@ const noteSchema = frontmatterSchema.extend({
 	year: z.array(z.coerce.string()).default([]),
 });
 
+type NoteFrontmatter = z.infer<typeof frontmatterSchema>;
 type Note = z.infer<typeof noteSchema>;
 
 function slugify(text: string): string {
@@ -56,17 +70,13 @@ function slugify(text: string): string {
 
 function extractTitle(content: string, frontmatterId?: string): string {
 	if (frontmatterId) return frontmatterId;
-
 	const h1Match = content.match(/^#\s+(.+)$/m);
 	if (h1Match?.[1]) return h1Match[1].trim();
-
 	return "Untitled";
 }
 
-// Find first paragraph that's not a heading
-function extractDescription(content: string) {
-	const lines = content.split("\n");
-	for (const line of lines) {
+function extractDescription(content: string): string {
+	for (const line of content.split("\n")) {
 		const trimmed = line.trim();
 		if (
 			trimmed &&
@@ -88,18 +98,13 @@ function parseWikiLinks(content: string): string[] {
 	let match: RegExpExecArray | null;
 	// biome-ignore lint/suspicious/noAssignInExpressions: standard regex exec loop
 	while ((match = wikiLinkRegex.exec(content)) !== null) {
-		if (match?.[1]) {
-			links.push(match[1].trim());
-		}
+		if (match?.[1]) links.push(match[1].trim());
 	}
 	return links;
 }
 
-function getCategoryFromPath(filePath: string): Note["category"] {
-	const relativePath = relative(NOTES_DIR, filePath);
-	const parts = relativePath.split(sep);
-	const topDir = parts[0]?.toLowerCase();
-
+function getCategoryFromRelPath(relPath: string): Note["category"] {
+	const topDir = relPath.split("/")[0]?.toLowerCase();
 	switch (topDir) {
 		case "articles":
 			return "article";
@@ -112,111 +117,67 @@ function getCategoryFromPath(filePath: string): Note["category"] {
 	}
 }
 
+function buildNote(
+	relPath: string,
+	content: string,
+	mtime: Date,
+	birthtime: Date,
+): Note | null {
+	const parsed = matter(content);
+	const frontmatter = parsed.data as NoteFrontmatter;
+
+	const tags = frontmatter.tags ?? [];
+	if (!tags.includes("public")) return null;
+
+	const pathParts = relPath.replace(/\.md$/, "").split("/");
+
+	return {
+		id: slugify(pathParts.join("-")),
+		title: extractTitle(parsed.content, frontmatter.id),
+		slug: slugify(pathParts.join("-")),
+		category: getCategoryFromRelPath(relPath),
+		tags,
+		created_at: frontmatter.created_at
+			? new Date(frontmatter.created_at)
+			: birthtime,
+		modified_at: mtime,
+		body: parsed.content,
+		description:
+			parsed.content.match(/^#/)?.[0] === "#"
+				? extractDescription(parsed.content)
+				: "",
+		url: frontmatter.url ?? "",
+		author: frontmatter.author ?? "",
+		name: frontmatter.name ?? "",
+		links: frontmatter.links ?? [],
+		artist: frontmatter.artist ?? "",
+		album: frontmatter.album ?? "",
+		year: frontmatter.year
+			? Array.isArray(frontmatter.year)
+				? frontmatter.year
+				: [frontmatter.year]
+			: [],
+		backlinks: [],
+		outgoing_links: [],
+	} satisfies Note;
+}
+
 type SyncContext = Pick<
 	Parameters<Loader["load"]>[0],
 	"store" | "logger" | "parseData" | "generateDigest" | "renderMarkdown"
 >;
 
-async function syncNotes({
-	store,
-	logger,
-	parseData,
-	generateDigest,
-	renderMarkdown,
-}: SyncContext) {
-	const patterns = [
-		"Articles/**/*.md",
-		"Vault/**/*.md",
-		"Music/*.md",
-		"People/*.md",
-	];
+async function storeNotes(notesMap: Map<string, Note>, ctx: SyncContext) {
+	const { store, parseData, generateDigest, renderMarkdown } = ctx;
 
-	const excludePatterns = ["**/Archive/**", "**/Daily/**", "**/Inbox/**"];
-
-	const allFiles: string[] = [];
-
-	for (const pattern of patterns) {
-		const files = await glob(pattern, {
-			cwd: NOTES_DIR,
-			absolute: true,
-			ignore: excludePatterns,
-		});
-		allFiles.push(...files);
-	}
-
-	logger.info(`Found ${allFiles.length} note files`);
-
-	// First pass: collect all notes for backlink resolution
-	const notesMap = new Map<string, Note>();
 	const titleToSlug = new Map<string, string>();
-
-	const notePromises = allFiles.map(async (filePath) => {
-		try {
-			const content = await readFile(filePath, "utf-8");
-			const parsed = matter(content);
-
-			const frontmatter = parsed.data as NoteFrontmatter;
-
-			const tags = frontmatter.tags || [];
-			if (!tags.includes("public")) return null;
-
-			const relativePath = relative(NOTES_DIR, filePath);
-			const pathParts = relativePath.replace(/\.md$/, "").split(sep);
-			const stats = await stat(filePath);
-
-			const note = {
-				id: slugify(pathParts.join("-")),
-				title: extractTitle(parsed.content, frontmatter.id),
-				slug: slugify(pathParts.join("-")),
-				category: getCategoryFromPath(filePath),
-				tags,
-				created_at: frontmatter.created_at
-					? new Date(frontmatter.created_at)
-					: new Date(stats.birthtime),
-				modified_at: new Date(stats.mtime),
-				body: parsed.content,
-				description:
-					parsed.content.match(/^#/)?.[0] === "#"
-						? extractDescription(parsed.content)
-						: "",
-				url: frontmatter.url ?? "",
-				author: frontmatter.author ?? "",
-				name: frontmatter.name ?? "",
-				links: frontmatter.links ?? [],
-				artist: frontmatter.artist ?? "",
-				album: frontmatter.album ?? "",
-				year: frontmatter.year
-					? Array.isArray(frontmatter.year)
-						? frontmatter.year
-						: [frontmatter.year]
-					: [],
-			} satisfies Note;
-
-			return { slug: note.id, title: note.title, note };
-		} catch (error) {
-			logger.error(`Error loading note ${filePath}: ${error}`);
-			return null;
-		}
-	});
-
-	// TODO: might need p-limit in the future to limit concurrency
-	const results = await Promise.all(notePromises);
-
-	for (const result of results) {
-		if (!result) continue;
-		const { slug, title, note } = result;
-		notesMap.set(slug, note);
-		titleToSlug.set(title.toLowerCase(), slug);
+	for (const [slug, note] of notesMap) {
+		titleToSlug.set(note.title.toLowerCase(), slug);
 	}
 
-	logger.info(`Loaded ${notesMap.size} public notes`);
-
-	// Second pass: resolve wiki-links and build backlink index
 	const backlinkMap = new Map<string, Set<string>>();
-
 	for (const [slug, note] of notesMap) {
-		const wikiLinks = parseWikiLinks(note.body);
-		for (const linkTitle of wikiLinks) {
+		for (const linkTitle of parseWikiLinks(note.body)) {
 			const targetSlug = titleToSlug.get(linkTitle.toLowerCase());
 			if (targetSlug) {
 				if (!backlinkMap.has(targetSlug)) {
@@ -227,20 +188,14 @@ async function syncNotes({
 		}
 	}
 
-	// Store notes with backlinks
 	store.clear();
 	for (const [slug, note] of notesMap) {
-		const backlinks = Array.from(backlinkMap.get(slug) || []);
-		const outgoingLinks = parseWikiLinks(note.body)
-			.map((title) => titleToSlug.get(title.toLowerCase()))
+		const backlinks = Array.from(backlinkMap.get(slug) ?? []);
+		const outgoing_links = parseWikiLinks(note.body)
+			.map((t) => titleToSlug.get(t.toLowerCase()))
 			.filter((s): s is string => s !== undefined);
 
-		const noteWithLinks = {
-			...note,
-			backlinks,
-			outgoing_links: outgoingLinks,
-		};
-
+		const noteWithLinks = { ...note, backlinks, outgoing_links };
 		const data = await parseData({
 			id: slug,
 			data: noteWithLinks as unknown as Record<string, unknown>,
@@ -254,13 +209,110 @@ async function syncNotes({
 			rendered: await renderMarkdown(note.body),
 		});
 	}
+}
 
-	logger.info(`Stored ${notesMap.size} notes in collection`);
+async function loadFromFs(ctx: SyncContext) {
+	const { logger } = ctx;
+	logger.info(`Loading notes from local fs: ${LOCAL_NOTES_DIR}`);
+
+	const allFiles: string[] = [];
+	for (const pattern of PATTERNS) {
+		const files = await glob(pattern, {
+			cwd: LOCAL_NOTES_DIR,
+			absolute: true,
+			ignore: EXCLUDE_PATTERNS,
+		});
+		allFiles.push(...files);
+	}
+
+	logger.info(`Found ${allFiles.length} note files`);
+
+	const notesMap = new Map<string, Note>();
+
+	await Promise.all(
+		allFiles.map(async (filePath) => {
+			try {
+				const [content, stats] = await Promise.all([
+					readFile(filePath, "utf-8"),
+					stat(filePath),
+				]);
+				const relPath = relative(LOCAL_NOTES_DIR, filePath)
+					.split(sep)
+					.join("/");
+				const note = buildNote(relPath, content, stats.mtime, stats.birthtime);
+				if (note) notesMap.set(note.id, note);
+			} catch (err) {
+				logger.error(`Error loading ${filePath}: ${err}`);
+			}
+		}),
+	);
+
+	logger.info(`Loaded ${notesMap.size} public notes`);
+	await storeNotes(notesMap, ctx);
+	logger.info(`Stored ${notesMap.size} notes`);
+}
+
+async function loadFromGithub(ctx: SyncContext, token: string) {
+	const { logger } = ctx;
+	logger.info(`Loading notes from GitHub: ${REPO_OWNER}/${REPO_NAME}`);
+
+	const indexUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${INDEX_PATH}`;
+	const indexRes = await fetch(indexUrl, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+
+	if (!indexRes.ok) {
+		throw new Error(
+			`Failed to fetch notes index: ${indexRes.status} ${indexRes.statusText}`,
+		);
+	}
+
+	const paths: string[] = await indexRes.json();
+	logger.info(`Index has ${paths.length} public notes`);
+
+	const notesMap = new Map<string, Note>();
+	const now = new Date();
+
+	// Fetch all .md files in parallel
+	await Promise.all(
+		paths.map(async (relPath) => {
+			const encoded = relPath.split("/").map(encodeURIComponent).join("/");
+			const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${encoded}?ref=${BRANCH}`;
+
+			try {
+				const res = await fetch(url, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+						Accept: "application/vnd.github.v3.raw",
+					},
+				});
+
+				if (!res.ok) {
+					logger.error(
+						`Failed to fetch ${relPath}: ${res.status} ${res.statusText}`,
+					);
+					return;
+				}
+
+				const content = await res.text();
+				// GitHub API doesn't expose file timestamps on contents endpoint — use now as fallback
+				const note = buildNote(relPath, content, now, now);
+				if (note) notesMap.set(note.id, note);
+			} catch (err) {
+				logger.error(`Error fetching ${relPath}: ${err}`);
+			}
+		}),
+	);
+
+	logger.info(`Loaded ${notesMap.size} public notes`);
+	await storeNotes(notesMap, ctx);
+	logger.info(`Stored ${notesMap.size} notes`);
 }
 
 export function notesLoader(): Loader {
 	return {
 		name: "notes",
+		schema: noteSchema,
 		load: async ({
 			store,
 			logger,
@@ -269,30 +321,32 @@ export function notesLoader(): Loader {
 			renderMarkdown,
 			watcher,
 		}) => {
-			logger.info(`Loading notes from: ${NOTES_DIR}`);
-
-			await syncNotes({
+			const ctx: SyncContext = {
 				store,
 				logger,
 				parseData,
 				generateDigest,
 				renderMarkdown,
-			});
+			};
 
-			watcher?.add(NOTES_DIR);
-			watcher?.on("change", async (changedPath) => {
-				if (changedPath.startsWith(NOTES_DIR) && changedPath.endsWith(".md")) {
-					logger.info(`Reloading notes, changed: ${changedPath}`);
-					await syncNotes({
-						store,
-						logger,
-						parseData,
-						generateDigest,
-						renderMarkdown,
-					});
-				}
-			});
+			const isProd = import.meta.env.PROD;
+
+			if (isProd) {
+				await loadFromGithub(ctx, GH_TOKEN);
+			} else {
+				await loadFromFs(ctx);
+
+				watcher?.add(LOCAL_NOTES_DIR);
+				watcher?.on("change", async (changedPath) => {
+					if (
+						changedPath.startsWith(LOCAL_NOTES_DIR) &&
+						changedPath.endsWith(".md")
+					) {
+						logger.info(`Reloading notes, changed: ${changedPath}`);
+						await loadFromFs(ctx);
+					}
+				});
+			}
 		},
-		schema: noteSchema,
 	};
 }
