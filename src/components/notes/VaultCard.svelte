@@ -25,7 +25,7 @@ const displayTags = tags
 <article class="group" style="view-transition-name: note-card-{id}">
 	<a
 		href={`/notes/${id}`}
-		class="relative block p-4 rounded-xl border border-dashed border-sky-200 bg-white/40 hover:bg-white/60 transition-colors duration-200 overflow-hidden"
+		class="relative block p-4 rounded-xl border-[0.5px] border-sky-200 bg-white/40 hover:bg-white/60 transition-colors duration-200 overflow-hidden"
 		style="clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)"
 	>
 		<!-- folded corner -->

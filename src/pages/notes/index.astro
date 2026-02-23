@@ -59,7 +59,7 @@ const hasGraphData = notes.some(
 
 <MainLayout seo={{ title: "Notes / Digital Garden" }}>
 	<section class="mx-auto max-w-4xl px-4 py-10">
-		<div class="mb-8">
+		<div class="mb-4">
 			<h1 class="font-display text-3xl md:text-4xl font-bold text-pink-950 tracking-wide">
 				Personal Notes Vault
 			</h1>
@@ -71,7 +71,7 @@ const hasGraphData = notes.some(
 		</div>
 
 		{notes.length > 0 && (
-			<div class="mb-6 space-y-4">
+			<div class="mb-4">
 				<Search
 					client:load
 					notes={notesData}

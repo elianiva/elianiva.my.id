@@ -20,11 +20,11 @@
 <article class="group" style="view-transition-name: note-card-{id}">
 	<a
 		href={`/notes/${id}`}
-		class="flex items-center gap-3 p-3 rounded-xl border border-dashed border-purple-200 bg-white/40 hover:bg-white/60 transition-colors duration-200"
+		class="flex items-center gap-3 px-3 py-2 rounded-xl border-[0.5px] border-purple-200 bg-white/40 hover:bg-white/60 transition-colors duration-200"
 	>
 		<!-- album art placeholder -->
 		<div
-			class="shrink-0 w-12 h-12 rounded-lg bg-purple-100/70 border border-dashed border-purple-200 flex items-center justify-center group-hover:bg-purple-100 transition-colors"
+			class="shrink-0 w-12 h-12 rounded-lg bg-purple-100/70 border-[0.5px] border-purple-200 flex items-center justify-center group-hover:bg-purple-100 transition-colors"
 		>
 			<svg
 				class="w-5 h-5 text-purple-400"

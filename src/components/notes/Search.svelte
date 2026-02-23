@@ -57,7 +57,7 @@ const categoryLabels: Record<string, string> = {
 			type="text"
 			placeholder="Search notes..."
 			bind:value={query}
-			class="w-full px-4 py-3 pl-11 rounded-xl border border-dashed border-pink-200 bg-white/60 focus:bg-white/80 focus:outline-none focus:ring-2 focus:ring-pink-400 text-pink-950 placeholder:text-pink-950/40"
+			class="w-full px-3 py-2 pl-11 rounded-xl border-[0.5px] border-pink-200 bg-white/60 focus:bg-white/80 focus:outline-none focus:ring-2 focus:ring-pink-400 text-pink-950 placeholder:text-pink-950/40 text-sm"
 		/>
 		<svg
 			class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-pink-950/40"
@@ -93,7 +93,7 @@ const categoryLabels: Record<string, string> = {
 
 	{#if query && results.length > 0}
 		<div
-			class="absolute z-10 w-full mt-2 bg-white/90 backdrop-blur-sm rounded-xl border border-dashed border-pink-200 shadow-lg max-h-96 overflow-auto"
+			class="absolute z-10 w-full mt-2 bg-white/90 backdrop-blur-sm rounded-xl border-[0.5px] border-pink-200 shadow-lg max-h-96 overflow-auto"
 		>
 			{#each results as result}
 				<a

@@ -96,9 +96,9 @@ onMount(() => {
 });
 </script>
 
-<div class="space-y-6">
+<div class="space-y-4">
 	<!-- Tab bar -->
-	<div class="relative flex flex-wrap gap-6 border-b border-dashed border-pink-200 pb-4">
+	<div class="relative flex flex-wrap gap-4 border-b border-pink-300/50 pb-2">
 		<!-- floating indicator -->
 		<span class="tab-indicator"></span>
 		{#each categories as cat}
