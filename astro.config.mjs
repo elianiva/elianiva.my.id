@@ -66,10 +66,6 @@ export default defineConfig({
 	},
 	env: {
 		schema: {
-			RAINDROP_API_KEY: envField.string({
-				context: "server",
-				access: "secret",
-			}),
 			GH_TOKEN: envField.string({
 				context: "server",
 				access: "secret",
