@@ -11,7 +11,7 @@
 		"preview": "wrangler pages dev ./dist",
 		"astro": "astro",
 		"check": "biome check --write ./src/*",
-		"sync-notes": "bun scripts/sync-notes.ts"
+		"sync": "bun run scripts/sync-notes.ts"
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "^12.6.12",

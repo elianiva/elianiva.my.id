@@ -1,18 +1,16 @@
 /**
- * Sync public notes to the private GitHub repo.
+ * Generate notes index from local notes directory.
  *
  * Scans ~/Development/personal/notes, filters notes tagged `public`,
- * and pushes a notes-index.json (array of relative paths) to the repo.
+ * and writes a notes-index.json (array of relative paths) locally.
  *
  * Usage: bun scripts/sync-notes.ts
- * Requires: GH_TOKEN env var with write access to the notes repo
  */
 
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
 import { glob } from "glob";
 import matter from "gray-matter";
-import { Octokit } from "octokit";
 
 const NOTES_DIR = join(
 	process.env.HOME ?? "",
@@ -21,10 +19,7 @@ const NOTES_DIR = join(
 	"notes",
 );
 
-const REPO_OWNER = "elianiva";
-const REPO_NAME = "notes";
-const INDEX_PATH = "notes-index.json";
-const BRANCH = "main";
+const OUTPUT_PATH = join(process.cwd(), "notes-index.json");
 
 const PATTERNS = [
 	"Articles/**/*.md",
@@ -64,52 +59,17 @@ async function getPublicNotePaths(): Promise<string[]> {
 	return publicPaths.sort();
 }
 
-async function pushIndexToGithub(paths: string[], token: string) {
-	const octokit = new Octokit({ auth: token });
-
+async function writeIndexFile(paths: string[]) {
 	const content = JSON.stringify(paths, null, 2);
-	const encoded = Buffer.from(content).toString("base64");
-
-	// Check if file already exists to get its SHA (required for updates)
-	let sha: string | undefined;
-	try {
-		const { data } = await octokit.rest.repos.getContent({
-			owner: REPO_OWNER,
-			repo: REPO_NAME,
-			path: INDEX_PATH,
-			ref: BRANCH,
-		});
-		if (!Array.isArray(data) && "sha" in data) {
-			sha = data.sha;
-		}
-	} catch {
-		// File doesn't exist yet — create it
-	}
-
-	await octokit.rest.repos.createOrUpdateFileContents({
-		owner: REPO_OWNER,
-		repo: REPO_NAME,
-		path: INDEX_PATH,
-		message: `chore: update notes index (${new Date().toISOString()})`,
-		content: encoded,
-		branch: BRANCH,
-		...(sha ? { sha } : {}),
-	});
+	await writeFile(OUTPUT_PATH, content, "utf-8");
 }
 
 async function main() {
-	const token = process.env.GH_TOKEN;
-	if (!token) {
-		console.error("GH_TOKEN env var is required");
-		process.exit(1);
-	}
-
 	console.log(`Scanning notes from: ${NOTES_DIR}`);
 	const paths = await getPublicNotePaths();
 	console.log(`Found ${paths.length} public notes`);
-
-	console.log(`Pushing index to ${REPO_OWNER}/${REPO_NAME}...`);
-	await pushIndexToGithub(paths, token);
+	console.log(`Writing index to ${OUTPUT_PATH}...`);
+	await writeIndexFile(paths);
 	console.log("Done ✓");
 }
 
