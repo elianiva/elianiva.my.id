@@ -286,7 +286,6 @@ async function loadFromGithub(ctx: SyncContext, token: string) {
 					headers: {
 						Authorization: `Bearer ${token}`,
 						Accept: "application/vnd.github.raw+json",
-						"X-GitHub-Api-Version": "2022-11-28",
 					},
 				});
 				if (!res.ok) {
