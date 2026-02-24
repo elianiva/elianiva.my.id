@@ -15,6 +15,7 @@ const LOCAL_NOTES_DIR = join(
 
 const REPO_OWNER = "elianiva";
 const REPO_NAME = "elianiva.my.id";
+const NOTES_REPO_NAME = "notes";
 const BRANCH = "master";
 const INDEX_PATH = "notes-index.json";
 
@@ -254,7 +255,7 @@ async function loadFromFs(ctx: SyncContext) {
 
 async function loadFromGithub(ctx: SyncContext, token: string) {
 	const { logger } = ctx;
-	logger.info(`Loading notes from GitHub: ${REPO_OWNER}/${REPO_NAME}`);
+	logger.info(`Loading notes from GitHub: ${REPO_OWNER}/${NOTES_REPO_NAME}`);
 
 	const indexUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${INDEX_PATH}`;
 	const indexRes = await fetch(indexUrl, {
@@ -273,29 +274,26 @@ async function loadFromGithub(ctx: SyncContext, token: string) {
 	const notesMap = new Map<string, Note>();
 	const now = new Date();
 
-	// Fetch all .md files in parallel
+	// Fetch all .md files in parallel using raw.githubusercontent.com
 	await Promise.all(
 		paths.map(async (relPath) => {
 			const encoded = relPath.split("/").map(encodeURIComponent).join("/");
-			const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${encoded}?ref=${BRANCH}`;
+			const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${NOTES_REPO_NAME}/${BRANCH}/${encoded}`;
 
 			try {
 				const res = await fetch(url, {
 					headers: {
 						Authorization: `Bearer ${token}`,
-						Accept: "application/vnd.github.v3.raw",
 					},
 				});
-
 				if (!res.ok) {
 					logger.error(
 						`Failed to fetch ${relPath}: ${res.status} ${res.statusText}`,
 					);
 					return;
 				}
-
 				const content = await res.text();
-				// GitHub API doesn't expose file timestamps on contents endpoint — use now as fallback
+				// raw.githubusercontent.com doesn't expose file timestamps — use now as fallback
 				const note = buildNote(relPath, content, now, now);
 				if (note) notesMap.set(note.id, note);
 			} catch (err) {
