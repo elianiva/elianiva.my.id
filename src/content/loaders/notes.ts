@@ -274,22 +274,30 @@ async function loadFromGithub(ctx: SyncContext, token: string) {
 	const notesMap = new Map<string, Note>();
 	const now = new Date();
 
-	// Fetch all .md files in parallel using raw.githubusercontent.com
+	// Fetch all .md files in parallel using GitHub Contents API
 	await Promise.all(
 		paths.map(async (relPath) => {
 			const encoded = relPath.split("/").map(encodeURIComponent).join("/");
-			const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${NOTES_REPO_NAME}/refs/heads/${BRANCH}/${encoded}?token=${token}`;
+			const url = `https://api.github.com/repos/${REPO_OWNER}/${NOTES_REPO_NAME}/contents/${encoded}?ref=${BRANCH}`;
+			logger.info(`Fetching: ${url}`);
 
 			try {
-				const res = await fetch(url);
+				const res = await fetch(url, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+						Accept: "application/vnd.github.raw+json",
+						"X-GitHub-Api-Version": "2022-11-28",
+					},
+				});
 				if (!res.ok) {
+					const body = await res.text();
 					logger.error(
-						`Failed to fetch ${url}: ${res.status} ${res.statusText}`,
+						`Failed to fetch ${url}: ${res.status} ${res.statusText} - ${body}`,
 					);
 					return;
 				}
 				const content = await res.text();
-				// raw.githubusercontent.com doesn't expose file timestamps — use now as fallback
+				// GitHub Contents API with raw accept header doesn't expose file timestamps — use now as fallback
 				const note = buildNote(relPath, content, now, now);
 				if (note) notesMap.set(note.id, note);
 			} catch (err) {
