@@ -257,7 +257,7 @@ async function loadFromGithub(ctx: SyncContext, token: string) {
 	const { logger } = ctx;
 	logger.info(`Loading notes from GitHub: ${REPO_OWNER}/${NOTES_REPO_NAME}`);
 
-	const indexUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${INDEX_PATH}`;
+	const indexUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/refs/heads/${BRANCH}/${INDEX_PATH}`;
 	const indexRes = await fetch(indexUrl, {
 		headers: { Authorization: `Bearer ${token}` },
 	});
@@ -278,7 +278,7 @@ async function loadFromGithub(ctx: SyncContext, token: string) {
 	await Promise.all(
 		paths.map(async (relPath) => {
 			const encoded = relPath.split("/").map(encodeURIComponent).join("/");
-			const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${NOTES_REPO_NAME}/${BRANCH}/${encoded}?token=${token}`;
+			const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${NOTES_REPO_NAME}/refs/heads/${BRANCH}/${encoded}?token=${token}`;
 
 			try {
 				const res = await fetch(url);
