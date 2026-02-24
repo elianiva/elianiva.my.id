@@ -278,17 +278,13 @@ async function loadFromGithub(ctx: SyncContext, token: string) {
 	await Promise.all(
 		paths.map(async (relPath) => {
 			const encoded = relPath.split("/").map(encodeURIComponent).join("/");
-			const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${NOTES_REPO_NAME}/${BRANCH}/${encoded}`;
+			const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${NOTES_REPO_NAME}/${BRANCH}/${encoded}?token=${token}`;
 
 			try {
-				const res = await fetch(url, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const res = await fetch(url);
 				if (!res.ok) {
 					logger.error(
-						`Failed to fetch ${relPath}: ${res.status} ${res.statusText}`,
+						`Failed to fetch ${url}: ${res.status} ${res.statusText}`,
 					);
 					return;
 				}
