@@ -140,6 +140,10 @@
 		@apply text-pink-800 my-2 leading-loose text-base font-heading;
 	}
 
+	.prose :where(li) p:first-child {
+		@apply mb-2;
+	}
+
 	::view-transition-old(root),
 	::view-transition-new(root) {
 		animation-duration: 200ms;
