@@ -21,74 +21,6 @@
 		0 2px 8px rgba(255, 182, 193, 0.12), 0 4px 12px rgba(255, 182, 193, 0.08);
 }
 
-@layer utilities {
-	/* Blob shape utility */
-	.blob-shape {
-		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-	}
-
-	/* Prose overrides */
-	.prose {
-		@apply text-pink-950/80;
-	}
-
-	.prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-justify mt-0 mb-6;
-	}
-
-	.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-500 no-underline border-b border-dashed border-pink-500;
-	}
-
-	.prose
-		:where(strong):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-600;
-	}
-
-	.prose
-		:where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-500 font-normal;
-	}
-
-	.prose
-		:where(pre code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-[#575279];
-	}
-
-	.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply border border-pink-300 border-dashed bg-white!;
-	}
-
-	.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-3xl font-heading;
-	}
-
-	.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-2xl font-heading;
-	}
-
-	.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-xl font-heading;
-	}
-
-	.prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-lg font-heading;
-	}
-
-	.prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-		@apply text-pink-800 my-2 leading-loose text-base font-heading;
-	}
-}
-
-/* Wiki-link styling */
-.wiki-link {
-	@apply text-pink-600 border-b border-dashed border-pink-400 no-underline;
-}
-
-.wiki-link:hover {
-	@apply text-pink-800 border-pink-600;
-}
-
 @layer base {
 	html,
 	body {
@@ -151,44 +83,75 @@
 }
 
 @layer utilities {
-	/* View Transitions - Ease In with Sequential Animation */
-
-	/* Card expansion - first phase (400ms) */
-	::view-transition-group([style*="post-card-"]),
-	::view-transition-group([style*="project-card-"]),
-	::view-transition-group([style*="note-card-"]) {
-		animation-duration: 400ms;
-		animation-timing-function: ease-in;
+	/* Blob shape utility */
+	.blob-shape {
+		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 	}
 
-	::view-transition-old([style*="post-card-"]),
-	::view-transition-new([style*="post-card-"]),
-	::view-transition-old([style*="project-card-"]),
-	::view-transition-new([style*="project-card-"]),
-	::view-transition-old([style*="note-card-"]),
-	::view-transition-new([style*="note-card-"]) {
-		animation-timing-function: ease-in;
+	/* Prose overrides */
+	.prose {
+		@apply text-pink-950/80;
 	}
 
-	/* Content inside card - second phase (300ms, starts after card) */
-	::view-transition-group([style*="post-content-"]),
-	::view-transition-group([style*="project-content-"]) {
-		animation-duration: 300ms;
-		animation-timing-function: ease-in;
-		animation-delay: 300ms;
+	.prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-justify mt-0 mb-6;
 	}
 
-	::view-transition-old([style*="post-content-"]),
-	::view-transition-new([style*="post-content-"]),
-	::view-transition-old([style*="project-content-"]),
-	::view-transition-new([style*="project-content-"]) {
-		animation-timing-function: ease-in;
+	.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-500 no-underline border-b border-dashed border-pink-500;
 	}
 
-	/* Root background - subtle fade */
+	.prose
+		:where(strong):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-600;
+	}
+
+	.prose
+		:where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-500 font-normal;
+	}
+
+	.prose
+		:where(pre code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-[#575279];
+	}
+
+	.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply border border-pink-300 border-dashed bg-white!;
+	}
+
+	.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-3xl font-heading;
+	}
+
+	.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-2xl font-heading;
+	}
+
+	.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-xl font-heading;
+	}
+
+	.prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-lg font-heading;
+	}
+
+	.prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+		@apply text-pink-800 my-2 leading-loose text-base font-heading;
+	}
+
 	::view-transition-old(root),
 	::view-transition-new(root) {
 		animation-duration: 200ms;
 		animation-timing-function: ease-in;
 	}
+}
+
+/* Wiki-link styling */
+.wiki-link {
+	@apply text-pink-600 border-b border-dashed border-pink-400 no-underline;
+}
+
+.wiki-link:hover {
+	@apply text-pink-800 border-pink-600;
 }
